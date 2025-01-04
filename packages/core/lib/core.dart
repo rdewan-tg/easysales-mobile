@@ -1,7 +1,6 @@
 library core;
 
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:core/env/env.dart';
 import 'package:flutter/foundation.dart';
