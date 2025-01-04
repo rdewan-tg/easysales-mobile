@@ -18,6 +18,20 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  # https://pub.dev/packages/retrofit_generator
+  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
+  # https://pub.dev/packages/build_runner
+  build_runner: ^2.4.13
+  # https://pub.dev/packages/json_serializable
+  json_serializable: ^6.6.0
+  # https://pub.dev/packages/freezed
+  freezed: ^2.5.7
+  # https://pub.dev/packages/riverpod_generator
+  riverpod_generator: ^2.6.3
+  # https://pub.dev/packages/riverpod_lint
+  riverpod_lint: ^2.6.3
+  # https://pub.dev/packages/custom_lint
+  custom_lint: ^0.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

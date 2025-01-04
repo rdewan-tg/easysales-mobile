@@ -1,5 +1,6 @@
 import 'package:auth/auth.dart';
 import 'package:common/common.dart';
+import 'package:core/core.dart';
 import 'package:core/data/local/secure_storage/isecure_storage.dart';
 import 'package:core/data/local/secure_storage/secure_storage.dart';
 import 'package:core/data/local/secure_storage/secure_storage_const.dart';
@@ -10,12 +11,13 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home.dart';
 import 'package:merchandiser/merchandiser.dart';
+import 'package:profile/profile.dart';
 import 'package:sales/sales.dart';
 import 'package:setting/setting.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
  
-  // final notifier = ref.read(goRouterNotifierProvider);
+  final notifier = ref.read(goRouterNotifierProvider);
   // final observer = ref.read(routeObserverProvider);
   // final navigatorObserver = ref.read(appNavigatorObserverObserverProvider);
   // final logger = ref.read(loggerProvider('GoRouter'));
@@ -23,6 +25,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   
   final appRoute = AppRouter(
     secureStorage: secureStorage,
+    notifier: notifier,
   );
 
   return appRoute.router;
@@ -30,17 +33,19 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
 class AppRouter {
   ISecureStorage secureStorage;
+  GoRouterNotifier notifier;
   final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey(debugLabel: 'root');
    bool isDuplicate = false;
 
-  AppRouter({required this.secureStorage});
+  AppRouter({required this.secureStorage, required this.notifier});
   
 
   GoRouter get router {
     return GoRouter(
       restorationScopeId: 'router',
       navigatorKey: rootNavigatorKey,
-      initialLocation: '/login',
+      refreshListenable: notifier,
+      initialLocation: '/',
       redirect: _redirect,
       routes: _buildRoutes(),
       errorBuilder: _errorBuilder,
@@ -62,18 +67,14 @@ class AppRouter {
   }
 
   String? _handleLoggedInRedirect(GoRouterState state) {
-    if (state.matchedLocation == '/login' ||
-        state.matchedLocation == '/login/phoneAuth' ||
-        state.matchedLocation == '/login/phoneOTP') {
+    if (state.matchedLocation == '/login') {
       return '/';
     }
     return null;
   }
 
   String? _handleLoggedOutRedirect(GoRouterState state) {
-    if (state.matchedLocation != '/login' &&
-        state.matchedLocation != '/login/phoneAuth' &&
-        state.matchedLocation != '/login/phoneOTP') {
+    if (state.matchedLocation != '/login' ) {
       return '/login?from=${state.matchedLocation}';
     }
     return null;
@@ -196,6 +197,12 @@ class AppRouter {
             key: state.pageKey,
             child: const SettingScreen(),
           ),
+          routes: [
+            _themeRoute(),
+            _languageRoute(),
+            _profileRoute(),
+
+          ],
         ),
       ],
     );
@@ -208,6 +215,39 @@ class AppRouter {
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
         child: const CaptureImageScreen(),
+      ),
+    );
+  }
+
+  RouteBase _themeRoute() {
+    return GoRoute(
+      path: '/$themeRoute',
+      name: themeRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        child: const ThemePickerScreen(),
+      ),
+    );
+  }
+
+  RouteBase _languageRoute() {
+    return GoRoute(
+      path: '/$languageRoute',
+      name: languageRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        child: const LanguagePickerScreen(),
+      ),
+    );
+  }
+
+  RouteBase _profileRoute() {
+    return GoRoute(
+      path: '/$profileRoute',
+      name: profileRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        child: const ProfileScreen(),
       ),
     );
   }

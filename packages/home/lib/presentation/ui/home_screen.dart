@@ -13,17 +13,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'.hardcoded),
+        centerTitle: true,
+        elevation: 8,
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
-            Text('Home Screen'.hardcoded),
-            Consumer(
-              builder: (context, ref, child) {
-                final flavor = ref.watch(flavorProvider);
-                return Text('Current Flavor: $flavor'.hardcoded);
-              },
-            ),
+            
           ],
         ),
       ),

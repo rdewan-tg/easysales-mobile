@@ -13,6 +13,8 @@ class _SalesScreenState extends ConsumerState<SalesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sales'.hardcoded),
+        centerTitle: true,
+        elevation: 8,
       ),
       body: SingleChildScrollView(
         child: Column(

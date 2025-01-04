@@ -1,4 +1,6 @@
 
+import 'package:auth/features/login/data/source/local/isetting_storage.dart';
+import 'package:auth/features/login/data/source/local/setting_storage.dart';
 import 'package:common/common.dart';
 import 'package:common/exception/failure.dart';
 import 'package:auth/features/login/data/dto/request/login_request.dart';
@@ -14,15 +16,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final loginRepositoryProvider = Provider.autoDispose<ILoginRepository>((ref) {
   final loginApi = ref.watch(loginApiProvider);
   final tokenStorage = ref.watch(tokenStorageProvider);
+  final settingStorage = ref.watch(settingStorageProvider);
 
-  return LoginRepository(loginApi, tokenStorage);  
+  return LoginRepository(loginApi, tokenStorage, settingStorage);  
 });
 
 final class LoginRepository with DioExceptionMapper implements ILoginRepository {
   final LoginApi _loginApi;
   final ITokenStorage _tokenStorage;
+  final ISettingStorage _settingStorage;
 
-  LoginRepository(this._loginApi, this._tokenStorage);
+  LoginRepository(this._loginApi, this._tokenStorage, this._settingStorage);
 
   @override
   Future<LoginResponse> login(LoginRequest loginRequest) async {
@@ -40,6 +44,22 @@ final class LoginRepository with DioExceptionMapper implements ILoginRepository 
     } on DioException catch (e, stackTrace) {
       // Use the mixin to map DioException to Failure
       throw mapDioExceptionToFailure(e, stackTrace);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+  
+  @override
+  Future<void> upsertMultipleSettings(Map<String, String> settings) async {
+    try {
+
+      return await _settingStorage.upsertMultipleSettings(settings);
+      
     } catch (e, stackTrace) {
       // Map unexpected exceptions to Failure
       throw Failure(

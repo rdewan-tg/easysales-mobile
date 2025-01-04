@@ -5,3 +5,10 @@ global_options:
   json_serializable:
     runs_before:
       - retrofit_generator
+targets:
+  $default:
+    builders:
+      drift_dev:
+        options:
+          store_date_time_values_as_text: true # (default false for Unix timestamps)
+         
