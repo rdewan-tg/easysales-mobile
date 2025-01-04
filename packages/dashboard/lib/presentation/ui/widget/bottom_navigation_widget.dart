@@ -24,22 +24,22 @@ class _BottomNavigationWidgetState
         NavigationDestination(
           selectedIcon: const Icon(Icons.home_rounded),
           icon: const Icon(Icons.home_outlined),
-          label: 'Home'.hardcoded,
+          label: context.localizations('home.title'),
         ),
         NavigationDestination(
           selectedIcon: const Icon(Icons.list_rounded),
           icon: const Icon(Icons.list_outlined),
-          label: 'Sales'.hardcoded,
+          label: context.localizations('sales.title'),
         ),
         NavigationDestination(
           selectedIcon: const Icon(Icons.account_circle_rounded),
           icon: const Icon(Icons.account_circle_outlined),
-          label: 'Merchandiser'.hardcoded,
+          label: context.localizations('merchandiser.title'),
         ),
         NavigationDestination(
           selectedIcon: const Icon(Icons.settings_rounded),
           icon: const Icon(Icons.settings_outlined),
-          label: 'Setting'.hardcoded,
+          label: context.localizations('setting.title'),
         ),
       ],
     );

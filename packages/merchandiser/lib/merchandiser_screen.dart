@@ -27,7 +27,7 @@ class _MerchandiserScreenState extends ConsumerState<MerchandiserScreen> {
               onPressed: () {
                 context.go('/capture-image');
               },
-              child: Text('Take Picture'.hardcoded),
+              child: Text(context.localizations('merchandiser.takePicture')),
             ),
           ],
         ),

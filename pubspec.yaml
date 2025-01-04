@@ -23,29 +23,10 @@ dependencies:
   sales:
      path: packages/sales
   merchandiser:
-    path: packages/merchandiser
-    
-  # https://pub.dev/packages/flutter_riverpod
-  flutter_riverpod: ^2.6.1
-  # https://pub.dev/packages/riverpod_annotation
-  riverpod_annotation: ^2.6.1
-  # https://pub.dev/packages/dio
-  dio: ^5.7.0
-  # https://pub.dev/packages/retrofit
-  retrofit: ^4.4.1
-  # https://pub.dev/packages/go_router
-  go_router: ^14.6.0
-  # https://pub.dev/packages/logger
-  logger: ^2.4.0
-  # https://pub.dev/packages/json_annotation
-  json_annotation: ^4.9.0
-  # https://pub.dev/packages/camerawesome
-  camerawesome: ^2.1.0
-  # https://pub.dev/packages/freezed_annotation
-  freezed_annotation: ^2.4.4
-  # https://pub.dev/packages/multiple_result
-  multiple_result: ^5.1.0
-
+    path: packages/merchandiser    
+  profile:
+    path: packages/profile
+ 
 dev_dependencies:
   flutter_test:
     sdk: flutter

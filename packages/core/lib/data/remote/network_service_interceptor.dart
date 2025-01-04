@@ -20,7 +20,9 @@ final class NetworkServiceInterceptor extends Interceptor {
 
   @override
   void onRequest(
-      RequestOptions options, RequestInterceptorHandler handler) async {
+      RequestOptions options, 
+      RequestInterceptorHandler handler,
+    ) async {
     final accessToken = await _tokenService.getAccessToken();
 
     options.headers['Content-Type'] = 'application/json';

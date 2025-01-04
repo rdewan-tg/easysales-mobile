@@ -38,7 +38,7 @@ class LoginController  extends AutoDisposeNotifier<LoginState> {
 
       // setup the login request - email and password from the form
       final loginRequest = LoginRequest(
-        email: state.loginForm['emails'], 
+        email: state.loginForm['email'], 
         password: state.loginForm['password'],
       );
 
