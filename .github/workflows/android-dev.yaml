@@ -52,14 +52,8 @@ jobs:
       - name: Setup .env file
         run: |
           echo "${{env.ENV_DEV}}" | base64 --decode > packages/core/.dev.env
-          echo "packages/core/.dev.env"
-          cat packages/core/.dev.env
           echo "${{env.ENV_QA}}" | base64 --decode > packages/core/.qa.env
-          echo "packages/core/.qa.env"
-          cat packages/core/.qa.env
           echo "${{env.ENV_PROD}}" | base64 --decode > packages/core/.prod.env
-          echo "packages/core/.prod.env"
-          cat packages/core/.prod.env
 
       - name: Setup FVM
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
@@ -73,11 +67,9 @@ jobs:
 
       - name: Setup Flutter Translation Sheet
         run: |
-          echo "Fetching translation data"
           cd packages/common
           dart run flutter_translation_sheet:main fetch
           cd ../../
-          echo "Done fetching translation data"
 
       - name: Build Runner Setup
         run: |
@@ -85,14 +77,14 @@ jobs:
           pwd
           
           echo Getting dependencies
-          flutter pub get
+          flutter pub get >> /dev/null
 
           echo Running build_runner in packages/core
           flutter pub run build_runner build -d 
           
           echo Done running build_runner. Navigating up to root directory
           cd ../../    
-          flutter pub get
+          flutter pub get >> /dev/null
 
       # Formats the dart code
       - name: Auto-format Dart code
