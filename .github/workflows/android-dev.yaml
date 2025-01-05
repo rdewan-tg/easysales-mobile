@@ -15,8 +15,8 @@ env:
   ANDROID_LOCAL_PROPERTIES: ${{ secrets.ANDROID_LOCAL_PROPERTIES }}
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
   DEV_ENV: ${{ secrets.DEV_ENV }}
-  DEV_QA: ${{ secrets.DEV_QA }}
-  DEV_PROD: ${{ secrets.DEV_PROD }}
+  QA_ENV: ${{ secrets.QA_ENV }}
+  PROD_ENV: ${{ secrets.PROD_ENV }}
 
 jobs:
   build:
