@@ -14,9 +14,9 @@ env:
   ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
   ANDROID_LOCAL_PROPERTIES: ${{ secrets.ANDROID_LOCAL_PROPERTIES }}
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
-  DEV_ENV: ${{ secrets.DEV_ENV }}
-  QA_ENV: ${{ secrets.QA_ENV }}
-  PROD_ENV: ${{ secrets.PROD_ENV }}
+  ENV_DEV: ${{ secrets.ENV_DEV }}
+  ENV_QA: ${{ secrets.ENV_QA }}
+  ENV_PROD: ${{ secrets.ENV_PROD }}
 
 jobs:
   build:
@@ -51,13 +51,13 @@ jobs:
           
       - name: Setup .env file
         run: |
-          echo "${{env.DEV_ENV}}" | base64 --decode > packages/core/.dev.env
+          echo "${{env.ENV_DEV}}" | base64 --decode > packages/core/.dev.env
           echo "packages/core/.dev.env"
           cat packages/core/.dev.env
-          echo "${{env.QA_ENV}}" | base64 --decode > packages/core/.qa.env
+          echo "${{env.ENV_QA}}" | base64 --decode > packages/core/.qa.env
           echo "packages/core/.qa.env"
           cat packages/core/.qa.env
-          echo "${{env.PROD_ENV}}" | base64 --decode > packages/core/.prod.env
+          echo "${{env.ENV_PROD}}" | base64 --decode > packages/core/.prod.env
           echo "packages/core/.prod.env"
           cat packages/core/.prod.env
 
