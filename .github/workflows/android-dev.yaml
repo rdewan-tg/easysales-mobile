@@ -68,23 +68,20 @@ jobs:
           cd ../../
           echo "Done fetching translation data"
 
-      - name: Install dependencies
-        run: flutter pub get
-
       - name: Build Runner Setup
         run: |
           cd packages/core
           pwd
           
           echo Getting dependencies
-          flutter pub get > /dev/null
+          flutter pub get
 
           echo Running build_runner in packages/core
           flutter pub run build_runner build -d 
           
           echo Done running build_runner. Navigating up to root directory
           cd ../../    
-          flutter pub get > /dev/null
+          flutter pub get
 
       # Formats the dart code
       - name: Auto-format Dart code
