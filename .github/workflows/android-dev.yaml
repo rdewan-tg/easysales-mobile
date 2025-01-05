@@ -52,12 +52,15 @@ jobs:
       - name: Setup .env file
         run: |
           echo "${{env.DEV_ENV}}" | base64 --decode > packages/core/.dev.env
-          echo packages/core/.dev.env
+          echo "packages/core/.dev.env"
+          cat packages/core/.dev.env
           echo "${{env.QA_ENV}}" | base64 --decode > packages/core/.qa.env
-          echo packages/core/.qa.env
+          echo "packages/core/.qa.env"
+          cat packages/core/.qa.env
           echo "${{env.PROD_ENV}}" | base64 --decode > packages/core/.prod.env
-          echo packages/core/.prod.env
-          
+          echo "packages/core/.prod.env"
+          cat packages/core/.prod.env
+
       - name: Setup FVM
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
         id: fvm-config-action
