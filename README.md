@@ -212,7 +212,11 @@ fvm flutter pub run build_runner build -d
     ```
 
 #### Git Hook
-* `git config core.hooksPath .githooks/` - configure Git to look for the hooks in the given directory `.githooks/`.
+- configure Git to look for the hooks in the given directory `.githooks/`.
+```bash
+    git config core.hooksPath .githooks/
+``` 
+
 
 #### Create Package Command
 ```bash 
