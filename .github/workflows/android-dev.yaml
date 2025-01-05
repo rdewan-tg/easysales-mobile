@@ -60,6 +60,17 @@ jobs:
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
+      - name: Setup Flutter Translation Sheet
+        run: |
+          echo "Fetching translation data"
+          cd packages/common
+          dart run flutter_translation_sheet:main fetch
+          cd ../../
+          echo "Done fetching translation data"
+
+      - name: Install dependencies
+        run: flutter pub get
+
       - name: Build Runner Setup
         run: |
           cd packages/core
@@ -74,17 +85,6 @@ jobs:
           echo Done running build_runner. Navigating up to root directory
           cd ../../    
           flutter pub get > /dev/null
-
-      - name: Setup Flutter Translation Sheet
-        run: |
-          echo "Fetching translation data"
-          cd packages/common
-          dart run flutter_translation_sheet:main fetch
-          cd ../../
-          echo "Done fetching translation data"
-
-      - name: Install dependencies
-        run: flutter pub get
 
       # Formats the dart code
       - name: Auto-format Dart code
