@@ -70,8 +70,7 @@ jobs:
 
           echo Running build_runner in packages/core
           flutter pub run build_runner build -d 
-          flutter pub get > /dev/null
-
+          
           echo Done running build_runner. Navigating up to root directory
           cd ../../    
           flutter pub get > /dev/null
