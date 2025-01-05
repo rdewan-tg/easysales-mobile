@@ -68,8 +68,7 @@ jobs:
           echo Getting dependencies
           flutter pub get > /dev/null
 
-          echo Running build_runner in packages/core        
-          flutter pub run build_runner clean
+          echo Running build_runner in packages/core
           flutter pub run build_runner build -d 
           flutter pub get > /dev/null
 
