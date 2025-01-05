@@ -14,6 +14,9 @@ env:
   ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
   ANDROID_LOCAL_PROPERTIES: ${{ secrets.ANDROID_LOCAL_PROPERTIES }}
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
+  DEV_ENV: ${{ secrets.DEV_ENV }}
+  DEV_QA: ${{ secrets.DEV_QA }}
+  DEV_PROD: ${{ secrets.DEV_PROD }}
 
 jobs:
   build:
@@ -46,9 +49,11 @@ jobs:
         run: |
           echo "${{env.FLUTTER_TRANSLATION_SHEET_CREDENTIALS}}" | base64 --decode > packages/common/credentials.json 
           
-      - name: Setup .dev.env file
+      - name: Setup .env file
         run: |
-          echo "${{secrets.DEV_ENV}}" | base64 --decode > packages/core/.dev.env
+          echo "${{env.DEV_ENV}}" | base64 --decode > packages/core/.dev.env
+          echo "${{env.QA_ENV}}" | base64 --decode > packages/core/.qa.env
+          echo "${{env.PROD_ENV}}" | base64 --decode > packages/core/.prod.env
 
       - name: Setup FVM
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
