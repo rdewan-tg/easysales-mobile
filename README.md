@@ -59,14 +59,10 @@ fvm flutter pub run build_runner build -d
 *   Run: `fvm dart run flutter_translation_sheet:main run` to generate the translation file
 *   Run `fvm dart run flutter_translation_sheet:main fetch` to fetch the existing translation data from Google Sheet
 
-### Build Runner 
-*   Run Build Runner Clean
-    ```bash 
-    ./run_build_clean.sh
-    ```
+### Build Runner
 *   Run Build Runner
     ```bash 
-    ./run_build_runner.sh
+    bash run_build_runner.sh
     ```
 
 ### Setup ENV

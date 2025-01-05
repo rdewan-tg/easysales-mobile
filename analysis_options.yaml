@@ -12,6 +12,8 @@ analyzer:
     - "lib/i18n/*"
     - "build/**"
     - "lib/generated/**"
+    - ".git/**"
+    - ".github/workflows/**.yaml"
 
   language:
     #strict-casts: true
