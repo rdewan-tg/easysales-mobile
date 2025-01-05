@@ -117,8 +117,9 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
             builder: (context) {
               return AlertDialog(
                 title: Text('Email Sent Successfuly'.hardcoded),
-                content: Text('Please check your email for further instructions'
-                    .hardcoded),
+                content: Text(
+                  'Please check your email for further instructions'.hardcoded,
+                ),
                 actions: [
                   TextButton(
                     onPressed: () {

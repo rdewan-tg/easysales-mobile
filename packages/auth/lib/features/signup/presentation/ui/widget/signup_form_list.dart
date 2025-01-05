@@ -172,8 +172,9 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
             return AlertDialog(
               title: Text('Sign Up Successful'.hardcoded),
               content: Text(
-                  'Please check your email for verification and please  verify your account'
-                      .hardcoded),
+                'Please check your email for verification and please  verify your account'
+                    .hardcoded,
+              ),
               actions: [
                 TextButton(
                   onPressed: () {

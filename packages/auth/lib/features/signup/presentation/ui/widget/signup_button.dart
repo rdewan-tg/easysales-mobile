@@ -14,7 +14,8 @@ class SignUpButton extends ConsumerWidget {
         style: FilledButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: kMedium),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(kSmall)),
+            borderRadius: BorderRadius.circular(kSmall),
+          ),
         ),
         label: Text(
           'Sign Up'.hardcoded,

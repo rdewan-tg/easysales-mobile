@@ -20,7 +20,8 @@ final class ForgotPasswordService implements IForgotPasswordService {
 
   @override
   Future<Result<bool, Failure>> forgotPassword(
-      ForgotPasswordRequest data) async {
+    ForgotPasswordRequest data,
+  ) async {
     try {
       final response = await _forgotPasswordRepository.forgotPassword(data);
 

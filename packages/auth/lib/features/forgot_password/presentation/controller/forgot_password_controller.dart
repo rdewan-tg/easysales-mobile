@@ -5,7 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final forgotPasswordControllerProvider =
     NotifierProvider<ForgotPasswordController, ForgotPasswordState>(
-        ForgotPasswordController.new);
+  ForgotPasswordController.new,
+);
 
 class ForgotPasswordController extends Notifier<ForgotPasswordState> {
   @override

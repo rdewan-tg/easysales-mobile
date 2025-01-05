@@ -23,7 +23,8 @@ final class ForgotPasswordRepository
 
   @override
   Future<ForgotPasswordResponse> forgotPassword(
-      ForgotPasswordRequest data) async {
+    ForgotPasswordRequest data,
+  ) async {
     try {
       return await _forgotPasswordApi.forgotPassword(data);
     } on DioException catch (e, stackTrace) {

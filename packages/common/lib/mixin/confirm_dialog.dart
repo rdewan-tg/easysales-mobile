@@ -46,7 +46,8 @@ mixin ConfirmDialogMixin {
                         icon,
                         const SizedBox(width: kSmall),
                         Expanded(
-                            child: Text(title, style: textTheme.headlineSmall)),
+                          child: Text(title, style: textTheme.headlineSmall),
+                        ),
                       ],
                     ),
                     const SizedBox(height: kMedium),

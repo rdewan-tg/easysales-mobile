@@ -21,5 +21,6 @@ abstract class ForgotPasswordApi {
 
   @POST(forgotPasswordEndPoint)
   Future<ForgotPasswordResponse> forgotPassword(
-      @Body() ForgotPasswordRequest data);
+    @Body() ForgotPasswordRequest data,
+  );
 }

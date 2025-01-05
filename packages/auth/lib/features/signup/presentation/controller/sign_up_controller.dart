@@ -5,7 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final signUpControllerProvider =
     AutoDisposeNotifierProvider<SignUpController, SignUpState>(
-        SignUpController.new);
+  SignUpController.new,
+);
 
 class SignUpController extends AutoDisposeNotifier<SignUpState> {
   @override

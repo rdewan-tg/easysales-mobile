@@ -7,7 +7,8 @@ class PasswordFormField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isObscure = ref.watch(
-        loginControllerProvider.select((value) => value.isPasswordVisible));
+      loginControllerProvider.select((value) => value.isPasswordVisible),
+    );
 
     return TextFormField(
       controller: passwordController,

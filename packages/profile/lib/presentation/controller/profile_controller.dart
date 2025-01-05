@@ -7,7 +7,8 @@ import 'package:profile/presentation/state/profile_state.dart';
 
 final profileControllerProvider =
     AutoDisposeNotifierProvider<ProfileController, ProfileState>(
-        ProfileController.new);
+  ProfileController.new,
+);
 
 final class ProfileController extends AutoDisposeNotifier<ProfileState> {
   StreamSubscription<String>? _themeModeSubscription;

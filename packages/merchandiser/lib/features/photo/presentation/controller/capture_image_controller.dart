@@ -3,7 +3,8 @@ import 'package:merchandiser/features/photo/presentation/state/capture_image_sta
 
 final captureImageControllerProvider =
     AutoDisposeNotifierProvider<CaptureImageController, CaptureImageState>(
-        CaptureImageController.new);
+  CaptureImageController.new,
+);
 
 class CaptureImageController extends AutoDisposeNotifier<CaptureImageState> {
   @override
