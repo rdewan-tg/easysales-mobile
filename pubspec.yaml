@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  common:
+    path: packages/common
   core:
     path: packages/core
   auth:
@@ -26,13 +28,7 @@ dependencies:
     path: packages/merchandiser    
   profile:
     path: packages/profile
- 
-  common: any
-  flutter_riverpod: any
-  go_router: any
-  riverpod_annotation: any
-  upgrader: any
-  loader_overlay: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
