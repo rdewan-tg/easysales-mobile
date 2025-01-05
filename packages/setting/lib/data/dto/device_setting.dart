@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-
 part 'device_setting.freezed.dart';
 part 'device_setting.g.dart';
 

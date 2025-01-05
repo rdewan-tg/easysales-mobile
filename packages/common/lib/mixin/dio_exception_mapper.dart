@@ -1,6 +1,5 @@
 part of common;
 
-
 mixin DioExceptionMapper {
   Failure mapDioExceptionToFailure(DioException e, StackTrace stackTrace) {
     switch (e.type) {
@@ -64,7 +63,8 @@ mixin DioExceptionMapper {
       case 500:
         return "Internal Server Error. Try again later.".hardcoded;
       default:
-        return "Unexpected server response (Status code: $statusCode).".hardcoded;
+        return "Unexpected server response (Status code: $statusCode)."
+            .hardcoded;
     }
   }
 }

@@ -9,7 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 FutureOr<void> mainApp(Flavor flavor) async {
-  
   runZonedGuarded<Future<void>>(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
@@ -52,9 +51,7 @@ FutureOr<void> mainApp(Flavor flavor) async {
         ),
       );
     },
-    (error, stack) {
-
-    },        
+    (error, stack) {},
     zoneValues: {'zone-name': 'main'},
   );
 }

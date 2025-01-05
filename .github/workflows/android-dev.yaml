@@ -74,6 +74,10 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      # Formats the dart code
+      - name: Auto-format Dart code
+        run: dart format .
+
       # Verifies if the dart code is formatted well
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .

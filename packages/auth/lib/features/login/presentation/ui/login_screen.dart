@@ -8,7 +8,6 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

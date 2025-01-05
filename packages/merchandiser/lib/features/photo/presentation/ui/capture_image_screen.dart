@@ -9,7 +9,6 @@ class CaptureImageScreen extends ConsumerStatefulWidget {
 }
 
 class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
-  
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -17,4 +16,3 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
     );
   }
 }
-    

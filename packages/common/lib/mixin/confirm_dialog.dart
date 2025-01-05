@@ -45,7 +45,8 @@ mixin ConfirmDialogMixin {
                       children: [
                         icon,
                         const SizedBox(width: kSmall),
-                        Expanded(child: Text(title, style: textTheme.headlineSmall)),
+                        Expanded(
+                            child: Text(title, style: textTheme.headlineSmall)),
                       ],
                     ),
                     const SizedBox(height: kMedium),
@@ -56,7 +57,6 @@ mixin ConfirmDialogMixin {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    
                   ],
                 ),
               ),

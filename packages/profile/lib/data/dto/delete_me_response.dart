@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'delete_me_response.freezed.dart';
 part 'delete_me_response.g.dart';
 
-
 @freezed
 class DeleteMeResponse with _$DeleteMeResponse {
   const factory DeleteMeResponse({

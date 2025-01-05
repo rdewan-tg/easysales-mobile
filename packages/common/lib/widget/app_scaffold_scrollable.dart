@@ -1,4 +1,5 @@
 part of common;
+
 class AppScaffoldScrollable extends StatelessWidget {
   final Widget title;
   final Widget widget;

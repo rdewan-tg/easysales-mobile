@@ -1,4 +1,3 @@
-
 part of '../common.dart';
 
 const double kXXXSmall = 1.0;

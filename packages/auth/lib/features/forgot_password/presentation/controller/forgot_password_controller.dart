@@ -3,8 +3,9 @@ import 'package:auth/features/forgot_password/data/dto/request/forgot_password_r
 import 'package:auth/features/forgot_password/presentation/state/forgot_password_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-final forgotPasswordControllerProvider = NotifierProvider<ForgotPasswordController, ForgotPasswordState>(ForgotPasswordController.new);
+final forgotPasswordControllerProvider =
+    NotifierProvider<ForgotPasswordController, ForgotPasswordState>(
+        ForgotPasswordController.new);
 
 class ForgotPasswordController extends Notifier<ForgotPasswordState> {
   @override
@@ -41,7 +42,7 @@ class ForgotPasswordController extends Notifier<ForgotPasswordState> {
           state = state.copyWith(isLoading: false, isEmailSent: success);
         },
         (error) {
-          state = state.copyWith(isLoading: false, error:error.message);
+          state = state.copyWith(isLoading: false, error: error.message);
         },
       );
     } catch (e) {

@@ -28,7 +28,6 @@ class ProfileDataWidget extends ConsumerWidget {
                 style: context.textTheme.titleSmall,
               ),
             ],
-            
             Text(
               settings['timeZone'] ?? '',
               style: context.textTheme.titleSmall,

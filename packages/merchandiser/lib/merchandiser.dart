@@ -1,4 +1,5 @@
 library merchandiser;
+
 import 'dart:io';
 
 import 'package:common/common.dart';
@@ -15,8 +16,6 @@ import 'package:image/image.dart' as img;
 import 'package:timezone/data/latest.dart' as tz_latest;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:intl/intl.dart';
-
-
 
 part 'merchandiser_screen.dart';
 part 'features/photo/presentation/ui/capture_image_screen.dart';

@@ -14,7 +14,7 @@ class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
         MenuAnchor(
           menuChildren: [
             MenuItemButton(
-              onPressed: () =>  _logout(ref, context),
+              onPressed: () => _logout(ref, context),
               child: Text(context.localizations('profile.signout')),
             ),
             MenuItemButton(
@@ -50,20 +50,19 @@ class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
             child: ProfileDataWidget(),
           ),
         ),
-      ),      
+      ),
     );
   }
 
   void _listener(WidgetRef ref, BuildContext context) {
-    ref.listen(profileControllerProvider.select((value) => value.isLoading), (_, next) {
+    ref.listen(profileControllerProvider.select((value) => value.isLoading),
+        (_, next) {
       if (next) {
         context.loaderOverlay.show();
       } else {
         context.loaderOverlay.hide();
       }
-      
     });
-    
   }
 
   void _logout(WidgetRef ref, BuildContext context) {
@@ -88,7 +87,6 @@ class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
         context.pop();
       },
     );
-    
   }
 
   void _deleteMe(WidgetRef ref, BuildContext context) {
