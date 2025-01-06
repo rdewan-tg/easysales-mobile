@@ -1,6 +1,5 @@
 part of '../common.dart';
 
-
 ThemeMode currentTheme(String? theme) {
   switch (theme) {
     case null:

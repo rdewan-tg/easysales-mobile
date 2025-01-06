@@ -1,5 +1,3 @@
-
-
 import 'package:common/exception/failure.dart';
 import 'package:setting/application/isetting_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,8 +15,6 @@ final class SettingService implements IsettingService {
   final ISettingRepository _settingRepository;
 
   SettingService(this._settingRepository);
-
-
 
   @override
   Future<Result<bool, Failure>> getDeviceSetting(String deviceId) async {
@@ -38,7 +34,7 @@ final class SettingService implements IsettingService {
       );
     }
   }
-  
+
   @override
   Stream<String> watchThemeMode() {
     return _settingRepository.watchThemeMode();
@@ -48,7 +44,7 @@ final class SettingService implements IsettingService {
   Stream<String> watchLanguage() {
     return _settingRepository.watchLanguage();
   }
-  
+
   @override
   Future<Result<bool, Failure>> writeTheme(String key, String value) async {
     try {
@@ -85,25 +81,23 @@ final class SettingService implements IsettingService {
         ),
       );
     }
-  } 
-  
+  }
+
   @override
   Future<void> clearToken() async {
     try {
       await _settingRepository.clearToken();
     } catch (_) {
       rethrow;
-    }  
-    
+    }
   }
-  
+
   @override
   Future<Result<Map<String, String>, Failure>> getAllSetting() async {
     try {
-      final result =  await _settingRepository.getAllSettings();
+      final result = await _settingRepository.getAllSettings();
 
       return Success(result);
-      
     } on Failure catch (e) {
       return Error(e);
     } catch (e, s) {
@@ -116,5 +110,4 @@ final class SettingService implements IsettingService {
       );
     }
   }
-
 }

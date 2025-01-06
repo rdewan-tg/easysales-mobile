@@ -46,7 +46,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                   labelText: 'Email'.hardcoded,
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(kSmall)),
-                  ),                  
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {

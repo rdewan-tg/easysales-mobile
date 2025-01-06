@@ -7,10 +7,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_database.g.dart';
 
-
 @Riverpod(keepAlive: true)
 AppDatabase appDatabase(Ref ref) => AppDatabase();
-
 
 @DriftDatabase(tables: [SettingEntity], daos: [SettingDao])
 class AppDatabase extends _$AppDatabase {

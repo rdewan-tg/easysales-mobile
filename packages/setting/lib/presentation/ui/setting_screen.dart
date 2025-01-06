@@ -14,7 +14,6 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
       appBar: AppBar(
         title: Text('Setting'.hardcoded),
         centerTitle: true,
-        
       ),
       body: SingleChildScrollView(
         child: Column(

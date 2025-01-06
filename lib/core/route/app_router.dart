@@ -16,13 +16,12 @@ import 'package:sales/sales.dart';
 import 'package:setting/setting.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
- 
   final notifier = ref.read(goRouterNotifierProvider);
   // final observer = ref.read(routeObserverProvider);
   // final navigatorObserver = ref.read(appNavigatorObserverObserverProvider);
   // final logger = ref.read(loggerProvider('GoRouter'));
   final secureStorage = ref.watch(secureStorageProvider);
-  
+
   final appRoute = AppRouter(
     secureStorage: secureStorage,
     notifier: notifier,
@@ -34,11 +33,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 class AppRouter {
   ISecureStorage secureStorage;
   GoRouterNotifier notifier;
-  final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey(debugLabel: 'root');
-   bool isDuplicate = false;
+  final GlobalKey<NavigatorState> rootNavigatorKey =
+      GlobalKey(debugLabel: 'root');
+  bool isDuplicate = false;
 
   AppRouter({required this.secureStorage, required this.notifier});
-  
 
   GoRouter get router {
     return GoRouter(
@@ -51,7 +50,6 @@ class AppRouter {
       errorBuilder: _errorBuilder,
     );
   }
-
 
   //1. Redirect logic
   Future<String?> _redirect(BuildContext context, GoRouterState state) async {
@@ -74,7 +72,7 @@ class AppRouter {
   }
 
   String? _handleLoggedOutRedirect(GoRouterState state) {
-    if (state.matchedLocation != '/login' ) {
+    if (state.matchedLocation != '/login') {
       return '/login?from=${state.matchedLocation}';
     }
     return null;
@@ -181,7 +179,6 @@ class AppRouter {
             key: state.pageKey,
             child: const MerchandiserScreen(),
           ),
-          
         ),
       ],
     );
@@ -201,7 +198,6 @@ class AppRouter {
             _themeRoute(),
             _languageRoute(),
             _profileRoute(),
-
           ],
         ),
       ],
@@ -251,6 +247,7 @@ class AppRouter {
       ),
     );
   }
+
   // 4. Error Handling
   Widget _errorBuilder(BuildContext context, GoRouterState state) {
     return const NoRouteScreen();

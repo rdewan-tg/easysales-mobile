@@ -1,4 +1,3 @@
-
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:setting/data/dto/device_setting.dart';
 import 'package:setting/data/repository/isetting_repository.dart';
@@ -14,37 +13,35 @@ final settingRepositoryProvider = Provider<ISettingRepository>((ref) {
   final settingApi = ref.watch(settingApiProvider);
   final settingDao = ref.watch(settingDaoProvider);
   final settingStorage = ref.watch(settingStorageProvider);
-  
+
   return SettingRepositroy(settingApi, settingDao, settingStorage);
 });
 
-final class SettingRepositroy with DioExceptionMapper implements ISettingRepository {
+final class SettingRepositroy
+    with DioExceptionMapper
+    implements ISettingRepository {
   final SettingApi _settingApi;
   final SettingDao _settingDao;
-   final ISettingStorage _settingStorage;
+  final ISettingStorage _settingStorage;
 
   SettingRepositroy(this._settingApi, this._settingDao, this._settingStorage);
 
-
   @override
-  Future<DeviceSettingResponse > getDeviceSetting(String deviceId) async {
+  Future<DeviceSettingResponse> getDeviceSetting(String deviceId) async {
     try {
-
       final response = await _settingApi.findByDeviceId(deviceId);
 
       return response;
-      
     } on DioException catch (e, s) {
       throw mapDioExceptionToFailure(e, s);
     } catch (e, s) {
       throw Failure(
-        message: "An unexpected error occurred. Please try again later".hardcoded,
+        message:
+            "An unexpected error occurred. Please try again later".hardcoded,
         exception: e as Exception,
         stackTrace: s,
       );
     }
-
-    
   }
 
   @override
@@ -52,7 +49,7 @@ final class SettingRepositroy with DioExceptionMapper implements ISettingReposit
 
   @override
   Stream<String> watchLanguage() => _settingDao.watchLanguage();
-  
+
   @override
   Future<void> writeTheme(String key, String value) async {
     await _settingDao.upsertSetting(key, value);
@@ -67,18 +64,15 @@ final class SettingRepositroy with DioExceptionMapper implements ISettingReposit
   Future<void> clearToken() async {
     try {
       await _settingStorage.clearToken();
-      
     } catch (_) {
       rethrow;
     }
-    
   }
-  
+
   @override
   Future<Map<String, String>> getAllSettings() {
     try {
       return _settingDao.getAllSettings();
-      
     } catch (e, stackTrace) {
       // Map unexpected exceptions to Failure
       throw Failure(

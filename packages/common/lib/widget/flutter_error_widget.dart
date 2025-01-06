@@ -1,4 +1,3 @@
-
 part of '../common.dart';
 
 class FlutterErrorWidget extends StatelessWidget {

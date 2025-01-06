@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  common:
+    path: packages/common
   core:
     path: packages/core
   auth:
@@ -26,7 +28,7 @@ dependencies:
     path: packages/merchandiser    
   profile:
     path: packages/profile
- 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

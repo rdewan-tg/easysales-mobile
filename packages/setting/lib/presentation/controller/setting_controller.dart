@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:core/core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -77,28 +76,34 @@ final class SettingController extends Notifier<SettingState> {
 
   Future<void> watchTheme() async {
     // Start listening to the theme mode stream
-    _themeModeSubscription = ref.watch(settingServiceProvider).watchThemeMode().listen((themeMode) {      
-      state = state.copyWith(themeMode: themeMode);
-    }, onError: (error) {
-      state = state.copyWith(errorMsg: error);
-    },
+    _themeModeSubscription =
+        ref.watch(settingServiceProvider).watchThemeMode().listen(
+      (themeMode) {
+        state = state.copyWith(themeMode: themeMode);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
     );
   }
 
   Future<void> watchLanguage() async {
     // Start listening to the language mode stream
-    _themeModeSubscription = ref.watch(settingServiceProvider).watchLanguage().listen((language) {      
-      state = state.copyWith(language: language);
-    }, onError: (error) {
-      state = state.copyWith(errorMsg: error);
-    },
+    _themeModeSubscription =
+        ref.watch(settingServiceProvider).watchLanguage().listen(
+      (language) {
+        state = state.copyWith(language: language);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
     );
   }
 
   Future<void> logout() async {
     // call api - logout
     // await ref.read(authServiceProvider).logout();
-    
+
     // clear token - access token and refresh token
     await ref.read(settingServiceProvider).clearToken();
     // set auth state - false
@@ -108,7 +113,7 @@ final class SettingController extends Notifier<SettingState> {
   Future<void> deleteMyAccount() async {
     // call api - logout
     // await ref.read(authServiceProvider).logout();
-    
+
     // clear token - access token and refresh token
     await ref.read(settingServiceProvider).clearToken();
     // set auth state - false
@@ -120,7 +125,7 @@ final class SettingController extends Notifier<SettingState> {
 
     result.when(
       (success) {
-        state =state.copyWith(settings: success);
+        state = state.copyWith(settings: success);
       },
       (error) {
         state = state.copyWith(errorMsg: error.message);
