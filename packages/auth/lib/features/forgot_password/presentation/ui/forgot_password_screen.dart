@@ -1,6 +1,5 @@
 part of '../../../../auth.dart';
 
-
 class ForgotPasswordScreen extends ConsumerStatefulWidget {
   const ForgotPasswordScreen({super.key});
 
@@ -31,42 +30,44 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
     _listener();
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Forgot Password'.hardcoded),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(kMedium),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: 'Email'.hardcoded,
-                    border: const OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(kSmall),),),
-                    prefix: const Icon(Icons.email),
+      appBar: AppBar(
+        title: Text('Forgot Password'.hardcoded),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(kMedium),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextFormField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  labelText: 'Email'.hardcoded,
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(kSmall),
+                    ),
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email'.hardcoded;
-                    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
-                        .hasMatch(value)) {
-                      return 'Please enter a valid email'.hardcoded;
-                    }
-                    return null;
-                  },
+                  prefix: const Icon(Icons.email),
                 ),
-                const SizedBox(height: kMedium),
-                ForgotPasswordButton(onPressed: _sendForgotPasswordEmail),
-              ],
-            ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email'.hardcoded;
+                  } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                    return 'Please enter a valid email'.hardcoded;
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: kMedium),
+              ForgotPasswordButton(onPressed: _sendForgotPasswordEmail),
+            ],
           ),
-        ),);
+        ),
+      ),
+    );
   }
 
   void _sendForgotPasswordEmail() {
@@ -80,7 +81,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
     }
   }
 
-  void _clearController() {    
+  void _clearController() {
     _emailController.clear();
   }
 
@@ -110,30 +111,32 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
       forgotPasswordControllerProvider.select((value) => value.isEmailSent),
       (_, next) {
         if (next != null && next) {
-        showDialog(
-          context: context, 
-          barrierDismissible: false,
-          builder: (context) {
-            return AlertDialog(
-              title:  Text('Email Sent Successfuly'.hardcoded),
-              content:  Text('Please check your email for further instructions'.hardcoded),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    // close dialog
-                    context.pop();
-                    // clear controllers
-                    _clearController();
-                    // navigate to login
-                    _navigateToLogin();
-                  }, 
-                  child: Text('Ok'.hardcoded),
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Email Sent Successfuly'.hardcoded),
+                content: Text(
+                  'Please check your email for further instructions'.hardcoded,
                 ),
-              ],
-            );
-          },
-        );
-      }
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      // close dialog
+                      context.pop();
+                      // clear controllers
+                      _clearController();
+                      // navigate to login
+                      _navigateToLogin();
+                    },
+                    child: Text('Ok'.hardcoded),
+                  ),
+                ],
+              );
+            },
+          );
+        }
       },
     );
   }

@@ -67,7 +67,7 @@ android {
     // Singning
     signingConfigs {
         debug {
-            if (System.getenv()["CI"]) {
+            if (System.getenv()["CM_BUILD_ID"]) {                
                 storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
                 storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
                 keyAlias System.getenv()["CM_KEY_ALIAS"]
@@ -82,7 +82,7 @@ android {
 
         }
         qa {
-            if (System.getenv()["CI"]) {
+            if (System.getenv()["CM_BUILD_ID"]) {
                 storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
                 storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
                 keyAlias System.getenv()["CM_KEY_ALIAS"]
@@ -97,7 +97,7 @@ android {
 
         }        
         release {
-            if (System.getenv()["CI"]) {
+            if (System.getenv()["CM_BUILD_ID"]) {
                 storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
                 storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
                 keyAlias System.getenv()["CM_KEY_ALIAS"]

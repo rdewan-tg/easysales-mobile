@@ -1,6 +1,5 @@
 library setting;
 
-
 import 'package:common/common.dart';
 import 'package:common/i18n/i18n.dart';
 import 'package:flutter/material.dart';

@@ -14,9 +14,6 @@ class StartUpScreen extends ConsumerWidget {
     required this.builder,
   });
 
- 
-
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final startUp = ref.watch(startUpProvider(flavor: flavor));

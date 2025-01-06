@@ -1,5 +1,3 @@
-
-
 import 'package:common/exception/failure.dart';
 import 'package:profile/application/iprofile_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,24 +16,21 @@ final class ProfileService implements IProfileService {
 
   ProfileService(this._profileRepository);
 
-  
   @override
   Future<void> clearToken() async {
     try {
       await _profileRepository.clearToken();
     } catch (_) {
       rethrow;
-    }  
-    
+    }
   }
-  
+
   @override
   Future<Result<Map<String, String>, Failure>> getAllSetting() async {
     try {
-      final result =  await _profileRepository.getAllSettings();
+      final result = await _profileRepository.getAllSettings();
 
       return Success(result);
-      
     } on Failure catch (e) {
       return Error(e);
     } catch (e, s) {
@@ -48,7 +43,7 @@ final class ProfileService implements IProfileService {
       );
     }
   }
-  
+
   @override
   Future<Result<bool, Failure>> deleteMe() async {
     try {
@@ -67,5 +62,4 @@ final class ProfileService implements IProfileService {
       );
     }
   }
-
 }

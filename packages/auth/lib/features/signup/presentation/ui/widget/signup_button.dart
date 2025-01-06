@@ -1,4 +1,3 @@
-
 part of '../../../../../auth.dart';
 
 class SignUpButton extends ConsumerWidget {
@@ -14,7 +13,9 @@ class SignUpButton extends ConsumerWidget {
       child: FilledButton.icon(
         style: FilledButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: kMedium),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(kSmall)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(kSmall),
+          ),
         ),
         label: Text(
           'Sign Up'.hardcoded,
