@@ -1,6 +1,5 @@
 part of '../../../../../auth.dart';
 
-
 class ForgotPassword extends ConsumerWidget {
   const ForgotPassword({super.key});
 

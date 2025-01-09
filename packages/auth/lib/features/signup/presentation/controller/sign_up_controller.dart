@@ -1,24 +1,21 @@
-
-
 import 'package:auth/features/signup/application/sign_up_service.dart';
 import 'package:auth/features/signup/data/dto/request/sign_up_request.dart';
 import 'package:auth/features/signup/presentation/state/sign_up_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-final signUpControllerProvider = AutoDisposeNotifierProvider<SignUpController, SignUpState>(SignUpController.new);
+final signUpControllerProvider =
+    AutoDisposeNotifierProvider<SignUpController, SignUpState>(
+  SignUpController.new,
+);
 
 class SignUpController extends AutoDisposeNotifier<SignUpState> {
-
   @override
   SignUpState build() {
     return SignUpState();
   }
 
   Future<void> signUp() async {
-
     try {
-
       state = state.copyWith(
         isLoading: true,
         error: null,
@@ -40,18 +37,15 @@ class SignUpController extends AutoDisposeNotifier<SignUpState> {
             isSignUpSuccess: success.isSugnUpSuccess,
             signUpModel: success,
           );
-
-        }, 
+        },
         (error) {
           state = state.copyWith(
             isLoading: false,
             isSignUpSuccess: null,
-            error:error.message,
+            error: error.message,
           );
-
         },
-      );     
-      
+      );
     } catch (e) {
       state = state.copyWith(
         isLoading: false,
@@ -59,7 +53,6 @@ class SignUpController extends AutoDisposeNotifier<SignUpState> {
         error: e.toString(),
       );
     }
-
   }
 
   void setFormData(Map<String, dynamic> formData) {
@@ -67,5 +60,4 @@ class SignUpController extends AutoDisposeNotifier<SignUpState> {
       signUpform: formData,
     );
   }
-
 }
