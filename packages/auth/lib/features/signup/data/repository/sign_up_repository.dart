@@ -1,4 +1,3 @@
-
 import 'package:common/common.dart';
 import 'package:common/exception/failure.dart';
 import 'package:auth/features/signup/data/dto/request/sign_up_request.dart';
@@ -8,29 +7,25 @@ import 'package:auth/features/signup/data/source/remote/signup_api.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-
 final signUpRepositoryProvider = Provider.autoDispose<ISignUpRepository>((ref) {
   final signUpApi = ref.watch(signUpApiProvider);
-  
+
   return SignUpRepository(signUpApi);
 });
 
-
-final class SignUpRepository with DioExceptionMapper implements ISignUpRepository {
+final class SignUpRepository
+    with DioExceptionMapper
+    implements ISignUpRepository {
   final SignUpApi _signUpApi;
 
   SignUpRepository(this._signUpApi);
 
   @override
   Future<SignUpResponse> signUp(SignUpRequest data) async {
-
     try {
-
       final response = await _signUpApi.signUp(data);
 
       return response;
-      
     } on DioException catch (e, stackTrace) {
       // Use the mixin to map DioException to Failure
       throw mapDioExceptionToFailure(e, stackTrace);
@@ -42,6 +37,5 @@ final class SignUpRepository with DioExceptionMapper implements ISignUpRepositor
         stackTrace: stackTrace,
       );
     }
-    
   }
 }

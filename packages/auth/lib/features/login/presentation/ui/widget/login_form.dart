@@ -46,7 +46,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                   labelText: 'Email'.hardcoded,
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(kSmall)),
-                  ),                  
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -59,11 +59,11 @@ class _LoginFormState extends ConsumerState<LoginForm> {
               ),
               const SizedBox(height: kMedium),
               PasswordFormField(passwordController: _passwordController),
-              const ForgotPassword(),
+              //const ForgotPassword(),
               const SizedBox(height: kSmall),
               LoginButton(onPressed: _login),
               const SizedBox(height: kLarge),
-              const DontHaveAccount(),
+              //const DontHaveAccount(),
             ],
           ),
         ),

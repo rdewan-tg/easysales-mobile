@@ -5,8 +5,8 @@ final materialThemeProvider =
   // Use with Google Fonts package to use downloadable fonts
   final textTheme = createTextTheme(
     context,
-    "Noto Sans Devanagari",
-    "Noto Sans Devanagari",
+    "Noto Sans",
+    "Noto Sans",
   );
 
   return MaterialTheme(textTheme);

@@ -11,7 +11,6 @@ class DontHaveAccount extends ConsumerWidget {
         Text(
           "Don't have an account?".hardcoded,
           style: const TextStyle(
-            color: Colors.black,
             fontWeight: FontWeight.w500,
           ),
         ),

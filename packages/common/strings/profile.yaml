@@ -1,0 +1,10 @@
+
+title: "Profile"
+deleteMyAccount: "Delete Account"
+signout: "Sign out"
+signOutDialogTitle: "Sign out"
+signOutDialogSubTitle: "Are you sure you want to sign out?"
+deleteDialogTitle: "Delete Account"
+deleteDialogSubTitle: "Are you sure you want to delete your account?"
+btnYes: "Yes"
+btnNo: "No"

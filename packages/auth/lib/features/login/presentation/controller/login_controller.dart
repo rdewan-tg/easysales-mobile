@@ -1,16 +1,15 @@
-
-
 import 'package:auth/features/login/application/login_service.dart';
 import 'package:auth/features/login/data/dto/request/login_request.dart';
 import 'package:auth/features/login/presentation/state/login_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:common/common.dart';
 
+final loginControllerProvider =
+    AutoDisposeNotifierProvider<LoginController, LoginState>(
+  LoginController.new,
+);
 
-final loginControllerProvider = AutoDisposeNotifierProvider<LoginController, LoginState>(LoginController.new);
-
-class LoginController  extends AutoDisposeNotifier<LoginState> {
-
+class LoginController extends AutoDisposeNotifier<LoginState> {
   @override
   LoginState build() {
     return LoginState();
@@ -31,14 +30,13 @@ class LoginController  extends AutoDisposeNotifier<LoginState> {
   /// The login response is the result of calling
   /// [loginService.login] with the login request.
   Future<void> login() async {
-
     try {
       // update the state - isLoading = true and error = null
       state = state.copyWith(isLoading: true, error: null);
 
       // setup the login request - email and password from the form
       final loginRequest = LoginRequest(
-        email: state.loginForm['emails'], 
+        email: state.loginForm['email'],
         password: state.loginForm['password'],
       );
 
@@ -53,17 +51,14 @@ class LoginController  extends AutoDisposeNotifier<LoginState> {
 
           // update the state - isLoading = false and isLoginSuccess = response
           state = state.copyWith(isLoading: false, isLoginSuccess: success);
-
-        }, 
+        },
         (error) {
           state = state.copyWith(isLoading: false, error: error.message);
         },
       );
-
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
-      
-    }    
+    }
   }
 
   void setFormData(Map<String, dynamic> formData) {
@@ -73,5 +68,4 @@ class LoginController  extends AutoDisposeNotifier<LoginState> {
   void togglePasswordVisibility() {
     state = state.copyWith(isPasswordVisible: !state.isPasswordVisible);
   }
-
 }

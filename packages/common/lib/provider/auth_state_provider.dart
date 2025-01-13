@@ -1,6 +1,4 @@
-
 part of '../common.dart';
-
 
 final authStateProvider = NotifierProvider<AuthState, bool>(AuthState.new);
 
@@ -13,5 +11,4 @@ class AuthState extends Notifier<bool> {
   void setAuthState(bool value) {
     state = value;
   }
-
 }

@@ -1,4 +1,3 @@
-
 part of '../../../../../auth.dart';
 
 class AlreadyHaveAccount extends ConsumerWidget {

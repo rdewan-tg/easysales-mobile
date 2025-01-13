@@ -1,6 +1,5 @@
 part of '../../../dashboard.dart';
 
-
 final dashboardControllerProvider =
     AutoDisposeNotifierProvider<DashboardController, DashboardState>(
   DashboardController.new,

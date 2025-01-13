@@ -1,4 +1,3 @@
-
 part of '../../../../../auth.dart';
 
 class SignUpFormList extends ConsumerStatefulWidget {
@@ -54,7 +53,9 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
               decoration: InputDecoration(
                 labelText: 'Name'.hardcoded,
                 border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(kSmall),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(kSmall),
+                  ),
                 ),
                 prefix: const Icon(Icons.person),
               ),
@@ -65,16 +66,16 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
                 return null;
               },
             ),
-
             const SizedBox(height: kMedium),
-
             TextFormField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 labelText: 'Email'.hardcoded,
                 border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(kSmall),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(kSmall),
+                  ),
                 ),
                 prefix: const Icon(Icons.email),
               ),
@@ -87,16 +88,16 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
                 return null;
               },
             ),
-
             const SizedBox(height: kMedium),
-
             TextFormField(
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password'.hardcoded,
                 border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(kSmall),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(kSmall),
+                  ),
                 ),
                 prefix: const Icon(Icons.lock),
               ),
@@ -104,21 +105,22 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your password'.hardcoded;
                 } else if (value.length < 8) {
-                  return 'Password must be at least 8 characters long'.hardcoded;
+                  return 'Password must be at least 8 characters long'
+                      .hardcoded;
                 }
                 return null;
               },
             ),
-
             const SizedBox(height: kMedium),
-
             TextFormField(
               controller: _confirmPasswordController,
               obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Confirm Password'.hardcoded,
                 border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(kSmall),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(kSmall),
+                  ),
                 ),
                 prefix: const Icon(Icons.lock),
               ),
@@ -126,20 +128,17 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your password'.hardcoded;
                 } else if (value.length < 8) {
-                  return 'Password must be at least 8 characters long'.hardcoded;
+                  return 'Password must be at least 8 characters long'
+                      .hardcoded;
                 } else if (value != _passwordController.text) {
                   return 'Passwords do not match'.hardcoded;
                 }
                 return null;
               },
             ),
-
             const SizedBox(height: kXLarge),
-
             SignUpButton(onPressed: _onSubmit),
-
             const SizedBox(height: kXLarge),
-
             AlreadyHaveAccount(onPressed: _navigateToLogin),
           ],
         ),
@@ -149,7 +148,8 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
 
   void _listener() {
     // listen for error
-    ref.listen(signUpControllerProvider.select((value) => value.error), (_, next) {
+    ref.listen(signUpControllerProvider.select((value) => value.error),
+        (_, next) {
       if (next != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -161,15 +161,20 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
       }
     });
     // listen for success
-    ref.listen(signUpControllerProvider.select((value) => value.isSignUpSuccess), (_, next) {
+    ref.listen(
+        signUpControllerProvider.select((value) => value.isSignUpSuccess),
+        (_, next) {
       if (next != null && next) {
         showDialog(
-          context: context, 
+          context: context,
           barrierDismissible: false,
           builder: (context) {
             return AlertDialog(
-              title:  Text('Sign Up Successful'.hardcoded),
-              content:  Text('Please check your email for verification and please  verify your account'.hardcoded),
+              title: Text('Sign Up Successful'.hardcoded),
+              content: Text(
+                'Please check your email for verification and please  verify your account'
+                    .hardcoded,
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -179,7 +184,7 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
                     _clearController();
                     // navigate to login
                     _navigateToLogin();
-                  }, 
+                  },
                   child: Text('Ok'.hardcoded),
                 ),
               ],
@@ -217,7 +222,6 @@ class _SignUpFormListState extends ConsumerState<SignUpFormList> {
       ref.read(signUpControllerProvider.notifier).setFormData(formData);
       // sign up - call api
       ref.read(signUpControllerProvider.notifier).signUp();
-      
     }
   }
 }
