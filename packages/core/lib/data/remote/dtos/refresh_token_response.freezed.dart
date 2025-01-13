@@ -218,9 +218,9 @@ Data _$DataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Data {
-  @JsonKey(name: "accessToken")
+  @JsonKey(name: "access_token")
   String get accessToken => throw _privateConstructorUsedError;
-  @JsonKey(name: "refreshToken")
+  @JsonKey(name: "refresh_token")
   String get refreshToken => throw _privateConstructorUsedError;
 
   /// Serializes this Data to a JSON map.
@@ -238,8 +238,8 @@ abstract class $DataCopyWith<$Res> {
       _$DataCopyWithImpl<$Res, Data>;
   @useResult
   $Res call(
-      {@JsonKey(name: "accessToken") String accessToken,
-      @JsonKey(name: "refreshToken") String refreshToken});
+      {@JsonKey(name: "access_token") String accessToken,
+      @JsonKey(name: "refresh_token") String refreshToken});
 }
 
 /// @nodoc
@@ -281,8 +281,8 @@ abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "accessToken") String accessToken,
-      @JsonKey(name: "refreshToken") String refreshToken});
+      {@JsonKey(name: "access_token") String accessToken,
+      @JsonKey(name: "refresh_token") String refreshToken});
 }
 
 /// @nodoc
@@ -317,17 +317,17 @@ class __$$DataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DataImpl implements _Data {
   const _$DataImpl(
-      {@JsonKey(name: "accessToken") required this.accessToken,
-      @JsonKey(name: "refreshToken") required this.refreshToken});
+      {@JsonKey(name: "access_token") required this.accessToken,
+      @JsonKey(name: "refresh_token") required this.refreshToken});
 
   factory _$DataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataImplFromJson(json);
 
   @override
-  @JsonKey(name: "accessToken")
+  @JsonKey(name: "access_token")
   final String accessToken;
   @override
-  @JsonKey(name: "refreshToken")
+  @JsonKey(name: "refresh_token")
   final String refreshToken;
 
   @override
@@ -368,17 +368,17 @@ class _$DataImpl implements _Data {
 
 abstract class _Data implements Data {
   const factory _Data(
-          {@JsonKey(name: "accessToken") required final String accessToken,
-          @JsonKey(name: "refreshToken") required final String refreshToken}) =
+          {@JsonKey(name: "access_token") required final String accessToken,
+          @JsonKey(name: "refresh_token") required final String refreshToken}) =
       _$DataImpl;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$DataImpl.fromJson;
 
   @override
-  @JsonKey(name: "accessToken")
+  @JsonKey(name: "access_token")
   String get accessToken;
   @override
-  @JsonKey(name: "refreshToken")
+  @JsonKey(name: "refresh_token")
   String get refreshToken;
 
   /// Create a copy of Data
