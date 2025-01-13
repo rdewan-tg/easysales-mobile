@@ -27,11 +27,7 @@ class ProfileDataWidget extends ConsumerWidget {
                 settings['phoneNumber'] ?? '',
                 style: context.textTheme.titleSmall,
               ),
-            ],
-            Text(
-              settings['timeZone'] ?? '',
-              style: context.textTheme.titleSmall,
-            ),
+            ],            
           ],
         ),
       ],

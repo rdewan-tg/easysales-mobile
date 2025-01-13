@@ -7,3 +7,9 @@ selectYourLanguage: Select your language
 profile: Profile
 manageYourProfile: Manage your profile
 logout: Logout
+deviceSetting: Device Setting
+manageYourDevice: Manage your device
+deviceId: Device ID
+salesPersonCode: Sales Person Code
+orderNumberFormat: Order Number Format
+timeZone: Time Zone

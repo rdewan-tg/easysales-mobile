@@ -20,5 +20,11 @@
     "profile.btnYes": "Ya",
     "profile.signOutDialogTitle": "Keluar",
     "profile.signOutDialogSubTitle": "Apakah Anda yakin ingin keluar?",
-    "profile.btnNo": "TIDAK"
+    "profile.btnNo": "TIDAK",
+    "setting.deviceSetting": "Pengaturan Perangkat",
+    "setting.manageYourDevice": "Kelola perangkat Anda",
+    "setting.deviceId": "ID Perangkat",
+    "setting.salesPersonCode": "Kode Staf Penjualan",
+    "setting.orderNumberFormat": "Format Nomor Pesanan",
+    "setting.timeZone": "Zona Waktu"
 }
