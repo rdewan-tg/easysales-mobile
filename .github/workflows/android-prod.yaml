@@ -155,5 +155,4 @@ jobs:
           debugSymbols: build/app/intermediates/merged_native_libs/prodRelease/mergeProdReleaseNativeLibs/out/lib
           whatsNewDirectory: distribution/whatsnew
           track: alpha
-          changesNotSentForReview: true
   
