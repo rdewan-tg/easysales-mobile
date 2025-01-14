@@ -45,8 +45,15 @@ releases = track_response.get('releases', [])  # Get the list of releases for th
 if releases:
     # If releases exist, get the latest release details
     latest_release = releases[0]
-    version_code = int(latest_release['versionCodes'][0])  # Extract the version code of the latest release
-    version_name = latest_release.get('name', 'Unknown')  # Extract the version name (default to 'Unknown' if missing)
+    current_version_code = int(latest_release['versionCodes'][0])  # Get the first version code
+    current_version_name = latest_release.get('name', '0.0.1')  # Default to '0.0.1' if name is missing
+
+    # Increment version code and version name
+    version_code = current_version_code + 1
+    version_name_parts = current_version_name.split('.')
+    # version_name_parts[-1] access the last element of the list
+    version_name_parts[-1] = str(int(version_name_parts[-1]) + 1)  # Increment the last part of the version
+    version_name = '.'.join(version_name_parts)
 
     # Print outputs for GitHub Actions
     print(f"::set-output name=version_code::{version_code}")
@@ -54,4 +61,4 @@ if releases:
 else:
     # Handle the case where no releases exist
     print("::set-output name=version_code::1")
-    print("::set-output name=version_name::1.0.0")
+    print("::set-output name=version_name::0.0.1")
