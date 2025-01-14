@@ -154,10 +154,11 @@ jobs:
       - name: Upload APK to Google Play
         uses: r0adkll/upload-google-play@v1.1.3
         with:
-          serviceAccountJson: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+          serviceAccountJsonPlainText: google_playservice_account.json
           packageName: "com.tonggarden.easysales" # Replace with your app's package name
           releaseFiles: build/app/outputs/bundle/prodRelease/app-prod-release.aab
           mappingFile: build/app/outputs/mapping/prodRelease/mapping.txt
           debugSymbols: build/app/intermediates/merged_native_libs/prodRelease/mergeProdReleaseNativeLibs/out/lib
           whatsNewDirectory: distribution/whatsnew
-          track: internal # Adjust the track to internal, alpha, beta, or production
+          track: alpha # Adjust the track to internal, alpha, beta, or production
+          changesNotSentForReview: true
