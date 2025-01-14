@@ -128,7 +128,7 @@ jobs:
 
       - name: Build Release Version
         run: |
-          fvm flutter build appbundle \
+          flutter build appbundle \
             --release \
             --build-name=${{ steps.fetch_version_info.outputs.version_name }} \
             --build-number=${{ steps.fetch_version_info.outputs.version_code }} \
