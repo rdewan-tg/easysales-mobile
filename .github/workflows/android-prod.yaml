@@ -144,6 +144,10 @@ jobs:
           name: release-aab
           path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
 
+      - name: Debug Google Play JSON
+        run: cat google_playservice_account.json
+
+      # Upload to Google Play
       - name: Upload APK to Google Play
         uses: r0adkll/upload-google-play@v1.1.3
         with:
