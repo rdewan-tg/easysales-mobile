@@ -20,5 +20,6 @@ abstract class MerchandiserCustomerApi {
 
   @GET(merchandiserCustomerEndPoint)
   Future<MerchandiserCustomerResponse> getMerchandiserCustomers(
-      @Path('DataAreaId') String dataAreaId);
+    @Path('DataAreaId') String dataAreaId,
+  );
 }

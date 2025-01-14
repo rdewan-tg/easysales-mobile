@@ -3,7 +3,8 @@ import 'package:merchandiser/features/customer/data/dto/request/merchandiser_cus
 
 abstract interface class IMerchandiserCustomerRepository {
   Future<MerchandiserCustomerResponse> getMerchandiserCustomers(
-      String dataAreaId);
+    String dataAreaId,
+  );
 
   Stream<List<MerchandiserCustomerEntityData>> watchAll();
 
