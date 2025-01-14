@@ -29,6 +29,11 @@ dependencies:
   profile:
     path: packages/profile
 
+  flutter_riverpod: any
+  go_router: any
+  upgrader: any
+  loader_overlay: any
+  riverpod_annotation: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

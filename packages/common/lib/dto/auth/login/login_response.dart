@@ -46,6 +46,7 @@ class UserDto with _$UserDto {
     @JsonKey(name: "photo") String? photo,
     @JsonKey(name: "role") required List<RoleDto> role,
     @JsonKey(name: "company") required CompanyDto company,
+    @JsonKey(name: "deviceSetting") required DeviceSettingDto deviceSetting,
   }) = _UserDto;
 
   factory UserDto.fromJson(Map<String, dynamic> json) =>
@@ -68,9 +69,23 @@ class CompanyDto with _$CompanyDto {
   const factory CompanyDto({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "name") required String name,
+    @JsonKey(name: "companyCode") String? companyCode,
+    @JsonKey(name: "countryCode") String? countryCode,
     @JsonKey(name: "timeZone") required String timeZone,
   }) = _CompanyDto;
 
   factory CompanyDto.fromJson(Map<String, dynamic> json) =>
       _$CompanyDtoFromJson(json);
+}
+
+@freezed
+class DeviceSettingDto with _$DeviceSettingDto {
+  const factory DeviceSettingDto({
+    @JsonKey(name: "deviceId") String? deviceId,
+    @JsonKey(name: "salesPersonCode") String? salesPersonCode,
+    @JsonKey(name: "orderNumberFormat") String? orderNumberFormat,
+  }) = _DeviceSettingDto;
+
+  factory DeviceSettingDto.fromJson(Map<String, dynamic> json) =>
+      _$DeviceSettingDtoFromJson(json);
 }

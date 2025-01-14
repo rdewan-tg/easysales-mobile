@@ -10,3 +10,4 @@ import 'package:go_router/go_router.dart';
 part 'presentation/ui/setting_screen.dart';
 part 'presentation/ui/theme_picker_screen.dart';
 part 'presentation/ui/language_picker_screen.dart';
+part 'presentation/ui/device_setting_screen.dart';

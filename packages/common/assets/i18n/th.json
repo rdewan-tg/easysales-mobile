@@ -20,5 +20,11 @@
     "profile.btnYes": "ใช่",
     "profile.signOutDialogTitle": "ออกจากระบบ",
     "profile.signOutDialogSubTitle": "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?",
-    "profile.btnNo": "เลขที่"
+    "profile.btnNo": "เลขที่",
+    "setting.deviceSetting": "การตั้งค่าอุปกรณ์",
+    "setting.manageYourDevice": "จัดการอุปกรณ์ของคุณ",
+    "setting.deviceId": "รหัสอุปกรณ์",
+    "setting.salesPersonCode": "รหัสพนักงานขาย",
+    "setting.orderNumberFormat": "รูปแบบหมายเลขคำสั่งซื้อ",
+    "setting.timeZone": "โซนเวลา"
 }

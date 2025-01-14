@@ -611,6 +611,8 @@ mixin _$UserDto {
   List<RoleDto> get role => throw _privateConstructorUsedError;
   @JsonKey(name: "company")
   CompanyDto get company => throw _privateConstructorUsedError;
+  @JsonKey(name: "deviceSetting")
+  DeviceSettingDto get deviceSetting => throw _privateConstructorUsedError;
 
   /// Serializes this UserDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -633,9 +635,11 @@ abstract class $UserDtoCopyWith<$Res> {
       @JsonKey(name: "phoneNumber") String? phoneNumber,
       @JsonKey(name: "photo") String? photo,
       @JsonKey(name: "role") List<RoleDto> role,
-      @JsonKey(name: "company") CompanyDto company});
+      @JsonKey(name: "company") CompanyDto company,
+      @JsonKey(name: "deviceSetting") DeviceSettingDto deviceSetting});
 
   $CompanyDtoCopyWith<$Res> get company;
+  $DeviceSettingDtoCopyWith<$Res> get deviceSetting;
 }
 
 /// @nodoc
@@ -660,6 +664,7 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? photo = freezed,
     Object? role = null,
     Object? company = null,
+    Object? deviceSetting = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -690,6 +695,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as CompanyDto,
+      deviceSetting: null == deviceSetting
+          ? _value.deviceSetting
+          : deviceSetting // ignore: cast_nullable_to_non_nullable
+              as DeviceSettingDto,
     ) as $Val);
   }
 
@@ -700,6 +709,16 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
   $CompanyDtoCopyWith<$Res> get company {
     return $CompanyDtoCopyWith<$Res>(_value.company, (value) {
       return _then(_value.copyWith(company: value) as $Val);
+    });
+  }
+
+  /// Create a copy of UserDto
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DeviceSettingDtoCopyWith<$Res> get deviceSetting {
+    return $DeviceSettingDtoCopyWith<$Res>(_value.deviceSetting, (value) {
+      return _then(_value.copyWith(deviceSetting: value) as $Val);
     });
   }
 }
@@ -718,10 +737,13 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       @JsonKey(name: "phoneNumber") String? phoneNumber,
       @JsonKey(name: "photo") String? photo,
       @JsonKey(name: "role") List<RoleDto> role,
-      @JsonKey(name: "company") CompanyDto company});
+      @JsonKey(name: "company") CompanyDto company,
+      @JsonKey(name: "deviceSetting") DeviceSettingDto deviceSetting});
 
   @override
   $CompanyDtoCopyWith<$Res> get company;
+  @override
+  $DeviceSettingDtoCopyWith<$Res> get deviceSetting;
 }
 
 /// @nodoc
@@ -744,6 +766,7 @@ class __$$UserDtoImplCopyWithImpl<$Res>
     Object? photo = freezed,
     Object? role = null,
     Object? company = null,
+    Object? deviceSetting = null,
   }) {
     return _then(_$UserDtoImpl(
       id: null == id
@@ -774,6 +797,10 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as CompanyDto,
+      deviceSetting: null == deviceSetting
+          ? _value.deviceSetting
+          : deviceSetting // ignore: cast_nullable_to_non_nullable
+              as DeviceSettingDto,
     ));
   }
 }
@@ -788,7 +815,8 @@ class _$UserDtoImpl implements _UserDto {
       @JsonKey(name: "phoneNumber") this.phoneNumber,
       @JsonKey(name: "photo") this.photo,
       @JsonKey(name: "role") required final List<RoleDto> role,
-      @JsonKey(name: "company") required this.company})
+      @JsonKey(name: "company") required this.company,
+      @JsonKey(name: "deviceSetting") required this.deviceSetting})
       : _role = role;
 
   factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -821,10 +849,13 @@ class _$UserDtoImpl implements _UserDto {
   @override
   @JsonKey(name: "company")
   final CompanyDto company;
+  @override
+  @JsonKey(name: "deviceSetting")
+  final DeviceSettingDto deviceSetting;
 
   @override
   String toString() {
-    return 'UserDto(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, photo: $photo, role: $role, company: $company)';
+    return 'UserDto(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, photo: $photo, role: $role, company: $company, deviceSetting: $deviceSetting)';
   }
 
   @override
@@ -839,13 +870,23 @@ class _$UserDtoImpl implements _UserDto {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.photo, photo) || other.photo == photo) &&
             const DeepCollectionEquality().equals(other._role, _role) &&
-            (identical(other.company, company) || other.company == company));
+            (identical(other.company, company) || other.company == company) &&
+            (identical(other.deviceSetting, deviceSetting) ||
+                other.deviceSetting == deviceSetting));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, email, phoneNumber,
-      photo, const DeepCollectionEquality().hash(_role), company);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      email,
+      phoneNumber,
+      photo,
+      const DeepCollectionEquality().hash(_role),
+      company,
+      deviceSetting);
 
   /// Create a copy of UserDto
   /// with the given fields replaced by the non-null parameter values.
@@ -865,14 +906,15 @@ class _$UserDtoImpl implements _UserDto {
 
 abstract class _UserDto implements UserDto {
   const factory _UserDto(
-          {@JsonKey(name: "id") required final int id,
-          @JsonKey(name: "name") required final String name,
-          @JsonKey(name: "email") required final String email,
-          @JsonKey(name: "phoneNumber") final String? phoneNumber,
-          @JsonKey(name: "photo") final String? photo,
-          @JsonKey(name: "role") required final List<RoleDto> role,
-          @JsonKey(name: "company") required final CompanyDto company}) =
-      _$UserDtoImpl;
+      {@JsonKey(name: "id") required final int id,
+      @JsonKey(name: "name") required final String name,
+      @JsonKey(name: "email") required final String email,
+      @JsonKey(name: "phoneNumber") final String? phoneNumber,
+      @JsonKey(name: "photo") final String? photo,
+      @JsonKey(name: "role") required final List<RoleDto> role,
+      @JsonKey(name: "company") required final CompanyDto company,
+      @JsonKey(name: "deviceSetting")
+      required final DeviceSettingDto deviceSetting}) = _$UserDtoImpl;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
 
@@ -897,6 +939,9 @@ abstract class _UserDto implements UserDto {
   @override
   @JsonKey(name: "company")
   CompanyDto get company;
+  @override
+  @JsonKey(name: "deviceSetting")
+  DeviceSettingDto get deviceSetting;
 
   /// Create a copy of UserDto
   /// with the given fields replaced by the non-null parameter values.
@@ -1089,6 +1134,10 @@ mixin _$CompanyDto {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "companyCode")
+  String? get companyCode => throw _privateConstructorUsedError;
+  @JsonKey(name: "countryCode")
+  String? get countryCode => throw _privateConstructorUsedError;
   @JsonKey(name: "timeZone")
   String get timeZone => throw _privateConstructorUsedError;
 
@@ -1111,6 +1160,8 @@ abstract class $CompanyDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") int id,
       @JsonKey(name: "name") String name,
+      @JsonKey(name: "companyCode") String? companyCode,
+      @JsonKey(name: "countryCode") String? countryCode,
       @JsonKey(name: "timeZone") String timeZone});
 }
 
@@ -1131,6 +1182,8 @@ class _$CompanyDtoCopyWithImpl<$Res, $Val extends CompanyDto>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? companyCode = freezed,
+    Object? countryCode = freezed,
     Object? timeZone = null,
   }) {
     return _then(_value.copyWith(
@@ -1142,6 +1195,14 @@ class _$CompanyDtoCopyWithImpl<$Res, $Val extends CompanyDto>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      companyCode: freezed == companyCode
+          ? _value.companyCode
+          : companyCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      countryCode: freezed == countryCode
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       timeZone: null == timeZone
           ? _value.timeZone
           : timeZone // ignore: cast_nullable_to_non_nullable
@@ -1161,6 +1222,8 @@ abstract class _$$CompanyDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "id") int id,
       @JsonKey(name: "name") String name,
+      @JsonKey(name: "companyCode") String? companyCode,
+      @JsonKey(name: "countryCode") String? countryCode,
       @JsonKey(name: "timeZone") String timeZone});
 }
 
@@ -1179,6 +1242,8 @@ class __$$CompanyDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? companyCode = freezed,
+    Object? countryCode = freezed,
     Object? timeZone = null,
   }) {
     return _then(_$CompanyDtoImpl(
@@ -1190,6 +1255,14 @@ class __$$CompanyDtoImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      companyCode: freezed == companyCode
+          ? _value.companyCode
+          : companyCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      countryCode: freezed == countryCode
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       timeZone: null == timeZone
           ? _value.timeZone
           : timeZone // ignore: cast_nullable_to_non_nullable
@@ -1204,6 +1277,8 @@ class _$CompanyDtoImpl implements _CompanyDto {
   const _$CompanyDtoImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "name") required this.name,
+      @JsonKey(name: "companyCode") this.companyCode,
+      @JsonKey(name: "countryCode") this.countryCode,
       @JsonKey(name: "timeZone") required this.timeZone});
 
   factory _$CompanyDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -1216,12 +1291,18 @@ class _$CompanyDtoImpl implements _CompanyDto {
   @JsonKey(name: "name")
   final String name;
   @override
+  @JsonKey(name: "companyCode")
+  final String? companyCode;
+  @override
+  @JsonKey(name: "countryCode")
+  final String? countryCode;
+  @override
   @JsonKey(name: "timeZone")
   final String timeZone;
 
   @override
   String toString() {
-    return 'CompanyDto(id: $id, name: $name, timeZone: $timeZone)';
+    return 'CompanyDto(id: $id, name: $name, companyCode: $companyCode, countryCode: $countryCode, timeZone: $timeZone)';
   }
 
   @override
@@ -1231,13 +1312,18 @@ class _$CompanyDtoImpl implements _CompanyDto {
             other is _$CompanyDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.companyCode, companyCode) ||
+                other.companyCode == companyCode) &&
+            (identical(other.countryCode, countryCode) ||
+                other.countryCode == countryCode) &&
             (identical(other.timeZone, timeZone) ||
                 other.timeZone == timeZone));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, timeZone);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, companyCode, countryCode, timeZone);
 
   /// Create a copy of CompanyDto
   /// with the given fields replaced by the non-null parameter values.
@@ -1259,6 +1345,8 @@ abstract class _CompanyDto implements CompanyDto {
   const factory _CompanyDto(
           {@JsonKey(name: "id") required final int id,
           @JsonKey(name: "name") required final String name,
+          @JsonKey(name: "companyCode") final String? companyCode,
+          @JsonKey(name: "countryCode") final String? countryCode,
           @JsonKey(name: "timeZone") required final String timeZone}) =
       _$CompanyDtoImpl;
 
@@ -1272,6 +1360,12 @@ abstract class _CompanyDto implements CompanyDto {
   @JsonKey(name: "name")
   String get name;
   @override
+  @JsonKey(name: "companyCode")
+  String? get companyCode;
+  @override
+  @JsonKey(name: "countryCode")
+  String? get countryCode;
+  @override
   @JsonKey(name: "timeZone")
   String get timeZone;
 
@@ -1280,5 +1374,213 @@ abstract class _CompanyDto implements CompanyDto {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CompanyDtoImplCopyWith<_$CompanyDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DeviceSettingDto _$DeviceSettingDtoFromJson(Map<String, dynamic> json) {
+  return _DeviceSettingDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeviceSettingDto {
+  @JsonKey(name: "deviceId")
+  String? get deviceId => throw _privateConstructorUsedError;
+  @JsonKey(name: "salesPersonCode")
+  String? get salesPersonCode => throw _privateConstructorUsedError;
+  @JsonKey(name: "orderNumberFormat")
+  String? get orderNumberFormat => throw _privateConstructorUsedError;
+
+  /// Serializes this DeviceSettingDto to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of DeviceSettingDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DeviceSettingDtoCopyWith<DeviceSettingDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeviceSettingDtoCopyWith<$Res> {
+  factory $DeviceSettingDtoCopyWith(
+          DeviceSettingDto value, $Res Function(DeviceSettingDto) then) =
+      _$DeviceSettingDtoCopyWithImpl<$Res, DeviceSettingDto>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "deviceId") String? deviceId,
+      @JsonKey(name: "salesPersonCode") String? salesPersonCode,
+      @JsonKey(name: "orderNumberFormat") String? orderNumberFormat});
+}
+
+/// @nodoc
+class _$DeviceSettingDtoCopyWithImpl<$Res, $Val extends DeviceSettingDto>
+    implements $DeviceSettingDtoCopyWith<$Res> {
+  _$DeviceSettingDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of DeviceSettingDto
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? deviceId = freezed,
+    Object? salesPersonCode = freezed,
+    Object? orderNumberFormat = freezed,
+  }) {
+    return _then(_value.copyWith(
+      deviceId: freezed == deviceId
+          ? _value.deviceId
+          : deviceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      salesPersonCode: freezed == salesPersonCode
+          ? _value.salesPersonCode
+          : salesPersonCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderNumberFormat: freezed == orderNumberFormat
+          ? _value.orderNumberFormat
+          : orderNumberFormat // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DeviceSettingDtoImplCopyWith<$Res>
+    implements $DeviceSettingDtoCopyWith<$Res> {
+  factory _$$DeviceSettingDtoImplCopyWith(_$DeviceSettingDtoImpl value,
+          $Res Function(_$DeviceSettingDtoImpl) then) =
+      __$$DeviceSettingDtoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "deviceId") String? deviceId,
+      @JsonKey(name: "salesPersonCode") String? salesPersonCode,
+      @JsonKey(name: "orderNumberFormat") String? orderNumberFormat});
+}
+
+/// @nodoc
+class __$$DeviceSettingDtoImplCopyWithImpl<$Res>
+    extends _$DeviceSettingDtoCopyWithImpl<$Res, _$DeviceSettingDtoImpl>
+    implements _$$DeviceSettingDtoImplCopyWith<$Res> {
+  __$$DeviceSettingDtoImplCopyWithImpl(_$DeviceSettingDtoImpl _value,
+      $Res Function(_$DeviceSettingDtoImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DeviceSettingDto
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? deviceId = freezed,
+    Object? salesPersonCode = freezed,
+    Object? orderNumberFormat = freezed,
+  }) {
+    return _then(_$DeviceSettingDtoImpl(
+      deviceId: freezed == deviceId
+          ? _value.deviceId
+          : deviceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      salesPersonCode: freezed == salesPersonCode
+          ? _value.salesPersonCode
+          : salesPersonCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderNumberFormat: freezed == orderNumberFormat
+          ? _value.orderNumberFormat
+          : orderNumberFormat // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DeviceSettingDtoImpl implements _DeviceSettingDto {
+  const _$DeviceSettingDtoImpl(
+      {@JsonKey(name: "deviceId") this.deviceId,
+      @JsonKey(name: "salesPersonCode") this.salesPersonCode,
+      @JsonKey(name: "orderNumberFormat") this.orderNumberFormat});
+
+  factory _$DeviceSettingDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeviceSettingDtoImplFromJson(json);
+
+  @override
+  @JsonKey(name: "deviceId")
+  final String? deviceId;
+  @override
+  @JsonKey(name: "salesPersonCode")
+  final String? salesPersonCode;
+  @override
+  @JsonKey(name: "orderNumberFormat")
+  final String? orderNumberFormat;
+
+  @override
+  String toString() {
+    return 'DeviceSettingDto(deviceId: $deviceId, salesPersonCode: $salesPersonCode, orderNumberFormat: $orderNumberFormat)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeviceSettingDtoImpl &&
+            (identical(other.deviceId, deviceId) ||
+                other.deviceId == deviceId) &&
+            (identical(other.salesPersonCode, salesPersonCode) ||
+                other.salesPersonCode == salesPersonCode) &&
+            (identical(other.orderNumberFormat, orderNumberFormat) ||
+                other.orderNumberFormat == orderNumberFormat));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, deviceId, salesPersonCode, orderNumberFormat);
+
+  /// Create a copy of DeviceSettingDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeviceSettingDtoImplCopyWith<_$DeviceSettingDtoImpl> get copyWith =>
+      __$$DeviceSettingDtoImplCopyWithImpl<_$DeviceSettingDtoImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DeviceSettingDtoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DeviceSettingDto implements DeviceSettingDto {
+  const factory _DeviceSettingDto(
+      {@JsonKey(name: "deviceId") final String? deviceId,
+      @JsonKey(name: "salesPersonCode") final String? salesPersonCode,
+      @JsonKey(name: "orderNumberFormat")
+      final String? orderNumberFormat}) = _$DeviceSettingDtoImpl;
+
+  factory _DeviceSettingDto.fromJson(Map<String, dynamic> json) =
+      _$DeviceSettingDtoImpl.fromJson;
+
+  @override
+  @JsonKey(name: "deviceId")
+  String? get deviceId;
+  @override
+  @JsonKey(name: "salesPersonCode")
+  String? get salesPersonCode;
+  @override
+  @JsonKey(name: "orderNumberFormat")
+  String? get orderNumberFormat;
+
+  /// Create a copy of DeviceSettingDto
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeviceSettingDtoImplCopyWith<_$DeviceSettingDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
