@@ -13,12 +13,18 @@
     "merchandiser.title": "跟单员",
     "merchandiser.takePicture": "拍照",
     "profile.title": "轮廓",
-    "profile.deleteMyAccount": "删除帐户",
+    "profile.deleteMyAccount": "删除账户",
     "profile.signout": "登出",
-    "profile.deleteDialogTitle": "删除帐户",
+    "profile.deleteDialogTitle": "删除账户",
     "profile.deleteDialogSubTitle": "您确定要删除您的帐户吗？",
     "profile.btnYes": "是的",
     "profile.signOutDialogTitle": "登出",
     "profile.signOutDialogSubTitle": "您确定要退出吗？",
-    "profile.btnNo": "不"
+    "profile.btnNo": "不",
+    "setting.deviceSetting": "设备设置",
+    "setting.manageYourDevice": "管理您的设备",
+    "setting.deviceId": "设备ID",
+    "setting.salesPersonCode": "销售人员代码",
+    "setting.orderNumberFormat": "订单号格式",
+    "setting.timeZone": "时区"
 }

@@ -17,8 +17,8 @@ class RefreshTokenResponse with _$RefreshTokenResponse {
 @freezed
 class Data with _$Data {
   const factory Data({
-    @JsonKey(name: "accessToken") required String accessToken,
-    @JsonKey(name: "refreshToken") required String refreshToken,
+    @JsonKey(name: "access_token") required String accessToken,
+    @JsonKey(name: "refresh_token") required String refreshToken,
   }) = _Data;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);

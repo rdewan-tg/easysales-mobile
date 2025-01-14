@@ -162,7 +162,7 @@ class AppRouter {
           name: salesRoute,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
-            child: const SalesScreen(),
+            child: const SalesCustomerScreen(),
           ),
         ),
       ],
@@ -177,7 +177,7 @@ class AppRouter {
           name: merchandiserRoute,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
-            child: const MerchandiserScreen(),
+            child: const MerchandiserCustomerScreen(),
           ),
         ),
       ],
@@ -198,6 +198,7 @@ class AppRouter {
             _themeRoute(),
             _languageRoute(),
             _profileRoute(),
+            _deviceSettingRoute(),
           ],
         ),
       ],
@@ -244,6 +245,17 @@ class AppRouter {
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
         child: const ProfileScreen(),
+      ),
+    );
+  }
+
+  RouteBase _deviceSettingRoute() {
+    return GoRoute(
+      path: '/$deviceSettingRoute',
+      name: deviceSettingRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        child: const DeviceSettingScreen(),
       ),
     );
   }
