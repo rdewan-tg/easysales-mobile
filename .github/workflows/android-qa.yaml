@@ -5,7 +5,7 @@ on:
   # Validate PR builds
   pull_request:
     branches:
-      - main
+      - qa
 
 env:
   ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
