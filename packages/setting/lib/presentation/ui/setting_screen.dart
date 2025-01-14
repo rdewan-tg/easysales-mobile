@@ -20,8 +20,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
           children: [
             ListTile(
               title: Text(context.localizations('setting.deviceSetting')),
-              subtitle:
-                  Text(context.localizations('setting.manageYourDevice')),
+              subtitle: Text(context.localizations('setting.manageYourDevice')),
               trailing: IconButton(
                 onPressed: () {
                   context.go('/setting/device-setting');

@@ -17,8 +17,7 @@ final salesCustomerServiceProvider =
   return SalesCustomerService(merchandiserCustomerRepository);
 });
 
-final class SalesCustomerService
-    implements ISalesCustomerService {
+final class SalesCustomerService implements ISalesCustomerService {
   final ISalesCustomerRepository _salesCustomerRepository;
 
   SalesCustomerService(this._salesCustomerRepository);
@@ -28,15 +27,14 @@ final class SalesCustomerService
     String dataAreaId,
   ) async {
     try {
-      final response = await _salesCustomerRepository
-          .getSalesCustomers(dataAreaId);
+      final response =
+          await _salesCustomerRepository.getSalesCustomers(dataAreaId);
 
       final salesCustomerData = await Isolate.run(
         () => _mapToSalesCustomerEntityData(response),
       );
 
-      await _salesCustomerRepository
-          .insertOrUpdate(salesCustomerData);
+      await _salesCustomerRepository.insertOrUpdate(salesCustomerData);
 
       return const Result.success(true);
     } on Failure catch (e) {
@@ -95,4 +93,3 @@ List<SalesCustomerEntityData> _mapToSalesCustomerEntityData(
       )
       .toList();
 }
-

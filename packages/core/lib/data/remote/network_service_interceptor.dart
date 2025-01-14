@@ -86,7 +86,6 @@ final class NetworkServiceInterceptor extends Interceptor {
           return handler.next(err);
         }
       }
-      
     } catch (e) {
       // Handle unexpected errors
       return handler.reject(

@@ -27,7 +27,6 @@ class MerchandiserCustomerController
 
   Future<void> getMerchandiserCustomers() async {
     try {
-
       if (state.customers.isNotEmpty) {
         // update the loading state
         state = state.copyWith(isLoading: true);

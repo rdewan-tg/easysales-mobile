@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,11 +13,11 @@ final salesCustomerApiProvider = Provider.autoDispose<SalesCustomerApi>((ref) {
   return SalesCustomerApi(dio);
 });
 
-
 @RestApi()
 abstract class SalesCustomerApi {
   factory SalesCustomerApi(Dio dio) => _SalesCustomerApi(dio);
 
   @GET(merchandiserCustomerEndPoint)
-  Future<SalesCustomerResponse> getSalesCustomers(@Path('DataAreaId') String dataAreaId);
+  Future<SalesCustomerResponse> getSalesCustomers(
+      @Path('DataAreaId') String dataAreaId);
 }

@@ -27,7 +27,7 @@ class ProfileDataWidget extends ConsumerWidget {
                 settings['phoneNumber'] ?? '',
                 style: context.textTheme.titleSmall,
               ),
-            ],            
+            ],
           ],
         ),
       ],

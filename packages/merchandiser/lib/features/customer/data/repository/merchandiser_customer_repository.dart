@@ -37,8 +37,8 @@ final class MerchandiserCustomerRepository
 
   @override
   Future<MerchandiserCustomerResponse> getMerchandiserCustomers(
-      String dataAreaId,
-    ) async {
+    String dataAreaId,
+  ) async {
     try {
       return await _merchandiserCustomerApi
           .getMerchandiserCustomers(dataAreaId);

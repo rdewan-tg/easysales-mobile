@@ -95,4 +95,3 @@ List<MerchandiserCustomerEntityData> _mapToMerchandiserCustomerEntityData(
       )
       .toList();
 }
-

@@ -5,13 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sales/features/customer/application/sales_customer_service.dart';
 import 'package:sales/features/customer/presentation/state/sales_customer_state.dart';
 
-final salesCustomerProvider = AutoDisposeNotifierProvider<
-    SalesCustomerController, SalesCustomerState>(
+final salesCustomerProvider =
+    AutoDisposeNotifierProvider<SalesCustomerController, SalesCustomerState>(
   SalesCustomerController.new,
 );
 
-class SalesCustomerController
-    extends AutoDisposeNotifier<SalesCustomerState> {
+class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
   StreamSubscription<List<SalesCustomerEntityData>>? _subscription;
 
   @override
@@ -27,7 +26,6 @@ class SalesCustomerController
 
   Future<void> getSalesCustomers() async {
     try {
-      
       // update the loading state
       state = state.copyWith(isLoading: true);
 
@@ -57,8 +55,7 @@ class SalesCustomerController
 
   Future<void> watchSalesCustomers() async {
     // Start listening to the theme mode stream
-    _subscription =
-        ref.watch(salesCustomerServiceProvider).watchAll().listen(
+    _subscription = ref.watch(salesCustomerServiceProvider).watchAll().listen(
       (customers) {
         state = state.copyWith(customers: customers);
       },

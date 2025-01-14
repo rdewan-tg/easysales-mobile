@@ -6,8 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'sales_customer_dao.g.dart';
 
-final salesCustomerDaoProvider =
-    Provider<SalesCustomerDao>((ref) {
+final salesCustomerDaoProvider = Provider<SalesCustomerDao>((ref) {
   return SalesCustomerDao(ref.watch(appDatabaseProvider));
 });
 

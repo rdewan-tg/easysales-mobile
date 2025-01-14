@@ -2,10 +2,13 @@
 name: Flutter - Android Build Prod
 
 on:
-  push:
+  # Validate PR builds
+  pull_request:
     branches:
       - main
-  pull_request:
+
+  # Build release after merge
+  push:
     branches:
       - main
 

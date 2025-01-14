@@ -9,13 +9,12 @@ class CustomerListWidget extends ConsumerStatefulWidget {
 }
 
 class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
-  
   @override
   Widget build(BuildContext context) {
     _listener();
 
-    final customer = ref
-        .watch(salesCustomerProvider.select((value) => value.customers));
+    final customer =
+        ref.watch(salesCustomerProvider.select((value) => value.customers));
 
     return SliverList.builder(
       itemCount: customer.length,
@@ -23,7 +22,8 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
         final data = customer[index];
 
         return Card(
-          margin: const EdgeInsets.symmetric(horizontal: kMedium, vertical: kSmall),
+          margin:
+              const EdgeInsets.symmetric(horizontal: kMedium, vertical: kSmall),
           elevation: kXSmall,
           child: Padding(
             padding: const EdgeInsets.all(kSmall),

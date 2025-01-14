@@ -1,5 +1,3 @@
-
-
 import 'package:core/data/local/db/app_database.dart';
 import 'package:sales/features/customer/data/dto/request/sales_customer_response.dart';
 
@@ -8,7 +6,7 @@ abstract interface class ISalesCustomerRepository {
 
   Stream<List<SalesCustomerEntityData>> watchAll();
 
-  Future<void> insertOrUpdate(List<SalesCustomerEntityData> data); 
+  Future<void> insertOrUpdate(List<SalesCustomerEntityData> data);
 
-   Future<Map<String, String>> getAllSettings();
+  Future<Map<String, String>> getAllSettings();
 }

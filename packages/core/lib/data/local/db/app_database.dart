@@ -15,9 +15,9 @@ part 'app_database.g.dart';
 AppDatabase appDatabase(Ref ref) => AppDatabase();
 
 @DriftDatabase(
-  tables: [SettingEntity, MerchandiserCustomerEntity, SalesCustomerEntity], 
+  tables: [SettingEntity, MerchandiserCustomerEntity, SalesCustomerEntity],
   daos: [SettingDao, MerchandiserCustomerDao, SalesCustomerDao],
-  )
+)
 class AppDatabase extends _$AppDatabase {
   // After generating code, this class needs to define a `schemaVersion` getter
   // and a constructor telling drift where the database should be stored.

@@ -4,16 +4,19 @@ class MerchandiserCustomerScreen extends ConsumerStatefulWidget {
   const MerchandiserCustomerScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MerchandiserCustomerScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _MerchandiserCustomerScreenState();
 }
 
-class _MerchandiserCustomerScreenState extends ConsumerState<MerchandiserCustomerScreen> {
-
+class _MerchandiserCustomerScreenState
+    extends ConsumerState<MerchandiserCustomerScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp)  {
-      ref.read(merchandiserCustomerProvider.notifier).getMerchandiserCustomers();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref
+          .read(merchandiserCustomerProvider.notifier)
+          .getMerchandiserCustomers();
     });
   }
 
@@ -23,18 +26,19 @@ class _MerchandiserCustomerScreenState extends ConsumerState<MerchandiserCustome
       appBar: AppBar(
         title: Text('Customer'.hardcoded),
         centerTitle: true,
-      ), 
+      ),
       body: RefreshIndicator(
         onRefresh: () {
-          return ref.read(merchandiserCustomerProvider.notifier).getMerchandiserCustomers();
+          return ref
+              .read(merchandiserCustomerProvider.notifier)
+              .getMerchandiserCustomers();
         },
         child: const CustomScrollView(
           slivers: [
             CustomerListWidget(),
           ],
         ),
-      ), 
-
+      ),
     );
   }
 }

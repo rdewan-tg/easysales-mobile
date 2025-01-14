@@ -4,15 +4,15 @@ class SalesCustomerScreen extends ConsumerStatefulWidget {
   const SalesCustomerScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _SalesCustomerScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _SalesCustomerScreenState();
 }
 
 class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
-
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp)  {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref.read(salesCustomerProvider.notifier).getSalesCustomers();
     });
   }
@@ -23,7 +23,7 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
       appBar: AppBar(
         title: Text('Customer'.hardcoded),
         centerTitle: true,
-      ), 
+      ),
       body: RefreshIndicator(
         onRefresh: () {
           return ref.read(salesCustomerProvider.notifier).getSalesCustomers();
@@ -33,8 +33,7 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
             CustomerListWidget(),
           ],
         ),
-      ), 
-
+      ),
     );
   }
 }
