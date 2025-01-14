@@ -48,10 +48,10 @@ if releases:
     version_code = int(latest_release['versionCodes'][0])  # Extract the version code of the latest release
     version_name = latest_release.get('name', 'Unknown')  # Extract the version name (default to 'Unknown' if missing)
 
-    # Print version code and version name for debugging or GitHub Actions outputs
-    print(f"Google Play Console version_code={version_code}")
-    print(f"Google Play Console version_name={version_name}")
+    # Print outputs for GitHub Actions
+    print(f"::set-output name=version_code::{version_code}")
+    print(f"::set-output name=version_name::{version_name}")
 else:
-    # Handle the case where no releases are found on the track
-    print("default version_code=1")  # Default version code
-    print("default version_name=1.0.0")  # Default version name
+    # Handle the case where no releases exist
+    print("::set-output name=version_code::1")
+    print("::set-output name=version_name::1.0.0")
