@@ -21,11 +21,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox(child: widget.navigationShell),
-      bottomNavigationBar: ScrollToHide(
-        child: BottomNavigationWidget(
-          navigationShell: widget.navigationShell,
-        ),
-      ),
+      bottomNavigationBar:
+          BottomNavigationState(navigationShell: widget.navigationShell),
     );
   }
 }

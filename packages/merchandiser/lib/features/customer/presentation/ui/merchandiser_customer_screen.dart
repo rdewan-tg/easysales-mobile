@@ -14,9 +14,15 @@ class _MerchandiserCustomerScreenState
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      // get the merchandiser customers
       ref
           .read(merchandiserCustomerProvider.notifier)
           .getMerchandiserCustomers();
+
+      // get the merchandiser customer address
+      ref
+          .read(merchandiserCustomerProvider.notifier)
+          .getMerchandiserCustomerAddress();
     });
   }
 
