@@ -40,6 +40,7 @@ part 'enum/user_role.dart';
 
 part 'provider/scroll_controller_povider.dart';
 part 'provider/auth_state_provider.dart';
+part 'provider/bottom_navigation_state_povider.dart';
 
 part 'mixin/dio_exception_mapper.dart';
 part 'mixin/error_dialog_mixin.dart';

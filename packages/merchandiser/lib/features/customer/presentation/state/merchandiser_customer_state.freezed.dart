@@ -19,6 +19,8 @@ mixin _$MerchandiserCustomerState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<MerchandiserCustomerEntityData> get customers =>
       throw _privateConstructorUsedError;
+  List<MerchandiserCustomerAddress> get addresses =>
+      throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
 
   /// Create a copy of MerchandiserCustomerState
@@ -37,6 +39,7 @@ abstract class $MerchandiserCustomerStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       List<MerchandiserCustomerEntityData> customers,
+      List<MerchandiserCustomerAddress> addresses,
       String? errorMsg});
 }
 
@@ -58,6 +61,7 @@ class _$MerchandiserCustomerStateCopyWithImpl<$Res,
   $Res call({
     Object? isLoading = null,
     Object? customers = null,
+    Object? addresses = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
@@ -69,6 +73,10 @@ class _$MerchandiserCustomerStateCopyWithImpl<$Res,
           ? _value.customers
           : customers // ignore: cast_nullable_to_non_nullable
               as List<MerchandiserCustomerEntityData>,
+      addresses: null == addresses
+          ? _value.addresses
+          : addresses // ignore: cast_nullable_to_non_nullable
+              as List<MerchandiserCustomerAddress>,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -89,6 +97,7 @@ abstract class _$$MerchandiserCustomerStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       List<MerchandiserCustomerEntityData> customers,
+      List<MerchandiserCustomerAddress> addresses,
       String? errorMsg});
 }
 
@@ -109,6 +118,7 @@ class __$$MerchandiserCustomerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? customers = null,
+    Object? addresses = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_$MerchandiserCustomerStateImpl(
@@ -120,6 +130,10 @@ class __$$MerchandiserCustomerStateImplCopyWithImpl<$Res>
           ? _value._customers
           : customers // ignore: cast_nullable_to_non_nullable
               as List<MerchandiserCustomerEntityData>,
+      addresses: null == addresses
+          ? _value._addresses
+          : addresses // ignore: cast_nullable_to_non_nullable
+              as List<MerchandiserCustomerAddress>,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -134,8 +148,10 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
   _$MerchandiserCustomerStateImpl(
       {this.isLoading = false,
       final List<MerchandiserCustomerEntityData> customers = const [],
+      final List<MerchandiserCustomerAddress> addresses = const [],
       this.errorMsg})
-      : _customers = customers;
+      : _customers = customers,
+        _addresses = addresses;
 
   @override
   @JsonKey()
@@ -149,12 +165,21 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
     return EqualUnmodifiableListView(_customers);
   }
 
+  final List<MerchandiserCustomerAddress> _addresses;
+  @override
+  @JsonKey()
+  List<MerchandiserCustomerAddress> get addresses {
+    if (_addresses is EqualUnmodifiableListView) return _addresses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_addresses);
+  }
+
   @override
   final String? errorMsg;
 
   @override
   String toString() {
-    return 'MerchandiserCustomerState(isLoading: $isLoading, customers: $customers, errorMsg: $errorMsg)';
+    return 'MerchandiserCustomerState(isLoading: $isLoading, customers: $customers, addresses: $addresses, errorMsg: $errorMsg)';
   }
 
   @override
@@ -166,13 +191,19 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
                 .equals(other._customers, _customers) &&
+            const DeepCollectionEquality()
+                .equals(other._addresses, _addresses) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
-      const DeepCollectionEquality().hash(_customers), errorMsg);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      const DeepCollectionEquality().hash(_customers),
+      const DeepCollectionEquality().hash(_addresses),
+      errorMsg);
 
   /// Create a copy of MerchandiserCustomerState
   /// with the given fields replaced by the non-null parameter values.
@@ -188,12 +219,15 @@ abstract class _MerchandiserCustomerState implements MerchandiserCustomerState {
   factory _MerchandiserCustomerState(
       {final bool isLoading,
       final List<MerchandiserCustomerEntityData> customers,
+      final List<MerchandiserCustomerAddress> addresses,
       final String? errorMsg}) = _$MerchandiserCustomerStateImpl;
 
   @override
   bool get isLoading;
   @override
   List<MerchandiserCustomerEntityData> get customers;
+  @override
+  List<MerchandiserCustomerAddress> get addresses;
   @override
   String? get errorMsg;
 
