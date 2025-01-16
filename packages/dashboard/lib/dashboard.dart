@@ -11,6 +11,7 @@ import 'package:go_router/go_router.dart';
 
 part 'presentation/ui/dashboard_screen.dart';
 part 'presentation/ui/widget/bottom_navigation_widget.dart';
+part 'presentation/ui/widget/bottom_navigation_state_widget.dart';
 part 'presentation/ui/widget/cart_badge_widget.dart';
 part 'presentation/ui/widget/scroll_to_hide.dart';
 

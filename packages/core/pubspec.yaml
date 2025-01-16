@@ -62,6 +62,8 @@ dependencies:
   drift: ^2.23.0
   # https://pub.dev/packages/drift_flutter
   drift_flutter: ^0.1.0
+  # https://pub.dev/packages/fullscreen_window
+  fullscreen_window: ^1.1.0
 
 dev_dependencies:
   flutter_test:

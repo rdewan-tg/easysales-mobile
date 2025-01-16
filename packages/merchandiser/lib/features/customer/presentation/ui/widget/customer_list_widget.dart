@@ -1,5 +1,14 @@
 part of merchandiser;
 
+enum AnimationStyles { defaultStyle, custom, none }
+
+const List<(AnimationStyles, String)> animationStyleSegments =
+    <(AnimationStyles, String)>[
+  (AnimationStyles.defaultStyle, 'Default'),
+  (AnimationStyles.custom, 'Custom'),
+  (AnimationStyles.none, 'None'),
+];
+
 class CustomerListWidget extends ConsumerStatefulWidget {
   const CustomerListWidget({super.key});
 
@@ -9,6 +18,18 @@ class CustomerListWidget extends ConsumerStatefulWidget {
 }
 
 class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
+  late AnimationStyle _animationStyle;
+  late PersistentBottomSheetController _bottomSheetController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationStyle = AnimationStyle(
+      duration: const Duration(seconds: 1),
+      reverseDuration: const Duration(seconds: 500),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     _listener();
@@ -21,27 +42,32 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
       itemBuilder: (context, index) {
         final data = customer[index];
 
-        return Card(
-          margin:
-              const EdgeInsets.symmetric(horizontal: kMedium, vertical: kSmall),
-          elevation: kXSmall,
-          child: Padding(
-            padding: const EdgeInsets.all(kSmall),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  data.customerId,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
-                ),
-                const SizedBox(height: kXSmall),
-                Text(data.customerName),
-                const SizedBox(height: kXSmall),
-                Text(
-                  data.address ?? '-',
-                  style: context.textTheme.labelMedium,
-                ),
-              ],
+        return GestureDetector(
+          onTap: () => _onTap(data.customerName),
+          child: Card(
+            margin: const EdgeInsets.symmetric(
+              horizontal: kMedium,
+              vertical: kSmall,
+            ),
+            elevation: kXSmall,
+            child: Padding(
+              padding: const EdgeInsets.all(kSmall),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    data.customerId,
+                    style: const TextStyle(fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(height: kXSmall),
+                  Text(data.customerName),
+                  const SizedBox(height: kXSmall),
+                  Text(
+                    data.address ?? '-',
+                    style: context.textTheme.labelMedium,
+                  ),
+                ],
+              ),
             ),
           ),
         );
@@ -77,4 +103,19 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
       }
     });
   }
+
+  void _onTap(String customerName) {
+    _bottomSheetController = showBottomSheet(
+      context: context,
+      sheetAnimationStyle: _animationStyle,
+      builder: (BuildContext context) {
+        return CustomerAddressListWidget(
+          onClose: _closeBottonSheet,
+          customerName: customerName,
+        );
+      },
+    );
+  }
+
+  void _closeBottonSheet() => _bottomSheetController.close();
 }
