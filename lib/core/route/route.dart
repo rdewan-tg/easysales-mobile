@@ -10,3 +10,5 @@ const String themeRoute = 'theme';
 const String languageRoute = 'language';
 const String profileRoute = 'profile';
 const String deviceSettingRoute = 'device-setting';
+const String searchMerchandiserCustomer = 'search-merchandiser-customer';
+const String searchSalesCustomer = 'search-sales-customer';

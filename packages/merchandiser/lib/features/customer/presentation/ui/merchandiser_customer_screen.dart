@@ -32,19 +32,34 @@ class _MerchandiserCustomerScreenState
       appBar: AppBar(
         title: Text('Customer'.hardcoded),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.go('/merchandiser/search-merchandiser-customer');
+            },
+            icon: const Icon(Icons.search_outlined),
+          ),
+        ],
       ),
       body: RefreshIndicator(
-        onRefresh: () {
-          return ref
-              .read(merchandiserCustomerProvider.notifier)
-              .getMerchandiserCustomers();
-        },
+        onRefresh: _onRefresh,
         child: const CustomScrollView(
           slivers: [
+            SearchQueryWidget(),
             CustomerListWidget(),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _onRefresh() async {
+    // invalidate the provider
+    ref.invalidate(merchandiserCustomerProvider);
+
+    // get the merchandiser customers
+    return ref
+        .read(merchandiserCustomerProvider.notifier)
+        .getMerchandiserCustomers();
   }
 }

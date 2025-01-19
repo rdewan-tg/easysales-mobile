@@ -31,7 +31,7 @@ class CaptureImageController extends Notifier<CaptureImageState> {
     required String transDate,
   }) async {
     try {
-      state = state.copyWith(isLoading: true);
+      state = state.copyWith(isLoading: true, isImageUploaded: false);
 
       final deviceId = state.settings['deviceId'] ?? '-';
       final salesPersonCode = state.settings['salesPersonCode'] ?? '-';
@@ -52,7 +52,7 @@ class CaptureImageController extends Notifier<CaptureImageState> {
 
       result.when(
         (success) {
-          state = state.copyWith(isLoading: false);
+          state = state.copyWith(isLoading: false, isImageUploaded: true);
         },
         (error) {
           state = state.copyWith(errorMsg: error.message);
@@ -73,7 +73,7 @@ class CaptureImageController extends Notifier<CaptureImageState> {
     state = state.copyWith(isLoading: false);
   }
 
-  void setBottomNavigationState(bool value) {
+  Future<void> setBottomNavigationState(bool value) async {
     ref.read(bottomNavigationStateProvider.notifier).state = value;
   }
 }

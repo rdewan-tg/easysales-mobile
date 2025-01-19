@@ -34,9 +34,25 @@ class MerchandiserCustomerDao extends DatabaseAccessor<AppDatabase>
     }
   }
 
-  Stream<List<MerchandiserCustomerEntityData>> watchAll() {
-    return (select(merchandiserCustomerEntity)).watch().handleError((e, s) {
+  Stream<List<MerchandiserCustomerEntityData>> watchAll({
+    String? searchQuery,
+  }) {
+    final query = select(merchandiserCustomerEntity);
+
+    if (searchQuery != null && searchQuery.isNotEmpty) {
+      query.where(
+        (tbl) =>
+            tbl.customerId.contains(searchQuery) | // Filter by customerId
+            tbl.customerName.contains(searchQuery), // Filter by customerName
+      );
+    }
+
+    return query.watch().handleError((e, s) {
       throw Failure(message: e.toString(), stackTrace: s);
     });
+  }
+
+  Future<int> deleteAll() async {
+    return await (delete(merchandiserCustomerEntity)).go();
   }
 }

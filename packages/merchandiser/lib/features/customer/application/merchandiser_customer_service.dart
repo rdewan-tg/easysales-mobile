@@ -52,8 +52,16 @@ final class MerchandiserCustomerService
   }
 
   @override
-  Stream<List<MerchandiserCustomerEntityData>> watchAll() {
-    return _merchandiserCustomerRepository.watchAll();
+  Stream<List<MerchandiserCustomerEntityData>> watchAll(
+    String? searchQuery,
+  ) {
+    return _merchandiserCustomerRepository.watchAll(searchQuery);
+  }
+
+  @override
+  Stream<List<SearchMerchandiserCustomerHistoryEntityData>>
+      watchSearchCustomerHistory() {
+    return _merchandiserCustomerRepository.watchSearchCustomerHistory();
   }
 
   @override
@@ -62,6 +70,37 @@ final class MerchandiserCustomerService
       return await _merchandiserCustomerRepository.getAllSettings();
     } catch (_) {
       rethrow;
+    }
+  }
+
+  @override
+  Future<void> insertOrUpdateSearchMerchandiserCustomerHistory(
+    String key,
+  ) async {
+    try {
+      await _merchandiserCustomerRepository
+          .insertOrUpdateSearchMerchandiserCustomerHistory(key);
+    } catch (e, _) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Result<int, Failure>> deleteAllSearchCustomerHistory() async {
+    try {
+      final result = await _merchandiserCustomerRepository
+          .deleteAllSearchCustomerHistory();
+
+      return Result.success(result);
+    } on Failure catch (e) {
+      return Result.error(e);
+    } catch (e, s) {
+      return Result.error(
+        Failure(
+          message: e.toString(),
+          stackTrace: s,
+        ),
+      );
     }
   }
 }

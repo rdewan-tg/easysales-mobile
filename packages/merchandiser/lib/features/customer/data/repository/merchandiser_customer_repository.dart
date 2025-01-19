@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:common/exception/failure.dart';
 import 'package:core/data/local/db/app_database.dart';
 import 'package:core/data/local/db/dao/merchandiser_customer_dao.dart';
+import 'package:core/data/local/db/dao/search_merchandiser_customer_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:dio/dio.dart';
 import 'package:merchandiser/features/customer/data/dto/request/merchandiser_customer_response.dart';
@@ -14,11 +15,14 @@ final merchandiserCustomerRepositoryProvider =
   final merchandiserCustomerApi = ref.watch(merchandiserCustomerApiProvider);
   final merchandiserCustomerDao = ref.watch(merchandiserCustomerDaoProvider);
   final settingDao = ref.watch(settingDaoProvider);
+  final searchHistoryDao = ref
+      .watch(searchMerchandiserCustomerHistoryDaoProvider); // searchHistoryDao
 
   return MerchandiserCustomerRepository(
     merchandiserCustomerApi,
     merchandiserCustomerDao,
     settingDao,
+    searchHistoryDao,
   );
 });
 
@@ -28,11 +32,13 @@ final class MerchandiserCustomerRepository
   final MerchandiserCustomerApi _merchandiserCustomerApi;
   final MerchandiserCustomerDao _merchandiserCustomerDao;
   final SettingDao _settingDao;
+  final SearchMerchandiserCustomerHistoryDao _searchHistoryDao;
 
   MerchandiserCustomerRepository(
     this._merchandiserCustomerApi,
     this._merchandiserCustomerDao,
     this._settingDao,
+    this._searchHistoryDao,
   );
 
   @override
@@ -56,8 +62,16 @@ final class MerchandiserCustomerRepository
   }
 
   @override
-  Stream<List<MerchandiserCustomerEntityData>> watchAll() {
-    return _merchandiserCustomerDao.watchAll();
+  Stream<List<MerchandiserCustomerEntityData>> watchAll(
+    String? searchQuery,
+  ) {
+    return _merchandiserCustomerDao.watchAll(searchQuery: searchQuery);
+  }
+
+  @override
+  Stream<List<SearchMerchandiserCustomerHistoryEntityData>>
+      watchSearchCustomerHistory() {
+    return _searchHistoryDao.watchAll();
   }
 
   @override
@@ -78,6 +92,36 @@ final class MerchandiserCustomerRepository
   Future<Map<String, String>> getAllSettings() {
     try {
       return _settingDao.getAllSettings();
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<void> insertOrUpdateSearchMerchandiserCustomerHistory(
+    String key,
+  ) async {
+    try {
+      await _searchHistoryDao.upsertSearchHistory(key);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<int> deleteAllSearchCustomerHistory() async {
+    try {
+      return await _searchHistoryDao.deleteAll();
     } catch (e, stackTrace) {
       // Map unexpected exceptions to Failure
       throw Failure(

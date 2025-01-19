@@ -5,7 +5,18 @@ import 'package:common/exception/failure.dart';
 abstract interface class ISalesCustomerService {
   Future<Result<bool, Failure>> getSalesCustomers(String dataAreaId);
 
-  Stream<List<SalesCustomerEntityData>> watchAll();
+  Stream<List<SalesCustomerEntityData>> watchAll(
+    String? searchQuery,
+  );
 
   Future<Map<String, String>> getAllSetting();
+
+  Future<void> insertOrUpdateSearchSalesCustomerHistory(
+    String key,
+  );
+
+  Stream<List<SearchSalesCustomerHistoryEntityData>>
+      watchSearchCustomerHistory();
+
+  Future<Result<int, Failure>> deleteAllSearchCustomerHistory();
 }

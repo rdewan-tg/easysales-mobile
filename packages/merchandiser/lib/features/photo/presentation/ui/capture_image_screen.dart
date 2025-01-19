@@ -28,9 +28,11 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
     return PopScope(
       canPop: true,
       onPopInvokedWithResult: (didPop, result) async {
-        ref
+        await ref
             .read(captureImageControllerProvider.notifier)
             .setBottomNavigationState(true);
+        // invalidate the provider
+        ref.invalidate(captureImageControllerProvider);
       },
       child: CameraAwesomeBuilder.awesome(
         onMediaCaptureEvent: (event) {
@@ -246,6 +248,36 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
             content: Text(next),
           ),
         );
+      }
+    });
+
+    // listen for photo uploaded
+    ref.listen(
+      captureImageControllerProvider.select((value) => value.isImageUploaded),
+      (_, next) {
+        if (next) {
+          // show snackbar
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 5),
+              content: Text(
+                'Photo uploaded successfully. You can now close this screen or capture another photo'
+                    .hardcoded,
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for loading
+    ref.listen(
+        captureImageControllerProvider.select((value) => value.isLoading),
+        (_, next) {
+      if (next) {
+        context.loaderOverlay.show();
+      } else {
+        context.loaderOverlay.hide();
       }
     });
   }
