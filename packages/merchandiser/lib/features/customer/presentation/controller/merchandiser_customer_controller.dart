@@ -13,26 +13,25 @@ final merchandiserCustomerProvider = AutoDisposeNotifierProvider<
 
 class MerchandiserCustomerController
     extends AutoDisposeNotifier<MerchandiserCustomerState> {
-  StreamSubscription<List<MerchandiserCustomerEntityData>>? _subscription;
+  StreamSubscription<List<MerchandiserCustomerEntityData>>?
+      _subscriptionMerchandiserCustomer;
+  StreamSubscription<List<SearchMerchandiserCustomerHistoryEntityData>>?
+      _subscriptionSearchHistory;
 
   @override
   MerchandiserCustomerState build() {
     ref.onDispose(() {
-      _subscription?.cancel();
+      _subscriptionMerchandiserCustomer?.cancel();
+      _subscriptionSearchHistory?.cancel();
     });
-    // Start listening to the merchandiser customer stream
-    watchMerchandiserCustomers();
 
     return MerchandiserCustomerState();
   }
 
   Future<void> getMerchandiserCustomers() async {
     try {
-      if (state.customers.isNotEmpty) {
-        // update the loading state
-        state = state.copyWith(isLoading: true);
-      }
-
+      state =
+          state.copyWith(isLoading: true, searchQuery: '', lastSearchQuery: '');
       // get the setting from the database
       final setting =
           await ref.read(merchandiserCustomerServiceProvider).getAllSetting();
@@ -46,9 +45,11 @@ class MerchandiserCustomerController
 
       result.when(
         (customers) {
+          watchMerchandiserCustomers();
           state = state.copyWith(isLoading: false);
         },
         (failure) {
+          watchMerchandiserCustomers();
           state = state.copyWith(errorMsg: failure.message, isLoading: false);
         },
       );
@@ -58,11 +59,15 @@ class MerchandiserCustomerController
   }
 
   Future<void> watchMerchandiserCustomers() async {
-    // Start listening to the theme mode stream
-    _subscription =
-        ref.watch(merchandiserCustomerServiceProvider).watchAll().listen(
+    final searchQuery = state.searchQuery;
+    // Start listening stream
+    _subscriptionMerchandiserCustomer = ref
+        .watch(merchandiserCustomerServiceProvider)
+        .watchAll(searchQuery)
+        .listen(
       (customers) {
-        state = state.copyWith(customers: customers);
+        state =
+            state.copyWith(customers: customers, lastSearchQuery: searchQuery);
       },
       onError: (error) {
         state = state.copyWith(errorMsg: error);
@@ -103,4 +108,63 @@ class MerchandiserCustomerController
 
     state = state.copyWith(addresses: addresses);
   }
+
+  Future<void> clearSearch() async {
+    state = state.copyWith(
+      searchQuery: '',
+      lastSearchQuery: '',
+    );
+  }
+
+  Future<void> setSearchQuery(String value) async {
+    state = state.copyWith(searchQuery: value);
+  }
+
+  Future<void> setSearchHistory(String key) async {
+    ref
+        .read(merchandiserCustomerServiceProvider)
+        .insertOrUpdateSearchMerchandiserCustomerHistory(key);
+  }
+
+  Future<void> getSearchHistory() async {
+    // Start listening stream
+    _subscriptionSearchHistory = ref
+        .watch(merchandiserCustomerServiceProvider)
+        .watchSearchCustomerHistory()
+        .listen(
+      (data) {
+        final history = data.map((e) => e.key).toList();
+        state = state.copyWith(searchHistory: history);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> clearSearchHistory() async {
+    // update the state
+    state = state.copyWith(
+      isSearchHistoryCleared: false,
+      totalSearchHistoryCleared: null,
+    );
+    // clear search history
+    final result = await ref
+        .read(merchandiserCustomerServiceProvider)
+        .deleteAllSearchCustomerHistory();
+
+    result.when((success) {
+      state = state.copyWith(
+        searchQuery: '',
+        lastSearchQuery: '',
+        searchHistory: [],
+        totalSearchHistoryCleared: success,
+        isSearchHistoryCleared: true,
+      );
+    }, (error) {
+      state = state.copyWith(errorMsg: error.message);
+    });
+  }
+
+  int? getTotalSearchHistoryCleared() => state.totalSearchHistoryCleared;
 }

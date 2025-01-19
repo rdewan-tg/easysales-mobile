@@ -50,8 +50,8 @@ final class SalesCustomerService implements ISalesCustomerService {
   }
 
   @override
-  Stream<List<SalesCustomerEntityData>> watchAll() {
-    return _salesCustomerRepository.watchAll();
+  Stream<List<SalesCustomerEntityData>> watchAll(String? searchQuery) {
+    return _salesCustomerRepository.watchAll(searchQuery);
   }
 
   @override
@@ -61,6 +61,41 @@ final class SalesCustomerService implements ISalesCustomerService {
     } catch (_) {
       rethrow;
     }
+  }
+
+  @override
+  Future<Result<int, Failure>> deleteAllSearchCustomerHistory() async {
+    try {
+      final result =
+          await _salesCustomerRepository.deleteAllSearchCustomerHistory();
+
+      return Result.success(result);
+    } on Failure catch (e) {
+      return Result.error(e);
+    } catch (e, s) {
+      return Result.error(
+        Failure(
+          message: e.toString(),
+          stackTrace: s,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<void> insertOrUpdateSearchSalesCustomerHistory(String key) async {
+    try {
+      await _salesCustomerRepository
+          .insertOrUpdateSearchSalesCustomerHistory(key);
+    } catch (e, _) {
+      rethrow;
+    }
+  }
+
+  @override
+  Stream<List<SearchSalesCustomerHistoryEntityData>>
+      watchSearchCustomerHistory() {
+    return _salesCustomerRepository.watchSearchCustomerHistory();
   }
 }
 

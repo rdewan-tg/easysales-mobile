@@ -25,3 +25,7 @@ part 'features/customer/presentation/ui/merchandiser_customer_screen.dart';
 part 'features/photo/presentation/ui/capture_image_screen.dart';
 part 'features/customer/presentation/ui/widget/customer_list_widget.dart';
 part 'features/customer/presentation/ui/widget/customer_address_list_widget.dart';
+part 'features/customer/presentation/ui/widget/search/clear_search_history.dart';
+part 'features/customer/presentation/ui/widget/search/search_suggestion.dart';
+part 'features/customer/presentation/ui/widget/search/search_query_widget.dart';
+part 'features/customer/presentation/ui/search_merchandiser_customer_screen.dart';

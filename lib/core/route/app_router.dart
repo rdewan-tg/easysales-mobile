@@ -176,6 +176,9 @@ class AppRouter {
             name: state.name,
             child: const SalesCustomerScreen(),
           ),
+          routes: [
+            _searchSalesCustomerRoute(),
+          ],
         ),
       ],
     );
@@ -192,7 +195,10 @@ class AppRouter {
             name: state.name,
             child: const MerchandiserCustomerScreen(),
           ),
-          routes: [_captureImageRoute()],
+          routes: [
+            _captureImageRoute(),
+            _searchMerchandiserCustomerRoute(),
+          ],
         ),
       ],
     );
@@ -275,6 +281,30 @@ class AppRouter {
         key: state.pageKey,
         name: state.name,
         child: const DeviceSettingScreen(),
+      ),
+    );
+  }
+
+  RouteBase _searchMerchandiserCustomerRoute() {
+    return GoRoute(
+      path: '/$searchMerchandiserCustomer',
+      name: searchMerchandiserCustomer,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const SearchMerchandiserCustomerScreen(),
+      ),
+    );
+  }
+
+  RouteBase _searchSalesCustomerRoute() {
+    return GoRoute(
+      path: '/$searchSalesCustomer',
+      name: searchSalesCustomer,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const SearchSalesCustomerScreen(),
       ),
     );
   }
