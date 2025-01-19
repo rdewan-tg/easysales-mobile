@@ -87,13 +87,40 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
               backgroundColor: Colors.red,
               content: Text(
                 next,
-                style: context.textTheme.titleSmall,
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
               ),
             ),
           );
         }
       },
     );
+
+    // listen for error
+    ref.listen(
+      merchandiserCustomerProvider
+          .select((value) => value.isSearchHistoryCleared),
+      (_, next) {
+        if (next) {
+          //  get the count
+          final count = ref
+              .read(merchandiserCustomerProvider.notifier)
+              .getTotalSearchHistoryCleared();
+          // show snackbar
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: Text(
+                '$count searched history cleared'.hardcoded,
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for loading
     ref.listen(merchandiserCustomerProvider.select((value) => value.isLoading),
         (_, next) {
       if (next) {
