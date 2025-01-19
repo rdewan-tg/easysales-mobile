@@ -33,9 +33,23 @@ class SalesCustomerDao extends DatabaseAccessor<AppDatabase>
     }
   }
 
-  Stream<List<SalesCustomerEntityData>> watchAll() {
-    return (select(salesCustomerEntity)).watch().handleError((e, s) {
+  Stream<List<SalesCustomerEntityData>> watchAll(String? searchQuery) {
+    final query = select(salesCustomerEntity);
+
+    if (searchQuery != null && searchQuery.isNotEmpty) {
+      query.where(
+        (tbl) =>
+            tbl.customerId.contains(searchQuery) | // Filter by customerId
+            tbl.customerName.contains(searchQuery), // Filter by customerName
+      );
+    }
+
+    return query.watch().handleError((e, s) {
       throw Failure(message: e.toString(), stackTrace: s);
     });
+  }
+
+  Future<int> deleteAll() async {
+    return await (delete(salesCustomerEntity)).go();
   }
 }

@@ -23,17 +23,32 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
       appBar: AppBar(
         title: Text('Customer'.hardcoded),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.go('/sales/search-sales-customer');
+            },
+            icon: const Icon(Icons.search_outlined),
+          ),
+        ],
       ),
       body: RefreshIndicator(
-        onRefresh: () {
-          return ref.read(salesCustomerProvider.notifier).getSalesCustomers();
-        },
+        onRefresh: _onRefresh,
         child: const CustomScrollView(
           slivers: [
+            SearchQueryWidget(),
             CustomerListWidget(),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _onRefresh() async {
+    // invalidate the provider
+    ref.invalidate(salesCustomerProvider);
+
+    // get the sales customers
+    return ref.read(salesCustomerProvider.notifier).getSalesCustomers();
   }
 }

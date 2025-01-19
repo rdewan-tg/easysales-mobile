@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:common/exception/failure.dart';
 import 'package:core/data/local/db/app_database.dart';
 import 'package:core/data/local/db/dao/sales_customer_dao.dart';
+import 'package:core/data/local/db/dao/search_sales_customer_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,11 +15,13 @@ final salesCustomerRepositoryProvider =
   final salesCustomerApi = ref.watch(salesCustomerApiProvider);
   final salesCustomerDao = ref.watch(salesCustomerDaoProvider);
   final settingDao = ref.watch(settingDaoProvider);
+  final searchHistoryDao = ref.watch(searchSalesCustomerHistoryDaoProvider);
 
   return SalesCustomerRepository(
     salesCustomerApi,
     salesCustomerDao,
     settingDao,
+    searchHistoryDao,
   );
 });
 
@@ -28,11 +31,13 @@ final class SalesCustomerRepository
   final SalesCustomerApi _salesCustomerApi;
   final SalesCustomerDao _salesCustomerDao;
   final SettingDao _settingDao;
+  final SearchSalesCustomerHistoryDao _searchHistoryDao;
 
   SalesCustomerRepository(
     this._salesCustomerApi,
     this._salesCustomerDao,
     this._settingDao,
+    this._searchHistoryDao,
   );
 
   @override
@@ -55,8 +60,10 @@ final class SalesCustomerRepository
   }
 
   @override
-  Stream<List<SalesCustomerEntityData>> watchAll() {
-    return _salesCustomerDao.watchAll();
+  Stream<List<SalesCustomerEntityData>> watchAll(
+    String? searchQuery,
+  ) {
+    return _salesCustomerDao.watchAll(searchQuery);
   }
 
   @override
@@ -85,5 +92,39 @@ final class SalesCustomerRepository
         stackTrace: stackTrace,
       );
     }
+  }
+
+  @override
+  Future<int> deleteAllSearchCustomerHistory() async {
+    try {
+      return await _searchHistoryDao.deleteAll();
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<void> insertOrUpdateSearchSalesCustomerHistory(String key) async {
+    try {
+      await _searchHistoryDao.upsertSearchHistory(key);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Stream<List<SearchSalesCustomerHistoryEntityData>>
+      watchSearchCustomerHistory() {
+    return _searchHistoryDao.watchAll();
   }
 }

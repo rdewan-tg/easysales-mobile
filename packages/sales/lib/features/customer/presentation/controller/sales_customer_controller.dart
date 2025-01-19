@@ -11,24 +11,24 @@ final salesCustomerProvider =
 );
 
 class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
-  StreamSubscription<List<SalesCustomerEntityData>>? _subscription;
+  StreamSubscription<List<SalesCustomerEntityData>>? _subscriptionSalesCustomer;
+  StreamSubscription<List<SearchSalesCustomerHistoryEntityData>>?
+      _subscriptionSearchHistory;
 
   @override
   SalesCustomerState build() {
     ref.onDispose(() {
-      _subscription?.cancel();
+      _subscriptionSalesCustomer?.cancel();
+      _subscriptionSearchHistory?.cancel();
     });
-    // Start listening to the merchandiser customer stream
-    watchSalesCustomers();
 
     return SalesCustomerState();
   }
 
   Future<void> getSalesCustomers() async {
     try {
-      // update the loading state
-      state = state.copyWith(isLoading: true);
-
+      state =
+          state.copyWith(isLoading: true, searchQuery: '', lastSearchQuery: '');
       // get the setting from the database
       final setting =
           await ref.read(salesCustomerServiceProvider).getAllSetting();
@@ -42,9 +42,11 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
 
       result.when(
         (customers) {
+          watchSalesCustomers();
           state = state.copyWith(isLoading: false);
         },
         (failure) {
+          watchSalesCustomers();
           state = state.copyWith(errorMsg: failure.message, isLoading: false);
         },
       );
@@ -54,14 +56,76 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
   }
 
   Future<void> watchSalesCustomers() async {
-    // Start listening to the theme mode stream
-    _subscription = ref.watch(salesCustomerServiceProvider).watchAll().listen(
+    final searchQuery = state.searchQuery;
+    // Start listening stream
+    _subscriptionSalesCustomer =
+        ref.watch(salesCustomerServiceProvider).watchAll(searchQuery).listen(
       (customers) {
-        state = state.copyWith(customers: customers);
+        state =
+            state.copyWith(customers: customers, lastSearchQuery: searchQuery);
       },
       onError: (error) {
         state = state.copyWith(errorMsg: error);
       },
     );
   }
+
+  Future<void> clearSearch() async {
+    state = state.copyWith(
+      searchQuery: '',
+      lastSearchQuery: '',
+    );
+  }
+
+  Future<void> setSearchQuery(String value) async {
+    state = state.copyWith(searchQuery: value);
+  }
+
+  Future<void> setSearchHistory(String key) async {
+    ref
+        .read(salesCustomerServiceProvider)
+        .insertOrUpdateSearchSalesCustomerHistory(key);
+  }
+
+  Future<void> getSearchHistory() async {
+    // Start listening stream
+    _subscriptionSearchHistory = ref
+        .watch(salesCustomerServiceProvider)
+        .watchSearchCustomerHistory()
+        .listen(
+      (data) {
+        final history = data.map((e) => e.key).toList();
+        state = state.copyWith(searchHistory: history);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> clearSearchHistory() async {
+    // update the state
+    state = state.copyWith(
+      isSearchHistoryCleared: false,
+      totalSearchHistoryCleared: null,
+    );
+    // clear search history
+    final result = await ref
+        .read(salesCustomerServiceProvider)
+        .deleteAllSearchCustomerHistory();
+
+    result.when((success) {
+      state = state.copyWith(
+        searchQuery: '',
+        lastSearchQuery: '',
+        searchHistory: [],
+        totalSearchHistoryCleared: success,
+        isSearchHistoryCleared: true,
+      );
+    }, (error) {
+      state = state.copyWith(errorMsg: error.message);
+    });
+  }
+
+  int? getTotalSearchHistoryCleared() => state.totalSearchHistoryCleared;
 }

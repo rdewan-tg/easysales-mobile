@@ -29,6 +29,7 @@ part 'widget/base_loading_indicator.dart';
 part 'widget/flutter_error_widget.dart';
 part 'widget/no_route_screen.dart';
 part 'widget/app_scaffold_scrollable.dart';
+part 'widget/form/custom_text_form_field.dart';
 
 part 'extension/dark_mode.dart';
 part 'extension/text_theme.dart';

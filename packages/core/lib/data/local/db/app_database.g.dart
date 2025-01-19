@@ -1969,6 +1969,342 @@ class SalesCustomerEntityCompanion
   }
 }
 
+class $SearchMerchandiserCustomerHistoryEntityTable
+    extends SearchMerchandiserCustomerHistoryEntity
+    with
+        TableInfo<$SearchMerchandiserCustomerHistoryEntityTable,
+            SearchMerchandiserCustomerHistoryEntityData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SearchMerchandiserCustomerHistoryEntityTable(this.attachedDatabase,
+      [this._alias]);
+  static const VerificationMeta _keyMeta = const VerificationMeta('key');
+  @override
+  late final GeneratedColumn<String> key = GeneratedColumn<String>(
+      'key', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [key];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'search_merchandiser_customer_history_entity';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<SearchMerchandiserCustomerHistoryEntityData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('key')) {
+      context.handle(
+          _keyMeta, key.isAcceptableOrUnknown(data['key']!, _keyMeta));
+    } else if (isInserting) {
+      context.missing(_keyMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {key};
+  @override
+  SearchMerchandiserCustomerHistoryEntityData map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SearchMerchandiserCustomerHistoryEntityData(
+      key: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}key'])!,
+    );
+  }
+
+  @override
+  $SearchMerchandiserCustomerHistoryEntityTable createAlias(String alias) {
+    return $SearchMerchandiserCustomerHistoryEntityTable(
+        attachedDatabase, alias);
+  }
+}
+
+class SearchMerchandiserCustomerHistoryEntityData extends DataClass
+    implements Insertable<SearchMerchandiserCustomerHistoryEntityData> {
+  final String key;
+  const SearchMerchandiserCustomerHistoryEntityData({required this.key});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['key'] = Variable<String>(key);
+    return map;
+  }
+
+  SearchMerchandiserCustomerHistoryEntityCompanion toCompanion(
+      bool nullToAbsent) {
+    return SearchMerchandiserCustomerHistoryEntityCompanion(
+      key: Value(key),
+    );
+  }
+
+  factory SearchMerchandiserCustomerHistoryEntityData.fromJson(
+      Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SearchMerchandiserCustomerHistoryEntityData(
+      key: serializer.fromJson<String>(json['key']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'key': serializer.toJson<String>(key),
+    };
+  }
+
+  SearchMerchandiserCustomerHistoryEntityData copyWith({String? key}) =>
+      SearchMerchandiserCustomerHistoryEntityData(
+        key: key ?? this.key,
+      );
+  SearchMerchandiserCustomerHistoryEntityData copyWithCompanion(
+      SearchMerchandiserCustomerHistoryEntityCompanion data) {
+    return SearchMerchandiserCustomerHistoryEntityData(
+      key: data.key.present ? data.key.value : this.key,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SearchMerchandiserCustomerHistoryEntityData(')
+          ..write('key: $key')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => key.hashCode;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SearchMerchandiserCustomerHistoryEntityData &&
+          other.key == this.key);
+}
+
+class SearchMerchandiserCustomerHistoryEntityCompanion
+    extends UpdateCompanion<SearchMerchandiserCustomerHistoryEntityData> {
+  final Value<String> key;
+  final Value<int> rowid;
+  const SearchMerchandiserCustomerHistoryEntityCompanion({
+    this.key = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  SearchMerchandiserCustomerHistoryEntityCompanion.insert({
+    required String key,
+    this.rowid = const Value.absent(),
+  }) : key = Value(key);
+  static Insertable<SearchMerchandiserCustomerHistoryEntityData> custom({
+    Expression<String>? key,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (key != null) 'key': key,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  SearchMerchandiserCustomerHistoryEntityCompanion copyWith(
+      {Value<String>? key, Value<int>? rowid}) {
+    return SearchMerchandiserCustomerHistoryEntityCompanion(
+      key: key ?? this.key,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (key.present) {
+      map['key'] = Variable<String>(key.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SearchMerchandiserCustomerHistoryEntityCompanion(')
+          ..write('key: $key, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SearchSalesCustomerHistoryEntityTable
+    extends SearchSalesCustomerHistoryEntity
+    with
+        TableInfo<$SearchSalesCustomerHistoryEntityTable,
+            SearchSalesCustomerHistoryEntityData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SearchSalesCustomerHistoryEntityTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _keyMeta = const VerificationMeta('key');
+  @override
+  late final GeneratedColumn<String> key = GeneratedColumn<String>(
+      'key', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [key];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'search_sales_customer_history_entity';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<SearchSalesCustomerHistoryEntityData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('key')) {
+      context.handle(
+          _keyMeta, key.isAcceptableOrUnknown(data['key']!, _keyMeta));
+    } else if (isInserting) {
+      context.missing(_keyMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {key};
+  @override
+  SearchSalesCustomerHistoryEntityData map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SearchSalesCustomerHistoryEntityData(
+      key: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}key'])!,
+    );
+  }
+
+  @override
+  $SearchSalesCustomerHistoryEntityTable createAlias(String alias) {
+    return $SearchSalesCustomerHistoryEntityTable(attachedDatabase, alias);
+  }
+}
+
+class SearchSalesCustomerHistoryEntityData extends DataClass
+    implements Insertable<SearchSalesCustomerHistoryEntityData> {
+  final String key;
+  const SearchSalesCustomerHistoryEntityData({required this.key});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['key'] = Variable<String>(key);
+    return map;
+  }
+
+  SearchSalesCustomerHistoryEntityCompanion toCompanion(bool nullToAbsent) {
+    return SearchSalesCustomerHistoryEntityCompanion(
+      key: Value(key),
+    );
+  }
+
+  factory SearchSalesCustomerHistoryEntityData.fromJson(
+      Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SearchSalesCustomerHistoryEntityData(
+      key: serializer.fromJson<String>(json['key']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'key': serializer.toJson<String>(key),
+    };
+  }
+
+  SearchSalesCustomerHistoryEntityData copyWith({String? key}) =>
+      SearchSalesCustomerHistoryEntityData(
+        key: key ?? this.key,
+      );
+  SearchSalesCustomerHistoryEntityData copyWithCompanion(
+      SearchSalesCustomerHistoryEntityCompanion data) {
+    return SearchSalesCustomerHistoryEntityData(
+      key: data.key.present ? data.key.value : this.key,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SearchSalesCustomerHistoryEntityData(')
+          ..write('key: $key')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => key.hashCode;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SearchSalesCustomerHistoryEntityData && other.key == this.key);
+}
+
+class SearchSalesCustomerHistoryEntityCompanion
+    extends UpdateCompanion<SearchSalesCustomerHistoryEntityData> {
+  final Value<String> key;
+  final Value<int> rowid;
+  const SearchSalesCustomerHistoryEntityCompanion({
+    this.key = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  SearchSalesCustomerHistoryEntityCompanion.insert({
+    required String key,
+    this.rowid = const Value.absent(),
+  }) : key = Value(key);
+  static Insertable<SearchSalesCustomerHistoryEntityData> custom({
+    Expression<String>? key,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (key != null) 'key': key,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  SearchSalesCustomerHistoryEntityCompanion copyWith(
+      {Value<String>? key, Value<int>? rowid}) {
+    return SearchSalesCustomerHistoryEntityCompanion(
+      key: key ?? this.key,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (key.present) {
+      map['key'] = Variable<String>(key.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SearchSalesCustomerHistoryEntityCompanion(')
+          ..write('key: $key, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -1977,6 +2313,12 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $MerchandiserCustomerEntityTable(this);
   late final $SalesCustomerEntityTable salesCustomerEntity =
       $SalesCustomerEntityTable(this);
+  late final $SearchMerchandiserCustomerHistoryEntityTable
+      searchMerchandiserCustomerHistoryEntity =
+      $SearchMerchandiserCustomerHistoryEntityTable(this);
+  late final $SearchSalesCustomerHistoryEntityTable
+      searchSalesCustomerHistoryEntity =
+      $SearchSalesCustomerHistoryEntityTable(this);
   late final SettingDao settingDao = SettingDao(this as AppDatabase);
   late final MerchandiserCustomerDao merchandiserCustomerDao =
       MerchandiserCustomerDao(this as AppDatabase);
@@ -1986,8 +2328,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [settingEntity, merchandiserCustomerEntity, salesCustomerEntity];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [
+        settingEntity,
+        merchandiserCustomerEntity,
+        salesCustomerEntity,
+        searchMerchandiserCustomerHistoryEntity,
+        searchSalesCustomerHistoryEntity
+      ];
   @override
   DriftDatabaseOptions get options =>
       const DriftDatabaseOptions(storeDateTimeAsText: true);
@@ -2881,6 +3228,255 @@ typedef $$SalesCustomerEntityTableProcessedTableManager = ProcessedTableManager<
     ),
     SalesCustomerEntityData,
     PrefetchHooks Function()>;
+typedef $$SearchMerchandiserCustomerHistoryEntityTableCreateCompanionBuilder
+    = SearchMerchandiserCustomerHistoryEntityCompanion Function({
+  required String key,
+  Value<int> rowid,
+});
+typedef $$SearchMerchandiserCustomerHistoryEntityTableUpdateCompanionBuilder
+    = SearchMerchandiserCustomerHistoryEntityCompanion Function({
+  Value<String> key,
+  Value<int> rowid,
+});
+
+class $$SearchMerchandiserCustomerHistoryEntityTableFilterComposer
+    extends Composer<_$AppDatabase,
+        $SearchMerchandiserCustomerHistoryEntityTable> {
+  $$SearchMerchandiserCustomerHistoryEntityTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get key => $composableBuilder(
+      column: $table.key, builder: (column) => ColumnFilters(column));
+}
+
+class $$SearchMerchandiserCustomerHistoryEntityTableOrderingComposer
+    extends Composer<_$AppDatabase,
+        $SearchMerchandiserCustomerHistoryEntityTable> {
+  $$SearchMerchandiserCustomerHistoryEntityTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get key => $composableBuilder(
+      column: $table.key, builder: (column) => ColumnOrderings(column));
+}
+
+class $$SearchMerchandiserCustomerHistoryEntityTableAnnotationComposer
+    extends Composer<_$AppDatabase,
+        $SearchMerchandiserCustomerHistoryEntityTable> {
+  $$SearchMerchandiserCustomerHistoryEntityTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get key =>
+      $composableBuilder(column: $table.key, builder: (column) => column);
+}
+
+class $$SearchMerchandiserCustomerHistoryEntityTableTableManager
+    extends RootTableManager<
+        _$AppDatabase,
+        $SearchMerchandiserCustomerHistoryEntityTable,
+        SearchMerchandiserCustomerHistoryEntityData,
+        $$SearchMerchandiserCustomerHistoryEntityTableFilterComposer,
+        $$SearchMerchandiserCustomerHistoryEntityTableOrderingComposer,
+        $$SearchMerchandiserCustomerHistoryEntityTableAnnotationComposer,
+        $$SearchMerchandiserCustomerHistoryEntityTableCreateCompanionBuilder,
+        $$SearchMerchandiserCustomerHistoryEntityTableUpdateCompanionBuilder,
+        (
+          SearchMerchandiserCustomerHistoryEntityData,
+          BaseReferences<
+              _$AppDatabase,
+              $SearchMerchandiserCustomerHistoryEntityTable,
+              SearchMerchandiserCustomerHistoryEntityData>
+        ),
+        SearchMerchandiserCustomerHistoryEntityData,
+        PrefetchHooks Function()> {
+  $$SearchMerchandiserCustomerHistoryEntityTableTableManager(
+      _$AppDatabase db, $SearchMerchandiserCustomerHistoryEntityTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SearchMerchandiserCustomerHistoryEntityTableFilterComposer(
+                  $db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SearchMerchandiserCustomerHistoryEntityTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SearchMerchandiserCustomerHistoryEntityTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> key = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SearchMerchandiserCustomerHistoryEntityCompanion(
+            key: key,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String key,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SearchMerchandiserCustomerHistoryEntityCompanion.insert(
+            key: key,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$SearchMerchandiserCustomerHistoryEntityTableProcessedTableManager
+    = ProcessedTableManager<
+        _$AppDatabase,
+        $SearchMerchandiserCustomerHistoryEntityTable,
+        SearchMerchandiserCustomerHistoryEntityData,
+        $$SearchMerchandiserCustomerHistoryEntityTableFilterComposer,
+        $$SearchMerchandiserCustomerHistoryEntityTableOrderingComposer,
+        $$SearchMerchandiserCustomerHistoryEntityTableAnnotationComposer,
+        $$SearchMerchandiserCustomerHistoryEntityTableCreateCompanionBuilder,
+        $$SearchMerchandiserCustomerHistoryEntityTableUpdateCompanionBuilder,
+        (
+          SearchMerchandiserCustomerHistoryEntityData,
+          BaseReferences<
+              _$AppDatabase,
+              $SearchMerchandiserCustomerHistoryEntityTable,
+              SearchMerchandiserCustomerHistoryEntityData>
+        ),
+        SearchMerchandiserCustomerHistoryEntityData,
+        PrefetchHooks Function()>;
+typedef $$SearchSalesCustomerHistoryEntityTableCreateCompanionBuilder
+    = SearchSalesCustomerHistoryEntityCompanion Function({
+  required String key,
+  Value<int> rowid,
+});
+typedef $$SearchSalesCustomerHistoryEntityTableUpdateCompanionBuilder
+    = SearchSalesCustomerHistoryEntityCompanion Function({
+  Value<String> key,
+  Value<int> rowid,
+});
+
+class $$SearchSalesCustomerHistoryEntityTableFilterComposer
+    extends Composer<_$AppDatabase, $SearchSalesCustomerHistoryEntityTable> {
+  $$SearchSalesCustomerHistoryEntityTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get key => $composableBuilder(
+      column: $table.key, builder: (column) => ColumnFilters(column));
+}
+
+class $$SearchSalesCustomerHistoryEntityTableOrderingComposer
+    extends Composer<_$AppDatabase, $SearchSalesCustomerHistoryEntityTable> {
+  $$SearchSalesCustomerHistoryEntityTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get key => $composableBuilder(
+      column: $table.key, builder: (column) => ColumnOrderings(column));
+}
+
+class $$SearchSalesCustomerHistoryEntityTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SearchSalesCustomerHistoryEntityTable> {
+  $$SearchSalesCustomerHistoryEntityTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get key =>
+      $composableBuilder(column: $table.key, builder: (column) => column);
+}
+
+class $$SearchSalesCustomerHistoryEntityTableTableManager
+    extends RootTableManager<
+        _$AppDatabase,
+        $SearchSalesCustomerHistoryEntityTable,
+        SearchSalesCustomerHistoryEntityData,
+        $$SearchSalesCustomerHistoryEntityTableFilterComposer,
+        $$SearchSalesCustomerHistoryEntityTableOrderingComposer,
+        $$SearchSalesCustomerHistoryEntityTableAnnotationComposer,
+        $$SearchSalesCustomerHistoryEntityTableCreateCompanionBuilder,
+        $$SearchSalesCustomerHistoryEntityTableUpdateCompanionBuilder,
+        (
+          SearchSalesCustomerHistoryEntityData,
+          BaseReferences<_$AppDatabase, $SearchSalesCustomerHistoryEntityTable,
+              SearchSalesCustomerHistoryEntityData>
+        ),
+        SearchSalesCustomerHistoryEntityData,
+        PrefetchHooks Function()> {
+  $$SearchSalesCustomerHistoryEntityTableTableManager(
+      _$AppDatabase db, $SearchSalesCustomerHistoryEntityTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SearchSalesCustomerHistoryEntityTableFilterComposer(
+                  $db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SearchSalesCustomerHistoryEntityTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SearchSalesCustomerHistoryEntityTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> key = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SearchSalesCustomerHistoryEntityCompanion(
+            key: key,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String key,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SearchSalesCustomerHistoryEntityCompanion.insert(
+            key: key,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$SearchSalesCustomerHistoryEntityTableProcessedTableManager
+    = ProcessedTableManager<
+        _$AppDatabase,
+        $SearchSalesCustomerHistoryEntityTable,
+        SearchSalesCustomerHistoryEntityData,
+        $$SearchSalesCustomerHistoryEntityTableFilterComposer,
+        $$SearchSalesCustomerHistoryEntityTableOrderingComposer,
+        $$SearchSalesCustomerHistoryEntityTableAnnotationComposer,
+        $$SearchSalesCustomerHistoryEntityTableCreateCompanionBuilder,
+        $$SearchSalesCustomerHistoryEntityTableUpdateCompanionBuilder,
+        (
+          SearchSalesCustomerHistoryEntityData,
+          BaseReferences<_$AppDatabase, $SearchSalesCustomerHistoryEntityTable,
+              SearchSalesCustomerHistoryEntityData>
+        ),
+        SearchSalesCustomerHistoryEntityData,
+        PrefetchHooks Function()>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -2893,6 +3489,14 @@ class $AppDatabaseManager {
               _db, _db.merchandiserCustomerEntity);
   $$SalesCustomerEntityTableTableManager get salesCustomerEntity =>
       $$SalesCustomerEntityTableTableManager(_db, _db.salesCustomerEntity);
+  $$SearchMerchandiserCustomerHistoryEntityTableTableManager
+      get searchMerchandiserCustomerHistoryEntity =>
+          $$SearchMerchandiserCustomerHistoryEntityTableTableManager(
+              _db, _db.searchMerchandiserCustomerHistoryEntity);
+  $$SearchSalesCustomerHistoryEntityTableTableManager
+      get searchSalesCustomerHistoryEntity =>
+          $$SearchSalesCustomerHistoryEntityTableTableManager(
+              _db, _db.searchSalesCustomerHistoryEntity);
 }
 
 // **************************************************************************
