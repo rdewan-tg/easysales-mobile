@@ -6,6 +6,7 @@ part 'capture_image_state.freezed.dart';
 class CaptureImageState with _$CaptureImageState {
   factory CaptureImageState({
     @Default(false) bool isLoading,
+    @Default(false) bool isUploading,
     @Default(false) bool isImageUploaded,
     @Default({}) Map<String, String> settings,
     String? errorMsg,

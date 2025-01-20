@@ -7,9 +7,8 @@ class BaseLoadingIndicator extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
       child: LoadingAnimationWidget.progressiveDots(
-        color: context.isDarkMode
-            ? context.themeColor.primaryColorLight
-            : context.themeColor.primaryColor,
+        color:
+            context.isDarkMode ? Colors.white : context.themeColor.primaryColor,
         size: 60,
       ),
     );

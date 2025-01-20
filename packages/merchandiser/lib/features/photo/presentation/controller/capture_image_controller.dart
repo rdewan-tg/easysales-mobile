@@ -52,10 +52,19 @@ class CaptureImageController extends Notifier<CaptureImageState> {
 
       result.when(
         (success) {
-          state = state.copyWith(isLoading: false, isImageUploaded: true);
+          state = state.copyWith(
+            isLoading: false,
+            isImageUploaded: true,
+            isUploading: false,
+          );
         },
         (error) {
-          state = state.copyWith(errorMsg: error.message);
+          state = state.copyWith(
+            errorMsg: error.message,
+            isLoading: false,
+            isImageUploaded: false,
+            isUploading: false,
+          );
         },
       );
     } catch (e) {
@@ -72,6 +81,8 @@ class CaptureImageController extends Notifier<CaptureImageState> {
   Future<void> setIsNotCapturing() async {
     state = state.copyWith(isLoading: false);
   }
+
+  void setIsUploading(bool value) => state = state.copyWith(isUploading: value);
 
   Future<void> setBottomNavigationState(bool value) async {
     ref.read(bottomNavigationStateProvider.notifier).state = value;
