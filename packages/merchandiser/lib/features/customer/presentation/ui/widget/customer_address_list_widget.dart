@@ -22,6 +22,7 @@ class _CustomerAddressListWidgetState
         .watch(merchandiserCustomerProvider.select((value) => value.addresses));
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Row(
           children: [
@@ -29,7 +30,7 @@ class _CustomerAddressListWidgetState
             Padding(
               padding: const EdgeInsets.only(left: kMedium, top: kSmall),
               child: IconButton(
-                onPressed: () => widget.onClose(),
+                onPressed: widget.onClose,
                 icon: const Icon(Icons.close),
               ),
             ),

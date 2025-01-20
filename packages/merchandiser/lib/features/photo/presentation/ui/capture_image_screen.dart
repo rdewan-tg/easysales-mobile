@@ -125,6 +125,9 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
   }
 
   Future<Null>? _saveSingleImage(SingleCaptureRequest single) async {
+    // set isUploading to true - which should show the loading indicator
+    ref.read(captureImageControllerProvider.notifier).setIsUploading(true);
+    // get the file
     final file = single.file;
     if (file == null) return;
 
@@ -272,7 +275,7 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
 
     // listen for loading
     ref.listen(
-        captureImageControllerProvider.select((value) => value.isLoading),
+        captureImageControllerProvider.select((value) => value.isUploading),
         (_, next) {
       if (next) {
         context.loaderOverlay.show();

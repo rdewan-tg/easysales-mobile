@@ -1,14 +1,5 @@
 part of merchandiser;
 
-enum AnimationStyles { defaultStyle, custom, none }
-
-const List<(AnimationStyles, String)> animationStyleSegments =
-    <(AnimationStyles, String)>[
-  (AnimationStyles.defaultStyle, 'Default'),
-  (AnimationStyles.custom, 'Custom'),
-  (AnimationStyles.none, 'None'),
-];
-
 class CustomerListWidget extends ConsumerStatefulWidget {
   const CustomerListWidget({super.key});
 
@@ -26,7 +17,7 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
     super.initState();
     _animationStyle = AnimationStyle(
       duration: const Duration(seconds: 1),
-      reverseDuration: const Duration(seconds: 500),
+      reverseDuration: const Duration(seconds: 1),
     );
   }
 
