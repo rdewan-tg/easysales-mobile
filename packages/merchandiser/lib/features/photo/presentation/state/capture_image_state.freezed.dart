@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CaptureImageState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isUploading => throw _privateConstructorUsedError;
   bool get isImageUploaded => throw _privateConstructorUsedError;
   Map<String, String> get settings => throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
@@ -36,6 +37,7 @@ abstract class $CaptureImageStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      bool isUploading,
       bool isImageUploaded,
       Map<String, String> settings,
       String? errorMsg});
@@ -57,6 +59,7 @@ class _$CaptureImageStateCopyWithImpl<$Res, $Val extends CaptureImageState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isUploading = null,
     Object? isImageUploaded = null,
     Object? settings = null,
     Object? errorMsg = freezed,
@@ -65,6 +68,10 @@ class _$CaptureImageStateCopyWithImpl<$Res, $Val extends CaptureImageState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUploading: null == isUploading
+          ? _value.isUploading
+          : isUploading // ignore: cast_nullable_to_non_nullable
               as bool,
       isImageUploaded: null == isImageUploaded
           ? _value.isImageUploaded
@@ -92,6 +99,7 @@ abstract class _$$CaptureImageStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      bool isUploading,
       bool isImageUploaded,
       Map<String, String> settings,
       String? errorMsg});
@@ -111,6 +119,7 @@ class __$$CaptureImageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isUploading = null,
     Object? isImageUploaded = null,
     Object? settings = null,
     Object? errorMsg = freezed,
@@ -119,6 +128,10 @@ class __$$CaptureImageStateImplCopyWithImpl<$Res>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUploading: null == isUploading
+          ? _value.isUploading
+          : isUploading // ignore: cast_nullable_to_non_nullable
               as bool,
       isImageUploaded: null == isImageUploaded
           ? _value.isImageUploaded
@@ -141,6 +154,7 @@ class __$$CaptureImageStateImplCopyWithImpl<$Res>
 class _$CaptureImageStateImpl implements _CaptureImageState {
   _$CaptureImageStateImpl(
       {this.isLoading = false,
+      this.isUploading = false,
       this.isImageUploaded = false,
       final Map<String, String> settings = const {},
       this.errorMsg})
@@ -149,6 +163,9 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isUploading;
   @override
   @JsonKey()
   final bool isImageUploaded;
@@ -166,7 +183,7 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
 
   @override
   String toString() {
-    return 'CaptureImageState(isLoading: $isLoading, isImageUploaded: $isImageUploaded, settings: $settings, errorMsg: $errorMsg)';
+    return 'CaptureImageState(isLoading: $isLoading, isUploading: $isUploading, isImageUploaded: $isImageUploaded, settings: $settings, errorMsg: $errorMsg)';
   }
 
   @override
@@ -176,6 +193,8 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
             other is _$CaptureImageStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isUploading, isUploading) ||
+                other.isUploading == isUploading) &&
             (identical(other.isImageUploaded, isImageUploaded) ||
                 other.isImageUploaded == isImageUploaded) &&
             const DeepCollectionEquality().equals(other._settings, _settings) &&
@@ -184,8 +203,13 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isImageUploaded,
-      const DeepCollectionEquality().hash(_settings), errorMsg);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isUploading,
+      isImageUploaded,
+      const DeepCollectionEquality().hash(_settings),
+      errorMsg);
 
   /// Create a copy of CaptureImageState
   /// with the given fields replaced by the non-null parameter values.
@@ -200,12 +224,15 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
 abstract class _CaptureImageState implements CaptureImageState {
   factory _CaptureImageState(
       {final bool isLoading,
+      final bool isUploading,
       final bool isImageUploaded,
       final Map<String, String> settings,
       final String? errorMsg}) = _$CaptureImageStateImpl;
 
   @override
   bool get isLoading;
+  @override
+  bool get isUploading;
   @override
   bool get isImageUploaded;
   @override
