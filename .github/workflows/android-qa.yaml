@@ -1,0 +1,142 @@
+
+name: Flutter - Android Build QA
+
+on:
+  # Validate PR builds
+  pull_request:
+    branches:
+      - qa
+
+env:
+  ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
+  ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
+  ANDROID_LOCAL_PROPERTIES: ${{ secrets.ANDROID_LOCAL_PROPERTIES }}
+  FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
+  ENV_DEV: ${{ secrets.ENV_DEV }}
+  ENV_QA: ${{ secrets.ENV_QA }}
+  ENV_PROD: ${{ secrets.ENV_PROD }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: PROD
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: gradle
+
+      - name: Setup key.properties file
+        run: |
+          echo "${{env.ANDROID_KEY_PROPERTIES}}" | base64 --decode > android/key.properties
+
+      - name: Setup local.properties file
+        run: |
+          echo "${{env.ANDROID_LOCAL_PROPERTIES}}" | base64 --decode > android/local.properties
+
+      - name: Setup keystore file
+        run: |
+          echo "${{env.ANDROID_KEYSTORE}}" | base64 --decode > android/keystore/tonggarden.jks
+
+      - name: Setup Flutter Translation Sheet Credentials
+        run: |
+          echo "${{env.FLUTTER_TRANSLATION_SHEET_CREDENTIALS}}" | base64 --decode > packages/common/credentials.json 
+          
+      - name: Setup .env file
+        run: |
+          echo "${{env.ENV_DEV}}" | base64 --decode > packages/core/.dev.env
+          echo "${{env.ENV_QA}}" | base64 --decode > packages/core/.qa.env
+          echo "${{env.ENV_PROD}}" | base64 --decode > packages/core/.prod.env
+
+      - name: Setup FVM
+        uses: kuhnroyal/flutter-fvm-config-action/config@v3
+        id: fvm-config-action
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Setup Flutter Translation Sheet
+        run: |
+          cd packages/common
+          dart run flutter_translation_sheet:main fetch
+          cd ../../
+
+      - name: Build Runner Setup
+        run: |
+          cd packages/core
+          pwd
+          
+          echo Getting dependencies
+          flutter pub get >> /dev/null
+
+          echo Running build_runner in packages/core
+          flutter pub run build_runner build -d 
+          
+          echo Done running build_runner. Navigating up to root directory
+          cd ../../    
+          flutter pub get >> /dev/null
+
+      # Formats the dart code
+      - name: Auto-format Dart code
+        run: dart format .
+
+      # Verifies if the dart code is formatted well
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+        # --set-exit-if-changed stops execution if the any code is not well formatted
+        # --output=none prints files which needs to be formatted
+
+      # Checks for Symantic errors. Can be configured using analysis_options.yaml
+      - name: Analyze project source
+        run: flutter analyze --fatal-warnings
+        # optionally use --fatal-warnings to stop execution if any warnings are found
+
+      # Runs unit test
+      - name: Run tests
+        run: flutter test
+
+      - name: Setup Google Play Service Account JSON
+        run: echo "${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}" | base64 --decode > google_playservice_account.json
+
+      - name: Install Python Dependencies
+        run: pip install google-api-python-client google-auth google-auth-oauthlib
+
+      - name: Fetch Version Info from Google Play (Closed Testing)
+        id: fetch_version_info
+        run: |
+          cd scripts
+          python fetch_version_info.py
+          cd ..
+
+      - name: Display Version Info
+        run: |
+          echo "Version Code: ${{ steps.fetch_version_info.outputs.version_code }}"
+          echo "Version Name: ${{ steps.fetch_version_info.outputs.version_name }}"
+
+      - name: Build Release Version
+        run: |
+          flutter build appbundle \
+            --release \
+            --build-name=${{ steps.fetch_version_info.outputs.version_name }} \
+            --build-number=${{ steps.fetch_version_info.outputs.version_code }} \
+            --obfuscate \
+            --split-debug-info=build/app/symbols \
+            --flavor qa \
+            -t lib/main_qa.dart
+
+      # Upload the built AAB as an artifact
+      - name: Upload AAB as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-release-aab
+          path: build/app/outputs/bundle/qaRelease/app-qa-release.aab
+
+  

@@ -1,0 +1,131 @@
+import 'dart:async';
+
+import 'package:core/data/local/db/app_database.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sales/features/customer/application/sales_customer_service.dart';
+import 'package:sales/features/customer/presentation/state/sales_customer_state.dart';
+
+final salesCustomerProvider =
+    AutoDisposeNotifierProvider<SalesCustomerController, SalesCustomerState>(
+  SalesCustomerController.new,
+);
+
+class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
+  StreamSubscription<List<SalesCustomerEntityData>>? _subscriptionSalesCustomer;
+  StreamSubscription<List<SearchSalesCustomerHistoryEntityData>>?
+      _subscriptionSearchHistory;
+
+  @override
+  SalesCustomerState build() {
+    ref.onDispose(() {
+      _subscriptionSalesCustomer?.cancel();
+      _subscriptionSearchHistory?.cancel();
+    });
+
+    return SalesCustomerState();
+  }
+
+  Future<void> getSalesCustomers() async {
+    try {
+      state =
+          state.copyWith(isLoading: true, searchQuery: '', lastSearchQuery: '');
+      // get the setting from the database
+      final setting =
+          await ref.read(salesCustomerServiceProvider).getAllSetting();
+      // get the companyCode from map
+      final dataAreaId = setting['companyCode'] ?? 'SGMA';
+
+      // get the merchandiser customers from from api and inset it to the database
+      final result = await ref
+          .read(salesCustomerServiceProvider)
+          .getSalesCustomers(dataAreaId);
+
+      result.when(
+        (customers) {
+          watchSalesCustomers();
+          state = state.copyWith(isLoading: false);
+        },
+        (failure) {
+          watchSalesCustomers();
+          state = state.copyWith(errorMsg: failure.message, isLoading: false);
+        },
+      );
+    } catch (e) {
+      state = state.copyWith(errorMsg: e.toString(), isLoading: false);
+    }
+  }
+
+  Future<void> watchSalesCustomers() async {
+    final searchQuery = state.searchQuery;
+    // Start listening stream
+    _subscriptionSalesCustomer =
+        ref.watch(salesCustomerServiceProvider).watchAll(searchQuery).listen(
+      (customers) {
+        state =
+            state.copyWith(customers: customers, lastSearchQuery: searchQuery);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> clearSearch() async {
+    state = state.copyWith(
+      searchQuery: '',
+      lastSearchQuery: '',
+    );
+  }
+
+  Future<void> setSearchQuery(String value) async {
+    state = state.copyWith(searchQuery: value);
+  }
+
+  Future<void> setSearchHistory(String key) async {
+    ref
+        .read(salesCustomerServiceProvider)
+        .insertOrUpdateSearchSalesCustomerHistory(key);
+  }
+
+  Future<void> getSearchHistory() async {
+    // Start listening stream
+    _subscriptionSearchHistory = ref
+        .watch(salesCustomerServiceProvider)
+        .watchSearchCustomerHistory()
+        .listen(
+      (data) {
+        final history = data.map((e) => e.key).toList();
+        state = state.copyWith(searchHistory: history);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> clearSearchHistory() async {
+    // update the state
+    state = state.copyWith(
+      isSearchHistoryCleared: false,
+      totalSearchHistoryCleared: null,
+    );
+    // clear search history
+    final result = await ref
+        .read(salesCustomerServiceProvider)
+        .deleteAllSearchCustomerHistory();
+
+    result.when((success) {
+      state = state.copyWith(
+        searchQuery: '',
+        lastSearchQuery: '',
+        searchHistory: [],
+        totalSearchHistoryCleared: success,
+        isSearchHistoryCleared: true,
+      );
+    }, (error) {
+      state = state.copyWith(errorMsg: error.message);
+    });
+  }
+
+  int? getTotalSearchHistoryCleared() => state.totalSearchHistoryCleared;
+}

@@ -29,6 +29,7 @@ part 'widget/base_loading_indicator.dart';
 part 'widget/flutter_error_widget.dart';
 part 'widget/no_route_screen.dart';
 part 'widget/app_scaffold_scrollable.dart';
+part 'widget/form/custom_text_form_field.dart';
 
 part 'extension/dark_mode.dart';
 part 'extension/text_theme.dart';
@@ -40,6 +41,7 @@ part 'enum/user_role.dart';
 
 part 'provider/scroll_controller_povider.dart';
 part 'provider/auth_state_provider.dart';
+part 'provider/bottom_navigation_state_povider.dart';
 
 part 'mixin/dio_exception_mapper.dart';
 part 'mixin/error_dialog_mixin.dart';

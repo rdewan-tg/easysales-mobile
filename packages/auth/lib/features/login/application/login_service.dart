@@ -27,7 +27,13 @@ final class LoginService implements ILoginService {
         'name': result.data.user.name,
         'phoneNumber': result.data.user.phoneNumber ?? '-',
         'companyName': result.data.user.company.name,
+        'companyCode': result.data.user.company.companyCode ?? '-',
         'timeZone': result.data.user.company.timeZone,
+        'deviceId': result.data.user.deviceSetting.deviceId ?? '-',
+        'salesPersonCode':
+            result.data.user.deviceSetting.salesPersonCode ?? '-',
+        'orderNumberFormat':
+            result.data.user.deviceSetting.orderNumberFormat ?? '-',
       });
 
       return const Success(true);

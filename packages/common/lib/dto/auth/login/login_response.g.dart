@@ -52,6 +52,8 @@ _$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
           .map((e) => RoleDto.fromJson(e as Map<String, dynamic>))
           .toList(),
       company: CompanyDto.fromJson(json['company'] as Map<String, dynamic>),
+      deviceSetting: DeviceSettingDto.fromJson(
+          json['deviceSetting'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
@@ -63,6 +65,7 @@ Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
       'photo': instance.photo,
       'role': instance.role,
       'company': instance.company,
+      'deviceSetting': instance.deviceSetting,
     };
 
 _$RoleDtoImpl _$$RoleDtoImplFromJson(Map<String, dynamic> json) =>
@@ -90,6 +93,8 @@ _$CompanyDtoImpl _$$CompanyDtoImplFromJson(Map<String, dynamic> json) =>
     _$CompanyDtoImpl(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
+      companyCode: json['companyCode'] as String?,
+      countryCode: json['countryCode'] as String?,
       timeZone: json['timeZone'] as String,
     );
 
@@ -97,5 +102,23 @@ Map<String, dynamic> _$$CompanyDtoImplToJson(_$CompanyDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'companyCode': instance.companyCode,
+      'countryCode': instance.countryCode,
       'timeZone': instance.timeZone,
+    };
+
+_$DeviceSettingDtoImpl _$$DeviceSettingDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DeviceSettingDtoImpl(
+      deviceId: json['deviceId'] as String?,
+      salesPersonCode: json['salesPersonCode'] as String?,
+      orderNumberFormat: json['orderNumberFormat'] as String?,
+    );
+
+Map<String, dynamic> _$$DeviceSettingDtoImplToJson(
+        _$DeviceSettingDtoImpl instance) =>
+    <String, dynamic>{
+      'deviceId': instance.deviceId,
+      'salesPersonCode': instance.salesPersonCode,
+      'orderNumberFormat': instance.orderNumberFormat,
     };

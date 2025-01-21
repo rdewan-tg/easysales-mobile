@@ -211,6 +211,16 @@ fvm flutter pub run build_runner build -d
     shorebird patch --platforms=ios --flavor=prod --target=lib/main_prod.dart    
     ```
 
+### Drift Migration
+- Before you start making changes to your initial database schema, run this command to generate the initial schema file.
+```bash
+dart run drift_dev make-migrations
+```
+- Once you're happy with the changes, bump the schemaVersion in your database class and run the command again.
+```bash
+dart run drift_dev make-migrations
+```
+
 #### Git Hook
 - configure Git to look for the hooks in the given directory `.githooks/`.
 ```bash

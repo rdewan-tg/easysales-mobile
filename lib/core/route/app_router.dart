@@ -18,13 +18,14 @@ import 'package:setting/setting.dart';
 final goRouterProvider = Provider<GoRouter>((ref) {
   final notifier = ref.read(goRouterNotifierProvider);
   // final observer = ref.read(routeObserverProvider);
-  // final navigatorObserver = ref.read(appNavigatorObserverObserverProvider);
+  final navigatorObserver = ref.watch(appNavigatorObserverObserverProvider);
   // final logger = ref.read(loggerProvider('GoRouter'));
   final secureStorage = ref.watch(secureStorageProvider);
 
   final appRoute = AppRouter(
     secureStorage: secureStorage,
     notifier: notifier,
+    navigatorObserver: navigatorObserver,
   );
 
   return appRoute.router;
@@ -33,16 +34,23 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 class AppRouter {
   ISecureStorage secureStorage;
   GoRouterNotifier notifier;
+  NavigatorObserver navigatorObserver;
+
   final GlobalKey<NavigatorState> rootNavigatorKey =
       GlobalKey(debugLabel: 'root');
   bool isDuplicate = false;
 
-  AppRouter({required this.secureStorage, required this.notifier});
+  AppRouter({
+    required this.secureStorage,
+    required this.notifier,
+    required this.navigatorObserver,
+  });
 
   GoRouter get router {
     return GoRouter(
       restorationScopeId: 'router',
       navigatorKey: rootNavigatorKey,
+      observers: [navigatorObserver],
       refreshListenable: notifier,
       initialLocation: '/',
       redirect: _redirect,
@@ -83,7 +91,6 @@ class AppRouter {
     return [
       _loginRoute(),
       _signupRoute(),
-      _captureImageRoute(),
       _dashboardRoute(),
     ];
   }
@@ -94,6 +101,7 @@ class AppRouter {
       name: loginRoute,
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
+        name: state.name,
         child: const LoginScreen(),
       ),
       routes: [
@@ -108,6 +116,7 @@ class AppRouter {
       name: signupRoute,
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
+        name: state.name,
         child: const SignUpScreen(),
       ),
     );
@@ -119,6 +128,7 @@ class AppRouter {
       name: forgotPasswordRoute,
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
+        name: state.name,
         child: const ForgotPasswordScreen(),
       ),
     );
@@ -147,6 +157,7 @@ class AppRouter {
           name: homeRoute,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
+            name: state.name,
             child: const HomeScreen(),
           ),
         ),
@@ -162,8 +173,12 @@ class AppRouter {
           name: salesRoute,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
-            child: const SalesScreen(),
+            name: state.name,
+            child: const SalesCustomerScreen(),
           ),
+          routes: [
+            _searchSalesCustomerRoute(),
+          ],
         ),
       ],
     );
@@ -177,8 +192,13 @@ class AppRouter {
           name: merchandiserRoute,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
-            child: const MerchandiserScreen(),
+            name: state.name,
+            child: const MerchandiserCustomerScreen(),
           ),
+          routes: [
+            _captureImageRoute(),
+            _searchMerchandiserCustomerRoute(),
+          ],
         ),
       ],
     );
@@ -192,12 +212,14 @@ class AppRouter {
           name: settingRoute,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
+            name: state.name,
             child: const SettingScreen(),
           ),
           routes: [
             _themeRoute(),
             _languageRoute(),
             _profileRoute(),
+            _deviceSettingRoute(),
           ],
         ),
       ],
@@ -208,10 +230,10 @@ class AppRouter {
     return GoRoute(
       path: '/$captureImageRoute',
       name: captureImageRoute,
-      pageBuilder: (context, state) => NoTransitionPage(
-        key: state.pageKey,
-        child: const CaptureImageScreen(),
-      ),
+      builder: (context, state) {
+        final extras = state.extra as Map<String, dynamic>;
+        return CaptureImageScreen(extras: extras);
+      },
     );
   }
 
@@ -221,6 +243,7 @@ class AppRouter {
       name: themeRoute,
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
+        name: state.name,
         child: const ThemePickerScreen(),
       ),
     );
@@ -232,6 +255,7 @@ class AppRouter {
       name: languageRoute,
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
+        name: state.name,
         child: const LanguagePickerScreen(),
       ),
     );
@@ -243,7 +267,44 @@ class AppRouter {
       name: profileRoute,
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
+        name: state.name,
         child: const ProfileScreen(),
+      ),
+    );
+  }
+
+  RouteBase _deviceSettingRoute() {
+    return GoRoute(
+      path: '/$deviceSettingRoute',
+      name: deviceSettingRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const DeviceSettingScreen(),
+      ),
+    );
+  }
+
+  RouteBase _searchMerchandiserCustomerRoute() {
+    return GoRoute(
+      path: '/$searchMerchandiserCustomer',
+      name: searchMerchandiserCustomer,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const SearchMerchandiserCustomerScreen(),
+      ),
+    );
+  }
+
+  RouteBase _searchSalesCustomerRoute() {
+    return GoRoute(
+      path: '/$searchSalesCustomer',
+      name: searchSalesCustomer,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const SearchSalesCustomerScreen(),
       ),
     );
   }

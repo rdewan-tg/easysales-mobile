@@ -38,50 +38,66 @@ final class NetworkServiceInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     try {
-      // handle unauthorized error
       if (err.response?.statusCode == unauthorized &&
           err.requestOptions.path != loginEndPoint) {
-        final token = await _tokenService.getRefreshToken();
+        // Attempt to refresh the token
+        final refreshToken = await _tokenService.getRefreshToken();
+
+        if (refreshToken == null) {
+          // No refresh token available, pass the error
+          return handler.next(err);
+        }
 
         try {
-          // refresh token request - api call
-          final result = await _tokenService.refreshToken(token);
+          // Refresh the token
+          final result = await _tokenService.refreshToken(refreshToken);
+          final newAccessToken = result.data.accessToken;
+          final newRefreshToken = result.data.refreshToken;
 
-          final accesToken = result.data.accessToken;
-          final refreshToken = result.data.refreshToken;
+          // Save the new tokens
+          await _tokenService.saveToken(newAccessToken, newRefreshToken);
 
-          // save new access token and refresh token to secure storage
-          await _tokenService.saveToken(accesToken, refreshToken);
+          // Clone the original request options
+          final options = Options(
+            method: err.requestOptions.method,
+            headers: {
+              ...err.requestOptions.headers,
+              'Authorization':
+                  'Bearer $newAccessToken', // Update the Authorization header
+            },
+          );
 
-          final options = err.requestOptions;
-          // update request headers with new access token
-          options.headers['Authorization'] = 'Bearer $accesToken';
-          // repeat the request with new access token
-          return handler.resolve(await _dio.fetch(options));
-        } on DioException catch (e) {
-          if (e.response?.statusCode == refreshTokenExpired) {
-            // remove access token and refresh token from secure storage
+          // Retry the request with updated headers
+          final retryResponse = await _dio.request(
+            err.requestOptions.path,
+            data: err.requestOptions.data,
+            queryParameters: err.requestOptions.queryParameters,
+            options: options,
+          );
+
+          // Resolve the retry response
+          return handler.resolve(retryResponse);
+        } on DioException catch (refreshError) {
+          if (refreshError.response?.statusCode == refreshTokenExpired) {
+            // If refresh token is expired, clear tokens and pass the error
             await _tokenService.clearToken();
-            // Continue with the refresh token error
-            return handler.next(err);
           }
-
-          // continue with the error
+          // Pass the original error if refresh fails
           return handler.next(err);
         }
       }
     } catch (e) {
-      // Handle unexpected errors during token refresh
-      handler.reject(
+      // Handle unexpected errors
+      return handler.reject(
         DioException(
           requestOptions: err.requestOptions,
           type: DioExceptionType.unknown,
-          error: 'Error handling interceptor: ${e.toString()}',
+          error: 'Interceptor error: ${e.toString()}',
         ),
       );
     }
 
-    // continue with the error
+    // If it's not an unauthorized error, pass the error as is
     return handler.next(err);
   }
 }
