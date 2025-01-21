@@ -28,10 +28,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Flutter
+      - name: Setup FVM
+        uses: kuhnroyal/flutter-fvm-config-action/config@v3
+        id: fvm-config-action
+
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: stable
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
       - name: Install CocoaPods
         run: |
@@ -47,14 +52,6 @@ jobs:
           echo "${{ env.ENV_DEV }}" | base64 --decode > packages/core/.dev.env
           echo "${{ env.ENV_QA }}" | base64 --decode > packages/core/.qa.env
           echo "${{ env.ENV_PROD }}" | base64 --decode > packages/core/.prod.env
-
-      - name: Decode iOS Certificate
-        run: |
-          echo "${{ env.IOS_CERTIFICATE }}" | base64 --decode > ios_distribution.p12
-
-      - name: Decode Provisioning Profile
-        run: |
-          echo "${{ env.IOS_PROVISIONING_PROFILE }}" | base64 --decode > dev.mobileprovision
 
       - name: Install iOS Certificates
         uses: nickwph/apple-build-certificate-action@v1
