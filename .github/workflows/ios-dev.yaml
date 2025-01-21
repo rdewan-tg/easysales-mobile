@@ -1,0 +1,120 @@
+name: Flutter - iOS Build Dev
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+env:
+  IOS_CERTIFICATE: ${{ secrets.IOS_CERTIFICATE }}
+  IOS_CERTIFICATE_PASSWORD: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+  IOS_PROVISIONING_PROFILE: ${{ secrets.IOS_PROVISIONING_PROFILE }}
+  FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
+  APPLE_DISTRIBUTION_CERTIFICATE_BASE64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
+  APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+  APPLE_PROVISION_DEV_PROFILE_BASE64: ${{ secrets.APPLE_PROVISION_DEV_PROFILE_BASE64 }}
+  ENV_DEV: ${{ secrets.ENV_DEV }}
+  ENV_QA: ${{ secrets.ENV_QA }}
+  ENV_PROD: ${{ secrets.ENV_PROD }}
+
+jobs:
+  build:
+    runs-on: macos-latest
+    environment: DEV
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
+
+      - name: Install CocoaPods
+        run: |
+          sudo gem install cocoapods
+          pod setup
+
+      - name: Setup Flutter Translation Sheet Credentials
+        run: |
+          echo "${{ env.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}" | base64 --decode > packages/common/credentials.json
+
+      - name: Setup .env files
+        run: |
+          echo "${{ env.ENV_DEV }}" | base64 --decode > packages/core/.dev.env
+          echo "${{ env.ENV_QA }}" | base64 --decode > packages/core/.qa.env
+          echo "${{ env.ENV_PROD }}" | base64 --decode > packages/core/.prod.env
+
+      - name: Decode iOS Certificate
+        run: |
+          echo "${{ env.IOS_CERTIFICATE }}" | base64 --decode > ios_distribution.p12
+
+      - name: Decode Provisioning Profile
+        run: |
+          echo "${{ env.IOS_PROVISIONING_PROFILE }}" | base64 --decode > dev.mobileprovision
+
+      - name: Install iOS Certificates
+        uses: nickwph/apple-build-certificate-action@v1
+        with:
+          certificate-base64: ${{ env.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
+          certificate-password: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
+
+      - name: Install Provisioning Profile
+        uses: nickwph/apple-provisioning-profile-action@v1
+        with:
+          profile-base64: ${{ env.APPLE_PROVISION_DEV_PROFILE_BASE64 }}  
+
+      - name: Build Runner Setup
+        run: |
+          cd packages/core
+          pwd
+          
+          echo Getting dependencies
+          flutter pub get >> /dev/null
+
+          echo Running build_runner in packages/core
+          flutter pub run build_runner build -d 
+          
+          echo Done running build_runner. Navigating up to root directory
+          cd ../../    
+          flutter pub get >> /dev/null
+
+      - name: Auto-format Dart code
+        run: dart format .
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze project source
+        run: flutter analyze --fatal-warnings
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build iOS App
+        run: |
+          flutter build ipa \
+            --release \
+            --build-name=1.0.0 \
+            --build-number=1 \
+            --obfuscate \
+            --split-debug-info=build/app/symbols \
+            --flavor dev \
+            -t lib/main_dev.dart
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: dev-ipa
+          path: build/ios/ipa/*.ipa
+
+      # - name: Upload to Firebase App Distribution
+      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
+      #   with:
+      #     appId: ${{ secrets.FIREBASE_APP_ID }}
+      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+      #     groups: "android-internal"
+      #     file: build/ios/ipa/app-dev-release.ipa
