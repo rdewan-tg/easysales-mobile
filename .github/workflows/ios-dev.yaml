@@ -45,6 +45,11 @@ jobs:
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
+      - name: Install Flutter Dependencies
+        run: |
+          flutter pub get >> /dev/null
+
+          
       # - name: Install CocoaPods
       #   run: |
       #     sudo gem install cocoapods
