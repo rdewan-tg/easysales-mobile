@@ -49,7 +49,7 @@ jobs:
         run: |
           flutter pub get >> /dev/null
 
-          
+
       # - name: Install CocoaPods
       #   run: |
       #     sudo gem install cocoapods
@@ -58,7 +58,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd ios
-          pod install --repo-update
+          pod install
           cd ..
 
       - name: Install iOS Certificates and Provisioning Profile
