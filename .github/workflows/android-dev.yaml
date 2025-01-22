@@ -116,10 +116,10 @@ jobs:
           path: build/app/outputs/flutter-apk/*.apk
 
       # Upload the built APK to Firebase App Distribution
-      - name: Upload to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: "android-internal" # Specify your tester groups here
-          file: build/app/outputs/flutter-apk/app-dev-release.apk
+      # - name: Upload to Firebase App Distribution
+      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
+      #   with:
+      #     appId: ${{ secrets.FIREBASE_APP_ID }}
+      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+      #     groups: "android-internal" # Specify your tester groups here
+      #     file: build/app/outputs/flutter-apk/app-dev-release.apk

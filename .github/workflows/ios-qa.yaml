@@ -10,9 +10,9 @@ on:
 
 env:
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
-  APPLE_DEVELOPMENT_CERTIFICATE_BASE64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
+  APPLE_DISTRIBUTION_CERTIFICATE_BASE64: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
   APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-  APPLE_PROVISION_DEV_PROFILE_BASE64: ${{ secrets.APPLE_PROVISION_DEV_PROFILE_BASE64 }}
+  APPLE_PROVISION_QA_PROFILE_BASE64: ${{ secrets.APPLE_PROVISION_QA_PROFILE_BASE64 }}
   ENV_DEV: ${{ secrets.ENV_DEV }}
   ENV_QA: ${{ secrets.ENV_QA }}
   ENV_PROD: ${{ secrets.ENV_PROD }}
@@ -20,7 +20,7 @@ env:
 jobs:
   build:
     runs-on: macos-latest
-    environment: DEV
+    environment: QA
     steps:
       - name: Checkout code
         uses: actions/checkout@v4      
@@ -49,11 +49,6 @@ jobs:
         run: |
           flutter pub get >> /dev/null
 
-          
-      # - name: Install CocoaPods
-      #   run: |
-      #     sudo gem install cocoapods
-      #     pod setup
 
       - name: Install dependencies
         run: |
@@ -66,13 +61,13 @@ jobs:
       - name: Install iOS Certificates and Provisioning Profile
         uses: apple-actions/import-codesign-certs@v1
         with:
-          p12-file-base64: ${{ env.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
+          p12-file-base64: ${{ env.APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
           p12-password: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
 
       - name: Install Provisioning Profile
         run: |
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          echo "${{ secrets.APPLE_PROVISION_DEV_PROFILE_BASE64 }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/EasySales-Dev-Provisioning-Profile.mobileprovision
+          echo "${{ env.APPLE_PROVISION_QA_PROFILE_BASE64 }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/EasySales-QA-Provisioning-Profile.mobileprovision
 
 
       - name: Setup Flutter Translation Sheet
@@ -116,19 +111,19 @@ jobs:
             --build-number=1 \
             --obfuscate \
             --split-debug-info=build/app/symbols \
-            --flavor dev \
-            -t lib/main_dev.dart
+            --flavor qa \
+            -t lib/main_qa.dart
 
-      # - name: Upload IPA
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: dev-ipa
-      #     path: build/ios/ipa/*.ipa
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-ipa
+          path: build/ios/ipa/*.ipa
 
-      # - name: Upload to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{ secrets.FIREBASE_APP_ID }}
-      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-      #     groups: "android-internal"
-      #     file: build/ios/ipa/app-dev-release.ipa
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_IOS }}
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_APP_DISTRIBUTION_CREDENTIAL }}
+          groups: "ios-internal"
+          file: build/ios/ipa/app-qa-release.ipa
