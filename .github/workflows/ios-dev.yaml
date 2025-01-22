@@ -70,6 +70,10 @@ jobs:
           p12-password: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
           mobileprovision-base64: ${{ env.APPLE_PROVISION_DEV_PROFILE_BASE64 }}
 
+      - uses: nickwph/apple-provisioning-profile-action@v1
+        with:
+          profile-base64: ${{ env.APPLE_PROVISION_DEV_PROFILE_BASE64 }}
+
       - name: Setup Flutter Translation Sheet
         run: |
           cd packages/common
