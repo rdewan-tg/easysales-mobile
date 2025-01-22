@@ -4,10 +4,10 @@ name: Flutter - Android Build Dev
 on:
   push:
     branches:
-      #- dev
+      - dev1
   pull_request:
     branches:
-      #- dev
+      - dev1
 
 env:
   ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}

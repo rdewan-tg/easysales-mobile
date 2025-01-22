@@ -50,16 +50,12 @@ jobs:
           echo "${{ env.ENV_QA }}" | base64 --decode > packages/core/.qa.env
           echo "${{ env.ENV_PROD }}" | base64 --decode > packages/core/.prod.env
 
-      - name: Install iOS Certificates
-        uses: nickwph/apple-build-certificate-action@v1
+      - name: Install iOS Certificates and Provisioning Profile
+        uses: apple-actions/import-codesign-certs@v1
         with:
           p12-file-base64: ${{ env.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
           p12-password: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
-
-      - name: Install Provisioning Profile
-        uses: nickwph/apple-provisioning-profile-action@v1
-        with:
-          profile-base64: ${{ env.APPLE_PROVISION_DEV_PROFILE_BASE64 }}  
+          mobileprovision-base64: ${{ env.APPLE_PROVISION_DEV_PROFILE_BASE64 }}
 
       - name: Build Runner Setup
         run: |
