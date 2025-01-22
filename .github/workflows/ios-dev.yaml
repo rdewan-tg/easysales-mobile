@@ -23,22 +23,7 @@ jobs:
     environment: DEV
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup FVM
-        uses: kuhnroyal/flutter-fvm-config-action/config@v3
-        id: fvm-config-action
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
-
-      - name: Install CocoaPods
-        run: |
-          sudo gem install cocoapods
-          pod setup
+        uses: actions/checkout@v4      
 
       - name: Setup Flutter Translation Sheet Credentials
         run: |
@@ -50,12 +35,39 @@ jobs:
           echo "${{ env.ENV_QA }}" | base64 --decode > packages/core/.qa.env
           echo "${{ env.ENV_PROD }}" | base64 --decode > packages/core/.prod.env
 
+      - name: Setup FVM
+        uses: kuhnroyal/flutter-fvm-config-action/config@v3
+        id: fvm-config-action
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      # - name: Install CocoaPods
+      #   run: |
+      #     sudo gem install cocoapods
+      #     pod setup
+
+      - name: Install dependencies
+        run: |
+          cd ios
+          pod install --repo-update
+          cd ..
+
       - name: Install iOS Certificates and Provisioning Profile
         uses: apple-actions/import-codesign-certs@v1
         with:
           p12-file-base64: ${{ env.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
           p12-password: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
           mobileprovision-base64: ${{ env.APPLE_PROVISION_DEV_PROFILE_BASE64 }}
+
+      - name: Setup Flutter Translation Sheet
+        run: |
+          cd packages/common
+          dart run flutter_translation_sheet:main fetch
+          cd ../../
 
       - name: Build Runner Setup
         run: |
