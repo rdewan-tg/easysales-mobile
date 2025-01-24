@@ -115,6 +115,7 @@ jobs:
             --build-name=1.0.0 \
             --build-number=1 \
             --obfuscate \
+            --export-options-plist ios/export_options.plist \
             --split-debug-info=build/app/symbols \
             --flavor dev \
             -t lib/main_dev.dart

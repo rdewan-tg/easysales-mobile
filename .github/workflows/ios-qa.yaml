@@ -106,6 +106,7 @@ jobs:
       - name: Build iOS App
         run: |
           flutter build ipa \
+            --export-options-plist ios/export_options.plist \
             --release \
             --build-name=1.0.0 \
             --build-number=1 \
