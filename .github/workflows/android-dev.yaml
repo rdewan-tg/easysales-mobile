@@ -68,10 +68,10 @@ jobs:
       - name: Cache Flutter dependencies 
         id: cache
         uses: actions/cache@v4 
-          with:
-            path: |  # Path to the directory that should be cached
-              ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
-            key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
+        with:
+          path: |  # Path to the directory that should be cached
+            ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
        
 
       - name: Setup Flutter Translation Sheet
