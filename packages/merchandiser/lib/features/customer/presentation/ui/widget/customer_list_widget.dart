@@ -34,7 +34,7 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
         final data = customer[index];
 
         return GestureDetector(
-          onTap: () => _onTap(data.customerName),
+          onTap: () => _onTap(data.customerName, data.customerId),
           child: Card(
             margin: const EdgeInsets.symmetric(
               horizontal: kMedium,
@@ -122,7 +122,7 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
     });
   }
 
-  void _onTap(String customerName) {
+  void _onTap(String customerName, String customerId) {
     _bottomSheetController = showBottomSheet(
       context: context,
       sheetAnimationStyle: _animationStyle,
@@ -130,6 +130,7 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
         return CustomerAddressListWidget(
           onClose: _closeBottonSheet,
           customerName: customerName,
+          customerId: customerId,
         );
       },
     );
