@@ -4,7 +4,8 @@ part 'sales_customer_response.freezed.dart';
 part 'sales_customer_response.g.dart';
 
 SalesCustomerResponse deserializeSalesCustomerResponse(
-        Map<String, dynamic> json,) =>
+  Map<String, dynamic> json,
+) =>
     SalesCustomerResponse.fromJson(json);
 
 @freezed

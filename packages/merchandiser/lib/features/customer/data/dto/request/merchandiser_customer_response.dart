@@ -4,7 +4,8 @@ part 'merchandiser_customer_response.freezed.dart';
 part 'merchandiser_customer_response.g.dart';
 
 MerchandiserCustomerResponse deserializeMerchandiserCustomerResponse(
-        Map<String, dynamic> json,) =>
+  Map<String, dynamic> json,
+) =>
     MerchandiserCustomerResponse.fromJson(json);
 
 @freezed
