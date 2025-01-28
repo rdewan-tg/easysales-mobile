@@ -24,11 +24,12 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
     final setting =
         await ref.read(customerAddressServiceProvider).getAllSettings();
     // get the companyCode from map
-    final dataAreaId = setting['companyCode'] ?? 'SGMA';
+    final String companyCode = setting['companyCode'] ?? 'SGMA';
+    final String salesPersonId = setting['salesPersonCode'] ?? '';
 
     final result = await ref
         .read(customerAddressServiceProvider)
-        .getCustomerAddresses(dataAreaId);
+        .filterCustomerAddresses(companyCode, salesPersonId);
     result.when(
       (success) {},
       (error) {},

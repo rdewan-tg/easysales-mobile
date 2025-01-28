@@ -47,7 +47,48 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late MerchandiserCustomerResponse _value;
     try {
-      _value = MerchandiserCustomerResponse.fromJson(_result.data!);
+      _value =
+          await compute(deserializeMerchandiserCustomerResponse, _result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<MerchandiserCustomerResponse> filter(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'companyCode': companyCode,
+      r'salesPersonId': salesPersonId,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<MerchandiserCustomerResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/merchandiser-customers',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MerchandiserCustomerResponse _value;
+    try {
+      _value =
+          await compute(deserializeMerchandiserCustomerResponse, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

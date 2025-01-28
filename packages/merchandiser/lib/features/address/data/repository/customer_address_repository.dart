@@ -55,6 +55,29 @@ final class CustomerAddressRepository
   }
 
   @override
+  Future<CustomerAddressResponse> filterCustomerAddresses(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    try {
+      return await _customerAddressApi.filterCustomerAddresses(
+        companyCode,
+        salesPersonId,
+      );
+    } on DioException catch (e, stackTrace) {
+      // Use the mixin to map DioException to Failure
+      throw mapDioExceptionToFailure(e, stackTrace);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
   Future<Map<String, String>> getAllSettings() {
     try {
       return _settingDao.getAllSettings();

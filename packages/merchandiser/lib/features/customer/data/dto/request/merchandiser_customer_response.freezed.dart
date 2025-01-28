@@ -256,7 +256,7 @@ mixin _$MerchandiserCustomerDto {
   @JsonKey(name: "salesPersonId")
   String get salesPersonId => throw _privateConstructorUsedError;
   @JsonKey(name: "salesPerson")
-  String get salesPerson => throw _privateConstructorUsedError;
+  String? get salesPerson => throw _privateConstructorUsedError;
   @JsonKey(name: "merchandiser")
   String? get merchandiser => throw _privateConstructorUsedError;
   @JsonKey(name: "countryId")
@@ -276,7 +276,7 @@ mixin _$MerchandiserCustomerDto {
   @JsonKey(name: "priceGroup")
   String? get priceGroup => throw _privateConstructorUsedError;
   @JsonKey(name: "customreDimension")
-  String get customreDimension => throw _privateConstructorUsedError;
+  String? get customreDimension => throw _privateConstructorUsedError;
   @JsonKey(name: "status")
   int get status => throw _privateConstructorUsedError;
   @JsonKey(name: "companyId")
@@ -310,7 +310,7 @@ abstract class $MerchandiserCustomerDtoCopyWith<$Res> {
       @JsonKey(name: "customerName") String customerName,
       @JsonKey(name: "address") String address,
       @JsonKey(name: "salesPersonId") String salesPersonId,
-      @JsonKey(name: "salesPerson") String salesPerson,
+      @JsonKey(name: "salesPerson") String? salesPerson,
       @JsonKey(name: "merchandiser") String? merchandiser,
       @JsonKey(name: "countryId") String countryId,
       @JsonKey(name: "phoneNumber") String? phoneNumber,
@@ -320,7 +320,7 @@ abstract class $MerchandiserCustomerDtoCopyWith<$Res> {
       @JsonKey(name: "currencyCode") String? currencyCode,
       @JsonKey(name: "paymentTerm") String? paymentTerm,
       @JsonKey(name: "priceGroup") String? priceGroup,
-      @JsonKey(name: "customreDimension") String customreDimension,
+      @JsonKey(name: "customreDimension") String? customreDimension,
       @JsonKey(name: "status") int status,
       @JsonKey(name: "companyId") int companyId,
       @JsonKey(name: "companyCode") String companyCode,
@@ -349,7 +349,7 @@ class _$MerchandiserCustomerDtoCopyWithImpl<$Res,
     Object? customerName = null,
     Object? address = null,
     Object? salesPersonId = null,
-    Object? salesPerson = null,
+    Object? salesPerson = freezed,
     Object? merchandiser = freezed,
     Object? countryId = null,
     Object? phoneNumber = freezed,
@@ -359,7 +359,7 @@ class _$MerchandiserCustomerDtoCopyWithImpl<$Res,
     Object? currencyCode = freezed,
     Object? paymentTerm = freezed,
     Object? priceGroup = freezed,
-    Object? customreDimension = null,
+    Object? customreDimension = freezed,
     Object? status = null,
     Object? companyId = null,
     Object? companyCode = null,
@@ -387,10 +387,10 @@ class _$MerchandiserCustomerDtoCopyWithImpl<$Res,
           ? _value.salesPersonId
           : salesPersonId // ignore: cast_nullable_to_non_nullable
               as String,
-      salesPerson: null == salesPerson
+      salesPerson: freezed == salesPerson
           ? _value.salesPerson
           : salesPerson // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       merchandiser: freezed == merchandiser
           ? _value.merchandiser
           : merchandiser // ignore: cast_nullable_to_non_nullable
@@ -427,10 +427,10 @@ class _$MerchandiserCustomerDtoCopyWithImpl<$Res,
           ? _value.priceGroup
           : priceGroup // ignore: cast_nullable_to_non_nullable
               as String?,
-      customreDimension: null == customreDimension
+      customreDimension: freezed == customreDimension
           ? _value.customreDimension
           : customreDimension // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -470,7 +470,7 @@ abstract class _$$MerchandiserCustomerDtoImplCopyWith<$Res>
       @JsonKey(name: "customerName") String customerName,
       @JsonKey(name: "address") String address,
       @JsonKey(name: "salesPersonId") String salesPersonId,
-      @JsonKey(name: "salesPerson") String salesPerson,
+      @JsonKey(name: "salesPerson") String? salesPerson,
       @JsonKey(name: "merchandiser") String? merchandiser,
       @JsonKey(name: "countryId") String countryId,
       @JsonKey(name: "phoneNumber") String? phoneNumber,
@@ -480,7 +480,7 @@ abstract class _$$MerchandiserCustomerDtoImplCopyWith<$Res>
       @JsonKey(name: "currencyCode") String? currencyCode,
       @JsonKey(name: "paymentTerm") String? paymentTerm,
       @JsonKey(name: "priceGroup") String? priceGroup,
-      @JsonKey(name: "customreDimension") String customreDimension,
+      @JsonKey(name: "customreDimension") String? customreDimension,
       @JsonKey(name: "status") int status,
       @JsonKey(name: "companyId") int companyId,
       @JsonKey(name: "companyCode") String companyCode,
@@ -508,7 +508,7 @@ class __$$MerchandiserCustomerDtoImplCopyWithImpl<$Res>
     Object? customerName = null,
     Object? address = null,
     Object? salesPersonId = null,
-    Object? salesPerson = null,
+    Object? salesPerson = freezed,
     Object? merchandiser = freezed,
     Object? countryId = null,
     Object? phoneNumber = freezed,
@@ -518,7 +518,7 @@ class __$$MerchandiserCustomerDtoImplCopyWithImpl<$Res>
     Object? currencyCode = freezed,
     Object? paymentTerm = freezed,
     Object? priceGroup = freezed,
-    Object? customreDimension = null,
+    Object? customreDimension = freezed,
     Object? status = null,
     Object? companyId = null,
     Object? companyCode = null,
@@ -546,10 +546,10 @@ class __$$MerchandiserCustomerDtoImplCopyWithImpl<$Res>
           ? _value.salesPersonId
           : salesPersonId // ignore: cast_nullable_to_non_nullable
               as String,
-      salesPerson: null == salesPerson
+      salesPerson: freezed == salesPerson
           ? _value.salesPerson
           : salesPerson // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       merchandiser: freezed == merchandiser
           ? _value.merchandiser
           : merchandiser // ignore: cast_nullable_to_non_nullable
@@ -586,10 +586,10 @@ class __$$MerchandiserCustomerDtoImplCopyWithImpl<$Res>
           ? _value.priceGroup
           : priceGroup // ignore: cast_nullable_to_non_nullable
               as String?,
-      customreDimension: null == customreDimension
+      customreDimension: freezed == customreDimension
           ? _value.customreDimension
           : customreDimension // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -623,7 +623,7 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
       @JsonKey(name: "customerName") required this.customerName,
       @JsonKey(name: "address") required this.address,
       @JsonKey(name: "salesPersonId") required this.salesPersonId,
-      @JsonKey(name: "salesPerson") required this.salesPerson,
+      @JsonKey(name: "salesPerson") this.salesPerson,
       @JsonKey(name: "merchandiser") this.merchandiser,
       @JsonKey(name: "countryId") required this.countryId,
       @JsonKey(name: "phoneNumber") this.phoneNumber,
@@ -633,7 +633,7 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
       @JsonKey(name: "currencyCode") this.currencyCode,
       @JsonKey(name: "paymentTerm") this.paymentTerm,
       @JsonKey(name: "priceGroup") this.priceGroup,
-      @JsonKey(name: "customreDimension") required this.customreDimension,
+      @JsonKey(name: "customreDimension") this.customreDimension,
       @JsonKey(name: "status") required this.status,
       @JsonKey(name: "companyId") required this.companyId,
       @JsonKey(name: "companyCode") required this.companyCode,
@@ -660,7 +660,7 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
   final String salesPersonId;
   @override
   @JsonKey(name: "salesPerson")
-  final String salesPerson;
+  final String? salesPerson;
   @override
   @JsonKey(name: "merchandiser")
   final String? merchandiser;
@@ -690,7 +690,7 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
   final String? priceGroup;
   @override
   @JsonKey(name: "customreDimension")
-  final String customreDimension;
+  final String? customreDimension;
   @override
   @JsonKey(name: "status")
   final int status;
@@ -809,7 +809,7 @@ abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
           @JsonKey(name: "customerName") required final String customerName,
           @JsonKey(name: "address") required final String address,
           @JsonKey(name: "salesPersonId") required final String salesPersonId,
-          @JsonKey(name: "salesPerson") required final String salesPerson,
+          @JsonKey(name: "salesPerson") final String? salesPerson,
           @JsonKey(name: "merchandiser") final String? merchandiser,
           @JsonKey(name: "countryId") required final String countryId,
           @JsonKey(name: "phoneNumber") final String? phoneNumber,
@@ -819,8 +819,7 @@ abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
           @JsonKey(name: "currencyCode") final String? currencyCode,
           @JsonKey(name: "paymentTerm") final String? paymentTerm,
           @JsonKey(name: "priceGroup") final String? priceGroup,
-          @JsonKey(name: "customreDimension")
-          required final String customreDimension,
+          @JsonKey(name: "customreDimension") final String? customreDimension,
           @JsonKey(name: "status") required final int status,
           @JsonKey(name: "companyId") required final int companyId,
           @JsonKey(name: "companyCode") required final String companyCode,
@@ -848,7 +847,7 @@ abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
   String get salesPersonId;
   @override
   @JsonKey(name: "salesPerson")
-  String get salesPerson;
+  String? get salesPerson;
   @override
   @JsonKey(name: "merchandiser")
   String? get merchandiser;
@@ -878,7 +877,7 @@ abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
   String? get priceGroup;
   @override
   @JsonKey(name: "customreDimension")
-  String get customreDimension;
+  String? get customreDimension;
   @override
   @JsonKey(name: "status")
   int get status;

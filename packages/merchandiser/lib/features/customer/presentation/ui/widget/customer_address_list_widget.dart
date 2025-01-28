@@ -22,6 +22,11 @@ class _CustomerAddressListWidgetState
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(addressControllerProvider.notifier).watchCustomerAddress(
+            widget.customerId,
+          );
+    });
   }
 
   @override

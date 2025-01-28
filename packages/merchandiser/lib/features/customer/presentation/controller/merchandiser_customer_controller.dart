@@ -37,12 +37,13 @@ class MerchandiserCustomerController
       final setting =
           await ref.read(merchandiserCustomerServiceProvider).getAllSetting();
       // get the companyCode from map
-      final dataAreaId = setting['companyCode'] ?? 'SGMA';
+      final String companyCode = setting['companyCode'] ?? 'SGMA';
+      final String salesPersonId = setting['salesPersonCode'] ?? '';
 
       // get the merchandiser customers from from api and inset it to the database
       final result = await ref
           .read(merchandiserCustomerServiceProvider)
-          .getMerchandiserCustomers(dataAreaId);
+          .filterMerchandiserCustomers(companyCode, salesPersonId);
 
       result.when(
         (customers) {

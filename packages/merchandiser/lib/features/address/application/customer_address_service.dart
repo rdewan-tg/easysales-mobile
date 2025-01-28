@@ -55,6 +55,36 @@ final class CustomerAddressService implements ICustomerAddressService {
   }
 
   @override
+  Future<Result<bool, Failure>> filterCustomerAddresses(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    try {
+      // get the address from api
+      final result = await _customerAddressRepository.filterCustomerAddresses(
+        companyCode,
+        salesPersonId,
+      );
+      // map to customer address
+      final data =
+          await Isolate.run(() => _mapToCustomerAddressEntityList(result));
+      // insert to db
+      await _customerAddressRepository.insertOrUpdate(data);
+
+      return const Result.success(true);
+    } on Failure catch (e) {
+      return Result.error(e);
+    } catch (e, s) {
+      return Result.error(
+        Failure(
+          message: e.toString(),
+          stackTrace: s,
+        ),
+      );
+    }
+  }
+
+  @override
   Stream<List<CustomerAddressEntityData>> watchAll(String? searchQuery) {
     return _customerAddressRepository.watchAll(searchQuery);
   }

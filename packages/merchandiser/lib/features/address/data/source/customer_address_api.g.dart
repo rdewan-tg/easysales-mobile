@@ -35,7 +35,7 @@ class _CustomerAddressApi implements CustomerAddressApi {
     )
         .compose(
           _dio.options,
-          'api/v1/addresses/${dataAreaId}',
+          '/api/v1/addresses/${dataAreaId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -47,7 +47,46 @@ class _CustomerAddressApi implements CustomerAddressApi {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late CustomerAddressResponse _value;
     try {
-      _value = CustomerAddressResponse.fromJson(_result.data!);
+      _value = await compute(deserializeCustomerAddressResponse, _result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<CustomerAddressResponse> filterCustomerAddresses(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'companyCode': companyCode,
+      r'salesPersonId': salesPersonId,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<CustomerAddressResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/addresses',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CustomerAddressResponse _value;
+    try {
+      _value = await compute(deserializeCustomerAddressResponse, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

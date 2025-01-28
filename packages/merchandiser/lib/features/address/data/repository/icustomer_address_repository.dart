@@ -6,6 +6,11 @@ abstract interface class ICustomerAddressRepository {
     String dataAreaId,
   );
 
+  Future<CustomerAddressResponse> filterCustomerAddresses(
+    String companyCode,
+    String salesPersonId,
+  );
+
   Future<Map<String, String>> getAllSettings();
 
   Future<void> insertOrUpdate(List<CustomerAddressEntityData> data);

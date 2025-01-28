@@ -52,6 +52,35 @@ final class MerchandiserCustomerService
   }
 
   @override
+  Future<Result<bool, Failure>> filterMerchandiserCustomers(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    try {
+      final response = await _merchandiserCustomerRepository
+          .filterMerchandiserCustomers(companyCode, salesPersonId);
+
+      final merchandiserCustomerData = await Isolate.run(
+        () => _mapToMerchandiserCustomerEntityData(response),
+      );
+
+      await _merchandiserCustomerRepository
+          .insertOrUpdate(merchandiserCustomerData);
+
+      return const Result.success(true);
+    } on Failure catch (e) {
+      return Result.error(e);
+    } catch (e, s) {
+      return Result.error(
+        Failure(
+          message: e.toString(),
+          stackTrace: s,
+        ),
+      );
+    }
+  }
+
+  @override
   Stream<List<MerchandiserCustomerEntityData>> watchAll(
     String? searchQuery,
   ) {

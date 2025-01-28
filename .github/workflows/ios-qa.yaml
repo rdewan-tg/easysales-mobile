@@ -3,10 +3,10 @@ name: Flutter - iOS Build Dev
 on:
   push:
     branches:
-      - qa
+      - qa1
   pull_request:
     branches:
-      - qa
+      - qa1
 
 env:
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}

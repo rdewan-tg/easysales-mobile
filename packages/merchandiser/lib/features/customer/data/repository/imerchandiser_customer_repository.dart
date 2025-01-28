@@ -6,6 +6,11 @@ abstract interface class IMerchandiserCustomerRepository {
     String dataAreaId,
   );
 
+  Future<MerchandiserCustomerResponse> filterMerchandiserCustomers(
+    String companyCode,
+    String salesPersonId,
+  );
+
   Stream<List<MerchandiserCustomerEntityData>> watchAll(
     String? searchQuery,
   );

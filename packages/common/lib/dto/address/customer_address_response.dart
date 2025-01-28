@@ -1,14 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'customer_address_response.freezed.dart';
 part 'customer_address_response.g.dart';
 
-CustomerAddressResponse customerAddressResponseFromJson(String str) =>
-    CustomerAddressResponse.fromJson(json.decode(str));
-
-String customerAddressResponseToJson(CustomerAddressResponse data) =>
-    json.encode(data.toJson());
+CustomerAddressResponse deserializeCustomerAddressResponse(
+        Map<String, dynamic> json,) =>
+    CustomerAddressResponse.fromJson(json);
 
 @freezed
 class CustomerAddressResponse with _$CustomerAddressResponse {
