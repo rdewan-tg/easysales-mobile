@@ -137,7 +137,10 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
   }
 
   void _onTap(
-      String customerName, String customerId, String customerDimension) {
+    String customerName,
+    String customerId,
+    String customerDimension,
+  ) {
     _bottomSheetController = showBottomSheet(
       context: context,
       sheetAnimationStyle: _animationStyle,
