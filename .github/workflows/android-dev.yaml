@@ -91,6 +91,9 @@ jobs:
             echo "Flutter SDK found in cache. Skipping installation."
           fi
 
+          # Add fvm to PATH
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+
       - name: Cache Pub dependencies
         uses: actions/cache@v4
         id: pub-cache
