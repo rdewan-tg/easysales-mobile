@@ -5,7 +5,6 @@ import 'package:core/data/local/db/dao/sales_customer_dao.dart';
 import 'package:core/data/local/db/dao/search_sales_customer_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sales/features/customer/data/dto/request/sales_customer_response.dart';
 import 'package:sales/features/customer/data/repository/isales_customer_repository.dart';
@@ -71,7 +70,6 @@ final class SalesCustomerRepository
       // Use the mixin to map DioException to Failure
       throw mapDioExceptionToFailure(e, stackTrace);
     } catch (e, stackTrace) {
-      debugPrint(e.toString());
       // Map unexpected exceptions to Failure
       throw Failure(
         message: 'An unexpected error occurred'.hardcoded,

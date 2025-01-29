@@ -99,14 +99,26 @@ jobs:
         run: |
           dart pub global activate fvm
 
+      # Install Flutter SDK using FVM only if cache was not restored
       - name: Use FVM Flutter Version
         run: |
-          fvm install
+          if [[ "${{ steps.flutter-sdk-cache.outputs.cache-hit }}" != 'true' ]]; then
+            echo "Flutter SDK not found in cache. Installing..."
+            fvm install
+          else
+            echo "Flutter SDK found in cache. Skipping installation."
+          fi
           fvm use $(fvm global) --force
 
+      # Install Flutter dependencies only if cache was not restored
       - name: Install Flutter Dependencies
         run: |
-          fvm flutter pub get >> /dev/null  
+          if [[ "${{ steps.pub-cache.outputs.cache-hit }}" != 'true' ]]; then
+            echo "Pub cache not found. Running 'flutter pub get'..."
+            fvm flutter pub get >> /dev/null
+          else
+            echo "Pub cache found. Skipping 'flutter pub get'."
+          fi  
 
       - name: Setup Flutter Translation Sheet
         run: |
