@@ -4,12 +4,14 @@ class CustomerAddressListWidget extends ConsumerStatefulWidget {
   final VoidCallback onClose;
   final String customerName;
   final String customerId;
+  final String customerDimension;
 
   const CustomerAddressListWidget({
     super.key,
     required this.onClose,
     required this.customerName,
     required this.customerId,
+    required this.customerDimension,
   });
 
   @override
@@ -65,6 +67,7 @@ class _CustomerAddressListWidgetState
                       'customerId': data.customerId,
                       'customerName': widget.customerName,
                       'address': data.address,
+                      'customerDimension': widget.customerDimension,
                     },
                   );
                 },
