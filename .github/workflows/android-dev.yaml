@@ -93,6 +93,8 @@ jobs:
 
           # Add fvm to PATH
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+          echo "$HOME/.fvm/flutter_sdk/bin" >> $GITHUB_PATH
+          fvm use ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }} --force
 
       - name: Cache Pub dependencies
         uses: actions/cache@v4
