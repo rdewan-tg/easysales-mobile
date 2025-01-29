@@ -31,5 +31,6 @@ abstract class PhotoApi {
     @Part(name: "customerAddress") required String customerAddress,
     @Part(name: "transDate") required String transDate,
     @Part(name: "companyCode") required String companyCode,
+    @Part(name: "customerChain") required String customerChain,
   });
 }

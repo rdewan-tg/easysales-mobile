@@ -65,6 +65,18 @@ jobs:
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
+      - name: Cache Flutter dependencies 
+        id: cache
+        uses: actions/cache@v4 
+        with:
+          path: |  # Path to the directory that should be cached
+            ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
+
+      - name: Install Flutter Dependencies
+        run: |
+          flutter pub get >> /dev/null  
+
       - name: Setup Flutter Translation Sheet
         run: |
           cd packages/common
@@ -85,6 +97,8 @@ jobs:
           echo Done running build_runner. Navigating up to root directory
           cd ../../    
           flutter pub get >> /dev/null
+
+      
 
       # Formats the dart code
       - name: Auto-format Dart code
@@ -116,10 +130,10 @@ jobs:
           path: build/app/outputs/flutter-apk/*.apk
 
       # Upload the built APK to Firebase App Distribution
-      - name: Upload to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: "internal" # Specify your tester groups here
-          file: build/app/outputs/flutter-apk/app-dev-release.apk
+      # - name: Upload to Firebase App Distribution
+      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
+      #   with:
+      #     appId: ${{ secrets.FIREBASE_APP_ID }}
+      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+      #     groups: "android-internal" # Specify your tester groups here
+      #     file: build/app/outputs/flutter-apk/app-dev-release.apk

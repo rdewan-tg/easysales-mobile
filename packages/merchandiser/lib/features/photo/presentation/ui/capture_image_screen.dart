@@ -160,6 +160,7 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
           customerName: widget.extras['customerName'],
           customerAddress: widget.extras['address'],
           transDate: _currentDateTime('dd-MM-yyyy'),
+          customerDimension: widget.extras['customerDimension'],
         );
   }
 
@@ -278,7 +279,16 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
         captureImageControllerProvider.select((value) => value.isUploading),
         (_, next) {
       if (next) {
-        context.loaderOverlay.show();
+        context.loaderOverlay.show(
+          widgetBuilder: (progress) {
+            return Center(
+              child: LoadingAnimationWidget.progressiveDots(
+                color: Colors.white,
+                size: 60,
+              ),
+            );
+          },
+        );
       } else {
         context.loaderOverlay.hide();
       }

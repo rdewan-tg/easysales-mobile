@@ -31,6 +31,7 @@ class _PhotoApi implements PhotoApi {
     required String customerAddress,
     required String transDate,
     required String companyCode,
+    required String customerChain,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -71,6 +72,10 @@ class _PhotoApi implements PhotoApi {
     _data.fields.add(MapEntry(
       'companyCode',
       companyCode,
+    ));
+    _data.fields.add(MapEntry(
+      'customerChain',
+      customerChain,
     ));
     final _options = _setStreamType<UploadMerchandiserPhotoResponse>(Options(
       method: 'POST',

@@ -1,0 +1,138 @@
+name: Flutter - iOS Build Dev
+
+on:
+  push:
+    branches:
+      - dev1
+  pull_request:
+    branches:
+      - dev1
+
+env:
+  FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
+  APPLE_DEVELOPMENT_CERTIFICATE_BASE64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
+  APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+  APPLE_PROVISION_DEV_PROFILE_BASE64: ${{ secrets.APPLE_PROVISION_DEV_PROFILE_BASE64 }}
+  ENV_DEV: ${{ secrets.ENV_DEV }}
+  ENV_QA: ${{ secrets.ENV_QA }}
+  ENV_PROD: ${{ secrets.ENV_PROD }}
+
+jobs:
+  build:
+    runs-on: macos-latest
+    environment: DEV
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4      
+
+      - name: Setup Flutter Translation Sheet Credentials
+        run: |
+          echo "${{ env.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}" | base64 --decode > packages/common/credentials.json
+
+      - name: Setup .env files
+        run: |
+          echo "${{ env.ENV_DEV }}" | base64 --decode > packages/core/.dev.env
+          echo "${{ env.ENV_QA }}" | base64 --decode > packages/core/.qa.env
+          echo "${{ env.ENV_PROD }}" | base64 --decode > packages/core/.prod.env
+
+      - name: Setup FVM
+        uses: kuhnroyal/flutter-fvm-config-action/config@v3
+        id: fvm-config-action
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Cache Flutter dependencies 
+        id: cache
+        uses: actions/cache@v4 
+        with:
+          path: |  # Path to the directory that should be cached
+            ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
+
+      # - name: Install CocoaPods
+      #   run: |
+      #     sudo gem install cocoapods
+      #     pod setup
+
+      - name: Install dependencies
+        run: |
+          cd ios
+          pod repo update 
+          pod install --repo-update
+          pod update sqlite3 
+          cd ..
+
+      - name: Install iOS Certificates and Provisioning Profile
+        uses: apple-actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ env.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
+          p12-password: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
+
+      - name: Install Provisioning Profile
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "${{ secrets.APPLE_PROVISION_DEV_PROFILE_BASE64 }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/EasySales-Dev-Provisioning-Profile.mobileprovision
+
+
+      - name: Setup Flutter Translation Sheet
+        run: |
+          cd packages/common
+          dart run flutter_translation_sheet:main fetch
+          cd ../../
+
+      - name: Build Runner Setup
+        run: |
+          cd packages/core
+          pwd
+          
+          echo Getting dependencies
+          flutter pub get >> /dev/null
+
+          echo Running build_runner in packages/core
+          flutter pub run build_runner build -d 
+          
+          echo Done running build_runner. Navigating up to root directory
+          cd ../../    
+          flutter pub get >> /dev/null
+
+      - name: Auto-format Dart code
+        run: dart format .
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze project source
+        run: flutter analyze --fatal-warnings
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build iOS App
+        run: |
+          flutter build ipa \
+            --release \
+            --build-name=1.0.0 \
+            --build-number=1 \
+            --obfuscate \
+            --export-options-plist ios/export_options.plist \
+            --split-debug-info=build/app/symbols \
+            --flavor dev \
+            -t lib/main_dev.dart
+
+      # - name: Upload IPA
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: dev-ipa
+      #     path: build/ios/ipa/*.ipa
+
+      # - name: Upload to Firebase App Distribution
+      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
+      #   with:
+      #     appId: ${{ secrets.FIREBASE_APP_ID }}
+      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+      #     groups: "android-internal"
+      #     file: build/ios/ipa/app-dev-release.ipa

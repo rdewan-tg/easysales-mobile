@@ -1,14 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'sales_customer_response.freezed.dart';
 part 'sales_customer_response.g.dart';
 
-SalesCustomerResponse merchandiserCustomerResponseFromJson(String str) =>
-    SalesCustomerResponse.fromJson(json.decode(str));
-
-String salesCustomerResponseToJson(SalesCustomerResponse data) =>
-    json.encode(data);
+SalesCustomerResponse deserializeSalesCustomerResponse(
+  Map<String, dynamic> json,
+) =>
+    SalesCustomerResponse.fromJson(json);
 
 @freezed
 class SalesCustomerResponse with _$SalesCustomerResponse {
@@ -30,7 +28,7 @@ class SalesCustomerDto with _$SalesCustomerDto {
     @JsonKey(name: "customerName") required String customerName,
     @JsonKey(name: "address") required String address,
     @JsonKey(name: "salesPersonId") required String salesPersonId,
-    @JsonKey(name: "salesPerson") required String salesPerson,
+    @JsonKey(name: "salesPerson") String? salesPerson,
     @JsonKey(name: "merchandiser") String? merchandiser,
     @JsonKey(name: "countryId") required String countryId,
     @JsonKey(name: "phoneNumber") String? phoneNumber,
@@ -40,7 +38,7 @@ class SalesCustomerDto with _$SalesCustomerDto {
     @JsonKey(name: "currencyCode") String? currencyCode,
     @JsonKey(name: "paymentTerm") String? paymentTerm,
     @JsonKey(name: "priceGroup") String? priceGroup,
-    @JsonKey(name: "customreDimension") required String customreDimension,
+    @JsonKey(name: "customreDimension") String? customreDimension,
     @JsonKey(name: "status") required int status,
     @JsonKey(name: "companyId") required int companyId,
     @JsonKey(name: "companyCode") required String companyCode,

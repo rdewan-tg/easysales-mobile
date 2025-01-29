@@ -34,7 +34,11 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
         final data = customer[index];
 
         return GestureDetector(
-          onTap: () => _onTap(data.customerName),
+          onTap: () => _onTap(
+            data.customerName,
+            data.customerId,
+            data.customreDimension ?? '-',
+          ),
           child: Card(
             margin: const EdgeInsets.symmetric(
               horizontal: kMedium,
@@ -53,9 +57,19 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
                   const SizedBox(height: kXSmall),
                   Text(data.customerName),
                   const SizedBox(height: kXSmall),
-                  Text(
-                    data.address ?? '-',
-                    style: context.textTheme.labelMedium,
+                  Chip(
+                    visualDensity: const VisualDensity(
+                      horizontal: -4,
+                      vertical: -4,
+                    ), // Reduce overall padding
+                    label: Text(
+                      data.customreDimension ?? '-',
+                      style: context.textTheme.labelSmall, // Reduce text size
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(kSmall), // Customize shape
+                    ),
                   ),
                 ],
               ),
@@ -122,7 +136,11 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
     });
   }
 
-  void _onTap(String customerName) {
+  void _onTap(
+    String customerName,
+    String customerId,
+    String customerDimension,
+  ) {
     _bottomSheetController = showBottomSheet(
       context: context,
       sheetAnimationStyle: _animationStyle,
@@ -130,6 +148,8 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
         return CustomerAddressListWidget(
           onClose: _closeBottonSheet,
           customerName: customerName,
+          customerId: customerId,
+          customerDimension: customerDimension,
         );
       },
     );

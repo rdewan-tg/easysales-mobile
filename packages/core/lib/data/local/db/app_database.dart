@@ -1,6 +1,8 @@
+import 'package:core/data/local/db/dao/customer_address_dao.dart';
 import 'package:core/data/local/db/dao/merchandiser_customer_dao.dart';
 import 'package:core/data/local/db/dao/sales_customer_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
+import 'package:core/data/local/db/entity/customer_address_entity.dart';
 import 'package:core/data/local/db/entity/merchandiser_customer_entity.dart';
 import 'package:core/data/local/db/entity/sales_customer_entity.dart';
 import 'package:core/data/local/db/entity/search_merchnadiser_customer_history_entity.dart';
@@ -23,8 +25,14 @@ AppDatabase appDatabase(Ref ref) => AppDatabase();
     SalesCustomerEntity,
     SearchMerchandiserCustomerHistoryEntity,
     SearchSalesCustomerHistoryEntity,
+    CustomerAddressEntity,
   ],
-  daos: [SettingDao, MerchandiserCustomerDao, SalesCustomerDao],
+  daos: [
+    SettingDao,
+    MerchandiserCustomerDao,
+    SalesCustomerDao,
+    CustomerAddressDao,
+  ],
 )
 class AppDatabase extends _$AppDatabase {
   // After generating code, this class needs to define a `schemaVersion` getter

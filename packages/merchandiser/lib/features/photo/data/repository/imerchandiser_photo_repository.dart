@@ -14,5 +14,6 @@ abstract interface class IMerchandiserPhotoRepository {
     required String customerAddress,
     required String transDate,
     required String companyCode,
+    required String customerDimension,
   });
 }

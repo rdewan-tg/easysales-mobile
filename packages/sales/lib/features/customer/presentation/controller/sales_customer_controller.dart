@@ -33,12 +33,13 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
       final setting =
           await ref.read(salesCustomerServiceProvider).getAllSetting();
       // get the companyCode from map
-      final dataAreaId = setting['companyCode'] ?? 'SGMA';
+      final String companyCode = setting['companyCode'] ?? 'SGMA';
+      final String salesPersonId = setting['salesPersonCode'] ?? '';
 
       // get the merchandiser customers from from api and inset it to the database
       final result = await ref
           .read(salesCustomerServiceProvider)
-          .getSalesCustomers(dataAreaId);
+          .filterSalesCustomers(companyCode, salesPersonId);
 
       result.when(
         (customers) {

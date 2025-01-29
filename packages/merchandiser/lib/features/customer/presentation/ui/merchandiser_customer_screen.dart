@@ -18,11 +18,6 @@ class _MerchandiserCustomerScreenState
       ref
           .read(merchandiserCustomerProvider.notifier)
           .getMerchandiserCustomers();
-
-      // get the merchandiser customer address
-      ref
-          .read(merchandiserCustomerProvider.notifier)
-          .getMerchandiserCustomerAddress();
     });
   }
 
