@@ -78,8 +78,10 @@ jobs:
           path: .fvm/flutter_sdk  # Path where FVM stores the Flutter SDK
           key: |
             ${{ runner.os }}-fvm-flutter-${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-fvm-flutter-
 
-      # Existing pub cache (keep this)
+      # Cache Pub dependencies
       - name: Cache Pub dependencies
         uses: actions/cache@v4
         id: pub-cache
