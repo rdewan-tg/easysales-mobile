@@ -89,11 +89,11 @@ jobs:
           path: ~/.pub-cache
           key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+      # - name: Setup Flutter
+      #   uses: subosito/flutter-action@v2
+      #   with:
+      #     flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+      #     channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
       - name: Install FVM
         run: |
