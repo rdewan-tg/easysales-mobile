@@ -67,6 +67,6 @@ codemagic.sh
 *.py
 
 # FVM Version Cache
-.fvm/
+# .fvm/
 
 google_playservice_account.json

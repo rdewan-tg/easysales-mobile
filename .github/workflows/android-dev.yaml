@@ -1,4 +1,3 @@
-
 name: Flutter - Android Build Dev
 
 on:
@@ -59,6 +58,15 @@ jobs:
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
         id: fvm-config-action
 
+      - name: Install FVM
+        run: |
+          dart pub global activate fvm
+
+      - name: Use FVM Flutter Version
+        run: |
+          fvm install
+          fvm use $(fvm global) --force
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -69,18 +77,18 @@ jobs:
         id: cache
         uses: actions/cache@v4 
         with:
-          path: |  # Path to the directory that should be cached
-            ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
-          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}
 
       - name: Install Flutter Dependencies
         run: |
-          flutter pub get >> /dev/null  
+          fvm flutter pub get >> /dev/null  
 
       - name: Setup Flutter Translation Sheet
         run: |
           cd packages/common
-          dart run flutter_translation_sheet:main fetch
+          fvm dart run flutter_translation_sheet:main fetch
           cd ../../
 
       - name: Build Runner Setup
@@ -89,51 +97,32 @@ jobs:
           pwd
           
           echo Getting dependencies
-          flutter pub get >> /dev/null
+          fvm flutter pub get >> /dev/null
 
           echo Running build_runner in packages/core
-          flutter pub run build_runner build -d 
+          fvm flutter pub run build_runner build -d 
           
           echo Done running build_runner. Navigating up to root directory
           cd ../../    
-          flutter pub get >> /dev/null
+          fvm flutter pub get >> /dev/null
 
-      
-
-      # Formats the dart code
       - name: Auto-format Dart code
-        run: dart format .
+        run: fvm dart format .
 
-      # Verifies if the dart code is formatted well
       - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed .
-        # --set-exit-if-changed stops execution if the any code is not well formatted
-        # --output=none prints files which needs to be formatted
+        run: fvm dart format --output=none --set-exit-if-changed .
 
-      # Checks for Symantic errors. Can be configured using analysis_options.yaml
       - name: Analyze project source
-        run: flutter analyze --fatal-warnings
-        # optionally use --fatal-warnings to stop execution if any warnings are found
+        run: fvm flutter analyze --fatal-warnings
 
-      # Runs unit test
       - name: Run tests
-        run: flutter test
+        run: fvm flutter test
 
       - name: Build APK
-        run: flutter build apk --release --build-name=1.0.0 --build-number=1 --obfuscate --split-debug-info=build/app/symbols --flavor dev -t lib/main_dev.dart
+        run: fvm flutter build apk --release --build-name=1.0.0 --build-number=1 --obfuscate --split-debug-info=build/app/symbols --flavor dev -t lib/main_dev.dart
 
-      # Upload the built APK as an artifact
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: dev-apk
           path: build/app/outputs/flutter-apk/*.apk
-
-      # Upload the built APK to Firebase App Distribution
-      # - name: Upload to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{ secrets.FIREBASE_APP_ID }}
-      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-      #     groups: "android-internal" # Specify your tester groups here
-      #     file: build/app/outputs/flutter-apk/app-dev-release.apk
