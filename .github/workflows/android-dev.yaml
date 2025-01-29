@@ -31,7 +31,7 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
           cache: gradle
-
+      
       - name: Cache Gradle
         uses: actions/cache@v4
         id: gradle-cache
@@ -59,43 +59,29 @@ jobs:
       - name: Setup Flutter Translation Sheet Credentials
         run: |
           echo "${{env.FLUTTER_TRANSLATION_SHEET_CREDENTIALS}}" | base64 --decode > packages/common/credentials.json 
-
-      - name: Setup .env files
+          
+      - name: Setup .env file
         run: |
           echo "${{env.ENV_DEV}}" | base64 --decode > packages/core/.dev.env
           echo "${{env.ENV_QA}}" | base64 --decode > packages/core/.qa.env
           echo "${{env.ENV_PROD}}" | base64 --decode > packages/core/.prod.env
 
-      - name: Setup FVM and Flutter SDK
+      - name: Setup FVM
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
         id: fvm-config-action
 
-      - name: Cache Flutter SDK with FVM
+      # Cache Flutter SDK installed by FVM
+      - name: Cache Flutter SDK
         uses: actions/cache@v4
         id: flutter-sdk-cache
         with:
-          path: .fvm/flutter_sdk
+          path: .fvm/flutter_sdk  # Path where FVM stores the Flutter SDK
           key: |
             ${{ runner.os }}-fvm-flutter-${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           restore-keys: |
             ${{ runner.os }}-fvm-flutter-
 
-      - name: Install FVM if needed
-        run: |
-          if [[ "${{ steps.flutter-sdk-cache.outputs.cache-hit }}" != 'true' ]]; then
-            echo "Flutter SDK not found in cache. Installing version ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}..."
-            dart pub global activate fvm
-            fvm install ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-            fvm use ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }} --force
-          else
-            echo "Flutter SDK found in cache. Skipping installation."
-          fi
-
-          # Add fvm to PATH
-          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          echo "$HOME/.fvm/flutter_sdk/bin" >> $GITHUB_PATH
-          fvm use ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }} --force
-
+      # Cache Pub dependencies
       - name: Cache Pub dependencies
         uses: actions/cache@v4
         id: pub-cache
@@ -103,22 +89,60 @@ jobs:
           path: ~/.pub-cache
           key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
 
-      - name: Install Flutter Dependencies if needed
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Install FVM
+        run: |
+          dart pub global activate fvm
+
+      # Install Flutter SDK using FVM only if cache was not restored
+      - name: Use FVM Flutter Version
+        run: |
+          FLUTTER_VERSION=${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+
+          if [[ "${{ steps.flutter-sdk-cache.outputs.cache-hit }}" != 'true' ]]; then
+            echo "Flutter SDK not found in cache. Installing version $FLUTTER_VERSION..."
+            fvm install $FLUTTER_VERSION
+          else
+            echo "Flutter SDK found in cache. Skipping installation."
+          fi
+
+          fvm use $FLUTTER_VERSION --force
+
+      # Install Flutter dependencies only if cache was not restored
+      - name: Install Flutter Dependencies
         run: |
           if [[ "${{ steps.pub-cache.outputs.cache-hit }}" != 'true' ]]; then
             echo "Pub cache not found. Running 'flutter pub get'..."
-            fvm flutter pub get --offline
+            fvm flutter pub get >> /dev/null
           else
             echo "Pub cache found. Skipping 'flutter pub get'."
-          fi
+          fi  
 
       - name: Setup Flutter Translation Sheet
         run: |
+          cd packages/common
           fvm dart run flutter_translation_sheet:main fetch
+          cd ../../
 
       - name: Build Runner Setup
         run: |
-          fvm flutter pub run build_runner build -d
+          cd packages/core
+          pwd
+          
+          echo Getting dependencies
+          fvm flutter pub get >> /dev/null
+
+          echo Running build_runner in packages/core
+          fvm flutter pub run build_runner build -d 
+          
+          echo Done running build_runner. Navigating up to root directory
+          cd ../../    
+          fvm flutter pub get >> /dev/null
 
       - name: Auto-format Dart code
         run: fvm dart format .
@@ -140,3 +164,4 @@ jobs:
         with:
           name: dev-apk
           path: build/app/outputs/flutter-apk/*.apk
+
