@@ -38,7 +38,7 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
                 Text(data.customerName),
                 const SizedBox(height: kXSmall),
                 Text(
-                  data.address ?? '-',
+                  data.customreDimension ?? '-',
                   style: context.textTheme.labelMedium,
                 ),
               ],

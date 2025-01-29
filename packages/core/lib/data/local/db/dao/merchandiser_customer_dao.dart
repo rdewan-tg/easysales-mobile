@@ -40,10 +40,16 @@ class MerchandiserCustomerDao extends DatabaseAccessor<AppDatabase>
     final query = select(merchandiserCustomerEntity);
 
     if (searchQuery != null && searchQuery.isNotEmpty) {
+      final formattedSearchQuery =
+          '%$searchQuery%'; // Add wildcards to match anywhere in the string
+
       query.where(
         (tbl) =>
-            tbl.customerId.contains(searchQuery) | // Filter by customerId
-            tbl.customerName.contains(searchQuery), // Filter by customerName
+            tbl.customerId.like(formattedSearchQuery) | // Filter by customerId
+            tbl.customerName
+                .like(formattedSearchQuery) | // Filter by customerName
+            tbl.customreDimension
+                .like(formattedSearchQuery), // Filter by customreDimension
       );
     }
 

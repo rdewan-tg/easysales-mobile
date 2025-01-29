@@ -1,0 +1,130 @@
+name: Flutter - iOS Build Dev
+
+on:
+  push:
+    branches:
+      - qa1
+  pull_request:
+    branches:
+      - qa1
+
+env:
+  FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
+  APPLE_DISTRIBUTION_CERTIFICATE_BASE64: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
+  APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+  APPLE_PROVISION_QA_PROFILE_BASE64: ${{ secrets.APPLE_PROVISION_QA_PROFILE_BASE64 }}
+  ENV_DEV: ${{ secrets.ENV_DEV }}
+  ENV_QA: ${{ secrets.ENV_QA }}
+  ENV_PROD: ${{ secrets.ENV_PROD }}
+
+jobs:
+  build:
+    runs-on: macos-latest
+    environment: QA
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4      
+
+      - name: Setup Flutter Translation Sheet Credentials
+        run: |
+          echo "${{ env.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}" | base64 --decode > packages/common/credentials.json
+
+      - name: Setup .env files
+        run: |
+          echo "${{ env.ENV_DEV }}" | base64 --decode > packages/core/.dev.env
+          echo "${{ env.ENV_QA }}" | base64 --decode > packages/core/.qa.env
+          echo "${{ env.ENV_PROD }}" | base64 --decode > packages/core/.prod.env
+
+      - name: Setup FVM
+        uses: kuhnroyal/flutter-fvm-config-action/config@v3
+        id: fvm-config-action
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Install Flutter Dependencies
+        run: |
+          flutter pub get >> /dev/null
+
+
+      - name: Install dependencies
+        run: |
+          cd ios
+          pod repo update 
+          pod install --repo-update
+          pod update sqlite3 
+          cd ..
+
+      - name: Install iOS Certificates and Provisioning Profile
+        uses: apple-actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ env.APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
+          p12-password: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
+
+      - name: Install Provisioning Profile
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "${{ env.APPLE_PROVISION_QA_PROFILE_BASE64 }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/EasySales-QA-Provisioning-Profile.mobileprovision
+
+
+      - name: Setup Flutter Translation Sheet
+        run: |
+          cd packages/common
+          dart run flutter_translation_sheet:main fetch
+          cd ../../
+
+      - name: Build Runner Setup
+        run: |
+          cd packages/core
+          pwd
+          
+          echo Getting dependencies
+          flutter pub get >> /dev/null
+
+          echo Running build_runner in packages/core
+          flutter pub run build_runner build -d 
+          
+          echo Done running build_runner. Navigating up to root directory
+          cd ../../    
+          flutter pub get >> /dev/null
+
+      - name: Auto-format Dart code
+        run: dart format .
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze project source
+        run: flutter analyze --fatal-warnings
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build iOS App
+        run: |
+          flutter build ipa \
+            --export-options-plist ios/export_options.plist \
+            --release \
+            --build-name=1.0.0 \
+            --build-number=1 \
+            --obfuscate \
+            --split-debug-info=build/app/symbols \
+            --flavor qa \
+            -t lib/main_qa.dart
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-ipa
+          path: build/ios/ipa/*.ipa
+
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_IOS }}
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_APP_DISTRIBUTION_CREDENTIAL }}
+          groups: "ios-internal"
+          file: build/ios/ipa/app-qa-release.ipa

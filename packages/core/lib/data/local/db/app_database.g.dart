@@ -2305,6 +2305,585 @@ class SearchSalesCustomerHistoryEntityCompanion
   }
 }
 
+class $CustomerAddressEntityTable extends CustomerAddressEntity
+    with TableInfo<$CustomerAddressEntityTable, CustomerAddressEntityData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CustomerAddressEntityTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _customerIdMeta =
+      const VerificationMeta('customerId');
+  @override
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+      'customer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _deliveryNameMeta =
+      const VerificationMeta('deliveryName');
+  @override
+  late final GeneratedColumn<String> deliveryName = GeneratedColumn<String>(
+      'delivery_name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _addressMeta =
+      const VerificationMeta('address');
+  @override
+  late final GeneratedColumn<String> address = GeneratedColumn<String>(
+      'address', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _salesPersonIdMeta =
+      const VerificationMeta('salesPersonId');
+  @override
+  late final GeneratedColumn<String> salesPersonId = GeneratedColumn<String>(
+      'sales_person_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _latitudeMeta =
+      const VerificationMeta('latitude');
+  @override
+  late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
+      'latitude', aliasedName, false,
+      type: DriftSqlType.double,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0.0));
+  static const VerificationMeta _longitudeMeta =
+      const VerificationMeta('longitude');
+  @override
+  late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
+      'longitude', aliasedName, false,
+      type: DriftSqlType.double,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0.0));
+  static const VerificationMeta _postalAddressMeta =
+      const VerificationMeta('postalAddress');
+  @override
+  late final GeneratedColumn<String> postalAddress = GeneratedColumn<String>(
+      'postal_address', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _locationMeta =
+      const VerificationMeta('location');
+  @override
+  late final GeneratedColumn<String> location = GeneratedColumn<String>(
+      'location', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _isPrimaryMeta =
+      const VerificationMeta('isPrimary');
+  @override
+  late final GeneratedColumn<bool> isPrimary = GeneratedColumn<bool>(
+      'is_primary', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_primary" IN (0, 1))'));
+  static const VerificationMeta _companyCodeMeta =
+      const VerificationMeta('companyCode');
+  @override
+  late final GeneratedColumn<String> companyCode = GeneratedColumn<String>(
+      'company_code', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _companyIdMeta =
+      const VerificationMeta('companyId');
+  @override
+  late final GeneratedColumn<int> companyId = GeneratedColumn<int>(
+      'company_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        customerId,
+        deliveryName,
+        address,
+        salesPersonId,
+        latitude,
+        longitude,
+        postalAddress,
+        location,
+        isPrimary,
+        companyCode,
+        companyId
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'customer_address_entity';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<CustomerAddressEntityData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('customer_id')) {
+      context.handle(
+          _customerIdMeta,
+          customerId.isAcceptableOrUnknown(
+              data['customer_id']!, _customerIdMeta));
+    } else if (isInserting) {
+      context.missing(_customerIdMeta);
+    }
+    if (data.containsKey('delivery_name')) {
+      context.handle(
+          _deliveryNameMeta,
+          deliveryName.isAcceptableOrUnknown(
+              data['delivery_name']!, _deliveryNameMeta));
+    } else if (isInserting) {
+      context.missing(_deliveryNameMeta);
+    }
+    if (data.containsKey('address')) {
+      context.handle(_addressMeta,
+          address.isAcceptableOrUnknown(data['address']!, _addressMeta));
+    } else if (isInserting) {
+      context.missing(_addressMeta);
+    }
+    if (data.containsKey('sales_person_id')) {
+      context.handle(
+          _salesPersonIdMeta,
+          salesPersonId.isAcceptableOrUnknown(
+              data['sales_person_id']!, _salesPersonIdMeta));
+    } else if (isInserting) {
+      context.missing(_salesPersonIdMeta);
+    }
+    if (data.containsKey('latitude')) {
+      context.handle(_latitudeMeta,
+          latitude.isAcceptableOrUnknown(data['latitude']!, _latitudeMeta));
+    }
+    if (data.containsKey('longitude')) {
+      context.handle(_longitudeMeta,
+          longitude.isAcceptableOrUnknown(data['longitude']!, _longitudeMeta));
+    }
+    if (data.containsKey('postal_address')) {
+      context.handle(
+          _postalAddressMeta,
+          postalAddress.isAcceptableOrUnknown(
+              data['postal_address']!, _postalAddressMeta));
+    } else if (isInserting) {
+      context.missing(_postalAddressMeta);
+    }
+    if (data.containsKey('location')) {
+      context.handle(_locationMeta,
+          location.isAcceptableOrUnknown(data['location']!, _locationMeta));
+    } else if (isInserting) {
+      context.missing(_locationMeta);
+    }
+    if (data.containsKey('is_primary')) {
+      context.handle(_isPrimaryMeta,
+          isPrimary.isAcceptableOrUnknown(data['is_primary']!, _isPrimaryMeta));
+    } else if (isInserting) {
+      context.missing(_isPrimaryMeta);
+    }
+    if (data.containsKey('company_code')) {
+      context.handle(
+          _companyCodeMeta,
+          companyCode.isAcceptableOrUnknown(
+              data['company_code']!, _companyCodeMeta));
+    } else if (isInserting) {
+      context.missing(_companyCodeMeta);
+    }
+    if (data.containsKey('company_id')) {
+      context.handle(_companyIdMeta,
+          companyId.isAcceptableOrUnknown(data['company_id']!, _companyIdMeta));
+    } else if (isInserting) {
+      context.missing(_companyIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {location};
+  @override
+  CustomerAddressEntityData map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CustomerAddressEntityData(
+      customerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}customer_id'])!,
+      deliveryName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}delivery_name'])!,
+      address: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}address'])!,
+      salesPersonId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}sales_person_id'])!,
+      latitude: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}latitude'])!,
+      longitude: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}longitude'])!,
+      postalAddress: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}postal_address'])!,
+      location: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}location'])!,
+      isPrimary: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}is_primary'])!,
+      companyCode: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}company_code'])!,
+      companyId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}company_id'])!,
+    );
+  }
+
+  @override
+  $CustomerAddressEntityTable createAlias(String alias) {
+    return $CustomerAddressEntityTable(attachedDatabase, alias);
+  }
+}
+
+class CustomerAddressEntityData extends DataClass
+    implements Insertable<CustomerAddressEntityData> {
+  final String customerId;
+  final String deliveryName;
+  final String address;
+  final String salesPersonId;
+  final double latitude;
+  final double longitude;
+  final String postalAddress;
+  final String location;
+  final bool isPrimary;
+  final String companyCode;
+  final int companyId;
+  const CustomerAddressEntityData(
+      {required this.customerId,
+      required this.deliveryName,
+      required this.address,
+      required this.salesPersonId,
+      required this.latitude,
+      required this.longitude,
+      required this.postalAddress,
+      required this.location,
+      required this.isPrimary,
+      required this.companyCode,
+      required this.companyId});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['customer_id'] = Variable<String>(customerId);
+    map['delivery_name'] = Variable<String>(deliveryName);
+    map['address'] = Variable<String>(address);
+    map['sales_person_id'] = Variable<String>(salesPersonId);
+    map['latitude'] = Variable<double>(latitude);
+    map['longitude'] = Variable<double>(longitude);
+    map['postal_address'] = Variable<String>(postalAddress);
+    map['location'] = Variable<String>(location);
+    map['is_primary'] = Variable<bool>(isPrimary);
+    map['company_code'] = Variable<String>(companyCode);
+    map['company_id'] = Variable<int>(companyId);
+    return map;
+  }
+
+  CustomerAddressEntityCompanion toCompanion(bool nullToAbsent) {
+    return CustomerAddressEntityCompanion(
+      customerId: Value(customerId),
+      deliveryName: Value(deliveryName),
+      address: Value(address),
+      salesPersonId: Value(salesPersonId),
+      latitude: Value(latitude),
+      longitude: Value(longitude),
+      postalAddress: Value(postalAddress),
+      location: Value(location),
+      isPrimary: Value(isPrimary),
+      companyCode: Value(companyCode),
+      companyId: Value(companyId),
+    );
+  }
+
+  factory CustomerAddressEntityData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CustomerAddressEntityData(
+      customerId: serializer.fromJson<String>(json['customerId']),
+      deliveryName: serializer.fromJson<String>(json['deliveryName']),
+      address: serializer.fromJson<String>(json['address']),
+      salesPersonId: serializer.fromJson<String>(json['salesPersonId']),
+      latitude: serializer.fromJson<double>(json['latitude']),
+      longitude: serializer.fromJson<double>(json['longitude']),
+      postalAddress: serializer.fromJson<String>(json['postalAddress']),
+      location: serializer.fromJson<String>(json['location']),
+      isPrimary: serializer.fromJson<bool>(json['isPrimary']),
+      companyCode: serializer.fromJson<String>(json['companyCode']),
+      companyId: serializer.fromJson<int>(json['companyId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'customerId': serializer.toJson<String>(customerId),
+      'deliveryName': serializer.toJson<String>(deliveryName),
+      'address': serializer.toJson<String>(address),
+      'salesPersonId': serializer.toJson<String>(salesPersonId),
+      'latitude': serializer.toJson<double>(latitude),
+      'longitude': serializer.toJson<double>(longitude),
+      'postalAddress': serializer.toJson<String>(postalAddress),
+      'location': serializer.toJson<String>(location),
+      'isPrimary': serializer.toJson<bool>(isPrimary),
+      'companyCode': serializer.toJson<String>(companyCode),
+      'companyId': serializer.toJson<int>(companyId),
+    };
+  }
+
+  CustomerAddressEntityData copyWith(
+          {String? customerId,
+          String? deliveryName,
+          String? address,
+          String? salesPersonId,
+          double? latitude,
+          double? longitude,
+          String? postalAddress,
+          String? location,
+          bool? isPrimary,
+          String? companyCode,
+          int? companyId}) =>
+      CustomerAddressEntityData(
+        customerId: customerId ?? this.customerId,
+        deliveryName: deliveryName ?? this.deliveryName,
+        address: address ?? this.address,
+        salesPersonId: salesPersonId ?? this.salesPersonId,
+        latitude: latitude ?? this.latitude,
+        longitude: longitude ?? this.longitude,
+        postalAddress: postalAddress ?? this.postalAddress,
+        location: location ?? this.location,
+        isPrimary: isPrimary ?? this.isPrimary,
+        companyCode: companyCode ?? this.companyCode,
+        companyId: companyId ?? this.companyId,
+      );
+  CustomerAddressEntityData copyWithCompanion(
+      CustomerAddressEntityCompanion data) {
+    return CustomerAddressEntityData(
+      customerId:
+          data.customerId.present ? data.customerId.value : this.customerId,
+      deliveryName: data.deliveryName.present
+          ? data.deliveryName.value
+          : this.deliveryName,
+      address: data.address.present ? data.address.value : this.address,
+      salesPersonId: data.salesPersonId.present
+          ? data.salesPersonId.value
+          : this.salesPersonId,
+      latitude: data.latitude.present ? data.latitude.value : this.latitude,
+      longitude: data.longitude.present ? data.longitude.value : this.longitude,
+      postalAddress: data.postalAddress.present
+          ? data.postalAddress.value
+          : this.postalAddress,
+      location: data.location.present ? data.location.value : this.location,
+      isPrimary: data.isPrimary.present ? data.isPrimary.value : this.isPrimary,
+      companyCode:
+          data.companyCode.present ? data.companyCode.value : this.companyCode,
+      companyId: data.companyId.present ? data.companyId.value : this.companyId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CustomerAddressEntityData(')
+          ..write('customerId: $customerId, ')
+          ..write('deliveryName: $deliveryName, ')
+          ..write('address: $address, ')
+          ..write('salesPersonId: $salesPersonId, ')
+          ..write('latitude: $latitude, ')
+          ..write('longitude: $longitude, ')
+          ..write('postalAddress: $postalAddress, ')
+          ..write('location: $location, ')
+          ..write('isPrimary: $isPrimary, ')
+          ..write('companyCode: $companyCode, ')
+          ..write('companyId: $companyId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      customerId,
+      deliveryName,
+      address,
+      salesPersonId,
+      latitude,
+      longitude,
+      postalAddress,
+      location,
+      isPrimary,
+      companyCode,
+      companyId);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CustomerAddressEntityData &&
+          other.customerId == this.customerId &&
+          other.deliveryName == this.deliveryName &&
+          other.address == this.address &&
+          other.salesPersonId == this.salesPersonId &&
+          other.latitude == this.latitude &&
+          other.longitude == this.longitude &&
+          other.postalAddress == this.postalAddress &&
+          other.location == this.location &&
+          other.isPrimary == this.isPrimary &&
+          other.companyCode == this.companyCode &&
+          other.companyId == this.companyId);
+}
+
+class CustomerAddressEntityCompanion
+    extends UpdateCompanion<CustomerAddressEntityData> {
+  final Value<String> customerId;
+  final Value<String> deliveryName;
+  final Value<String> address;
+  final Value<String> salesPersonId;
+  final Value<double> latitude;
+  final Value<double> longitude;
+  final Value<String> postalAddress;
+  final Value<String> location;
+  final Value<bool> isPrimary;
+  final Value<String> companyCode;
+  final Value<int> companyId;
+  final Value<int> rowid;
+  const CustomerAddressEntityCompanion({
+    this.customerId = const Value.absent(),
+    this.deliveryName = const Value.absent(),
+    this.address = const Value.absent(),
+    this.salesPersonId = const Value.absent(),
+    this.latitude = const Value.absent(),
+    this.longitude = const Value.absent(),
+    this.postalAddress = const Value.absent(),
+    this.location = const Value.absent(),
+    this.isPrimary = const Value.absent(),
+    this.companyCode = const Value.absent(),
+    this.companyId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CustomerAddressEntityCompanion.insert({
+    required String customerId,
+    required String deliveryName,
+    required String address,
+    required String salesPersonId,
+    this.latitude = const Value.absent(),
+    this.longitude = const Value.absent(),
+    required String postalAddress,
+    required String location,
+    required bool isPrimary,
+    required String companyCode,
+    required int companyId,
+    this.rowid = const Value.absent(),
+  })  : customerId = Value(customerId),
+        deliveryName = Value(deliveryName),
+        address = Value(address),
+        salesPersonId = Value(salesPersonId),
+        postalAddress = Value(postalAddress),
+        location = Value(location),
+        isPrimary = Value(isPrimary),
+        companyCode = Value(companyCode),
+        companyId = Value(companyId);
+  static Insertable<CustomerAddressEntityData> custom({
+    Expression<String>? customerId,
+    Expression<String>? deliveryName,
+    Expression<String>? address,
+    Expression<String>? salesPersonId,
+    Expression<double>? latitude,
+    Expression<double>? longitude,
+    Expression<String>? postalAddress,
+    Expression<String>? location,
+    Expression<bool>? isPrimary,
+    Expression<String>? companyCode,
+    Expression<int>? companyId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (customerId != null) 'customer_id': customerId,
+      if (deliveryName != null) 'delivery_name': deliveryName,
+      if (address != null) 'address': address,
+      if (salesPersonId != null) 'sales_person_id': salesPersonId,
+      if (latitude != null) 'latitude': latitude,
+      if (longitude != null) 'longitude': longitude,
+      if (postalAddress != null) 'postal_address': postalAddress,
+      if (location != null) 'location': location,
+      if (isPrimary != null) 'is_primary': isPrimary,
+      if (companyCode != null) 'company_code': companyCode,
+      if (companyId != null) 'company_id': companyId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CustomerAddressEntityCompanion copyWith(
+      {Value<String>? customerId,
+      Value<String>? deliveryName,
+      Value<String>? address,
+      Value<String>? salesPersonId,
+      Value<double>? latitude,
+      Value<double>? longitude,
+      Value<String>? postalAddress,
+      Value<String>? location,
+      Value<bool>? isPrimary,
+      Value<String>? companyCode,
+      Value<int>? companyId,
+      Value<int>? rowid}) {
+    return CustomerAddressEntityCompanion(
+      customerId: customerId ?? this.customerId,
+      deliveryName: deliveryName ?? this.deliveryName,
+      address: address ?? this.address,
+      salesPersonId: salesPersonId ?? this.salesPersonId,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      postalAddress: postalAddress ?? this.postalAddress,
+      location: location ?? this.location,
+      isPrimary: isPrimary ?? this.isPrimary,
+      companyCode: companyCode ?? this.companyCode,
+      companyId: companyId ?? this.companyId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (customerId.present) {
+      map['customer_id'] = Variable<String>(customerId.value);
+    }
+    if (deliveryName.present) {
+      map['delivery_name'] = Variable<String>(deliveryName.value);
+    }
+    if (address.present) {
+      map['address'] = Variable<String>(address.value);
+    }
+    if (salesPersonId.present) {
+      map['sales_person_id'] = Variable<String>(salesPersonId.value);
+    }
+    if (latitude.present) {
+      map['latitude'] = Variable<double>(latitude.value);
+    }
+    if (longitude.present) {
+      map['longitude'] = Variable<double>(longitude.value);
+    }
+    if (postalAddress.present) {
+      map['postal_address'] = Variable<String>(postalAddress.value);
+    }
+    if (location.present) {
+      map['location'] = Variable<String>(location.value);
+    }
+    if (isPrimary.present) {
+      map['is_primary'] = Variable<bool>(isPrimary.value);
+    }
+    if (companyCode.present) {
+      map['company_code'] = Variable<String>(companyCode.value);
+    }
+    if (companyId.present) {
+      map['company_id'] = Variable<int>(companyId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CustomerAddressEntityCompanion(')
+          ..write('customerId: $customerId, ')
+          ..write('deliveryName: $deliveryName, ')
+          ..write('address: $address, ')
+          ..write('salesPersonId: $salesPersonId, ')
+          ..write('latitude: $latitude, ')
+          ..write('longitude: $longitude, ')
+          ..write('postalAddress: $postalAddress, ')
+          ..write('location: $location, ')
+          ..write('isPrimary: $isPrimary, ')
+          ..write('companyCode: $companyCode, ')
+          ..write('companyId: $companyId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -2319,11 +2898,17 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $SearchSalesCustomerHistoryEntityTable
       searchSalesCustomerHistoryEntity =
       $SearchSalesCustomerHistoryEntityTable(this);
+  late final $CustomerAddressEntityTable customerAddressEntity =
+      $CustomerAddressEntityTable(this);
+  late final Index customerId = Index('customer_id',
+      'CREATE INDEX customer_id ON customer_address_entity (customer_id)');
   late final SettingDao settingDao = SettingDao(this as AppDatabase);
   late final MerchandiserCustomerDao merchandiserCustomerDao =
       MerchandiserCustomerDao(this as AppDatabase);
   late final SalesCustomerDao salesCustomerDao =
       SalesCustomerDao(this as AppDatabase);
+  late final CustomerAddressDao customerAddressDao =
+      CustomerAddressDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -2333,7 +2918,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         merchandiserCustomerEntity,
         salesCustomerEntity,
         searchMerchandiserCustomerHistoryEntity,
-        searchSalesCustomerHistoryEntity
+        searchSalesCustomerHistoryEntity,
+        customerAddressEntity,
+        customerId
       ];
   @override
   DriftDatabaseOptions get options =>
@@ -3477,6 +4064,279 @@ typedef $$SearchSalesCustomerHistoryEntityTableProcessedTableManager
         ),
         SearchSalesCustomerHistoryEntityData,
         PrefetchHooks Function()>;
+typedef $$CustomerAddressEntityTableCreateCompanionBuilder
+    = CustomerAddressEntityCompanion Function({
+  required String customerId,
+  required String deliveryName,
+  required String address,
+  required String salesPersonId,
+  Value<double> latitude,
+  Value<double> longitude,
+  required String postalAddress,
+  required String location,
+  required bool isPrimary,
+  required String companyCode,
+  required int companyId,
+  Value<int> rowid,
+});
+typedef $$CustomerAddressEntityTableUpdateCompanionBuilder
+    = CustomerAddressEntityCompanion Function({
+  Value<String> customerId,
+  Value<String> deliveryName,
+  Value<String> address,
+  Value<String> salesPersonId,
+  Value<double> latitude,
+  Value<double> longitude,
+  Value<String> postalAddress,
+  Value<String> location,
+  Value<bool> isPrimary,
+  Value<String> companyCode,
+  Value<int> companyId,
+  Value<int> rowid,
+});
+
+class $$CustomerAddressEntityTableFilterComposer
+    extends Composer<_$AppDatabase, $CustomerAddressEntityTable> {
+  $$CustomerAddressEntityTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get customerId => $composableBuilder(
+      column: $table.customerId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get deliveryName => $composableBuilder(
+      column: $table.deliveryName, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get address => $composableBuilder(
+      column: $table.address, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get salesPersonId => $composableBuilder(
+      column: $table.salesPersonId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get latitude => $composableBuilder(
+      column: $table.latitude, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get longitude => $composableBuilder(
+      column: $table.longitude, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get postalAddress => $composableBuilder(
+      column: $table.postalAddress, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get location => $composableBuilder(
+      column: $table.location, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get isPrimary => $composableBuilder(
+      column: $table.isPrimary, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnFilters(column));
+}
+
+class $$CustomerAddressEntityTableOrderingComposer
+    extends Composer<_$AppDatabase, $CustomerAddressEntityTable> {
+  $$CustomerAddressEntityTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get customerId => $composableBuilder(
+      column: $table.customerId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get deliveryName => $composableBuilder(
+      column: $table.deliveryName,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get address => $composableBuilder(
+      column: $table.address, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get salesPersonId => $composableBuilder(
+      column: $table.salesPersonId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get latitude => $composableBuilder(
+      column: $table.latitude, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get longitude => $composableBuilder(
+      column: $table.longitude, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get postalAddress => $composableBuilder(
+      column: $table.postalAddress,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get location => $composableBuilder(
+      column: $table.location, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get isPrimary => $composableBuilder(
+      column: $table.isPrimary, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnOrderings(column));
+}
+
+class $$CustomerAddressEntityTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CustomerAddressEntityTable> {
+  $$CustomerAddressEntityTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get customerId => $composableBuilder(
+      column: $table.customerId, builder: (column) => column);
+
+  GeneratedColumn<String> get deliveryName => $composableBuilder(
+      column: $table.deliveryName, builder: (column) => column);
+
+  GeneratedColumn<String> get address =>
+      $composableBuilder(column: $table.address, builder: (column) => column);
+
+  GeneratedColumn<String> get salesPersonId => $composableBuilder(
+      column: $table.salesPersonId, builder: (column) => column);
+
+  GeneratedColumn<double> get latitude =>
+      $composableBuilder(column: $table.latitude, builder: (column) => column);
+
+  GeneratedColumn<double> get longitude =>
+      $composableBuilder(column: $table.longitude, builder: (column) => column);
+
+  GeneratedColumn<String> get postalAddress => $composableBuilder(
+      column: $table.postalAddress, builder: (column) => column);
+
+  GeneratedColumn<String> get location =>
+      $composableBuilder(column: $table.location, builder: (column) => column);
+
+  GeneratedColumn<bool> get isPrimary =>
+      $composableBuilder(column: $table.isPrimary, builder: (column) => column);
+
+  GeneratedColumn<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => column);
+
+  GeneratedColumn<int> get companyId =>
+      $composableBuilder(column: $table.companyId, builder: (column) => column);
+}
+
+class $$CustomerAddressEntityTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $CustomerAddressEntityTable,
+    CustomerAddressEntityData,
+    $$CustomerAddressEntityTableFilterComposer,
+    $$CustomerAddressEntityTableOrderingComposer,
+    $$CustomerAddressEntityTableAnnotationComposer,
+    $$CustomerAddressEntityTableCreateCompanionBuilder,
+    $$CustomerAddressEntityTableUpdateCompanionBuilder,
+    (
+      CustomerAddressEntityData,
+      BaseReferences<_$AppDatabase, $CustomerAddressEntityTable,
+          CustomerAddressEntityData>
+    ),
+    CustomerAddressEntityData,
+    PrefetchHooks Function()> {
+  $$CustomerAddressEntityTableTableManager(
+      _$AppDatabase db, $CustomerAddressEntityTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CustomerAddressEntityTableFilterComposer(
+                  $db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CustomerAddressEntityTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CustomerAddressEntityTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> customerId = const Value.absent(),
+            Value<String> deliveryName = const Value.absent(),
+            Value<String> address = const Value.absent(),
+            Value<String> salesPersonId = const Value.absent(),
+            Value<double> latitude = const Value.absent(),
+            Value<double> longitude = const Value.absent(),
+            Value<String> postalAddress = const Value.absent(),
+            Value<String> location = const Value.absent(),
+            Value<bool> isPrimary = const Value.absent(),
+            Value<String> companyCode = const Value.absent(),
+            Value<int> companyId = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              CustomerAddressEntityCompanion(
+            customerId: customerId,
+            deliveryName: deliveryName,
+            address: address,
+            salesPersonId: salesPersonId,
+            latitude: latitude,
+            longitude: longitude,
+            postalAddress: postalAddress,
+            location: location,
+            isPrimary: isPrimary,
+            companyCode: companyCode,
+            companyId: companyId,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String customerId,
+            required String deliveryName,
+            required String address,
+            required String salesPersonId,
+            Value<double> latitude = const Value.absent(),
+            Value<double> longitude = const Value.absent(),
+            required String postalAddress,
+            required String location,
+            required bool isPrimary,
+            required String companyCode,
+            required int companyId,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              CustomerAddressEntityCompanion.insert(
+            customerId: customerId,
+            deliveryName: deliveryName,
+            address: address,
+            salesPersonId: salesPersonId,
+            latitude: latitude,
+            longitude: longitude,
+            postalAddress: postalAddress,
+            location: location,
+            isPrimary: isPrimary,
+            companyCode: companyCode,
+            companyId: companyId,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$CustomerAddressEntityTableProcessedTableManager
+    = ProcessedTableManager<
+        _$AppDatabase,
+        $CustomerAddressEntityTable,
+        CustomerAddressEntityData,
+        $$CustomerAddressEntityTableFilterComposer,
+        $$CustomerAddressEntityTableOrderingComposer,
+        $$CustomerAddressEntityTableAnnotationComposer,
+        $$CustomerAddressEntityTableCreateCompanionBuilder,
+        $$CustomerAddressEntityTableUpdateCompanionBuilder,
+        (
+          CustomerAddressEntityData,
+          BaseReferences<_$AppDatabase, $CustomerAddressEntityTable,
+              CustomerAddressEntityData>
+        ),
+        CustomerAddressEntityData,
+        PrefetchHooks Function()>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -3497,6 +4357,8 @@ class $AppDatabaseManager {
       get searchSalesCustomerHistoryEntity =>
           $$SearchSalesCustomerHistoryEntityTableTableManager(
               _db, _db.searchSalesCustomerHistoryEntity);
+  $$CustomerAddressEntityTableTableManager get customerAddressEntity =>
+      $$CustomerAddressEntityTableTableManager(_db, _db.customerAddressEntity);
 }
 
 // **************************************************************************

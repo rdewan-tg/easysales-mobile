@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'merchandiser_customer_api.dart';
+part of 'customer_address_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'merchandiser_customer_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
-  _MerchandiserCustomerApi(
+class _CustomerAddressApi implements CustomerAddressApi {
+  _CustomerAddressApi(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -22,20 +22,20 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<MerchandiserCustomerResponse> getMerchandiserCustomers(
+  Future<CustomerAddressResponse> getCustomerAddresses(
       String dataAreaId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<MerchandiserCustomerResponse>(Options(
+    final _options = _setStreamType<CustomerAddressResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/api/v1/merchandiser-customers/${dataAreaId}',
+          '/api/v1/addresses/${dataAreaId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -45,9 +45,48 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late MerchandiserCustomerResponse _value;
+    late CustomerAddressResponse _value;
     try {
-      _value = MerchandiserCustomerResponse.fromJson(_result.data!);
+      _value = await compute(deserializeCustomerAddressResponse, _result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<CustomerAddressResponse> filterCustomerAddresses(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'companyCode': companyCode,
+      r'salesPersonId': salesPersonId,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<CustomerAddressResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/addresses',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CustomerAddressResponse _value;
+    try {
+      _value = await compute(deserializeCustomerAddressResponse, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

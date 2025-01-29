@@ -34,7 +34,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/merchandiser-customers/${dataAreaId}',
+          '/api/v1/customers/${dataAreaId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -46,7 +46,46 @@ class _SalesCustomerApi implements SalesCustomerApi {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late SalesCustomerResponse _value;
     try {
-      _value = SalesCustomerResponse.fromJson(_result.data!);
+      _value = await compute(deserializeSalesCustomerResponse, _result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<SalesCustomerResponse> filter(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'companyCode': companyCode,
+      r'salesPersonId': salesPersonId,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<SalesCustomerResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/customers',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SalesCustomerResponse _value;
+    try {
+      _value = await compute(deserializeSalesCustomerResponse, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

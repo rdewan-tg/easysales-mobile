@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:core/data/local/db/app_database.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:merchandiser/features/address/presentation/controller/address_controller.dart';
 import 'package:merchandiser/features/customer/application/merchandiser_customer_service.dart';
 import 'package:merchandiser/features/customer/domain/model/merchandiser_customer_address.dart';
 import 'package:merchandiser/features/customer/presentation/state/merchandiser_customer_state.dart';
@@ -36,16 +37,21 @@ class MerchandiserCustomerController
       final setting =
           await ref.read(merchandiserCustomerServiceProvider).getAllSetting();
       // get the companyCode from map
-      final dataAreaId = setting['companyCode'] ?? 'SGMA';
+      final String companyCode = setting['companyCode'] ?? 'SGMA';
+      final String salesPersonId = setting['salesPersonCode'] ?? '';
 
       // get the merchandiser customers from from api and inset it to the database
       final result = await ref
           .read(merchandiserCustomerServiceProvider)
-          .getMerchandiserCustomers(dataAreaId);
+          .filterMerchandiserCustomers(companyCode, salesPersonId);
 
       result.when(
         (customers) {
+          // get the customer address from api
+          ref.read(addressControllerProvider.notifier).getCustomerAddresses();
+          // get the customer from db
           watchMerchandiserCustomers();
+          // update the state
           state = state.copyWith(isLoading: false);
         },
         (failure) {

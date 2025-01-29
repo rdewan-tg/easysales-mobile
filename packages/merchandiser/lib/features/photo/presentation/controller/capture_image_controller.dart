@@ -29,6 +29,7 @@ class CaptureImageController extends Notifier<CaptureImageState> {
     required String customerName,
     required String customerAddress,
     required String transDate,
+    required String customerDimension,
   }) async {
     try {
       state = state.copyWith(isLoading: true, isImageUploaded: false);
@@ -48,6 +49,7 @@ class CaptureImageController extends Notifier<CaptureImageState> {
             customerAddress: customerAddress,
             transDate: transDate,
             companyCode: companyCode,
+            customerDimension: customerDimension,
           );
 
       result.when(

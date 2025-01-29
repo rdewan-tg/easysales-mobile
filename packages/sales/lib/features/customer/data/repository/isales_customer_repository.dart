@@ -4,6 +4,11 @@ import 'package:sales/features/customer/data/dto/request/sales_customer_response
 abstract interface class ISalesCustomerRepository {
   Future<SalesCustomerResponse> getSalesCustomers(String dataAreaId);
 
+  Future<SalesCustomerResponse> filterSalesCustomers(
+    String companyCode,
+    String salesPersonId,
+  );
+
   Stream<List<SalesCustomerEntityData>> watchAll(
     String? searchQuery,
   );

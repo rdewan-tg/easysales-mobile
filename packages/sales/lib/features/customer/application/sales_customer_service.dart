@@ -50,6 +50,36 @@ final class SalesCustomerService implements ISalesCustomerService {
   }
 
   @override
+  Future<Result<bool, Failure>> filterSalesCustomers(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    try {
+      final response = await _salesCustomerRepository.filterSalesCustomers(
+        companyCode,
+        salesPersonId,
+      );
+
+      final salesCustomerData = await Isolate.run(
+        () => _mapToSalesCustomerEntityData(response),
+      );
+
+      await _salesCustomerRepository.insertOrUpdate(salesCustomerData);
+
+      return const Result.success(true);
+    } on Failure catch (e) {
+      return Result.error(e);
+    } catch (e, s) {
+      return Result.error(
+        Failure(
+          message: e.toString(),
+          stackTrace: s,
+        ),
+      );
+    }
+  }
+
+  @override
   Stream<List<SalesCustomerEntityData>> watchAll(String? searchQuery) {
     return _salesCustomerRepository.watchAll(searchQuery);
   }

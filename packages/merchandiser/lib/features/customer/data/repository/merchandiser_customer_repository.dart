@@ -62,6 +62,29 @@ final class MerchandiserCustomerRepository
   }
 
   @override
+  Future<MerchandiserCustomerResponse> filterMerchandiserCustomers(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    try {
+      final response =
+          await _merchandiserCustomerApi.filter(companyCode, salesPersonId);
+
+      return response;
+    } on DioException catch (e, stackTrace) {
+      // Use the mixin to map DioException to Failure
+      throw mapDioExceptionToFailure(e, stackTrace);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
   Stream<List<MerchandiserCustomerEntityData>> watchAll(
     String? searchQuery,
   ) {

@@ -60,6 +60,26 @@ final class SalesCustomerRepository
   }
 
   @override
+  Future<SalesCustomerResponse> filterSalesCustomers(
+    String companyCode,
+    String salesPersonId,
+  ) async {
+    try {
+      return await _salesCustomerApi.filter(companyCode, salesPersonId);
+    } on DioException catch (e, stackTrace) {
+      // Use the mixin to map DioException to Failure
+      throw mapDioExceptionToFailure(e, stackTrace);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
   Stream<List<SalesCustomerEntityData>> watchAll(
     String? searchQuery,
   ) {
