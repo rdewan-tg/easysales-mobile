@@ -53,6 +53,17 @@ jobs:
             ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
           key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
 
+      
+      # Install Flutter dependencies only if cache was not restored
+      - name: Install Flutter Dependencies
+        run: |
+          if [[ "${{ steps.pub-cache.outputs.cache-hit }}" != 'true' ]]; then
+            echo "Pub cache not found. Running 'flutter pub get'..."
+            flutter pub get >> /dev/null
+          else
+            echo "Pub cache found. Skipping 'flutter pub get'."
+          fi
+      
       - name: Install dependencies
         run: |
           cd ios
