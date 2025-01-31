@@ -3,10 +3,10 @@ name: Flutter - iOS Build Dev
 on:
   push:
     branches:
-      - qa1
+      - qa
   pull_request:
     branches:
-      - qa1
+      - qa
 
 env:
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
@@ -55,7 +55,6 @@ jobs:
           cd ios
           pod repo update 
           pod install --repo-update
-          pod update sqlite3 
           cd ..
 
       - name: Install iOS Certificates and Provisioning Profile
