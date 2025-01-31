@@ -26,5 +26,17 @@
     "setting.deviceId": "รหัสอุปกรณ์",
     "setting.salesPersonCode": "รหัสพนักงานขาย",
     "setting.orderNumberFormat": "รูปแบบหมายเลขคำสั่งซื้อ",
-    "setting.timeZone": "โซนเวลา"
+    "setting.timeZone": "โซนเวลา",
+    "home.viewMore": "ดูเพิ่มเติม",
+    "sales.clearSearchHistory": "ล้างประวัติการค้นหา",
+    "merchandiser.clearSearchHistory": "ล้างประวัติการค้นหา",
+    "report.todaysReport": "รายงานวันนี้",
+    "report.yesterdaysReport": "รายงานเมื่อวาน",
+    "report.thisMonthReport": "รายงานประจำเดือนนี้",
+    "report.todaysVisit": "การมาเยือนของวันนี้",
+    "report.yesterdaysVisit": "การมาเยือนของเมื่อวาน",
+    "report.thisMonthVisit": "การเยี่ยมชมในเดือนนี้",
+    "report.totalVisits": "การเข้าชมทั้งหมด:",
+    "report.todaysVisits": "การเข้าชมวันนี้:",
+    "report.thisMonthVisits": "การเข้าชมของเดือนนี้:"
 }
