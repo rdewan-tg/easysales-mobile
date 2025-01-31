@@ -3,10 +3,10 @@ name: Flutter - iOS Build Dev
 on:
   push:
     branches:
-      - dev1
+      - dev
   pull_request:
     branches:
-      - dev1
+      - dev
 
 env:
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
@@ -52,11 +52,6 @@ jobs:
           path: |  # Path to the directory that should be cached
             ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
           key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
-
-      # - name: Install CocoaPods
-      #   run: |
-      #     sudo gem install cocoapods
-      #     pod setup
 
       - name: Install dependencies
         run: |
@@ -118,21 +113,8 @@ jobs:
             --build-name=1.0.0 \
             --build-number=1 \
             --obfuscate \
-            --export-options-plist ios/export_options.plist \
+            --export-options-plist ios/export_options_dev.plist \
             --split-debug-info=build/app/symbols \
             --flavor dev \
             -t lib/main_dev.dart
 
-      # - name: Upload IPA
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: dev-ipa
-      #     path: build/ios/ipa/*.ipa
-
-      # - name: Upload to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{ secrets.FIREBASE_APP_ID }}
-      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-      #     groups: "android-internal"
-      #     file: build/ios/ipa/app-dev-release.ipa
