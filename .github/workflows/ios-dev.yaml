@@ -3,10 +3,10 @@ name: Flutter - iOS Build Dev
 on:
   push:
     branches:
-      - dev
+      - dev1
   pull_request:
     branches:
-      - dev
+      - dev1
 
 env:
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
@@ -37,13 +37,7 @@ jobs:
 
       - name: Setup FVM
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
-        id: fvm-config-action
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+        id: fvm-config-action      
 
       - name: Cache Flutter dependencies 
         id: cache
@@ -53,6 +47,11 @@ jobs:
             ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
           key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
 
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
       
       # Install Flutter dependencies only if cache was not restored
       - name: Install Flutter Dependencies
@@ -127,4 +126,10 @@ jobs:
             --split-debug-info=build/app/symbols \
             --flavor dev \
             -t lib/main_dev.dart
+
+      - name: Upload IPA
+          uses: actions/upload-artifact@v4
+          with:
+            name: dev-ipa
+            path: build/ios/ipa
 

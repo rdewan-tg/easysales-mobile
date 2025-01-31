@@ -1,17 +1,20 @@
-name: Flutter - Android Build Dev
+name: Flutter - Android-iOS Build Dev
 
 on:
   push:
     branches:
-      - dev1
+      - dev
   pull_request:
     branches:
-      - dev1
+      - dev
 
 env:
   ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
   ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
   ANDROID_LOCAL_PROPERTIES: ${{ secrets.ANDROID_LOCAL_PROPERTIES }}
+  APPLE_DEVELOPMENT_CERTIFICATE_BASE64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
+  APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+  APPLE_PROVISION_DEV_PROFILE_BASE64: ${{ secrets.APPLE_PROVISION_DEV_PROFILE_BASE64 }}
   FLUTTER_TRANSLATION_SHEET_CREDENTIALS: ${{ secrets.FLUTTER_TRANSLATION_SHEET_CREDENTIALS }}
   ENV_DEV: ${{ secrets.ENV_DEV }}
   ENV_QA: ${{ secrets.ENV_QA }}
@@ -19,19 +22,22 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on:  macos-latest
     environment: DEV
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Android specific setup
+      # Setup JDK
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
           cache: gradle
-      
+
+      # Cache Gradle
       - name: Cache Gradle
         uses: actions/cache@v4
         id: gradle-cache
@@ -44,28 +50,34 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      # Setup key.properties file
       - name: Setup key.properties file
         run: |
           echo "${{env.ANDROID_KEY_PROPERTIES}}" | base64 --decode > android/key.properties
 
+      # Setup local.properties file
       - name: Setup local.properties file
         run: |
           echo "${{env.ANDROID_LOCAL_PROPERTIES}}" | base64 --decode > android/local.properties
 
+      # Setup keystore
       - name: Setup keystore file
         run: |
           echo "${{env.ANDROID_KEYSTORE}}" | base64 --decode > android/keystore/tonggarden.jks
 
+      # Setup Flutter Translation Sheet Credentials
       - name: Setup Flutter Translation Sheet Credentials
         run: |
           echo "${{env.FLUTTER_TRANSLATION_SHEET_CREDENTIALS}}" | base64 --decode > packages/common/credentials.json 
-          
+
+      # Setup .env files    
       - name: Setup .env file
         run: |
           echo "${{env.ENV_DEV}}" | base64 --decode > packages/core/.dev.env
           echo "${{env.ENV_QA}}" | base64 --decode > packages/core/.qa.env
           echo "${{env.ENV_PROD}}" | base64 --decode > packages/core/.prod.env
 
+      # Setup FVM
       - name: Setup FVM
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
         id: fvm-config-action
@@ -95,12 +107,35 @@ jobs:
             echo "Pub cache found. Skipping 'flutter pub get'."
           fi  
 
+      # iOS specific - install dependencies
+      - name: Install dependencies
+        run: |
+          cd ios
+          pod repo update 
+          pod install --repo-update 
+          cd ..
+
+      # setup iOS certificates
+      - name: Install iOS Certificates and Provisioning Profile
+        uses: apple-actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ env.APPLE_DEVELOPMENT_CERTIFICATE_BASE64 }}
+          p12-password: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
+
+      # setup iOS provisioning profile
+      - name: Install Provisioning Profile
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "${{ secrets.APPLE_PROVISION_DEV_PROFILE_BASE64 }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/EasySales-Dev-Provisioning-Profile.mobileprovision
+
+      # setup flutter translation sheet
       - name: Setup Flutter Translation Sheet
         run: |
           cd packages/common
           dart run flutter_translation_sheet:main fetch
           cd ../../
 
+      # setup build runner
       - name: Build Runner Setup
         run: |
           cd packages/core
@@ -116,24 +151,57 @@ jobs:
           cd ../../    
           flutter pub get >> /dev/null
 
+      # format dart code
       - name: Auto-format Dart code
         run: dart format .
 
+      # verify formatting
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
+      # analyze project for lints
       - name: Analyze project source
         run: flutter analyze --fatal-warnings
 
+      # run tests
       - name: Run tests
         run: flutter test
 
+      # build apk
       - name: Build APK
-        run: flutter build apk --release --build-name=1.0.0 --build-number=1 --obfuscate --split-debug-info=build/app/symbols --flavor dev -t lib/main_dev.dart
+        run: flutter build apk \
+          --release \
+          --build-name=1.0.0 \
+          --build-number=1 \
+          --obfuscate \
+          --split-debug-info=build/app/symbols \
+          --flavor dev \
+          -t lib/main_dev.dart
 
+      # build ios
+      - name: Build iOS App
+        run: |
+          flutter build ipa \
+            --release \
+            --build-name=1.0.0 \
+            --build-number=1 \
+            --obfuscate \
+            --export-options-plist ios/export_options_dev.plist \
+            --split-debug-info=build/app/symbols \
+            --flavor dev \
+            -t lib/main_dev.dart
+
+      # upload artifacts - android
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: dev-apk
           path: build/app/outputs/flutter-apk/*.apk
+
+      # upload artifacts - ios
+      - name: Upload IPA
+          uses: actions/upload-artifact@v4
+          with:
+            name: dev-ipa
+            path: build/ios/ipa
 
