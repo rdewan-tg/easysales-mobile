@@ -108,7 +108,7 @@ jobs:
           fi  
 
       # iOS specific - install dependencies
-      - name: Install dependencies
+      - name: Install iOS dependencies
         run: |
           cd ios
           pod repo update 
@@ -169,14 +169,15 @@ jobs:
 
       # build apk
       - name: Build APK
-        run: flutter build apk \
-          --release \
-          --build-name=1.0.0 \
-          --build-number=1 \
-          --obfuscate \
-          --split-debug-info=build/app/symbols \
-          --flavor dev \
-          -t lib/main_dev.dart
+        run: |
+          flutter build apk \
+            --release \
+            --build-name=1.0.0 \
+            --build-number=1 \
+            --obfuscate \
+            --split-debug-info=build/app/symbols \
+            --flavor dev \
+            -t lib/main_dev.dart
 
       # build ios
       - name: Build iOS App
