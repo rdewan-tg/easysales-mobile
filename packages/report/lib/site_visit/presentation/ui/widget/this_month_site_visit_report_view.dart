@@ -32,7 +32,7 @@ class ThisMonthSiteVisitReportView extends ConsumerWidget {
                     vertical: -4,
                   ),
                   label: Text(
-                    'Total Visits: ${data.visitCount.toString()}',
+                    '${context.localizations('report.totalVisits')} ${data.visitCount.toString()}',
                     style: context.textTheme.labelSmall,
                   ),
                 ),

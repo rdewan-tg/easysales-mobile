@@ -43,7 +43,7 @@ class ClearSearchHistory extends ConsumerWidget {
                 child: Row(
                   children: [
                     Text(
-                      'Clear Search History',
+                      context.localizations('merchandiser.clearSearchHistory'),
                       textAlign: TextAlign.center,
                       style: context.textTheme.bodySmall?.copyWith(
                         fontWeight: FontWeight.w700,

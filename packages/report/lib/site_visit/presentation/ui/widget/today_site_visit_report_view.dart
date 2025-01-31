@@ -21,11 +21,6 @@ class TodaySiteVisitReportView extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  data.customerId,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
-                ),
-                const SizedBox(height: kXSmall),
                 Text(data.customerName),
                 const SizedBox(height: kXSmall),
                 Text(data.customerAddress),

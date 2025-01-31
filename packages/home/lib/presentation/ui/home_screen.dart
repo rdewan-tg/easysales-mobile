@@ -22,7 +22,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'.hardcoded),
+        title: Text(context.localizations('home.title')),
         centerTitle: true,
         elevation: 8,
       ),
@@ -41,7 +41,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         TextButton(
                           onPressed: () =>
                               context.push('/today-site-visit-report'),
-                          child: Text('View More'.hardcoded),
+                          child: Text(context.localizations('home.viewMore')),
                         ),
                       ],
                     ),
@@ -61,7 +61,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         TextButton(
                           onPressed: () =>
                               context.push('/this-month-site-visit-report'),
-                          child: Text('View More'.hardcoded),
+                          child: Text(context.localizations('home.viewMore')),
                         ),
                       ],
                     ),

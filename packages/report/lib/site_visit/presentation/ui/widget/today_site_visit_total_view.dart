@@ -13,7 +13,7 @@ class TodaySiteVisitTotalView extends ConsumerWidget {
       child: Row(
         children: [
           Text(
-            "Today's  Visits:".hardcoded,
+            context.localizations('report.todaysVisits').hardcoded,
             style: context.textTheme.labelLarge,
           ),
           Padding(

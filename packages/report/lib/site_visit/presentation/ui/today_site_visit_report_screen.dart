@@ -24,7 +24,7 @@ class _TodaySiteVisitReportScreenState
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Today's Report".hardcoded),
+        title: Text(context.localizations('report.todaysReport')),
         centerTitle: true,
       ),
       body: const TodaySiteVisitReportView(),

@@ -24,7 +24,7 @@ class _ThisMonthSiteVisitReportScreenState
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("This Month Report".hardcoded),
+        title: Text(context.localizations('report.thisMonthReport')),
         centerTitle: true,
       ),
       body: const ThisMonthSiteVisitReportView(),
