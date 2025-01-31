@@ -36,6 +36,7 @@ final class MerchaniserPhotoRepository
     required String transDate,
     required String companyCode,
     required String customerDimension,
+    required String location,
   }) {
     try {
       return _photoApi.uploadMerchandiserPhoto(
@@ -48,6 +49,7 @@ final class MerchaniserPhotoRepository
         transDate: transDate,
         companyCode: companyCode,
         customerChain: customerDimension,
+        location: location,
       );
     } on DioException catch (e, stackTrace) {
       // Use the mixin to map DioException to Failure

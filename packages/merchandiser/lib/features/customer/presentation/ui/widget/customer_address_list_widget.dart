@@ -68,6 +68,7 @@ class _CustomerAddressListWidgetState
                       'customerName': widget.customerName,
                       'address': data.address,
                       'customerDimension': widget.customerDimension,
+                      'location': data.location,
                     },
                   );
                 },

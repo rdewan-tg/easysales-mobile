@@ -1,4 +1,3 @@
-
 name: Flutter - Android Build Dev
 
 on:
@@ -32,6 +31,18 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
           cache: gradle
+      
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        id: gradle-cache
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: |
+            ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
       - name: Setup key.properties file
         run: |
@@ -59,23 +70,30 @@ jobs:
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
         id: fvm-config-action
 
+      # Cache Pub dependencies
+      - name: Cache Pub dependencies
+        uses: actions/cache@v4
+        id: pub-cache
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
-      - name: Cache Flutter dependencies 
-        id: cache
-        uses: actions/cache@v4 
-        with:
-          path: |  # Path to the directory that should be cached
-            ~/.pub-cache  # Cache Flutter's dependency folder, where pub packages are stored
-          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}  # Unique cache key based on the OS and hash of the pubspec.yaml file
-
+     
+      # Install Flutter dependencies only if cache was not restored
       - name: Install Flutter Dependencies
         run: |
-          flutter pub get >> /dev/null  
+          if [[ "${{ steps.pub-cache.outputs.cache-hit }}" != 'true' ]]; then
+            echo "Pub cache not found. Running 'flutter pub get'..."
+            flutter pub get >> /dev/null
+          else
+            echo "Pub cache found. Skipping 'flutter pub get'."
+          fi  
 
       - name: Setup Flutter Translation Sheet
         run: |
@@ -98,42 +116,24 @@ jobs:
           cd ../../    
           flutter pub get >> /dev/null
 
-      
-
-      # Formats the dart code
       - name: Auto-format Dart code
         run: dart format .
 
-      # Verifies if the dart code is formatted well
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
-        # --set-exit-if-changed stops execution if the any code is not well formatted
-        # --output=none prints files which needs to be formatted
 
-      # Checks for Symantic errors. Can be configured using analysis_options.yaml
       - name: Analyze project source
         run: flutter analyze --fatal-warnings
-        # optionally use --fatal-warnings to stop execution if any warnings are found
 
-      # Runs unit test
       - name: Run tests
         run: flutter test
 
       - name: Build APK
         run: flutter build apk --release --build-name=1.0.0 --build-number=1 --obfuscate --split-debug-info=build/app/symbols --flavor dev -t lib/main_dev.dart
 
-      # Upload the built APK as an artifact
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: dev-apk
           path: build/app/outputs/flutter-apk/*.apk
 
-      # Upload the built APK to Firebase App Distribution
-      # - name: Upload to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{ secrets.FIREBASE_APP_ID }}
-      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-      #     groups: "android-internal" # Specify your tester groups here
-      #     file: build/app/outputs/flutter-apk/app-dev-release.apk

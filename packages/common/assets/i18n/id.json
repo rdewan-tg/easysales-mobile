@@ -26,5 +26,17 @@
     "setting.deviceId": "ID Perangkat",
     "setting.salesPersonCode": "Kode Staf Penjualan",
     "setting.orderNumberFormat": "Format Nomor Pesanan",
-    "setting.timeZone": "Zona Waktu"
+    "setting.timeZone": "Zona Waktu",
+    "home.viewMore": "Lihat Lebih Banyak",
+    "sales.clearSearchHistory": "Hapus Riwayat Pencarian",
+    "merchandiser.clearSearchHistory": "Hapus Riwayat Pencarian",
+    "report.todaysReport": "Laporan Hari Ini",
+    "report.yesterdaysReport": "Laporan Kemarin",
+    "report.thisMonthReport": "Laporan Bulan Ini",
+    "report.todaysVisit": "Kunjungan Hari Ini",
+    "report.yesterdaysVisit": "Kunjungan Kemarin",
+    "report.thisMonthVisit": "Kunjungan Bulan Ini",
+    "report.totalVisits": "Jumlah Kunjungan:",
+    "report.todaysVisits": "Kunjungan hari ini:",
+    "report.thisMonthVisits": "Kunjungan Bulan Ini:"
 }

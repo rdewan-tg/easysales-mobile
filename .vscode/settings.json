@@ -1,4 +1,9 @@
 {
   "dart.flutterSdkPath": ".fvm/versions/3.24.5",
-  "yaml.schemaStore.enable": false
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
 }

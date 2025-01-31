@@ -25,7 +25,7 @@ class _MerchandiserCustomerScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Customer'.hardcoded),
+        title: Text(context.localizations('merchandiser.title')),
         centerTitle: true,
         actions: [
           IconButton(

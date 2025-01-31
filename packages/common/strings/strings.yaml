@@ -18,4 +18,6 @@ setting:
   $ref: setting.yaml
 profile:
   $ref: profile.yaml
+report:
+  $ref: report.yaml
 

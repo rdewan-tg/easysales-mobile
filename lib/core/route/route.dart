@@ -12,3 +12,5 @@ const String profileRoute = 'profile';
 const String deviceSettingRoute = 'device-setting';
 const String searchMerchandiserCustomer = 'search-merchandiser-customer';
 const String searchSalesCustomer = 'search-sales-customer';
+const String todaySiteVisitReportRoute = 'today-site-visit-report';
+const String thisMonthSiteVisitReportRoute = 'this-month-site-visit-report';

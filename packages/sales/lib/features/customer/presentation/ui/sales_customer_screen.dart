@@ -21,7 +21,7 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Customer'.hardcoded),
+        title: Text(context.localizations('sales.title')),
         centerTitle: true,
         actions: [
           IconButton(

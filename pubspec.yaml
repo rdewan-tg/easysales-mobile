@@ -28,6 +28,8 @@ dependencies:
     path: packages/merchandiser    
   profile:
     path: packages/profile
+  report:
+    path: packages/report
 
   flutter_riverpod: any
   go_router: any
