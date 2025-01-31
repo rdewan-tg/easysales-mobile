@@ -34,7 +34,9 @@ class MerchandiserCustomerDto with _$MerchandiserCustomerDto {
     @JsonKey(name: "phoneNumber") String? phoneNumber,
     @JsonKey(name: "latitude") required String latitude,
     @JsonKey(name: "longitude") required String longitude,
-    @JsonKey(name: "creditLimit") double? creditLimit,
+    @JsonKey(name: "creditLimit")
+    @StringToDoubleConverter()
+    double? creditLimit,
     @JsonKey(name: "currencyCode") String? currencyCode,
     @JsonKey(name: "paymentTerm") String? paymentTerm,
     @JsonKey(name: "priceGroup") String? priceGroup,
@@ -48,4 +50,21 @@ class MerchandiserCustomerDto with _$MerchandiserCustomerDto {
 
   factory MerchandiserCustomerDto.fromJson(Map<String, dynamic> json) =>
       _$MerchandiserCustomerDtoFromJson(json);
+}
+
+class StringToDoubleConverter implements JsonConverter<double?, dynamic> {
+  const StringToDoubleConverter();
+
+  @override
+  double? fromJson(dynamic json) {
+    if (json == null) return null;
+    if (json is num) return json.toDouble(); // Handles int/double
+    if (json is String) {
+      return double.tryParse(json); // Handles String values
+    }
+    return null; // Prevents crashes if unexpected type
+  }
+
+  @override
+  dynamic toJson(double? object) => object;
 }

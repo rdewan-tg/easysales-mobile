@@ -11,3 +11,7 @@ const String filterSalesCustomerEndPoint = '/api/v1/customers';
 const String uploadMerchandiserPhotoEndPoint = '/api/v1/merchandiser/photo';
 const String customerAddressEndpoint = '/api/v1/addresses/{DataAreaId}';
 const String filterCustomerAddressEndpoint = '/api/v1/addresses';
+const String toDaySiteVisitReportEndPoint =
+    '/api/v1/merchandiser/photo/report/today-unique-site-visit-report';
+const String thisMonthSiteVisitReportEndPoint =
+    '/api/v1/merchandiser/photo/report/this-month-site-visit-report';

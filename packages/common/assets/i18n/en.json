@@ -1,8 +1,11 @@
 {
     "home.title": "Home",
+    "home.viewMore": "View More",
     "sales.title": "Sales",
+    "sales.clearSearchHistory": "Clear Search History",
     "merchandiser.title": "Merchandiser",
     "merchandiser.takePicture": "Take Picture",
+    "merchandiser.clearSearchHistory": "Clear Search History",
     "setting.title": "Setting",
     "setting.theme": "Theme",
     "setting.darkMode": "Dark Mode",
@@ -26,5 +29,14 @@
     "profile.deleteDialogTitle": "Delete Account",
     "profile.deleteDialogSubTitle": "Are you sure you want to delete your account?",
     "profile.btnYes": "Yes",
-    "profile.btnNo": "No"
+    "profile.btnNo": "No",
+    "report.todaysReport": "Today's Report",
+    "report.yesterdaysReport": "Yesterday's Report",
+    "report.thisMonthReport": "This Month's Report",
+    "report.todaysVisit": "Today's Visits",
+    "report.yesterdaysVisit": "Yesterday's Visits",
+    "report.thisMonthVisit": "This Month Visits",
+    "report.totalVisits": "Total Visits:",
+    "report.todaysVisits": "Today's  Visits:",
+    "report.thisMonthVisits": "This Month's Visits:"
 }

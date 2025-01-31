@@ -31,6 +31,7 @@ final class MerchandiserPhotoService implements IMerchandiserPhotoService {
     required String transDate,
     required String companyCode,
     required String customerDimension,
+    required String location,
   }) async {
     try {
       final result = await _merchandiserPhotoRepository.uploadMerchandiserPhoto(
@@ -43,6 +44,7 @@ final class MerchandiserPhotoService implements IMerchandiserPhotoService {
         transDate: transDate,
         companyCode: companyCode,
         customerDimension: customerDimension,
+        location: location,
       );
 
       return Success(result.data);

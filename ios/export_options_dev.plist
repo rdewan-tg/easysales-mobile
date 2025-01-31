@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Developement method -->
+    <key>method</key>
+    <string>development</string>
+
+    <!-- Team ID -->
+    <key>teamID</key>
+    <string>FCUZNYGQMQ</string>
+
+    <!-- Signing style (manual or automatic) -->
+    <key>signingStyle</key>
+    <string>manual</string>
+
+    <!-- Provisioning profiles -->
+    <key>provisioningProfiles</key>
+    <dict>
+        <!-- Bundle ID and corresponding provisioning profile -->
+        <key>com.tonggarden.easysales.dev</key>
+        <string>EasySales-Dev-Provisioning-Profile</string>
+    </dict>
+</dict>
+</plist>

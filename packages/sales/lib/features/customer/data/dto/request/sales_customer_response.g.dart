@@ -38,7 +38,8 @@ _$SalesCustomerDtoImpl _$$SalesCustomerDtoImplFromJson(
       phoneNumber: json['phoneNumber'] as String?,
       latitude: json['latitude'] as String,
       longitude: json['longitude'] as String,
-      creditLimit: (json['creditLimit'] as num?)?.toDouble(),
+      creditLimit:
+          const StringToDoubleConverter().fromJson(json['creditLimit']),
       currencyCode: json['currencyCode'] as String?,
       paymentTerm: json['paymentTerm'] as String?,
       priceGroup: json['priceGroup'] as String?,
@@ -64,7 +65,8 @@ Map<String, dynamic> _$$SalesCustomerDtoImplToJson(
       'phoneNumber': instance.phoneNumber,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
-      'creditLimit': instance.creditLimit,
+      'creditLimit':
+          const StringToDoubleConverter().toJson(instance.creditLimit),
       'currencyCode': instance.currencyCode,
       'paymentTerm': instance.paymentTerm,
       'priceGroup': instance.priceGroup,

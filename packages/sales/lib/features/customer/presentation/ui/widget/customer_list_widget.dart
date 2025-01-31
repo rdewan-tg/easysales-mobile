@@ -37,9 +37,19 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
                 const SizedBox(height: kXSmall),
                 Text(data.customerName),
                 const SizedBox(height: kXSmall),
-                Text(
-                  data.customreDimension ?? '-',
-                  style: context.textTheme.labelMedium,
+                Chip(
+                  visualDensity: const VisualDensity(
+                    horizontal: -4,
+                    vertical: -4,
+                  ), // Reduce overall padding
+                  label: Text(
+                    data.customreDimension ?? '-',
+                    style: context.textTheme.labelSmall, // Reduce text size
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(kSmall), // Customize shape
+                  ),
                 ),
               ],
             ),

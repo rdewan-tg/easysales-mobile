@@ -161,15 +161,15 @@ fvm flutter pub run build_runner build -d
 ## Flutter Build iOS release app locally
 * Build Dev version
     ```bash
-    fvm flutter build ipa --release --obfuscate --split-debug-info=build/ios/symbols --flavor dev -t lib/main_dev.dart
+    fvm flutter build ipa --release --export-options-plist ios/export_options_dev.plist --obfuscate --split-debug-info=build/ios/symbols --flavor dev -t lib/main_dev.dart
     ```
 * Build QA version
     ```bash
-    fvm flutter build ipa --release  --obfuscate --split-debug-info=build/ios/symbols --build-name=1.0.0 --build-number=1 --flavor qa -t lib/main_qa.dart
+    fvm flutter build ipa --release  --export-options-plist ios/export_options_qa.plist --obfuscate --split-debug-info=build/ios/symbols --build-name=1.0.0 --build-number=1 --flavor qa -t lib/main_qa.dart
     ```
 * Build Prod version
     ```bash
-    fvm flutter build ipa --release  --obfuscate --split-debug-info=build/ios/symbols  --build-name=1.0.0 --build-number=1 --flavor prod -t lib/main_prod.dart
+    fvm flutter build ipa --release  --export-options-plist ios/export_options_prod.plist--obfuscate --split-debug-info=build/ios/symbols  --build-name=1.0.0 --build-number=1 --flavor prod -t lib/main_prod.dart
     ```
     
 ### Shorebird

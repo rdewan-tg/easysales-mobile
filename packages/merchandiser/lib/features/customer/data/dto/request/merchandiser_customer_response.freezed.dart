@@ -268,6 +268,7 @@ mixin _$MerchandiserCustomerDto {
   @JsonKey(name: "longitude")
   String get longitude => throw _privateConstructorUsedError;
   @JsonKey(name: "creditLimit")
+  @StringToDoubleConverter()
   double? get creditLimit => throw _privateConstructorUsedError;
   @JsonKey(name: "currencyCode")
   String? get currencyCode => throw _privateConstructorUsedError;
@@ -316,7 +317,9 @@ abstract class $MerchandiserCustomerDtoCopyWith<$Res> {
       @JsonKey(name: "phoneNumber") String? phoneNumber,
       @JsonKey(name: "latitude") String latitude,
       @JsonKey(name: "longitude") String longitude,
-      @JsonKey(name: "creditLimit") double? creditLimit,
+      @JsonKey(name: "creditLimit")
+      @StringToDoubleConverter()
+      double? creditLimit,
       @JsonKey(name: "currencyCode") String? currencyCode,
       @JsonKey(name: "paymentTerm") String? paymentTerm,
       @JsonKey(name: "priceGroup") String? priceGroup,
@@ -476,7 +479,9 @@ abstract class _$$MerchandiserCustomerDtoImplCopyWith<$Res>
       @JsonKey(name: "phoneNumber") String? phoneNumber,
       @JsonKey(name: "latitude") String latitude,
       @JsonKey(name: "longitude") String longitude,
-      @JsonKey(name: "creditLimit") double? creditLimit,
+      @JsonKey(name: "creditLimit")
+      @StringToDoubleConverter()
+      double? creditLimit,
       @JsonKey(name: "currencyCode") String? currencyCode,
       @JsonKey(name: "paymentTerm") String? paymentTerm,
       @JsonKey(name: "priceGroup") String? priceGroup,
@@ -629,7 +634,7 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
       @JsonKey(name: "phoneNumber") this.phoneNumber,
       @JsonKey(name: "latitude") required this.latitude,
       @JsonKey(name: "longitude") required this.longitude,
-      @JsonKey(name: "creditLimit") this.creditLimit,
+      @JsonKey(name: "creditLimit") @StringToDoubleConverter() this.creditLimit,
       @JsonKey(name: "currencyCode") this.currencyCode,
       @JsonKey(name: "paymentTerm") this.paymentTerm,
       @JsonKey(name: "priceGroup") this.priceGroup,
@@ -678,6 +683,7 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
   final String longitude;
   @override
   @JsonKey(name: "creditLimit")
+  @StringToDoubleConverter()
   final double? creditLimit;
   @override
   @JsonKey(name: "currencyCode")
@@ -815,7 +821,9 @@ abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
           @JsonKey(name: "phoneNumber") final String? phoneNumber,
           @JsonKey(name: "latitude") required final String latitude,
           @JsonKey(name: "longitude") required final String longitude,
-          @JsonKey(name: "creditLimit") final double? creditLimit,
+          @JsonKey(name: "creditLimit")
+          @StringToDoubleConverter()
+          final double? creditLimit,
           @JsonKey(name: "currencyCode") final String? currencyCode,
           @JsonKey(name: "paymentTerm") final String? paymentTerm,
           @JsonKey(name: "priceGroup") final String? priceGroup,
@@ -865,6 +873,7 @@ abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
   String get longitude;
   @override
   @JsonKey(name: "creditLimit")
+  @StringToDoubleConverter()
   double? get creditLimit;
   @override
   @JsonKey(name: "currencyCode")

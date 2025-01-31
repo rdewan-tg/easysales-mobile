@@ -13,7 +13,7 @@ class _MerchandiserScreenState extends ConsumerState<MerchandiserScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Merchandiser'.hardcoded),
+        title: Text(context.localizations('merchandiser.title')),
         centerTitle: true,
         elevation: 8,
       ),
