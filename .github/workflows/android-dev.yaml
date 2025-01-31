@@ -70,17 +70,6 @@ jobs:
         uses: kuhnroyal/flutter-fvm-config-action/config@v3
         id: fvm-config-action
 
-      # Cache Flutter SDK installed by FVM
-      - name: Cache Flutter SDK
-        uses: actions/cache@v4
-        id: flutter-sdk-cache
-        with:
-          path: ~/.fvm/versions/${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-          key: |
-            ${{ runner.os }}-fvm-flutter-${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-          restore-keys: |
-            ${{ runner.os }}-fvm-flutter-
-
       # Cache Pub dependencies
       - name: Cache Pub dependencies
         uses: actions/cache@v4

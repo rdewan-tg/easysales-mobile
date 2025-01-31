@@ -1,0 +1,96 @@
+name: Flutter Android CI/CD
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select the environment'
+        required: true
+        default: 'DEV'
+        type: choice
+        options:
+          - DEV
+          - QA
+          - PROD
+      flutter_version:
+        description: 'Specify the Flutter version (e.g., 3.24.3)'
+        required: true
+        default: '3.24.3'
+      branch_name:
+        description: 'Specify the branch to checkout'
+        required: true
+        default: 'dev'
+
+env:
+
+jobs:
+  environment: {{ github.event.inputs.environment }}
+  build:
+    runs-on: macos-latest
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch_name }}
+      # Step 2: Set up Zulu OpenJDK 17
+      - name: Set up Zulu OpenJDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      # Step 5: Ensure Flutter SDK directory exists
+      - name: Ensure Flutter SDK directory exists
+        run: mkdir -p ~/.fvm/versions/${{ github.event.inputs.flutter_version }}
+      # Step 6: Cache Flutter SDK
+      - name: Cache Flutter SDK
+        uses: actions/cache@v3
+        with:
+          path: ~/.fvm/versions/${{ github.event.inputs.flutter_version }}
+          key: flutter-sdk-${{ github.event.inputs.flutter_version }}-${{ runner.os }}
+          restore-keys: |
+            flutter-sdk-
+      # Step 7: List Flutter SDK directory to verify it's there
+      - name: List Flutter SDK Directory
+        run: ls -al ~/.fvm/versions/${{ github.event.inputs.flutter_version }}
+      # Step 8: Setup Flutter Version Management CLI
+      - name: Setup Flutter Version Management CLI
+        uses: flutter-actions/setup-fvm@v1
+      # Step 9: Install Flutter SDK version using FVM
+      - name: Debug Install Flutter
+        run: |
+          echo "Installing Flutter version ${{ github.event.inputs.flutter_version }} using FVM"
+          fvm install ${{ github.event.inputs.flutter_version }}
+          fvm use ${{ github.event.inputs.flutter_version }}
+          echo "Installed Flutter versions:"
+          ls -al ~/.fvm/versions/${{ github.event.inputs.flutter_version }}
+      # Step 10: Cache Pub dependencies
+      # Cache Pub dependencies
+      - name: Cache Pub dependencies
+        uses: actions/cache@v4
+        id: pub-cache
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+      # Step 11: Cache Gradle dependencies
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: gradle-cache-${{ github.event.inputs.branch_name }}
+          restore-keys: |
+            gradle-cache-
+      # Step 12: Install Flutter dependencies
+      - name: Get Flutter dependencies
+        run: fvm flutter pub get
+      # Step 13: Build APK
+      - name: Build APK
+        run: |
+          echo "Building APK for environment: ${{ github.event.inputs.environment }}"
+          fvm flutter build apk --release --dart-define=ENVIRONMENT=${{ github.event.inputs.environment }}
+      # Step 14: Upload APK as artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk-${{ github.event.inputs.branch_name }}-${{ github.event.inputs.environment }}
+          path: build/app/outputs/flutter-apk/app-release.apk

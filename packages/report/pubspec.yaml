@@ -1,41 +1,20 @@
-name: easy_sales
-description: "A new Flutter project."
+name: report
+description: "A new Flutter package project."
+version: 0.0.1
 publish_to: 'none'
-version: 0.1.0
+homepage:
 
 environment:
   sdk: ^3.5.4
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  common:
-    path: packages/common
   core:
-    path: packages/core
-  auth:
-    path: packages/auth
-  dashboard:
-    path: packages/dashboard
-  home:
-    path: packages/home
-  setting:
-    path: packages/setting
-  sales:
-     path: packages/sales
-  merchandiser:
-    path: packages/merchandiser    
-  profile:
-    path: packages/profile
-  report:
-    path: packages/report
+    path: ../core
 
-  flutter_riverpod: any
-  go_router: any
-  upgrader: any
-  loader_overlay: any
-  riverpod_annotation: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -55,5 +34,9 @@ dev_dependencies:
   # https://pub.dev/packages/custom_lint
   custom_lint: ^0.7.0
 
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
 flutter:
   uses-material-design: true

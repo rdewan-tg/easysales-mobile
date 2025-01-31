@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:home/home.dart';
 import 'package:merchandiser/merchandiser.dart';
 import 'package:profile/profile.dart';
+import 'package:report/report.dart';
 import 'package:sales/sales.dart';
 import 'package:setting/setting.dart';
 
@@ -92,6 +93,8 @@ class AppRouter {
       _loginRoute(),
       _signupRoute(),
       _dashboardRoute(),
+      _todaySiteVisitReportRoute(),
+      _thisMonthSiteVisitReportRoute(),
     ];
   }
 
@@ -305,6 +308,30 @@ class AppRouter {
         key: state.pageKey,
         name: state.name,
         child: const SearchSalesCustomerScreen(),
+      ),
+    );
+  }
+
+  RouteBase _todaySiteVisitReportRoute() {
+    return GoRoute(
+      path: '/$todaySiteVisitReportRoute',
+      name: todaySiteVisitReportRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const TodaySiteVisitReportScreen(),
+      ),
+    );
+  }
+
+  RouteBase _thisMonthSiteVisitReportRoute() {
+    return GoRoute(
+      path: '/$thisMonthSiteVisitReportRoute',
+      name: thisMonthSiteVisitReportRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const ThisMonthSiteVisitReportScreen(),
       ),
     );
   }
