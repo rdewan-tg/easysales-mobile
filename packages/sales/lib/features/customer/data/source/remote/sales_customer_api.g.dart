@@ -34,7 +34,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/customers/${dataAreaId}',
+          '/v1/api/customers/${dataAreaId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -73,7 +73,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/customers',
+          '/v1/api/customers',
           queryParameters: queryParameters,
           data: _data,
         )

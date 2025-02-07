@@ -36,7 +36,7 @@ class TokenService implements ITokenService {
   @override
   Future<RefreshTokenResponse> refreshToken(String? refreshToken) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/api/v1/auth/refresh-token',
+      '/v1/api/auth/refresh-token',
       data: {
         "refreshToken": refreshToken,
       },

@@ -1,3 +1,4 @@
+import 'package:core/data/remote/endpoint.dart';
 import 'package:core/data/remote/network_service.dart';
 import 'package:dio/dio.dart';
 import 'package:profile/data/dto/delete_me_response.dart';
@@ -16,6 +17,6 @@ final profileApiProvider = Provider<ProfileApi>((ref) {
 abstract class ProfileApi {
   factory ProfileApi(Dio dio) => _ProfileApi(dio);
 
-  @DELETE('/api/v1/me')
+  @DELETE(meEndPoint)
   Future<DeleteMeResponse> deleteMe();
 }
