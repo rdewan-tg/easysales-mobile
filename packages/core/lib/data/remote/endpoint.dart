@@ -1,4 +1,5 @@
 const String loginEndPoint = '/v1/api/auth/login';
+const String tokenRefreshEndPoint = '/v1/api/auth/refresh-token';
 const String signUpEndPoint = '/v1/api/auth/signup';
 const String forgotPasswordEndPoint = '/v1/api/auth/forgot-password';
 const String meEndPoint = '/v1/api/me';

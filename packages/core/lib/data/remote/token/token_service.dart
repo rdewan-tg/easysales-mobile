@@ -3,6 +3,7 @@ import 'package:core/data/local/secure_storage/isecure_storage.dart';
 import 'package:core/data/local/secure_storage/secure_storage.dart';
 import 'package:core/data/local/secure_storage/secure_storage_const.dart';
 import 'package:core/data/remote/dtos/refresh_token_response.dart';
+import 'package:core/data/remote/endpoint.dart';
 import 'package:core/data/remote/token/itoken_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,7 +37,7 @@ class TokenService implements ITokenService {
   @override
   Future<RefreshTokenResponse> refreshToken(String? refreshToken) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/v1/api/auth/refresh-token',
+      tokenRefreshEndPoint,
       data: {
         "refreshToken": refreshToken,
       },
