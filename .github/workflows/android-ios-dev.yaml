@@ -100,12 +100,8 @@ jobs:
       # Install Flutter dependencies only if cache was not restored
       - name: Install Flutter Dependencies
         run: |
-          if [[ "${{ steps.pub-cache.outputs.cache-hit }}" != 'true' ]]; then
-            echo "Pub cache not found. Running 'flutter pub get'..."
-            flutter pub get >> /dev/null
-          else
-            echo "Pub cache found. Skipping 'flutter pub get'."
-          fi  
+          flutter pub get >> /dev/null
+      
 
       # iOS specific - install dependencies
       - name: Install iOS dependencies
