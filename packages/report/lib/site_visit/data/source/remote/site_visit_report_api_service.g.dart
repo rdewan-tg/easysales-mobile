@@ -37,7 +37,7 @@ class _SiteVisitReportApiService implements SiteVisitReportApiService {
     )
         .compose(
           _dio.options,
-          '/api/v1/merchandiser/photo/report/today-unique-site-visit-report',
+          '/v1/api/merchandiser/photos/report/today-unique-site-visit-report',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -74,7 +74,7 @@ class _SiteVisitReportApiService implements SiteVisitReportApiService {
     )
         .compose(
           _dio.options,
-          '/api/v1/merchandiser/photo/report/this-month-site-visit-report',
+          '/v1/api/merchandiser/photos/report/this-month-site-visit-report',
           queryParameters: queryParameters,
           data: _data,
         )

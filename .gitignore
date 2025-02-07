@@ -42,6 +42,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# prevent ios dependency version conflict
+/ios/Podfile.lock
+
 # Android Firebase 
 google-services.json
 #iOS Firebase

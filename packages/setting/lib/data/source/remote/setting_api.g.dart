@@ -34,7 +34,7 @@ class _SettingApi implements SettingApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/device-setting/find/${deviceId}',
+          '/v1/api/device-setting/find/${deviceId}',
           queryParameters: queryParameters,
           data: _data,
         )
