@@ -128,8 +128,8 @@ jobs:
             -t lib/main_dev.dart
 
       - name: Upload IPA
-          uses: actions/upload-artifact@v4
-          with:
-            name: dev-ipa
-            path: build/ios/ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: dev-ipa
+          path: build/ios/ipa
 
