@@ -1,17 +1,21 @@
-const String loginEndPoint = '/api/v1/auth/login';
-const String signUpEndPoint = '/api/v1/auth/signup';
-const String forgotPasswordEndPoint = '/api/v1/auth/forgot-password';
+const String loginEndPoint = '/v1/api/auth/login';
+const String tokenRefreshEndPoint = '/v1/api/auth/refresh-token';
+const String signUpEndPoint = '/v1/api/auth/signup';
+const String forgotPasswordEndPoint = '/v1/api/auth/forgot-password';
+const String meEndPoint = '/v1/api/me';
+const String findDeviceSettingByDeviceIdEndPoint =
+    '/v1/api/device-setting/find/{deviceId}';
 const String merchandiserCustomerEndPoint =
-    '/api/v1/merchandiser-customers/{DataAreaId}';
+    '/v1/api/merchandiser-customers/{DataAreaId}';
 const String filterMerchandiserCustomerEndPoint =
-    '/api/v1/merchandiser-customers';
+    '/v1/api/merchandiser-customers';
 
-const String salesCustomerEndPoint = '/api/v1/customers/{DataAreaId}';
-const String filterSalesCustomerEndPoint = '/api/v1/customers';
-const String uploadMerchandiserPhotoEndPoint = '/api/v1/merchandiser/photo';
-const String customerAddressEndpoint = '/api/v1/addresses/{DataAreaId}';
-const String filterCustomerAddressEndpoint = '/api/v1/addresses';
+const String salesCustomerEndPoint = '/v1/api/customers/{DataAreaId}';
+const String filterSalesCustomerEndPoint = '/v1/api/customers';
+const String uploadMerchandiserPhotoEndPoint = '/v1/api/merchandiser/photos';
+const String customerAddressEndpoint = '/v1/api/addresses/{DataAreaId}';
+const String filterCustomerAddressEndpoint = '/v1/api/addresses';
 const String toDaySiteVisitReportEndPoint =
-    '/api/v1/merchandiser/photo/report/today-unique-site-visit-report';
+    '/v1/api/merchandiser/photos/report/today-unique-site-visit-report';
 const String thisMonthSiteVisitReportEndPoint =
-    '/api/v1/merchandiser/photo/report/this-month-site-visit-report';
+    '/v1/api/merchandiser/photos/report/this-month-site-visit-report';

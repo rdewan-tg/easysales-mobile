@@ -1,3 +1,4 @@
+import 'package:core/data/remote/endpoint.dart';
 import 'package:core/data/remote/network_service.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -17,6 +18,6 @@ final settingApiProvider = Provider<SettingApi>((ref) {
 abstract class SettingApi {
   factory SettingApi(Dio dio) => _SettingApi(dio);
 
-  @GET('/api/v1/device-setting/find/{deviceId}')
+  @GET(findDeviceSettingByDeviceIdEndPoint)
   Future<DeviceSettingResponse> findByDeviceId(@Path() String deviceId);
 }

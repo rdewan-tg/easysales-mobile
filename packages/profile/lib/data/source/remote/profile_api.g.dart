@@ -34,7 +34,7 @@ class _ProfileApi implements ProfileApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/me',
+          '/v1/api/me',
           queryParameters: queryParameters,
           data: _data,
         )

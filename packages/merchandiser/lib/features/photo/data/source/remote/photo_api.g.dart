@@ -90,7 +90,7 @@ class _PhotoApi implements PhotoApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/merchandiser/photo',
+          '/v1/api/merchandiser/photos',
           queryParameters: queryParameters,
           data: _data,
         )

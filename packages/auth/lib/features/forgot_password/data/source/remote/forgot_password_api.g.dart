@@ -36,7 +36,7 @@ class _ForgotPasswordApi implements ForgotPasswordApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/auth/forgot-password',
+          '/v1/api/auth/forgot-password',
           queryParameters: queryParameters,
           data: _data,
         )

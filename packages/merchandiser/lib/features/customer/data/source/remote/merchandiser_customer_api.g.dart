@@ -35,7 +35,7 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/merchandiser-customers/${dataAreaId}',
+          '/v1/api/merchandiser-customers/${dataAreaId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -75,7 +75,7 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
     )
         .compose(
           _dio.options,
-          '/api/v1/merchandiser-customers',
+          '/v1/api/merchandiser-customers',
           queryParameters: queryParameters,
           data: _data,
         )
