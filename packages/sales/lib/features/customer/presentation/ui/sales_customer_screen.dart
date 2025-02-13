@@ -13,7 +13,8 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(salesCustomerProvider.notifier).getSalesCustomers();
+      ref.read(salesCustomerProvider.notifier).watchSalesCustomers();
+      ref.read(productControllerProvider.notifier).watchProducts();
     });
   }
 
@@ -44,11 +45,5 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
     );
   }
 
-  Future<void> _onRefresh() async {
-    // invalidate the provider
-    ref.invalidate(salesCustomerProvider);
-
-    // get the sales customers
-    return ref.read(salesCustomerProvider.notifier).getSalesCustomers();
-  }
+  Future<void> _onRefresh() async {}
 }

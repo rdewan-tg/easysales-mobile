@@ -10,6 +10,14 @@ class DeviceSettingScreen extends ConsumerStatefulWidget {
 
 class _DeviceSettingScreenState extends ConsumerState<DeviceSettingScreen> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      ref.read(settingControllerProvider.notifier).getAllSettings();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final settings = ref.watch(
       settingControllerProvider.select((value) => value.settings),

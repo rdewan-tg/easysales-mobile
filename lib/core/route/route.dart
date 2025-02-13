@@ -14,3 +14,6 @@ const String searchMerchandiserCustomer = 'search-merchandiser-customer';
 const String searchSalesCustomer = 'search-sales-customer';
 const String todaySiteVisitReportRoute = 'today-site-visit-report';
 const String thisMonthSiteVisitReportRoute = 'this-month-site-visit-report';
+const String productRoute = 'product';
+const String productImportRoute = 'product-import';
+const String customerImportRoute = 'customer-import';
