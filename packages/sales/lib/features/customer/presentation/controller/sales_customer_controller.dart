@@ -25,7 +25,7 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
     return SalesCustomerState();
   }
 
-  Future<void> getSalesCustomers() async {
+  Future<void> importSalesCustomers() async {
     try {
       state =
           state.copyWith(isLoading: true, searchQuery: '', lastSearchQuery: '');

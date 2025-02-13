@@ -1,0 +1,23 @@
+import 'package:core/data/local/db/app_database.dart';
+import 'package:sales/features/product/data/dto/product_price_response.dart';
+import 'package:sales/features/product/data/dto/product_response.dart';
+
+abstract interface class IProductRepository {
+  Future<ProductPriceResponse> getPrices(String companyCode);
+
+  Future<ProductResponse> getProducts(String companyCode);
+
+  Future<void> insertOrUpdateProduct(List<ProductEntityData> data);
+
+  Future<void> insertOrUpdatePrice(List<ProductPriceEntityData> data);
+
+  Stream<List<ProductEntityData>> watchProducts(
+    String? searchQuery,
+  );
+
+  Stream<List<ProductPriceEntityData>> watchPrices(
+    String? searchQuery,
+  );
+
+  Future<Map<String, String>> getAllSettings();
+}

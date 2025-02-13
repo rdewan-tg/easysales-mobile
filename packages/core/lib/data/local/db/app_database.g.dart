@@ -2884,6 +2884,1493 @@ class CustomerAddressEntityCompanion
   }
 }
 
+class $ProductEntityTable extends ProductEntity
+    with TableInfo<$ProductEntityTable, ProductEntityData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ProductEntityTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _productIdMeta =
+      const VerificationMeta('productId');
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+      'product_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _itemIdMeta = const VerificationMeta('itemId');
+  @override
+  late final GeneratedColumn<String> itemId = GeneratedColumn<String>(
+      'item_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _productNameMeta =
+      const VerificationMeta('productName');
+  @override
+  late final GeneratedColumn<String> productName = GeneratedColumn<String>(
+      'product_name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descriptionMeta =
+      const VerificationMeta('description');
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+      'description', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _categoryMeta =
+      const VerificationMeta('category');
+  @override
+  late final GeneratedColumn<String> category = GeneratedColumn<String>(
+      'category', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _barcodeMeta =
+      const VerificationMeta('barcode');
+  @override
+  late final GeneratedColumn<String> barcode = GeneratedColumn<String>(
+      'barcode', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _itemGroupMeta =
+      const VerificationMeta('itemGroup');
+  @override
+  late final GeneratedColumn<String> itemGroup = GeneratedColumn<String>(
+      'item_group', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _packSizeMeta =
+      const VerificationMeta('packSize');
+  @override
+  late final GeneratedColumn<String> packSize = GeneratedColumn<String>(
+      'pack_size', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _salesUnitMeta =
+      const VerificationMeta('salesUnit');
+  @override
+  late final GeneratedColumn<String> salesUnit = GeneratedColumn<String>(
+      'sales_unit', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _unitPriceMeta =
+      const VerificationMeta('unitPrice');
+  @override
+  late final GeneratedColumn<double> unitPrice = GeneratedColumn<double>(
+      'unit_price', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _imageMeta = const VerificationMeta('image');
+  @override
+  late final GeneratedColumn<String> image = GeneratedColumn<String>(
+      'image', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _itemDiscountGroupMeta =
+      const VerificationMeta('itemDiscountGroup');
+  @override
+  late final GeneratedColumn<String> itemDiscountGroup =
+      GeneratedColumn<String>('item_discount_group', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _itemFOCGroupMeta =
+      const VerificationMeta('itemFOCGroup');
+  @override
+  late final GeneratedColumn<String> itemFOCGroup = GeneratedColumn<String>(
+      'item_f_o_c_group', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _inventDimIdMeta =
+      const VerificationMeta('inventDimId');
+  @override
+  late final GeneratedColumn<String> inventDimId = GeneratedColumn<String>(
+      'invent_dim_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+      'status', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _companyCodeMeta =
+      const VerificationMeta('companyCode');
+  @override
+  late final GeneratedColumn<String> companyCode = GeneratedColumn<String>(
+      'company_code', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _companyIdMeta =
+      const VerificationMeta('companyId');
+  @override
+  late final GeneratedColumn<int> companyId = GeneratedColumn<int>(
+      'company_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        productId,
+        itemId,
+        productName,
+        description,
+        category,
+        barcode,
+        itemGroup,
+        packSize,
+        salesUnit,
+        unitPrice,
+        image,
+        itemDiscountGroup,
+        itemFOCGroup,
+        inventDimId,
+        status,
+        companyCode,
+        companyId
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'product_entity';
+  @override
+  VerificationContext validateIntegrity(Insertable<ProductEntityData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(_productIdMeta,
+          productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta));
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('item_id')) {
+      context.handle(_itemIdMeta,
+          itemId.isAcceptableOrUnknown(data['item_id']!, _itemIdMeta));
+    } else if (isInserting) {
+      context.missing(_itemIdMeta);
+    }
+    if (data.containsKey('product_name')) {
+      context.handle(
+          _productNameMeta,
+          productName.isAcceptableOrUnknown(
+              data['product_name']!, _productNameMeta));
+    } else if (isInserting) {
+      context.missing(_productNameMeta);
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+          _descriptionMeta,
+          description.isAcceptableOrUnknown(
+              data['description']!, _descriptionMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionMeta);
+    }
+    if (data.containsKey('category')) {
+      context.handle(_categoryMeta,
+          category.isAcceptableOrUnknown(data['category']!, _categoryMeta));
+    } else if (isInserting) {
+      context.missing(_categoryMeta);
+    }
+    if (data.containsKey('barcode')) {
+      context.handle(_barcodeMeta,
+          barcode.isAcceptableOrUnknown(data['barcode']!, _barcodeMeta));
+    } else if (isInserting) {
+      context.missing(_barcodeMeta);
+    }
+    if (data.containsKey('item_group')) {
+      context.handle(_itemGroupMeta,
+          itemGroup.isAcceptableOrUnknown(data['item_group']!, _itemGroupMeta));
+    } else if (isInserting) {
+      context.missing(_itemGroupMeta);
+    }
+    if (data.containsKey('pack_size')) {
+      context.handle(_packSizeMeta,
+          packSize.isAcceptableOrUnknown(data['pack_size']!, _packSizeMeta));
+    } else if (isInserting) {
+      context.missing(_packSizeMeta);
+    }
+    if (data.containsKey('sales_unit')) {
+      context.handle(_salesUnitMeta,
+          salesUnit.isAcceptableOrUnknown(data['sales_unit']!, _salesUnitMeta));
+    } else if (isInserting) {
+      context.missing(_salesUnitMeta);
+    }
+    if (data.containsKey('unit_price')) {
+      context.handle(_unitPriceMeta,
+          unitPrice.isAcceptableOrUnknown(data['unit_price']!, _unitPriceMeta));
+    } else if (isInserting) {
+      context.missing(_unitPriceMeta);
+    }
+    if (data.containsKey('image')) {
+      context.handle(
+          _imageMeta, image.isAcceptableOrUnknown(data['image']!, _imageMeta));
+    } else if (isInserting) {
+      context.missing(_imageMeta);
+    }
+    if (data.containsKey('item_discount_group')) {
+      context.handle(
+          _itemDiscountGroupMeta,
+          itemDiscountGroup.isAcceptableOrUnknown(
+              data['item_discount_group']!, _itemDiscountGroupMeta));
+    } else if (isInserting) {
+      context.missing(_itemDiscountGroupMeta);
+    }
+    if (data.containsKey('item_f_o_c_group')) {
+      context.handle(
+          _itemFOCGroupMeta,
+          itemFOCGroup.isAcceptableOrUnknown(
+              data['item_f_o_c_group']!, _itemFOCGroupMeta));
+    } else if (isInserting) {
+      context.missing(_itemFOCGroupMeta);
+    }
+    if (data.containsKey('invent_dim_id')) {
+      context.handle(
+          _inventDimIdMeta,
+          inventDimId.isAcceptableOrUnknown(
+              data['invent_dim_id']!, _inventDimIdMeta));
+    } else if (isInserting) {
+      context.missing(_inventDimIdMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(_statusMeta,
+          status.isAcceptableOrUnknown(data['status']!, _statusMeta));
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('company_code')) {
+      context.handle(
+          _companyCodeMeta,
+          companyCode.isAcceptableOrUnknown(
+              data['company_code']!, _companyCodeMeta));
+    }
+    if (data.containsKey('company_id')) {
+      context.handle(_companyIdMeta,
+          companyId.isAcceptableOrUnknown(data['company_id']!, _companyIdMeta));
+    } else if (isInserting) {
+      context.missing(_companyIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {itemId};
+  @override
+  ProductEntityData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ProductEntityData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      productId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}product_id'])!,
+      itemId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}item_id'])!,
+      productName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}product_name'])!,
+      description: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description'])!,
+      category: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}category'])!,
+      barcode: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}barcode'])!,
+      itemGroup: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}item_group'])!,
+      packSize: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}pack_size'])!,
+      salesUnit: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}sales_unit'])!,
+      unitPrice: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}unit_price'])!,
+      image: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}image'])!,
+      itemDiscountGroup: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}item_discount_group'])!,
+      itemFOCGroup: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}item_f_o_c_group'])!,
+      inventDimId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}invent_dim_id'])!,
+      status: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}status'])!,
+      companyCode: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}company_code']),
+      companyId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}company_id'])!,
+    );
+  }
+
+  @override
+  $ProductEntityTable createAlias(String alias) {
+    return $ProductEntityTable(attachedDatabase, alias);
+  }
+}
+
+class ProductEntityData extends DataClass
+    implements Insertable<ProductEntityData> {
+  final int id;
+  final String productId;
+  final String itemId;
+  final String productName;
+  final String description;
+  final String category;
+  final String barcode;
+  final String itemGroup;
+  final String packSize;
+  final String salesUnit;
+  final double unitPrice;
+  final String image;
+  final String itemDiscountGroup;
+  final String itemFOCGroup;
+  final String inventDimId;
+  final String status;
+  final String? companyCode;
+  final int companyId;
+  const ProductEntityData(
+      {required this.id,
+      required this.productId,
+      required this.itemId,
+      required this.productName,
+      required this.description,
+      required this.category,
+      required this.barcode,
+      required this.itemGroup,
+      required this.packSize,
+      required this.salesUnit,
+      required this.unitPrice,
+      required this.image,
+      required this.itemDiscountGroup,
+      required this.itemFOCGroup,
+      required this.inventDimId,
+      required this.status,
+      this.companyCode,
+      required this.companyId});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['product_id'] = Variable<String>(productId);
+    map['item_id'] = Variable<String>(itemId);
+    map['product_name'] = Variable<String>(productName);
+    map['description'] = Variable<String>(description);
+    map['category'] = Variable<String>(category);
+    map['barcode'] = Variable<String>(barcode);
+    map['item_group'] = Variable<String>(itemGroup);
+    map['pack_size'] = Variable<String>(packSize);
+    map['sales_unit'] = Variable<String>(salesUnit);
+    map['unit_price'] = Variable<double>(unitPrice);
+    map['image'] = Variable<String>(image);
+    map['item_discount_group'] = Variable<String>(itemDiscountGroup);
+    map['item_f_o_c_group'] = Variable<String>(itemFOCGroup);
+    map['invent_dim_id'] = Variable<String>(inventDimId);
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || companyCode != null) {
+      map['company_code'] = Variable<String>(companyCode);
+    }
+    map['company_id'] = Variable<int>(companyId);
+    return map;
+  }
+
+  ProductEntityCompanion toCompanion(bool nullToAbsent) {
+    return ProductEntityCompanion(
+      id: Value(id),
+      productId: Value(productId),
+      itemId: Value(itemId),
+      productName: Value(productName),
+      description: Value(description),
+      category: Value(category),
+      barcode: Value(barcode),
+      itemGroup: Value(itemGroup),
+      packSize: Value(packSize),
+      salesUnit: Value(salesUnit),
+      unitPrice: Value(unitPrice),
+      image: Value(image),
+      itemDiscountGroup: Value(itemDiscountGroup),
+      itemFOCGroup: Value(itemFOCGroup),
+      inventDimId: Value(inventDimId),
+      status: Value(status),
+      companyCode: companyCode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(companyCode),
+      companyId: Value(companyId),
+    );
+  }
+
+  factory ProductEntityData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ProductEntityData(
+      id: serializer.fromJson<int>(json['id']),
+      productId: serializer.fromJson<String>(json['productId']),
+      itemId: serializer.fromJson<String>(json['itemId']),
+      productName: serializer.fromJson<String>(json['productName']),
+      description: serializer.fromJson<String>(json['description']),
+      category: serializer.fromJson<String>(json['category']),
+      barcode: serializer.fromJson<String>(json['barcode']),
+      itemGroup: serializer.fromJson<String>(json['itemGroup']),
+      packSize: serializer.fromJson<String>(json['packSize']),
+      salesUnit: serializer.fromJson<String>(json['salesUnit']),
+      unitPrice: serializer.fromJson<double>(json['unitPrice']),
+      image: serializer.fromJson<String>(json['image']),
+      itemDiscountGroup: serializer.fromJson<String>(json['itemDiscountGroup']),
+      itemFOCGroup: serializer.fromJson<String>(json['itemFOCGroup']),
+      inventDimId: serializer.fromJson<String>(json['inventDimId']),
+      status: serializer.fromJson<String>(json['status']),
+      companyCode: serializer.fromJson<String?>(json['companyCode']),
+      companyId: serializer.fromJson<int>(json['companyId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'productId': serializer.toJson<String>(productId),
+      'itemId': serializer.toJson<String>(itemId),
+      'productName': serializer.toJson<String>(productName),
+      'description': serializer.toJson<String>(description),
+      'category': serializer.toJson<String>(category),
+      'barcode': serializer.toJson<String>(barcode),
+      'itemGroup': serializer.toJson<String>(itemGroup),
+      'packSize': serializer.toJson<String>(packSize),
+      'salesUnit': serializer.toJson<String>(salesUnit),
+      'unitPrice': serializer.toJson<double>(unitPrice),
+      'image': serializer.toJson<String>(image),
+      'itemDiscountGroup': serializer.toJson<String>(itemDiscountGroup),
+      'itemFOCGroup': serializer.toJson<String>(itemFOCGroup),
+      'inventDimId': serializer.toJson<String>(inventDimId),
+      'status': serializer.toJson<String>(status),
+      'companyCode': serializer.toJson<String?>(companyCode),
+      'companyId': serializer.toJson<int>(companyId),
+    };
+  }
+
+  ProductEntityData copyWith(
+          {int? id,
+          String? productId,
+          String? itemId,
+          String? productName,
+          String? description,
+          String? category,
+          String? barcode,
+          String? itemGroup,
+          String? packSize,
+          String? salesUnit,
+          double? unitPrice,
+          String? image,
+          String? itemDiscountGroup,
+          String? itemFOCGroup,
+          String? inventDimId,
+          String? status,
+          Value<String?> companyCode = const Value.absent(),
+          int? companyId}) =>
+      ProductEntityData(
+        id: id ?? this.id,
+        productId: productId ?? this.productId,
+        itemId: itemId ?? this.itemId,
+        productName: productName ?? this.productName,
+        description: description ?? this.description,
+        category: category ?? this.category,
+        barcode: barcode ?? this.barcode,
+        itemGroup: itemGroup ?? this.itemGroup,
+        packSize: packSize ?? this.packSize,
+        salesUnit: salesUnit ?? this.salesUnit,
+        unitPrice: unitPrice ?? this.unitPrice,
+        image: image ?? this.image,
+        itemDiscountGroup: itemDiscountGroup ?? this.itemDiscountGroup,
+        itemFOCGroup: itemFOCGroup ?? this.itemFOCGroup,
+        inventDimId: inventDimId ?? this.inventDimId,
+        status: status ?? this.status,
+        companyCode: companyCode.present ? companyCode.value : this.companyCode,
+        companyId: companyId ?? this.companyId,
+      );
+  ProductEntityData copyWithCompanion(ProductEntityCompanion data) {
+    return ProductEntityData(
+      id: data.id.present ? data.id.value : this.id,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      itemId: data.itemId.present ? data.itemId.value : this.itemId,
+      productName:
+          data.productName.present ? data.productName.value : this.productName,
+      description:
+          data.description.present ? data.description.value : this.description,
+      category: data.category.present ? data.category.value : this.category,
+      barcode: data.barcode.present ? data.barcode.value : this.barcode,
+      itemGroup: data.itemGroup.present ? data.itemGroup.value : this.itemGroup,
+      packSize: data.packSize.present ? data.packSize.value : this.packSize,
+      salesUnit: data.salesUnit.present ? data.salesUnit.value : this.salesUnit,
+      unitPrice: data.unitPrice.present ? data.unitPrice.value : this.unitPrice,
+      image: data.image.present ? data.image.value : this.image,
+      itemDiscountGroup: data.itemDiscountGroup.present
+          ? data.itemDiscountGroup.value
+          : this.itemDiscountGroup,
+      itemFOCGroup: data.itemFOCGroup.present
+          ? data.itemFOCGroup.value
+          : this.itemFOCGroup,
+      inventDimId:
+          data.inventDimId.present ? data.inventDimId.value : this.inventDimId,
+      status: data.status.present ? data.status.value : this.status,
+      companyCode:
+          data.companyCode.present ? data.companyCode.value : this.companyCode,
+      companyId: data.companyId.present ? data.companyId.value : this.companyId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProductEntityData(')
+          ..write('id: $id, ')
+          ..write('productId: $productId, ')
+          ..write('itemId: $itemId, ')
+          ..write('productName: $productName, ')
+          ..write('description: $description, ')
+          ..write('category: $category, ')
+          ..write('barcode: $barcode, ')
+          ..write('itemGroup: $itemGroup, ')
+          ..write('packSize: $packSize, ')
+          ..write('salesUnit: $salesUnit, ')
+          ..write('unitPrice: $unitPrice, ')
+          ..write('image: $image, ')
+          ..write('itemDiscountGroup: $itemDiscountGroup, ')
+          ..write('itemFOCGroup: $itemFOCGroup, ')
+          ..write('inventDimId: $inventDimId, ')
+          ..write('status: $status, ')
+          ..write('companyCode: $companyCode, ')
+          ..write('companyId: $companyId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      productId,
+      itemId,
+      productName,
+      description,
+      category,
+      barcode,
+      itemGroup,
+      packSize,
+      salesUnit,
+      unitPrice,
+      image,
+      itemDiscountGroup,
+      itemFOCGroup,
+      inventDimId,
+      status,
+      companyCode,
+      companyId);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ProductEntityData &&
+          other.id == this.id &&
+          other.productId == this.productId &&
+          other.itemId == this.itemId &&
+          other.productName == this.productName &&
+          other.description == this.description &&
+          other.category == this.category &&
+          other.barcode == this.barcode &&
+          other.itemGroup == this.itemGroup &&
+          other.packSize == this.packSize &&
+          other.salesUnit == this.salesUnit &&
+          other.unitPrice == this.unitPrice &&
+          other.image == this.image &&
+          other.itemDiscountGroup == this.itemDiscountGroup &&
+          other.itemFOCGroup == this.itemFOCGroup &&
+          other.inventDimId == this.inventDimId &&
+          other.status == this.status &&
+          other.companyCode == this.companyCode &&
+          other.companyId == this.companyId);
+}
+
+class ProductEntityCompanion extends UpdateCompanion<ProductEntityData> {
+  final Value<int> id;
+  final Value<String> productId;
+  final Value<String> itemId;
+  final Value<String> productName;
+  final Value<String> description;
+  final Value<String> category;
+  final Value<String> barcode;
+  final Value<String> itemGroup;
+  final Value<String> packSize;
+  final Value<String> salesUnit;
+  final Value<double> unitPrice;
+  final Value<String> image;
+  final Value<String> itemDiscountGroup;
+  final Value<String> itemFOCGroup;
+  final Value<String> inventDimId;
+  final Value<String> status;
+  final Value<String?> companyCode;
+  final Value<int> companyId;
+  final Value<int> rowid;
+  const ProductEntityCompanion({
+    this.id = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.itemId = const Value.absent(),
+    this.productName = const Value.absent(),
+    this.description = const Value.absent(),
+    this.category = const Value.absent(),
+    this.barcode = const Value.absent(),
+    this.itemGroup = const Value.absent(),
+    this.packSize = const Value.absent(),
+    this.salesUnit = const Value.absent(),
+    this.unitPrice = const Value.absent(),
+    this.image = const Value.absent(),
+    this.itemDiscountGroup = const Value.absent(),
+    this.itemFOCGroup = const Value.absent(),
+    this.inventDimId = const Value.absent(),
+    this.status = const Value.absent(),
+    this.companyCode = const Value.absent(),
+    this.companyId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ProductEntityCompanion.insert({
+    required int id,
+    required String productId,
+    required String itemId,
+    required String productName,
+    required String description,
+    required String category,
+    required String barcode,
+    required String itemGroup,
+    required String packSize,
+    required String salesUnit,
+    required double unitPrice,
+    required String image,
+    required String itemDiscountGroup,
+    required String itemFOCGroup,
+    required String inventDimId,
+    required String status,
+    this.companyCode = const Value.absent(),
+    required int companyId,
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        productId = Value(productId),
+        itemId = Value(itemId),
+        productName = Value(productName),
+        description = Value(description),
+        category = Value(category),
+        barcode = Value(barcode),
+        itemGroup = Value(itemGroup),
+        packSize = Value(packSize),
+        salesUnit = Value(salesUnit),
+        unitPrice = Value(unitPrice),
+        image = Value(image),
+        itemDiscountGroup = Value(itemDiscountGroup),
+        itemFOCGroup = Value(itemFOCGroup),
+        inventDimId = Value(inventDimId),
+        status = Value(status),
+        companyId = Value(companyId);
+  static Insertable<ProductEntityData> custom({
+    Expression<int>? id,
+    Expression<String>? productId,
+    Expression<String>? itemId,
+    Expression<String>? productName,
+    Expression<String>? description,
+    Expression<String>? category,
+    Expression<String>? barcode,
+    Expression<String>? itemGroup,
+    Expression<String>? packSize,
+    Expression<String>? salesUnit,
+    Expression<double>? unitPrice,
+    Expression<String>? image,
+    Expression<String>? itemDiscountGroup,
+    Expression<String>? itemFOCGroup,
+    Expression<String>? inventDimId,
+    Expression<String>? status,
+    Expression<String>? companyCode,
+    Expression<int>? companyId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (productId != null) 'product_id': productId,
+      if (itemId != null) 'item_id': itemId,
+      if (productName != null) 'product_name': productName,
+      if (description != null) 'description': description,
+      if (category != null) 'category': category,
+      if (barcode != null) 'barcode': barcode,
+      if (itemGroup != null) 'item_group': itemGroup,
+      if (packSize != null) 'pack_size': packSize,
+      if (salesUnit != null) 'sales_unit': salesUnit,
+      if (unitPrice != null) 'unit_price': unitPrice,
+      if (image != null) 'image': image,
+      if (itemDiscountGroup != null) 'item_discount_group': itemDiscountGroup,
+      if (itemFOCGroup != null) 'item_f_o_c_group': itemFOCGroup,
+      if (inventDimId != null) 'invent_dim_id': inventDimId,
+      if (status != null) 'status': status,
+      if (companyCode != null) 'company_code': companyCode,
+      if (companyId != null) 'company_id': companyId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ProductEntityCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? productId,
+      Value<String>? itemId,
+      Value<String>? productName,
+      Value<String>? description,
+      Value<String>? category,
+      Value<String>? barcode,
+      Value<String>? itemGroup,
+      Value<String>? packSize,
+      Value<String>? salesUnit,
+      Value<double>? unitPrice,
+      Value<String>? image,
+      Value<String>? itemDiscountGroup,
+      Value<String>? itemFOCGroup,
+      Value<String>? inventDimId,
+      Value<String>? status,
+      Value<String?>? companyCode,
+      Value<int>? companyId,
+      Value<int>? rowid}) {
+    return ProductEntityCompanion(
+      id: id ?? this.id,
+      productId: productId ?? this.productId,
+      itemId: itemId ?? this.itemId,
+      productName: productName ?? this.productName,
+      description: description ?? this.description,
+      category: category ?? this.category,
+      barcode: barcode ?? this.barcode,
+      itemGroup: itemGroup ?? this.itemGroup,
+      packSize: packSize ?? this.packSize,
+      salesUnit: salesUnit ?? this.salesUnit,
+      unitPrice: unitPrice ?? this.unitPrice,
+      image: image ?? this.image,
+      itemDiscountGroup: itemDiscountGroup ?? this.itemDiscountGroup,
+      itemFOCGroup: itemFOCGroup ?? this.itemFOCGroup,
+      inventDimId: inventDimId ?? this.inventDimId,
+      status: status ?? this.status,
+      companyCode: companyCode ?? this.companyCode,
+      companyId: companyId ?? this.companyId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (itemId.present) {
+      map['item_id'] = Variable<String>(itemId.value);
+    }
+    if (productName.present) {
+      map['product_name'] = Variable<String>(productName.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    if (category.present) {
+      map['category'] = Variable<String>(category.value);
+    }
+    if (barcode.present) {
+      map['barcode'] = Variable<String>(barcode.value);
+    }
+    if (itemGroup.present) {
+      map['item_group'] = Variable<String>(itemGroup.value);
+    }
+    if (packSize.present) {
+      map['pack_size'] = Variable<String>(packSize.value);
+    }
+    if (salesUnit.present) {
+      map['sales_unit'] = Variable<String>(salesUnit.value);
+    }
+    if (unitPrice.present) {
+      map['unit_price'] = Variable<double>(unitPrice.value);
+    }
+    if (image.present) {
+      map['image'] = Variable<String>(image.value);
+    }
+    if (itemDiscountGroup.present) {
+      map['item_discount_group'] = Variable<String>(itemDiscountGroup.value);
+    }
+    if (itemFOCGroup.present) {
+      map['item_f_o_c_group'] = Variable<String>(itemFOCGroup.value);
+    }
+    if (inventDimId.present) {
+      map['invent_dim_id'] = Variable<String>(inventDimId.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (companyCode.present) {
+      map['company_code'] = Variable<String>(companyCode.value);
+    }
+    if (companyId.present) {
+      map['company_id'] = Variable<int>(companyId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProductEntityCompanion(')
+          ..write('id: $id, ')
+          ..write('productId: $productId, ')
+          ..write('itemId: $itemId, ')
+          ..write('productName: $productName, ')
+          ..write('description: $description, ')
+          ..write('category: $category, ')
+          ..write('barcode: $barcode, ')
+          ..write('itemGroup: $itemGroup, ')
+          ..write('packSize: $packSize, ')
+          ..write('salesUnit: $salesUnit, ')
+          ..write('unitPrice: $unitPrice, ')
+          ..write('image: $image, ')
+          ..write('itemDiscountGroup: $itemDiscountGroup, ')
+          ..write('itemFOCGroup: $itemFOCGroup, ')
+          ..write('inventDimId: $inventDimId, ')
+          ..write('status: $status, ')
+          ..write('companyCode: $companyCode, ')
+          ..write('companyId: $companyId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ProductPriceEntityTable extends ProductPriceEntity
+    with TableInfo<$ProductPriceEntityTable, ProductPriceEntityData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ProductPriceEntityTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _productIdMeta =
+      const VerificationMeta('productId');
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+      'product_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _itemIdMeta = const VerificationMeta('itemId');
+  @override
+  late final GeneratedColumn<String> itemId = GeneratedColumn<String>(
+      'item_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _packSizeMeta =
+      const VerificationMeta('packSize');
+  @override
+  late final GeneratedColumn<String> packSize = GeneratedColumn<String>(
+      'pack_size', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _fromDateMeta =
+      const VerificationMeta('fromDate');
+  @override
+  late final GeneratedColumn<DateTime> fromDate = GeneratedColumn<DateTime>(
+      'from_date', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _toDateMeta = const VerificationMeta('toDate');
+  @override
+  late final GeneratedColumn<DateTime> toDate = GeneratedColumn<DateTime>(
+      'to_date', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _unitPriceMeta =
+      const VerificationMeta('unitPrice');
+  @override
+  late final GeneratedColumn<double> unitPrice = GeneratedColumn<double>(
+      'unit_price', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _salesUnitMeta =
+      const VerificationMeta('salesUnit');
+  @override
+  late final GeneratedColumn<String> salesUnit = GeneratedColumn<String>(
+      'sales_unit', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _currencyCodeMeta =
+      const VerificationMeta('currencyCode');
+  @override
+  late final GeneratedColumn<String> currencyCode = GeneratedColumn<String>(
+      'currency_code', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _priceGroupMeta =
+      const VerificationMeta('priceGroup');
+  @override
+  late final GeneratedColumn<String> priceGroup = GeneratedColumn<String>(
+      'price_group', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _recIdMeta = const VerificationMeta('recId');
+  @override
+  late final GeneratedColumn<String> recId = GeneratedColumn<String>(
+      'rec_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _companyIdMeta =
+      const VerificationMeta('companyId');
+  @override
+  late final GeneratedColumn<int> companyId = GeneratedColumn<int>(
+      'company_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _companyCodeMeta =
+      const VerificationMeta('companyCode');
+  @override
+  late final GeneratedColumn<String> companyCode = GeneratedColumn<String>(
+      'company_code', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        productId,
+        itemId,
+        packSize,
+        fromDate,
+        toDate,
+        unitPrice,
+        salesUnit,
+        currencyCode,
+        priceGroup,
+        recId,
+        companyId,
+        companyCode
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'product_price_entity';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<ProductPriceEntityData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(_productIdMeta,
+          productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta));
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('item_id')) {
+      context.handle(_itemIdMeta,
+          itemId.isAcceptableOrUnknown(data['item_id']!, _itemIdMeta));
+    } else if (isInserting) {
+      context.missing(_itemIdMeta);
+    }
+    if (data.containsKey('pack_size')) {
+      context.handle(_packSizeMeta,
+          packSize.isAcceptableOrUnknown(data['pack_size']!, _packSizeMeta));
+    } else if (isInserting) {
+      context.missing(_packSizeMeta);
+    }
+    if (data.containsKey('from_date')) {
+      context.handle(_fromDateMeta,
+          fromDate.isAcceptableOrUnknown(data['from_date']!, _fromDateMeta));
+    } else if (isInserting) {
+      context.missing(_fromDateMeta);
+    }
+    if (data.containsKey('to_date')) {
+      context.handle(_toDateMeta,
+          toDate.isAcceptableOrUnknown(data['to_date']!, _toDateMeta));
+    } else if (isInserting) {
+      context.missing(_toDateMeta);
+    }
+    if (data.containsKey('unit_price')) {
+      context.handle(_unitPriceMeta,
+          unitPrice.isAcceptableOrUnknown(data['unit_price']!, _unitPriceMeta));
+    } else if (isInserting) {
+      context.missing(_unitPriceMeta);
+    }
+    if (data.containsKey('sales_unit')) {
+      context.handle(_salesUnitMeta,
+          salesUnit.isAcceptableOrUnknown(data['sales_unit']!, _salesUnitMeta));
+    } else if (isInserting) {
+      context.missing(_salesUnitMeta);
+    }
+    if (data.containsKey('currency_code')) {
+      context.handle(
+          _currencyCodeMeta,
+          currencyCode.isAcceptableOrUnknown(
+              data['currency_code']!, _currencyCodeMeta));
+    } else if (isInserting) {
+      context.missing(_currencyCodeMeta);
+    }
+    if (data.containsKey('price_group')) {
+      context.handle(
+          _priceGroupMeta,
+          priceGroup.isAcceptableOrUnknown(
+              data['price_group']!, _priceGroupMeta));
+    } else if (isInserting) {
+      context.missing(_priceGroupMeta);
+    }
+    if (data.containsKey('rec_id')) {
+      context.handle(
+          _recIdMeta, recId.isAcceptableOrUnknown(data['rec_id']!, _recIdMeta));
+    } else if (isInserting) {
+      context.missing(_recIdMeta);
+    }
+    if (data.containsKey('company_id')) {
+      context.handle(_companyIdMeta,
+          companyId.isAcceptableOrUnknown(data['company_id']!, _companyIdMeta));
+    } else if (isInserting) {
+      context.missing(_companyIdMeta);
+    }
+    if (data.containsKey('company_code')) {
+      context.handle(
+          _companyCodeMeta,
+          companyCode.isAcceptableOrUnknown(
+              data['company_code']!, _companyCodeMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {recId};
+  @override
+  ProductPriceEntityData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ProductPriceEntityData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      productId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}product_id'])!,
+      itemId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}item_id'])!,
+      packSize: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}pack_size'])!,
+      fromDate: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}from_date'])!,
+      toDate: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}to_date'])!,
+      unitPrice: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}unit_price'])!,
+      salesUnit: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}sales_unit'])!,
+      currencyCode: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}currency_code'])!,
+      priceGroup: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}price_group'])!,
+      recId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}rec_id'])!,
+      companyId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}company_id'])!,
+      companyCode: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}company_code']),
+    );
+  }
+
+  @override
+  $ProductPriceEntityTable createAlias(String alias) {
+    return $ProductPriceEntityTable(attachedDatabase, alias);
+  }
+}
+
+class ProductPriceEntityData extends DataClass
+    implements Insertable<ProductPriceEntityData> {
+  final int id;
+  final String productId;
+  final String itemId;
+  final String packSize;
+  final DateTime fromDate;
+  final DateTime toDate;
+  final double unitPrice;
+  final String salesUnit;
+  final String currencyCode;
+  final String priceGroup;
+  final String recId;
+  final int companyId;
+  final String? companyCode;
+  const ProductPriceEntityData(
+      {required this.id,
+      required this.productId,
+      required this.itemId,
+      required this.packSize,
+      required this.fromDate,
+      required this.toDate,
+      required this.unitPrice,
+      required this.salesUnit,
+      required this.currencyCode,
+      required this.priceGroup,
+      required this.recId,
+      required this.companyId,
+      this.companyCode});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['product_id'] = Variable<String>(productId);
+    map['item_id'] = Variable<String>(itemId);
+    map['pack_size'] = Variable<String>(packSize);
+    map['from_date'] = Variable<DateTime>(fromDate);
+    map['to_date'] = Variable<DateTime>(toDate);
+    map['unit_price'] = Variable<double>(unitPrice);
+    map['sales_unit'] = Variable<String>(salesUnit);
+    map['currency_code'] = Variable<String>(currencyCode);
+    map['price_group'] = Variable<String>(priceGroup);
+    map['rec_id'] = Variable<String>(recId);
+    map['company_id'] = Variable<int>(companyId);
+    if (!nullToAbsent || companyCode != null) {
+      map['company_code'] = Variable<String>(companyCode);
+    }
+    return map;
+  }
+
+  ProductPriceEntityCompanion toCompanion(bool nullToAbsent) {
+    return ProductPriceEntityCompanion(
+      id: Value(id),
+      productId: Value(productId),
+      itemId: Value(itemId),
+      packSize: Value(packSize),
+      fromDate: Value(fromDate),
+      toDate: Value(toDate),
+      unitPrice: Value(unitPrice),
+      salesUnit: Value(salesUnit),
+      currencyCode: Value(currencyCode),
+      priceGroup: Value(priceGroup),
+      recId: Value(recId),
+      companyId: Value(companyId),
+      companyCode: companyCode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(companyCode),
+    );
+  }
+
+  factory ProductPriceEntityData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ProductPriceEntityData(
+      id: serializer.fromJson<int>(json['id']),
+      productId: serializer.fromJson<String>(json['productId']),
+      itemId: serializer.fromJson<String>(json['itemId']),
+      packSize: serializer.fromJson<String>(json['packSize']),
+      fromDate: serializer.fromJson<DateTime>(json['fromDate']),
+      toDate: serializer.fromJson<DateTime>(json['toDate']),
+      unitPrice: serializer.fromJson<double>(json['unitPrice']),
+      salesUnit: serializer.fromJson<String>(json['salesUnit']),
+      currencyCode: serializer.fromJson<String>(json['currencyCode']),
+      priceGroup: serializer.fromJson<String>(json['priceGroup']),
+      recId: serializer.fromJson<String>(json['recId']),
+      companyId: serializer.fromJson<int>(json['companyId']),
+      companyCode: serializer.fromJson<String?>(json['companyCode']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'productId': serializer.toJson<String>(productId),
+      'itemId': serializer.toJson<String>(itemId),
+      'packSize': serializer.toJson<String>(packSize),
+      'fromDate': serializer.toJson<DateTime>(fromDate),
+      'toDate': serializer.toJson<DateTime>(toDate),
+      'unitPrice': serializer.toJson<double>(unitPrice),
+      'salesUnit': serializer.toJson<String>(salesUnit),
+      'currencyCode': serializer.toJson<String>(currencyCode),
+      'priceGroup': serializer.toJson<String>(priceGroup),
+      'recId': serializer.toJson<String>(recId),
+      'companyId': serializer.toJson<int>(companyId),
+      'companyCode': serializer.toJson<String?>(companyCode),
+    };
+  }
+
+  ProductPriceEntityData copyWith(
+          {int? id,
+          String? productId,
+          String? itemId,
+          String? packSize,
+          DateTime? fromDate,
+          DateTime? toDate,
+          double? unitPrice,
+          String? salesUnit,
+          String? currencyCode,
+          String? priceGroup,
+          String? recId,
+          int? companyId,
+          Value<String?> companyCode = const Value.absent()}) =>
+      ProductPriceEntityData(
+        id: id ?? this.id,
+        productId: productId ?? this.productId,
+        itemId: itemId ?? this.itemId,
+        packSize: packSize ?? this.packSize,
+        fromDate: fromDate ?? this.fromDate,
+        toDate: toDate ?? this.toDate,
+        unitPrice: unitPrice ?? this.unitPrice,
+        salesUnit: salesUnit ?? this.salesUnit,
+        currencyCode: currencyCode ?? this.currencyCode,
+        priceGroup: priceGroup ?? this.priceGroup,
+        recId: recId ?? this.recId,
+        companyId: companyId ?? this.companyId,
+        companyCode: companyCode.present ? companyCode.value : this.companyCode,
+      );
+  ProductPriceEntityData copyWithCompanion(ProductPriceEntityCompanion data) {
+    return ProductPriceEntityData(
+      id: data.id.present ? data.id.value : this.id,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      itemId: data.itemId.present ? data.itemId.value : this.itemId,
+      packSize: data.packSize.present ? data.packSize.value : this.packSize,
+      fromDate: data.fromDate.present ? data.fromDate.value : this.fromDate,
+      toDate: data.toDate.present ? data.toDate.value : this.toDate,
+      unitPrice: data.unitPrice.present ? data.unitPrice.value : this.unitPrice,
+      salesUnit: data.salesUnit.present ? data.salesUnit.value : this.salesUnit,
+      currencyCode: data.currencyCode.present
+          ? data.currencyCode.value
+          : this.currencyCode,
+      priceGroup:
+          data.priceGroup.present ? data.priceGroup.value : this.priceGroup,
+      recId: data.recId.present ? data.recId.value : this.recId,
+      companyId: data.companyId.present ? data.companyId.value : this.companyId,
+      companyCode:
+          data.companyCode.present ? data.companyCode.value : this.companyCode,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProductPriceEntityData(')
+          ..write('id: $id, ')
+          ..write('productId: $productId, ')
+          ..write('itemId: $itemId, ')
+          ..write('packSize: $packSize, ')
+          ..write('fromDate: $fromDate, ')
+          ..write('toDate: $toDate, ')
+          ..write('unitPrice: $unitPrice, ')
+          ..write('salesUnit: $salesUnit, ')
+          ..write('currencyCode: $currencyCode, ')
+          ..write('priceGroup: $priceGroup, ')
+          ..write('recId: $recId, ')
+          ..write('companyId: $companyId, ')
+          ..write('companyCode: $companyCode')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      productId,
+      itemId,
+      packSize,
+      fromDate,
+      toDate,
+      unitPrice,
+      salesUnit,
+      currencyCode,
+      priceGroup,
+      recId,
+      companyId,
+      companyCode);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ProductPriceEntityData &&
+          other.id == this.id &&
+          other.productId == this.productId &&
+          other.itemId == this.itemId &&
+          other.packSize == this.packSize &&
+          other.fromDate == this.fromDate &&
+          other.toDate == this.toDate &&
+          other.unitPrice == this.unitPrice &&
+          other.salesUnit == this.salesUnit &&
+          other.currencyCode == this.currencyCode &&
+          other.priceGroup == this.priceGroup &&
+          other.recId == this.recId &&
+          other.companyId == this.companyId &&
+          other.companyCode == this.companyCode);
+}
+
+class ProductPriceEntityCompanion
+    extends UpdateCompanion<ProductPriceEntityData> {
+  final Value<int> id;
+  final Value<String> productId;
+  final Value<String> itemId;
+  final Value<String> packSize;
+  final Value<DateTime> fromDate;
+  final Value<DateTime> toDate;
+  final Value<double> unitPrice;
+  final Value<String> salesUnit;
+  final Value<String> currencyCode;
+  final Value<String> priceGroup;
+  final Value<String> recId;
+  final Value<int> companyId;
+  final Value<String?> companyCode;
+  final Value<int> rowid;
+  const ProductPriceEntityCompanion({
+    this.id = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.itemId = const Value.absent(),
+    this.packSize = const Value.absent(),
+    this.fromDate = const Value.absent(),
+    this.toDate = const Value.absent(),
+    this.unitPrice = const Value.absent(),
+    this.salesUnit = const Value.absent(),
+    this.currencyCode = const Value.absent(),
+    this.priceGroup = const Value.absent(),
+    this.recId = const Value.absent(),
+    this.companyId = const Value.absent(),
+    this.companyCode = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ProductPriceEntityCompanion.insert({
+    required int id,
+    required String productId,
+    required String itemId,
+    required String packSize,
+    required DateTime fromDate,
+    required DateTime toDate,
+    required double unitPrice,
+    required String salesUnit,
+    required String currencyCode,
+    required String priceGroup,
+    required String recId,
+    required int companyId,
+    this.companyCode = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        productId = Value(productId),
+        itemId = Value(itemId),
+        packSize = Value(packSize),
+        fromDate = Value(fromDate),
+        toDate = Value(toDate),
+        unitPrice = Value(unitPrice),
+        salesUnit = Value(salesUnit),
+        currencyCode = Value(currencyCode),
+        priceGroup = Value(priceGroup),
+        recId = Value(recId),
+        companyId = Value(companyId);
+  static Insertable<ProductPriceEntityData> custom({
+    Expression<int>? id,
+    Expression<String>? productId,
+    Expression<String>? itemId,
+    Expression<String>? packSize,
+    Expression<DateTime>? fromDate,
+    Expression<DateTime>? toDate,
+    Expression<double>? unitPrice,
+    Expression<String>? salesUnit,
+    Expression<String>? currencyCode,
+    Expression<String>? priceGroup,
+    Expression<String>? recId,
+    Expression<int>? companyId,
+    Expression<String>? companyCode,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (productId != null) 'product_id': productId,
+      if (itemId != null) 'item_id': itemId,
+      if (packSize != null) 'pack_size': packSize,
+      if (fromDate != null) 'from_date': fromDate,
+      if (toDate != null) 'to_date': toDate,
+      if (unitPrice != null) 'unit_price': unitPrice,
+      if (salesUnit != null) 'sales_unit': salesUnit,
+      if (currencyCode != null) 'currency_code': currencyCode,
+      if (priceGroup != null) 'price_group': priceGroup,
+      if (recId != null) 'rec_id': recId,
+      if (companyId != null) 'company_id': companyId,
+      if (companyCode != null) 'company_code': companyCode,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ProductPriceEntityCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? productId,
+      Value<String>? itemId,
+      Value<String>? packSize,
+      Value<DateTime>? fromDate,
+      Value<DateTime>? toDate,
+      Value<double>? unitPrice,
+      Value<String>? salesUnit,
+      Value<String>? currencyCode,
+      Value<String>? priceGroup,
+      Value<String>? recId,
+      Value<int>? companyId,
+      Value<String?>? companyCode,
+      Value<int>? rowid}) {
+    return ProductPriceEntityCompanion(
+      id: id ?? this.id,
+      productId: productId ?? this.productId,
+      itemId: itemId ?? this.itemId,
+      packSize: packSize ?? this.packSize,
+      fromDate: fromDate ?? this.fromDate,
+      toDate: toDate ?? this.toDate,
+      unitPrice: unitPrice ?? this.unitPrice,
+      salesUnit: salesUnit ?? this.salesUnit,
+      currencyCode: currencyCode ?? this.currencyCode,
+      priceGroup: priceGroup ?? this.priceGroup,
+      recId: recId ?? this.recId,
+      companyId: companyId ?? this.companyId,
+      companyCode: companyCode ?? this.companyCode,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (itemId.present) {
+      map['item_id'] = Variable<String>(itemId.value);
+    }
+    if (packSize.present) {
+      map['pack_size'] = Variable<String>(packSize.value);
+    }
+    if (fromDate.present) {
+      map['from_date'] = Variable<DateTime>(fromDate.value);
+    }
+    if (toDate.present) {
+      map['to_date'] = Variable<DateTime>(toDate.value);
+    }
+    if (unitPrice.present) {
+      map['unit_price'] = Variable<double>(unitPrice.value);
+    }
+    if (salesUnit.present) {
+      map['sales_unit'] = Variable<String>(salesUnit.value);
+    }
+    if (currencyCode.present) {
+      map['currency_code'] = Variable<String>(currencyCode.value);
+    }
+    if (priceGroup.present) {
+      map['price_group'] = Variable<String>(priceGroup.value);
+    }
+    if (recId.present) {
+      map['rec_id'] = Variable<String>(recId.value);
+    }
+    if (companyId.present) {
+      map['company_id'] = Variable<int>(companyId.value);
+    }
+    if (companyCode.present) {
+      map['company_code'] = Variable<String>(companyCode.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProductPriceEntityCompanion(')
+          ..write('id: $id, ')
+          ..write('productId: $productId, ')
+          ..write('itemId: $itemId, ')
+          ..write('packSize: $packSize, ')
+          ..write('fromDate: $fromDate, ')
+          ..write('toDate: $toDate, ')
+          ..write('unitPrice: $unitPrice, ')
+          ..write('salesUnit: $salesUnit, ')
+          ..write('currencyCode: $currencyCode, ')
+          ..write('priceGroup: $priceGroup, ')
+          ..write('recId: $recId, ')
+          ..write('companyId: $companyId, ')
+          ..write('companyCode: $companyCode, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -2900,6 +4387,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $SearchSalesCustomerHistoryEntityTable(this);
   late final $CustomerAddressEntityTable customerAddressEntity =
       $CustomerAddressEntityTable(this);
+  late final $ProductEntityTable productEntity = $ProductEntityTable(this);
+  late final $ProductPriceEntityTable productPriceEntity =
+      $ProductPriceEntityTable(this);
   late final Index customerId = Index('customer_id',
       'CREATE INDEX customer_id ON customer_address_entity (customer_id)');
   late final SettingDao settingDao = SettingDao(this as AppDatabase);
@@ -2909,6 +4399,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       SalesCustomerDao(this as AppDatabase);
   late final CustomerAddressDao customerAddressDao =
       CustomerAddressDao(this as AppDatabase);
+  late final ProductDao productDao = ProductDao(this as AppDatabase);
+  late final ProductPriceDao productPriceDao =
+      ProductPriceDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -2920,6 +4413,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         searchMerchandiserCustomerHistoryEntity,
         searchSalesCustomerHistoryEntity,
         customerAddressEntity,
+        productEntity,
+        productPriceEntity,
         customerId
       ];
   @override
@@ -4337,6 +5832,675 @@ typedef $$CustomerAddressEntityTableProcessedTableManager
         ),
         CustomerAddressEntityData,
         PrefetchHooks Function()>;
+typedef $$ProductEntityTableCreateCompanionBuilder = ProductEntityCompanion
+    Function({
+  required int id,
+  required String productId,
+  required String itemId,
+  required String productName,
+  required String description,
+  required String category,
+  required String barcode,
+  required String itemGroup,
+  required String packSize,
+  required String salesUnit,
+  required double unitPrice,
+  required String image,
+  required String itemDiscountGroup,
+  required String itemFOCGroup,
+  required String inventDimId,
+  required String status,
+  Value<String?> companyCode,
+  required int companyId,
+  Value<int> rowid,
+});
+typedef $$ProductEntityTableUpdateCompanionBuilder = ProductEntityCompanion
+    Function({
+  Value<int> id,
+  Value<String> productId,
+  Value<String> itemId,
+  Value<String> productName,
+  Value<String> description,
+  Value<String> category,
+  Value<String> barcode,
+  Value<String> itemGroup,
+  Value<String> packSize,
+  Value<String> salesUnit,
+  Value<double> unitPrice,
+  Value<String> image,
+  Value<String> itemDiscountGroup,
+  Value<String> itemFOCGroup,
+  Value<String> inventDimId,
+  Value<String> status,
+  Value<String?> companyCode,
+  Value<int> companyId,
+  Value<int> rowid,
+});
+
+class $$ProductEntityTableFilterComposer
+    extends Composer<_$AppDatabase, $ProductEntityTable> {
+  $$ProductEntityTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get productId => $composableBuilder(
+      column: $table.productId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get itemId => $composableBuilder(
+      column: $table.itemId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get productName => $composableBuilder(
+      column: $table.productName, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get category => $composableBuilder(
+      column: $table.category, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get barcode => $composableBuilder(
+      column: $table.barcode, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get itemGroup => $composableBuilder(
+      column: $table.itemGroup, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get packSize => $composableBuilder(
+      column: $table.packSize, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get salesUnit => $composableBuilder(
+      column: $table.salesUnit, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get unitPrice => $composableBuilder(
+      column: $table.unitPrice, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get image => $composableBuilder(
+      column: $table.image, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get itemDiscountGroup => $composableBuilder(
+      column: $table.itemDiscountGroup,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get itemFOCGroup => $composableBuilder(
+      column: $table.itemFOCGroup, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get inventDimId => $composableBuilder(
+      column: $table.inventDimId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnFilters(column));
+}
+
+class $$ProductEntityTableOrderingComposer
+    extends Composer<_$AppDatabase, $ProductEntityTable> {
+  $$ProductEntityTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+      column: $table.productId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get itemId => $composableBuilder(
+      column: $table.itemId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get productName => $composableBuilder(
+      column: $table.productName, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get category => $composableBuilder(
+      column: $table.category, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get barcode => $composableBuilder(
+      column: $table.barcode, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get itemGroup => $composableBuilder(
+      column: $table.itemGroup, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get packSize => $composableBuilder(
+      column: $table.packSize, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get salesUnit => $composableBuilder(
+      column: $table.salesUnit, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get unitPrice => $composableBuilder(
+      column: $table.unitPrice, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get image => $composableBuilder(
+      column: $table.image, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get itemDiscountGroup => $composableBuilder(
+      column: $table.itemDiscountGroup,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get itemFOCGroup => $composableBuilder(
+      column: $table.itemFOCGroup,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get inventDimId => $composableBuilder(
+      column: $table.inventDimId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnOrderings(column));
+}
+
+class $$ProductEntityTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ProductEntityTable> {
+  $$ProductEntityTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get itemId =>
+      $composableBuilder(column: $table.itemId, builder: (column) => column);
+
+  GeneratedColumn<String> get productName => $composableBuilder(
+      column: $table.productName, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => column);
+
+  GeneratedColumn<String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<String> get barcode =>
+      $composableBuilder(column: $table.barcode, builder: (column) => column);
+
+  GeneratedColumn<String> get itemGroup =>
+      $composableBuilder(column: $table.itemGroup, builder: (column) => column);
+
+  GeneratedColumn<String> get packSize =>
+      $composableBuilder(column: $table.packSize, builder: (column) => column);
+
+  GeneratedColumn<String> get salesUnit =>
+      $composableBuilder(column: $table.salesUnit, builder: (column) => column);
+
+  GeneratedColumn<double> get unitPrice =>
+      $composableBuilder(column: $table.unitPrice, builder: (column) => column);
+
+  GeneratedColumn<String> get image =>
+      $composableBuilder(column: $table.image, builder: (column) => column);
+
+  GeneratedColumn<String> get itemDiscountGroup => $composableBuilder(
+      column: $table.itemDiscountGroup, builder: (column) => column);
+
+  GeneratedColumn<String> get itemFOCGroup => $composableBuilder(
+      column: $table.itemFOCGroup, builder: (column) => column);
+
+  GeneratedColumn<String> get inventDimId => $composableBuilder(
+      column: $table.inventDimId, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => column);
+
+  GeneratedColumn<int> get companyId =>
+      $composableBuilder(column: $table.companyId, builder: (column) => column);
+}
+
+class $$ProductEntityTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $ProductEntityTable,
+    ProductEntityData,
+    $$ProductEntityTableFilterComposer,
+    $$ProductEntityTableOrderingComposer,
+    $$ProductEntityTableAnnotationComposer,
+    $$ProductEntityTableCreateCompanionBuilder,
+    $$ProductEntityTableUpdateCompanionBuilder,
+    (
+      ProductEntityData,
+      BaseReferences<_$AppDatabase, $ProductEntityTable, ProductEntityData>
+    ),
+    ProductEntityData,
+    PrefetchHooks Function()> {
+  $$ProductEntityTableTableManager(_$AppDatabase db, $ProductEntityTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ProductEntityTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ProductEntityTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ProductEntityTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> productId = const Value.absent(),
+            Value<String> itemId = const Value.absent(),
+            Value<String> productName = const Value.absent(),
+            Value<String> description = const Value.absent(),
+            Value<String> category = const Value.absent(),
+            Value<String> barcode = const Value.absent(),
+            Value<String> itemGroup = const Value.absent(),
+            Value<String> packSize = const Value.absent(),
+            Value<String> salesUnit = const Value.absent(),
+            Value<double> unitPrice = const Value.absent(),
+            Value<String> image = const Value.absent(),
+            Value<String> itemDiscountGroup = const Value.absent(),
+            Value<String> itemFOCGroup = const Value.absent(),
+            Value<String> inventDimId = const Value.absent(),
+            Value<String> status = const Value.absent(),
+            Value<String?> companyCode = const Value.absent(),
+            Value<int> companyId = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ProductEntityCompanion(
+            id: id,
+            productId: productId,
+            itemId: itemId,
+            productName: productName,
+            description: description,
+            category: category,
+            barcode: barcode,
+            itemGroup: itemGroup,
+            packSize: packSize,
+            salesUnit: salesUnit,
+            unitPrice: unitPrice,
+            image: image,
+            itemDiscountGroup: itemDiscountGroup,
+            itemFOCGroup: itemFOCGroup,
+            inventDimId: inventDimId,
+            status: status,
+            companyCode: companyCode,
+            companyId: companyId,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required int id,
+            required String productId,
+            required String itemId,
+            required String productName,
+            required String description,
+            required String category,
+            required String barcode,
+            required String itemGroup,
+            required String packSize,
+            required String salesUnit,
+            required double unitPrice,
+            required String image,
+            required String itemDiscountGroup,
+            required String itemFOCGroup,
+            required String inventDimId,
+            required String status,
+            Value<String?> companyCode = const Value.absent(),
+            required int companyId,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ProductEntityCompanion.insert(
+            id: id,
+            productId: productId,
+            itemId: itemId,
+            productName: productName,
+            description: description,
+            category: category,
+            barcode: barcode,
+            itemGroup: itemGroup,
+            packSize: packSize,
+            salesUnit: salesUnit,
+            unitPrice: unitPrice,
+            image: image,
+            itemDiscountGroup: itemDiscountGroup,
+            itemFOCGroup: itemFOCGroup,
+            inventDimId: inventDimId,
+            status: status,
+            companyCode: companyCode,
+            companyId: companyId,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ProductEntityTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $ProductEntityTable,
+    ProductEntityData,
+    $$ProductEntityTableFilterComposer,
+    $$ProductEntityTableOrderingComposer,
+    $$ProductEntityTableAnnotationComposer,
+    $$ProductEntityTableCreateCompanionBuilder,
+    $$ProductEntityTableUpdateCompanionBuilder,
+    (
+      ProductEntityData,
+      BaseReferences<_$AppDatabase, $ProductEntityTable, ProductEntityData>
+    ),
+    ProductEntityData,
+    PrefetchHooks Function()>;
+typedef $$ProductPriceEntityTableCreateCompanionBuilder
+    = ProductPriceEntityCompanion Function({
+  required int id,
+  required String productId,
+  required String itemId,
+  required String packSize,
+  required DateTime fromDate,
+  required DateTime toDate,
+  required double unitPrice,
+  required String salesUnit,
+  required String currencyCode,
+  required String priceGroup,
+  required String recId,
+  required int companyId,
+  Value<String?> companyCode,
+  Value<int> rowid,
+});
+typedef $$ProductPriceEntityTableUpdateCompanionBuilder
+    = ProductPriceEntityCompanion Function({
+  Value<int> id,
+  Value<String> productId,
+  Value<String> itemId,
+  Value<String> packSize,
+  Value<DateTime> fromDate,
+  Value<DateTime> toDate,
+  Value<double> unitPrice,
+  Value<String> salesUnit,
+  Value<String> currencyCode,
+  Value<String> priceGroup,
+  Value<String> recId,
+  Value<int> companyId,
+  Value<String?> companyCode,
+  Value<int> rowid,
+});
+
+class $$ProductPriceEntityTableFilterComposer
+    extends Composer<_$AppDatabase, $ProductPriceEntityTable> {
+  $$ProductPriceEntityTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get productId => $composableBuilder(
+      column: $table.productId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get itemId => $composableBuilder(
+      column: $table.itemId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get packSize => $composableBuilder(
+      column: $table.packSize, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get fromDate => $composableBuilder(
+      column: $table.fromDate, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get toDate => $composableBuilder(
+      column: $table.toDate, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get unitPrice => $composableBuilder(
+      column: $table.unitPrice, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get salesUnit => $composableBuilder(
+      column: $table.salesUnit, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get currencyCode => $composableBuilder(
+      column: $table.currencyCode, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get priceGroup => $composableBuilder(
+      column: $table.priceGroup, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get recId => $composableBuilder(
+      column: $table.recId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => ColumnFilters(column));
+}
+
+class $$ProductPriceEntityTableOrderingComposer
+    extends Composer<_$AppDatabase, $ProductPriceEntityTable> {
+  $$ProductPriceEntityTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+      column: $table.productId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get itemId => $composableBuilder(
+      column: $table.itemId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get packSize => $composableBuilder(
+      column: $table.packSize, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get fromDate => $composableBuilder(
+      column: $table.fromDate, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get toDate => $composableBuilder(
+      column: $table.toDate, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get unitPrice => $composableBuilder(
+      column: $table.unitPrice, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get salesUnit => $composableBuilder(
+      column: $table.salesUnit, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get currencyCode => $composableBuilder(
+      column: $table.currencyCode,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get priceGroup => $composableBuilder(
+      column: $table.priceGroup, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get recId => $composableBuilder(
+      column: $table.recId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => ColumnOrderings(column));
+}
+
+class $$ProductPriceEntityTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ProductPriceEntityTable> {
+  $$ProductPriceEntityTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get itemId =>
+      $composableBuilder(column: $table.itemId, builder: (column) => column);
+
+  GeneratedColumn<String> get packSize =>
+      $composableBuilder(column: $table.packSize, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get fromDate =>
+      $composableBuilder(column: $table.fromDate, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get toDate =>
+      $composableBuilder(column: $table.toDate, builder: (column) => column);
+
+  GeneratedColumn<double> get unitPrice =>
+      $composableBuilder(column: $table.unitPrice, builder: (column) => column);
+
+  GeneratedColumn<String> get salesUnit =>
+      $composableBuilder(column: $table.salesUnit, builder: (column) => column);
+
+  GeneratedColumn<String> get currencyCode => $composableBuilder(
+      column: $table.currencyCode, builder: (column) => column);
+
+  GeneratedColumn<String> get priceGroup => $composableBuilder(
+      column: $table.priceGroup, builder: (column) => column);
+
+  GeneratedColumn<String> get recId =>
+      $composableBuilder(column: $table.recId, builder: (column) => column);
+
+  GeneratedColumn<int> get companyId =>
+      $composableBuilder(column: $table.companyId, builder: (column) => column);
+
+  GeneratedColumn<String> get companyCode => $composableBuilder(
+      column: $table.companyCode, builder: (column) => column);
+}
+
+class $$ProductPriceEntityTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $ProductPriceEntityTable,
+    ProductPriceEntityData,
+    $$ProductPriceEntityTableFilterComposer,
+    $$ProductPriceEntityTableOrderingComposer,
+    $$ProductPriceEntityTableAnnotationComposer,
+    $$ProductPriceEntityTableCreateCompanionBuilder,
+    $$ProductPriceEntityTableUpdateCompanionBuilder,
+    (
+      ProductPriceEntityData,
+      BaseReferences<_$AppDatabase, $ProductPriceEntityTable,
+          ProductPriceEntityData>
+    ),
+    ProductPriceEntityData,
+    PrefetchHooks Function()> {
+  $$ProductPriceEntityTableTableManager(
+      _$AppDatabase db, $ProductPriceEntityTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ProductPriceEntityTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ProductPriceEntityTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ProductPriceEntityTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> productId = const Value.absent(),
+            Value<String> itemId = const Value.absent(),
+            Value<String> packSize = const Value.absent(),
+            Value<DateTime> fromDate = const Value.absent(),
+            Value<DateTime> toDate = const Value.absent(),
+            Value<double> unitPrice = const Value.absent(),
+            Value<String> salesUnit = const Value.absent(),
+            Value<String> currencyCode = const Value.absent(),
+            Value<String> priceGroup = const Value.absent(),
+            Value<String> recId = const Value.absent(),
+            Value<int> companyId = const Value.absent(),
+            Value<String?> companyCode = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ProductPriceEntityCompanion(
+            id: id,
+            productId: productId,
+            itemId: itemId,
+            packSize: packSize,
+            fromDate: fromDate,
+            toDate: toDate,
+            unitPrice: unitPrice,
+            salesUnit: salesUnit,
+            currencyCode: currencyCode,
+            priceGroup: priceGroup,
+            recId: recId,
+            companyId: companyId,
+            companyCode: companyCode,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required int id,
+            required String productId,
+            required String itemId,
+            required String packSize,
+            required DateTime fromDate,
+            required DateTime toDate,
+            required double unitPrice,
+            required String salesUnit,
+            required String currencyCode,
+            required String priceGroup,
+            required String recId,
+            required int companyId,
+            Value<String?> companyCode = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ProductPriceEntityCompanion.insert(
+            id: id,
+            productId: productId,
+            itemId: itemId,
+            packSize: packSize,
+            fromDate: fromDate,
+            toDate: toDate,
+            unitPrice: unitPrice,
+            salesUnit: salesUnit,
+            currencyCode: currencyCode,
+            priceGroup: priceGroup,
+            recId: recId,
+            companyId: companyId,
+            companyCode: companyCode,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ProductPriceEntityTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $ProductPriceEntityTable,
+    ProductPriceEntityData,
+    $$ProductPriceEntityTableFilterComposer,
+    $$ProductPriceEntityTableOrderingComposer,
+    $$ProductPriceEntityTableAnnotationComposer,
+    $$ProductPriceEntityTableCreateCompanionBuilder,
+    $$ProductPriceEntityTableUpdateCompanionBuilder,
+    (
+      ProductPriceEntityData,
+      BaseReferences<_$AppDatabase, $ProductPriceEntityTable,
+          ProductPriceEntityData>
+    ),
+    ProductPriceEntityData,
+    PrefetchHooks Function()>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -4359,6 +6523,10 @@ class $AppDatabaseManager {
               _db, _db.searchSalesCustomerHistoryEntity);
   $$CustomerAddressEntityTableTableManager get customerAddressEntity =>
       $$CustomerAddressEntityTableTableManager(_db, _db.customerAddressEntity);
+  $$ProductEntityTableTableManager get productEntity =>
+      $$ProductEntityTableTableManager(_db, _db.productEntity);
+  $$ProductPriceEntityTableTableManager get productPriceEntity =>
+      $$ProductPriceEntityTableTableManager(_db, _db.productPriceEntity);
 }
 
 // **************************************************************************

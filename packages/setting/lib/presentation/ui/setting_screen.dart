@@ -72,6 +72,34 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 context.go('/setting/profile');
               },
             ),
+            ListTile(
+              title: Text('Import Customer'.hardcoded),
+              subtitle:
+                  Text(context.localizations('setting.manageYourProfile')),
+              trailing: IconButton(
+                onPressed: () {
+                  context.go('/merchandiser/customer-import');
+                },
+                icon: const Icon(Icons.navigate_next),
+              ),
+              onTap: () {
+                context.go('/merchandiser/customer-import');
+              },
+            ),
+            ListTile(
+              title: Text('Import Product'.hardcoded),
+              subtitle:
+                  Text(context.localizations('setting.manageYourProfile')),
+              trailing: IconButton(
+                onPressed: () {
+                  context.go('/sales/product-import');
+                },
+                icon: const Icon(Icons.navigate_next),
+              ),
+              onTap: () {
+                context.go('/sales/product-import');
+              },
+            ),
           ],
         ),
       ),
