@@ -181,6 +181,8 @@ class AppRouter {
           ),
           routes: [
             _searchSalesCustomerRoute(),
+            _productRoute(),
+            _productImportRoute(),
           ],
         ),
       ],
@@ -201,6 +203,7 @@ class AppRouter {
           routes: [
             _captureImageRoute(),
             _searchMerchandiserCustomerRoute(),
+            _customerImportRoute(),
           ],
         ),
       ],
@@ -333,6 +336,37 @@ class AppRouter {
         name: state.name,
         child: const ThisMonthSiteVisitReportScreen(),
       ),
+    );
+  }
+
+  RouteBase _productRoute() {
+    return GoRoute(
+      path: '/$productRoute',
+      name: productRoute,
+      builder: (context, state) {
+        final extras = state.extra as Map<String, dynamic>;
+        return ProductScreen(extras: extras);
+      },
+    );
+  }
+
+  RouteBase _productImportRoute() {
+    return GoRoute(
+      path: '/$productImportRoute',
+      name: productImportRoute,
+      builder: (context, state) {
+        return const ProductImportScreen();
+      },
+    );
+  }
+
+  RouteBase _customerImportRoute() {
+    return GoRoute(
+      path: '/$customerImportRoute',
+      name: customerImportRoute,
+      builder: (context, state) {
+        return const CustomerImportScreen();
+      },
     );
   }
 

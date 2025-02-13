@@ -14,10 +14,9 @@ class _MerchandiserCustomerScreenState
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // get the merchandiser customers
       ref
           .read(merchandiserCustomerProvider.notifier)
-          .getMerchandiserCustomers();
+          .watchMerchandiserCustomers();
     });
   }
 
@@ -48,13 +47,5 @@ class _MerchandiserCustomerScreenState
     );
   }
 
-  Future<void> _onRefresh() async {
-    // invalidate the provider
-    ref.invalidate(merchandiserCustomerProvider);
-
-    // get the merchandiser customers
-    return ref
-        .read(merchandiserCustomerProvider.notifier)
-        .getMerchandiserCustomers();
-  }
+  Future<void> _onRefresh() async {}
 }

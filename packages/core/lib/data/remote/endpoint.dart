@@ -5,10 +5,8 @@ const String forgotPasswordEndPoint = '/v1/api/auth/forgot-password';
 const String meEndPoint = '/v1/api/me';
 const String findDeviceSettingByDeviceIdEndPoint =
     '/v1/api/device-setting/find/{deviceId}';
-const String merchandiserCustomerEndPoint =
-    '/v1/api/merchandiser-customers/{DataAreaId}';
-const String filterMerchandiserCustomerEndPoint =
-    '/v1/api/merchandiser-customers';
+const String merchandiserCustomerEndPoint = '/v1/api/customers/{DataAreaId}';
+const String filterMerchandiserCustomerEndPoint = '/v1/api/customers';
 
 const String salesCustomerEndPoint = '/v1/api/customers/{DataAreaId}';
 const String filterSalesCustomerEndPoint = '/v1/api/customers';
@@ -19,3 +17,8 @@ const String toDaySiteVisitReportEndPoint =
     '/v1/api/merchandiser/photos/report/today-unique-site-visit-report';
 const String thisMonthSiteVisitReportEndPoint =
     '/v1/api/merchandiser/photos/report/this-month-site-visit-report';
+
+// product
+const String productsEndPoint = '/v1/api/items/{DataAreaId}';
+// price
+const String pricesEndPoint = '/v1/api/prices/{DataAreaId}';

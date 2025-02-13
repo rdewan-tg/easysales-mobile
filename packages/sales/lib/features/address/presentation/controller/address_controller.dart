@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:core/data/local/db/app_database.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:merchandiser/features/address/application/customer_address_service.dart';
-import 'package:merchandiser/features/address/presentation/state/address_state.dart';
+import 'package:sales/features/address/application/customer_address_service.dart';
+import 'package:sales/features/address/presentation/state/address_state.dart';
 
 final addressControllerProvider =
     AutoDisposeNotifierProvider<AddressController, AddressState>(
