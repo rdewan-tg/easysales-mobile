@@ -1,24 +1,24 @@
 import 'package:core/data/local/db/app_database.dart';
-import 'package:merchandiser/features/customer/data/dto/request/merchandiser_customer_response.dart';
+import 'package:common/dto/customer/customer_response.dart';
 
 abstract interface class IMerchandiserCustomerRepository {
-  Future<MerchandiserCustomerResponse> getMerchandiserCustomers(
+  Future<CustomerResponse> getMerchandiserCustomers(
     String dataAreaId,
   );
 
-  Future<MerchandiserCustomerResponse> filterMerchandiserCustomers(
+  Future<CustomerResponse> filterMerchandiserCustomers(
     String companyCode,
     String salesPersonId,
   );
 
-  Stream<List<MerchandiserCustomerEntityData>> watchAll(
+  Stream<List<SalesCustomerEntityData>> watchAll(
     String? searchQuery,
   );
 
   Stream<List<SearchMerchandiserCustomerHistoryEntityData>>
       watchSearchCustomerHistory();
 
-  Future<void> insertOrUpdate(List<MerchandiserCustomerEntityData> data);
+  Future<void> insertOrUpdate(List<SalesCustomerEntityData> data);
 
   Future<void> insertOrUpdateSearchMerchandiserCustomerHistory(
     String key,

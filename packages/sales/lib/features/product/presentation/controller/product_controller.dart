@@ -11,6 +11,8 @@ final productControllerProvider =
 class ProductController extends Notifier<ProductState> {
   StreamSubscription<List<ProductEntityData>>? _streamProductsSubscription;
   StreamSubscription<List<ProductPriceEntityData>>? _streamPricesSubscription;
+  StreamSubscription<List<SearchProductHistoryEntityData>>?
+      _subscriptionSearchProductHistory;
 
   @override
   ProductState build() {
@@ -18,6 +20,7 @@ class ProductController extends Notifier<ProductState> {
       () {
         _streamProductsSubscription?.cancel();
         _streamPricesSubscription?.cancel();
+        _subscriptionSearchProductHistory?.cancel();
       },
     );
 
@@ -61,10 +64,11 @@ class ProductController extends Notifier<ProductState> {
   }
 
   Future<void> watchProducts() async {
+    final searchQuery = state.searchQuery;
     _streamProductsSubscription =
-        ref.watch(productServiceProvider).watchProducts('').listen(
+        ref.watch(productServiceProvider).watchProducts(searchQuery).listen(
       (data) {
-        state = state.copyWith(products: data);
+        state = state.copyWith(products: data, lastSearchQuery: searchQuery);
       },
       onError: (error) {
         state = state.copyWith(errorMsg: error.toString());
@@ -84,11 +88,57 @@ class ProductController extends Notifier<ProductState> {
     );
   }
 
-  Future<void> setSearchQuery(String value) async {
+  Future<void> clearSearchProduct() async {
+    state = state.copyWith(
+      searchQuery: '',
+      lastSearchQuery: '',
+    );
+  }
+
+  Future<void> setSearchProductQuery(String value) async {
     state = state.copyWith(searchQuery: value);
   }
 
-  Future<void> clearSearchQuery() async {
-    state = state.copyWith(searchQuery: '');
+  Future<void> setSearchHistory(String key) async {
+    ref.read(productServiceProvider).insertOrUpdateSearchProductHistory(key);
   }
+
+  Future<void> watchSearchProductHistory() async {
+    // Start listening stream
+    _subscriptionSearchProductHistory =
+        ref.watch(productServiceProvider).watchSearchProductHistory().listen(
+      (data) {
+        final history = data.map((e) => e.key).toList();
+        state = state.copyWith(searchHistory: history);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> clearSearchProductHistory() async {
+    // update the state
+    state = state.copyWith(
+      isSearchProductHistoryCleared: false,
+      totalSearchProductHistoryCleared: null,
+    );
+    // clear search history
+    final result =
+        await ref.read(productServiceProvider).deleteAllSearchProductHistory();
+
+    result.when((success) {
+      state = state.copyWith(
+        searchQuery: '',
+        lastSearchQuery: '',
+        searchHistory: [],
+        totalSearchProductHistoryCleared: success,
+        isSearchProductHistoryCleared: true,
+      );
+    }, (error) {
+      state = state.copyWith(errorMsg: error.message);
+    });
+  }
+
+  int? getTotalSearchHistoryCleared() => state.totalSearchProductHistoryCleared;
 }

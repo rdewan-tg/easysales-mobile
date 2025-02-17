@@ -22,13 +22,12 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<MerchandiserCustomerResponse> getMerchandiserCustomers(
-      String dataAreaId) async {
+  Future<CustomerResponse> getMerchandiserCustomers(String dataAreaId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<MerchandiserCustomerResponse>(Options(
+    final _options = _setStreamType<CustomerResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -45,10 +44,9 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late MerchandiserCustomerResponse _value;
+    late CustomerResponse _value;
     try {
-      _value =
-          await compute(deserializeMerchandiserCustomerResponse, _result.data!);
+      _value = await compute(deserializeCustomerResponse, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -57,7 +55,7 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
   }
 
   @override
-  Future<MerchandiserCustomerResponse> filter(
+  Future<CustomerResponse> filter(
     String companyCode,
     String salesPersonId,
   ) async {
@@ -68,7 +66,7 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<MerchandiserCustomerResponse>(Options(
+    final _options = _setStreamType<CustomerResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -85,10 +83,9 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late MerchandiserCustomerResponse _value;
+    late CustomerResponse _value;
     try {
-      _value =
-          await compute(deserializeMerchandiserCustomerResponse, _result.data!);
+      _value = await compute(deserializeCustomerResponse, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

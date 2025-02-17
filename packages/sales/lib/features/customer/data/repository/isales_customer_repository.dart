@@ -1,10 +1,10 @@
 import 'package:core/data/local/db/app_database.dart';
-import 'package:sales/features/customer/data/dto/request/sales_customer_response.dart';
+import 'package:common/dto/customer/customer_response.dart';
 
 abstract interface class ISalesCustomerRepository {
-  Future<SalesCustomerResponse> getSalesCustomers(String dataAreaId);
+  Future<CustomerResponse> getSalesCustomers(String dataAreaId);
 
-  Future<SalesCustomerResponse> filterSalesCustomers(
+  Future<CustomerResponse> filterSalesCustomers(
     String companyCode,
     String salesPersonId,
   );

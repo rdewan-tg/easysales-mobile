@@ -5,9 +5,9 @@ import 'package:core/data/local/db/app_database.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sales/features/customer/application/isales_customer_service.dart';
-import 'package:sales/features/customer/data/dto/request/sales_customer_response.dart';
 import 'package:sales/features/customer/data/repository/isales_customer_repository.dart';
 import 'package:sales/features/customer/data/repository/sales_customer_repository.dart';
+import 'package:common/dto/customer/customer_response.dart';
 
 final salesCustomerServiceProvider =
     Provider.autoDispose<ISalesCustomerService>((ref) {
@@ -131,7 +131,7 @@ final class SalesCustomerService implements ISalesCustomerService {
 
 // top level function for isolate
 List<SalesCustomerEntityData> _mapToSalesCustomerEntityData(
-  SalesCustomerResponse response,
+  CustomerResponse response,
 ) {
   return response.data
       .map(

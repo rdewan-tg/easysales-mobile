@@ -3,7 +3,7 @@ import 'dart:isolate';
 import 'package:common/exception/failure.dart';
 import 'package:core/data/local/db/app_database.dart';
 import 'package:merchandiser/features/customer/application/imerchandiser_customer_service.dart';
-import 'package:merchandiser/features/customer/data/dto/request/merchandiser_customer_response.dart';
+import 'package:common/dto/customer/customer_response.dart';
 import 'package:merchandiser/features/customer/data/repository/imerchandiser_customer_repository.dart';
 import 'package:merchandiser/features/customer/data/repository/merchandiser_customer_repository.dart';
 import 'package:multiple_result/multiple_result.dart';
@@ -81,7 +81,7 @@ final class MerchandiserCustomerService
   }
 
   @override
-  Stream<List<MerchandiserCustomerEntityData>> watchAll(
+  Stream<List<SalesCustomerEntityData>> watchAll(
     String? searchQuery,
   ) {
     return _merchandiserCustomerRepository.watchAll(searchQuery);
@@ -135,12 +135,12 @@ final class MerchandiserCustomerService
 }
 
 // top level function for isolate
-List<MerchandiserCustomerEntityData> _mapToMerchandiserCustomerEntityData(
-  MerchandiserCustomerResponse response,
+List<SalesCustomerEntityData> _mapToMerchandiserCustomerEntityData(
+  CustomerResponse response,
 ) {
   return response.data
       .map(
-        (e) => MerchandiserCustomerEntityData(
+        (e) => SalesCustomerEntityData(
           customerId: e.customerId,
           customerName: e.customerName,
           address: e.address,

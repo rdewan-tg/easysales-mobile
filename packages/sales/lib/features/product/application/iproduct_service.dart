@@ -16,4 +16,12 @@ abstract interface class IProductService {
   );
 
   Future<Map<String, String>> getAllSettings();
+
+  Future<void> insertOrUpdateSearchProductHistory(
+    String key,
+  );
+
+  Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory();
+
+  Future<Result<int, Failure>> deleteAllSearchProductHistory();
 }

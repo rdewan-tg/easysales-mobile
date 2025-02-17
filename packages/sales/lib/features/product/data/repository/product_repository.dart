@@ -3,6 +3,7 @@ import 'package:common/exception/failure.dart';
 import 'package:core/data/local/db/app_database.dart';
 import 'package:core/data/local/db/dao/product_dao.dart';
 import 'package:core/data/local/db/dao/product_price_dao.dart';
+import 'package:core/data/local/db/dao/search_product_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:sales/features/product/data/dto/product_price_response.dart';
 import 'package:sales/features/product/data/dto/product_response.dart';
@@ -16,8 +17,15 @@ final productRepositoryProvider = Provider<IProductRepository>((ref) {
   final productDao = ref.watch(productDaoProvider);
   final priceDao = ref.watch(productPriceDaoProvider);
   final settingDao = ref.watch(settingDaoProvider);
+  final searchHistoryDao = ref.watch(searchProductHistoryDaoProvider);
 
-  return ProductRepository(productApi, productDao, priceDao, settingDao);
+  return ProductRepository(
+    productApi,
+    productDao,
+    priceDao,
+    settingDao,
+    searchHistoryDao,
+  );
 });
 
 final class ProductRepository
@@ -27,12 +35,14 @@ final class ProductRepository
   final ProductDao _productDao;
   final ProductPriceDao _priceDao;
   final SettingDao _settingDao;
+  final SearchProductHistoryDao _searchProductHistoryDao;
 
   ProductRepository(
     this._productApi,
     this._productDao,
     this._priceDao,
     this._settingDao,
+    this._searchProductHistoryDao,
   );
 
   @override
@@ -117,5 +127,38 @@ final class ProductRepository
         stackTrace: stackTrace,
       );
     }
+  }
+
+  @override
+  Future<int> deleteAllSearchProductHistory() async {
+    try {
+      return await _searchProductHistoryDao.deleteAll();
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<void> insertOrUpdateSearchProductHistory(String key) async {
+    try {
+      await _searchProductHistoryDao.upsertSearchHistory(key);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory() {
+    return _searchProductHistoryDao.watchAll();
   }
 }

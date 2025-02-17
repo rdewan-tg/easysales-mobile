@@ -5,6 +5,7 @@ import 'package:core/data/local/db/dao/merchandiser_customer_dao.dart';
 import 'package:core/data/local/db/dao/product_dao.dart';
 import 'package:core/data/local/db/dao/product_price_dao.dart';
 import 'package:core/data/local/db/dao/sales_customer_dao.dart';
+import 'package:core/data/local/db/dao/search_product_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:core/data/local/db/entity/customer_address_entity.dart';
 import 'package:core/data/local/db/entity/merchandiser_customer_entity.dart';
@@ -12,6 +13,7 @@ import 'package:core/data/local/db/entity/product_entity.dart';
 import 'package:core/data/local/db/entity/product_price_entity.dart';
 import 'package:core/data/local/db/entity/sales_customer_entity.dart';
 import 'package:core/data/local/db/entity/search_merchnadiser_customer_history_entity.dart';
+import 'package:core/data/local/db/entity/search_product_history_entity.dart';
 import 'package:core/data/local/db/entity/search_sales_customer_history_entity.dart';
 import 'package:core/data/local/db/entity/setting_entity.dart';
 import 'package:drift/drift.dart';
@@ -57,6 +59,7 @@ Future<DriftIsolate> createIsolateWithSpawn() async {
     SalesCustomerEntity,
     SearchMerchandiserCustomerHistoryEntity,
     SearchSalesCustomerHistoryEntity,
+    SearchProductHistoryEntity,
     CustomerAddressEntity,
     ProductEntity,
     ProductPriceEntity,
@@ -68,6 +71,7 @@ Future<DriftIsolate> createIsolateWithSpawn() async {
     CustomerAddressDao,
     ProductDao,
     ProductPriceDao,
+    SearchProductHistoryDao,
   ],
 )
 class AppDatabase extends _$AppDatabase {
