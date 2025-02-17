@@ -13,7 +13,7 @@ final merchandiserCustomerProvider = AutoDisposeNotifierProvider<
 
 class MerchandiserCustomerController
     extends AutoDisposeNotifier<MerchandiserCustomerState> {
-  StreamSubscription<List<MerchandiserCustomerEntityData>>?
+  StreamSubscription<List<SalesCustomerEntityData>>?
       _subscriptionMerchandiserCustomer;
   StreamSubscription<List<SearchMerchandiserCustomerHistoryEntityData>>?
       _subscriptionSearchHistory;

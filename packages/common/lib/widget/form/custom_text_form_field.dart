@@ -13,6 +13,8 @@ class CustomTextFormField extends StatefulWidget {
     bool autofocus = false,
     bool readOnly = false,
     bool autocorrect = false,
+    int minLines = 1,
+    int maxLines = 5,
     required TextInputType keyboardType,
     required TextInputAction textInputAction,
     List<TextInputFormatter>? inputFormatters,
@@ -34,6 +36,8 @@ class CustomTextFormField extends StatefulWidget {
         _autofocus = autofocus,
         _readOnly = readOnly,
         _autocorrect = autocorrect,
+        _minLines = minLines,
+        _maxLines = maxLines,
         _controller = controller,
         _onChanged = onChanged,
         _onFieldSubmitted = onFieldSubmitted,
@@ -55,6 +59,8 @@ class CustomTextFormField extends StatefulWidget {
   final bool _autofocus;
   final bool _readOnly;
   final bool _autocorrect;
+  final int _minLines;
+  final int _maxLines;
   final TextInputType _keyboardType;
   final TextInputAction _textInputAction;
   final List<TextInputFormatter>? _inputFormatters;
@@ -101,6 +107,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       autofocus: widget._autofocus,
       readOnly: widget._readOnly,
       autocorrect: widget._autocorrect,
+      minLines: widget._minLines,
+      maxLines: widget._maxLines,
       decoration: InputDecoration(
         isDense: widget._isDense,
         labelText: widget._labelText,

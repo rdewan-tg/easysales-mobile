@@ -1,28 +1,28 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'merchandiser_customer_response.freezed.dart';
-part 'merchandiser_customer_response.g.dart';
+part 'customer_response.freezed.dart';
+part 'customer_response.g.dart';
 
-MerchandiserCustomerResponse deserializeMerchandiserCustomerResponse(
+CustomerResponse deserializeCustomerResponse(
   Map<String, dynamic> json,
 ) =>
-    MerchandiserCustomerResponse.fromJson(json);
+    CustomerResponse.fromJson(json);
 
 @freezed
-class MerchandiserCustomerResponse with _$MerchandiserCustomerResponse {
-  const factory MerchandiserCustomerResponse({
+class CustomerResponse with _$CustomerResponse {
+  const factory CustomerResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "total") required int total,
-    @JsonKey(name: "data") required List<MerchandiserCustomerDto> data,
-  }) = _MerchandiserCustomerResponse;
+    @JsonKey(name: "data") required List<CustomerData> data,
+  }) = _CustomerResponse;
 
-  factory MerchandiserCustomerResponse.fromJson(Map<String, dynamic> json) =>
-      _$MerchandiserCustomerResponseFromJson(json);
+  factory CustomerResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerResponseFromJson(json);
 }
 
 @freezed
-class MerchandiserCustomerDto with _$MerchandiserCustomerDto {
-  const factory MerchandiserCustomerDto({
+class CustomerData with _$CustomerData {
+  const factory CustomerData({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "customerId") required String customerId,
     @JsonKey(name: "customerName") required String customerName,
@@ -46,10 +46,10 @@ class MerchandiserCustomerDto with _$MerchandiserCustomerDto {
     @JsonKey(name: "companyCode") required String companyCode,
     @JsonKey(name: "createAt") required DateTime createAt,
     @JsonKey(name: "updatedAt") required DateTime updatedAt,
-  }) = _MerchandiserCustomerDto;
+  }) = _CustomerData;
 
-  factory MerchandiserCustomerDto.fromJson(Map<String, dynamic> json) =>
-      _$MerchandiserCustomerDtoFromJson(json);
+  factory CustomerData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerDataFromJson(json);
 }
 
 class StringToDoubleConverter implements JsonConverter<double?, dynamic> {

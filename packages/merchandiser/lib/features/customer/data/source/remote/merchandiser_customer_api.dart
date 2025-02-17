@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:merchandiser/features/customer/data/dto/request/merchandiser_customer_response.dart';
+import 'package:common/dto/customer/customer_response.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:core/data/remote/endpoint.dart';
@@ -22,12 +22,12 @@ abstract class MerchandiserCustomerApi {
   factory MerchandiserCustomerApi(Dio dio) => _MerchandiserCustomerApi(dio);
 
   @GET(merchandiserCustomerEndPoint)
-  Future<MerchandiserCustomerResponse> getMerchandiserCustomers(
+  Future<CustomerResponse> getMerchandiserCustomers(
     @Path('DataAreaId') String dataAreaId,
   );
 
   @GET(filterMerchandiserCustomerEndPoint)
-  Future<MerchandiserCustomerResponse> filter(
+  Future<CustomerResponse> filter(
     @Query('companyCode') String companyCode,
     @Query('salesPersonId') String salesPersonId,
   );

@@ -10,7 +10,7 @@ class MerchandiserCustomerState with _$MerchandiserCustomerState {
     @Default(false) bool isLoading,
     @Default(false) bool isSearchHistoryCleared,
     int? totalSearchHistoryCleared,
-    @Default([]) List<MerchandiserCustomerEntityData> customers,
+    @Default([]) List<SalesCustomerEntityData> customers,
     @Default([]) List<MerchandiserCustomerAddress> addresses,
     String? errorMsg,
     @Default([]) List<String> searchHistory,

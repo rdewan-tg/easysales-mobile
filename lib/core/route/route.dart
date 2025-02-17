@@ -17,3 +17,5 @@ const String thisMonthSiteVisitReportRoute = 'this-month-site-visit-report';
 const String productRoute = 'product';
 const String productImportRoute = 'product-import';
 const String customerImportRoute = 'customer-import';
+const String createOrderRoute = 'create-order';
+const String searchProductRoute = 'search-product';

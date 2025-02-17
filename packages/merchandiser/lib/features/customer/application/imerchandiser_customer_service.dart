@@ -12,7 +12,7 @@ abstract interface class IMerchandiserCustomerService {
 
   Future<Result<int, Failure>> deleteAllSearchCustomerHistory();
 
-  Stream<List<MerchandiserCustomerEntityData>> watchAll(
+  Stream<List<SalesCustomerEntityData>> watchAll(
     String? searchQuery,
   );
 

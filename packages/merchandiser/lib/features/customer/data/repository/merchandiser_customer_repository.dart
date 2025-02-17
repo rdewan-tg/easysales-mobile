@@ -1,11 +1,11 @@
 import 'package:common/common.dart';
 import 'package:common/exception/failure.dart';
 import 'package:core/data/local/db/app_database.dart';
-import 'package:core/data/local/db/dao/merchandiser_customer_dao.dart';
+import 'package:common/dto/customer/customer_response.dart';
+import 'package:core/data/local/db/dao/sales_customer_dao.dart';
 import 'package:core/data/local/db/dao/search_merchandiser_customer_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:dio/dio.dart';
-import 'package:merchandiser/features/customer/data/dto/request/merchandiser_customer_response.dart';
 import 'package:merchandiser/features/customer/data/repository/imerchandiser_customer_repository.dart';
 import 'package:merchandiser/features/customer/data/source/remote/merchandiser_customer_api.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,14 +13,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final merchandiserCustomerRepositoryProvider =
     Provider.autoDispose<IMerchandiserCustomerRepository>((ref) {
   final merchandiserCustomerApi = ref.watch(merchandiserCustomerApiProvider);
-  final merchandiserCustomerDao = ref.watch(merchandiserCustomerDaoProvider);
+  final customerDaoProvider = ref.watch(salesCustomerDaoProvider);
   final settingDao = ref.watch(settingDaoProvider);
   final searchHistoryDao = ref
       .watch(searchMerchandiserCustomerHistoryDaoProvider); // searchHistoryDao
 
   return MerchandiserCustomerRepository(
     merchandiserCustomerApi,
-    merchandiserCustomerDao,
+    customerDaoProvider,
     settingDao,
     searchHistoryDao,
   );
@@ -30,19 +30,19 @@ final class MerchandiserCustomerRepository
     with DioExceptionMapper
     implements IMerchandiserCustomerRepository {
   final MerchandiserCustomerApi _merchandiserCustomerApi;
-  final MerchandiserCustomerDao _merchandiserCustomerDao;
+  final SalesCustomerDao _customerDao;
   final SettingDao _settingDao;
   final SearchMerchandiserCustomerHistoryDao _searchHistoryDao;
 
   MerchandiserCustomerRepository(
     this._merchandiserCustomerApi,
-    this._merchandiserCustomerDao,
+    this._customerDao,
     this._settingDao,
     this._searchHistoryDao,
   );
 
   @override
-  Future<MerchandiserCustomerResponse> getMerchandiserCustomers(
+  Future<CustomerResponse> getMerchandiserCustomers(
     String dataAreaId,
   ) async {
     try {
@@ -62,7 +62,7 @@ final class MerchandiserCustomerRepository
   }
 
   @override
-  Future<MerchandiserCustomerResponse> filterMerchandiserCustomers(
+  Future<CustomerResponse> filterMerchandiserCustomers(
     String companyCode,
     String salesPersonId,
   ) async {
@@ -85,10 +85,10 @@ final class MerchandiserCustomerRepository
   }
 
   @override
-  Stream<List<MerchandiserCustomerEntityData>> watchAll(
+  Stream<List<SalesCustomerEntityData>> watchAll(
     String? searchQuery,
   ) {
-    return _merchandiserCustomerDao.watchAll(searchQuery: searchQuery);
+    return _customerDao.watchAll(searchQuery);
   }
 
   @override
@@ -98,9 +98,9 @@ final class MerchandiserCustomerRepository
   }
 
   @override
-  Future<void> insertOrUpdate(List<MerchandiserCustomerEntityData> data) async {
+  Future<void> insertOrUpdate(List<SalesCustomerEntityData> data) async {
     try {
-      return await _merchandiserCustomerDao.insertOrUpdateList(data);
+      return await _customerDao.insertOrUpdateList(data);
     } catch (e, stackTrace) {
       // Map unexpected exceptions to Failure
       throw Failure(
