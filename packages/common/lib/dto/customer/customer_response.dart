@@ -1,28 +1,28 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'sales_customer_response.freezed.dart';
-part 'sales_customer_response.g.dart';
+part 'customer_response.freezed.dart';
+part 'customer_response.g.dart';
 
-SalesCustomerResponse deserializeSalesCustomerResponse(
+CustomerResponse deserializeCustomerResponse(
   Map<String, dynamic> json,
 ) =>
-    SalesCustomerResponse.fromJson(json);
+    CustomerResponse.fromJson(json);
 
 @freezed
-class SalesCustomerResponse with _$SalesCustomerResponse {
-  const factory SalesCustomerResponse({
+class CustomerResponse with _$CustomerResponse {
+  const factory CustomerResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "total") required int total,
-    @JsonKey(name: "data") required List<SalesCustomerDto> data,
-  }) = _SalesCustomerResponse;
+    @JsonKey(name: "data") required List<CustomerData> data,
+  }) = _CustomerResponse;
 
-  factory SalesCustomerResponse.fromJson(Map<String, dynamic> json) =>
-      _$SalesCustomerResponseFromJson(json);
+  factory CustomerResponse.fromJson(Map<String, dynamic> json) =>
+      _$CustomerResponseFromJson(json);
 }
 
 @freezed
-class SalesCustomerDto with _$SalesCustomerDto {
-  const factory SalesCustomerDto({
+class CustomerData with _$CustomerData {
+  const factory CustomerData({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "customerId") required String customerId,
     @JsonKey(name: "customerName") required String customerName,
@@ -46,10 +46,10 @@ class SalesCustomerDto with _$SalesCustomerDto {
     @JsonKey(name: "companyCode") required String companyCode,
     @JsonKey(name: "createAt") required DateTime createAt,
     @JsonKey(name: "updatedAt") required DateTime updatedAt,
-  }) = _SalesCustomerDto;
+  }) = _CustomerData;
 
-  factory SalesCustomerDto.fromJson(Map<String, dynamic> json) =>
-      _$SalesCustomerDtoFromJson(json);
+  factory CustomerData.fromJson(Map<String, dynamic> json) =>
+      _$CustomerDataFromJson(json);
 }
 
 class StringToDoubleConverter implements JsonConverter<double?, dynamic> {

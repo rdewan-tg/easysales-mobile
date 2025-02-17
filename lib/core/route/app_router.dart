@@ -183,6 +183,7 @@ class AppRouter {
             _searchSalesCustomerRoute(),
             _productRoute(),
             _productImportRoute(),
+            _createOrderRoute(),
           ],
         ),
       ],
@@ -367,6 +368,31 @@ class AppRouter {
       builder: (context, state) {
         return const CustomerImportScreen();
       },
+    );
+  }
+
+  RouteBase _createOrderRoute() {
+    return GoRoute(
+      path: '/$createOrderRoute',
+      name: createOrderRoute,
+      builder: (context, state) {
+        return const SalesOrderScreen();
+      },
+      routes: [
+        _searchProductRoute(),
+      ],
+    );
+  }
+
+  RouteBase _searchProductRoute() {
+    return GoRoute(
+      path: '/$searchProductRoute',
+      name: searchProductRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const SearchItemsScreen(),
+      ),
     );
   }
 

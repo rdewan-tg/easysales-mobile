@@ -19,7 +19,7 @@ mixin _$MerchandiserCustomerState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isSearchHistoryCleared => throw _privateConstructorUsedError;
   int? get totalSearchHistoryCleared => throw _privateConstructorUsedError;
-  List<MerchandiserCustomerEntityData> get customers =>
+  List<SalesCustomerEntityData> get customers =>
       throw _privateConstructorUsedError;
   List<MerchandiserCustomerAddress> get addresses =>
       throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $MerchandiserCustomerStateCopyWith<$Res> {
       {bool isLoading,
       bool isSearchHistoryCleared,
       int? totalSearchHistoryCleared,
-      List<MerchandiserCustomerEntityData> customers,
+      List<SalesCustomerEntityData> customers,
       List<MerchandiserCustomerAddress> addresses,
       String? errorMsg,
       List<String> searchHistory,
@@ -95,7 +95,7 @@ class _$MerchandiserCustomerStateCopyWithImpl<$Res,
       customers: null == customers
           ? _value.customers
           : customers // ignore: cast_nullable_to_non_nullable
-              as List<MerchandiserCustomerEntityData>,
+              as List<SalesCustomerEntityData>,
       addresses: null == addresses
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ abstract class _$$MerchandiserCustomerStateImplCopyWith<$Res>
       {bool isLoading,
       bool isSearchHistoryCleared,
       int? totalSearchHistoryCleared,
-      List<MerchandiserCustomerEntityData> customers,
+      List<SalesCustomerEntityData> customers,
       List<MerchandiserCustomerAddress> addresses,
       String? errorMsg,
       List<String> searchHistory,
@@ -182,7 +182,7 @@ class __$$MerchandiserCustomerStateImplCopyWithImpl<$Res>
       customers: null == customers
           ? _value._customers
           : customers // ignore: cast_nullable_to_non_nullable
-              as List<MerchandiserCustomerEntityData>,
+              as List<SalesCustomerEntityData>,
       addresses: null == addresses
           ? _value._addresses
           : addresses // ignore: cast_nullable_to_non_nullable
@@ -214,7 +214,7 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
       {this.isLoading = false,
       this.isSearchHistoryCleared = false,
       this.totalSearchHistoryCleared,
-      final List<MerchandiserCustomerEntityData> customers = const [],
+      final List<SalesCustomerEntityData> customers = const [],
       final List<MerchandiserCustomerAddress> addresses = const [],
       this.errorMsg,
       final List<String> searchHistory = const [],
@@ -232,10 +232,10 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
   final bool isSearchHistoryCleared;
   @override
   final int? totalSearchHistoryCleared;
-  final List<MerchandiserCustomerEntityData> _customers;
+  final List<SalesCustomerEntityData> _customers;
   @override
   @JsonKey()
-  List<MerchandiserCustomerEntityData> get customers {
+  List<SalesCustomerEntityData> get customers {
     if (_customers is EqualUnmodifiableListView) return _customers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_customers);
@@ -327,7 +327,7 @@ abstract class _MerchandiserCustomerState implements MerchandiserCustomerState {
       {final bool isLoading,
       final bool isSearchHistoryCleared,
       final int? totalSearchHistoryCleared,
-      final List<MerchandiserCustomerEntityData> customers,
+      final List<SalesCustomerEntityData> customers,
       final List<MerchandiserCustomerAddress> addresses,
       final String? errorMsg,
       final List<String> searchHistory,
@@ -341,7 +341,7 @@ abstract class _MerchandiserCustomerState implements MerchandiserCustomerState {
   @override
   int? get totalSearchHistoryCleared;
   @override
-  List<MerchandiserCustomerEntityData> get customers;
+  List<SalesCustomerEntityData> get customers;
   @override
   List<MerchandiserCustomerAddress> get addresses;
   @override

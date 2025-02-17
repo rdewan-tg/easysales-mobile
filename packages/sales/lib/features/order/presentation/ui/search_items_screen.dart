@@ -1,15 +1,14 @@
 part of sales;
 
-class SearchSalesCustomerScreen extends ConsumerStatefulWidget {
-  const SearchSalesCustomerScreen({super.key});
+class SearchItemsScreen extends ConsumerStatefulWidget {
+  const SearchItemsScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _SearchSalesCustomerScreenState();
+      _SearchItemsScreenState();
 }
 
-class _SearchSalesCustomerScreenState
-    extends ConsumerState<SearchSalesCustomerScreen> {
+class _SearchItemsScreenState extends ConsumerState<SearchItemsScreen> {
   late TextEditingController searchController;
 
   @override
@@ -17,7 +16,7 @@ class _SearchSalesCustomerScreenState
     super.initState();
     searchController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(salesCustomerProvider.notifier).watchSearchHistory();
+      ref.read(productControllerProvider.notifier).watchSearchProductHistory();
     });
   }
 
@@ -53,8 +52,8 @@ class _SearchSalesCustomerScreenState
                 ),
                 onChanged: (value) {
                   ref
-                      .read(salesCustomerProvider.notifier)
-                      .setSearchQuery(value);
+                      .read(productControllerProvider.notifier)
+                      .setSearchProductQuery(value);
                 },
                 onFieldSubmitted: (value) {
                   _searchProduct();
@@ -70,7 +69,7 @@ class _SearchSalesCustomerScreenState
             Consumer(
               builder: (context, ref, child) {
                 final query = ref.watch(
-                  salesCustomerProvider.select(
+                  productControllerProvider.select(
                     (value) => value.searchQuery,
                   ),
                 );
@@ -92,9 +91,9 @@ class _SearchSalesCustomerScreenState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SearchSuggestion(searchController: searchController),
+            ItemSearchSuggestion(searchController: searchController),
             const Divider(),
-            const ClearSearchHistory(),
+            const ItemClearSearchHistory(),
           ],
         ),
       ),
@@ -109,16 +108,16 @@ class _SearchSalesCustomerScreenState
 
     // set the search query state
     await ref
-        .watch(salesCustomerProvider.notifier)
-        .setSearchQuery(searchController.text.toLowerCase());
+        .watch(productControllerProvider.notifier)
+        .setSearchProductQuery(searchController.text.toLowerCase());
 
     // set the search history
     await ref
-        .watch(salesCustomerProvider.notifier)
+        .watch(productControllerProvider.notifier)
         .setSearchHistory(searchController.text.toLowerCase());
 
-    // get the customer from the db
-    await ref.watch(salesCustomerProvider.notifier).watchSalesCustomers();
+    // get the product from the db
+    await ref.watch(productControllerProvider.notifier).watchProducts();
 
     // pop the search screen from the route stack
     if (!mounted) return;

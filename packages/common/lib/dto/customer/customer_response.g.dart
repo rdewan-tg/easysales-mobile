@@ -1,32 +1,31 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sales_customer_response.dart';
+part of 'customer_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SalesCustomerResponseImpl _$$SalesCustomerResponseImplFromJson(
+_$CustomerResponseImpl _$$CustomerResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$SalesCustomerResponseImpl(
+    _$CustomerResponseImpl(
       status: json['status'] as String,
       total: (json['total'] as num).toInt(),
       data: (json['data'] as List<dynamic>)
-          .map((e) => SalesCustomerDto.fromJson(e as Map<String, dynamic>))
+          .map((e) => CustomerData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$SalesCustomerResponseImplToJson(
-        _$SalesCustomerResponseImpl instance) =>
+Map<String, dynamic> _$$CustomerResponseImplToJson(
+        _$CustomerResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'total': instance.total,
       'data': instance.data,
     };
 
-_$SalesCustomerDtoImpl _$$SalesCustomerDtoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SalesCustomerDtoImpl(
+_$CustomerDataImpl _$$CustomerDataImplFromJson(Map<String, dynamic> json) =>
+    _$CustomerDataImpl(
       id: (json['id'] as num).toInt(),
       customerId: json['customerId'] as String,
       customerName: json['customerName'] as String,
@@ -51,8 +50,7 @@ _$SalesCustomerDtoImpl _$$SalesCustomerDtoImplFromJson(
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$$SalesCustomerDtoImplToJson(
-        _$SalesCustomerDtoImpl instance) =>
+Map<String, dynamic> _$$CustomerDataImplToJson(_$CustomerDataImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'customerId': instance.customerId,

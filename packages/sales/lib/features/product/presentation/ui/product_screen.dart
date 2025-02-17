@@ -16,7 +16,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref
           .read(productControllerProvider.notifier)
-          .setSearchQuery(widget.extras['priceGroup']);
+          .setSearchProductQuery(widget.extras['priceGroup']);
     });
   }
 

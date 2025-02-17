@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'merchandiser_customer_response.dart';
+part of 'customer_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,56 +14,52 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-MerchandiserCustomerResponse _$MerchandiserCustomerResponseFromJson(
-    Map<String, dynamic> json) {
-  return _MerchandiserCustomerResponse.fromJson(json);
+CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) {
+  return _CustomerResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MerchandiserCustomerResponse {
+mixin _$CustomerResponse {
   @JsonKey(name: "status")
   String get status => throw _privateConstructorUsedError;
   @JsonKey(name: "total")
   int get total => throw _privateConstructorUsedError;
   @JsonKey(name: "data")
-  List<MerchandiserCustomerDto> get data => throw _privateConstructorUsedError;
+  List<CustomerData> get data => throw _privateConstructorUsedError;
 
-  /// Serializes this MerchandiserCustomerResponse to a JSON map.
+  /// Serializes this CustomerResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of MerchandiserCustomerResponse
+  /// Create a copy of CustomerResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MerchandiserCustomerResponseCopyWith<MerchandiserCustomerResponse>
-      get copyWith => throw _privateConstructorUsedError;
+  $CustomerResponseCopyWith<CustomerResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MerchandiserCustomerResponseCopyWith<$Res> {
-  factory $MerchandiserCustomerResponseCopyWith(
-          MerchandiserCustomerResponse value,
-          $Res Function(MerchandiserCustomerResponse) then) =
-      _$MerchandiserCustomerResponseCopyWithImpl<$Res,
-          MerchandiserCustomerResponse>;
+abstract class $CustomerResponseCopyWith<$Res> {
+  factory $CustomerResponseCopyWith(
+          CustomerResponse value, $Res Function(CustomerResponse) then) =
+      _$CustomerResponseCopyWithImpl<$Res, CustomerResponse>;
   @useResult
   $Res call(
       {@JsonKey(name: "status") String status,
       @JsonKey(name: "total") int total,
-      @JsonKey(name: "data") List<MerchandiserCustomerDto> data});
+      @JsonKey(name: "data") List<CustomerData> data});
 }
 
 /// @nodoc
-class _$MerchandiserCustomerResponseCopyWithImpl<$Res,
-        $Val extends MerchandiserCustomerResponse>
-    implements $MerchandiserCustomerResponseCopyWith<$Res> {
-  _$MerchandiserCustomerResponseCopyWithImpl(this._value, this._then);
+class _$CustomerResponseCopyWithImpl<$Res, $Val extends CustomerResponse>
+    implements $CustomerResponseCopyWith<$Res> {
+  _$CustomerResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MerchandiserCustomerResponse
+  /// Create a copy of CustomerResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -84,37 +80,34 @@ class _$MerchandiserCustomerResponseCopyWithImpl<$Res,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<MerchandiserCustomerDto>,
+              as List<CustomerData>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$MerchandiserCustomerResponseImplCopyWith<$Res>
-    implements $MerchandiserCustomerResponseCopyWith<$Res> {
-  factory _$$MerchandiserCustomerResponseImplCopyWith(
-          _$MerchandiserCustomerResponseImpl value,
-          $Res Function(_$MerchandiserCustomerResponseImpl) then) =
-      __$$MerchandiserCustomerResponseImplCopyWithImpl<$Res>;
+abstract class _$$CustomerResponseImplCopyWith<$Res>
+    implements $CustomerResponseCopyWith<$Res> {
+  factory _$$CustomerResponseImplCopyWith(_$CustomerResponseImpl value,
+          $Res Function(_$CustomerResponseImpl) then) =
+      __$$CustomerResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: "status") String status,
       @JsonKey(name: "total") int total,
-      @JsonKey(name: "data") List<MerchandiserCustomerDto> data});
+      @JsonKey(name: "data") List<CustomerData> data});
 }
 
 /// @nodoc
-class __$$MerchandiserCustomerResponseImplCopyWithImpl<$Res>
-    extends _$MerchandiserCustomerResponseCopyWithImpl<$Res,
-        _$MerchandiserCustomerResponseImpl>
-    implements _$$MerchandiserCustomerResponseImplCopyWith<$Res> {
-  __$$MerchandiserCustomerResponseImplCopyWithImpl(
-      _$MerchandiserCustomerResponseImpl _value,
-      $Res Function(_$MerchandiserCustomerResponseImpl) _then)
+class __$$CustomerResponseImplCopyWithImpl<$Res>
+    extends _$CustomerResponseCopyWithImpl<$Res, _$CustomerResponseImpl>
+    implements _$$CustomerResponseImplCopyWith<$Res> {
+  __$$CustomerResponseImplCopyWithImpl(_$CustomerResponseImpl _value,
+      $Res Function(_$CustomerResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MerchandiserCustomerResponse
+  /// Create a copy of CustomerResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -123,7 +116,7 @@ class __$$MerchandiserCustomerResponseImplCopyWithImpl<$Res>
     Object? total = null,
     Object? data = null,
   }) {
-    return _then(_$MerchandiserCustomerResponseImpl(
+    return _then(_$CustomerResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -135,24 +128,22 @@ class __$$MerchandiserCustomerResponseImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<MerchandiserCustomerDto>,
+              as List<CustomerData>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$MerchandiserCustomerResponseImpl
-    implements _MerchandiserCustomerResponse {
-  const _$MerchandiserCustomerResponseImpl(
+class _$CustomerResponseImpl implements _CustomerResponse {
+  const _$CustomerResponseImpl(
       {@JsonKey(name: "status") required this.status,
       @JsonKey(name: "total") required this.total,
-      @JsonKey(name: "data") required final List<MerchandiserCustomerDto> data})
+      @JsonKey(name: "data") required final List<CustomerData> data})
       : _data = data;
 
-  factory _$MerchandiserCustomerResponseImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$MerchandiserCustomerResponseImplFromJson(json);
+  factory _$CustomerResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CustomerResponseImplFromJson(json);
 
   @override
   @JsonKey(name: "status")
@@ -160,10 +151,10 @@ class _$MerchandiserCustomerResponseImpl
   @override
   @JsonKey(name: "total")
   final int total;
-  final List<MerchandiserCustomerDto> _data;
+  final List<CustomerData> _data;
   @override
   @JsonKey(name: "data")
-  List<MerchandiserCustomerDto> get data {
+  List<CustomerData> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -171,14 +162,14 @@ class _$MerchandiserCustomerResponseImpl
 
   @override
   String toString() {
-    return 'MerchandiserCustomerResponse(status: $status, total: $total, data: $data)';
+    return 'CustomerResponse(status: $status, total: $total, data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MerchandiserCustomerResponseImpl &&
+            other is _$CustomerResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.total, total) || other.total == total) &&
             const DeepCollectionEquality().equals(other._data, _data));
@@ -189,35 +180,32 @@ class _$MerchandiserCustomerResponseImpl
   int get hashCode => Object.hash(
       runtimeType, status, total, const DeepCollectionEquality().hash(_data));
 
-  /// Create a copy of MerchandiserCustomerResponse
+  /// Create a copy of CustomerResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MerchandiserCustomerResponseImplCopyWith<
-          _$MerchandiserCustomerResponseImpl>
-      get copyWith => __$$MerchandiserCustomerResponseImplCopyWithImpl<
-          _$MerchandiserCustomerResponseImpl>(this, _$identity);
+  _$$CustomerResponseImplCopyWith<_$CustomerResponseImpl> get copyWith =>
+      __$$CustomerResponseImplCopyWithImpl<_$CustomerResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MerchandiserCustomerResponseImplToJson(
+    return _$$CustomerResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _MerchandiserCustomerResponse
-    implements MerchandiserCustomerResponse {
-  const factory _MerchandiserCustomerResponse(
+abstract class _CustomerResponse implements CustomerResponse {
+  const factory _CustomerResponse(
           {@JsonKey(name: "status") required final String status,
           @JsonKey(name: "total") required final int total,
-          @JsonKey(name: "data")
-          required final List<MerchandiserCustomerDto> data}) =
-      _$MerchandiserCustomerResponseImpl;
+          @JsonKey(name: "data") required final List<CustomerData> data}) =
+      _$CustomerResponseImpl;
 
-  factory _MerchandiserCustomerResponse.fromJson(Map<String, dynamic> json) =
-      _$MerchandiserCustomerResponseImpl.fromJson;
+  factory _CustomerResponse.fromJson(Map<String, dynamic> json) =
+      _$CustomerResponseImpl.fromJson;
 
   @override
   @JsonKey(name: "status")
@@ -227,24 +215,22 @@ abstract class _MerchandiserCustomerResponse
   int get total;
   @override
   @JsonKey(name: "data")
-  List<MerchandiserCustomerDto> get data;
+  List<CustomerData> get data;
 
-  /// Create a copy of MerchandiserCustomerResponse
+  /// Create a copy of CustomerResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MerchandiserCustomerResponseImplCopyWith<
-          _$MerchandiserCustomerResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CustomerResponseImplCopyWith<_$CustomerResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-MerchandiserCustomerDto _$MerchandiserCustomerDtoFromJson(
-    Map<String, dynamic> json) {
-  return _MerchandiserCustomerDto.fromJson(json);
+CustomerData _$CustomerDataFromJson(Map<String, dynamic> json) {
+  return _CustomerData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MerchandiserCustomerDto {
+mixin _$CustomerData {
   @JsonKey(name: "id")
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "customerId")
@@ -289,21 +275,21 @@ mixin _$MerchandiserCustomerDto {
   @JsonKey(name: "updatedAt")
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this MerchandiserCustomerDto to a JSON map.
+  /// Serializes this CustomerData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of MerchandiserCustomerDto
+  /// Create a copy of CustomerData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MerchandiserCustomerDtoCopyWith<MerchandiserCustomerDto> get copyWith =>
+  $CustomerDataCopyWith<CustomerData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MerchandiserCustomerDtoCopyWith<$Res> {
-  factory $MerchandiserCustomerDtoCopyWith(MerchandiserCustomerDto value,
-          $Res Function(MerchandiserCustomerDto) then) =
-      _$MerchandiserCustomerDtoCopyWithImpl<$Res, MerchandiserCustomerDto>;
+abstract class $CustomerDataCopyWith<$Res> {
+  factory $CustomerDataCopyWith(
+          CustomerData value, $Res Function(CustomerData) then) =
+      _$CustomerDataCopyWithImpl<$Res, CustomerData>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") int id,
@@ -332,17 +318,16 @@ abstract class $MerchandiserCustomerDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MerchandiserCustomerDtoCopyWithImpl<$Res,
-        $Val extends MerchandiserCustomerDto>
-    implements $MerchandiserCustomerDtoCopyWith<$Res> {
-  _$MerchandiserCustomerDtoCopyWithImpl(this._value, this._then);
+class _$CustomerDataCopyWithImpl<$Res, $Val extends CustomerData>
+    implements $CustomerDataCopyWith<$Res> {
+  _$CustomerDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MerchandiserCustomerDto
+  /// Create a copy of CustomerData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -459,12 +444,11 @@ class _$MerchandiserCustomerDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$MerchandiserCustomerDtoImplCopyWith<$Res>
-    implements $MerchandiserCustomerDtoCopyWith<$Res> {
-  factory _$$MerchandiserCustomerDtoImplCopyWith(
-          _$MerchandiserCustomerDtoImpl value,
-          $Res Function(_$MerchandiserCustomerDtoImpl) then) =
-      __$$MerchandiserCustomerDtoImplCopyWithImpl<$Res>;
+abstract class _$$CustomerDataImplCopyWith<$Res>
+    implements $CustomerDataCopyWith<$Res> {
+  factory _$$CustomerDataImplCopyWith(
+          _$CustomerDataImpl value, $Res Function(_$CustomerDataImpl) then) =
+      __$$CustomerDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -494,16 +478,14 @@ abstract class _$$MerchandiserCustomerDtoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MerchandiserCustomerDtoImplCopyWithImpl<$Res>
-    extends _$MerchandiserCustomerDtoCopyWithImpl<$Res,
-        _$MerchandiserCustomerDtoImpl>
-    implements _$$MerchandiserCustomerDtoImplCopyWith<$Res> {
-  __$$MerchandiserCustomerDtoImplCopyWithImpl(
-      _$MerchandiserCustomerDtoImpl _value,
-      $Res Function(_$MerchandiserCustomerDtoImpl) _then)
+class __$$CustomerDataImplCopyWithImpl<$Res>
+    extends _$CustomerDataCopyWithImpl<$Res, _$CustomerDataImpl>
+    implements _$$CustomerDataImplCopyWith<$Res> {
+  __$$CustomerDataImplCopyWithImpl(
+      _$CustomerDataImpl _value, $Res Function(_$CustomerDataImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MerchandiserCustomerDto
+  /// Create a copy of CustomerData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -530,7 +512,7 @@ class __$$MerchandiserCustomerDtoImplCopyWithImpl<$Res>
     Object? createAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$MerchandiserCustomerDtoImpl(
+    return _then(_$CustomerDataImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -621,8 +603,8 @@ class __$$MerchandiserCustomerDtoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
-  const _$MerchandiserCustomerDtoImpl(
+class _$CustomerDataImpl implements _CustomerData {
+  const _$CustomerDataImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "customerId") required this.customerId,
       @JsonKey(name: "customerName") required this.customerName,
@@ -645,8 +627,8 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
       @JsonKey(name: "createAt") required this.createAt,
       @JsonKey(name: "updatedAt") required this.updatedAt});
 
-  factory _$MerchandiserCustomerDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MerchandiserCustomerDtoImplFromJson(json);
+  factory _$CustomerDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CustomerDataImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -715,14 +697,14 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
 
   @override
   String toString() {
-    return 'MerchandiserCustomerDto(id: $id, customerId: $customerId, customerName: $customerName, address: $address, salesPersonId: $salesPersonId, salesPerson: $salesPerson, merchandiser: $merchandiser, countryId: $countryId, phoneNumber: $phoneNumber, latitude: $latitude, longitude: $longitude, creditLimit: $creditLimit, currencyCode: $currencyCode, paymentTerm: $paymentTerm, priceGroup: $priceGroup, customreDimension: $customreDimension, status: $status, companyId: $companyId, companyCode: $companyCode, createAt: $createAt, updatedAt: $updatedAt)';
+    return 'CustomerData(id: $id, customerId: $customerId, customerName: $customerName, address: $address, salesPersonId: $salesPersonId, salesPerson: $salesPerson, merchandiser: $merchandiser, countryId: $countryId, phoneNumber: $phoneNumber, latitude: $latitude, longitude: $longitude, creditLimit: $creditLimit, currencyCode: $currencyCode, paymentTerm: $paymentTerm, priceGroup: $priceGroup, customreDimension: $customreDimension, status: $status, companyId: $companyId, companyCode: $companyCode, createAt: $createAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MerchandiserCustomerDtoImpl &&
+            other is _$CustomerDataImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.customerId, customerId) ||
                 other.customerId == customerId) &&
@@ -791,25 +773,24 @@ class _$MerchandiserCustomerDtoImpl implements _MerchandiserCustomerDto {
         updatedAt
       ]);
 
-  /// Create a copy of MerchandiserCustomerDto
+  /// Create a copy of CustomerData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MerchandiserCustomerDtoImplCopyWith<_$MerchandiserCustomerDtoImpl>
-      get copyWith => __$$MerchandiserCustomerDtoImplCopyWithImpl<
-          _$MerchandiserCustomerDtoImpl>(this, _$identity);
+  _$$CustomerDataImplCopyWith<_$CustomerDataImpl> get copyWith =>
+      __$$CustomerDataImplCopyWithImpl<_$CustomerDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MerchandiserCustomerDtoImplToJson(
+    return _$$CustomerDataImplToJson(
       this,
     );
   }
 }
 
-abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
-  const factory _MerchandiserCustomerDto(
+abstract class _CustomerData implements CustomerData {
+  const factory _CustomerData(
           {@JsonKey(name: "id") required final int id,
           @JsonKey(name: "customerId") required final String customerId,
           @JsonKey(name: "customerName") required final String customerName,
@@ -833,10 +814,10 @@ abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
           @JsonKey(name: "companyCode") required final String companyCode,
           @JsonKey(name: "createAt") required final DateTime createAt,
           @JsonKey(name: "updatedAt") required final DateTime updatedAt}) =
-      _$MerchandiserCustomerDtoImpl;
+      _$CustomerDataImpl;
 
-  factory _MerchandiserCustomerDto.fromJson(Map<String, dynamic> json) =
-      _$MerchandiserCustomerDtoImpl.fromJson;
+  factory _CustomerData.fromJson(Map<String, dynamic> json) =
+      _$CustomerDataImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -903,10 +884,10 @@ abstract class _MerchandiserCustomerDto implements MerchandiserCustomerDto {
   @JsonKey(name: "updatedAt")
   DateTime get updatedAt;
 
-  /// Create a copy of MerchandiserCustomerDto
+  /// Create a copy of CustomerData
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MerchandiserCustomerDtoImplCopyWith<_$MerchandiserCustomerDtoImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CustomerDataImplCopyWith<_$CustomerDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

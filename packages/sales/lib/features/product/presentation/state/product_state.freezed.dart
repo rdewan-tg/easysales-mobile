@@ -19,8 +19,13 @@ mixin _$ProductState {
   dynamic get isLoading => throw _privateConstructorUsedError;
   List<ProductEntityData> get products => throw _privateConstructorUsedError;
   List<ProductPriceEntityData> get prices => throw _privateConstructorUsedError;
-  String get searchQuery => throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
+  List<String> get searchHistory => throw _privateConstructorUsedError;
+  String get searchQuery => throw _privateConstructorUsedError;
+  String get lastSearchQuery => throw _privateConstructorUsedError;
+  bool get isSearchProductHistoryCleared => throw _privateConstructorUsedError;
+  int? get totalSearchProductHistoryCleared =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of ProductState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,8 +44,12 @@ abstract class $ProductStateCopyWith<$Res> {
       {dynamic isLoading,
       List<ProductEntityData> products,
       List<ProductPriceEntityData> prices,
+      String? errorMsg,
+      List<String> searchHistory,
       String searchQuery,
-      String? errorMsg});
+      String lastSearchQuery,
+      bool isSearchProductHistoryCleared,
+      int? totalSearchProductHistoryCleared});
 }
 
 /// @nodoc
@@ -61,8 +70,12 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
     Object? isLoading = freezed,
     Object? products = null,
     Object? prices = null,
-    Object? searchQuery = null,
     Object? errorMsg = freezed,
+    Object? searchHistory = null,
+    Object? searchQuery = null,
+    Object? lastSearchQuery = null,
+    Object? isSearchProductHistoryCleared = null,
+    Object? totalSearchProductHistoryCleared = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: freezed == isLoading
@@ -77,14 +90,31 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
           ? _value.prices
           : prices // ignore: cast_nullable_to_non_nullable
               as List<ProductPriceEntityData>,
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
               as String?,
+      searchHistory: null == searchHistory
+          ? _value.searchHistory
+          : searchHistory // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastSearchQuery: null == lastSearchQuery
+          ? _value.lastSearchQuery
+          : lastSearchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+      isSearchProductHistoryCleared: null == isSearchProductHistoryCleared
+          ? _value.isSearchProductHistoryCleared
+          : isSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
+              as bool,
+      totalSearchProductHistoryCleared: freezed ==
+              totalSearchProductHistoryCleared
+          ? _value.totalSearchProductHistoryCleared
+          : totalSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -101,8 +131,12 @@ abstract class _$$ProductStateImplCopyWith<$Res>
       {dynamic isLoading,
       List<ProductEntityData> products,
       List<ProductPriceEntityData> prices,
+      String? errorMsg,
+      List<String> searchHistory,
       String searchQuery,
-      String? errorMsg});
+      String lastSearchQuery,
+      bool isSearchProductHistoryCleared,
+      int? totalSearchProductHistoryCleared});
 }
 
 /// @nodoc
@@ -121,8 +155,12 @@ class __$$ProductStateImplCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? products = null,
     Object? prices = null,
-    Object? searchQuery = null,
     Object? errorMsg = freezed,
+    Object? searchHistory = null,
+    Object? searchQuery = null,
+    Object? lastSearchQuery = null,
+    Object? isSearchProductHistoryCleared = null,
+    Object? totalSearchProductHistoryCleared = freezed,
   }) {
     return _then(_$ProductStateImpl(
       isLoading: freezed == isLoading ? _value.isLoading! : isLoading,
@@ -134,14 +172,31 @@ class __$$ProductStateImplCopyWithImpl<$Res>
           ? _value._prices
           : prices // ignore: cast_nullable_to_non_nullable
               as List<ProductPriceEntityData>,
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
               as String?,
+      searchHistory: null == searchHistory
+          ? _value._searchHistory
+          : searchHistory // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastSearchQuery: null == lastSearchQuery
+          ? _value.lastSearchQuery
+          : lastSearchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+      isSearchProductHistoryCleared: null == isSearchProductHistoryCleared
+          ? _value.isSearchProductHistoryCleared
+          : isSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
+              as bool,
+      totalSearchProductHistoryCleared: freezed ==
+              totalSearchProductHistoryCleared
+          ? _value.totalSearchProductHistoryCleared
+          : totalSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -153,10 +208,15 @@ class _$ProductStateImpl implements _ProductState {
       {this.isLoading = false,
       final List<ProductEntityData> products = const [],
       final List<ProductPriceEntityData> prices = const [],
+      this.errorMsg,
+      final List<String> searchHistory = const [],
       this.searchQuery = '',
-      this.errorMsg})
+      this.lastSearchQuery = '',
+      this.isSearchProductHistoryCleared = false,
+      this.totalSearchProductHistoryCleared})
       : _products = products,
-        _prices = prices;
+        _prices = prices,
+        _searchHistory = searchHistory;
 
   @override
   @JsonKey()
@@ -180,14 +240,31 @@ class _$ProductStateImpl implements _ProductState {
   }
 
   @override
+  final String? errorMsg;
+  final List<String> _searchHistory;
+  @override
+  @JsonKey()
+  List<String> get searchHistory {
+    if (_searchHistory is EqualUnmodifiableListView) return _searchHistory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchHistory);
+  }
+
+  @override
   @JsonKey()
   final String searchQuery;
   @override
-  final String? errorMsg;
+  @JsonKey()
+  final String lastSearchQuery;
+  @override
+  @JsonKey()
+  final bool isSearchProductHistoryCleared;
+  @override
+  final int? totalSearchProductHistoryCleared;
 
   @override
   String toString() {
-    return 'ProductState(isLoading: $isLoading, products: $products, prices: $prices, searchQuery: $searchQuery, errorMsg: $errorMsg)';
+    return 'ProductState(isLoading: $isLoading, products: $products, prices: $prices, errorMsg: $errorMsg, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared)';
   }
 
   @override
@@ -198,10 +275,22 @@ class _$ProductStateImpl implements _ProductState {
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality().equals(other._prices, _prices) &&
+            (identical(other.errorMsg, errorMsg) ||
+                other.errorMsg == errorMsg) &&
+            const DeepCollectionEquality()
+                .equals(other._searchHistory, _searchHistory) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
-            (identical(other.errorMsg, errorMsg) ||
-                other.errorMsg == errorMsg));
+            (identical(other.lastSearchQuery, lastSearchQuery) ||
+                other.lastSearchQuery == lastSearchQuery) &&
+            (identical(other.isSearchProductHistoryCleared,
+                    isSearchProductHistoryCleared) ||
+                other.isSearchProductHistoryCleared ==
+                    isSearchProductHistoryCleared) &&
+            (identical(other.totalSearchProductHistoryCleared,
+                    totalSearchProductHistoryCleared) ||
+                other.totalSearchProductHistoryCleared ==
+                    totalSearchProductHistoryCleared));
   }
 
   @override
@@ -210,8 +299,12 @@ class _$ProductStateImpl implements _ProductState {
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(_products),
       const DeepCollectionEquality().hash(_prices),
+      errorMsg,
+      const DeepCollectionEquality().hash(_searchHistory),
       searchQuery,
-      errorMsg);
+      lastSearchQuery,
+      isSearchProductHistoryCleared,
+      totalSearchProductHistoryCleared);
 
   /// Create a copy of ProductState
   /// with the given fields replaced by the non-null parameter values.
@@ -227,8 +320,12 @@ abstract class _ProductState implements ProductState {
       {final dynamic isLoading,
       final List<ProductEntityData> products,
       final List<ProductPriceEntityData> prices,
+      final String? errorMsg,
+      final List<String> searchHistory,
       final String searchQuery,
-      final String? errorMsg}) = _$ProductStateImpl;
+      final String lastSearchQuery,
+      final bool isSearchProductHistoryCleared,
+      final int? totalSearchProductHistoryCleared}) = _$ProductStateImpl;
 
   @override
   dynamic get isLoading;
@@ -237,9 +334,17 @@ abstract class _ProductState implements ProductState {
   @override
   List<ProductPriceEntityData> get prices;
   @override
+  String? get errorMsg;
+  @override
+  List<String> get searchHistory;
+  @override
   String get searchQuery;
   @override
-  String? get errorMsg;
+  String get lastSearchQuery;
+  @override
+  bool get isSearchProductHistoryCleared;
+  @override
+  int? get totalSearchProductHistoryCleared;
 
   /// Create a copy of ProductState
   /// with the given fields replaced by the non-null parameter values.

@@ -22,12 +22,12 @@ class _SalesCustomerApi implements SalesCustomerApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<SalesCustomerResponse> getSalesCustomers(String dataAreaId) async {
+  Future<CustomerResponse> getSalesCustomers(String dataAreaId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SalesCustomerResponse>(Options(
+    final _options = _setStreamType<CustomerResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -44,9 +44,9 @@ class _SalesCustomerApi implements SalesCustomerApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SalesCustomerResponse _value;
+    late CustomerResponse _value;
     try {
-      _value = await compute(deserializeSalesCustomerResponse, _result.data!);
+      _value = await compute(deserializeCustomerResponse, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -55,7 +55,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
   }
 
   @override
-  Future<SalesCustomerResponse> filter(
+  Future<CustomerResponse> filter(
     String companyCode,
     String salesPersonId,
   ) async {
@@ -66,7 +66,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SalesCustomerResponse>(Options(
+    final _options = _setStreamType<CustomerResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -83,9 +83,9 @@ class _SalesCustomerApi implements SalesCustomerApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SalesCustomerResponse _value;
+    late CustomerResponse _value;
     try {
-      _value = await compute(deserializeSalesCustomerResponse, _result.data!);
+      _value = await compute(deserializeCustomerResponse, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
