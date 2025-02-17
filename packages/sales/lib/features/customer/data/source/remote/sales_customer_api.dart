@@ -3,7 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:core/data/remote/endpoint.dart';
 import 'package:core/data/remote/network_service.dart';
-import 'package:sales/features/customer/data/dto/request/sales_customer_response.dart';
+import 'package:common/dto/customer/customer_response.dart';
 import 'package:flutter/foundation.dart';
 
 part 'sales_customer_api.g.dart';
@@ -21,12 +21,12 @@ abstract class SalesCustomerApi {
   factory SalesCustomerApi(Dio dio) => _SalesCustomerApi(dio);
 
   @GET(salesCustomerEndPoint)
-  Future<SalesCustomerResponse> getSalesCustomers(
+  Future<CustomerResponse> getSalesCustomers(
     @Path('DataAreaId') String dataAreaId,
   );
 
   @GET(filterSalesCustomerEndPoint)
-  Future<SalesCustomerResponse> filter(
+  Future<CustomerResponse> filter(
     @Query('companyCode') String companyCode,
     @Query('salesPersonId') String salesPersonId,
   );

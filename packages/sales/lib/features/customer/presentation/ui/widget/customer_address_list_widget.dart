@@ -62,7 +62,7 @@ class _CustomerAddressListWidgetState
                 subtitle: Text(data.address),
                 onTap: () {
                   context.push(
-                    '/sales/product',
+                    '/sales/create-order',
                     extra: {'priceGroup': widget.priceGroup},
                   );
                 },

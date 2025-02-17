@@ -23,3 +23,14 @@ part 'features/product/presentation/ui/product_import_screen.dart';
 
 part 'features/product/presentation/ui/widget/product_grid.dart';
 part 'features/product/presentation/ui/widget/product_import_view.dart';
+
+// order
+part 'features/order/presentation/ui/sales_order_screen.dart';
+part 'features/order/presentation/ui/tab_sales_header_screen.dart';
+part 'features/order/presentation/ui/tab_sales_line_screen.dart';
+part 'features/order/presentation/ui/tab_items_screen.dart';
+// search
+part 'features/order/presentation/ui/widget/search/item_search_query_widget.dart';
+part 'features/order/presentation/ui/widget/search/item_search_suggestion.dart';
+part 'features/order/presentation/ui/widget/search/item_clear_search_history.dart';
+part 'features/order/presentation/ui/search_items_screen.dart';

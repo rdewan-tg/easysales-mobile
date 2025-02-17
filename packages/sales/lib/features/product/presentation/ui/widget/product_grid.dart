@@ -14,6 +14,7 @@ class _ProductGridState extends ConsumerState<ProductGrid> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref.read(productControllerProvider.notifier).watchProducts();
       ref.read(productControllerProvider.notifier).watchPrices();
+      ref.read(productControllerProvider.notifier).watchSearchProductHistory();
     });
   }
 

@@ -88,7 +88,7 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
         .insertOrUpdateSearchSalesCustomerHistory(key);
   }
 
-  Future<void> getSearchHistory() async {
+  Future<void> watchSearchHistory() async {
     // Start listening stream
     _subscriptionSearchHistory = ref
         .watch(salesCustomerServiceProvider)

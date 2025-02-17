@@ -6,7 +6,7 @@ import 'package:core/data/local/db/dao/search_sales_customer_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sales/features/customer/data/dto/request/sales_customer_response.dart';
+import 'package:common/dto/customer/customer_response.dart';
 import 'package:sales/features/customer/data/repository/isales_customer_repository.dart';
 import 'package:sales/features/customer/data/source/remote/sales_customer_api.dart';
 
@@ -41,7 +41,7 @@ final class SalesCustomerRepository
   );
 
   @override
-  Future<SalesCustomerResponse> getSalesCustomers(
+  Future<CustomerResponse> getSalesCustomers(
     String dataAreaId,
   ) async {
     try {
@@ -60,7 +60,7 @@ final class SalesCustomerRepository
   }
 
   @override
-  Future<SalesCustomerResponse> filterSalesCustomers(
+  Future<CustomerResponse> filterSalesCustomers(
     String companyCode,
     String salesPersonId,
   ) async {

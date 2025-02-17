@@ -75,6 +75,38 @@ final class ProductService implements IProductService {
       rethrow;
     }
   }
+
+  @override
+  Future<Result<int, Failure>> deleteAllSearchProductHistory() async {
+    try {
+      final result = await _productRepository.deleteAllSearchProductHistory();
+
+      return Result.success(result);
+    } on Failure catch (e) {
+      return Result.error(e);
+    } catch (e, s) {
+      return Result.error(
+        Failure(
+          message: e.toString(),
+          stackTrace: s,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<void> insertOrUpdateSearchProductHistory(String key) async {
+    try {
+      await _productRepository.insertOrUpdateSearchProductHistory(key);
+    } catch (e, _) {
+      rethrow;
+    }
+  }
+
+  @override
+  Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory() {
+    return _productRepository.watchSearchProductHistory();
+  }
 }
 
 // top level function for isolate
