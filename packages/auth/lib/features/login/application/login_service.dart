@@ -26,6 +26,7 @@ final class LoginService implements ILoginService {
         'email': result.data.user.email,
         'name': result.data.user.name,
         'phoneNumber': result.data.user.phoneNumber ?? '-',
+        'companyId': result.data.user.company.id.toString(),
         'companyName': result.data.user.company.name,
         'companyCode': result.data.user.company.companyCode ?? '-',
         'timeZone': result.data.user.company.timeZone,

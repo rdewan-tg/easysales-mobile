@@ -161,4 +161,77 @@ final class ProductRepository
   Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory() {
     return _searchProductHistoryDao.watchAll();
   }
+
+  @override
+  Future<List<String>> getProductUom(String itemId, String priceGroup) async {
+    try {
+      return await _priceDao.getProductUom(itemId, priceGroup);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<List<String>> getProductPackSize(
+    String itemId,
+    String priceGroup,
+  ) async {
+    try {
+      return await _priceDao.getProductPackSize(itemId, priceGroup);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<ProductPriceEntityData> getProductDetail(
+    String itemId,
+    String priceGroup,
+    String packSize,
+    String unit,
+  ) async {
+    try {
+      return await _priceDao.getProductDetail(
+        itemId,
+        priceGroup,
+        packSize,
+        unit,
+      );
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<ProductEntityData?> getProductByItemId(
+    String itemId,
+  ) async {
+    try {
+      return await _productDao.getProductByItemId(
+        itemId,
+      );
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
 }

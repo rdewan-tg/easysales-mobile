@@ -107,6 +107,88 @@ final class ProductService implements IProductService {
   Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory() {
     return _productRepository.watchSearchProductHistory();
   }
+
+  @override
+  Future<List<String>> getProductUom(
+    String itemId,
+    String priceGroup,
+  ) async {
+    try {
+      return await _productRepository.getProductUom(
+        itemId,
+        priceGroup,
+      );
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, s) {
+      throw Failure(
+        message: e.toString(),
+        stackTrace: s,
+      );
+    }
+  }
+
+  @override
+  Future<List<String>> getProductPackSize(
+    String itemId,
+    String priceGroup,
+  ) async {
+    try {
+      return await _productRepository.getProductPackSize(
+        itemId,
+        priceGroup,
+      );
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, s) {
+      throw Failure(
+        message: e.toString(),
+        stackTrace: s,
+      );
+    }
+  }
+
+  @override
+  Future<ProductPriceEntityData> getProductDetail(
+    String itemId,
+    String priceGroup,
+    String packSize,
+    String unit,
+  ) async {
+    try {
+      return await _productRepository.getProductDetail(
+        itemId,
+        priceGroup,
+        packSize,
+        unit,
+      );
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, s) {
+      throw Failure(
+        message: e.toString(),
+        stackTrace: s,
+      );
+    }
+  }
+
+  @override
+  Future<ProductEntityData?> getProductByItemId(
+    String itemId,
+  ) async {
+    try {
+      return await _productRepository.getProductByItemId(
+        itemId,
+      );
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, s) {
+      throw Failure(
+        message: e.toString(),
+        stackTrace: s,
+      );
+    }
+  }
 }
 
 // top level function for isolate

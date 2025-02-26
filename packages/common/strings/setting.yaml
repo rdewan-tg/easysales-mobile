@@ -13,3 +13,9 @@ deviceId: Device ID
 salesPersonCode: Sales Person Code
 orderNumberFormat: Order Number Format
 timeZone: Time Zone
+importSalesCustomer: Import Sales Customer
+importSalesCustomerSubTitle: Import Sales Customer from API
+importMerchandiserCustomer: Import Merchandiser Customer
+importMerchandiserCustomerSubTitle: Import Merchandiser Customer from API
+importProductAndPrice: Import Product and Price
+importProductAndPriceSubTitle: Import Product and Price from API

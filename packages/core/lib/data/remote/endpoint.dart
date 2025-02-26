@@ -5,8 +5,10 @@ const String forgotPasswordEndPoint = '/v1/api/auth/forgot-password';
 const String meEndPoint = '/v1/api/me';
 const String findDeviceSettingByDeviceIdEndPoint =
     '/v1/api/device-setting/find/{deviceId}';
-const String merchandiserCustomerEndPoint = '/v1/api/customers/{DataAreaId}';
-const String filterMerchandiserCustomerEndPoint = '/v1/api/customers';
+const String merchandiserCustomerEndPoint =
+    '/v1/api/merchandiser-customers/{DataAreaId}';
+const String filterMerchandiserCustomerEndPoint =
+    '/v1/api/merchandiser-customers';
 
 const String salesCustomerEndPoint = '/v1/api/customers/{DataAreaId}';
 const String filterSalesCustomerEndPoint = '/v1/api/customers';

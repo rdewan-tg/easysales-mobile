@@ -14,10 +14,16 @@ sales:
   $ref: sales.yaml
 merchandiser:
   $ref: merchandiser.yaml
+orderHistory:
+  $ref: orderHistory.yaml
 setting:
   $ref: setting.yaml
 profile:
   $ref: profile.yaml
 report:
   $ref: report.yaml
+product:
+  $ref: product.yaml
+common:
+  $ref: common.yaml
 

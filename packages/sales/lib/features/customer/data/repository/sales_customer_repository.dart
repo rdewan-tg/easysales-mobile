@@ -147,4 +147,20 @@ final class SalesCustomerRepository
       watchSearchCustomerHistory() {
     return _searchHistoryDao.watchAll();
   }
+
+  @override
+  Future<SalesCustomerEntityData?> getCustomerByCustomerId(
+    String customerId,
+  ) async {
+    try {
+      return await _salesCustomerDao.getCustomerByCustomerId(customerId);
+    } catch (e, s) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: s,
+      );
+    }
+  }
 }

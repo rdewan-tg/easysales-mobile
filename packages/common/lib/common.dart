@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:common/exception/failure.dart';
+import 'package:common/gen/assets.gen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,6 +31,7 @@ part 'widget/flutter_error_widget.dart';
 part 'widget/no_route_screen.dart';
 part 'widget/app_scaffold_scrollable.dart';
 part 'widget/form/custom_text_form_field.dart';
+part 'widget/empty_data_widget.dart';
 
 part 'extension/dark_mode.dart';
 part 'extension/text_theme.dart';

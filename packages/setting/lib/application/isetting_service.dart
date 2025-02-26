@@ -1,7 +1,7 @@
 import 'package:common/exception/failure.dart';
 import 'package:multiple_result/multiple_result.dart';
 
-abstract interface class IsettingService {
+abstract interface class ISettingService {
   Future<Result<bool, Failure>> getDeviceSetting(String deviceId);
 
   Stream<String> watchThemeMode();
@@ -14,5 +14,5 @@ abstract interface class IsettingService {
 
   Future<void> clearToken();
 
-  Future<Result<Map<String, String>, Failure>> getAllSetting();
+  Future<Map<String, String>> getAllSetting();
 }

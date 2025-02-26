@@ -27,6 +27,12 @@ class ProductController extends Notifier<ProductState> {
     return ProductState();
   }
 
+  Future<void> getSettings() async {
+    // get the setting from the database
+    final settings = await ref.read(productServiceProvider).getAllSettings();
+    state = state.copyWith(settings: settings);
+  }
+
   Future<void> importProduct() async {
     state = state.copyWith(errorMsg: null, isLoading: true);
     // get the setting from the database
@@ -141,4 +147,65 @@ class ProductController extends Notifier<ProductState> {
   }
 
   int? getTotalSearchHistoryCleared() => state.totalSearchProductHistoryCleared;
+
+  Future<void> getProductUom(String itemId, String priceGroup) async {
+    try {
+      final result = await ref.read(productServiceProvider).getProductUom(
+            itemId,
+            priceGroup,
+          );
+      state = state.copyWith(uom: result);
+    } catch (e) {
+      state = state.copyWith(errorMsg: e.toString());
+    }
+  }
+
+  Future<void> getProductPackSize(String itemId, String priceGroup) async {
+    try {
+      final result = await ref.read(productServiceProvider).getProductPackSize(
+            itemId,
+            priceGroup,
+          );
+      state = state.copyWith(packSize: result);
+    } catch (e) {
+      state = state.copyWith(errorMsg: e.toString());
+    }
+  }
+
+  Future<void> getProductDetail(
+    String itemId,
+    String priceGroup,
+    String packSize,
+    String uom,
+  ) async {
+    try {
+      final result = await ref.read(productServiceProvider).getProductDetail(
+            itemId,
+            priceGroup,
+            packSize,
+            uom,
+          );
+      state = state.copyWith(price: result);
+    } catch (e) {
+      state = state.copyWith(errorMsg: e.toString());
+    }
+  }
+
+  Future<void> setQuantity(int quantity) async {
+    state = state.copyWith(quantity: quantity);
+  }
+
+  ProductPriceEntityData? getPrice() => state.price;
+
+  ProductEntityData? getProduct(String itemId) =>
+      state.products.firstWhere((item) => item.itemId == itemId);
+
+  String getProductName(String itemId) =>
+      state.products.firstWhere((item) => item.itemId == itemId).productName;
+
+  String getDeviceId() => state.settings['deviceId'] ?? '-';
+
+  Future<void> clearState() async {
+    state = state.copyWith(quantity: 0, price: null);
+  }
 }

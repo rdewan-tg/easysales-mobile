@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:core/core.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:setting/application/setting_service.dart';
 import 'package:setting/presentation/state/setting_state.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final settingControllerProvider =
-    NotifierProvider<SettingController, SettingState>(SettingController.new);
+part 'setting_controller.g.dart';
 
-final class SettingController extends Notifier<SettingState> {
+@Riverpod(keepAlive: true)
+final class SettingController extends _$SettingController {
   StreamSubscription<String>? _themeModeSubscription;
 
   @override
@@ -107,6 +107,7 @@ final class SettingController extends Notifier<SettingState> {
     // clear token - access token and refresh token
     await ref.read(settingServiceProvider).clearToken();
     // set auth state - false
+    // ignore: avoid_manual_providers_as_generated_provider_dependency
     ref.read(goRouterNotifierProvider).isLoggedIn = false;
   }
 
@@ -117,19 +118,15 @@ final class SettingController extends Notifier<SettingState> {
     // clear token - access token and refresh token
     await ref.read(settingServiceProvider).clearToken();
     // set auth state - false
+    // ignore: avoid_manual_providers_as_generated_provider_dependency
     ref.read(goRouterNotifierProvider).isLoggedIn = false;
   }
 
   Future<void> getAllSettings() async {
     final result = await ref.read(settingServiceProvider).getAllSetting();
 
-    result.when(
-      (success) {
-        state = state.copyWith(settings: success);
-      },
-      (error) {
-        state = state.copyWith(errorMsg: error.message);
-      },
-    );
+    state = state.copyWith(settings: result);
   }
+
+  String? getTimeZone() => state.settings['timeZone'];
 }

@@ -13,24 +13,33 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
   Widget build(BuildContext context) {
     _listener();
 
-    return Column(
-      children: [
-        ElevatedButton.icon(
-          onPressed: () {
-            ref.read(productControllerProvider.notifier).importProduct();
-          },
-          label: Text('Import Product'.hardcoded),
-          icon: const Icon(Icons.import_export),
-        ),
-        const SizedBox(height: kSmall),
-        ElevatedButton.icon(
-          onPressed: () {
-            ref.read(productControllerProvider.notifier).importProductPrice();
-          },
-          label: Text('Import Price'.hardcoded),
-          icon: const Icon(Icons.import_export),
-        ),
-      ],
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              fixedSize: const Size(200, 50),
+            ),
+            onPressed: () {
+              ref.read(productControllerProvider.notifier).importProduct();
+            },
+            label: Text(context.localizations('product.importProduct')),
+            icon: const Icon(Icons.import_export),
+          ),
+          const SizedBox(height: kLarge),
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              fixedSize: const Size(200, 50),
+            ),
+            onPressed: () {
+              ref.read(productControllerProvider.notifier).importProductPrice();
+            },
+            label: Text(context.localizations('product.importPrice')),
+            icon: const Icon(Icons.import_export),
+          ),
+        ],
+      ),
     );
   }
 

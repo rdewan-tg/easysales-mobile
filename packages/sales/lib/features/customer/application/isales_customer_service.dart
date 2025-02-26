@@ -24,4 +24,6 @@ abstract interface class ISalesCustomerService {
       watchSearchCustomerHistory();
 
   Future<Result<int, Failure>> deleteAllSearchCustomerHistory();
+
+  Future<SalesCustomerEntityData?> getCustomerByCustomerId(String customerId);
 }

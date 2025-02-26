@@ -55,6 +55,18 @@ class SalesCustomerDao extends DatabaseAccessor<AppDatabase>
     });
   }
 
+  Future<SalesCustomerEntityData> getCustomerByCustomerId(
+    String customerId,
+  ) async {
+    try {
+      return await (select(salesCustomerEntity)
+            ..where((tbl) => tbl.customerId.equals(customerId)))
+          .getSingle();
+    } catch (e, stackTrace) {
+      throw Failure(message: e.toString(), stackTrace: stackTrace);
+    }
+  }
+
   Future<int> deleteAll() async {
     return await (delete(salesCustomerEntity)).go();
   }

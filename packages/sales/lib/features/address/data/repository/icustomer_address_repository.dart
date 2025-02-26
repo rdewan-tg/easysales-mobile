@@ -18,4 +18,8 @@ abstract interface class ICustomerAddressRepository {
   Stream<List<CustomerAddressEntityData>> watchAll(
     String? searchQuery,
   );
+
+  Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
+    String postalAddress,
+  );
 }

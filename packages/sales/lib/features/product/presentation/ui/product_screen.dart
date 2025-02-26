@@ -11,22 +11,12 @@ class ProductScreen extends ConsumerStatefulWidget {
 
 class _ProductScreenState extends ConsumerState<ProductScreen> {
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref
-          .read(productControllerProvider.notifier)
-          .setSearchProductQuery(widget.extras['priceGroup']);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Product'.hardcoded),
       ),
-      body: const ProductGrid(),
+      body: ProductGrid(priceGroup: widget.extras['priceGroup']),
     );
   }
 }

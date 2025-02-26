@@ -88,6 +88,18 @@ final class CustomerAddressService implements ICustomerAddressService {
   Stream<List<CustomerAddressEntityData>> watchAll(String? searchQuery) {
     return _customerAddressRepository.watchAll(searchQuery);
   }
+
+  @override
+  Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
+    String postalAddress,
+  ) {
+    try {
+      return _customerAddressRepository
+          .getCustomerAddressByPostalAddress(postalAddress);
+    } on Failure catch (_) {
+      rethrow;
+    }
+  }
 }
 
 // top level function for isolate

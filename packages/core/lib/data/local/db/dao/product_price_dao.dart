@@ -78,4 +78,58 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
       throw Failure(message: e.toString(), stackTrace: s);
     });
   }
+
+  Future<List<String>> getProductUom(
+    String itemId,
+    String priceGroup,
+  ) async {
+    final query = await (select(productPriceEntity)
+          ..where(
+            (tbl) =>
+                tbl.itemId.equals(itemId) & tbl.priceGroup.equals(priceGroup),
+          ))
+        .get();
+
+    final result = query.map((e) => e.salesUnit).toList();
+
+    return result;
+  }
+
+  Future<List<String>> getProductPackSize(
+    String itemId,
+    String priceGroup,
+  ) async {
+    final query = await (selectOnly(productPriceEntity, distinct: true)
+          ..addColumns([productPriceEntity.packSize])
+          ..where(
+            (productPriceEntity.itemId.equals(itemId) &
+                productPriceEntity.priceGroup.equals(priceGroup)),
+          ))
+        .get();
+
+    final result = query
+        .map((row) => row.read<String>(productPriceEntity.packSize) ?? '')
+        .toList();
+
+    return result;
+  }
+
+  Future<ProductPriceEntityData> getProductDetail(
+    String itemId,
+    String priceGroup,
+    String packSize,
+    String unit,
+  ) async {
+    final result = await (select(productPriceEntity)
+          ..where(
+            (tbl) =>
+                tbl.itemId.equals(itemId) &
+                tbl.priceGroup.equals(priceGroup) &
+                tbl.packSize.equals(packSize) &
+                tbl.salesUnit.equals(unit),
+          ))
+        .getSingle();
+
+    return result;
+  }
 }

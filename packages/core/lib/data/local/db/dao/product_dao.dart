@@ -80,4 +80,11 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
       throw Failure(message: e.toString(), stackTrace: s);
     });
   }
+
+  Future<ProductEntityData?> getProductByItemId(String itemId) async {
+    final query = select(productEntity)
+      ..where((tbl) => tbl.itemId.equals(itemId));
+
+    return query.getSingleOrNull();
+  }
 }

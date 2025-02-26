@@ -4,6 +4,9 @@ import 'package:core/core.dart';
 import 'package:core/data/local/db/app_database.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:setting/presentation/controller/setting_controller.dart';
+import 'package:timezone/data/latest.dart' as tz_latest;
+import 'package:timezone/timezone.dart' as tz;
 
 part 'start_up_provider.g.dart';
 
@@ -18,6 +21,15 @@ Future<void> startUp(Ref ref, {required Flavor flavor}) async {
   // start trace
   // initialize database
   ref.read(appDatabaseProvider);
+
+  // get time zone
+  await ref.read(settingControllerProvider.notifier).getAllSettings();
+  final timeZone = ref.read(settingControllerProvider.notifier).getTimeZone();
+
+  // initialize Time Zone database from latest
+  tz_latest.initializeTimeZones();
+  final location = tz.getLocation(timeZone ?? 'Asia/Singapore');
+  tz.setLocalLocation(location);
 
   // stop trace
 }

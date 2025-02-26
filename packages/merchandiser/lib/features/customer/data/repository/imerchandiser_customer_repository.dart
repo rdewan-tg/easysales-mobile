@@ -11,14 +11,14 @@ abstract interface class IMerchandiserCustomerRepository {
     String salesPersonId,
   );
 
-  Stream<List<SalesCustomerEntityData>> watchAll(
+  Stream<List<MerchandiserCustomerEntityData>> watchAll(
     String? searchQuery,
   );
 
   Stream<List<SearchMerchandiserCustomerHistoryEntityData>>
       watchSearchCustomerHistory();
 
-  Future<void> insertOrUpdate(List<SalesCustomerEntityData> data);
+  Future<void> insertOrUpdate(List<MerchandiserCustomerEntityData> data);
 
   Future<void> insertOrUpdateSearchMerchandiserCustomerHistory(
     String key,
