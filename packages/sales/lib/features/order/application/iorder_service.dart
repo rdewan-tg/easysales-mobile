@@ -11,7 +11,7 @@ abstract interface class IOrderService {
     SalesHeaderEntityCompanion data,
   );
 
-  Future<Result<SalesHeaderEntityData, Failure>> getSalesHeaderBySalesId(
+  Future<SalesHeaderEntityData> getSalesHeaderBySalesId(
     String salesId,
   );
 
@@ -21,7 +21,11 @@ abstract interface class IOrderService {
 
   Future<Result<int, Failure>> updateSalesLine(SalesLineEntityCompanion data);
 
+  Future<int> updateSalesLineSyncStatus(SalesLineEntityCompanion data);
+
   Stream<List<SalesLineEntityData>> watchAllSalesLineBySalesId(String salesId);
+
+  Future<List<SalesLineEntityData>> getSalesLineBySalesId(String salesId);
 
   Future<Result<int, Failure>> deleteLine(String salesId, int lineId);
 
@@ -32,4 +36,12 @@ abstract interface class IOrderService {
   Future<void> setOrderRunningNumber(String value);
 
   Future<Map<String, String>> getAllSetting();
+
+  Future<Result<bool, Failure>> syncSalesHeaderToApi(
+    SalesHeaderEntityData data,
+  );
+
+  Future<Result<bool, Failure>> syncSalesLineApi(
+    List<SalesLineEntityData> data,
+  );
 }

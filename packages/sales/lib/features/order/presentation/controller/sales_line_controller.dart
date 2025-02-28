@@ -38,6 +38,8 @@ class SalesLineController extends Notifier<SalesLineState> {
     required String deviceId,
   }) async {
     try {
+      // check if the order is already synced and return if true
+      if (state.isOrderSynced) return;
       // set salesId
       state = state.copyWith(
         salesId: salesId,
@@ -88,13 +90,63 @@ class SalesLineController extends Notifier<SalesLineState> {
     }
   }
 
+  Future<void> updateSalesLine({
+    required String salesId,
+    required int lineId,
+    required String salesUnit,
+    required String packaSize,
+    required String salesPrice,
+    required String quantity,
+    required String lineAmount,
+  }) async {
+    try {
+      // check if the order is already synced and return if true
+      if (state.isOrderSynced) return;
+      // set salesId
+      state = state.copyWith(
+        salesId: salesId,
+        isLoading: true,
+        isItemEdited: false,
+        errorMsg: null,
+      );
+
+      final salesLine = SalesLineEntityCompanion(
+        salesId: Value(salesId),
+        lineId: Value(lineId),
+        salesUnit: Value(salesUnit),
+        packSize: Value(packaSize),
+        salesPrice: Value(double.parse(salesPrice)),
+        quantity: Value(double.parse(quantity)),
+        taxAmount: const Value(0.0),
+        lineAmount: Value(double.parse(lineAmount)),
+      );
+
+      final result =
+          await ref.read(orderServiceProvider).updateSalesLine(salesLine);
+
+      result.when(
+        (data) {
+          state = state.copyWith(isItemEdited: true, isLoading: false);
+        },
+        (error) {
+          state = state.copyWith(errorMsg: error.message, isLoading: false);
+        },
+      );
+    } catch (e) {
+      state = state.copyWith(errorMsg: e.toString(), isLoading: false);
+    }
+  }
+
   Future<void> _watchSalesLine(String salesId) async {
     _subscriptionSalesLine = ref
         .read(orderServiceProvider)
         .watchAllSalesLineBySalesId(salesId)
         .listen(
       (data) {
-        state = state.copyWith(salesLines: data);
+        state = state.copyWith(
+          salesLines: data,
+          isOrderSynced: data.first.syncStatus == 1,
+        );
       },
       onError: (e, s) {
         state = state.copyWith(errorMsg: e.toString());

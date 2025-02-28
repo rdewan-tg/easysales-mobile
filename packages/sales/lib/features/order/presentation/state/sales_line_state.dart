@@ -10,6 +10,7 @@ class SalesLineState with _$SalesLineState {
     @Default(false) bool isItemAdded,
     @Default(false) bool isItemEdited,
     @Default(false) bool isItemRemoved,
+    @Default(false) bool isOrderSynced,
     @Default([]) List<SalesLineEntityData> salesLines,
     Map<String, String>? settings,
     String? salesId,

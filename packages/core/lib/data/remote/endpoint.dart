@@ -24,3 +24,9 @@ const String thisMonthSiteVisitReportEndPoint =
 const String productsEndPoint = '/v1/api/items/{DataAreaId}';
 // price
 const String pricesEndPoint = '/v1/api/prices/{DataAreaId}';
+
+// sales header
+const String createSalesHeaderEndPoint = '/v1/api/sales-header';
+// sales line
+const String createSalesLineEndPoint = '/v1/api/sales-line';
+const String createManySalesLineEndPoint = '/v1/api/sales-line/create-many';

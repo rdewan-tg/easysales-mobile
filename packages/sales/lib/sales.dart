@@ -9,6 +9,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sales/features/order/presentation/controller/sales_header_controller.dart';
 import 'package:sales/features/order/presentation/controller/sales_line_controller.dart';
+import 'package:sales/features/order/presentation/controller/sync_order_controller.dart';
 import 'package:sales/features/order_history/presentation/controller/order_history_controller.dart';
 import 'package:sales/features/product/presentation/controller/product_controller.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -37,6 +38,7 @@ part 'features/order/presentation/ui/sales_order_screen.dart';
 part 'features/order/presentation/ui/tab_sales_header_screen.dart';
 part 'features/order/presentation/ui/tab_sales_line_screen.dart';
 part 'features/order/presentation/ui/tab_items_screen.dart';
+part 'features/order/presentation/ui/widget/edit_line_item.dart';
 // search
 part 'features/order/presentation/ui/widget/search/item_search_query_widget.dart';
 part 'features/order/presentation/ui/widget/search/item_search_suggestion.dart';

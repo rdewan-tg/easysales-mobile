@@ -59,7 +59,7 @@ class _TabItemScreenState extends ConsumerState<TabItemScreen> {
             SnackBar(
               padding: const EdgeInsets.all(kSMedium),
               duration: const Duration(seconds: 5),
-              backgroundColor: Colors.red,
+              backgroundColor: context.themeColor.colorScheme.error,
               content: Text(
                 next,
                 style: context.textTheme.titleSmall?.copyWith(

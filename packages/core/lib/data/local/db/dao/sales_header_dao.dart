@@ -51,6 +51,10 @@ class SalesHeaderDao extends DatabaseAccessor<AppDatabase>
                 expression: tbl.transactionDate,
                 mode: OrderingMode.desc,
               ),
+          (tbl) => OrderingTerm(
+                expression: tbl.salesId,
+                mode: OrderingMode.desc,
+              ),
         ],
       );
 

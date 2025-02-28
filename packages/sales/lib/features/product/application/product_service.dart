@@ -58,7 +58,9 @@ final class ProductService implements IProductService {
   }
 
   @override
-  Stream<List<ProductEntityData>> watchProducts(String? searchQuery) {
+  Stream<List<ProductEntityData>> watchProducts(
+    String? searchQuery,
+  ) {
     return _productRepository.watchProducts(searchQuery);
   }
 

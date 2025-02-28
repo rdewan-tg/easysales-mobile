@@ -110,7 +110,7 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
       SnackBar(
         padding: const EdgeInsets.all(kSMedium),
         duration: const Duration(seconds: 3),
-        backgroundColor: Colors.red,
+        backgroundColor: context.themeColor.colorScheme.error,
         content: Text(
           'Delivery date is required before proceeding.'.hardcoded,
           style: context.textTheme.titleSmall?.copyWith(

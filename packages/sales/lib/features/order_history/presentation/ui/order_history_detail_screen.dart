@@ -11,7 +11,7 @@ class OrderHistoryDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _OrderHistoryDetailScreenState
-    extends ConsumerState<OrderHistoryDetailScreen> {
+    extends ConsumerState<OrderHistoryDetailScreen> with ConfirmDialogMixin {
   @override
   void initState() {
     super.initState();
@@ -24,6 +24,8 @@ class _OrderHistoryDetailScreenState
 
   @override
   Widget build(BuildContext context) {
+    _listener();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(context.localizations('orderHistory.title')),
@@ -56,17 +58,130 @@ class _OrderHistoryDetailScreenState
                   },
                 ),
                 const Spacer(),
-                IconButton.filledTonal(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.upload_outlined,
-                  ),
+                Consumer(
+                  builder: (context, ref, child) {
+                    final isOrderSynced = ref.watch(
+                      orderHistoryControllerProvider
+                          .select((value) => value.isOrderSynced),
+                    );
+                    return IconButton.filledTonal(
+                      onPressed: isOrderSynced ? null : _syncOrder,
+                      icon: const Icon(
+                        Icons.upload_outlined,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  void _syncOrder() {
+    showConfirmDialog(
+      context: context,
+      title: "Upload Order".hardcoded,
+      msg: "Are you sure you want to upload this order?".hardcoded,
+      btnYesText: context.localizations('profile.btnYes'),
+      btnNoText: context.localizations('profile.btnNo'),
+      icon: Icon(
+        Icons.warning_outlined,
+        color: context.themeColor.colorScheme.error,
+      ),
+      onYesTap: () {
+        ref
+            .read(syncOrderControllerProvider.notifier)
+            .syncOrder(widget.salesId);
+        // close dialog
+        context.pop();
+      },
+      onNoTap: () {
+        // close dialog
+        context.pop();
+      },
+    );
+  }
+
+  void _listener() {
+    // listen for error
+    ref.listen(
+      salesLineControllerProvider.select((value) => value.isItemRemoved),
+      (_, next) {
+        if (next) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              padding: const EdgeInsets.all(kSMedium),
+              duration: const Duration(seconds: 5),
+              content: Text(
+                "Item removed successfully".hardcoded,
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for loading
+    ref.listen(salesLineControllerProvider.select((value) => value.isLoading),
+        (_, next) {
+      if (next) {
+        context.loaderOverlay.show();
+      } else {
+        context.loaderOverlay.hide();
+      }
+    });
+
+    // listen for success
+    ref.listen(
+      syncOrderControllerProvider.select((value) => value.isOrderSynced),
+      (_, next) {
+        if (next) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              padding: const EdgeInsets.all(kSMedium),
+              duration: const Duration(seconds: 5),
+              content: Text(
+                "Order synced successfully".hardcoded,
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for loading
+    ref.listen(syncOrderControllerProvider.select((value) => value.isLoading),
+        (_, next) {
+      if (next) {
+        context.loaderOverlay.show();
+      } else {
+        context.loaderOverlay.hide();
+      }
+    });
+
+    // listen for error
+    ref.listen(
+      syncOrderControllerProvider.select((value) => value.errorMsg),
+      (_, next) {
+        if (next != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              padding: const EdgeInsets.all(kSMedium),
+              duration: const Duration(seconds: 5),
+              backgroundColor: context.themeColor.colorScheme.error,
+              content: Text(
+                next,
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }

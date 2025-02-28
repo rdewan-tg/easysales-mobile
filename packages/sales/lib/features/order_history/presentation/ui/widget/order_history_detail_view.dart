@@ -29,14 +29,26 @@ class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
                   children: [
                     Text(data.itemId),
                     const Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                        _deleteLine(data.salesId, data.lineId);
+                    Consumer(
+                      builder: (context, ref, child) {
+                        final isOrderSynced = ref.watch(
+                          orderHistoryControllerProvider
+                              .select((value) => value.isOrderSynced),
+                        );
+                        return GestureDetector(
+                          onTap: isOrderSynced
+                              ? null
+                              : () {
+                                  _deleteLine(data.salesId, data.lineId);
+                                },
+                          child: Icon(
+                            Icons.delete_outline_outlined,
+                            color: isOrderSynced
+                                ? context.themeColor.disabledColor
+                                : context.themeColor.colorScheme.error,
+                          ),
+                        );
                       },
-                      child: const Icon(
-                        Icons.delete_outline_outlined,
-                        color: Colors.redAccent,
-                      ),
                     ),
                   ],
                 ),
@@ -69,9 +81,9 @@ class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
       msg: "Are you sure you want to delete this line?".hardcoded,
       btnYesText: context.localizations('profile.btnYes'),
       btnNoText: context.localizations('profile.btnNo'),
-      icon: const Icon(
+      icon: Icon(
         Icons.warning_outlined,
-        color: Colors.red,
+        color: context.themeColor.colorScheme.error,
       ),
       onYesTap: () {
         // delete customer account

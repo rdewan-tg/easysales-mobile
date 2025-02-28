@@ -7,6 +7,7 @@ part 'sales_header_state.freezed.dart';
 class SalesHeaderState with _$SalesHeaderState {
   factory SalesHeaderState({
     @Default(false) bool isLoading,
+    @Default(false) bool isOrderSynced,
     @Default([]) List<SalesHeaderEntityData> salesHeaders,
     CustomerAddressEntityData? customerAddressData,
     SalesCustomerEntityData? customerData,

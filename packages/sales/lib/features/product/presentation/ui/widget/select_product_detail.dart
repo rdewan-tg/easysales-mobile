@@ -163,8 +163,15 @@ class _SelectProductDetailState extends ConsumerState<SelectProductDetail> {
                       productControllerProvider
                           .select((value) => value.quantity),
                     );
+
+                    final isOrderSynced = ref.watch(
+                      salesLineControllerProvider
+                          .select((value) => value.isOrderSynced),
+                    );
+
+                    final price = _priceController.text;
                     return FilledButton.icon(
-                      onPressed: qty <= 0
+                      onPressed: isOrderSynced || qty <= 0 || price.isEmpty
                           ? null
                           : () {
                               _addSaleLine();

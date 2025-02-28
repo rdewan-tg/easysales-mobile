@@ -20,6 +20,7 @@ mixin _$SalesLineState {
   bool get isItemAdded => throw _privateConstructorUsedError;
   bool get isItemEdited => throw _privateConstructorUsedError;
   bool get isItemRemoved => throw _privateConstructorUsedError;
+  bool get isOrderSynced => throw _privateConstructorUsedError;
   List<SalesLineEntityData> get salesLines =>
       throw _privateConstructorUsedError;
   Map<String, String>? get settings => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $SalesLineStateCopyWith<$Res> {
       bool isItemAdded,
       bool isItemEdited,
       bool isItemRemoved,
+      bool isOrderSynced,
       List<SalesLineEntityData> salesLines,
       Map<String, String>? settings,
       String? salesId,
@@ -69,6 +71,7 @@ class _$SalesLineStateCopyWithImpl<$Res, $Val extends SalesLineState>
     Object? isItemAdded = null,
     Object? isItemEdited = null,
     Object? isItemRemoved = null,
+    Object? isOrderSynced = null,
     Object? salesLines = null,
     Object? settings = freezed,
     Object? salesId = freezed,
@@ -90,6 +93,10 @@ class _$SalesLineStateCopyWithImpl<$Res, $Val extends SalesLineState>
       isItemRemoved: null == isItemRemoved
           ? _value.isItemRemoved
           : isItemRemoved // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOrderSynced: null == isOrderSynced
+          ? _value.isOrderSynced
+          : isOrderSynced // ignore: cast_nullable_to_non_nullable
               as bool,
       salesLines: null == salesLines
           ? _value.salesLines
@@ -124,6 +131,7 @@ abstract class _$$SalesLineStateImplCopyWith<$Res>
       bool isItemAdded,
       bool isItemEdited,
       bool isItemRemoved,
+      bool isOrderSynced,
       List<SalesLineEntityData> salesLines,
       Map<String, String>? settings,
       String? salesId,
@@ -147,6 +155,7 @@ class __$$SalesLineStateImplCopyWithImpl<$Res>
     Object? isItemAdded = null,
     Object? isItemEdited = null,
     Object? isItemRemoved = null,
+    Object? isOrderSynced = null,
     Object? salesLines = null,
     Object? settings = freezed,
     Object? salesId = freezed,
@@ -168,6 +177,10 @@ class __$$SalesLineStateImplCopyWithImpl<$Res>
       isItemRemoved: null == isItemRemoved
           ? _value.isItemRemoved
           : isItemRemoved // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOrderSynced: null == isOrderSynced
+          ? _value.isOrderSynced
+          : isOrderSynced // ignore: cast_nullable_to_non_nullable
               as bool,
       salesLines: null == salesLines
           ? _value._salesLines
@@ -197,6 +210,7 @@ class _$SalesLineStateImpl implements _SalesLineState {
       this.isItemAdded = false,
       this.isItemEdited = false,
       this.isItemRemoved = false,
+      this.isOrderSynced = false,
       final List<SalesLineEntityData> salesLines = const [],
       final Map<String, String>? settings,
       this.salesId,
@@ -216,6 +230,9 @@ class _$SalesLineStateImpl implements _SalesLineState {
   @override
   @JsonKey()
   final bool isItemRemoved;
+  @override
+  @JsonKey()
+  final bool isOrderSynced;
   final List<SalesLineEntityData> _salesLines;
   @override
   @JsonKey()
@@ -242,7 +259,7 @@ class _$SalesLineStateImpl implements _SalesLineState {
 
   @override
   String toString() {
-    return 'SalesLineState(isLoading: $isLoading, isItemAdded: $isItemAdded, isItemEdited: $isItemEdited, isItemRemoved: $isItemRemoved, salesLines: $salesLines, settings: $settings, salesId: $salesId, errorMsg: $errorMsg)';
+    return 'SalesLineState(isLoading: $isLoading, isItemAdded: $isItemAdded, isItemEdited: $isItemEdited, isItemRemoved: $isItemRemoved, isOrderSynced: $isOrderSynced, salesLines: $salesLines, settings: $settings, salesId: $salesId, errorMsg: $errorMsg)';
   }
 
   @override
@@ -258,6 +275,8 @@ class _$SalesLineStateImpl implements _SalesLineState {
                 other.isItemEdited == isItemEdited) &&
             (identical(other.isItemRemoved, isItemRemoved) ||
                 other.isItemRemoved == isItemRemoved) &&
+            (identical(other.isOrderSynced, isOrderSynced) ||
+                other.isOrderSynced == isOrderSynced) &&
             const DeepCollectionEquality()
                 .equals(other._salesLines, _salesLines) &&
             const DeepCollectionEquality().equals(other._settings, _settings) &&
@@ -273,6 +292,7 @@ class _$SalesLineStateImpl implements _SalesLineState {
       isItemAdded,
       isItemEdited,
       isItemRemoved,
+      isOrderSynced,
       const DeepCollectionEquality().hash(_salesLines),
       const DeepCollectionEquality().hash(_settings),
       salesId,
@@ -294,6 +314,7 @@ abstract class _SalesLineState implements SalesLineState {
       final bool isItemAdded,
       final bool isItemEdited,
       final bool isItemRemoved,
+      final bool isOrderSynced,
       final List<SalesLineEntityData> salesLines,
       final Map<String, String>? settings,
       final String? salesId,
@@ -307,6 +328,8 @@ abstract class _SalesLineState implements SalesLineState {
   bool get isItemEdited;
   @override
   bool get isItemRemoved;
+  @override
+  bool get isOrderSynced;
   @override
   List<SalesLineEntityData> get salesLines;
   @override

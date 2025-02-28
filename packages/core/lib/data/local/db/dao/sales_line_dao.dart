@@ -24,22 +24,53 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
                 tbl.productId.equals(data.productId.value),
           ))
         .getSingleOrNull();
+    // check if the order is already synced
+    final isSynced = await (select(salesLineEntity)
+          ..where(
+            (tbl) =>
+                tbl.salesId.equals(data.salesId.value) &
+                tbl.syncStatus.equals(1),
+          ))
+        .getSingleOrNull();
     // throw an error if the item already exists
     if (existingLine != null) {
       throw const Failure(message: 'Item already exists in the sales order.');
+    }
+    // Throw an error if the order is already synced
+    if (isSynced != null) {
+      throw const Failure(
+        message: 'The order is already synced and cannot be modified.',
+      );
     }
     // add the new item
     return into(salesLineEntity).insert(data);
   }
 
-  Future<int> updateSalesLine(SalesLineEntityCompanion data) =>
-      (update(salesLineEntity)
+  Future<int> updateSalesLine(SalesLineEntityCompanion data) {
+    try {
+      return (update(salesLineEntity)
             ..where(
               (tbl) =>
                   tbl.salesId.equals(data.salesId.value) &
                   tbl.lineId.equals(data.lineId.value),
             ))
           .write(data);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
+  Future<int> updateSyncStatus(SalesLineEntityCompanion data) {
+    try {
+      return (update(salesLineEntity)
+            ..where(
+              (tbl) => tbl.salesId.equals(data.salesId.value),
+            ))
+          .write(data);
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
 
   Stream<List<SalesLineEntityData>> watchSalesLineBySalesId(String salesId) {
     final query =
@@ -54,6 +85,22 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
     return query.watch().handleError((e, s) {
       throw Failure(message: e.toString(), stackTrace: s);
     });
+  }
+
+  Future<List<SalesLineEntityData>> getSalesLineBySalesId(
+    String salesId,
+  ) async {
+    final query = await (select(salesLineEntity)
+          ..where((tbl) => tbl.salesId.equals(salesId))
+          ..orderBy(
+            [
+              (tbl) =>
+                  OrderingTerm(expression: tbl.lineId, mode: OrderingMode.asc),
+            ],
+          ))
+        .get();
+
+    return query;
   }
 
   Future<int> getMaxLineNumberBySalesId(String salesId) async {
@@ -73,6 +120,19 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
   }
 
   Future<int> deleteLine(String salesId, int lineId) async {
+    // check if the order is already synced
+    final isSynced = await (select(salesLineEntity)
+          ..where(
+            (tbl) => tbl.salesId.equals(salesId) & tbl.syncStatus.equals(1),
+          ))
+        .getSingleOrNull();
+    // Throw an error if the order is already synced
+    if (isSynced != null) {
+      throw const Failure(
+        message: 'The order is already synced and cannot be modified.',
+      );
+    }
+    // Delete the item
     final query = await (delete(salesLineEntity)
           ..where(
             (tbl) => tbl.salesId.equals(salesId) & tbl.lineId.equals(lineId),

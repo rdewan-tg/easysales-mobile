@@ -51,15 +51,30 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
                     Row(
                       children: [
                         const Spacer(),
-                        Chip(
-                          labelPadding: const EdgeInsets.all(kXXSmall),
-                          visualDensity: const VisualDensity(
-                            horizontal: 0.0,
-                            vertical: -4,
-                          ),
-                          label: data.syncStatus == 1
-                              ? Text('Synced'.hardcoded)
-                              : Text('Pending'.hardcoded),
+                        Consumer(
+                          builder: (context, ref, child) {
+                            final isOrderSynced = data.syncStatus == 1;
+                            return Chip(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(kSmall),
+                                side: BorderSide(
+                                  color: isOrderSynced
+                                      ? context.themeColor.colorScheme
+                                          .primary // Use primary color for synced
+                                      : context.themeColor.colorScheme
+                                          .error, // Use error color for pending Change border color based on sync status
+                                ),
+                              ),
+                              labelPadding: const EdgeInsets.all(kXXSmall),
+                              visualDensity: const VisualDensity(
+                                horizontal: 0.0,
+                                vertical: -4,
+                              ),
+                              label: data.syncStatus == 1
+                                  ? Text('Synced'.hardcoded)
+                                  : Text('Pending'.hardcoded),
+                            );
+                          },
                         ),
                       ],
                     ),

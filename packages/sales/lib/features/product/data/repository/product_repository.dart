@@ -107,7 +107,7 @@ final class ProductRepository
 
   @override
   Stream<List<ProductEntityData>> watchProducts(String? searchQuery) {
-    return _productDao.watchAll(searchQuery: searchQuery);
+    return _productDao.watchAllProducts(searchQuery: searchQuery);
   }
 
   @override

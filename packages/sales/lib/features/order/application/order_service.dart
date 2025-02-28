@@ -1,8 +1,12 @@
+import 'dart:isolate';
+
 import 'package:core/data/local/db/app_database.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:common/exception/failure.dart';
 import 'package:sales/features/order/application/iorder_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sales/features/order/data/dto/request/sales_header_request.dart';
+import 'package:sales/features/order/data/dto/request/sales_line_request.dart';
 import 'package:sales/features/order/data/repository/iorder_repository.dart';
 import 'package:sales/features/order/data/repository/order_repository.dart';
 
@@ -42,15 +46,15 @@ final class OrderService implements IOrderService {
   }
 
   @override
-  Future<Result<SalesHeaderEntityData, Failure>> getSalesHeaderBySalesId(
+  Future<SalesHeaderEntityData> getSalesHeaderBySalesId(
     String salesId,
   ) async {
     try {
       final result = await _orderRepository.getSalesHeaderBySalesId(salesId);
 
-      return Result.success(result);
-    } on Failure catch (e) {
-      return Error(e);
+      return result;
+    } on Failure catch (_) {
+      rethrow;
     }
   }
 
@@ -140,4 +144,110 @@ final class OrderService implements IOrderService {
       throw Failure(message: e.toString(), stackTrace: stackTrace);
     }
   }
+
+  @override
+  Future<Result<bool, Failure>> syncSalesHeaderToApi(
+    SalesHeaderEntityData data,
+  ) async {
+    try {
+      final result = await Isolate.run(() => _mapToSalesHeaderRequest(data));
+      await _orderRepository.syncSalesHeaderToApi(result);
+
+      return const Success(true);
+    } on Failure catch (e) {
+      return Error(e);
+    } catch (e, s) {
+      throw Failure(message: e.toString(), stackTrace: s);
+    }
+  }
+
+  @override
+  Future<Result<bool, Failure>> syncSalesLineApi(
+    List<SalesLineEntityData> data,
+  ) async {
+    try {
+      final result = await Isolate.run(() => _mapToSalesLineRequest(data));
+      await _orderRepository.syncSalesLineToApi(result);
+
+      return const Success(true);
+    } on Failure catch (e) {
+      return Error(e);
+    } catch (e, s) {
+      throw Failure(message: e.toString(), stackTrace: s);
+    }
+  }
+
+  @override
+  Future<List<SalesLineEntityData>> getSalesLineBySalesId(
+    String salesId,
+  ) async {
+    try {
+      final result = await _orderRepository.getSalesLineBySalesId(salesId);
+
+      return result;
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, stackTrace) {
+      throw Failure(message: e.toString(), stackTrace: stackTrace);
+    }
+  }
+
+  @override
+  Future<int> updateSalesLineSyncStatus(SalesLineEntityCompanion data) async {
+    try {
+      final result = await _orderRepository.updateSalesLineSyncStatus(data);
+
+      return result;
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, stackTrace) {
+      throw Failure(message: e.toString(), stackTrace: stackTrace);
+    }
+  }
 }
+
+// top level function for isolate
+SalesHeaderRequest _mapToSalesHeaderRequest(SalesHeaderEntityData data) =>
+    SalesHeaderRequest(
+      salesId: data.salesId,
+      customerId: data.customerId,
+      customerName: data.customerName,
+      customerAddress: data.customerAddress,
+      salesPersonId: data.salesPersonId,
+      customerRequisition: data.customerRequisition,
+      customerPriceGroup: data.customerPriceGroup,
+      note: data.note,
+      deliveryAddressLocation: data.deliveryAddressLocation,
+      deliveryDate: data.deliveryDate,
+      transactionDate: data.transactionDate,
+      deviceId: data.deviceId,
+      syncStatus: data.syncStatus,
+      companyId: data.companyId,
+    );
+
+// top level function for isolate
+List<SalesLineRequest> _mapToSalesLineRequest(List<SalesLineEntityData> data) =>
+    data
+        .map(
+          (e) => SalesLineRequest(
+            id: e.id,
+            salesId: e.salesId,
+            lineId: e.lineId,
+            itemId: e.itemId,
+            productId: e.productId,
+            productName: e.productName,
+            productDescription: e.productDescription,
+            packSize: e.packSize,
+            quantity: e.quantity,
+            salesUnit: e.salesUnit,
+            salesPrice: e.salesPrice,
+            taxAmount: e.taxAmount,
+            lineAmount: e.lineAmount,
+            inventDimId: e.inventDimId,
+            transactionDate: e.transactionDate,
+            deviceId: e.deviceId,
+            syncStatus: e.syncStatus,
+            companyId: e.companyId,
+          ),
+        )
+        .toList();
