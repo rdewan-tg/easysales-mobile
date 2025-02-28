@@ -27,7 +27,7 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              context.go('/sales/search-sales-customer');
+              context.go('/order-history/sales/search-sales-customer');
             },
             icon: const Icon(Icons.search_outlined),
           ),
@@ -38,7 +38,7 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
         child: const CustomScrollView(
           slivers: [
             SearchQueryWidget(),
-            CustomerListWidget(),
+            SalesCustomerListWidget(),
           ],
         ),
       ),

@@ -5,6 +5,8 @@ import 'package:core/data/local/db/dao/merchandiser_customer_dao.dart';
 import 'package:core/data/local/db/dao/product_dao.dart';
 import 'package:core/data/local/db/dao/product_price_dao.dart';
 import 'package:core/data/local/db/dao/sales_customer_dao.dart';
+import 'package:core/data/local/db/dao/sales_header_dao.dart';
+import 'package:core/data/local/db/dao/sales_line_dao.dart';
 import 'package:core/data/local/db/dao/search_product_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:core/data/local/db/entity/customer_address_entity.dart';
@@ -12,6 +14,8 @@ import 'package:core/data/local/db/entity/merchandiser_customer_entity.dart';
 import 'package:core/data/local/db/entity/product_entity.dart';
 import 'package:core/data/local/db/entity/product_price_entity.dart';
 import 'package:core/data/local/db/entity/sales_customer_entity.dart';
+import 'package:core/data/local/db/entity/sales_header_entity.dart';
+import 'package:core/data/local/db/entity/sales_line_entity.dart';
 import 'package:core/data/local/db/entity/search_merchnadiser_customer_history_entity.dart';
 import 'package:core/data/local/db/entity/search_product_history_entity.dart';
 import 'package:core/data/local/db/entity/search_sales_customer_history_entity.dart';
@@ -63,6 +67,8 @@ Future<DriftIsolate> createIsolateWithSpawn() async {
     CustomerAddressEntity,
     ProductEntity,
     ProductPriceEntity,
+    SalesHeaderEntity,
+    SalesLineEntity,
   ],
   daos: [
     SettingDao,
@@ -72,6 +78,8 @@ Future<DriftIsolate> createIsolateWithSpawn() async {
     ProductDao,
     ProductPriceDao,
     SearchProductHistoryDao,
+    SalesHeaderDao,
+    SalesLineDao,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -90,11 +98,22 @@ class AppDatabase extends _$AppDatabase {
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
-      //onCreate: (migrator) {},
-      // onUpgrade: stepByStep(
-      //   from1To2: (m, schema) async {
+        beforeOpen: (details) async {
+          if (details.wasCreated) {
+            // This database is being created for the first time.
+          }
+          if (details.hadUpgrade) {
+            // This database was upgraded from a previous version.
+          }
+          //  sqlite3, foreign key references aren't enabled by default.
+          // To enable them, run:
+          await customStatement('PRAGMA foreign_keys = ON');
+        },
+        //onCreate: (migrator) {},
+        // onUpgrade: stepByStep(
+        //   from1To2: (m, schema) async {
 
-      //   },
-      // ),
+        //   },
+        // ),
       );
 }

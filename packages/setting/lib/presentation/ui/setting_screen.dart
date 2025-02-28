@@ -12,7 +12,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Setting'.hardcoded),
+        title: Text(context.localizations('setting.title')),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -73,31 +73,53 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
               },
             ),
             ListTile(
-              title: Text('Import Customer'.hardcoded),
-              subtitle:
-                  Text(context.localizations('setting.manageYourProfile')),
+              title: Text(context.localizations('setting.importSalesCustomer')),
+              subtitle: Text(
+                context.localizations('setting.importSalesCustomerSubTitle'),
+              ),
               trailing: IconButton(
                 onPressed: () {
-                  context.go('/merchandiser/customer-import');
+                  context.go('/order-history/sales/sales-customer-import');
                 },
                 icon: const Icon(Icons.navigate_next),
               ),
               onTap: () {
-                context.go('/merchandiser/customer-import');
+                context.go('/order-history/sales/sales-customer-import');
               },
             ),
             ListTile(
-              title: Text('Import Product'.hardcoded),
-              subtitle:
-                  Text(context.localizations('setting.manageYourProfile')),
+              title: Text(
+                context.localizations('setting.importMerchandiserCustomer'),
+              ),
+              subtitle: Text(
+                context.localizations(
+                  'setting.importMerchandiserCustomerSubTitle',
+                ),
+              ),
               trailing: IconButton(
                 onPressed: () {
-                  context.go('/sales/product-import');
+                  context.go('/merchandiser/merchandiser-customer-import');
                 },
                 icon: const Icon(Icons.navigate_next),
               ),
               onTap: () {
-                context.go('/sales/product-import');
+                context.go('/merchandiser/merchandiser-customer-import');
+              },
+            ),
+            ListTile(
+              title:
+                  Text(context.localizations('setting.importProductAndPrice')),
+              subtitle: Text(
+                context.localizations('setting.importProductAndPriceSubTitle'),
+              ),
+              trailing: IconButton(
+                onPressed: () {
+                  context.go('/order-history/sales/product-import');
+                },
+                icon: const Icon(Icons.navigate_next),
+              ),
+              onTap: () {
+                context.go('/order-history/sales/product-import');
               },
             ),
           ],

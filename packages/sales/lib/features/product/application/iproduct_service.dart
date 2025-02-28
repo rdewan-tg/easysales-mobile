@@ -24,4 +24,17 @@ abstract interface class IProductService {
   Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory();
 
   Future<Result<int, Failure>> deleteAllSearchProductHistory();
+
+  Future<List<String>> getProductUom(String itemId, String priceGroup);
+
+  Future<List<String>> getProductPackSize(String itemId, String priceGroup);
+
+  Future<ProductPriceEntityData> getProductDetail(
+    String itemId,
+    String priceGroup,
+    String packSize,
+    String unit,
+  );
+
+  Future<ProductEntityData?> getProductByItemId(String itemId);
 }

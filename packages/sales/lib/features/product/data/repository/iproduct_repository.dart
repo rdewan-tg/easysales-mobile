@@ -28,4 +28,23 @@ abstract interface class IProductRepository {
   Future<int> deleteAllSearchProductHistory();
 
   Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory();
+
+  Future<List<String>> getProductUom(
+    String itemId,
+    String priceGroup,
+  );
+
+  Future<List<String>> getProductPackSize(
+    String itemId,
+    String priceGroup,
+  );
+
+  Future<ProductPriceEntityData> getProductDetail(
+    String itemId,
+    String priceGroup,
+    String packSize,
+    String unit,
+  );
+
+  Future<ProductEntityData?> getProductByItemId(String itemId);
 }

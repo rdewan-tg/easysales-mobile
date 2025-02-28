@@ -10,6 +10,8 @@ class TabItemScreen extends ConsumerStatefulWidget {
 class _TabItemScreenState extends ConsumerState<TabItemScreen> {
   @override
   Widget build(BuildContext context) {
+    _listener();
+
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -25,7 +27,7 @@ class _TabItemScreenState extends ConsumerState<TabItemScreen> {
                 child: GestureDetector(
                   onTap: () {
                     context.push(
-                      '/sales/create-order/search-product',
+                      '/order-history/sales/create-order/search-product',
                     );
                   },
                   child: const Icon(
@@ -36,10 +38,65 @@ class _TabItemScreenState extends ConsumerState<TabItemScreen> {
             ],
           ),
         ),
-        const SliverFillRemaining(
-          child: ProductGrid(),
+        SliverFillRemaining(
+          child: ProductGrid(
+            priceGroup: ref
+                .read(salesHeaderControlelrProvider.notifier)
+                .getPriceGroup(),
+          ),
         ),
       ],
     );
+  }
+
+  void _listener() {
+    // listen for error
+    ref.listen(
+      salesLineControllerProvider.select((value) => value.errorMsg),
+      (_, next) {
+        if (next != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              padding: const EdgeInsets.all(kSMedium),
+              duration: const Duration(seconds: 5),
+              backgroundColor: context.themeColor.colorScheme.error,
+              content: Text(
+                next,
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    ref.listen(
+      salesLineControllerProvider.select((value) => value.isItemAdded),
+      (_, next) {
+        if (next) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              padding: const EdgeInsets.all(kSMedium),
+              duration: const Duration(seconds: 3),
+              content: Text(
+                "Item added successfully".hardcoded,
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for loading
+    ref.listen(salesLineControllerProvider.select((value) => value.isLoading),
+        (_, next) {
+      if (next) {
+        context.loaderOverlay.show();
+      } else {
+        context.loaderOverlay.hide();
+      }
+    });
   }
 }

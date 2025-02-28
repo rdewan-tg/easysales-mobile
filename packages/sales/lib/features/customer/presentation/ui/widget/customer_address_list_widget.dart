@@ -62,8 +62,12 @@ class _CustomerAddressListWidgetState
                 subtitle: Text(data.address),
                 onTap: () {
                   context.push(
-                    '/sales/create-order',
-                    extra: {'priceGroup': widget.priceGroup},
+                    '/order-history/sales/create-order',
+                    extra: {
+                      'priceGroup': widget.priceGroup,
+                      'customerId': widget.customerId,
+                      'postalAddress': data.postalAddress,
+                    },
                   );
                 },
               );

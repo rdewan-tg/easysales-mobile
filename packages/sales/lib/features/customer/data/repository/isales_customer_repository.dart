@@ -25,4 +25,8 @@ abstract interface class ISalesCustomerRepository {
 
   Stream<List<SearchSalesCustomerHistoryEntityData>>
       watchSearchCustomerHistory();
+
+  Future<SalesCustomerEntityData?> getCustomerByCustomerId(
+    String customerId,
+  );
 }

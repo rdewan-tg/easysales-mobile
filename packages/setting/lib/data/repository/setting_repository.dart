@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_manual_providers_as_generated_provider_dependency
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:setting/data/dto/device_setting.dart';
 import 'package:setting/data/repository/isetting_repository.dart';
@@ -8,14 +9,18 @@ import 'package:dio/dio.dart';
 import 'package:setting/data/source/local/isetting_storage.dart';
 import 'package:setting/data/source/local/setting_storage.dart';
 import 'package:setting/data/source/remote/setting_api.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final settingRepositoryProvider = Provider<ISettingRepository>((ref) {
+part 'setting_repository.g.dart';
+
+@Riverpod(keepAlive: true)
+ISettingRepository settingRepository(Ref ref) {
   final settingApi = ref.watch(settingApiProvider);
   final settingDao = ref.watch(settingDaoProvider);
   final settingStorage = ref.watch(settingStorageProvider);
 
   return SettingRepositroy(settingApi, settingDao, settingStorage);
-});
+}
 
 final class SettingRepositroy
     with DioExceptionMapper

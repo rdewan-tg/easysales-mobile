@@ -16,17 +16,18 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SalesHeaderState {
-  String get salesId => throw _privateConstructorUsedError;
-  String get customerId => throw _privateConstructorUsedError;
-  String get customerName => throw _privateConstructorUsedError;
-  String get customerAddress => throw _privateConstructorUsedError;
-  String get salesPersonId => throw _privateConstructorUsedError;
-  String get deviceId => throw _privateConstructorUsedError;
-  String get customerRequisition => throw _privateConstructorUsedError;
-  String get customerPriceGroup => throw _privateConstructorUsedError;
-  String get note => throw _privateConstructorUsedError;
-  String get deliveryDate => throw _privateConstructorUsedError;
-  String get transactionDate => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isOrderSynced => throw _privateConstructorUsedError;
+  List<SalesHeaderEntityData> get salesHeaders =>
+      throw _privateConstructorUsedError;
+  CustomerAddressEntityData? get customerAddressData =>
+      throw _privateConstructorUsedError;
+  SalesCustomerEntityData? get customerData =>
+      throw _privateConstructorUsedError;
+  SalesHeaderEntityData? get salesHeaderData =>
+      throw _privateConstructorUsedError;
+  Map<String, String>? get settings => throw _privateConstructorUsedError;
+  String? get errorMsg => throw _privateConstructorUsedError;
 
   /// Create a copy of SalesHeaderState
   /// with the given fields replaced by the non-null parameter values.
@@ -42,17 +43,14 @@ abstract class $SalesHeaderStateCopyWith<$Res> {
       _$SalesHeaderStateCopyWithImpl<$Res, SalesHeaderState>;
   @useResult
   $Res call(
-      {String salesId,
-      String customerId,
-      String customerName,
-      String customerAddress,
-      String salesPersonId,
-      String deviceId,
-      String customerRequisition,
-      String customerPriceGroup,
-      String note,
-      String deliveryDate,
-      String transactionDate});
+      {bool isLoading,
+      bool isOrderSynced,
+      List<SalesHeaderEntityData> salesHeaders,
+      CustomerAddressEntityData? customerAddressData,
+      SalesCustomerEntityData? customerData,
+      SalesHeaderEntityData? salesHeaderData,
+      Map<String, String>? settings,
+      String? errorMsg});
 }
 
 /// @nodoc
@@ -70,63 +68,48 @@ class _$SalesHeaderStateCopyWithImpl<$Res, $Val extends SalesHeaderState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? salesId = null,
-    Object? customerId = null,
-    Object? customerName = null,
-    Object? customerAddress = null,
-    Object? salesPersonId = null,
-    Object? deviceId = null,
-    Object? customerRequisition = null,
-    Object? customerPriceGroup = null,
-    Object? note = null,
-    Object? deliveryDate = null,
-    Object? transactionDate = null,
+    Object? isLoading = null,
+    Object? isOrderSynced = null,
+    Object? salesHeaders = null,
+    Object? customerAddressData = freezed,
+    Object? customerData = freezed,
+    Object? salesHeaderData = freezed,
+    Object? settings = freezed,
+    Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
-      salesId: null == salesId
-          ? _value.salesId
-          : salesId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerName: null == customerName
-          ? _value.customerName
-          : customerName // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerAddress: null == customerAddress
-          ? _value.customerAddress
-          : customerAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPersonId: null == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceId: null == deviceId
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerRequisition: null == customerRequisition
-          ? _value.customerRequisition
-          : customerRequisition // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerPriceGroup: null == customerPriceGroup
-          ? _value.customerPriceGroup
-          : customerPriceGroup // ignore: cast_nullable_to_non_nullable
-              as String,
-      note: null == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryDate: null == deliveryDate
-          ? _value.deliveryDate
-          : deliveryDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      transactionDate: null == transactionDate
-          ? _value.transactionDate
-          : transactionDate // ignore: cast_nullable_to_non_nullable
-              as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOrderSynced: null == isOrderSynced
+          ? _value.isOrderSynced
+          : isOrderSynced // ignore: cast_nullable_to_non_nullable
+              as bool,
+      salesHeaders: null == salesHeaders
+          ? _value.salesHeaders
+          : salesHeaders // ignore: cast_nullable_to_non_nullable
+              as List<SalesHeaderEntityData>,
+      customerAddressData: freezed == customerAddressData
+          ? _value.customerAddressData
+          : customerAddressData // ignore: cast_nullable_to_non_nullable
+              as CustomerAddressEntityData?,
+      customerData: freezed == customerData
+          ? _value.customerData
+          : customerData // ignore: cast_nullable_to_non_nullable
+              as SalesCustomerEntityData?,
+      salesHeaderData: freezed == salesHeaderData
+          ? _value.salesHeaderData
+          : salesHeaderData // ignore: cast_nullable_to_non_nullable
+              as SalesHeaderEntityData?,
+      settings: freezed == settings
+          ? _value.settings
+          : settings // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>?,
+      errorMsg: freezed == errorMsg
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -140,17 +123,14 @@ abstract class _$$SalesHeaderStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String salesId,
-      String customerId,
-      String customerName,
-      String customerAddress,
-      String salesPersonId,
-      String deviceId,
-      String customerRequisition,
-      String customerPriceGroup,
-      String note,
-      String deliveryDate,
-      String transactionDate});
+      {bool isLoading,
+      bool isOrderSynced,
+      List<SalesHeaderEntityData> salesHeaders,
+      CustomerAddressEntityData? customerAddressData,
+      SalesCustomerEntityData? customerData,
+      SalesHeaderEntityData? salesHeaderData,
+      Map<String, String>? settings,
+      String? errorMsg});
 }
 
 /// @nodoc
@@ -166,63 +146,48 @@ class __$$SalesHeaderStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? salesId = null,
-    Object? customerId = null,
-    Object? customerName = null,
-    Object? customerAddress = null,
-    Object? salesPersonId = null,
-    Object? deviceId = null,
-    Object? customerRequisition = null,
-    Object? customerPriceGroup = null,
-    Object? note = null,
-    Object? deliveryDate = null,
-    Object? transactionDate = null,
+    Object? isLoading = null,
+    Object? isOrderSynced = null,
+    Object? salesHeaders = null,
+    Object? customerAddressData = freezed,
+    Object? customerData = freezed,
+    Object? salesHeaderData = freezed,
+    Object? settings = freezed,
+    Object? errorMsg = freezed,
   }) {
     return _then(_$SalesHeaderStateImpl(
-      salesId: null == salesId
-          ? _value.salesId
-          : salesId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerName: null == customerName
-          ? _value.customerName
-          : customerName // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerAddress: null == customerAddress
-          ? _value.customerAddress
-          : customerAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPersonId: null == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceId: null == deviceId
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerRequisition: null == customerRequisition
-          ? _value.customerRequisition
-          : customerRequisition // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerPriceGroup: null == customerPriceGroup
-          ? _value.customerPriceGroup
-          : customerPriceGroup // ignore: cast_nullable_to_non_nullable
-              as String,
-      note: null == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryDate: null == deliveryDate
-          ? _value.deliveryDate
-          : deliveryDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      transactionDate: null == transactionDate
-          ? _value.transactionDate
-          : transactionDate // ignore: cast_nullable_to_non_nullable
-              as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOrderSynced: null == isOrderSynced
+          ? _value.isOrderSynced
+          : isOrderSynced // ignore: cast_nullable_to_non_nullable
+              as bool,
+      salesHeaders: null == salesHeaders
+          ? _value._salesHeaders
+          : salesHeaders // ignore: cast_nullable_to_non_nullable
+              as List<SalesHeaderEntityData>,
+      customerAddressData: freezed == customerAddressData
+          ? _value.customerAddressData
+          : customerAddressData // ignore: cast_nullable_to_non_nullable
+              as CustomerAddressEntityData?,
+      customerData: freezed == customerData
+          ? _value.customerData
+          : customerData // ignore: cast_nullable_to_non_nullable
+              as SalesCustomerEntityData?,
+      salesHeaderData: freezed == salesHeaderData
+          ? _value.salesHeaderData
+          : salesHeaderData // ignore: cast_nullable_to_non_nullable
+              as SalesHeaderEntityData?,
+      settings: freezed == settings
+          ? _value._settings
+          : settings // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>?,
+      errorMsg: freezed == errorMsg
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -231,55 +196,54 @@ class __$$SalesHeaderStateImplCopyWithImpl<$Res>
 
 class _$SalesHeaderStateImpl implements _SalesHeaderState {
   _$SalesHeaderStateImpl(
-      {this.salesId = '',
-      this.customerId = '',
-      this.customerName = '',
-      this.customerAddress = '',
-      this.salesPersonId = '',
-      this.deviceId = '',
-      this.customerRequisition = '',
-      this.customerPriceGroup = '',
-      this.note = '',
-      this.deliveryDate = '',
-      this.transactionDate = ''});
+      {this.isLoading = false,
+      this.isOrderSynced = false,
+      final List<SalesHeaderEntityData> salesHeaders = const [],
+      this.customerAddressData,
+      this.customerData,
+      this.salesHeaderData,
+      final Map<String, String>? settings,
+      this.errorMsg})
+      : _salesHeaders = salesHeaders,
+        _settings = settings;
 
   @override
   @JsonKey()
-  final String salesId;
+  final bool isLoading;
   @override
   @JsonKey()
-  final String customerId;
+  final bool isOrderSynced;
+  final List<SalesHeaderEntityData> _salesHeaders;
   @override
   @JsonKey()
-  final String customerName;
+  List<SalesHeaderEntityData> get salesHeaders {
+    if (_salesHeaders is EqualUnmodifiableListView) return _salesHeaders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_salesHeaders);
+  }
+
   @override
-  @JsonKey()
-  final String customerAddress;
+  final CustomerAddressEntityData? customerAddressData;
   @override
-  @JsonKey()
-  final String salesPersonId;
+  final SalesCustomerEntityData? customerData;
   @override
-  @JsonKey()
-  final String deviceId;
+  final SalesHeaderEntityData? salesHeaderData;
+  final Map<String, String>? _settings;
   @override
-  @JsonKey()
-  final String customerRequisition;
+  Map<String, String>? get settings {
+    final value = _settings;
+    if (value == null) return null;
+    if (_settings is EqualUnmodifiableMapView) return _settings;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
-  @JsonKey()
-  final String customerPriceGroup;
-  @override
-  @JsonKey()
-  final String note;
-  @override
-  @JsonKey()
-  final String deliveryDate;
-  @override
-  @JsonKey()
-  final String transactionDate;
+  final String? errorMsg;
 
   @override
   String toString() {
-    return 'SalesHeaderState(salesId: $salesId, customerId: $customerId, customerName: $customerName, customerAddress: $customerAddress, salesPersonId: $salesPersonId, deviceId: $deviceId, customerRequisition: $customerRequisition, customerPriceGroup: $customerPriceGroup, note: $note, deliveryDate: $deliveryDate, transactionDate: $transactionDate)';
+    return 'SalesHeaderState(isLoading: $isLoading, isOrderSynced: $isOrderSynced, salesHeaders: $salesHeaders, customerAddressData: $customerAddressData, customerData: $customerData, salesHeaderData: $salesHeaderData, settings: $settings, errorMsg: $errorMsg)';
   }
 
   @override
@@ -287,42 +251,34 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SalesHeaderStateImpl &&
-            (identical(other.salesId, salesId) || other.salesId == salesId) &&
-            (identical(other.customerId, customerId) ||
-                other.customerId == customerId) &&
-            (identical(other.customerName, customerName) ||
-                other.customerName == customerName) &&
-            (identical(other.customerAddress, customerAddress) ||
-                other.customerAddress == customerAddress) &&
-            (identical(other.salesPersonId, salesPersonId) ||
-                other.salesPersonId == salesPersonId) &&
-            (identical(other.deviceId, deviceId) ||
-                other.deviceId == deviceId) &&
-            (identical(other.customerRequisition, customerRequisition) ||
-                other.customerRequisition == customerRequisition) &&
-            (identical(other.customerPriceGroup, customerPriceGroup) ||
-                other.customerPriceGroup == customerPriceGroup) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.deliveryDate, deliveryDate) ||
-                other.deliveryDate == deliveryDate) &&
-            (identical(other.transactionDate, transactionDate) ||
-                other.transactionDate == transactionDate));
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isOrderSynced, isOrderSynced) ||
+                other.isOrderSynced == isOrderSynced) &&
+            const DeepCollectionEquality()
+                .equals(other._salesHeaders, _salesHeaders) &&
+            (identical(other.customerAddressData, customerAddressData) ||
+                other.customerAddressData == customerAddressData) &&
+            (identical(other.customerData, customerData) ||
+                other.customerData == customerData) &&
+            (identical(other.salesHeaderData, salesHeaderData) ||
+                other.salesHeaderData == salesHeaderData) &&
+            const DeepCollectionEquality().equals(other._settings, _settings) &&
+            (identical(other.errorMsg, errorMsg) ||
+                other.errorMsg == errorMsg));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      salesId,
-      customerId,
-      customerName,
-      customerAddress,
-      salesPersonId,
-      deviceId,
-      customerRequisition,
-      customerPriceGroup,
-      note,
-      deliveryDate,
-      transactionDate);
+      isLoading,
+      isOrderSynced,
+      const DeepCollectionEquality().hash(_salesHeaders),
+      customerAddressData,
+      customerData,
+      salesHeaderData,
+      const DeepCollectionEquality().hash(_settings),
+      errorMsg);
 
   /// Create a copy of SalesHeaderState
   /// with the given fields replaced by the non-null parameter values.
@@ -336,40 +292,31 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
 
 abstract class _SalesHeaderState implements SalesHeaderState {
   factory _SalesHeaderState(
-      {final String salesId,
-      final String customerId,
-      final String customerName,
-      final String customerAddress,
-      final String salesPersonId,
-      final String deviceId,
-      final String customerRequisition,
-      final String customerPriceGroup,
-      final String note,
-      final String deliveryDate,
-      final String transactionDate}) = _$SalesHeaderStateImpl;
+      {final bool isLoading,
+      final bool isOrderSynced,
+      final List<SalesHeaderEntityData> salesHeaders,
+      final CustomerAddressEntityData? customerAddressData,
+      final SalesCustomerEntityData? customerData,
+      final SalesHeaderEntityData? salesHeaderData,
+      final Map<String, String>? settings,
+      final String? errorMsg}) = _$SalesHeaderStateImpl;
 
   @override
-  String get salesId;
+  bool get isLoading;
   @override
-  String get customerId;
+  bool get isOrderSynced;
   @override
-  String get customerName;
+  List<SalesHeaderEntityData> get salesHeaders;
   @override
-  String get customerAddress;
+  CustomerAddressEntityData? get customerAddressData;
   @override
-  String get salesPersonId;
+  SalesCustomerEntityData? get customerData;
   @override
-  String get deviceId;
+  SalesHeaderEntityData? get salesHeaderData;
   @override
-  String get customerRequisition;
+  Map<String, String>? get settings;
   @override
-  String get customerPriceGroup;
-  @override
-  String get note;
-  @override
-  String get deliveryDate;
-  @override
-  String get transactionDate;
+  String? get errorMsg;
 
   /// Create a copy of SalesHeaderState
   /// with the given fields replaced by the non-null parameter values.

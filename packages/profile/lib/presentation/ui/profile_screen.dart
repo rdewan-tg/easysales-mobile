@@ -72,9 +72,9 @@ class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
       msg: context.localizations('profile.signOutDialogSubTitle'),
       btnYesText: context.localizations('profile.btnYes'),
       btnNoText: context.localizations('profile.btnNo'),
-      icon: const Icon(
+      icon: Icon(
         Icons.warning_outlined,
-        color: Colors.red,
+        color: context.themeColor.colorScheme.error,
       ),
       onYesTap: () {
         // delete customer account
@@ -96,9 +96,9 @@ class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
       msg: context.localizations('profile.deleteDialogSubTitle'),
       btnYesText: context.localizations('profile.btnYes'),
       btnNoText: context.localizations('profile.btnNo'),
-      icon: const Icon(
+      icon: Icon(
         Icons.warning_outlined,
-        color: Colors.red,
+        color: context.themeColor.colorScheme.error,
       ),
       onYesTap: () {
         // delete customer account

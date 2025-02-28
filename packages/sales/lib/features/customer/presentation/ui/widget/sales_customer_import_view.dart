@@ -1,31 +1,32 @@
-part of merchandiser;
+part of sales;
 
-class CustomerImportView extends ConsumerStatefulWidget {
-  const CustomerImportView({super.key});
+class SalesCustomerImportView extends ConsumerStatefulWidget {
+  const SalesCustomerImportView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
       _CustomerImportViewState();
 }
 
-class _CustomerImportViewState extends ConsumerState<CustomerImportView> {
+class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
   @override
   Widget build(BuildContext context) {
     _listener();
 
-    return Column(
-      children: [
-        ElevatedButton.icon(
-          onPressed: () {
-            ref
-                .read(merchandiserCustomerProvider.notifier)
-                .importMerchandiserCustomers();
-          },
-          label: Text('Import Customer'.hardcoded),
-          icon: const Icon(Icons.import_export),
-        ),
-        const SizedBox(height: kSmall),
-      ],
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton.icon(
+            onPressed: () {
+              ref.read(salesCustomerProvider.notifier).importSalesCustomers();
+            },
+            label: Text(context.localizations('sales.customerImport')),
+            icon: const Icon(Icons.import_export),
+          ),
+          const SizedBox(height: kSmall),
+        ],
+      ),
     );
   }
 
@@ -38,7 +39,7 @@ class _CustomerImportViewState extends ConsumerState<CustomerImportView> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 5),
-              backgroundColor: Colors.red,
+              backgroundColor: context.themeColor.colorScheme.error,
               content: Text(
                 next,
                 style: context.textTheme.titleSmall?.copyWith(
@@ -53,13 +54,13 @@ class _CustomerImportViewState extends ConsumerState<CustomerImportView> {
 
     // listen for error
     ref.listen(
-      merchandiserCustomerProvider.select((value) => value.errorMsg),
+      salesCustomerProvider.select((value) => value.errorMsg),
       (_, next) {
         if (next != null) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 5),
-              backgroundColor: Colors.red,
+              backgroundColor: context.themeColor.colorScheme.error,
               content: Text(
                 next,
                 style: context.textTheme.titleSmall?.copyWith(
@@ -73,7 +74,7 @@ class _CustomerImportViewState extends ConsumerState<CustomerImportView> {
     );
 
     // listen for loading
-    ref.listen(merchandiserCustomerProvider.select((value) => value.isLoading),
+    ref.listen(salesCustomerProvider.select((value) => value.isLoading),
         (_, next) {
       if (next) {
         context.loaderOverlay.show();

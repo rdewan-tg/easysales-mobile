@@ -13,7 +13,7 @@ class _ProductImportScreenState extends ConsumerState<ProductImportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product Import'.hardcoded),
+        title: Text(context.localizations('product.importProductAndPrice')),
       ),
       body: const ProductImportView(),
     );

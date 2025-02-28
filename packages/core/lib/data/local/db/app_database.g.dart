@@ -4535,6 +4535,1603 @@ class ProductPriceEntityCompanion
   }
 }
 
+class $SalesHeaderEntityTable extends SalesHeaderEntity
+    with TableInfo<$SalesHeaderEntityTable, SalesHeaderEntityData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SalesHeaderEntityTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _salesIdMeta =
+      const VerificationMeta('salesId');
+  @override
+  late final GeneratedColumn<String> salesId = GeneratedColumn<String>(
+      'sales_id', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
+  static const VerificationMeta _customerIdMeta =
+      const VerificationMeta('customerId');
+  @override
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+      'customer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _customerNameMeta =
+      const VerificationMeta('customerName');
+  @override
+  late final GeneratedColumn<String> customerName = GeneratedColumn<String>(
+      'customer_name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _customerAddressMeta =
+      const VerificationMeta('customerAddress');
+  @override
+  late final GeneratedColumn<String> customerAddress = GeneratedColumn<String>(
+      'customer_address', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _salesPersonIdMeta =
+      const VerificationMeta('salesPersonId');
+  @override
+  late final GeneratedColumn<String> salesPersonId = GeneratedColumn<String>(
+      'sales_person_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _customerRequisitionMeta =
+      const VerificationMeta('customerRequisition');
+  @override
+  late final GeneratedColumn<String> customerRequisition =
+      GeneratedColumn<String>('customer_requisition', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _customerPriceGroupMeta =
+      const VerificationMeta('customerPriceGroup');
+  @override
+  late final GeneratedColumn<String> customerPriceGroup =
+      GeneratedColumn<String>('customer_price_group', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+      'note', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _deliveryAddressLocationMeta =
+      const VerificationMeta('deliveryAddressLocation');
+  @override
+  late final GeneratedColumn<String> deliveryAddressLocation =
+      GeneratedColumn<String>('delivery_address_location', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _deliveryDateMeta =
+      const VerificationMeta('deliveryDate');
+  @override
+  late final GeneratedColumn<String> deliveryDate = GeneratedColumn<String>(
+      'delivery_date', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _transactionDateMeta =
+      const VerificationMeta('transactionDate');
+  @override
+  late final GeneratedColumn<String> transactionDate = GeneratedColumn<String>(
+      'transaction_date', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _deviceIdMeta =
+      const VerificationMeta('deviceId');
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+      'device_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _syncStatusMeta =
+      const VerificationMeta('syncStatus');
+  @override
+  late final GeneratedColumn<int> syncStatus = GeneratedColumn<int>(
+      'sync_status', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _companyIdMeta =
+      const VerificationMeta('companyId');
+  @override
+  late final GeneratedColumn<int> companyId = GeneratedColumn<int>(
+      'company_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        salesId,
+        customerId,
+        customerName,
+        customerAddress,
+        salesPersonId,
+        customerRequisition,
+        customerPriceGroup,
+        note,
+        deliveryAddressLocation,
+        deliveryDate,
+        transactionDate,
+        deviceId,
+        syncStatus,
+        companyId
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'sales_header_entity';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<SalesHeaderEntityData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('sales_id')) {
+      context.handle(_salesIdMeta,
+          salesId.isAcceptableOrUnknown(data['sales_id']!, _salesIdMeta));
+    } else if (isInserting) {
+      context.missing(_salesIdMeta);
+    }
+    if (data.containsKey('customer_id')) {
+      context.handle(
+          _customerIdMeta,
+          customerId.isAcceptableOrUnknown(
+              data['customer_id']!, _customerIdMeta));
+    } else if (isInserting) {
+      context.missing(_customerIdMeta);
+    }
+    if (data.containsKey('customer_name')) {
+      context.handle(
+          _customerNameMeta,
+          customerName.isAcceptableOrUnknown(
+              data['customer_name']!, _customerNameMeta));
+    } else if (isInserting) {
+      context.missing(_customerNameMeta);
+    }
+    if (data.containsKey('customer_address')) {
+      context.handle(
+          _customerAddressMeta,
+          customerAddress.isAcceptableOrUnknown(
+              data['customer_address']!, _customerAddressMeta));
+    } else if (isInserting) {
+      context.missing(_customerAddressMeta);
+    }
+    if (data.containsKey('sales_person_id')) {
+      context.handle(
+          _salesPersonIdMeta,
+          salesPersonId.isAcceptableOrUnknown(
+              data['sales_person_id']!, _salesPersonIdMeta));
+    } else if (isInserting) {
+      context.missing(_salesPersonIdMeta);
+    }
+    if (data.containsKey('customer_requisition')) {
+      context.handle(
+          _customerRequisitionMeta,
+          customerRequisition.isAcceptableOrUnknown(
+              data['customer_requisition']!, _customerRequisitionMeta));
+    } else if (isInserting) {
+      context.missing(_customerRequisitionMeta);
+    }
+    if (data.containsKey('customer_price_group')) {
+      context.handle(
+          _customerPriceGroupMeta,
+          customerPriceGroup.isAcceptableOrUnknown(
+              data['customer_price_group']!, _customerPriceGroupMeta));
+    } else if (isInserting) {
+      context.missing(_customerPriceGroupMeta);
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+          _noteMeta, note.isAcceptableOrUnknown(data['note']!, _noteMeta));
+    } else if (isInserting) {
+      context.missing(_noteMeta);
+    }
+    if (data.containsKey('delivery_address_location')) {
+      context.handle(
+          _deliveryAddressLocationMeta,
+          deliveryAddressLocation.isAcceptableOrUnknown(
+              data['delivery_address_location']!,
+              _deliveryAddressLocationMeta));
+    } else if (isInserting) {
+      context.missing(_deliveryAddressLocationMeta);
+    }
+    if (data.containsKey('delivery_date')) {
+      context.handle(
+          _deliveryDateMeta,
+          deliveryDate.isAcceptableOrUnknown(
+              data['delivery_date']!, _deliveryDateMeta));
+    } else if (isInserting) {
+      context.missing(_deliveryDateMeta);
+    }
+    if (data.containsKey('transaction_date')) {
+      context.handle(
+          _transactionDateMeta,
+          transactionDate.isAcceptableOrUnknown(
+              data['transaction_date']!, _transactionDateMeta));
+    } else if (isInserting) {
+      context.missing(_transactionDateMeta);
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(_deviceIdMeta,
+          deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta));
+    } else if (isInserting) {
+      context.missing(_deviceIdMeta);
+    }
+    if (data.containsKey('sync_status')) {
+      context.handle(
+          _syncStatusMeta,
+          syncStatus.isAcceptableOrUnknown(
+              data['sync_status']!, _syncStatusMeta));
+    } else if (isInserting) {
+      context.missing(_syncStatusMeta);
+    }
+    if (data.containsKey('company_id')) {
+      context.handle(_companyIdMeta,
+          companyId.isAcceptableOrUnknown(data['company_id']!, _companyIdMeta));
+    } else if (isInserting) {
+      context.missing(_companyIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SalesHeaderEntityData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SalesHeaderEntityData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      salesId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}sales_id'])!,
+      customerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}customer_id'])!,
+      customerName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}customer_name'])!,
+      customerAddress: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}customer_address'])!,
+      salesPersonId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}sales_person_id'])!,
+      customerRequisition: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}customer_requisition'])!,
+      customerPriceGroup: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}customer_price_group'])!,
+      note: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}note'])!,
+      deliveryAddressLocation: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}delivery_address_location'])!,
+      deliveryDate: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}delivery_date'])!,
+      transactionDate: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}transaction_date'])!,
+      deviceId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}device_id'])!,
+      syncStatus: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}sync_status'])!,
+      companyId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}company_id'])!,
+    );
+  }
+
+  @override
+  $SalesHeaderEntityTable createAlias(String alias) {
+    return $SalesHeaderEntityTable(attachedDatabase, alias);
+  }
+}
+
+class SalesHeaderEntityData extends DataClass
+    implements Insertable<SalesHeaderEntityData> {
+  final int id;
+  final String salesId;
+  final String customerId;
+  final String customerName;
+  final String customerAddress;
+  final String salesPersonId;
+  final String customerRequisition;
+  final String customerPriceGroup;
+  final String note;
+  final String deliveryAddressLocation;
+  final String deliveryDate;
+  final String transactionDate;
+  final String deviceId;
+  final int syncStatus;
+  final int companyId;
+  const SalesHeaderEntityData(
+      {required this.id,
+      required this.salesId,
+      required this.customerId,
+      required this.customerName,
+      required this.customerAddress,
+      required this.salesPersonId,
+      required this.customerRequisition,
+      required this.customerPriceGroup,
+      required this.note,
+      required this.deliveryAddressLocation,
+      required this.deliveryDate,
+      required this.transactionDate,
+      required this.deviceId,
+      required this.syncStatus,
+      required this.companyId});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['sales_id'] = Variable<String>(salesId);
+    map['customer_id'] = Variable<String>(customerId);
+    map['customer_name'] = Variable<String>(customerName);
+    map['customer_address'] = Variable<String>(customerAddress);
+    map['sales_person_id'] = Variable<String>(salesPersonId);
+    map['customer_requisition'] = Variable<String>(customerRequisition);
+    map['customer_price_group'] = Variable<String>(customerPriceGroup);
+    map['note'] = Variable<String>(note);
+    map['delivery_address_location'] =
+        Variable<String>(deliveryAddressLocation);
+    map['delivery_date'] = Variable<String>(deliveryDate);
+    map['transaction_date'] = Variable<String>(transactionDate);
+    map['device_id'] = Variable<String>(deviceId);
+    map['sync_status'] = Variable<int>(syncStatus);
+    map['company_id'] = Variable<int>(companyId);
+    return map;
+  }
+
+  SalesHeaderEntityCompanion toCompanion(bool nullToAbsent) {
+    return SalesHeaderEntityCompanion(
+      id: Value(id),
+      salesId: Value(salesId),
+      customerId: Value(customerId),
+      customerName: Value(customerName),
+      customerAddress: Value(customerAddress),
+      salesPersonId: Value(salesPersonId),
+      customerRequisition: Value(customerRequisition),
+      customerPriceGroup: Value(customerPriceGroup),
+      note: Value(note),
+      deliveryAddressLocation: Value(deliveryAddressLocation),
+      deliveryDate: Value(deliveryDate),
+      transactionDate: Value(transactionDate),
+      deviceId: Value(deviceId),
+      syncStatus: Value(syncStatus),
+      companyId: Value(companyId),
+    );
+  }
+
+  factory SalesHeaderEntityData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SalesHeaderEntityData(
+      id: serializer.fromJson<int>(json['id']),
+      salesId: serializer.fromJson<String>(json['salesId']),
+      customerId: serializer.fromJson<String>(json['customerId']),
+      customerName: serializer.fromJson<String>(json['customerName']),
+      customerAddress: serializer.fromJson<String>(json['customerAddress']),
+      salesPersonId: serializer.fromJson<String>(json['salesPersonId']),
+      customerRequisition:
+          serializer.fromJson<String>(json['customerRequisition']),
+      customerPriceGroup:
+          serializer.fromJson<String>(json['customerPriceGroup']),
+      note: serializer.fromJson<String>(json['note']),
+      deliveryAddressLocation:
+          serializer.fromJson<String>(json['deliveryAddressLocation']),
+      deliveryDate: serializer.fromJson<String>(json['deliveryDate']),
+      transactionDate: serializer.fromJson<String>(json['transactionDate']),
+      deviceId: serializer.fromJson<String>(json['deviceId']),
+      syncStatus: serializer.fromJson<int>(json['syncStatus']),
+      companyId: serializer.fromJson<int>(json['companyId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'salesId': serializer.toJson<String>(salesId),
+      'customerId': serializer.toJson<String>(customerId),
+      'customerName': serializer.toJson<String>(customerName),
+      'customerAddress': serializer.toJson<String>(customerAddress),
+      'salesPersonId': serializer.toJson<String>(salesPersonId),
+      'customerRequisition': serializer.toJson<String>(customerRequisition),
+      'customerPriceGroup': serializer.toJson<String>(customerPriceGroup),
+      'note': serializer.toJson<String>(note),
+      'deliveryAddressLocation':
+          serializer.toJson<String>(deliveryAddressLocation),
+      'deliveryDate': serializer.toJson<String>(deliveryDate),
+      'transactionDate': serializer.toJson<String>(transactionDate),
+      'deviceId': serializer.toJson<String>(deviceId),
+      'syncStatus': serializer.toJson<int>(syncStatus),
+      'companyId': serializer.toJson<int>(companyId),
+    };
+  }
+
+  SalesHeaderEntityData copyWith(
+          {int? id,
+          String? salesId,
+          String? customerId,
+          String? customerName,
+          String? customerAddress,
+          String? salesPersonId,
+          String? customerRequisition,
+          String? customerPriceGroup,
+          String? note,
+          String? deliveryAddressLocation,
+          String? deliveryDate,
+          String? transactionDate,
+          String? deviceId,
+          int? syncStatus,
+          int? companyId}) =>
+      SalesHeaderEntityData(
+        id: id ?? this.id,
+        salesId: salesId ?? this.salesId,
+        customerId: customerId ?? this.customerId,
+        customerName: customerName ?? this.customerName,
+        customerAddress: customerAddress ?? this.customerAddress,
+        salesPersonId: salesPersonId ?? this.salesPersonId,
+        customerRequisition: customerRequisition ?? this.customerRequisition,
+        customerPriceGroup: customerPriceGroup ?? this.customerPriceGroup,
+        note: note ?? this.note,
+        deliveryAddressLocation:
+            deliveryAddressLocation ?? this.deliveryAddressLocation,
+        deliveryDate: deliveryDate ?? this.deliveryDate,
+        transactionDate: transactionDate ?? this.transactionDate,
+        deviceId: deviceId ?? this.deviceId,
+        syncStatus: syncStatus ?? this.syncStatus,
+        companyId: companyId ?? this.companyId,
+      );
+  SalesHeaderEntityData copyWithCompanion(SalesHeaderEntityCompanion data) {
+    return SalesHeaderEntityData(
+      id: data.id.present ? data.id.value : this.id,
+      salesId: data.salesId.present ? data.salesId.value : this.salesId,
+      customerId:
+          data.customerId.present ? data.customerId.value : this.customerId,
+      customerName: data.customerName.present
+          ? data.customerName.value
+          : this.customerName,
+      customerAddress: data.customerAddress.present
+          ? data.customerAddress.value
+          : this.customerAddress,
+      salesPersonId: data.salesPersonId.present
+          ? data.salesPersonId.value
+          : this.salesPersonId,
+      customerRequisition: data.customerRequisition.present
+          ? data.customerRequisition.value
+          : this.customerRequisition,
+      customerPriceGroup: data.customerPriceGroup.present
+          ? data.customerPriceGroup.value
+          : this.customerPriceGroup,
+      note: data.note.present ? data.note.value : this.note,
+      deliveryAddressLocation: data.deliveryAddressLocation.present
+          ? data.deliveryAddressLocation.value
+          : this.deliveryAddressLocation,
+      deliveryDate: data.deliveryDate.present
+          ? data.deliveryDate.value
+          : this.deliveryDate,
+      transactionDate: data.transactionDate.present
+          ? data.transactionDate.value
+          : this.transactionDate,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      syncStatus:
+          data.syncStatus.present ? data.syncStatus.value : this.syncStatus,
+      companyId: data.companyId.present ? data.companyId.value : this.companyId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SalesHeaderEntityData(')
+          ..write('id: $id, ')
+          ..write('salesId: $salesId, ')
+          ..write('customerId: $customerId, ')
+          ..write('customerName: $customerName, ')
+          ..write('customerAddress: $customerAddress, ')
+          ..write('salesPersonId: $salesPersonId, ')
+          ..write('customerRequisition: $customerRequisition, ')
+          ..write('customerPriceGroup: $customerPriceGroup, ')
+          ..write('note: $note, ')
+          ..write('deliveryAddressLocation: $deliveryAddressLocation, ')
+          ..write('deliveryDate: $deliveryDate, ')
+          ..write('transactionDate: $transactionDate, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('syncStatus: $syncStatus, ')
+          ..write('companyId: $companyId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      salesId,
+      customerId,
+      customerName,
+      customerAddress,
+      salesPersonId,
+      customerRequisition,
+      customerPriceGroup,
+      note,
+      deliveryAddressLocation,
+      deliveryDate,
+      transactionDate,
+      deviceId,
+      syncStatus,
+      companyId);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SalesHeaderEntityData &&
+          other.id == this.id &&
+          other.salesId == this.salesId &&
+          other.customerId == this.customerId &&
+          other.customerName == this.customerName &&
+          other.customerAddress == this.customerAddress &&
+          other.salesPersonId == this.salesPersonId &&
+          other.customerRequisition == this.customerRequisition &&
+          other.customerPriceGroup == this.customerPriceGroup &&
+          other.note == this.note &&
+          other.deliveryAddressLocation == this.deliveryAddressLocation &&
+          other.deliveryDate == this.deliveryDate &&
+          other.transactionDate == this.transactionDate &&
+          other.deviceId == this.deviceId &&
+          other.syncStatus == this.syncStatus &&
+          other.companyId == this.companyId);
+}
+
+class SalesHeaderEntityCompanion
+    extends UpdateCompanion<SalesHeaderEntityData> {
+  final Value<int> id;
+  final Value<String> salesId;
+  final Value<String> customerId;
+  final Value<String> customerName;
+  final Value<String> customerAddress;
+  final Value<String> salesPersonId;
+  final Value<String> customerRequisition;
+  final Value<String> customerPriceGroup;
+  final Value<String> note;
+  final Value<String> deliveryAddressLocation;
+  final Value<String> deliveryDate;
+  final Value<String> transactionDate;
+  final Value<String> deviceId;
+  final Value<int> syncStatus;
+  final Value<int> companyId;
+  const SalesHeaderEntityCompanion({
+    this.id = const Value.absent(),
+    this.salesId = const Value.absent(),
+    this.customerId = const Value.absent(),
+    this.customerName = const Value.absent(),
+    this.customerAddress = const Value.absent(),
+    this.salesPersonId = const Value.absent(),
+    this.customerRequisition = const Value.absent(),
+    this.customerPriceGroup = const Value.absent(),
+    this.note = const Value.absent(),
+    this.deliveryAddressLocation = const Value.absent(),
+    this.deliveryDate = const Value.absent(),
+    this.transactionDate = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.syncStatus = const Value.absent(),
+    this.companyId = const Value.absent(),
+  });
+  SalesHeaderEntityCompanion.insert({
+    this.id = const Value.absent(),
+    required String salesId,
+    required String customerId,
+    required String customerName,
+    required String customerAddress,
+    required String salesPersonId,
+    required String customerRequisition,
+    required String customerPriceGroup,
+    required String note,
+    required String deliveryAddressLocation,
+    required String deliveryDate,
+    required String transactionDate,
+    required String deviceId,
+    required int syncStatus,
+    required int companyId,
+  })  : salesId = Value(salesId),
+        customerId = Value(customerId),
+        customerName = Value(customerName),
+        customerAddress = Value(customerAddress),
+        salesPersonId = Value(salesPersonId),
+        customerRequisition = Value(customerRequisition),
+        customerPriceGroup = Value(customerPriceGroup),
+        note = Value(note),
+        deliveryAddressLocation = Value(deliveryAddressLocation),
+        deliveryDate = Value(deliveryDate),
+        transactionDate = Value(transactionDate),
+        deviceId = Value(deviceId),
+        syncStatus = Value(syncStatus),
+        companyId = Value(companyId);
+  static Insertable<SalesHeaderEntityData> custom({
+    Expression<int>? id,
+    Expression<String>? salesId,
+    Expression<String>? customerId,
+    Expression<String>? customerName,
+    Expression<String>? customerAddress,
+    Expression<String>? salesPersonId,
+    Expression<String>? customerRequisition,
+    Expression<String>? customerPriceGroup,
+    Expression<String>? note,
+    Expression<String>? deliveryAddressLocation,
+    Expression<String>? deliveryDate,
+    Expression<String>? transactionDate,
+    Expression<String>? deviceId,
+    Expression<int>? syncStatus,
+    Expression<int>? companyId,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (salesId != null) 'sales_id': salesId,
+      if (customerId != null) 'customer_id': customerId,
+      if (customerName != null) 'customer_name': customerName,
+      if (customerAddress != null) 'customer_address': customerAddress,
+      if (salesPersonId != null) 'sales_person_id': salesPersonId,
+      if (customerRequisition != null)
+        'customer_requisition': customerRequisition,
+      if (customerPriceGroup != null)
+        'customer_price_group': customerPriceGroup,
+      if (note != null) 'note': note,
+      if (deliveryAddressLocation != null)
+        'delivery_address_location': deliveryAddressLocation,
+      if (deliveryDate != null) 'delivery_date': deliveryDate,
+      if (transactionDate != null) 'transaction_date': transactionDate,
+      if (deviceId != null) 'device_id': deviceId,
+      if (syncStatus != null) 'sync_status': syncStatus,
+      if (companyId != null) 'company_id': companyId,
+    });
+  }
+
+  SalesHeaderEntityCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? salesId,
+      Value<String>? customerId,
+      Value<String>? customerName,
+      Value<String>? customerAddress,
+      Value<String>? salesPersonId,
+      Value<String>? customerRequisition,
+      Value<String>? customerPriceGroup,
+      Value<String>? note,
+      Value<String>? deliveryAddressLocation,
+      Value<String>? deliveryDate,
+      Value<String>? transactionDate,
+      Value<String>? deviceId,
+      Value<int>? syncStatus,
+      Value<int>? companyId}) {
+    return SalesHeaderEntityCompanion(
+      id: id ?? this.id,
+      salesId: salesId ?? this.salesId,
+      customerId: customerId ?? this.customerId,
+      customerName: customerName ?? this.customerName,
+      customerAddress: customerAddress ?? this.customerAddress,
+      salesPersonId: salesPersonId ?? this.salesPersonId,
+      customerRequisition: customerRequisition ?? this.customerRequisition,
+      customerPriceGroup: customerPriceGroup ?? this.customerPriceGroup,
+      note: note ?? this.note,
+      deliveryAddressLocation:
+          deliveryAddressLocation ?? this.deliveryAddressLocation,
+      deliveryDate: deliveryDate ?? this.deliveryDate,
+      transactionDate: transactionDate ?? this.transactionDate,
+      deviceId: deviceId ?? this.deviceId,
+      syncStatus: syncStatus ?? this.syncStatus,
+      companyId: companyId ?? this.companyId,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (salesId.present) {
+      map['sales_id'] = Variable<String>(salesId.value);
+    }
+    if (customerId.present) {
+      map['customer_id'] = Variable<String>(customerId.value);
+    }
+    if (customerName.present) {
+      map['customer_name'] = Variable<String>(customerName.value);
+    }
+    if (customerAddress.present) {
+      map['customer_address'] = Variable<String>(customerAddress.value);
+    }
+    if (salesPersonId.present) {
+      map['sales_person_id'] = Variable<String>(salesPersonId.value);
+    }
+    if (customerRequisition.present) {
+      map['customer_requisition'] = Variable<String>(customerRequisition.value);
+    }
+    if (customerPriceGroup.present) {
+      map['customer_price_group'] = Variable<String>(customerPriceGroup.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (deliveryAddressLocation.present) {
+      map['delivery_address_location'] =
+          Variable<String>(deliveryAddressLocation.value);
+    }
+    if (deliveryDate.present) {
+      map['delivery_date'] = Variable<String>(deliveryDate.value);
+    }
+    if (transactionDate.present) {
+      map['transaction_date'] = Variable<String>(transactionDate.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (syncStatus.present) {
+      map['sync_status'] = Variable<int>(syncStatus.value);
+    }
+    if (companyId.present) {
+      map['company_id'] = Variable<int>(companyId.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SalesHeaderEntityCompanion(')
+          ..write('id: $id, ')
+          ..write('salesId: $salesId, ')
+          ..write('customerId: $customerId, ')
+          ..write('customerName: $customerName, ')
+          ..write('customerAddress: $customerAddress, ')
+          ..write('salesPersonId: $salesPersonId, ')
+          ..write('customerRequisition: $customerRequisition, ')
+          ..write('customerPriceGroup: $customerPriceGroup, ')
+          ..write('note: $note, ')
+          ..write('deliveryAddressLocation: $deliveryAddressLocation, ')
+          ..write('deliveryDate: $deliveryDate, ')
+          ..write('transactionDate: $transactionDate, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('syncStatus: $syncStatus, ')
+          ..write('companyId: $companyId')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SalesLineEntityTable extends SalesLineEntity
+    with TableInfo<$SalesLineEntityTable, SalesLineEntityData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SalesLineEntityTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _salesIdMeta =
+      const VerificationMeta('salesId');
+  @override
+  late final GeneratedColumn<String> salesId = GeneratedColumn<String>(
+      'sales_id', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES sales_header_entity (sales_id) ON DELETE CASCADE'));
+  static const VerificationMeta _lineIdMeta = const VerificationMeta('lineId');
+  @override
+  late final GeneratedColumn<int> lineId = GeneratedColumn<int>(
+      'line_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _itemIdMeta = const VerificationMeta('itemId');
+  @override
+  late final GeneratedColumn<String> itemId = GeneratedColumn<String>(
+      'item_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _productIdMeta =
+      const VerificationMeta('productId');
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+      'product_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _productNameMeta =
+      const VerificationMeta('productName');
+  @override
+  late final GeneratedColumn<String> productName = GeneratedColumn<String>(
+      'product_name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _productDescriptionMeta =
+      const VerificationMeta('productDescription');
+  @override
+  late final GeneratedColumn<String> productDescription =
+      GeneratedColumn<String>('product_description', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _packSizeMeta =
+      const VerificationMeta('packSize');
+  @override
+  late final GeneratedColumn<String> packSize = GeneratedColumn<String>(
+      'pack_size', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _quantityMeta =
+      const VerificationMeta('quantity');
+  @override
+  late final GeneratedColumn<double> quantity = GeneratedColumn<double>(
+      'quantity', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _salesUnitMeta =
+      const VerificationMeta('salesUnit');
+  @override
+  late final GeneratedColumn<String> salesUnit = GeneratedColumn<String>(
+      'sales_unit', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _salesPriceMeta =
+      const VerificationMeta('salesPrice');
+  @override
+  late final GeneratedColumn<double> salesPrice = GeneratedColumn<double>(
+      'sales_price', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _taxAmountMeta =
+      const VerificationMeta('taxAmount');
+  @override
+  late final GeneratedColumn<double> taxAmount = GeneratedColumn<double>(
+      'tax_amount', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _lineAmountMeta =
+      const VerificationMeta('lineAmount');
+  @override
+  late final GeneratedColumn<double> lineAmount = GeneratedColumn<double>(
+      'line_amount', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _inventDimIdMeta =
+      const VerificationMeta('inventDimId');
+  @override
+  late final GeneratedColumn<String> inventDimId = GeneratedColumn<String>(
+      'invent_dim_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _transactionDateMeta =
+      const VerificationMeta('transactionDate');
+  @override
+  late final GeneratedColumn<String> transactionDate = GeneratedColumn<String>(
+      'transaction_date', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _deviceIdMeta =
+      const VerificationMeta('deviceId');
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+      'device_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _syncStatusMeta =
+      const VerificationMeta('syncStatus');
+  @override
+  late final GeneratedColumn<int> syncStatus = GeneratedColumn<int>(
+      'sync_status', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _companyIdMeta =
+      const VerificationMeta('companyId');
+  @override
+  late final GeneratedColumn<int> companyId = GeneratedColumn<int>(
+      'company_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        salesId,
+        lineId,
+        itemId,
+        productId,
+        productName,
+        productDescription,
+        packSize,
+        quantity,
+        salesUnit,
+        salesPrice,
+        taxAmount,
+        lineAmount,
+        inventDimId,
+        transactionDate,
+        deviceId,
+        syncStatus,
+        companyId
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'sales_line_entity';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<SalesLineEntityData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('sales_id')) {
+      context.handle(_salesIdMeta,
+          salesId.isAcceptableOrUnknown(data['sales_id']!, _salesIdMeta));
+    } else if (isInserting) {
+      context.missing(_salesIdMeta);
+    }
+    if (data.containsKey('line_id')) {
+      context.handle(_lineIdMeta,
+          lineId.isAcceptableOrUnknown(data['line_id']!, _lineIdMeta));
+    } else if (isInserting) {
+      context.missing(_lineIdMeta);
+    }
+    if (data.containsKey('item_id')) {
+      context.handle(_itemIdMeta,
+          itemId.isAcceptableOrUnknown(data['item_id']!, _itemIdMeta));
+    } else if (isInserting) {
+      context.missing(_itemIdMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(_productIdMeta,
+          productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta));
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('product_name')) {
+      context.handle(
+          _productNameMeta,
+          productName.isAcceptableOrUnknown(
+              data['product_name']!, _productNameMeta));
+    } else if (isInserting) {
+      context.missing(_productNameMeta);
+    }
+    if (data.containsKey('product_description')) {
+      context.handle(
+          _productDescriptionMeta,
+          productDescription.isAcceptableOrUnknown(
+              data['product_description']!, _productDescriptionMeta));
+    } else if (isInserting) {
+      context.missing(_productDescriptionMeta);
+    }
+    if (data.containsKey('pack_size')) {
+      context.handle(_packSizeMeta,
+          packSize.isAcceptableOrUnknown(data['pack_size']!, _packSizeMeta));
+    } else if (isInserting) {
+      context.missing(_packSizeMeta);
+    }
+    if (data.containsKey('quantity')) {
+      context.handle(_quantityMeta,
+          quantity.isAcceptableOrUnknown(data['quantity']!, _quantityMeta));
+    } else if (isInserting) {
+      context.missing(_quantityMeta);
+    }
+    if (data.containsKey('sales_unit')) {
+      context.handle(_salesUnitMeta,
+          salesUnit.isAcceptableOrUnknown(data['sales_unit']!, _salesUnitMeta));
+    } else if (isInserting) {
+      context.missing(_salesUnitMeta);
+    }
+    if (data.containsKey('sales_price')) {
+      context.handle(
+          _salesPriceMeta,
+          salesPrice.isAcceptableOrUnknown(
+              data['sales_price']!, _salesPriceMeta));
+    } else if (isInserting) {
+      context.missing(_salesPriceMeta);
+    }
+    if (data.containsKey('tax_amount')) {
+      context.handle(_taxAmountMeta,
+          taxAmount.isAcceptableOrUnknown(data['tax_amount']!, _taxAmountMeta));
+    } else if (isInserting) {
+      context.missing(_taxAmountMeta);
+    }
+    if (data.containsKey('line_amount')) {
+      context.handle(
+          _lineAmountMeta,
+          lineAmount.isAcceptableOrUnknown(
+              data['line_amount']!, _lineAmountMeta));
+    } else if (isInserting) {
+      context.missing(_lineAmountMeta);
+    }
+    if (data.containsKey('invent_dim_id')) {
+      context.handle(
+          _inventDimIdMeta,
+          inventDimId.isAcceptableOrUnknown(
+              data['invent_dim_id']!, _inventDimIdMeta));
+    } else if (isInserting) {
+      context.missing(_inventDimIdMeta);
+    }
+    if (data.containsKey('transaction_date')) {
+      context.handle(
+          _transactionDateMeta,
+          transactionDate.isAcceptableOrUnknown(
+              data['transaction_date']!, _transactionDateMeta));
+    } else if (isInserting) {
+      context.missing(_transactionDateMeta);
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(_deviceIdMeta,
+          deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta));
+    } else if (isInserting) {
+      context.missing(_deviceIdMeta);
+    }
+    if (data.containsKey('sync_status')) {
+      context.handle(
+          _syncStatusMeta,
+          syncStatus.isAcceptableOrUnknown(
+              data['sync_status']!, _syncStatusMeta));
+    } else if (isInserting) {
+      context.missing(_syncStatusMeta);
+    }
+    if (data.containsKey('company_id')) {
+      context.handle(_companyIdMeta,
+          companyId.isAcceptableOrUnknown(data['company_id']!, _companyIdMeta));
+    } else if (isInserting) {
+      context.missing(_companyIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SalesLineEntityData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SalesLineEntityData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      salesId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}sales_id'])!,
+      lineId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}line_id'])!,
+      itemId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}item_id'])!,
+      productId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}product_id'])!,
+      productName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}product_name'])!,
+      productDescription: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}product_description'])!,
+      packSize: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}pack_size'])!,
+      quantity: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}quantity'])!,
+      salesUnit: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}sales_unit'])!,
+      salesPrice: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}sales_price'])!,
+      taxAmount: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}tax_amount'])!,
+      lineAmount: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}line_amount'])!,
+      inventDimId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}invent_dim_id'])!,
+      transactionDate: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}transaction_date'])!,
+      deviceId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}device_id'])!,
+      syncStatus: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}sync_status'])!,
+      companyId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}company_id'])!,
+    );
+  }
+
+  @override
+  $SalesLineEntityTable createAlias(String alias) {
+    return $SalesLineEntityTable(attachedDatabase, alias);
+  }
+}
+
+class SalesLineEntityData extends DataClass
+    implements Insertable<SalesLineEntityData> {
+  final int id;
+  final String salesId;
+  final int lineId;
+  final String itemId;
+  final String productId;
+  final String productName;
+  final String productDescription;
+  final String packSize;
+  final double quantity;
+  final String salesUnit;
+  final double salesPrice;
+  final double taxAmount;
+  final double lineAmount;
+  final String inventDimId;
+  final String transactionDate;
+  final String deviceId;
+  final int syncStatus;
+  final int companyId;
+  const SalesLineEntityData(
+      {required this.id,
+      required this.salesId,
+      required this.lineId,
+      required this.itemId,
+      required this.productId,
+      required this.productName,
+      required this.productDescription,
+      required this.packSize,
+      required this.quantity,
+      required this.salesUnit,
+      required this.salesPrice,
+      required this.taxAmount,
+      required this.lineAmount,
+      required this.inventDimId,
+      required this.transactionDate,
+      required this.deviceId,
+      required this.syncStatus,
+      required this.companyId});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['sales_id'] = Variable<String>(salesId);
+    map['line_id'] = Variable<int>(lineId);
+    map['item_id'] = Variable<String>(itemId);
+    map['product_id'] = Variable<String>(productId);
+    map['product_name'] = Variable<String>(productName);
+    map['product_description'] = Variable<String>(productDescription);
+    map['pack_size'] = Variable<String>(packSize);
+    map['quantity'] = Variable<double>(quantity);
+    map['sales_unit'] = Variable<String>(salesUnit);
+    map['sales_price'] = Variable<double>(salesPrice);
+    map['tax_amount'] = Variable<double>(taxAmount);
+    map['line_amount'] = Variable<double>(lineAmount);
+    map['invent_dim_id'] = Variable<String>(inventDimId);
+    map['transaction_date'] = Variable<String>(transactionDate);
+    map['device_id'] = Variable<String>(deviceId);
+    map['sync_status'] = Variable<int>(syncStatus);
+    map['company_id'] = Variable<int>(companyId);
+    return map;
+  }
+
+  SalesLineEntityCompanion toCompanion(bool nullToAbsent) {
+    return SalesLineEntityCompanion(
+      id: Value(id),
+      salesId: Value(salesId),
+      lineId: Value(lineId),
+      itemId: Value(itemId),
+      productId: Value(productId),
+      productName: Value(productName),
+      productDescription: Value(productDescription),
+      packSize: Value(packSize),
+      quantity: Value(quantity),
+      salesUnit: Value(salesUnit),
+      salesPrice: Value(salesPrice),
+      taxAmount: Value(taxAmount),
+      lineAmount: Value(lineAmount),
+      inventDimId: Value(inventDimId),
+      transactionDate: Value(transactionDate),
+      deviceId: Value(deviceId),
+      syncStatus: Value(syncStatus),
+      companyId: Value(companyId),
+    );
+  }
+
+  factory SalesLineEntityData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SalesLineEntityData(
+      id: serializer.fromJson<int>(json['id']),
+      salesId: serializer.fromJson<String>(json['salesId']),
+      lineId: serializer.fromJson<int>(json['lineId']),
+      itemId: serializer.fromJson<String>(json['itemId']),
+      productId: serializer.fromJson<String>(json['productId']),
+      productName: serializer.fromJson<String>(json['productName']),
+      productDescription:
+          serializer.fromJson<String>(json['productDescription']),
+      packSize: serializer.fromJson<String>(json['packSize']),
+      quantity: serializer.fromJson<double>(json['quantity']),
+      salesUnit: serializer.fromJson<String>(json['salesUnit']),
+      salesPrice: serializer.fromJson<double>(json['salesPrice']),
+      taxAmount: serializer.fromJson<double>(json['taxAmount']),
+      lineAmount: serializer.fromJson<double>(json['lineAmount']),
+      inventDimId: serializer.fromJson<String>(json['inventDimId']),
+      transactionDate: serializer.fromJson<String>(json['transactionDate']),
+      deviceId: serializer.fromJson<String>(json['deviceId']),
+      syncStatus: serializer.fromJson<int>(json['syncStatus']),
+      companyId: serializer.fromJson<int>(json['companyId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'salesId': serializer.toJson<String>(salesId),
+      'lineId': serializer.toJson<int>(lineId),
+      'itemId': serializer.toJson<String>(itemId),
+      'productId': serializer.toJson<String>(productId),
+      'productName': serializer.toJson<String>(productName),
+      'productDescription': serializer.toJson<String>(productDescription),
+      'packSize': serializer.toJson<String>(packSize),
+      'quantity': serializer.toJson<double>(quantity),
+      'salesUnit': serializer.toJson<String>(salesUnit),
+      'salesPrice': serializer.toJson<double>(salesPrice),
+      'taxAmount': serializer.toJson<double>(taxAmount),
+      'lineAmount': serializer.toJson<double>(lineAmount),
+      'inventDimId': serializer.toJson<String>(inventDimId),
+      'transactionDate': serializer.toJson<String>(transactionDate),
+      'deviceId': serializer.toJson<String>(deviceId),
+      'syncStatus': serializer.toJson<int>(syncStatus),
+      'companyId': serializer.toJson<int>(companyId),
+    };
+  }
+
+  SalesLineEntityData copyWith(
+          {int? id,
+          String? salesId,
+          int? lineId,
+          String? itemId,
+          String? productId,
+          String? productName,
+          String? productDescription,
+          String? packSize,
+          double? quantity,
+          String? salesUnit,
+          double? salesPrice,
+          double? taxAmount,
+          double? lineAmount,
+          String? inventDimId,
+          String? transactionDate,
+          String? deviceId,
+          int? syncStatus,
+          int? companyId}) =>
+      SalesLineEntityData(
+        id: id ?? this.id,
+        salesId: salesId ?? this.salesId,
+        lineId: lineId ?? this.lineId,
+        itemId: itemId ?? this.itemId,
+        productId: productId ?? this.productId,
+        productName: productName ?? this.productName,
+        productDescription: productDescription ?? this.productDescription,
+        packSize: packSize ?? this.packSize,
+        quantity: quantity ?? this.quantity,
+        salesUnit: salesUnit ?? this.salesUnit,
+        salesPrice: salesPrice ?? this.salesPrice,
+        taxAmount: taxAmount ?? this.taxAmount,
+        lineAmount: lineAmount ?? this.lineAmount,
+        inventDimId: inventDimId ?? this.inventDimId,
+        transactionDate: transactionDate ?? this.transactionDate,
+        deviceId: deviceId ?? this.deviceId,
+        syncStatus: syncStatus ?? this.syncStatus,
+        companyId: companyId ?? this.companyId,
+      );
+  SalesLineEntityData copyWithCompanion(SalesLineEntityCompanion data) {
+    return SalesLineEntityData(
+      id: data.id.present ? data.id.value : this.id,
+      salesId: data.salesId.present ? data.salesId.value : this.salesId,
+      lineId: data.lineId.present ? data.lineId.value : this.lineId,
+      itemId: data.itemId.present ? data.itemId.value : this.itemId,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      productName:
+          data.productName.present ? data.productName.value : this.productName,
+      productDescription: data.productDescription.present
+          ? data.productDescription.value
+          : this.productDescription,
+      packSize: data.packSize.present ? data.packSize.value : this.packSize,
+      quantity: data.quantity.present ? data.quantity.value : this.quantity,
+      salesUnit: data.salesUnit.present ? data.salesUnit.value : this.salesUnit,
+      salesPrice:
+          data.salesPrice.present ? data.salesPrice.value : this.salesPrice,
+      taxAmount: data.taxAmount.present ? data.taxAmount.value : this.taxAmount,
+      lineAmount:
+          data.lineAmount.present ? data.lineAmount.value : this.lineAmount,
+      inventDimId:
+          data.inventDimId.present ? data.inventDimId.value : this.inventDimId,
+      transactionDate: data.transactionDate.present
+          ? data.transactionDate.value
+          : this.transactionDate,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      syncStatus:
+          data.syncStatus.present ? data.syncStatus.value : this.syncStatus,
+      companyId: data.companyId.present ? data.companyId.value : this.companyId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SalesLineEntityData(')
+          ..write('id: $id, ')
+          ..write('salesId: $salesId, ')
+          ..write('lineId: $lineId, ')
+          ..write('itemId: $itemId, ')
+          ..write('productId: $productId, ')
+          ..write('productName: $productName, ')
+          ..write('productDescription: $productDescription, ')
+          ..write('packSize: $packSize, ')
+          ..write('quantity: $quantity, ')
+          ..write('salesUnit: $salesUnit, ')
+          ..write('salesPrice: $salesPrice, ')
+          ..write('taxAmount: $taxAmount, ')
+          ..write('lineAmount: $lineAmount, ')
+          ..write('inventDimId: $inventDimId, ')
+          ..write('transactionDate: $transactionDate, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('syncStatus: $syncStatus, ')
+          ..write('companyId: $companyId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      salesId,
+      lineId,
+      itemId,
+      productId,
+      productName,
+      productDescription,
+      packSize,
+      quantity,
+      salesUnit,
+      salesPrice,
+      taxAmount,
+      lineAmount,
+      inventDimId,
+      transactionDate,
+      deviceId,
+      syncStatus,
+      companyId);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SalesLineEntityData &&
+          other.id == this.id &&
+          other.salesId == this.salesId &&
+          other.lineId == this.lineId &&
+          other.itemId == this.itemId &&
+          other.productId == this.productId &&
+          other.productName == this.productName &&
+          other.productDescription == this.productDescription &&
+          other.packSize == this.packSize &&
+          other.quantity == this.quantity &&
+          other.salesUnit == this.salesUnit &&
+          other.salesPrice == this.salesPrice &&
+          other.taxAmount == this.taxAmount &&
+          other.lineAmount == this.lineAmount &&
+          other.inventDimId == this.inventDimId &&
+          other.transactionDate == this.transactionDate &&
+          other.deviceId == this.deviceId &&
+          other.syncStatus == this.syncStatus &&
+          other.companyId == this.companyId);
+}
+
+class SalesLineEntityCompanion extends UpdateCompanion<SalesLineEntityData> {
+  final Value<int> id;
+  final Value<String> salesId;
+  final Value<int> lineId;
+  final Value<String> itemId;
+  final Value<String> productId;
+  final Value<String> productName;
+  final Value<String> productDescription;
+  final Value<String> packSize;
+  final Value<double> quantity;
+  final Value<String> salesUnit;
+  final Value<double> salesPrice;
+  final Value<double> taxAmount;
+  final Value<double> lineAmount;
+  final Value<String> inventDimId;
+  final Value<String> transactionDate;
+  final Value<String> deviceId;
+  final Value<int> syncStatus;
+  final Value<int> companyId;
+  const SalesLineEntityCompanion({
+    this.id = const Value.absent(),
+    this.salesId = const Value.absent(),
+    this.lineId = const Value.absent(),
+    this.itemId = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.productName = const Value.absent(),
+    this.productDescription = const Value.absent(),
+    this.packSize = const Value.absent(),
+    this.quantity = const Value.absent(),
+    this.salesUnit = const Value.absent(),
+    this.salesPrice = const Value.absent(),
+    this.taxAmount = const Value.absent(),
+    this.lineAmount = const Value.absent(),
+    this.inventDimId = const Value.absent(),
+    this.transactionDate = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.syncStatus = const Value.absent(),
+    this.companyId = const Value.absent(),
+  });
+  SalesLineEntityCompanion.insert({
+    this.id = const Value.absent(),
+    required String salesId,
+    required int lineId,
+    required String itemId,
+    required String productId,
+    required String productName,
+    required String productDescription,
+    required String packSize,
+    required double quantity,
+    required String salesUnit,
+    required double salesPrice,
+    required double taxAmount,
+    required double lineAmount,
+    required String inventDimId,
+    required String transactionDate,
+    required String deviceId,
+    required int syncStatus,
+    required int companyId,
+  })  : salesId = Value(salesId),
+        lineId = Value(lineId),
+        itemId = Value(itemId),
+        productId = Value(productId),
+        productName = Value(productName),
+        productDescription = Value(productDescription),
+        packSize = Value(packSize),
+        quantity = Value(quantity),
+        salesUnit = Value(salesUnit),
+        salesPrice = Value(salesPrice),
+        taxAmount = Value(taxAmount),
+        lineAmount = Value(lineAmount),
+        inventDimId = Value(inventDimId),
+        transactionDate = Value(transactionDate),
+        deviceId = Value(deviceId),
+        syncStatus = Value(syncStatus),
+        companyId = Value(companyId);
+  static Insertable<SalesLineEntityData> custom({
+    Expression<int>? id,
+    Expression<String>? salesId,
+    Expression<int>? lineId,
+    Expression<String>? itemId,
+    Expression<String>? productId,
+    Expression<String>? productName,
+    Expression<String>? productDescription,
+    Expression<String>? packSize,
+    Expression<double>? quantity,
+    Expression<String>? salesUnit,
+    Expression<double>? salesPrice,
+    Expression<double>? taxAmount,
+    Expression<double>? lineAmount,
+    Expression<String>? inventDimId,
+    Expression<String>? transactionDate,
+    Expression<String>? deviceId,
+    Expression<int>? syncStatus,
+    Expression<int>? companyId,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (salesId != null) 'sales_id': salesId,
+      if (lineId != null) 'line_id': lineId,
+      if (itemId != null) 'item_id': itemId,
+      if (productId != null) 'product_id': productId,
+      if (productName != null) 'product_name': productName,
+      if (productDescription != null) 'product_description': productDescription,
+      if (packSize != null) 'pack_size': packSize,
+      if (quantity != null) 'quantity': quantity,
+      if (salesUnit != null) 'sales_unit': salesUnit,
+      if (salesPrice != null) 'sales_price': salesPrice,
+      if (taxAmount != null) 'tax_amount': taxAmount,
+      if (lineAmount != null) 'line_amount': lineAmount,
+      if (inventDimId != null) 'invent_dim_id': inventDimId,
+      if (transactionDate != null) 'transaction_date': transactionDate,
+      if (deviceId != null) 'device_id': deviceId,
+      if (syncStatus != null) 'sync_status': syncStatus,
+      if (companyId != null) 'company_id': companyId,
+    });
+  }
+
+  SalesLineEntityCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? salesId,
+      Value<int>? lineId,
+      Value<String>? itemId,
+      Value<String>? productId,
+      Value<String>? productName,
+      Value<String>? productDescription,
+      Value<String>? packSize,
+      Value<double>? quantity,
+      Value<String>? salesUnit,
+      Value<double>? salesPrice,
+      Value<double>? taxAmount,
+      Value<double>? lineAmount,
+      Value<String>? inventDimId,
+      Value<String>? transactionDate,
+      Value<String>? deviceId,
+      Value<int>? syncStatus,
+      Value<int>? companyId}) {
+    return SalesLineEntityCompanion(
+      id: id ?? this.id,
+      salesId: salesId ?? this.salesId,
+      lineId: lineId ?? this.lineId,
+      itemId: itemId ?? this.itemId,
+      productId: productId ?? this.productId,
+      productName: productName ?? this.productName,
+      productDescription: productDescription ?? this.productDescription,
+      packSize: packSize ?? this.packSize,
+      quantity: quantity ?? this.quantity,
+      salesUnit: salesUnit ?? this.salesUnit,
+      salesPrice: salesPrice ?? this.salesPrice,
+      taxAmount: taxAmount ?? this.taxAmount,
+      lineAmount: lineAmount ?? this.lineAmount,
+      inventDimId: inventDimId ?? this.inventDimId,
+      transactionDate: transactionDate ?? this.transactionDate,
+      deviceId: deviceId ?? this.deviceId,
+      syncStatus: syncStatus ?? this.syncStatus,
+      companyId: companyId ?? this.companyId,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (salesId.present) {
+      map['sales_id'] = Variable<String>(salesId.value);
+    }
+    if (lineId.present) {
+      map['line_id'] = Variable<int>(lineId.value);
+    }
+    if (itemId.present) {
+      map['item_id'] = Variable<String>(itemId.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (productName.present) {
+      map['product_name'] = Variable<String>(productName.value);
+    }
+    if (productDescription.present) {
+      map['product_description'] = Variable<String>(productDescription.value);
+    }
+    if (packSize.present) {
+      map['pack_size'] = Variable<String>(packSize.value);
+    }
+    if (quantity.present) {
+      map['quantity'] = Variable<double>(quantity.value);
+    }
+    if (salesUnit.present) {
+      map['sales_unit'] = Variable<String>(salesUnit.value);
+    }
+    if (salesPrice.present) {
+      map['sales_price'] = Variable<double>(salesPrice.value);
+    }
+    if (taxAmount.present) {
+      map['tax_amount'] = Variable<double>(taxAmount.value);
+    }
+    if (lineAmount.present) {
+      map['line_amount'] = Variable<double>(lineAmount.value);
+    }
+    if (inventDimId.present) {
+      map['invent_dim_id'] = Variable<String>(inventDimId.value);
+    }
+    if (transactionDate.present) {
+      map['transaction_date'] = Variable<String>(transactionDate.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (syncStatus.present) {
+      map['sync_status'] = Variable<int>(syncStatus.value);
+    }
+    if (companyId.present) {
+      map['company_id'] = Variable<int>(companyId.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SalesLineEntityCompanion(')
+          ..write('id: $id, ')
+          ..write('salesId: $salesId, ')
+          ..write('lineId: $lineId, ')
+          ..write('itemId: $itemId, ')
+          ..write('productId: $productId, ')
+          ..write('productName: $productName, ')
+          ..write('productDescription: $productDescription, ')
+          ..write('packSize: $packSize, ')
+          ..write('quantity: $quantity, ')
+          ..write('salesUnit: $salesUnit, ')
+          ..write('salesPrice: $salesPrice, ')
+          ..write('taxAmount: $taxAmount, ')
+          ..write('lineAmount: $lineAmount, ')
+          ..write('inventDimId: $inventDimId, ')
+          ..write('transactionDate: $transactionDate, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('syncStatus: $syncStatus, ')
+          ..write('companyId: $companyId')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -4556,6 +6153,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $ProductEntityTable productEntity = $ProductEntityTable(this);
   late final $ProductPriceEntityTable productPriceEntity =
       $ProductPriceEntityTable(this);
+  late final $SalesHeaderEntityTable salesHeaderEntity =
+      $SalesHeaderEntityTable(this);
+  late final $SalesLineEntityTable salesLineEntity =
+      $SalesLineEntityTable(this);
   late final Index customerId = Index('customer_id',
       'CREATE INDEX customer_id ON customer_address_entity (customer_id)');
   late final SettingDao settingDao = SettingDao(this as AppDatabase);
@@ -4570,6 +6171,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       ProductPriceDao(this as AppDatabase);
   late final SearchProductHistoryDao searchProductHistoryDao =
       SearchProductHistoryDao(this as AppDatabase);
+  late final SalesHeaderDao salesHeaderDao =
+      SalesHeaderDao(this as AppDatabase);
+  late final SalesLineDao salesLineDao = SalesLineDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -4584,8 +6188,22 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         customerAddressEntity,
         productEntity,
         productPriceEntity,
+        salesHeaderEntity,
+        salesLineEntity,
         customerId
       ];
+  @override
+  StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules(
+        [
+          WritePropagation(
+            on: TableUpdateQuery.onTableName('sales_header_entity',
+                limitUpdateKind: UpdateKind.delete),
+            result: [
+              TableUpdate('sales_line_entity', kind: UpdateKind.delete),
+            ],
+          ),
+        ],
+      );
   @override
   DriftDatabaseOptions get options =>
       const DriftDatabaseOptions(storeDateTimeAsText: true);
@@ -6790,6 +8408,895 @@ typedef $$ProductPriceEntityTableProcessedTableManager = ProcessedTableManager<
     ),
     ProductPriceEntityData,
     PrefetchHooks Function()>;
+typedef $$SalesHeaderEntityTableCreateCompanionBuilder
+    = SalesHeaderEntityCompanion Function({
+  Value<int> id,
+  required String salesId,
+  required String customerId,
+  required String customerName,
+  required String customerAddress,
+  required String salesPersonId,
+  required String customerRequisition,
+  required String customerPriceGroup,
+  required String note,
+  required String deliveryAddressLocation,
+  required String deliveryDate,
+  required String transactionDate,
+  required String deviceId,
+  required int syncStatus,
+  required int companyId,
+});
+typedef $$SalesHeaderEntityTableUpdateCompanionBuilder
+    = SalesHeaderEntityCompanion Function({
+  Value<int> id,
+  Value<String> salesId,
+  Value<String> customerId,
+  Value<String> customerName,
+  Value<String> customerAddress,
+  Value<String> salesPersonId,
+  Value<String> customerRequisition,
+  Value<String> customerPriceGroup,
+  Value<String> note,
+  Value<String> deliveryAddressLocation,
+  Value<String> deliveryDate,
+  Value<String> transactionDate,
+  Value<String> deviceId,
+  Value<int> syncStatus,
+  Value<int> companyId,
+});
+
+final class $$SalesHeaderEntityTableReferences extends BaseReferences<
+    _$AppDatabase, $SalesHeaderEntityTable, SalesHeaderEntityData> {
+  $$SalesHeaderEntityTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$SalesLineEntityTable, List<SalesLineEntityData>>
+      _salesLineEntityRefsTable(_$AppDatabase db) =>
+          MultiTypedResultKey.fromTable(db.salesLineEntity,
+              aliasName: $_aliasNameGenerator(
+                  db.salesHeaderEntity.salesId, db.salesLineEntity.salesId));
+
+  $$SalesLineEntityTableProcessedTableManager get salesLineEntityRefs {
+    final manager =
+        $$SalesLineEntityTableTableManager($_db, $_db.salesLineEntity)
+            .filter((f) => f.salesId.salesId($_item.salesId));
+
+    final cache =
+        $_typedResult.readTableOrNull(_salesLineEntityRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+}
+
+class $$SalesHeaderEntityTableFilterComposer
+    extends Composer<_$AppDatabase, $SalesHeaderEntityTable> {
+  $$SalesHeaderEntityTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get salesId => $composableBuilder(
+      column: $table.salesId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get customerId => $composableBuilder(
+      column: $table.customerId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get customerName => $composableBuilder(
+      column: $table.customerName, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get customerAddress => $composableBuilder(
+      column: $table.customerAddress,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get salesPersonId => $composableBuilder(
+      column: $table.salesPersonId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get customerRequisition => $composableBuilder(
+      column: $table.customerRequisition,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get customerPriceGroup => $composableBuilder(
+      column: $table.customerPriceGroup,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get note => $composableBuilder(
+      column: $table.note, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get deliveryAddressLocation => $composableBuilder(
+      column: $table.deliveryAddressLocation,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get deliveryDate => $composableBuilder(
+      column: $table.deliveryDate, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get transactionDate => $composableBuilder(
+      column: $table.transactionDate,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+      column: $table.deviceId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get syncStatus => $composableBuilder(
+      column: $table.syncStatus, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnFilters(column));
+
+  Expression<bool> salesLineEntityRefs(
+      Expression<bool> Function($$SalesLineEntityTableFilterComposer f) f) {
+    final $$SalesLineEntityTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.salesId,
+        referencedTable: $db.salesLineEntity,
+        getReferencedColumn: (t) => t.salesId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$SalesLineEntityTableFilterComposer(
+              $db: $db,
+              $table: $db.salesLineEntity,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
+}
+
+class $$SalesHeaderEntityTableOrderingComposer
+    extends Composer<_$AppDatabase, $SalesHeaderEntityTable> {
+  $$SalesHeaderEntityTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get salesId => $composableBuilder(
+      column: $table.salesId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get customerId => $composableBuilder(
+      column: $table.customerId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get customerName => $composableBuilder(
+      column: $table.customerName,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get customerAddress => $composableBuilder(
+      column: $table.customerAddress,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get salesPersonId => $composableBuilder(
+      column: $table.salesPersonId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get customerRequisition => $composableBuilder(
+      column: $table.customerRequisition,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get customerPriceGroup => $composableBuilder(
+      column: $table.customerPriceGroup,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get note => $composableBuilder(
+      column: $table.note, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get deliveryAddressLocation => $composableBuilder(
+      column: $table.deliveryAddressLocation,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get deliveryDate => $composableBuilder(
+      column: $table.deliveryDate,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get transactionDate => $composableBuilder(
+      column: $table.transactionDate,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+      column: $table.deviceId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get syncStatus => $composableBuilder(
+      column: $table.syncStatus, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnOrderings(column));
+}
+
+class $$SalesHeaderEntityTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SalesHeaderEntityTable> {
+  $$SalesHeaderEntityTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get salesId =>
+      $composableBuilder(column: $table.salesId, builder: (column) => column);
+
+  GeneratedColumn<String> get customerId => $composableBuilder(
+      column: $table.customerId, builder: (column) => column);
+
+  GeneratedColumn<String> get customerName => $composableBuilder(
+      column: $table.customerName, builder: (column) => column);
+
+  GeneratedColumn<String> get customerAddress => $composableBuilder(
+      column: $table.customerAddress, builder: (column) => column);
+
+  GeneratedColumn<String> get salesPersonId => $composableBuilder(
+      column: $table.salesPersonId, builder: (column) => column);
+
+  GeneratedColumn<String> get customerRequisition => $composableBuilder(
+      column: $table.customerRequisition, builder: (column) => column);
+
+  GeneratedColumn<String> get customerPriceGroup => $composableBuilder(
+      column: $table.customerPriceGroup, builder: (column) => column);
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<String> get deliveryAddressLocation => $composableBuilder(
+      column: $table.deliveryAddressLocation, builder: (column) => column);
+
+  GeneratedColumn<String> get deliveryDate => $composableBuilder(
+      column: $table.deliveryDate, builder: (column) => column);
+
+  GeneratedColumn<String> get transactionDate => $composableBuilder(
+      column: $table.transactionDate, builder: (column) => column);
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<int> get syncStatus => $composableBuilder(
+      column: $table.syncStatus, builder: (column) => column);
+
+  GeneratedColumn<int> get companyId =>
+      $composableBuilder(column: $table.companyId, builder: (column) => column);
+
+  Expression<T> salesLineEntityRefs<T extends Object>(
+      Expression<T> Function($$SalesLineEntityTableAnnotationComposer a) f) {
+    final $$SalesLineEntityTableAnnotationComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.salesId,
+        referencedTable: $db.salesLineEntity,
+        getReferencedColumn: (t) => t.salesId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$SalesLineEntityTableAnnotationComposer(
+              $db: $db,
+              $table: $db.salesLineEntity,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
+}
+
+class $$SalesHeaderEntityTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $SalesHeaderEntityTable,
+    SalesHeaderEntityData,
+    $$SalesHeaderEntityTableFilterComposer,
+    $$SalesHeaderEntityTableOrderingComposer,
+    $$SalesHeaderEntityTableAnnotationComposer,
+    $$SalesHeaderEntityTableCreateCompanionBuilder,
+    $$SalesHeaderEntityTableUpdateCompanionBuilder,
+    (SalesHeaderEntityData, $$SalesHeaderEntityTableReferences),
+    SalesHeaderEntityData,
+    PrefetchHooks Function({bool salesLineEntityRefs})> {
+  $$SalesHeaderEntityTableTableManager(
+      _$AppDatabase db, $SalesHeaderEntityTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SalesHeaderEntityTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SalesHeaderEntityTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SalesHeaderEntityTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> salesId = const Value.absent(),
+            Value<String> customerId = const Value.absent(),
+            Value<String> customerName = const Value.absent(),
+            Value<String> customerAddress = const Value.absent(),
+            Value<String> salesPersonId = const Value.absent(),
+            Value<String> customerRequisition = const Value.absent(),
+            Value<String> customerPriceGroup = const Value.absent(),
+            Value<String> note = const Value.absent(),
+            Value<String> deliveryAddressLocation = const Value.absent(),
+            Value<String> deliveryDate = const Value.absent(),
+            Value<String> transactionDate = const Value.absent(),
+            Value<String> deviceId = const Value.absent(),
+            Value<int> syncStatus = const Value.absent(),
+            Value<int> companyId = const Value.absent(),
+          }) =>
+              SalesHeaderEntityCompanion(
+            id: id,
+            salesId: salesId,
+            customerId: customerId,
+            customerName: customerName,
+            customerAddress: customerAddress,
+            salesPersonId: salesPersonId,
+            customerRequisition: customerRequisition,
+            customerPriceGroup: customerPriceGroup,
+            note: note,
+            deliveryAddressLocation: deliveryAddressLocation,
+            deliveryDate: deliveryDate,
+            transactionDate: transactionDate,
+            deviceId: deviceId,
+            syncStatus: syncStatus,
+            companyId: companyId,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String salesId,
+            required String customerId,
+            required String customerName,
+            required String customerAddress,
+            required String salesPersonId,
+            required String customerRequisition,
+            required String customerPriceGroup,
+            required String note,
+            required String deliveryAddressLocation,
+            required String deliveryDate,
+            required String transactionDate,
+            required String deviceId,
+            required int syncStatus,
+            required int companyId,
+          }) =>
+              SalesHeaderEntityCompanion.insert(
+            id: id,
+            salesId: salesId,
+            customerId: customerId,
+            customerName: customerName,
+            customerAddress: customerAddress,
+            salesPersonId: salesPersonId,
+            customerRequisition: customerRequisition,
+            customerPriceGroup: customerPriceGroup,
+            note: note,
+            deliveryAddressLocation: deliveryAddressLocation,
+            deliveryDate: deliveryDate,
+            transactionDate: transactionDate,
+            deviceId: deviceId,
+            syncStatus: syncStatus,
+            companyId: companyId,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$SalesHeaderEntityTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({salesLineEntityRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (salesLineEntityRefs) db.salesLineEntity
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (salesLineEntityRefs)
+                    await $_getPrefetchedData(
+                        currentTable: table,
+                        referencedTable: $$SalesHeaderEntityTableReferences
+                            ._salesLineEntityRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$SalesHeaderEntityTableReferences(db, table, p0)
+                                .salesLineEntityRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) => referencedItems
+                                .where((e) => e.salesId == item.salesId),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$SalesHeaderEntityTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $SalesHeaderEntityTable,
+    SalesHeaderEntityData,
+    $$SalesHeaderEntityTableFilterComposer,
+    $$SalesHeaderEntityTableOrderingComposer,
+    $$SalesHeaderEntityTableAnnotationComposer,
+    $$SalesHeaderEntityTableCreateCompanionBuilder,
+    $$SalesHeaderEntityTableUpdateCompanionBuilder,
+    (SalesHeaderEntityData, $$SalesHeaderEntityTableReferences),
+    SalesHeaderEntityData,
+    PrefetchHooks Function({bool salesLineEntityRefs})>;
+typedef $$SalesLineEntityTableCreateCompanionBuilder = SalesLineEntityCompanion
+    Function({
+  Value<int> id,
+  required String salesId,
+  required int lineId,
+  required String itemId,
+  required String productId,
+  required String productName,
+  required String productDescription,
+  required String packSize,
+  required double quantity,
+  required String salesUnit,
+  required double salesPrice,
+  required double taxAmount,
+  required double lineAmount,
+  required String inventDimId,
+  required String transactionDate,
+  required String deviceId,
+  required int syncStatus,
+  required int companyId,
+});
+typedef $$SalesLineEntityTableUpdateCompanionBuilder = SalesLineEntityCompanion
+    Function({
+  Value<int> id,
+  Value<String> salesId,
+  Value<int> lineId,
+  Value<String> itemId,
+  Value<String> productId,
+  Value<String> productName,
+  Value<String> productDescription,
+  Value<String> packSize,
+  Value<double> quantity,
+  Value<String> salesUnit,
+  Value<double> salesPrice,
+  Value<double> taxAmount,
+  Value<double> lineAmount,
+  Value<String> inventDimId,
+  Value<String> transactionDate,
+  Value<String> deviceId,
+  Value<int> syncStatus,
+  Value<int> companyId,
+});
+
+final class $$SalesLineEntityTableReferences extends BaseReferences<
+    _$AppDatabase, $SalesLineEntityTable, SalesLineEntityData> {
+  $$SalesLineEntityTableReferences(
+      super.$_db, super.$_table, super.$_typedResult);
+
+  static $SalesHeaderEntityTable _salesIdTable(_$AppDatabase db) =>
+      db.salesHeaderEntity.createAlias($_aliasNameGenerator(
+          db.salesLineEntity.salesId, db.salesHeaderEntity.salesId));
+
+  $$SalesHeaderEntityTableProcessedTableManager get salesId {
+    final manager =
+        $$SalesHeaderEntityTableTableManager($_db, $_db.salesHeaderEntity)
+            .filter((f) => f.salesId($_item.salesId!));
+    final item = $_typedResult.readTableOrNull(_salesIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+}
+
+class $$SalesLineEntityTableFilterComposer
+    extends Composer<_$AppDatabase, $SalesLineEntityTable> {
+  $$SalesLineEntityTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get lineId => $composableBuilder(
+      column: $table.lineId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get itemId => $composableBuilder(
+      column: $table.itemId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get productId => $composableBuilder(
+      column: $table.productId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get productName => $composableBuilder(
+      column: $table.productName, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get productDescription => $composableBuilder(
+      column: $table.productDescription,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get packSize => $composableBuilder(
+      column: $table.packSize, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get quantity => $composableBuilder(
+      column: $table.quantity, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get salesUnit => $composableBuilder(
+      column: $table.salesUnit, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get salesPrice => $composableBuilder(
+      column: $table.salesPrice, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get taxAmount => $composableBuilder(
+      column: $table.taxAmount, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get lineAmount => $composableBuilder(
+      column: $table.lineAmount, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get inventDimId => $composableBuilder(
+      column: $table.inventDimId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get transactionDate => $composableBuilder(
+      column: $table.transactionDate,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+      column: $table.deviceId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get syncStatus => $composableBuilder(
+      column: $table.syncStatus, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnFilters(column));
+
+  $$SalesHeaderEntityTableFilterComposer get salesId {
+    final $$SalesHeaderEntityTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.salesId,
+        referencedTable: $db.salesHeaderEntity,
+        getReferencedColumn: (t) => t.salesId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$SalesHeaderEntityTableFilterComposer(
+              $db: $db,
+              $table: $db.salesHeaderEntity,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$SalesLineEntityTableOrderingComposer
+    extends Composer<_$AppDatabase, $SalesLineEntityTable> {
+  $$SalesLineEntityTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get lineId => $composableBuilder(
+      column: $table.lineId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get itemId => $composableBuilder(
+      column: $table.itemId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+      column: $table.productId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get productName => $composableBuilder(
+      column: $table.productName, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get productDescription => $composableBuilder(
+      column: $table.productDescription,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get packSize => $composableBuilder(
+      column: $table.packSize, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get quantity => $composableBuilder(
+      column: $table.quantity, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get salesUnit => $composableBuilder(
+      column: $table.salesUnit, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get salesPrice => $composableBuilder(
+      column: $table.salesPrice, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get taxAmount => $composableBuilder(
+      column: $table.taxAmount, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get lineAmount => $composableBuilder(
+      column: $table.lineAmount, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get inventDimId => $composableBuilder(
+      column: $table.inventDimId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get transactionDate => $composableBuilder(
+      column: $table.transactionDate,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+      column: $table.deviceId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get syncStatus => $composableBuilder(
+      column: $table.syncStatus, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get companyId => $composableBuilder(
+      column: $table.companyId, builder: (column) => ColumnOrderings(column));
+
+  $$SalesHeaderEntityTableOrderingComposer get salesId {
+    final $$SalesHeaderEntityTableOrderingComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.salesId,
+        referencedTable: $db.salesHeaderEntity,
+        getReferencedColumn: (t) => t.salesId,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$SalesHeaderEntityTableOrderingComposer(
+              $db: $db,
+              $table: $db.salesHeaderEntity,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$SalesLineEntityTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SalesLineEntityTable> {
+  $$SalesLineEntityTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get lineId =>
+      $composableBuilder(column: $table.lineId, builder: (column) => column);
+
+  GeneratedColumn<String> get itemId =>
+      $composableBuilder(column: $table.itemId, builder: (column) => column);
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get productName => $composableBuilder(
+      column: $table.productName, builder: (column) => column);
+
+  GeneratedColumn<String> get productDescription => $composableBuilder(
+      column: $table.productDescription, builder: (column) => column);
+
+  GeneratedColumn<String> get packSize =>
+      $composableBuilder(column: $table.packSize, builder: (column) => column);
+
+  GeneratedColumn<double> get quantity =>
+      $composableBuilder(column: $table.quantity, builder: (column) => column);
+
+  GeneratedColumn<String> get salesUnit =>
+      $composableBuilder(column: $table.salesUnit, builder: (column) => column);
+
+  GeneratedColumn<double> get salesPrice => $composableBuilder(
+      column: $table.salesPrice, builder: (column) => column);
+
+  GeneratedColumn<double> get taxAmount =>
+      $composableBuilder(column: $table.taxAmount, builder: (column) => column);
+
+  GeneratedColumn<double> get lineAmount => $composableBuilder(
+      column: $table.lineAmount, builder: (column) => column);
+
+  GeneratedColumn<String> get inventDimId => $composableBuilder(
+      column: $table.inventDimId, builder: (column) => column);
+
+  GeneratedColumn<String> get transactionDate => $composableBuilder(
+      column: $table.transactionDate, builder: (column) => column);
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<int> get syncStatus => $composableBuilder(
+      column: $table.syncStatus, builder: (column) => column);
+
+  GeneratedColumn<int> get companyId =>
+      $composableBuilder(column: $table.companyId, builder: (column) => column);
+
+  $$SalesHeaderEntityTableAnnotationComposer get salesId {
+    final $$SalesHeaderEntityTableAnnotationComposer composer =
+        $composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.salesId,
+            referencedTable: $db.salesHeaderEntity,
+            getReferencedColumn: (t) => t.salesId,
+            builder: (joinBuilder,
+                    {$addJoinBuilderToRootComposer,
+                    $removeJoinBuilderFromRootComposer}) =>
+                $$SalesHeaderEntityTableAnnotationComposer(
+                  $db: $db,
+                  $table: $db.salesHeaderEntity,
+                  $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                  joinBuilder: joinBuilder,
+                  $removeJoinBuilderFromRootComposer:
+                      $removeJoinBuilderFromRootComposer,
+                ));
+    return composer;
+  }
+}
+
+class $$SalesLineEntityTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $SalesLineEntityTable,
+    SalesLineEntityData,
+    $$SalesLineEntityTableFilterComposer,
+    $$SalesLineEntityTableOrderingComposer,
+    $$SalesLineEntityTableAnnotationComposer,
+    $$SalesLineEntityTableCreateCompanionBuilder,
+    $$SalesLineEntityTableUpdateCompanionBuilder,
+    (SalesLineEntityData, $$SalesLineEntityTableReferences),
+    SalesLineEntityData,
+    PrefetchHooks Function({bool salesId})> {
+  $$SalesLineEntityTableTableManager(
+      _$AppDatabase db, $SalesLineEntityTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SalesLineEntityTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SalesLineEntityTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SalesLineEntityTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> salesId = const Value.absent(),
+            Value<int> lineId = const Value.absent(),
+            Value<String> itemId = const Value.absent(),
+            Value<String> productId = const Value.absent(),
+            Value<String> productName = const Value.absent(),
+            Value<String> productDescription = const Value.absent(),
+            Value<String> packSize = const Value.absent(),
+            Value<double> quantity = const Value.absent(),
+            Value<String> salesUnit = const Value.absent(),
+            Value<double> salesPrice = const Value.absent(),
+            Value<double> taxAmount = const Value.absent(),
+            Value<double> lineAmount = const Value.absent(),
+            Value<String> inventDimId = const Value.absent(),
+            Value<String> transactionDate = const Value.absent(),
+            Value<String> deviceId = const Value.absent(),
+            Value<int> syncStatus = const Value.absent(),
+            Value<int> companyId = const Value.absent(),
+          }) =>
+              SalesLineEntityCompanion(
+            id: id,
+            salesId: salesId,
+            lineId: lineId,
+            itemId: itemId,
+            productId: productId,
+            productName: productName,
+            productDescription: productDescription,
+            packSize: packSize,
+            quantity: quantity,
+            salesUnit: salesUnit,
+            salesPrice: salesPrice,
+            taxAmount: taxAmount,
+            lineAmount: lineAmount,
+            inventDimId: inventDimId,
+            transactionDate: transactionDate,
+            deviceId: deviceId,
+            syncStatus: syncStatus,
+            companyId: companyId,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String salesId,
+            required int lineId,
+            required String itemId,
+            required String productId,
+            required String productName,
+            required String productDescription,
+            required String packSize,
+            required double quantity,
+            required String salesUnit,
+            required double salesPrice,
+            required double taxAmount,
+            required double lineAmount,
+            required String inventDimId,
+            required String transactionDate,
+            required String deviceId,
+            required int syncStatus,
+            required int companyId,
+          }) =>
+              SalesLineEntityCompanion.insert(
+            id: id,
+            salesId: salesId,
+            lineId: lineId,
+            itemId: itemId,
+            productId: productId,
+            productName: productName,
+            productDescription: productDescription,
+            packSize: packSize,
+            quantity: quantity,
+            salesUnit: salesUnit,
+            salesPrice: salesPrice,
+            taxAmount: taxAmount,
+            lineAmount: lineAmount,
+            inventDimId: inventDimId,
+            transactionDate: transactionDate,
+            deviceId: deviceId,
+            syncStatus: syncStatus,
+            companyId: companyId,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$SalesLineEntityTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({salesId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (salesId) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.salesId,
+                    referencedTable:
+                        $$SalesLineEntityTableReferences._salesIdTable(db),
+                    referencedColumn: $$SalesLineEntityTableReferences
+                        ._salesIdTable(db)
+                        .salesId,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$SalesLineEntityTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $SalesLineEntityTable,
+    SalesLineEntityData,
+    $$SalesLineEntityTableFilterComposer,
+    $$SalesLineEntityTableOrderingComposer,
+    $$SalesLineEntityTableAnnotationComposer,
+    $$SalesLineEntityTableCreateCompanionBuilder,
+    $$SalesLineEntityTableUpdateCompanionBuilder,
+    (SalesLineEntityData, $$SalesLineEntityTableReferences),
+    SalesLineEntityData,
+    PrefetchHooks Function({bool salesId})>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -6820,6 +9327,10 @@ class $AppDatabaseManager {
       $$ProductEntityTableTableManager(_db, _db.productEntity);
   $$ProductPriceEntityTableTableManager get productPriceEntity =>
       $$ProductPriceEntityTableTableManager(_db, _db.productPriceEntity);
+  $$SalesHeaderEntityTableTableManager get salesHeaderEntity =>
+      $$SalesHeaderEntityTableTableManager(_db, _db.salesHeaderEntity);
+  $$SalesLineEntityTableTableManager get salesLineEntity =>
+      $$SalesLineEntityTableTableManager(_db, _db.salesLineEntity);
 }
 
 // **************************************************************************

@@ -4,14 +4,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:setting/data/repository/isetting_repository.dart';
 import 'package:setting/data/repository/setting_repository.dart';
 import 'package:multiple_result/multiple_result.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final settingServiceProvider = Provider<IsettingService>((ref) {
+part 'setting_service.g.dart';
+
+@Riverpod(keepAlive: true)
+ISettingService settingService(Ref ref) {
   final settingRepository = ref.watch(settingRepositoryProvider);
-
   return SettingService(settingRepository);
-});
+}
 
-final class SettingService implements IsettingService {
+final class SettingService implements ISettingService {
   final ISettingRepository _settingRepository;
 
   SettingService(this._settingRepository);
@@ -93,20 +96,16 @@ final class SettingService implements IsettingService {
   }
 
   @override
-  Future<Result<Map<String, String>, Failure>> getAllSetting() async {
+  Future<Map<String, String>> getAllSetting() async {
     try {
-      final result = await _settingRepository.getAllSettings();
-
-      return Success(result);
-    } on Failure catch (e) {
-      return Error(e);
+      return await _settingRepository.getAllSettings();
+    } on Failure catch (_) {
+      rethrow;
     } catch (e, s) {
-      return Error(
-        Failure(
-          message: e.toString(),
-          exception: e as Exception,
-          stackTrace: s,
-        ),
+      throw Failure(
+        message: e.toString(),
+        exception: e as Exception,
+        stackTrace: s,
       );
     }
   }

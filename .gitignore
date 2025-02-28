@@ -72,4 +72,5 @@ codemagic.sh
 # FVM Version Cache
 .fvm/
 
-google_playservice_account.json
+google_playservice_account_prod.json
+google_playservice_account_qa.json

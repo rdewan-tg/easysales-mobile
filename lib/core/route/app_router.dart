@@ -145,7 +145,7 @@ class AppRouter {
       },
       branches: [
         _homeBranch(),
-        _salesBranch(),
+        _orderHistoryBranch(),
         _merchandiserBranch(),
         _settingBranch(),
       ],
@@ -168,22 +168,20 @@ class AppRouter {
     );
   }
 
-  StatefulShellBranch _salesBranch() {
+  StatefulShellBranch _orderHistoryBranch() {
     return StatefulShellBranch(
       routes: [
         GoRoute(
-          path: '/$salesRoute',
-          name: salesRoute,
+          path: '/$orderHistoryRoute',
+          name: orderHistoryRoute,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
             name: state.name,
-            child: const SalesCustomerScreen(),
+            child: const OrderHistoryScreen(),
           ),
           routes: [
-            _searchSalesCustomerRoute(),
-            _productRoute(),
-            _productImportRoute(),
-            _createOrderRoute(),
+            _orderHistoryDetailRoute(),
+            _salesBranch(),
           ],
         ),
       ],
@@ -204,7 +202,7 @@ class AppRouter {
           routes: [
             _captureImageRoute(),
             _searchMerchandiserCustomerRoute(),
-            _customerImportRoute(),
+            _merchandiserCustomerImportRoute(),
           ],
         ),
       ],
@@ -230,6 +228,36 @@ class AppRouter {
           ],
         ),
       ],
+    );
+  }
+
+  RouteBase _salesBranch() {
+    return GoRoute(
+      path: '/$salesRoute',
+      name: salesRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const SalesCustomerScreen(),
+      ),
+      routes: [
+        _searchSalesCustomerRoute(),
+        _productRoute(),
+        _productImportRoute(),
+        _createOrderRoute(),
+        _salesCustomerImportRoute(),
+      ],
+    );
+  }
+
+  RouteBase _orderHistoryDetailRoute() {
+    return GoRoute(
+      path: '/$orderHistoryDetailRoute/:salesId',
+      name: orderHistoryDetailRoute,
+      builder: (context, state) {
+        final salesId = state.pathParameters['salesId'] ?? '';
+        return OrderHistoryDetailScreen(salesId: salesId);
+      },
     );
   }
 
@@ -361,12 +389,22 @@ class AppRouter {
     );
   }
 
-  RouteBase _customerImportRoute() {
+  RouteBase _merchandiserCustomerImportRoute() {
     return GoRoute(
-      path: '/$customerImportRoute',
-      name: customerImportRoute,
+      path: '/$merchandiserCustomerImportRoute',
+      name: merchandiserCustomerImportRoute,
       builder: (context, state) {
-        return const CustomerImportScreen();
+        return const MerchandiserCustomerImportScreen();
+      },
+    );
+  }
+
+  RouteBase _salesCustomerImportRoute() {
+    return GoRoute(
+      path: '/$salesCustomerImportRoute',
+      name: salesCustomerImportRoute,
+      builder: (context, state) {
+        return const SalesCustomerImportScreen();
       },
     );
   }
@@ -376,7 +414,10 @@ class AppRouter {
       path: '/$createOrderRoute',
       name: createOrderRoute,
       builder: (context, state) {
-        return const SalesOrderScreen();
+        final extras = state.extra as Map<String, dynamic>;
+        return SalesOrderScreen(
+          extras: extras,
+        );
       },
       routes: [
         _searchProductRoute(),

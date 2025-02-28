@@ -127,6 +127,17 @@ final class SalesCustomerService implements ISalesCustomerService {
       watchSearchCustomerHistory() {
     return _salesCustomerRepository.watchSearchCustomerHistory();
   }
+
+  @override
+  Future<SalesCustomerEntityData?> getCustomerByCustomerId(
+    String customerId,
+  ) async {
+    try {
+      return await _salesCustomerRepository.getCustomerByCustomerId(customerId);
+    } on Failure catch (_) {
+      rethrow;
+    }
+  }
 }
 
 // top level function for isolate

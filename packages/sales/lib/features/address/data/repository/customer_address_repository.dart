@@ -109,4 +109,21 @@ final class CustomerAddressRepository
   Stream<List<CustomerAddressEntityData>> watchAll(String? searchQuery) {
     return _customerAddressDao.watchAll(searchQuery: searchQuery);
   }
+
+  @override
+  Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
+    String postalAddress,
+  ) async {
+    try {
+      return await _customerAddressDao
+          .getCustomerAddressByPostalAddress(postalAddress);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
 }

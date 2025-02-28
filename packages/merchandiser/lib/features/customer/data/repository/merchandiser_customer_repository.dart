@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 import 'package:common/exception/failure.dart';
 import 'package:core/data/local/db/app_database.dart';
 import 'package:common/dto/customer/customer_response.dart';
-import 'package:core/data/local/db/dao/sales_customer_dao.dart';
+import 'package:core/data/local/db/dao/merchandiser_customer_dao.dart';
 import 'package:core/data/local/db/dao/search_merchandiser_customer_history_dao.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:dio/dio.dart';
@@ -13,7 +13,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final merchandiserCustomerRepositoryProvider =
     Provider.autoDispose<IMerchandiserCustomerRepository>((ref) {
   final merchandiserCustomerApi = ref.watch(merchandiserCustomerApiProvider);
-  final customerDaoProvider = ref.watch(salesCustomerDaoProvider);
+  final customerDaoProvider = ref.watch(merchandiserCustomerDaoProvider);
   final settingDao = ref.watch(settingDaoProvider);
   final searchHistoryDao = ref
       .watch(searchMerchandiserCustomerHistoryDaoProvider); // searchHistoryDao
@@ -30,7 +30,7 @@ final class MerchandiserCustomerRepository
     with DioExceptionMapper
     implements IMerchandiserCustomerRepository {
   final MerchandiserCustomerApi _merchandiserCustomerApi;
-  final SalesCustomerDao _customerDao;
+  final MerchandiserCustomerDao _customerDao;
   final SettingDao _settingDao;
   final SearchMerchandiserCustomerHistoryDao _searchHistoryDao;
 
@@ -85,10 +85,10 @@ final class MerchandiserCustomerRepository
   }
 
   @override
-  Stream<List<SalesCustomerEntityData>> watchAll(
+  Stream<List<MerchandiserCustomerEntityData>> watchAll(
     String? searchQuery,
   ) {
-    return _customerDao.watchAll(searchQuery);
+    return _customerDao.watchAll(searchQuery: searchQuery);
   }
 
   @override
@@ -98,7 +98,7 @@ final class MerchandiserCustomerRepository
   }
 
   @override
-  Future<void> insertOrUpdate(List<SalesCustomerEntityData> data) async {
+  Future<void> insertOrUpdate(List<MerchandiserCustomerEntityData> data) async {
     try {
       return await _customerDao.insertOrUpdateList(data);
     } catch (e, stackTrace) {

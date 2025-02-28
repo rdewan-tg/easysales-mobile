@@ -9,16 +9,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      ref.read(siteVisitControllerProvider.notifier).toDaySiteVisitReport();
-      ref.read(siteVisitControllerProvider.notifier).thisMonthSiteVisitReport();
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

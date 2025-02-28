@@ -81,7 +81,7 @@ final class MerchandiserCustomerService
   }
 
   @override
-  Stream<List<SalesCustomerEntityData>> watchAll(
+  Stream<List<MerchandiserCustomerEntityData>> watchAll(
     String? searchQuery,
   ) {
     return _merchandiserCustomerRepository.watchAll(searchQuery);
@@ -135,12 +135,12 @@ final class MerchandiserCustomerService
 }
 
 // top level function for isolate
-List<SalesCustomerEntityData> _mapToMerchandiserCustomerEntityData(
+List<MerchandiserCustomerEntityData> _mapToMerchandiserCustomerEntityData(
   CustomerResponse response,
 ) {
   return response.data
       .map(
-        (e) => SalesCustomerEntityData(
+        (e) => MerchandiserCustomerEntityData(
           customerId: e.customerId,
           customerName: e.customerName,
           address: e.address,

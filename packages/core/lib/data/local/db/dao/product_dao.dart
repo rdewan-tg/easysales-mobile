@@ -1,6 +1,7 @@
 import 'package:common/exception/failure.dart';
 import 'package:core/data/local/db/app_database.dart';
 import 'package:core/data/local/db/entity/product_entity.dart';
+import 'package:core/data/local/db/entity/product_price_entity.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -32,7 +33,7 @@ Future<void> insertOrUpdateProductList(List<ProductEntityData> dataList) async {
   }
 }
 
-@DriftAccessor(tables: [ProductEntity])
+@DriftAccessor(tables: [ProductEntity, ProductPriceEntity])
 class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
   ProductDao(super.db);
 
@@ -54,7 +55,7 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
     }
   }
 
-  Stream<List<ProductEntityData>> watchAll({
+  Stream<List<ProductEntityData>> watchAllProducts({
     String? searchQuery,
   }) {
     final query = select(productEntity);
@@ -79,5 +80,53 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
     return query.watch().handleError((e, s) {
       throw Failure(message: e.toString(), stackTrace: s);
     });
+  }
+
+  Stream<List<ProductEntityData>> watchAllByPriceGroup({
+    String? searchQuery,
+    required String priceGroup,
+  }) {
+    final query = select(productEntity).join(
+      [
+        innerJoin(
+          productPriceEntity,
+          productPriceEntity.itemId.equalsExp(productEntity.itemId) &
+              productPriceEntity.priceGroup.equals(priceGroup),
+        ),
+      ],
+    );
+
+    if (searchQuery != null && searchQuery.isNotEmpty) {
+      final formattedSearchQuery =
+          '%$searchQuery%'; // Add wildcards to match anywhere in the string
+
+      query.where(
+        productEntity.itemId.like(formattedSearchQuery) |
+            productEntity.productName.like(formattedSearchQuery),
+      );
+    }
+
+    // Order by productName in ascending order
+    query.orderBy([
+      OrderingTerm(
+        expression: productEntity.productName,
+        mode: OrderingMode.asc,
+      ),
+    ]);
+
+    return query.watch().map((rows) {
+      return rows.map((row) {
+        return row.readTable(productEntity);
+      }).toList();
+    }).handleError((e, s) {
+      throw Failure(message: e.toString(), stackTrace: s);
+    });
+  }
+
+  Future<ProductEntityData?> getProductByItemId(String itemId) async {
+    final query = select(productEntity)
+      ..where((tbl) => tbl.itemId.equals(itemId));
+
+    return query.getSingleOrNull();
   }
 }
