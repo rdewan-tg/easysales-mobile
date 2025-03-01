@@ -28,6 +28,10 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
     final customer = ref
         .watch(merchandiserCustomerProvider.select((value) => value.customers));
 
+    if (customer.isEmpty) {
+      return const SliverFillRemaining(child: EmptyDataWidget());
+    }
+
     return SliverList.builder(
       itemCount: customer.length,
       itemBuilder: (context, index) {
@@ -89,7 +93,7 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 5),
-              backgroundColor: Colors.red,
+              backgroundColor: context.themeColor.colorScheme.error,
               content: Text(
                 next,
                 style: context.textTheme.titleSmall?.copyWith(

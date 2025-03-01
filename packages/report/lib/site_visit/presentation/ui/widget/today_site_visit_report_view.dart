@@ -8,6 +8,10 @@ class TodaySiteVisitReportView extends ConsumerWidget {
     final visitDetails = ref.watch(
       siteVisitControllerProvider.select((value) => value.todayVisitDetails),
     );
+
+    if (visitDetails.isEmpty) {
+      return const EmptyDataWidget();
+    }
     return ListView.builder(
       itemCount: visitDetails.length,
       itemBuilder: (context, index) {

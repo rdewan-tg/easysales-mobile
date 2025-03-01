@@ -15,4 +15,8 @@ abstract interface class ICustomerAddressService {
   Stream<List<CustomerAddressEntityData>> watchAll(
     String? searchQuery,
   );
+
+  Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
+    String postalAddress,
+  );
 }

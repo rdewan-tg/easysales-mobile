@@ -1,3 +1,4 @@
+import 'package:core/data/local/db/app_database.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'sales_header_state.freezed.dart';
@@ -5,16 +6,13 @@ part 'sales_header_state.freezed.dart';
 @freezed
 class SalesHeaderState with _$SalesHeaderState {
   factory SalesHeaderState({
-    @Default('') String salesId,
-    @Default('') String customerId,
-    @Default('') String customerName,
-    @Default('') String customerAddress,
-    @Default('') String salesPersonId,
-    @Default('') String deviceId,
-    @Default('') String customerRequisition,
-    @Default('') String customerPriceGroup,
-    @Default('') String note,
-    @Default('') String deliveryDate,
-    @Default('') String transactionDate,
+    @Default(false) bool isLoading,
+    @Default(false) bool isOrderSynced,
+    @Default([]) List<SalesHeaderEntityData> salesHeaders,
+    CustomerAddressEntityData? customerAddressData,
+    SalesCustomerEntityData? customerData,
+    SalesHeaderEntityData? salesHeaderData,
+    Map<String, String>? settings,
+    String? errorMsg,
   }) = _SalesHeaderState;
 }

@@ -23,8 +23,8 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 part 'features/customer/presentation/ui/merchandiser_customer_screen.dart';
-part 'features/customer/presentation/ui/customer_import_screen.dart';
-part 'features/customer/presentation/ui/widget/customer_import_view.dart';
+part 'features/customer/presentation/ui/merchandiser_customer_import_screen.dart';
+part 'features/customer/presentation/ui/widget/merchandiser_customer_import_view.dart';
 
 part 'features/photo/presentation/ui/capture_image_screen.dart';
 part 'features/customer/presentation/ui/widget/customer_list_widget.dart';

@@ -9,6 +9,9 @@ class ThisMonthSiteVisitReportView extends ConsumerWidget {
       siteVisitControllerProvider
           .select((value) => value.thisMonthVisitDetails),
     );
+    if (visitDetails.isEmpty) {
+      return const EmptyDataWidget();
+    }
     return ListView.builder(
       itemCount: visitDetails.length,
       itemBuilder: (context, index) {

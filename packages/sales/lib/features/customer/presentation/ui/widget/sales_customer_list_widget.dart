@@ -1,14 +1,14 @@
 part of sales;
 
-class CustomerListWidget extends ConsumerStatefulWidget {
-  const CustomerListWidget({super.key});
+class SalesCustomerListWidget extends ConsumerStatefulWidget {
+  const SalesCustomerListWidget({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
       _CustomerListWidgetState();
 }
 
-class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
+class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
   late AnimationStyle _animationStyle;
   late PersistentBottomSheetController _bottomSheetController;
 
@@ -27,6 +27,10 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
 
     final customer =
         ref.watch(salesCustomerProvider.select((value) => value.customers));
+
+    if (customer.isEmpty) {
+      return const SliverFillRemaining(child: EmptyDataWidget());
+    }
 
     return SliverList.builder(
       itemCount: customer.length,
@@ -89,7 +93,7 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 5),
-              backgroundColor: Colors.red,
+              backgroundColor: context.themeColor.colorScheme.error,
               content: Text(
                 next,
                 style: context.textTheme.titleSmall?.copyWith(

@@ -59,4 +59,13 @@ class CustomerAddressDao extends DatabaseAccessor<AppDatabase>
       throw Failure(message: e.toString(), stackTrace: s);
     });
   }
+
+  Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
+    String postalAddress,
+  ) async {
+    final result = await (select(customerAddressEntity)
+          ..where((tbl) => tbl.postalAddress.equals(postalAddress)))
+        .getSingle();
+    return result;
+  }
 }

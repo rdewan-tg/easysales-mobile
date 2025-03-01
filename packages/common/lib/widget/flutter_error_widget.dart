@@ -14,9 +14,9 @@ class FlutterErrorWidget extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(width: kSmall),
-                const Icon(
+                Icon(
                   Icons.error_outline,
-                  color: Colors.red,
+                  color: context.themeColor.colorScheme.error,
                 ),
                 const SizedBox(width: kSmall),
                 ListView(
