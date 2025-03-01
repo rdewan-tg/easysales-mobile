@@ -7,11 +7,11 @@ import 'package:sales/features/order/presentation/state/sales_line_state.dart';
 import 'package:drift/drift.dart';
 
 final salesLineControllerProvider =
-    NotifierProvider<SalesLineController, SalesLineState>(
+    AutoDisposeNotifierProvider<SalesLineController, SalesLineState>(
   SalesLineController.new,
 );
 
-class SalesLineController extends Notifier<SalesLineState> {
+class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
   StreamSubscription<List<SalesLineEntityData>>? _subscriptionSalesLine;
   @override
   SalesLineState build() {
