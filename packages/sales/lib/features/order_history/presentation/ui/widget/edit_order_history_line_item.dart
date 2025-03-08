@@ -1,23 +1,27 @@
 part of sales;
 
-class EditLineItem extends ConsumerStatefulWidget {
+class EditOrderHistoryLineItem extends ConsumerStatefulWidget {
   final VoidCallback onClose;
+  final String salesId;
   final String itemId;
   final int lineId;
   final String priceGroup;
-  const EditLineItem({
+  const EditOrderHistoryLineItem({
     super.key,
     required this.onClose,
+    required this.salesId,
     required this.itemId,
     required this.lineId,
     required this.priceGroup,
   });
 
   @override
-  ConsumerState<EditLineItem> createState() => _EditLineItemState();
+  ConsumerState<EditOrderHistoryLineItem> createState() =>
+      _EditOrderHistoryLineItemState();
 }
 
-class _EditLineItemState extends ConsumerState<EditLineItem> {
+class _EditOrderHistoryLineItemState
+    extends ConsumerState<EditOrderHistoryLineItem> {
   late TextEditingController _uomController;
   late TextEditingController _qtyController;
   late TextEditingController _packSizeController;
@@ -65,15 +69,20 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
                 ),
               ],
             ),
-            Text(
-              ref
-                  .read(productControllerProvider.notifier)
-                  .getProductName(widget.itemId),
-              style: context.textTheme.labelLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-                overflow: TextOverflow.ellipsis,
-              ),
-              maxLines: 2,
+            Consumer(
+              builder: (context, ref, child) {
+                final name = ref
+                    .read(orderHistoryControllerProvider.notifier)
+                    .getProductName(widget.itemId);
+                return Text(
+                  name,
+                  style: context.textTheme.labelLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  maxLines: 2,
+                );
+              },
             ),
             const SizedBox(height: kMedium),
             Consumer(
@@ -166,7 +175,7 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
                     );
 
                     final isOrderSynced = ref.watch(
-                      salesLineControllerProvider
+                      orderHistoryControllerProvider
                           .select((value) => value.isOrderSynced),
                     );
 
@@ -200,12 +209,13 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
         );
   }
 
-  void _editSaleLine() {
-    final product =
-        ref.read(productControllerProvider.notifier).getProduct(widget.itemId);
+  void _editSaleLine() async {
+    // get the product
+    final product = await ref
+        .read(productControllerProvider.notifier)
+        .getProductByItemId(widget.itemId);
+    // get the price
     final price = ref.read(productControllerProvider.notifier).getPrice();
-    final salesId =
-        ref.read(salesHeaderControlelrProvider.notifier).getSalesId();
 
     if (price == null || product == null) return;
 
@@ -215,8 +225,10 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
             : (double.parse(_priceController.text) *
                     double.parse(_qtyController.text))
                 .toStringAsFixed(2);
-    ref.read(salesLineControllerProvider.notifier).updateSalesLine(
-          salesId: salesId,
+
+    // update sales line
+    ref.read(orderHistoryControllerProvider.notifier).updateSalesLine(
+          salesId: widget.salesId,
           lineId: widget.lineId,
           salesUnit: _uomController.text,
           packaSize: _packSizeController.text,

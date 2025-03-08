@@ -28,6 +28,15 @@ class _CustomerImportViewState
             icon: const Icon(Icons.import_export),
           ),
           const SizedBox(height: kSmall),
+          ElevatedButton.icon(
+            onPressed: () {
+              ref
+                  .read(addressControllerProvider.notifier)
+                  .importCustomerAddresses();
+            },
+            label: Text(context.localizations('merchandiser.addressImport')),
+            icon: const Icon(Icons.import_export),
+          ),
         ],
       ),
     );
@@ -76,8 +85,39 @@ class _CustomerImportViewState
       },
     );
 
+    // listen for error in address controller
+    ref.listen(
+      addressControllerProvider.select((value) => value.errorMsg),
+      (_, next) {
+        if (next != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 5),
+              backgroundColor: context.themeColor.colorScheme.error,
+              content: Text(
+                next,
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+
     // listen for loading
     ref.listen(merchandiserCustomerProvider.select((value) => value.isLoading),
+        (_, next) {
+      if (next) {
+        context.loaderOverlay.show();
+      } else {
+        context.loaderOverlay.hide();
+      }
+    });
+
+    // listen for loading in address controller
+    ref.listen(addressControllerProvider.select((value) => value.isLoading),
         (_, next) {
       if (next) {
         context.loaderOverlay.show();
