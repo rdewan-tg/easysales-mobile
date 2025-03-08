@@ -56,5 +56,7 @@
     "product.importPrice": "ราคานำเข้า",
     "sales.customerImport": "ลูกค้านำเข้า",
     "merchandiser.customerImport": "ลูกค้านำเข้า",
-    "common.noData": "ไม่มีข้อมูล"
+    "common.noData": "ไม่มีข้อมูล",
+    "sales.addressImport": "การนำเข้าที่อยู่",
+    "merchandiser.addressImport": "การนำเข้าที่อยู่"
 }

@@ -30,7 +30,7 @@
     "home.viewMore": "Lihat Lagi",
     "sales.clearSearchHistory": "Kosongkan Sejarah Carian",
     "merchandiser.clearSearchHistory": "Kosongkan Sejarah Carian",
-    "report.todaysReport": "Laporan Hari ini",
+    "report.todaysReport": "Laporan Hari Ini",
     "report.yesterdaysReport": "Laporan Semalam",
     "report.thisMonthReport": "Laporan Bulan Ini",
     "report.todaysVisit": "Lawatan Hari Ini",
@@ -56,5 +56,7 @@
     "product.importPrice": "Harga Import",
     "sales.customerImport": "Import Pelanggan",
     "merchandiser.customerImport": "Import Pelanggan",
-    "common.noData": "Tiada Data Tersedia"
+    "common.noData": "Tiada Data Tersedia",
+    "sales.addressImport": "Alamat Import",
+    "merchandiser.addressImport": "Alamat Import"
 }

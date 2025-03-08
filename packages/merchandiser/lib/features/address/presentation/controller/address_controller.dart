@@ -20,6 +20,7 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
   }
 
   Future<void> importCustomerAddresses() async {
+    state = state.copyWith(isLoading: true, errorMsg: null);
     // get the setting from the database
     final setting =
         await ref.read(customerAddressServiceProvider).getAllSettings();
@@ -31,8 +32,12 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
         .read(customerAddressServiceProvider)
         .filterCustomerAddresses(companyCode, salesPersonId);
     result.when(
-      (success) {},
-      (error) {},
+      (success) {
+        state = state.copyWith(isLoading: false);
+      },
+      (error) {
+        state = state.copyWith(isLoading: false, errorMsg: error.message);
+      },
     );
   }
 

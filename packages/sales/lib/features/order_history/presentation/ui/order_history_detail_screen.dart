@@ -134,7 +134,7 @@ class _OrderHistoryDetailScreenState
       }
     });
 
-    // listen for success
+    // listen for order sync success
     ref.listen(
       syncOrderControllerProvider.select((value) => value.isOrderSynced),
       (_, next) {
@@ -145,6 +145,24 @@ class _OrderHistoryDetailScreenState
               duration: const Duration(seconds: 5),
               content: Text(
                 "Order synced successfully".hardcoded,
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for success
+    ref.listen(
+      orderHistoryControllerProvider.select((value) => value.isItemEdited),
+      (_, next) {
+        if (next) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              padding: const EdgeInsets.all(kSMedium),
+              duration: const Duration(seconds: 5),
+              content: Text(
+                "Order line updated successfully".hardcoded,
               ),
             ),
           );
