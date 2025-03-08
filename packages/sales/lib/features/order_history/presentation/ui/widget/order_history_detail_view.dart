@@ -10,6 +10,18 @@ class OrderHistoryDetailView extends ConsumerStatefulWidget {
 
 class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
     with ConfirmDialogMixin {
+  late PersistentBottomSheetController _bottomSheetController;
+  late AnimationStyle _animationStyle;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationStyle = AnimationStyle(
+      duration: const Duration(seconds: 1),
+      reverseDuration: const Duration(seconds: 1),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final salesLines = ref.watch(
@@ -29,6 +41,32 @@ class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
                   children: [
                     Text(data.itemId),
                     const Spacer(),
+                    Consumer(
+                      builder: (context, ref, child) {
+                        final isOrderSynced = ref.watch(
+                          salesLineControllerProvider
+                              .select((value) => value.isOrderSynced),
+                        );
+                        return GestureDetector(
+                          onTap: isOrderSynced
+                              ? null
+                              : () {
+                                  _openEditOrderBottomSheet(
+                                    data.salesId,
+                                    data.itemId,
+                                    data.lineId,
+                                  );
+                                },
+                          child: Icon(
+                            Icons.edit_outlined,
+                            color: isOrderSynced
+                                ? context.themeColor.disabledColor
+                                : context.themeColor.colorScheme.secondary,
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(width: kMedium),
                     Consumer(
                       builder: (context, ref, child) {
                         final isOrderSynced = ref.watch(
@@ -73,6 +111,39 @@ class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
       itemCount: salesLines.length,
     );
   }
+
+  void _openEditOrderBottomSheet(String salesId, String itemId, int lineId) {
+    // get the price group
+    final priceGroup = ref
+        .read(orderHistoryControllerProvider.notifier)
+        .getPriceGroup(salesId);
+    // get the product uom
+    ref.read(productControllerProvider.notifier).getProductUom(
+          itemId,
+          priceGroup,
+        );
+    // get the product pack size
+    ref.read(productControllerProvider.notifier).getProductPackSize(
+          itemId,
+          priceGroup,
+        );
+    // show bottom sheet
+    _bottomSheetController = showBottomSheet(
+      context: context,
+      sheetAnimationStyle: _animationStyle,
+      builder: (context) {
+        return EditOrderHistoryLineItem(
+          onClose: _closeBottonSheet,
+          salesId: salesId,
+          itemId: itemId,
+          priceGroup: priceGroup,
+          lineId: lineId,
+        );
+      },
+    );
+  }
+
+  void _closeBottonSheet() => _bottomSheetController.close();
 
   void _deleteLine(String salesId, int lineId) {
     showConfirmDialog(

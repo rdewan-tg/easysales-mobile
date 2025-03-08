@@ -200,6 +200,12 @@ class ProductController extends Notifier<ProductState> {
   ProductEntityData? getProduct(String itemId) =>
       state.products.firstWhere((item) => item.itemId == itemId);
 
+  Future<ProductEntityData?> getProductByItemId(String itemId) async {
+    final product =
+        await ref.read(productServiceProvider).getProductByItemId(itemId);
+    return product;
+  }
+
   String getProductName(String itemId) =>
       state.products.firstWhere((item) => item.itemId == itemId).productName;
 
