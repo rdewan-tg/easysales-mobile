@@ -20,6 +20,24 @@ final class SettingService implements ISettingService {
   SettingService(this._settingRepository);
 
   @override
+  Future<int> getOrderRunningNumber() async {
+    try {
+      return await _settingRepository.getOrderRunningNumber();
+    } on Failure catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> setOrderRunningNumber(String value) async {
+    try {
+      return await _settingRepository.setOrderRunningNumber(value);
+    } on Failure catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
   Future<Result<bool, Failure>> getDeviceSetting(String deviceId) async {
     try {
       await _settingRepository.getDeviceSetting(deviceId);

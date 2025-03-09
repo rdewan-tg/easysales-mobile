@@ -224,6 +224,7 @@ class AppRouter {
             _themeRoute(),
             _languageRoute(),
             _profileRoute(),
+            _orderRunningNumberRoute(),
             _deviceSettingRoute(),
           ],
         ),
@@ -316,6 +317,18 @@ class AppRouter {
         key: state.pageKey,
         name: state.name,
         child: const DeviceSettingScreen(),
+      ),
+    );
+  }
+
+  RouteBase _orderRunningNumberRoute() {
+    return GoRoute(
+      path: '/$orderRunningNumberRoute',
+      name: orderRunningNumberRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const OrderRunningNumberScreen(),
       ),
     );
   }

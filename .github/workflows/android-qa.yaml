@@ -142,10 +142,10 @@ jobs:
       - name: Upload to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID_ANDRIOD }}
+          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_APP_DISTRIBUTION_CREDENTIAL }}
           groups: "android-internal"
           file: build/app/outputs/bundle/qaRelease/app-qa-release.aab
-          releaseNotesFile: /distribution/whatsnew/whatsnew-en-US
+          releaseNotesFile: distribution/whatsnew/whatsnew-en-US
 
   
