@@ -30,6 +30,16 @@ final class SettingController extends _$SettingController {
     return const SettingState();
   }
 
+  Future<void> getOrderRunningNumber() async {
+    final result =
+        await ref.read(settingServiceProvider).getOrderRunningNumber();
+    state = state.copyWith(orderRunningNumber: result);
+  }
+
+  Future<void> setOrderRunningNumber(String value) async {
+    await ref.read(settingServiceProvider).setOrderRunningNumber(value);
+  }
+
   Future<void> writeTheme(String key, String value) async {
     state = state.copyWith(errorMsg: null);
     final service = ref.read(settingServiceProvider);
