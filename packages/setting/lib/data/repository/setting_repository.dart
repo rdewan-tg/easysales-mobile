@@ -1,5 +1,8 @@
 // ignore_for_file: avoid_manual_providers_as_generated_provider_dependency
 import 'package:core/data/local/db/dao/setting_dao.dart';
+import 'package:core/data/local/secure_storage/isecure_storage.dart';
+import 'package:core/data/local/secure_storage/secure_storage.dart';
+import 'package:core/data/local/secure_storage/secure_storage_const.dart';
 import 'package:setting/data/dto/device_setting.dart';
 import 'package:setting/data/repository/isetting_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,8 +21,14 @@ ISettingRepository settingRepository(Ref ref) {
   final settingApi = ref.watch(settingApiProvider);
   final settingDao = ref.watch(settingDaoProvider);
   final settingStorage = ref.watch(settingStorageProvider);
+  final secureStorage = ref.watch(secureStorageProvider);
 
-  return SettingRepositroy(settingApi, settingDao, settingStorage);
+  return SettingRepositroy(
+    settingApi,
+    settingDao,
+    settingStorage,
+    secureStorage,
+  );
 }
 
 final class SettingRepositroy
@@ -28,8 +37,33 @@ final class SettingRepositroy
   final SettingApi _settingApi;
   final SettingDao _settingDao;
   final ISettingStorage _settingStorage;
+  final ISecureStorage _secureStorage;
 
-  SettingRepositroy(this._settingApi, this._settingDao, this._settingStorage);
+  SettingRepositroy(
+    this._settingApi,
+    this._settingDao,
+    this._settingStorage,
+    this._secureStorage,
+  );
+
+  @override
+  Future<int> getOrderRunningNumber() async {
+    try {
+      final value = await _secureStorage.read(salesOrderRunningNumberKey);
+      return int.parse(value ?? '0');
+    } catch (e, s) {
+      throw Failure(message: e.toString(), stackTrace: s);
+    }
+  }
+
+  @override
+  Future<void> setOrderRunningNumber(String value) async {
+    try {
+      await _secureStorage.write(salesOrderRunningNumberKey, value);
+    } catch (e, s) {
+      throw Failure(message: e.toString(), stackTrace: s);
+    }
+  }
 
   @override
   Future<DeviceSettingResponse> getDeviceSetting(String deviceId) async {

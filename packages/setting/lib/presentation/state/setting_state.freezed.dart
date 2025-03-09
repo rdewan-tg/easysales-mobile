@@ -21,6 +21,7 @@ mixin _$SettingState {
   String get themeMode => throw _privateConstructorUsedError;
   String get timeZone => throw _privateConstructorUsedError;
   Map<String, String> get settings => throw _privateConstructorUsedError;
+  int get orderRunningNumber => throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
 
   /// Create a copy of SettingState
@@ -42,6 +43,7 @@ abstract class $SettingStateCopyWith<$Res> {
       String themeMode,
       String timeZone,
       Map<String, String> settings,
+      int orderRunningNumber,
       String? errorMsg});
 }
 
@@ -65,6 +67,7 @@ class _$SettingStateCopyWithImpl<$Res, $Val extends SettingState>
     Object? themeMode = null,
     Object? timeZone = null,
     Object? settings = null,
+    Object? orderRunningNumber = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
@@ -88,6 +91,10 @@ class _$SettingStateCopyWithImpl<$Res, $Val extends SettingState>
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
+      orderRunningNumber: null == orderRunningNumber
+          ? _value.orderRunningNumber
+          : orderRunningNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -110,6 +117,7 @@ abstract class _$$SettingStateImplCopyWith<$Res>
       String themeMode,
       String timeZone,
       Map<String, String> settings,
+      int orderRunningNumber,
       String? errorMsg});
 }
 
@@ -131,6 +139,7 @@ class __$$SettingStateImplCopyWithImpl<$Res>
     Object? themeMode = null,
     Object? timeZone = null,
     Object? settings = null,
+    Object? orderRunningNumber = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_$SettingStateImpl(
@@ -151,6 +160,10 @@ class __$$SettingStateImplCopyWithImpl<$Res>
           ? _value._settings
           : settings // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
+      orderRunningNumber: null == orderRunningNumber
+          ? _value.orderRunningNumber
+          : orderRunningNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -168,6 +181,7 @@ class _$SettingStateImpl implements _SettingState {
       this.themeMode = 'light',
       this.timeZone = 'Asia/Kolkata',
       final Map<String, String> settings = const {},
+      this.orderRunningNumber = 0,
       this.errorMsg})
       : _settings = settings;
 
@@ -193,11 +207,14 @@ class _$SettingStateImpl implements _SettingState {
   }
 
   @override
+  @JsonKey()
+  final int orderRunningNumber;
+  @override
   final String? errorMsg;
 
   @override
   String toString() {
-    return 'SettingState(isLoading: $isLoading, language: $language, themeMode: $themeMode, timeZone: $timeZone, settings: $settings, errorMsg: $errorMsg)';
+    return 'SettingState(isLoading: $isLoading, language: $language, themeMode: $themeMode, timeZone: $timeZone, settings: $settings, orderRunningNumber: $orderRunningNumber, errorMsg: $errorMsg)';
   }
 
   @override
@@ -213,6 +230,8 @@ class _$SettingStateImpl implements _SettingState {
             (identical(other.timeZone, timeZone) ||
                 other.timeZone == timeZone) &&
             const DeepCollectionEquality().equals(other._settings, _settings) &&
+            (identical(other.orderRunningNumber, orderRunningNumber) ||
+                other.orderRunningNumber == orderRunningNumber) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg));
   }
@@ -225,6 +244,7 @@ class _$SettingStateImpl implements _SettingState {
       themeMode,
       timeZone,
       const DeepCollectionEquality().hash(_settings),
+      orderRunningNumber,
       errorMsg);
 
   /// Create a copy of SettingState
@@ -243,6 +263,7 @@ abstract class _SettingState implements SettingState {
       final String themeMode,
       final String timeZone,
       final Map<String, String> settings,
+      final int orderRunningNumber,
       final String? errorMsg}) = _$SettingStateImpl;
 
   @override
@@ -255,6 +276,8 @@ abstract class _SettingState implements SettingState {
   String get timeZone;
   @override
   Map<String, String> get settings;
+  @override
+  int get orderRunningNumber;
   @override
   String? get errorMsg;
 

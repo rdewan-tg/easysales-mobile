@@ -146,6 +146,6 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_APP_DISTRIBUTION_CREDENTIAL }}
           groups: "android-internal"
           file: build/app/outputs/bundle/qaRelease/app-qa-release.aab
-          releaseNotesFile: /distribution/whatsnew/whatsnew-en-US
+          releaseNotesFile: distribution/whatsnew/whatsnew-en-US
 
   

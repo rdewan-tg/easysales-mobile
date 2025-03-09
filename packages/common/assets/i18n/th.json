@@ -58,5 +58,8 @@
     "merchandiser.customerImport": "ลูกค้านำเข้า",
     "common.noData": "ไม่มีข้อมูล",
     "sales.addressImport": "การนำเข้าที่อยู่",
-    "merchandiser.addressImport": "การนำเข้าที่อยู่"
+    "merchandiser.addressImport": "การนำเข้าที่อยู่",
+    "setting.orderRunningNumberTitle": "หมายเลขลำดับการสั่งซื้อ",
+    "setting.orderRunningNumberSubTitle": "หมายเลขลำดับการสั่งซื้อ",
+    "setting.save": "บันทึก"
 }

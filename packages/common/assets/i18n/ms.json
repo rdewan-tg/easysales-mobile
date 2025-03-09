@@ -58,5 +58,8 @@
     "merchandiser.customerImport": "Import Pelanggan",
     "common.noData": "Tiada Data Tersedia",
     "sales.addressImport": "Alamat Import",
-    "merchandiser.addressImport": "Alamat Import"
+    "merchandiser.addressImport": "Alamat Import",
+    "setting.orderRunningNumberTitle": "Nombor Berjalan Pesanan",
+    "setting.orderRunningNumberSubTitle": "Nombor Berjalan Pesanan",
+    "setting.save": "Jimat"
 }

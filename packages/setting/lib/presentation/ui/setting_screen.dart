@@ -59,6 +59,23 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
               },
             ),
             ListTile(
+              title: Text(
+                context.localizations('setting.orderRunningNumberTitle'),
+              ),
+              subtitle: Text(
+                context.localizations('setting.orderRunningNumberSubTitle'),
+              ),
+              trailing: IconButton(
+                onPressed: () {
+                  context.go('/setting/order-running-number');
+                },
+                icon: const Icon(Icons.navigate_next),
+              ),
+              onTap: () {
+                context.go('/setting/order-running-number');
+              },
+            ),
+            ListTile(
               title: Text(context.localizations('setting.profile')),
               subtitle:
                   Text(context.localizations('setting.manageYourProfile')),
