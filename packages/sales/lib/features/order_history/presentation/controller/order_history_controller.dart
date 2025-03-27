@@ -61,6 +61,64 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
     );
   }
 
+  Future<void> cancelOrderHeader(String salesId) async {
+    state = state.copyWith(
+      isLoading: true,
+      errorMsg: null,
+      isOrderCancelled: false,
+    );
+
+    final salesHeader = SalesHeaderEntityCompanion(
+      salesId: Value(salesId),
+      syncStatus: const Value(2),
+    );
+
+    final result = await ref
+        .read(orderHistoryServiceProvider)
+        .updateSalesHeader(salesHeader);
+
+    result.when(
+      (success) {
+        state = state.copyWith(isLoading: false);
+        _cancelSalesLine(salesId);
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message, isLoading: false);
+      },
+    );
+  }
+
+  Future<void> _cancelSalesLine(String salesId) async {
+    state = state.copyWith(
+      isLoading: true,
+      errorMsg: null,
+      isOrderCancelled: false,
+    );
+
+    final salesLine = SalesLineEntityCompanion(
+      salesId: Value(salesId),
+      syncStatus: const Value(2),
+    );
+
+    final result =
+        await ref.read(orderHistoryServiceProvider).updateSalesLine(salesLine);
+
+    result.when(
+      (success) {
+        state = state.copyWith(isOrderCancelled: true, isLoading: false);
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message, isLoading: false);
+      },
+    );
+  }
+
+  int getSyncStatus(String salesId) {
+    final data =
+        state.salesHeaders.where((e) => e.salesId == salesId).firstOrNull;
+    return data?.syncStatus ?? 0;
+  }
+
   Future<void> updateSalesLine({
     required String salesId,
     required int lineId,

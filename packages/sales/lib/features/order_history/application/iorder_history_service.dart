@@ -8,4 +8,8 @@ abstract interface class IOrderHistoryService {
   Stream<List<SalesLineEntityData>> watchAllSalesLineBySalesId(String salesId);
 
   Future<Result<int, Failure>> updateSalesLine(SalesLineEntityCompanion data);
+
+  Future<Result<bool, Failure>> updateSalesHeader(
+    SalesHeaderEntityCompanion data,
+  );
 }

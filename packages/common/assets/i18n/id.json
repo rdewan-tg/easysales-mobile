@@ -61,5 +61,8 @@
     "merchandiser.addressImport": "Impor Alamat",
     "setting.orderRunningNumberTitle": "Nomor Berjalan Pesanan",
     "setting.orderRunningNumberSubTitle": "Nomor Berjalan Pesanan",
-    "setting.save": "Menyimpan"
+    "setting.save": "Menyimpan",
+    "orderHistory.cancelOrder": "Batalkan Pesanan",
+    "orderHistory.pending": "Tertunda",
+    "orderHistory.synced": "Disinkronkan"
 }
