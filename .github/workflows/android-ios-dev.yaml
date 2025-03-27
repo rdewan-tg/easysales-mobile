@@ -9,6 +9,7 @@ on:
       - dev
 
 env:
+  SHOREBIRD_TOKEN: ${{ secrets.SHOREBIRD_TOKEN }}
   ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
   ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
   ANDROID_LOCAL_PROPERTIES: ${{ secrets.ANDROID_LOCAL_PROPERTIES }}
@@ -27,6 +28,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      # Use the setup-shorebird action to configure Shorebird
+      - name: 🐦 Setup Shorebird
+        uses: shorebirdtech/setup-shorebird@v1
+        with:
+          cache: true # Optionally cache your Shorebird installation
+
+      # Now we're able to use Shorebird CLI in our workflow
+      - name: 🚀 Use Shorebird
+        run: shorebird --version
 
       # Android specific setup
       # Setup JDK
@@ -172,30 +183,30 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      # build apk
-      - name: Build APK
-        run: |
-          flutter build apk \
-            --release \
+      - uses: shorebirdtech/shorebird-release@v1
+        id: shorebird-android-release
+        with:
+          args: |
+            --artifact apk \
             --build-name=1.0.0 \
             --build-number=1 \
-            --obfuscate \
-            --split-debug-info=build/app/symbols \
-            --flavor dev \
-            -t lib/main_dev.dart
+            -- --obfuscate --split-debug-info=build/app/symbols \
+            --flavor=dev --target=lib/main_dev.dart
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          platform: android
 
-      # build ios
-      - name: Build iOS App
-        run: |
-          flutter build ipa \
-            --release \
+      - uses: shorebirdtech/shorebird-release@v1
+        id: shorebird-ios-release
+        with:
+          args: |
+            --artifact ipa \
             --build-name=1.0.0 \
             --build-number=1 \
-            --obfuscate \
-            --export-options-plist ios/export_options_dev.plist \
-            --split-debug-info=build/app/symbols \
-            --flavor dev \
-            -t lib/main_dev.dart
+            -- --export-options-plist ios/export_options_dev.plist \            
+            ---flavor=dev --target=lib/main_dev.dart
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          platform: ios
+
 
       # upload artifacts - android
       - name: Upload APK

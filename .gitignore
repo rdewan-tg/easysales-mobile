@@ -43,7 +43,7 @@ app.*.map.json
 /android/app/release
 
 # prevent ios dependency version conflict
-/ios/Podfile.lock
+#/ios/Podfile.lock
 
 # Android Firebase 
 google-services.json
@@ -59,7 +59,7 @@ GoogleService-Info.plist
 # exclude flutter translation sheet credentials.json
 credentials.json
 
-pubspec.lock
+#pubspec.lock
 codemagic.sh
 
 #export_options.plist
