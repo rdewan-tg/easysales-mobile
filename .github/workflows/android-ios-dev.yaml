@@ -47,7 +47,14 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
           cache: gradle
-
+      
+      # Set Build Number
+      # echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV: This makes BUILD_NUMBER available as an environment variable for later steps.
+      - name: Set Build Number
+        run: |
+          BUILD_NUMBER=${{ github.run_number }}
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV     
+      
       # Cache Gradle
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -189,7 +196,7 @@ jobs:
         with:
           args: --artifact=apk \ 
             --build-name=1.0.2 \
-            --build-number=3 \
+            --build-number=${{ env.BUILD_NUMBER }} \
             --flavor=dev \
             --target=lib/main_dev.dart \
             -- --obfuscate \
@@ -202,7 +209,7 @@ jobs:
         id: shorebird-ios-release
         with:
           args: --build-name=1.0.2 \
-            --build-number=3 \
+            --build-number=${{ env.BUILD_NUMBER }} \
             --export-options-plist ios/export_options_dev.plist \  
             --export-method=development \          
             --flavor=dev \
