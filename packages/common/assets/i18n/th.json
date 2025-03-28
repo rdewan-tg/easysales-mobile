@@ -61,5 +61,8 @@
     "merchandiser.addressImport": "การนำเข้าที่อยู่",
     "setting.orderRunningNumberTitle": "หมายเลขลำดับการสั่งซื้อ",
     "setting.orderRunningNumberSubTitle": "หมายเลขลำดับการสั่งซื้อ",
-    "setting.save": "บันทึก"
+    "setting.save": "บันทึก",
+    "orderHistory.cancelOrder": "ยกเลิกคำสั่งซื้อ",
+    "orderHistory.pending": "รอดำเนินการ",
+    "orderHistory.synced": "ซิงค์แล้ว"
 }

@@ -43,12 +43,8 @@ class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
                     const Spacer(),
                     Consumer(
                       builder: (context, ref, child) {
-                        final isOrderSynced = ref.watch(
-                          salesLineControllerProvider
-                              .select((value) => value.isOrderSynced),
-                        );
                         return GestureDetector(
-                          onTap: isOrderSynced
+                          onTap: data.syncStatus == 1 || data.syncStatus == 2
                               ? null
                               : () {
                                   _openEditOrderBottomSheet(
@@ -59,7 +55,7 @@ class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
                                 },
                           child: Icon(
                             Icons.edit_outlined,
-                            color: isOrderSynced
+                            color: data.syncStatus == 1 || data.syncStatus == 2
                                 ? context.themeColor.disabledColor
                                 : context.themeColor.colorScheme.secondary,
                           ),
@@ -69,19 +65,15 @@ class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
                     const SizedBox(width: kMedium),
                     Consumer(
                       builder: (context, ref, child) {
-                        final isOrderSynced = ref.watch(
-                          orderHistoryControllerProvider
-                              .select((value) => value.isOrderSynced),
-                        );
                         return GestureDetector(
-                          onTap: isOrderSynced
+                          onTap: data.syncStatus == 1 || data.syncStatus == 2
                               ? null
                               : () {
                                   _deleteLine(data.salesId, data.lineId);
                                 },
                           child: Icon(
                             Icons.delete_outline_outlined,
-                            color: isOrderSynced
+                            color: data.syncStatus == 1 || data.syncStatus == 2
                                 ? context.themeColor.disabledColor
                                 : context.themeColor.colorScheme.error,
                           ),

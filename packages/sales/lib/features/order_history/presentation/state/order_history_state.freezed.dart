@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderHistoryState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isOrderSynced => throw _privateConstructorUsedError;
+  bool get isOrderCancelled => throw _privateConstructorUsedError;
   bool get isItemEdited => throw _privateConstructorUsedError;
   List<SalesHeaderEntityData> get salesHeaders =>
       throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $OrderHistoryStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isOrderSynced,
+      bool isOrderCancelled,
       bool isItemEdited,
       List<SalesHeaderEntityData> salesHeaders,
       List<SalesLineEntityData> salesLines,
@@ -68,6 +70,7 @@ class _$OrderHistoryStateCopyWithImpl<$Res, $Val extends OrderHistoryState>
   $Res call({
     Object? isLoading = null,
     Object? isOrderSynced = null,
+    Object? isOrderCancelled = null,
     Object? isItemEdited = null,
     Object? salesHeaders = null,
     Object? salesLines = null,
@@ -83,6 +86,10 @@ class _$OrderHistoryStateCopyWithImpl<$Res, $Val extends OrderHistoryState>
       isOrderSynced: null == isOrderSynced
           ? _value.isOrderSynced
           : isOrderSynced // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOrderCancelled: null == isOrderCancelled
+          ? _value.isOrderCancelled
+          : isOrderCancelled // ignore: cast_nullable_to_non_nullable
               as bool,
       isItemEdited: null == isItemEdited
           ? _value.isItemEdited
@@ -123,6 +130,7 @@ abstract class _$$OrderHistoryStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isOrderSynced,
+      bool isOrderCancelled,
       bool isItemEdited,
       List<SalesHeaderEntityData> salesHeaders,
       List<SalesLineEntityData> salesLines,
@@ -146,6 +154,7 @@ class __$$OrderHistoryStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? isOrderSynced = null,
+    Object? isOrderCancelled = null,
     Object? isItemEdited = null,
     Object? salesHeaders = null,
     Object? salesLines = null,
@@ -161,6 +170,10 @@ class __$$OrderHistoryStateImplCopyWithImpl<$Res>
       isOrderSynced: null == isOrderSynced
           ? _value.isOrderSynced
           : isOrderSynced // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOrderCancelled: null == isOrderCancelled
+          ? _value.isOrderCancelled
+          : isOrderCancelled // ignore: cast_nullable_to_non_nullable
               as bool,
       isItemEdited: null == isItemEdited
           ? _value.isItemEdited
@@ -196,6 +209,7 @@ class _$OrderHistoryStateImpl implements _OrderHistoryState {
   _$OrderHistoryStateImpl(
       {this.isLoading = false,
       this.isOrderSynced = false,
+      this.isOrderCancelled = false,
       this.isItemEdited = false,
       final List<SalesHeaderEntityData> salesHeaders = const [],
       final List<SalesLineEntityData> salesLines = const [],
@@ -211,6 +225,9 @@ class _$OrderHistoryStateImpl implements _OrderHistoryState {
   @override
   @JsonKey()
   final bool isOrderSynced;
+  @override
+  @JsonKey()
+  final bool isOrderCancelled;
   @override
   @JsonKey()
   final bool isItemEdited;
@@ -242,7 +259,7 @@ class _$OrderHistoryStateImpl implements _OrderHistoryState {
 
   @override
   String toString() {
-    return 'OrderHistoryState(isLoading: $isLoading, isOrderSynced: $isOrderSynced, isItemEdited: $isItemEdited, salesHeaders: $salesHeaders, salesLines: $salesLines, totalAmount: $totalAmount, salesId: $salesId, errorMsg: $errorMsg)';
+    return 'OrderHistoryState(isLoading: $isLoading, isOrderSynced: $isOrderSynced, isOrderCancelled: $isOrderCancelled, isItemEdited: $isItemEdited, salesHeaders: $salesHeaders, salesLines: $salesLines, totalAmount: $totalAmount, salesId: $salesId, errorMsg: $errorMsg)';
   }
 
   @override
@@ -254,6 +271,8 @@ class _$OrderHistoryStateImpl implements _OrderHistoryState {
                 other.isLoading == isLoading) &&
             (identical(other.isOrderSynced, isOrderSynced) ||
                 other.isOrderSynced == isOrderSynced) &&
+            (identical(other.isOrderCancelled, isOrderCancelled) ||
+                other.isOrderCancelled == isOrderCancelled) &&
             (identical(other.isItemEdited, isItemEdited) ||
                 other.isItemEdited == isItemEdited) &&
             const DeepCollectionEquality()
@@ -272,6 +291,7 @@ class _$OrderHistoryStateImpl implements _OrderHistoryState {
       runtimeType,
       isLoading,
       isOrderSynced,
+      isOrderCancelled,
       isItemEdited,
       const DeepCollectionEquality().hash(_salesHeaders),
       const DeepCollectionEquality().hash(_salesLines),
@@ -293,6 +313,7 @@ abstract class _OrderHistoryState implements OrderHistoryState {
   factory _OrderHistoryState(
       {final bool isLoading,
       final bool isOrderSynced,
+      final bool isOrderCancelled,
       final bool isItemEdited,
       final List<SalesHeaderEntityData> salesHeaders,
       final List<SalesLineEntityData> salesLines,
@@ -304,6 +325,8 @@ abstract class _OrderHistoryState implements OrderHistoryState {
   bool get isLoading;
   @override
   bool get isOrderSynced;
+  @override
+  bool get isOrderCancelled;
   @override
   bool get isItemEdited;
   @override

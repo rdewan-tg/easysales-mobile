@@ -8,6 +8,7 @@ class OrderHistoryState with _$OrderHistoryState {
   factory OrderHistoryState({
     @Default(false) bool isLoading,
     @Default(false) bool isOrderSynced,
+    @Default(false) bool isOrderCancelled,
     @Default(false) bool isItemEdited,
     @Default([]) List<SalesHeaderEntityData> salesHeaders,
     @Default([]) List<SalesLineEntityData> salesLines,

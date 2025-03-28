@@ -36,4 +36,17 @@ final class OrderHistoryService implements IOrderHistoryService {
       return Error(e);
     }
   }
+
+  @override
+  Future<Result<bool, Failure>> updateSalesHeader(
+    SalesHeaderEntityCompanion data,
+  ) async {
+    try {
+      await _orderHistoryRepository.updateSalesHeader(data);
+
+      return const Result.success(true);
+    } on Failure catch (e) {
+      return Error(e);
+    }
+  }
 }

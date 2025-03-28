@@ -13,9 +13,9 @@
     "merchandiser.title": "跟单员",
     "merchandiser.takePicture": "拍照",
     "profile.title": "轮廓",
-    "profile.deleteMyAccount": "删除账户",
+    "profile.deleteMyAccount": "删除帐户",
     "profile.signout": "登出",
-    "profile.deleteDialogTitle": "删除账户",
+    "profile.deleteDialogTitle": "删除帐户",
     "profile.deleteDialogSubTitle": "您确定要删除您的帐户吗？",
     "profile.btnYes": "是的",
     "profile.signOutDialogTitle": "登出",
@@ -36,7 +36,7 @@
     "report.todaysVisit": "今天的访问",
     "report.yesterdaysVisit": "昨天的访问",
     "report.thisMonthVisit": "本月访问量",
-    "report.totalVisits": "总访问次数：",
+    "report.totalVisits": "总访问量：",
     "report.todaysVisits": "今天的访问：",
     "report.thisMonthVisits": "本月的访问量：",
     "orderHistory.title": "销售订单",
@@ -61,5 +61,8 @@
     "merchandiser.addressImport": "地址导入",
     "setting.orderRunningNumberTitle": "订单流水号",
     "setting.orderRunningNumberSubTitle": "订单流水号",
-    "setting.save": "节省"
+    "setting.save": "节省",
+    "orderHistory.cancelOrder": "取消订单",
+    "orderHistory.pending": "待办的",
+    "orderHistory.synced": "已同步"
 }
