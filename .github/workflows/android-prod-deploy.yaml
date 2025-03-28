@@ -147,12 +147,7 @@ jobs:
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           platform: android
 
-      # Upload the built AAB as an artifact
-      - name: Upload AAB as an artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-aab
-          path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
+
 
       # Upload to Google Play
       - name: Upload APK to Google Play

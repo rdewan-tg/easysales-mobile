@@ -153,7 +153,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: qa-release-aab
-          path: build/app/outputs/bundle/qaRelease/app-qa-release.apk
+          path: build/app/outputs/flutter-apk/app-qa-release.apk
 
       - name: Upload to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
@@ -161,7 +161,7 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_APP_DISTRIBUTION_CREDENTIAL }}
           groups: "android-internal"
-          file: build/app/outputs/bundle/qaRelease/app-qa-release.apk
+          file: build/app/outputs/flutter-apk/app-qa-release.apk
           releaseNotesFile: distribution/whatsnew/whatsnew-en-US
 
   
