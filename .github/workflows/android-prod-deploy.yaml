@@ -132,16 +132,11 @@ jobs:
           echo "Version Code: ${{ steps.fetch_version_info.outputs.version_code }}"
           echo "Version Name: ${{ steps.fetch_version_info.outputs.version_name }}"
 
-       - uses: shorebirdtech/shorebird-release@v1
+      - name: Shorebird Android Build
+        uses: shorebirdtech/shorebird-release@v1
         id: shorebird-android-release
         with:
-          args: |
-            --artifact appbundle \
-            --release \
-            --build-name=${{ steps.fetch_version_info.outputs.version_name }} \
-            --build-number=${{ steps.fetch_version_info.outputs.version_code }} \
-            -- --obfuscate --split-debug-info=build/app/symbols \
-            --flavor=prod --target=lib/main_prod.dart
+          args: --build-name=${{ steps.fetch_version_info.outputs.version_name }} --build-number=${{ steps.fetch_version_info.outputs.version_code }} --flavor=prod --target=lib/main_prod.dart -- --obfuscate --split-debug-info=build/app/symbols 
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           platform: android
 

@@ -133,16 +133,11 @@ jobs:
           echo "Version Name: ${{ steps.fetch_version_info.outputs.version_name }}"
 
 
-      - uses: shorebirdtech/shorebird-release@v1
+      - name: Shorebird Android Build
+        uses: shorebirdtech/shorebird-release@v1
         id: shorebird-android-release
         with:
-          args: |
-            --artifact appbundle \
-            --release \
-            --build-name=${{ steps.fetch_version_info.outputs.version_name }} \
-            --build-number=${{ steps.fetch_version_info.outputs.version_code }} \
-            -- --obfuscate --split-debug-info=build/app/symbols \
-            --flavor=qa --target=lib/main_qa.dart
+          args: --artifact=apk --build-name=1.0.2 --build-number=${{ env.BUILD_NUMBER }} --flavor=qa --target=lib/main_qa.dart -- --obfuscate --split-debug-info=build/app/symbols 
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           platform: android
 
@@ -151,7 +146,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: qa-release-aab
-          path: build/app/outputs/bundle/qaRelease/app-qa-release.aab
+          path: build/app/outputs/bundle/qaRelease/app-qa-release.apk
 
       - name: Upload to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
@@ -159,7 +154,7 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_APP_DISTRIBUTION_CREDENTIAL }}
           groups: "android-internal"
-          file: build/app/outputs/bundle/qaRelease/app-qa-release.aab
+          file: build/app/outputs/bundle/qaRelease/app-qa-release.apk
           releaseNotesFile: distribution/whatsnew/whatsnew-en-US
 
   
