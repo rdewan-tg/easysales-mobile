@@ -42,6 +42,13 @@ jobs:
       - name: 🚀 Use Shorebird
         run: shorebird --version
 
+      # Set Build Number
+      # echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV: This makes BUILD_NUMBER available as an environment variable for later steps.
+      - name: Set Build Number
+        run: |
+          BUILD_NUMBER=${{ github.run_number }}
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV     
+
       - name: Setup key.properties file
         run: |
           echo "${{env.ANDROID_KEY_PROPERTIES}}" | base64 --decode > android/key.properties
