@@ -53,16 +53,17 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
                         const Spacer(),
                         Consumer(
                           builder: (context, ref, child) {
-                            final isOrderSynced = data.syncStatus == 1;
                             return Chip(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(kSmall),
                                 side: BorderSide(
-                                  color: isOrderSynced
-                                      ? context.themeColor.colorScheme
-                                          .primary // Use primary color for synced
-                                      : context.themeColor.colorScheme
-                                          .error, // Use error color for pending Change border color based on sync status
+                                  color: data.syncStatus == 0
+                                      ? context.themeColor.colorScheme.primary
+                                      : data.syncStatus == 1
+                                          ? context
+                                              .themeColor.colorScheme.secondary
+                                          : context
+                                              .themeColor.colorScheme.error,
                                 ),
                               ),
                               labelPadding: const EdgeInsets.all(kXXSmall),
@@ -70,9 +71,23 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
                                 horizontal: 0.0,
                                 vertical: -4,
                               ),
-                              label: data.syncStatus == 1
-                                  ? Text('Synced'.hardcoded)
-                                  : Text('Pending'.hardcoded),
+                              label: data.syncStatus == 0
+                                  ? Text(
+                                      context.localizations(
+                                        'orderHistory.pending',
+                                      ),
+                                    )
+                                  : data.syncStatus == 1
+                                      ? Text(
+                                          context.localizations(
+                                            'orderHistory.synced',
+                                          ),
+                                        )
+                                      : Text(
+                                          context.localizations(
+                                            'orderHistory.cancelled',
+                                          ),
+                                        ),
                             );
                           },
                         ),

@@ -44,7 +44,20 @@ final class OrderHistoryRepository implements IOrderHistoryRepository {
   @override
   Future<int> updateSalesLine(SalesLineEntityCompanion data) async {
     try {
-      return await _salesLineDao.updateSalesLine(data);
+      return await _salesLineDao.updateSyncStatus(data);
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, stackTrace) {
+      throw Failure(message: e.toString(), stackTrace: stackTrace);
+    }
+  }
+
+  @override
+  Future<SalesHeaderEntityData> updateSalesHeader(
+    SalesHeaderEntityCompanion data,
+  ) async {
+    try {
+      return await _salesHeaderDao.updateSalesHeader(data);
     } on Failure catch (_) {
       rethrow;
     } catch (e, stackTrace) {

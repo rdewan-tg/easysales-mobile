@@ -30,6 +30,46 @@ class _OrderHistoryDetailScreenState
       appBar: AppBar(
         title: Text(context.localizations('orderHistory.title')),
         centerTitle: true,
+        actions: [
+          Consumer(
+            builder: (context, ref, child) {
+              final syncStatus = ref
+                  .read(orderHistoryControllerProvider.notifier)
+                  .getSyncStatus(widget.salesId);
+
+              return MenuAnchor(
+                menuChildren: [
+                  if (syncStatus == 1 || syncStatus == 2)
+                    ...[]
+                  else ...[
+                    MenuItemButton(
+                      onPressed: syncStatus == 1 || syncStatus == 2
+                          ? null
+                          : () {
+                              _cancelOrder();
+                            },
+                      child: Text(
+                        context.localizations('orderHistory.cancelOrder'),
+                      ),
+                    ),
+                  ],
+                ],
+                builder: (context, controller, child) {
+                  return IconButton(
+                    icon: const Icon(Icons.more_vert),
+                    onPressed: () {
+                      if (controller.isOpen) {
+                        controller.close();
+                      } else {
+                        controller.open();
+                      }
+                    },
+                  );
+                },
+              );
+            },
+          ),
+        ],
       ),
       body: const OrderHistoryDetailView(),
       bottomNavigationBar: Padding(
@@ -60,12 +100,14 @@ class _OrderHistoryDetailScreenState
                 const Spacer(),
                 Consumer(
                   builder: (context, ref, child) {
-                    final isOrderSynced = ref.watch(
-                      orderHistoryControllerProvider
-                          .select((value) => value.isOrderSynced),
-                    );
+                    final syncStatus = ref
+                        .read(orderHistoryControllerProvider.notifier)
+                        .getSyncStatus(widget.salesId);
+
                     return IconButton.filledTonal(
-                      onPressed: isOrderSynced ? null : _syncOrder,
+                      onPressed: syncStatus == 1 || syncStatus == 2
+                          ? null
+                          : _syncOrder,
                       icon: const Icon(
                         Icons.upload_outlined,
                       ),
@@ -105,6 +147,31 @@ class _OrderHistoryDetailScreenState
     );
   }
 
+  void _cancelOrder() {
+    showConfirmDialog(
+      context: context,
+      title: "Cancel Order".hardcoded,
+      msg: "Are you sure you want to cancel this order?".hardcoded,
+      btnYesText: context.localizations('profile.btnYes'),
+      btnNoText: context.localizations('profile.btnNo'),
+      icon: Icon(
+        Icons.warning_outlined,
+        color: context.themeColor.colorScheme.error,
+      ),
+      onYesTap: () {
+        ref
+            .read(orderHistoryControllerProvider.notifier)
+            .cancelOrderHeader(widget.salesId);
+        // close dialog
+        context.pop();
+      },
+      onNoTap: () {
+        // close dialog
+        context.pop();
+      },
+    );
+  }
+
   void _listener() {
     // listen for error
     ref.listen(
@@ -117,6 +184,24 @@ class _OrderHistoryDetailScreenState
               duration: const Duration(seconds: 5),
               content: Text(
                 "Item removed successfully".hardcoded,
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for error
+    ref.listen(
+      orderHistoryControllerProvider.select((value) => value.isOrderCancelled),
+      (_, next) {
+        if (next) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              padding: const EdgeInsets.all(kSMedium),
+              duration: const Duration(seconds: 5),
+              content: Text(
+                "Order cancelled successfully".hardcoded,
               ),
             ),
           );

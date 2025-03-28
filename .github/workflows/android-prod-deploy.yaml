@@ -8,6 +8,7 @@ on:
       - main
 
 env:
+  SHOREBIRD_TOKEN: ${{ secrets.SHOREBIRD_TOKEN }}
   ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
   ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
   ANDROID_LOCAL_PROPERTIES: ${{ secrets.ANDROID_LOCAL_PROPERTIES }}
@@ -30,6 +31,23 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
           cache: gradle
+
+      # Use the setup-shorebird action to configure Shorebird
+      - name: 🐦 Setup Shorebird
+        uses: shorebirdtech/setup-shorebird@v1
+        with:
+          cache: true # Optionally cache your Shorebird installation
+
+      # Now we're able to use Shorebird CLI in our workflow
+      - name: 🚀 Use Shorebird
+        run: shorebird --version
+
+      # Set Build Number
+      # echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV: This makes BUILD_NUMBER available as an environment variable for later steps.
+      - name: Set Build Number
+        run: |
+          BUILD_NUMBER=${{ github.run_number }}
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV     
 
       - name: Setup key.properties file
         run: |
@@ -121,23 +139,15 @@ jobs:
           echo "Version Code: ${{ steps.fetch_version_info.outputs.version_code }}"
           echo "Version Name: ${{ steps.fetch_version_info.outputs.version_name }}"
 
-      - name: Build Release Version
-        run: |
-          flutter build appbundle \
-            --release \
-            --build-name=${{ steps.fetch_version_info.outputs.version_name }} \
-            --build-number=${{ steps.fetch_version_info.outputs.version_code }} \
-            --obfuscate \
-            --split-debug-info=build/app/symbols \
-            --flavor prod \
-            -t lib/main_prod.dart
-
-      # Upload the built AAB as an artifact
-      - name: Upload AAB as an artifact
-        uses: actions/upload-artifact@v4
+      - name: Shorebird Android Build
+        uses: shorebirdtech/shorebird-release@v1
+        id: shorebird-android-release
         with:
-          name: release-aab
-          path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
+          args: --build-name=${{ steps.fetch_version_info.outputs.version_name }} --build-number=${{ steps.fetch_version_info.outputs.version_code }} --flavor=prod --target=lib/main_prod.dart -- --obfuscate --split-debug-info=build/app/symbols 
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          platform: android
+
+
 
       # Upload to Google Play
       - name: Upload APK to Google Play
