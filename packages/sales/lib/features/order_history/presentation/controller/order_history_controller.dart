@@ -43,17 +43,21 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
         .watchAllSalesLineBySalesId(salesId)
         .listen(
       (data) {
-        double totalAmount = 0;
-        for (var element in data) {
-          totalAmount += element.lineAmount;
-        }
+        if (data.isEmpty) {
+          state = state.copyWith(salesLines: []);
+        } else {
+          double totalAmount = 0;
+          for (var element in data) {
+            totalAmount += element.lineAmount;
+          }
 
-        final isSynced = data.first.syncStatus == 1;
-        state = state.copyWith(
-          salesLines: data,
-          totalAmount: totalAmount,
-          isOrderSynced: isSynced,
-        );
+          final isSynced = data.first.syncStatus == 1;
+          state = state.copyWith(
+            salesLines: data,
+            totalAmount: totalAmount,
+            isOrderSynced: isSynced,
+          );
+        }
       },
       onError: (e, s) {
         state = state.copyWith(errorMsg: e.toString());

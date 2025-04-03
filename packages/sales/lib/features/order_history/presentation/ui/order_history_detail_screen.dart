@@ -100,12 +100,18 @@ class _OrderHistoryDetailScreenState
                 const Spacer(),
                 Consumer(
                   builder: (context, ref, child) {
+                    final salesLineCount = ref.watch(
+                      orderHistoryControllerProvider
+                          .select((value) => value.salesLines.length),
+                    );
                     final syncStatus = ref
                         .read(orderHistoryControllerProvider.notifier)
                         .getSyncStatus(widget.salesId);
 
                     return IconButton.filledTonal(
-                      onPressed: syncStatus == 1 || syncStatus == 2
+                      onPressed: salesLineCount == 0 ||
+                              syncStatus == 1 ||
+                              syncStatus == 2
                           ? null
                           : _syncOrder,
                       icon: const Icon(
