@@ -28,6 +28,8 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
     final salesLine = ref
         .watch(salesLineControllerProvider.select((value) => value.salesLines));
 
+    if (salesLine.isEmpty) return const EmptyDataWidget();
+
     return Scaffold(
       body: ListView.separated(
         itemBuilder: (context, index) {
@@ -138,7 +140,9 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
                           .select((value) => value.isOrderSynced),
                     );
                     return IconButton.filledTonal(
-                      onPressed: isOrderSynced ? null : _syncOrder,
+                      onPressed: salesLine.isEmpty || isOrderSynced
+                          ? null
+                          : _syncOrder,
                       icon: const Icon(
                         Icons.upload_outlined,
                       ),

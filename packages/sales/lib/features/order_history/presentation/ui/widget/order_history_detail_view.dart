@@ -28,6 +28,8 @@ class _OrderHistoryDetailViewState extends ConsumerState<OrderHistoryDetailView>
       orderHistoryControllerProvider.select((value) => value.salesLines),
     );
 
+    if (salesLines.isEmpty) return const EmptyDataWidget();
+
     return ListView.separated(
       itemBuilder: (context, index) {
         final data = salesLines[index];

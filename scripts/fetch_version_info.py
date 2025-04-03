@@ -36,7 +36,7 @@ for track in existing_tracks:
 track_request = service.edits().tracks().get(
     packageName=package_name,  # App's package name
     editId=edit_id,  # Edit session ID
-    track='alpha'  # Track to fetch information from (e.g., 'production', 'alpha', 'beta', 'internal' )
+    track='production'  # Track to fetch information from (e.g., 'production', 'alpha', 'beta', 'internal' )
 )
 track_response = track_request.execute()  # Execute the request and get the track details
 

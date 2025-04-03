@@ -143,10 +143,16 @@ class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
         .watchAllSalesLineBySalesId(salesId)
         .listen(
       (data) {
-        state = state.copyWith(
-          salesLines: data,
-          isOrderSynced: data.first.syncStatus == 1,
-        );
+        if (data.isEmpty) {
+          state = state.copyWith(
+            salesLines: [],
+          );
+        } else {
+          state = state.copyWith(
+            salesLines: data,
+            isOrderSynced: data.first.syncStatus == 1,
+          );
+        }
       },
       onError: (e, s) {
         state = state.copyWith(errorMsg: e.toString());
