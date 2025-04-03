@@ -142,8 +142,7 @@ jobs:
         uses: shorebirdtech/shorebird-patch@v0
         id: shorebird-patch
         with:
-          args: --flavor=prod --target=lib/main_prod.dart --release-version=latest --staging -- --obfuscate --split-debug-info=build/app/symbols 
-          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          args: --flavor=prod --target=lib/main_prod.dart --release-version=latest --track=staging -- --obfuscate --split-debug-info=build/app/symbols 
           platform: android
 
 
