@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SalesCustomerState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isCustomerImported => throw _privateConstructorUsedError;
   bool get isSearchHistoryCleared => throw _privateConstructorUsedError;
   int? get totalSearchHistoryCleared => throw _privateConstructorUsedError;
   List<SalesCustomerEntityData> get customers =>
@@ -41,6 +42,7 @@ abstract class $SalesCustomerStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      bool isCustomerImported,
       bool isSearchHistoryCleared,
       int? totalSearchHistoryCleared,
       List<SalesCustomerEntityData> customers,
@@ -66,6 +68,7 @@ class _$SalesCustomerStateCopyWithImpl<$Res, $Val extends SalesCustomerState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isCustomerImported = null,
     Object? isSearchHistoryCleared = null,
     Object? totalSearchHistoryCleared = freezed,
     Object? customers = null,
@@ -78,6 +81,10 @@ class _$SalesCustomerStateCopyWithImpl<$Res, $Val extends SalesCustomerState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCustomerImported: null == isCustomerImported
+          ? _value.isCustomerImported
+          : isCustomerImported // ignore: cast_nullable_to_non_nullable
               as bool,
       isSearchHistoryCleared: null == isSearchHistoryCleared
           ? _value.isSearchHistoryCleared
@@ -121,6 +128,7 @@ abstract class _$$SalesCustomerStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      bool isCustomerImported,
       bool isSearchHistoryCleared,
       int? totalSearchHistoryCleared,
       List<SalesCustomerEntityData> customers,
@@ -144,6 +152,7 @@ class __$$SalesCustomerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isCustomerImported = null,
     Object? isSearchHistoryCleared = null,
     Object? totalSearchHistoryCleared = freezed,
     Object? customers = null,
@@ -156,6 +165,10 @@ class __$$SalesCustomerStateImplCopyWithImpl<$Res>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCustomerImported: null == isCustomerImported
+          ? _value.isCustomerImported
+          : isCustomerImported // ignore: cast_nullable_to_non_nullable
               as bool,
       isSearchHistoryCleared: null == isSearchHistoryCleared
           ? _value.isSearchHistoryCleared
@@ -194,6 +207,7 @@ class __$$SalesCustomerStateImplCopyWithImpl<$Res>
 class _$SalesCustomerStateImpl implements _SalesCustomerState {
   _$SalesCustomerStateImpl(
       {this.isLoading = false,
+      this.isCustomerImported = false,
       this.isSearchHistoryCleared = false,
       this.totalSearchHistoryCleared,
       final List<SalesCustomerEntityData> customers = const [],
@@ -207,6 +221,9 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isCustomerImported;
   @override
   @JsonKey()
   final bool isSearchHistoryCleared;
@@ -241,7 +258,7 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
 
   @override
   String toString() {
-    return 'SalesCustomerState(isLoading: $isLoading, isSearchHistoryCleared: $isSearchHistoryCleared, totalSearchHistoryCleared: $totalSearchHistoryCleared, customers: $customers, errorMsg: $errorMsg, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery)';
+    return 'SalesCustomerState(isLoading: $isLoading, isCustomerImported: $isCustomerImported, isSearchHistoryCleared: $isSearchHistoryCleared, totalSearchHistoryCleared: $totalSearchHistoryCleared, customers: $customers, errorMsg: $errorMsg, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery)';
   }
 
   @override
@@ -251,6 +268,8 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
             other is _$SalesCustomerStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isCustomerImported, isCustomerImported) ||
+                other.isCustomerImported == isCustomerImported) &&
             (identical(other.isSearchHistoryCleared, isSearchHistoryCleared) ||
                 other.isSearchHistoryCleared == isSearchHistoryCleared) &&
             (identical(other.totalSearchHistoryCleared,
@@ -272,6 +291,7 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
   int get hashCode => Object.hash(
       runtimeType,
       isLoading,
+      isCustomerImported,
       isSearchHistoryCleared,
       totalSearchHistoryCleared,
       const DeepCollectionEquality().hash(_customers),
@@ -293,6 +313,7 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
 abstract class _SalesCustomerState implements SalesCustomerState {
   factory _SalesCustomerState(
       {final bool isLoading,
+      final bool isCustomerImported,
       final bool isSearchHistoryCleared,
       final int? totalSearchHistoryCleared,
       final List<SalesCustomerEntityData> customers,
@@ -303,6 +324,8 @@ abstract class _SalesCustomerState implements SalesCustomerState {
 
   @override
   bool get isLoading;
+  @override
+  bool get isCustomerImported;
   @override
   bool get isSearchHistoryCleared;
   @override

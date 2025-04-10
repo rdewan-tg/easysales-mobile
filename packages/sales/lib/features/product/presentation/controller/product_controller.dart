@@ -34,7 +34,11 @@ class ProductController extends Notifier<ProductState> {
   }
 
   Future<void> importProduct() async {
-    state = state.copyWith(errorMsg: null, isLoading: true);
+    state = state.copyWith(
+      errorMsg: null,
+      isLoading: true,
+      isProductImported: false,
+    );
     // get the setting from the database
     final setting = await ref.read(productServiceProvider).getAllSettings();
     // get the companyCode from map
@@ -44,7 +48,7 @@ class ProductController extends Notifier<ProductState> {
         await ref.read(productServiceProvider).getProducts(companyCode);
     result.when((data) {
       watchProducts();
-      state = state.copyWith(isLoading: false);
+      state = state.copyWith(isLoading: false, isProductImported: data);
     }, (error) {
       watchProducts();
       state = state.copyWith(isLoading: false, errorMsg: error.message);
@@ -52,7 +56,8 @@ class ProductController extends Notifier<ProductState> {
   }
 
   Future<void> importProductPrice() async {
-    state = state.copyWith(errorMsg: null, isLoading: true);
+    state =
+        state.copyWith(errorMsg: null, isLoading: true, isPriceImported: false);
     // get the setting from the database
     final setting = await ref.read(productServiceProvider).getAllSettings();
     // get the companyCode from map
@@ -62,7 +67,7 @@ class ProductController extends Notifier<ProductState> {
         await ref.read(productServiceProvider).getPrices(companyCode);
     result.when((data) {
       watchPrices();
-      state = state.copyWith(isLoading: false);
+      state = state.copyWith(isLoading: false, isPriceImported: data);
     }, (error) {
       watchPrices();
       state = state.copyWith(isLoading: false, errorMsg: error.message);
@@ -213,5 +218,15 @@ class ProductController extends Notifier<ProductState> {
 
   Future<void> clearState() async {
     state = state.copyWith(quantity: 0, price: null);
+  }
+
+  Future<void> clearIsProductImported() async {
+    await Future.delayed(const Duration(seconds: 5));
+    state = state.copyWith(isProductImported: false);
+  }
+
+  Future<void> clearIsPriceImported() async {
+    await Future.delayed(const Duration(seconds: 5));
+    state = state.copyWith(isPriceImported: false);
   }
 }

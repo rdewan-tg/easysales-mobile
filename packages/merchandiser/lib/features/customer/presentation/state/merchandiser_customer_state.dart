@@ -8,6 +8,7 @@ part 'merchandiser_customer_state.freezed.dart';
 class MerchandiserCustomerState with _$MerchandiserCustomerState {
   factory MerchandiserCustomerState({
     @Default(false) bool isLoading,
+    @Default(false) bool isCustomerImported,
     @Default(false) bool isSearchHistoryCleared,
     int? totalSearchHistoryCleared,
     @Default([]) List<MerchandiserCustomerEntityData> customers,

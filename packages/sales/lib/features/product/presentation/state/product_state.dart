@@ -6,7 +6,9 @@ part 'product_state.freezed.dart';
 @freezed
 class ProductState with _$ProductState {
   factory ProductState({
-    @Default(false) isLoading,
+    @Default(false) bool isLoading,
+    @Default(false) bool isProductImported,
+    @Default(false) bool isPriceImported,
     @Default({}) Map<String, String> settings,
     @Default([]) List<ProductEntityData> products,
     @Default([]) List<ProductPriceEntityData> prices,
