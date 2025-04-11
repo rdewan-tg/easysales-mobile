@@ -16,7 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProductState {
-  dynamic get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isProductImported => throw _privateConstructorUsedError;
+  bool get isPriceImported => throw _privateConstructorUsedError;
   Map<String, String> get settings => throw _privateConstructorUsedError;
   List<ProductEntityData> get products => throw _privateConstructorUsedError;
   List<ProductPriceEntityData> get prices => throw _privateConstructorUsedError;
@@ -46,7 +48,9 @@ abstract class $ProductStateCopyWith<$Res> {
       _$ProductStateCopyWithImpl<$Res, ProductState>;
   @useResult
   $Res call(
-      {dynamic isLoading,
+      {bool isLoading,
+      bool isProductImported,
+      bool isPriceImported,
       Map<String, String> settings,
       List<ProductEntityData> products,
       List<ProductPriceEntityData> prices,
@@ -77,7 +81,9 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = freezed,
+    Object? isLoading = null,
+    Object? isProductImported = null,
+    Object? isPriceImported = null,
     Object? settings = null,
     Object? products = null,
     Object? prices = null,
@@ -93,10 +99,18 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
     Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: freezed == isLoading
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as bool,
+      isProductImported: null == isProductImported
+          ? _value.isProductImported
+          : isProductImported // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPriceImported: null == isPriceImported
+          ? _value.isPriceImported
+          : isPriceImported // ignore: cast_nullable_to_non_nullable
+              as bool,
       settings: null == settings
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
@@ -163,7 +177,9 @@ abstract class _$$ProductStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {dynamic isLoading,
+      {bool isLoading,
+      bool isProductImported,
+      bool isPriceImported,
       Map<String, String> settings,
       List<ProductEntityData> products,
       List<ProductPriceEntityData> prices,
@@ -192,7 +208,9 @@ class __$$ProductStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = freezed,
+    Object? isLoading = null,
+    Object? isProductImported = null,
+    Object? isPriceImported = null,
     Object? settings = null,
     Object? products = null,
     Object? prices = null,
@@ -208,7 +226,18 @@ class __$$ProductStateImplCopyWithImpl<$Res>
     Object? errorMsg = freezed,
   }) {
     return _then(_$ProductStateImpl(
-      isLoading: freezed == isLoading ? _value.isLoading! : isLoading,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isProductImported: null == isProductImported
+          ? _value.isProductImported
+          : isProductImported // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPriceImported: null == isPriceImported
+          ? _value.isPriceImported
+          : isPriceImported // ignore: cast_nullable_to_non_nullable
+              as bool,
       settings: null == settings
           ? _value._settings
           : settings // ignore: cast_nullable_to_non_nullable
@@ -271,6 +300,8 @@ class __$$ProductStateImplCopyWithImpl<$Res>
 class _$ProductStateImpl implements _ProductState {
   _$ProductStateImpl(
       {this.isLoading = false,
+      this.isProductImported = false,
+      this.isPriceImported = false,
       final Map<String, String> settings = const {},
       final List<ProductEntityData> products = const [],
       final List<ProductPriceEntityData> prices = const [],
@@ -293,7 +324,13 @@ class _$ProductStateImpl implements _ProductState {
 
   @override
   @JsonKey()
-  final dynamic isLoading;
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isProductImported;
+  @override
+  @JsonKey()
+  final bool isPriceImported;
   final Map<String, String> _settings;
   @override
   @JsonKey()
@@ -369,7 +406,7 @@ class _$ProductStateImpl implements _ProductState {
 
   @override
   String toString() {
-    return 'ProductState(isLoading: $isLoading, settings: $settings, products: $products, prices: $prices, price: $price, uom: $uom, packSize: $packSize, quantity: $quantity, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared, errorMsg: $errorMsg)';
+    return 'ProductState(isLoading: $isLoading, isProductImported: $isProductImported, isPriceImported: $isPriceImported, settings: $settings, products: $products, prices: $prices, price: $price, uom: $uom, packSize: $packSize, quantity: $quantity, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared, errorMsg: $errorMsg)';
   }
 
   @override
@@ -377,7 +414,12 @@ class _$ProductStateImpl implements _ProductState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductStateImpl &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isProductImported, isProductImported) ||
+                other.isProductImported == isProductImported) &&
+            (identical(other.isPriceImported, isPriceImported) ||
+                other.isPriceImported == isPriceImported) &&
             const DeepCollectionEquality().equals(other._settings, _settings) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality().equals(other._prices, _prices) &&
@@ -407,7 +449,9 @@ class _$ProductStateImpl implements _ProductState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(isLoading),
+      isLoading,
+      isProductImported,
+      isPriceImported,
       const DeepCollectionEquality().hash(_settings),
       const DeepCollectionEquality().hash(_products),
       const DeepCollectionEquality().hash(_prices),
@@ -433,7 +477,9 @@ class _$ProductStateImpl implements _ProductState {
 
 abstract class _ProductState implements ProductState {
   factory _ProductState(
-      {final dynamic isLoading,
+      {final bool isLoading,
+      final bool isProductImported,
+      final bool isPriceImported,
       final Map<String, String> settings,
       final List<ProductEntityData> products,
       final List<ProductPriceEntityData> prices,
@@ -449,7 +495,11 @@ abstract class _ProductState implements ProductState {
       final String? errorMsg}) = _$ProductStateImpl;
 
   @override
-  dynamic get isLoading;
+  bool get isLoading;
+  @override
+  bool get isProductImported;
+  @override
+  bool get isPriceImported;
   @override
   Map<String, String> get settings;
   @override

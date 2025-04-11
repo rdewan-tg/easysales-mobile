@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddressState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isAddressImported => throw _privateConstructorUsedError;
   List<CustomerAddressEntityData> get addresses =>
       throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
@@ -36,6 +37,7 @@ abstract class $AddressStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      bool isAddressImported,
       List<CustomerAddressEntityData> addresses,
       String? errorMsg});
 }
@@ -56,6 +58,7 @@ class _$AddressStateCopyWithImpl<$Res, $Val extends AddressState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isAddressImported = null,
     Object? addresses = null,
     Object? errorMsg = freezed,
   }) {
@@ -63,6 +66,10 @@ class _$AddressStateCopyWithImpl<$Res, $Val extends AddressState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAddressImported: null == isAddressImported
+          ? _value.isAddressImported
+          : isAddressImported // ignore: cast_nullable_to_non_nullable
               as bool,
       addresses: null == addresses
           ? _value.addresses
@@ -86,6 +93,7 @@ abstract class _$$AddressStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      bool isAddressImported,
       List<CustomerAddressEntityData> addresses,
       String? errorMsg});
 }
@@ -104,6 +112,7 @@ class __$$AddressStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isAddressImported = null,
     Object? addresses = null,
     Object? errorMsg = freezed,
   }) {
@@ -111,6 +120,10 @@ class __$$AddressStateImplCopyWithImpl<$Res>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAddressImported: null == isAddressImported
+          ? _value.isAddressImported
+          : isAddressImported // ignore: cast_nullable_to_non_nullable
               as bool,
       addresses: null == addresses
           ? _value._addresses
@@ -129,6 +142,7 @@ class __$$AddressStateImplCopyWithImpl<$Res>
 class _$AddressStateImpl implements _AddressState {
   _$AddressStateImpl(
       {this.isLoading = false,
+      this.isAddressImported = false,
       final List<CustomerAddressEntityData> addresses = const [],
       this.errorMsg})
       : _addresses = addresses;
@@ -136,6 +150,9 @@ class _$AddressStateImpl implements _AddressState {
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isAddressImported;
   final List<CustomerAddressEntityData> _addresses;
   @override
   @JsonKey()
@@ -150,7 +167,7 @@ class _$AddressStateImpl implements _AddressState {
 
   @override
   String toString() {
-    return 'AddressState(isLoading: $isLoading, addresses: $addresses, errorMsg: $errorMsg)';
+    return 'AddressState(isLoading: $isLoading, isAddressImported: $isAddressImported, addresses: $addresses, errorMsg: $errorMsg)';
   }
 
   @override
@@ -160,6 +177,8 @@ class _$AddressStateImpl implements _AddressState {
             other is _$AddressStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isAddressImported, isAddressImported) ||
+                other.isAddressImported == isAddressImported) &&
             const DeepCollectionEquality()
                 .equals(other._addresses, _addresses) &&
             (identical(other.errorMsg, errorMsg) ||
@@ -167,7 +186,7 @@ class _$AddressStateImpl implements _AddressState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
+  int get hashCode => Object.hash(runtimeType, isLoading, isAddressImported,
       const DeepCollectionEquality().hash(_addresses), errorMsg);
 
   /// Create a copy of AddressState
@@ -182,11 +201,14 @@ class _$AddressStateImpl implements _AddressState {
 abstract class _AddressState implements AddressState {
   factory _AddressState(
       {final bool isLoading,
+      final bool isAddressImported,
       final List<CustomerAddressEntityData> addresses,
       final String? errorMsg}) = _$AddressStateImpl;
 
   @override
   bool get isLoading;
+  @override
+  bool get isAddressImported;
   @override
   List<CustomerAddressEntityData> get addresses;
   @override

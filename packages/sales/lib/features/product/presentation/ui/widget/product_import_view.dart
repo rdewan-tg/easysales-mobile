@@ -65,6 +65,54 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
       },
     );
 
+    // listen for error
+    ref.listen(
+      productControllerProvider.select((value) => value.isProductImported),
+      (_, next) {
+        if (next) {
+          // clear the product import status
+          ref.read(productControllerProvider.notifier).clearIsProductImported();
+          //show success message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              backgroundColor: context.themeColor.colorScheme.secondary,
+              content: Text(
+                "Cool! Product Imported Successfully",
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for error
+    ref.listen(
+      productControllerProvider.select((value) => value.isPriceImported),
+      (_, next) {
+        if (next) {
+          // clear the product import status
+          ref.read(productControllerProvider.notifier).clearIsPriceImported();
+          //show success message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              backgroundColor: context.themeColor.colorScheme.secondary,
+              content: Text(
+                "Cool! Price Imported Successfully".hardcoded,
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+
     // listen for loading
     ref.listen(productControllerProvider.select((value) => value.isLoading),
         (_, next) {
