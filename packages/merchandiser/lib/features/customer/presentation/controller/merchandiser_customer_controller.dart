@@ -29,8 +29,12 @@ class MerchandiserCustomerController
 
   Future<void> importMerchandiserCustomers() async {
     try {
-      state =
-          state.copyWith(isLoading: true, searchQuery: '', lastSearchQuery: '');
+      state = state.copyWith(
+        isLoading: true,
+        searchQuery: '',
+        lastSearchQuery: '',
+        isCustomerImported: false,
+      );
       // get the setting from the database
       final setting =
           await ref.read(merchandiserCustomerServiceProvider).getAllSetting();
@@ -48,15 +52,17 @@ class MerchandiserCustomerController
           // get the customer from db
           watchMerchandiserCustomers();
           // update the state
-          state = state.copyWith(isLoading: false);
+          state = state.copyWith(isCustomerImported: customers);
         },
         (failure) {
           watchMerchandiserCustomers();
-          state = state.copyWith(errorMsg: failure.message, isLoading: false);
+          state = state.copyWith(errorMsg: failure.message);
         },
       );
     } catch (e) {
-      state = state.copyWith(errorMsg: e.toString(), isLoading: false);
+      state = state.copyWith(errorMsg: e.toString());
+    } finally {
+      state = state.copyWith(isLoading: false);
     }
   }
 
@@ -135,4 +141,9 @@ class MerchandiserCustomerController
   }
 
   int? getTotalSearchHistoryCleared() => state.totalSearchHistoryCleared;
+
+  Future<void> clearIsCustomerImported() async {
+    await Future.delayed(const Duration(seconds: 5));
+    state = state.copyWith(isCustomerImported: false);
+  }
 }

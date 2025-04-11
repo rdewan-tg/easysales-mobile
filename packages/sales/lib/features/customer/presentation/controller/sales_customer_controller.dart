@@ -27,8 +27,12 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
 
   Future<void> importSalesCustomers() async {
     try {
-      state =
-          state.copyWith(isLoading: true, searchQuery: '', lastSearchQuery: '');
+      state = state.copyWith(
+        isLoading: true,
+        searchQuery: '',
+        lastSearchQuery: '',
+        isCustomerImported: false,
+      );
       // get the setting from the database
       final setting =
           await ref.read(salesCustomerServiceProvider).getAllSetting();
@@ -44,15 +48,18 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
       result.when(
         (customers) {
           watchSalesCustomers();
-          state = state.copyWith(isLoading: false);
+          state =
+              state.copyWith(isLoading: false, isCustomerImported: customers);
         },
         (failure) {
           watchSalesCustomers();
-          state = state.copyWith(errorMsg: failure.message, isLoading: false);
+          state = state.copyWith(errorMsg: failure.message);
         },
       );
     } catch (e) {
-      state = state.copyWith(errorMsg: e.toString(), isLoading: false);
+      state = state.copyWith(errorMsg: e.toString());
+    } finally {
+      state = state.copyWith(isLoading: false);
     }
   }
 
@@ -129,4 +136,9 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
   }
 
   int? getTotalSearchHistoryCleared() => state.totalSearchHistoryCleared;
+
+  Future<void> clearIsCustomerImported() async {
+    await Future.delayed(const Duration(seconds: 5));
+    state = state.copyWith(isCustomerImported: false);
+  }
 }
