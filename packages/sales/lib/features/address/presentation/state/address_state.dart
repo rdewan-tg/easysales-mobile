@@ -7,6 +7,7 @@ part 'address_state.freezed.dart';
 class AddressState with _$AddressState {
   factory AddressState({
     @Default(false) bool isLoading,
+    @Default(false) bool isAddressImported,
     @Default([]) List<CustomerAddressEntityData> addresses,
     String? errorMsg,
   }) = _AddressState;

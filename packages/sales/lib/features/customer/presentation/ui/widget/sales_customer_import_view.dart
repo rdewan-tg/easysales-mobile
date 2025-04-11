@@ -62,6 +62,54 @@ class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
       },
     );
 
+    // listen for status
+    ref.listen(
+      salesCustomerProvider.select((value) => value.isCustomerImported),
+      (_, next) {
+        if (next) {
+          // clear the customer import status
+          ref.read(salesCustomerProvider.notifier).clearIsCustomerImported();
+          //show success message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              backgroundColor: context.themeColor.colorScheme.secondary,
+              content: Text(
+                "Cool! Customer Imported Successfully".hardcoded,
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+
+    // listen for status
+    ref.listen(
+      addressControllerProvider.select((value) => value.isAddressImported),
+      (_, next) {
+        if (next) {
+          // clear the address import status
+          ref.read(addressControllerProvider.notifier).clearIsAddressImported();
+          //show success message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              backgroundColor: context.themeColor.colorScheme.secondary,
+              content: Text(
+                "Cool! Address Imported Successfully".hardcoded,
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+
     // listen for error
     ref.listen(
       salesCustomerProvider.select((value) => value.errorMsg),
