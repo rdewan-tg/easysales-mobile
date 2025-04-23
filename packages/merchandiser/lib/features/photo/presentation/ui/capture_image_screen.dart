@@ -323,5 +323,5 @@ Uint8List processImage(Map<String, dynamic> args) {
   );
 
   // Return the encoded modified image
-  return img.encodeJpg(modifiedImage, quality: 75);
+  return img.encodeJpg(modifiedImage, quality: 50);
 }
