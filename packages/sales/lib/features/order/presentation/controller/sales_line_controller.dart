@@ -79,7 +79,7 @@ class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
       result.when(
         (data) {
           state = state.copyWith(isItemAdded: true, isLoading: false);
-          _watchSalesLine(salesId);
+          //watchSalesLine(salesId);
         },
         (error) {
           state = state.copyWith(errorMsg: error.message, isLoading: false);
@@ -137,7 +137,7 @@ class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
     }
   }
 
-  Future<void> _watchSalesLine(String salesId) async {
+  Future<void> watchSalesLine(String salesId) async {
     _subscriptionSalesLine = ref
         .read(orderServiceProvider)
         .watchAllSalesLineBySalesId(salesId)
