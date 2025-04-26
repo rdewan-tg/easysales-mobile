@@ -16,6 +16,11 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final salesId =
+          ref.read(salesHeaderControlelrProvider.notifier).getSalesId();
+      ref.read(salesLineControllerProvider.notifier).watchSalesLine(salesId);
+    });
     _animationStyle = AnimationStyle(
       duration: const Duration(seconds: 1),
       reverseDuration: const Duration(seconds: 1),
