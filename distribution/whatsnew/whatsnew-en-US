@@ -1,2 +1,3 @@
-Fixed Minor Bug and Improvement
-Disable the Sync button when order line is empty
+Photo compression to 50%
+Fix the sales line update in order history
+Fix the empty sales line when navigate from sales line to sales header tab
