@@ -30,3 +30,5 @@ const String createSalesHeaderEndPoint = '/v1/api/sales-header';
 // sales line
 const String createSalesLineEndPoint = '/v1/api/sales-line';
 const String createManySalesLineEndPoint = '/v1/api/sales-line/create-many';
+const String lastSalesOrderIdEndPoint =
+    '/v1/api/sales-header/find/max-order-id/{id}/{prefix}';

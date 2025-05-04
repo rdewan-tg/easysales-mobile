@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SalesHeaderState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isFetchingCurrentOrderNumber => throw _privateConstructorUsedError;
   bool get isOrderSynced => throw _privateConstructorUsedError;
+  int get currentOrderNumber => throw _privateConstructorUsedError;
   List<SalesHeaderEntityData> get salesHeaders =>
       throw _privateConstructorUsedError;
   CustomerAddressEntityData? get customerAddressData =>
@@ -44,7 +46,9 @@ abstract class $SalesHeaderStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      bool isFetchingCurrentOrderNumber,
       bool isOrderSynced,
+      int currentOrderNumber,
       List<SalesHeaderEntityData> salesHeaders,
       CustomerAddressEntityData? customerAddressData,
       SalesCustomerEntityData? customerData,
@@ -69,7 +73,9 @@ class _$SalesHeaderStateCopyWithImpl<$Res, $Val extends SalesHeaderState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isFetchingCurrentOrderNumber = null,
     Object? isOrderSynced = null,
+    Object? currentOrderNumber = null,
     Object? salesHeaders = null,
     Object? customerAddressData = freezed,
     Object? customerData = freezed,
@@ -82,10 +88,18 @@ class _$SalesHeaderStateCopyWithImpl<$Res, $Val extends SalesHeaderState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFetchingCurrentOrderNumber: null == isFetchingCurrentOrderNumber
+          ? _value.isFetchingCurrentOrderNumber
+          : isFetchingCurrentOrderNumber // ignore: cast_nullable_to_non_nullable
+              as bool,
       isOrderSynced: null == isOrderSynced
           ? _value.isOrderSynced
           : isOrderSynced // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentOrderNumber: null == currentOrderNumber
+          ? _value.currentOrderNumber
+          : currentOrderNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       salesHeaders: null == salesHeaders
           ? _value.salesHeaders
           : salesHeaders // ignore: cast_nullable_to_non_nullable
@@ -124,7 +138,9 @@ abstract class _$$SalesHeaderStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      bool isFetchingCurrentOrderNumber,
       bool isOrderSynced,
+      int currentOrderNumber,
       List<SalesHeaderEntityData> salesHeaders,
       CustomerAddressEntityData? customerAddressData,
       SalesCustomerEntityData? customerData,
@@ -147,7 +163,9 @@ class __$$SalesHeaderStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isFetchingCurrentOrderNumber = null,
     Object? isOrderSynced = null,
+    Object? currentOrderNumber = null,
     Object? salesHeaders = null,
     Object? customerAddressData = freezed,
     Object? customerData = freezed,
@@ -160,10 +178,18 @@ class __$$SalesHeaderStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFetchingCurrentOrderNumber: null == isFetchingCurrentOrderNumber
+          ? _value.isFetchingCurrentOrderNumber
+          : isFetchingCurrentOrderNumber // ignore: cast_nullable_to_non_nullable
+              as bool,
       isOrderSynced: null == isOrderSynced
           ? _value.isOrderSynced
           : isOrderSynced // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentOrderNumber: null == currentOrderNumber
+          ? _value.currentOrderNumber
+          : currentOrderNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       salesHeaders: null == salesHeaders
           ? _value._salesHeaders
           : salesHeaders // ignore: cast_nullable_to_non_nullable
@@ -197,7 +223,9 @@ class __$$SalesHeaderStateImplCopyWithImpl<$Res>
 class _$SalesHeaderStateImpl implements _SalesHeaderState {
   _$SalesHeaderStateImpl(
       {this.isLoading = false,
+      this.isFetchingCurrentOrderNumber = false,
       this.isOrderSynced = false,
+      this.currentOrderNumber = 0,
       final List<SalesHeaderEntityData> salesHeaders = const [],
       this.customerAddressData,
       this.customerData,
@@ -212,7 +240,13 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
   final bool isLoading;
   @override
   @JsonKey()
+  final bool isFetchingCurrentOrderNumber;
+  @override
+  @JsonKey()
   final bool isOrderSynced;
+  @override
+  @JsonKey()
+  final int currentOrderNumber;
   final List<SalesHeaderEntityData> _salesHeaders;
   @override
   @JsonKey()
@@ -243,7 +277,7 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
 
   @override
   String toString() {
-    return 'SalesHeaderState(isLoading: $isLoading, isOrderSynced: $isOrderSynced, salesHeaders: $salesHeaders, customerAddressData: $customerAddressData, customerData: $customerData, salesHeaderData: $salesHeaderData, settings: $settings, errorMsg: $errorMsg)';
+    return 'SalesHeaderState(isLoading: $isLoading, isFetchingCurrentOrderNumber: $isFetchingCurrentOrderNumber, isOrderSynced: $isOrderSynced, currentOrderNumber: $currentOrderNumber, salesHeaders: $salesHeaders, customerAddressData: $customerAddressData, customerData: $customerData, salesHeaderData: $salesHeaderData, settings: $settings, errorMsg: $errorMsg)';
   }
 
   @override
@@ -253,8 +287,14 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
             other is _$SalesHeaderStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isFetchingCurrentOrderNumber,
+                    isFetchingCurrentOrderNumber) ||
+                other.isFetchingCurrentOrderNumber ==
+                    isFetchingCurrentOrderNumber) &&
             (identical(other.isOrderSynced, isOrderSynced) ||
                 other.isOrderSynced == isOrderSynced) &&
+            (identical(other.currentOrderNumber, currentOrderNumber) ||
+                other.currentOrderNumber == currentOrderNumber) &&
             const DeepCollectionEquality()
                 .equals(other._salesHeaders, _salesHeaders) &&
             (identical(other.customerAddressData, customerAddressData) ||
@@ -272,7 +312,9 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
   int get hashCode => Object.hash(
       runtimeType,
       isLoading,
+      isFetchingCurrentOrderNumber,
       isOrderSynced,
+      currentOrderNumber,
       const DeepCollectionEquality().hash(_salesHeaders),
       customerAddressData,
       customerData,
@@ -293,7 +335,9 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
 abstract class _SalesHeaderState implements SalesHeaderState {
   factory _SalesHeaderState(
       {final bool isLoading,
+      final bool isFetchingCurrentOrderNumber,
       final bool isOrderSynced,
+      final int currentOrderNumber,
       final List<SalesHeaderEntityData> salesHeaders,
       final CustomerAddressEntityData? customerAddressData,
       final SalesCustomerEntityData? customerData,
@@ -304,7 +348,11 @@ abstract class _SalesHeaderState implements SalesHeaderState {
   @override
   bool get isLoading;
   @override
+  bool get isFetchingCurrentOrderNumber;
+  @override
   bool get isOrderSynced;
+  @override
+  int get currentOrderNumber;
   @override
   List<SalesHeaderEntityData> get salesHeaders;
   @override

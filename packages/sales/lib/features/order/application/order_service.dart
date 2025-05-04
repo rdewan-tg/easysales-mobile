@@ -204,6 +204,17 @@ final class OrderService implements IOrderService {
       throw Failure(message: e.toString(), stackTrace: stackTrace);
     }
   }
+
+  @override
+  Future<int> getLastSalesOrderId(String id, String prefix) async {
+    try {
+      final result = await _orderRepository.getLastSalesOrderId(id, prefix);
+
+      return result.data;
+    } on Failure catch (_) {
+      rethrow;
+    }
+  }
 }
 
 // top level function for isolate

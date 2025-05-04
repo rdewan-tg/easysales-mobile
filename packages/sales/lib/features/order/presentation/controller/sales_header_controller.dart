@@ -25,6 +25,33 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
     state = state.copyWith(settings: settings);
   }
 
+  Future<void> getLastSalesOrderId() async {
+    try {
+      // prevent multiple calls
+      if (state.isFetchingCurrentOrderNumber) return;
+      // update state
+      state =
+          state.copyWith(isFetchingCurrentOrderNumber: true, errorMsg: null);
+      // get the setting from the database
+      final settings = await ref.read(orderServiceProvider).getAllSetting();
+      // extract the salesPersonCode from map
+      final salesPersonCode = settings['salesPersonCode'] ?? '-';
+      final orderNumberFormat = settings['orderNumberFormat'] ?? '-';
+      // get the last sales order id
+      final currentOrderNumber = await ref
+          .read(orderServiceProvider)
+          .getLastSalesOrderId(salesPersonCode, orderNumberFormat);
+      // update state
+      state = state.copyWith(currentOrderNumber: currentOrderNumber);
+    } on Failure catch (e) {
+      state = state.copyWith(errorMsg: e.message);
+    } catch (e) {
+      state = state.copyWith(errorMsg: e.toString());
+    } finally {
+      state = state.copyWith(isFetchingCurrentOrderNumber: false);
+    }
+  }
+
   Future<void> createSalesHeader(
     Map<String, dynamic> data,
     String transactionDate,
