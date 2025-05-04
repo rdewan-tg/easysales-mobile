@@ -15,6 +15,7 @@ import 'package:sales/features/product/presentation/controller/product_controlle
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:intl/intl.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 part 'features/customer/presentation/ui/sales_customer_screen.dart';
 part 'features/customer/presentation/ui/search_sales_customer_screen.dart';
@@ -51,3 +52,4 @@ part 'features/order_history/presentation/ui/widget/order_history_view.dart';
 part 'features/order_history/presentation/ui/order_history_detail_screen.dart';
 part 'features/order_history/presentation/ui/widget/order_history_detail_view.dart';
 part 'features/order_history/presentation/ui/widget/edit_order_history_line_item.dart';
+part 'features/order/presentation/ui/widget/current_order_number_view.dart';
