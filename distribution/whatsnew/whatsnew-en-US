@@ -1,3 +1,1 @@
-Photo compression to 50%
-Fix the sales line update in order history
-Fix the empty sales line when navigate from sales line to sales header tab
+Added a UI to display the current order number

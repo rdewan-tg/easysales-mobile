@@ -1,12 +1,18 @@
 import 'package:core/data/local/db/app_database.dart';
 import 'package:sales/features/order/data/dto/request/sales_header_request.dart';
 import 'package:sales/features/order/data/dto/request/sales_line_request.dart';
+import 'package:sales/features/order/data/dto/response/last_sales_id_response.dart';
 import 'package:sales/features/order/data/dto/response/sales_header_response.dart';
 import 'package:sales/features/order/data/dto/response/sales_line_response.dart';
 
 abstract interface class IOrderRepository {
   Future<SalesHeaderEntityData> createSalesHeader(
     SalesHeaderEntityCompanion data,
+  );
+
+  Future<LastSalesIdResponse> getLastSalesOrderId(
+    String id,
+    String prefix,
   );
 
   Future<SalesHeaderEntityData> updateSalesHeader(

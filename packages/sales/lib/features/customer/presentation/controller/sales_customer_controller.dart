@@ -21,7 +21,6 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
       _subscriptionSalesCustomer?.cancel();
       _subscriptionSearchHistory?.cancel();
     });
-
     return SalesCustomerState();
   }
 

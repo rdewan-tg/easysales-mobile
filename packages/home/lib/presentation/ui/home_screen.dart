@@ -59,6 +59,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(kSmall),
+              child: Card.outlined(
+                child: Column(
+                  children: [
+                    const CurrentOrderNumberView(),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        TextButton(
+                          onPressed: () {
+                            ref
+                                .read(salesHeaderControlelrProvider.notifier)
+                                .getLastSalesOrderId();
+                          },
+                          child: Text('Refresh'.hardcoded),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

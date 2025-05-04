@@ -9,6 +9,7 @@ import 'package:core/data/local/secure_storage/secure_storage.dart';
 import 'package:core/data/local/secure_storage/secure_storage_const.dart';
 import 'package:sales/features/order/data/dto/request/sales_header_request.dart';
 import 'package:sales/features/order/data/dto/request/sales_line_request.dart';
+import 'package:sales/features/order/data/dto/response/last_sales_id_response.dart';
 import 'package:sales/features/order/data/dto/response/sales_header_response.dart';
 import 'package:sales/features/order/data/dto/response/sales_line_response.dart';
 import 'package:sales/features/order/data/repository/iorder_repository.dart';
@@ -60,6 +61,20 @@ final class OrderRepository
   Future<int> createSalesLine(SalesLineEntityCompanion data) async {
     try {
       return await _salesLineDao.addSalesLine(data);
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, stackTrace) {
+      throw Failure(message: e.toString(), stackTrace: stackTrace);
+    }
+  }
+
+  @override
+  Future<LastSalesIdResponse> getLastSalesOrderId(
+    String id,
+    String prefix,
+  ) async {
+    try {
+      return await _orderApi.getLastSalesOrderId(id, prefix);
     } on Failure catch (_) {
       rethrow;
     } catch (e, stackTrace) {

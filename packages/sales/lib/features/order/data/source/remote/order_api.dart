@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:sales/features/order/data/dto/request/sales_header_request.dart';
 import 'package:sales/features/order/data/dto/request/sales_line_request.dart';
+import 'package:sales/features/order/data/dto/response/last_sales_id_response.dart';
 import 'package:sales/features/order/data/dto/response/sales_header_response.dart';
 import 'package:sales/features/order/data/dto/response/sales_line_response.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,5 +27,11 @@ abstract class OrderApi {
   @POST(createManySalesLineEndPoint)
   Future<SalesLineResponse> createManySalesLine(
     @Body() List<SalesLineRequest> body,
+  );
+
+  @GET(lastSalesOrderIdEndPoint)
+  Future<LastSalesIdResponse> getLastSalesOrderId(
+    @Path('id') String id,
+    @Path('prefix') String prefix,
   );
 }
