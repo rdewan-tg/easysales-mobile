@@ -195,6 +195,20 @@ final class OrderRepository
   }
 
   @override
+  Future<int> deleteSalesOrder(String salesId) async {
+    try {
+      // call api to delete the order id
+      await _orderApi.deleteBySalesId(salesId);
+      // delete the order id from local db
+      return await _salesHeaderDao.deleteBySalesId(salesId);
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, stackTrace) {
+      throw Failure(message: e.toString(), stackTrace: stackTrace);
+    }
+  }
+
+  @override
   Future<SalesHeaderResponse> syncSalesHeaderToApi(
     SalesHeaderRequest data,
   ) async {

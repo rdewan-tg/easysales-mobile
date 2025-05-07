@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SettingState {
-  dynamic get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isOrderRunningNumberSaved => throw _privateConstructorUsedError;
   String get language => throw _privateConstructorUsedError;
   String get themeMode => throw _privateConstructorUsedError;
   String get timeZone => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $SettingStateCopyWith<$Res> {
       _$SettingStateCopyWithImpl<$Res, SettingState>;
   @useResult
   $Res call(
-      {dynamic isLoading,
+      {bool isLoading,
+      bool isOrderRunningNumberSaved,
       String language,
       String themeMode,
       String timeZone,
@@ -62,7 +64,8 @@ class _$SettingStateCopyWithImpl<$Res, $Val extends SettingState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = freezed,
+    Object? isLoading = null,
+    Object? isOrderRunningNumberSaved = null,
     Object? language = null,
     Object? themeMode = null,
     Object? timeZone = null,
@@ -71,10 +74,14 @@ class _$SettingStateCopyWithImpl<$Res, $Val extends SettingState>
     Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: freezed == isLoading
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as bool,
+      isOrderRunningNumberSaved: null == isOrderRunningNumberSaved
+          ? _value.isOrderRunningNumberSaved
+          : isOrderRunningNumberSaved // ignore: cast_nullable_to_non_nullable
+              as bool,
       language: null == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -112,7 +119,8 @@ abstract class _$$SettingStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {dynamic isLoading,
+      {bool isLoading,
+      bool isOrderRunningNumberSaved,
       String language,
       String themeMode,
       String timeZone,
@@ -134,7 +142,8 @@ class __$$SettingStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = freezed,
+    Object? isLoading = null,
+    Object? isOrderRunningNumberSaved = null,
     Object? language = null,
     Object? themeMode = null,
     Object? timeZone = null,
@@ -143,7 +152,14 @@ class __$$SettingStateImplCopyWithImpl<$Res>
     Object? errorMsg = freezed,
   }) {
     return _then(_$SettingStateImpl(
-      isLoading: freezed == isLoading ? _value.isLoading! : isLoading,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOrderRunningNumberSaved: null == isOrderRunningNumberSaved
+          ? _value.isOrderRunningNumberSaved
+          : isOrderRunningNumberSaved // ignore: cast_nullable_to_non_nullable
+              as bool,
       language: null == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -177,6 +193,7 @@ class __$$SettingStateImplCopyWithImpl<$Res>
 class _$SettingStateImpl implements _SettingState {
   const _$SettingStateImpl(
       {this.isLoading = false,
+      this.isOrderRunningNumberSaved = false,
       this.language = 'en',
       this.themeMode = 'light',
       this.timeZone = 'Asia/Kolkata',
@@ -187,7 +204,10 @@ class _$SettingStateImpl implements _SettingState {
 
   @override
   @JsonKey()
-  final dynamic isLoading;
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isOrderRunningNumberSaved;
   @override
   @JsonKey()
   final String language;
@@ -214,7 +234,7 @@ class _$SettingStateImpl implements _SettingState {
 
   @override
   String toString() {
-    return 'SettingState(isLoading: $isLoading, language: $language, themeMode: $themeMode, timeZone: $timeZone, settings: $settings, orderRunningNumber: $orderRunningNumber, errorMsg: $errorMsg)';
+    return 'SettingState(isLoading: $isLoading, isOrderRunningNumberSaved: $isOrderRunningNumberSaved, language: $language, themeMode: $themeMode, timeZone: $timeZone, settings: $settings, orderRunningNumber: $orderRunningNumber, errorMsg: $errorMsg)';
   }
 
   @override
@@ -222,7 +242,11 @@ class _$SettingStateImpl implements _SettingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SettingStateImpl &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isOrderRunningNumberSaved,
+                    isOrderRunningNumberSaved) ||
+                other.isOrderRunningNumberSaved == isOrderRunningNumberSaved) &&
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.themeMode, themeMode) ||
@@ -239,7 +263,8 @@ class _$SettingStateImpl implements _SettingState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(isLoading),
+      isLoading,
+      isOrderRunningNumberSaved,
       language,
       themeMode,
       timeZone,
@@ -258,7 +283,8 @@ class _$SettingStateImpl implements _SettingState {
 
 abstract class _SettingState implements SettingState {
   const factory _SettingState(
-      {final dynamic isLoading,
+      {final bool isLoading,
+      final bool isOrderRunningNumberSaved,
       final String language,
       final String themeMode,
       final String timeZone,
@@ -267,7 +293,9 @@ abstract class _SettingState implements SettingState {
       final String? errorMsg}) = _$SettingStateImpl;
 
   @override
-  dynamic get isLoading;
+  bool get isLoading;
+  @override
+  bool get isOrderRunningNumberSaved;
   @override
   String get language;
   @override

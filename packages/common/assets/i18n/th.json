@@ -64,5 +64,15 @@
     "setting.save": "บันทึก",
     "orderHistory.cancelOrder": "ยกเลิกคำสั่งซื้อ",
     "orderHistory.pending": "รอดำเนินการ",
-    "orderHistory.synced": "ซิงค์แล้ว"
+    "orderHistory.synced": "ซิงค์แล้ว",
+    "orderHistory.cancelled": "ยกเลิก",
+    "common.confirm": "ยืนยัน",
+    "common.cancel": "ยกเลิก",
+    "common.delete": "ลบ",
+    "common.undo": "เลิกทำ",
+    "common.orderDeleted": "ลบคำสั่งซื้อแล้ว",
+    "orderHistory.orderDeleted": "ลบคำสั่งซื้อเรียบร้อยแล้ว",
+    "setting.orderRunningNumberUpdatedSuccessfully": "อัปเดตหมายเลขรันคำสั่งซื้อเรียบร้อยแล้ว",
+    "common.confirmDeleteTitle": "ลบคำสั่งซื้อ",
+    "common.confirmDeleteMessage": "คุณแน่ใจหรือไม่ว่าต้องการลบคำสั่งซื้อนี้"
 }

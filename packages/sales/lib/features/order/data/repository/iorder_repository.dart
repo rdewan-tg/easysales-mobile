@@ -31,6 +31,8 @@ abstract interface class IOrderRepository {
 
   Future<int> deleteLine(String salesId, int lineId);
 
+  Future<int> deleteSalesOrder(String salesId);
+
   Stream<List<SalesLineEntityData>> watchAllSalesLineBySalesId(String salesId);
 
   Future<List<SalesLineEntityData>> getSalesLineBySalesId(String salesId);

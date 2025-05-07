@@ -64,5 +64,15 @@
     "setting.save": "节省",
     "orderHistory.cancelOrder": "取消订单",
     "orderHistory.pending": "待办的",
-    "orderHistory.synced": "已同步"
+    "orderHistory.synced": "已同步",
+    "orderHistory.cancelled": "取消",
+    "common.confirm": "确认",
+    "common.cancel": "取消",
+    "common.delete": "删除",
+    "common.undo": "撤消",
+    "common.orderDeleted": "订单已删除",
+    "orderHistory.orderDeleted": "订单删除成功",
+    "setting.orderRunningNumberUpdatedSuccessfully": "订单流水号更新成功",
+    "common.confirmDeleteTitle": "删除订单",
+    "common.confirmDeleteMessage": "您确定要删除此订单吗？"
 }

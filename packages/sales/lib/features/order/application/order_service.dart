@@ -215,6 +215,17 @@ final class OrderService implements IOrderService {
       rethrow;
     }
   }
+
+  @override
+  Future<Result<int, Failure>> deleteSalesOrder(String salesId) async {
+    try {
+      final result = await _orderRepository.deleteSalesOrder(salesId);
+
+      return Result.success(result);
+    } on Failure catch (e) {
+      return Error(e);
+    }
+  }
 }
 
 // top level function for isolate

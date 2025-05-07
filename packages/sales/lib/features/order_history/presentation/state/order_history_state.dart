@@ -10,6 +10,7 @@ class OrderHistoryState with _$OrderHistoryState {
     @Default(false) bool isOrderSynced,
     @Default(false) bool isOrderCancelled,
     @Default(false) bool isItemEdited,
+    @Default(false) bool isDeleteOrder,
     @Default([]) List<SalesHeaderEntityData> salesHeaders,
     @Default([]) List<SalesLineEntityData> salesLines,
     @Default(0.0) double totalAmount,

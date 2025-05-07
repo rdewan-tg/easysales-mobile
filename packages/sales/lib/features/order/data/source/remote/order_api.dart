@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:sales/features/order/data/dto/request/sales_header_request.dart';
 import 'package:sales/features/order/data/dto/request/sales_line_request.dart';
+import 'package:sales/features/order/data/dto/response/delete_order_response.dart';
 import 'package:sales/features/order/data/dto/response/last_sales_id_response.dart';
 import 'package:sales/features/order/data/dto/response/sales_header_response.dart';
 import 'package:sales/features/order/data/dto/response/sales_line_response.dart';
@@ -33,5 +34,10 @@ abstract class OrderApi {
   Future<LastSalesIdResponse> getLastSalesOrderId(
     @Path('id') String id,
     @Path('prefix') String prefix,
+  );
+
+  @DELETE(deleteBySalesIdEndPoint)
+  Future<DeleteOrderResponse> deleteBySalesId(
+    @Path('salesId') String salesId,
   );
 }
