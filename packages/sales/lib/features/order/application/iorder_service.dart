@@ -34,6 +34,8 @@ abstract interface class IOrderService {
 
   Future<Result<int, Failure>> deleteLine(String salesId, int lineId);
 
+  Future<Result<int, Failure>> deleteSalesOrder(String salesId);
+
   Future<int> getMaxLineNumberBySalesId(String salesId);
 
   Future<int> getOrderRunningNumber();

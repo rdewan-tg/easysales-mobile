@@ -64,5 +64,15 @@
     "setting.save": "Jimat",
     "orderHistory.cancelOrder": "Batalkan Pesanan",
     "orderHistory.pending": "Belum selesai",
-    "orderHistory.synced": "disegerakkan"
+    "orderHistory.synced": "disegerakkan",
+    "orderHistory.cancelled": "Dibatalkan",
+    "common.confirm": "sahkan",
+    "common.cancel": "Batal",
+    "common.delete": "Padam",
+    "common.undo": "Buat asal",
+    "common.orderDeleted": "Pesanan Dipadamkan",
+    "orderHistory.orderDeleted": "Pesanan Berjaya Dipadamkan",
+    "setting.orderRunningNumberUpdatedSuccessfully": "Nombor Berjalan Pesanan Berjaya Dikemaskini",
+    "common.confirmDeleteTitle": "Padam Pesanan",
+    "common.confirmDeleteMessage": "Adakah anda pasti mahu memadamkan pesanan ini?"
 }

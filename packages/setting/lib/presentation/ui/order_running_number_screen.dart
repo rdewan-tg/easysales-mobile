@@ -29,6 +29,8 @@ class _OrderRunningNumberScreenState
 
   @override
   Widget build(BuildContext context) {
+    _listener();
+
     return AppScaffoldScrollable(
       title: Text(context.localizations('setting.orderRunningNumberTitle')),
       widget: Padding(
@@ -73,6 +75,27 @@ class _OrderRunningNumberScreenState
           ],
         ),
       ),
+    );
+  }
+
+  void _listener() {
+    ref.listen(
+      settingControllerProvider
+          .select((value) => value.isOrderRunningNumberSaved),
+      (previous, next) {
+        if (next) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: Text(
+                context.localizations(
+                  'setting.orderRunningNumberUpdatedSuccessfully',
+                ),
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }

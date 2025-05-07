@@ -37,7 +37,16 @@ final class SettingController extends _$SettingController {
   }
 
   Future<void> setOrderRunningNumber(String value) async {
-    await ref.read(settingServiceProvider).setOrderRunningNumber(value);
+    try {
+      state = state.copyWith(isOrderRunningNumberSaved: false);
+      await ref.read(settingServiceProvider).setOrderRunningNumber(value);
+      state = state.copyWith(isOrderRunningNumberSaved: true);
+      Future.delayed(const Duration(seconds: 3), () {
+        state = state.copyWith(isOrderRunningNumberSaved: false);
+      });
+    } catch (e, _) {
+      state = state.copyWith(errorMsg: e.toString());
+    }
   }
 
   Future<void> writeTheme(String key, String value) async {
