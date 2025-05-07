@@ -6,3 +6,4 @@ cancelOrder: Cancel Order
 pending: Pending
 synced: Synced
 cancelled: Cancelled
+orderDeleted: Order Deleted Successfully

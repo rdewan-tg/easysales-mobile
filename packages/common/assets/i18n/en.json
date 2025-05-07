@@ -20,6 +20,7 @@
     "orderHistory.pending": "Pending",
     "orderHistory.synced": "Synced",
     "orderHistory.cancelled": "Cancelled",
+    "orderHistory.orderDeleted": "Order Deleted Successfully",
     "setting.title": "Setting",
     "setting.theme": "Theme",
     "setting.darkMode": "Dark Mode",
@@ -44,6 +45,7 @@
     "setting.importProductAndPrice": "Import Product and Price",
     "setting.importProductAndPriceSubTitle": "Import Product and Price from API",
     "setting.save": "Save",
+    "setting.orderRunningNumberUpdatedSuccessfully": "Order Running Number Updated Successfully",
     "profile.title": "Profile",
     "profile.deleteMyAccount": "Delete Account",
     "profile.signout": "Sign out",
@@ -65,5 +67,12 @@
     "product.importProductAndPrice": "Import Product and Price",
     "product.importProduct": "Import Product",
     "product.importPrice": "Import Price",
-    "common.noData": "No Data Available"
+    "common.noData": "No Data Available",
+    "common.confirm": "Confirm",
+    "common.cancel": "Cancel",
+    "common.delete": "Delete",
+    "common.undo": "Undo",
+    "common.orderDeleted": "Order Deleted",
+    "common.confirmDeleteTitle": "Delete Order",
+    "common.confirmDeleteMessage": "Are you sure you want to delete this order?"
 }

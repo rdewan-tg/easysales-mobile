@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:core/data/local/db/app_database.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sales/features/order/application/order_service.dart';
 import 'package:sales/features/order_history/application/order_history_service.dart';
 import 'package:sales/features/order_history/presentation/state/order_history_state.dart';
 import 'package:drift/drift.dart';
@@ -179,4 +180,24 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
 
   String getProductName(String itemId) =>
       state.salesLines.firstWhere((item) => item.itemId == itemId).productName;
+
+  Future<void> deleteOrder(String salesId) async {
+    state = state.copyWith(
+      isLoading: true,
+      errorMsg: null,
+      isDeleteOrder: false,
+    );
+
+    final result =
+        await ref.read(orderServiceProvider).deleteSalesOrder(salesId);
+
+    result.when(
+      (data) {
+        state = state.copyWith(isDeleteOrder: true, isLoading: false);
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message, isLoading: false);
+      },
+    );
+  }
 }
