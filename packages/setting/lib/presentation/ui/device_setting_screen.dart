@@ -25,25 +25,36 @@ class _DeviceSettingScreenState extends ConsumerState<DeviceSettingScreen> {
 
     return AppScaffoldScrollable(
       title: Text(context.localizations('setting.deviceSetting')),
-      widget: Column(
-        children: [
-          ListTile(
-            title: Text(context.localizations('setting.deviceId')),
-            subtitle: Text(settings['deviceId'] ?? ''),
+      widget: RefreshIndicator.adaptive(
+        onRefresh: () async {
+          await ref.read(settingControllerProvider.notifier).getDeviceSetting();
+        },
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                title: Text(context.localizations('setting.deviceId')),
+                subtitle: Text(settings['deviceId'] ?? ''),
+              ),
+              ListTile(
+                title: Text(context.localizations('setting.salesPersonCode')),
+                subtitle: Text(settings['salesPersonCode'] ?? ''),
+              ),
+              ListTile(
+                title: Text(context.localizations('setting.orderNumberFormat')),
+                subtitle: Text(settings['orderNumberFormat'] ?? ''),
+              ),
+              ListTile(
+                title: Text(context.localizations('setting.timeZone')),
+                subtitle: Text(settings['timeZone'] ?? ''),
+              ),
+              // Add extra space at the bottom to ensure scrollability
+              const SizedBox(height: 100),
+            ],
           ),
-          ListTile(
-            title: Text(context.localizations('setting.salesPersonCode')),
-            subtitle: Text(settings['salesPersonCode'] ?? ''),
-          ),
-          ListTile(
-            title: Text(context.localizations('setting.orderNumberFormat')),
-            subtitle: Text(settings['orderNumberFormat'] ?? ''),
-          ),
-          ListTile(
-            title: Text(context.localizations('setting.timeZone')),
-            subtitle: Text(settings['timeZone'] ?? ''),
-          ),
-        ],
+        ),
       ),
     );
   }

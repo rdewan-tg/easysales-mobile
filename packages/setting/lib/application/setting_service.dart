@@ -38,18 +38,29 @@ final class SettingService implements ISettingService {
   }
 
   @override
-  Future<Result<bool, Failure>> getDeviceSetting(String deviceId) async {
+  Future<Result<Map<String, String>, Failure>> getDeviceSetting(
+    String deviceId,
+  ) async {
     try {
-      await _settingRepository.getDeviceSetting(deviceId);
+      // Get device setting from remote
+      final response = await _settingRepository.getDeviceSetting(deviceId);
 
-      return const Success(true);
+      // Update device setting to local
+      await _settingRepository.upsertMultipleSettings({
+        'deviceId': response.data.deviceId,
+        'salesPersonCode': response.data.salesPersonCode,
+        'orderNumberFormat': response.data.orderNumberFormat,
+      });
+
+      final result = await _settingRepository.getAllSettings();
+
+      return Success(result);
     } on Failure catch (e) {
       return Error(e);
     } catch (e, s) {
       return Error(
         Failure(
           message: e.toString(),
-          exception: e as Exception,
           stackTrace: s,
         ),
       );

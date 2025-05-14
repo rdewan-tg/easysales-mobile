@@ -18,19 +18,23 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // profile
             ListTile(
-              title: Text(context.localizations('setting.deviceSetting')),
-              subtitle: Text(context.localizations('setting.manageYourDevice')),
+              title: Text(context.localizations('setting.profile')),
+              subtitle:
+                  Text(context.localizations('setting.manageYourProfile')),
               trailing: IconButton(
                 onPressed: () {
-                  context.go('/setting/device-setting');
+                  context.go('/setting/profile');
                 },
                 icon: const Icon(Icons.navigate_next),
               ),
               onTap: () {
-                context.go('/setting/device-setting');
+                context.go('/setting/profile');
               },
             ),
+
+            // theme
             ListTile(
               title: Text(context.localizations('setting.theme')),
               subtitle: Text(context.localizations('setting.enableDarkMode')),
@@ -44,6 +48,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 context.go('/setting/theme');
               },
             ),
+            // language
             ListTile(
               title: Text(context.localizations('setting.language')),
               subtitle:
@@ -58,6 +63,21 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 context.go('/setting/language');
               },
             ),
+            // device setting
+            ListTile(
+              title: Text(context.localizations('setting.deviceSetting')),
+              subtitle: Text(context.localizations('setting.manageYourDevice')),
+              trailing: IconButton(
+                onPressed: () {
+                  context.go('/setting/device-setting');
+                },
+                icon: const Icon(Icons.navigate_next),
+              ),
+              onTap: () {
+                context.go('/setting/device-setting');
+              },
+            ),
+            // order running number
             ListTile(
               title: Text(
                 context.localizations('setting.orderRunningNumberTitle'),
@@ -75,20 +95,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 context.go('/setting/order-running-number');
               },
             ),
-            ListTile(
-              title: Text(context.localizations('setting.profile')),
-              subtitle:
-                  Text(context.localizations('setting.manageYourProfile')),
-              trailing: IconButton(
-                onPressed: () {
-                  context.go('/setting/profile');
-                },
-                icon: const Icon(Icons.navigate_next),
-              ),
-              onTap: () {
-                context.go('/setting/profile');
-              },
-            ),
+            // import sales customer
             ListTile(
               title: Text(context.localizations('setting.importSalesCustomer')),
               subtitle: Text(
@@ -104,6 +111,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 context.go('/order-history/sales/sales-customer-import');
               },
             ),
+            // import merchandiser customer
             ListTile(
               title: Text(
                 context.localizations('setting.importMerchandiserCustomer'),
@@ -123,6 +131,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 context.go('/merchandiser/merchandiser-customer-import');
               },
             ),
+            // import product and price
             ListTile(
               title:
                   Text(context.localizations('setting.importProductAndPrice')),
