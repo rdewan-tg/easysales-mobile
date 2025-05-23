@@ -88,6 +88,11 @@ final class MerchandiserCustomerService
   }
 
   @override
+  Stream<int> watchTotalCustomerCount() {
+    return _merchandiserCustomerRepository.watchTotalCustomerCount();
+  }
+
+  @override
   Stream<List<SearchMerchandiserCustomerHistoryEntityData>>
       watchSearchCustomerHistory() {
     return _merchandiserCustomerRepository.watchSearchCustomerHistory();

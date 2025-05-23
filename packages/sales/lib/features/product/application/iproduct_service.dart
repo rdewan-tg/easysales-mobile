@@ -15,6 +15,10 @@ abstract interface class IProductService {
     String? searchQuery,
   );
 
+  Stream<int> watchTotalProductImported();
+
+  Stream<int> watchTotalPriceImported();
+
   Future<Map<String, String>> getAllSettings();
 
   Future<void> insertOrUpdateSearchProductHistory(

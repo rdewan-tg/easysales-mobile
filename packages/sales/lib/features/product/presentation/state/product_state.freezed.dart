@@ -26,6 +26,8 @@ mixin _$ProductState {
   List<String> get uom => throw _privateConstructorUsedError;
   List<String> get packSize => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
+  int get totalProductImported => throw _privateConstructorUsedError;
+  int get totalPriceImported => throw _privateConstructorUsedError;
   List<String> get searchHistory => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
   String get lastSearchQuery => throw _privateConstructorUsedError;
@@ -58,6 +60,8 @@ abstract class $ProductStateCopyWith<$Res> {
       List<String> uom,
       List<String> packSize,
       int quantity,
+      int totalProductImported,
+      int totalPriceImported,
       List<String> searchHistory,
       String searchQuery,
       String lastSearchQuery,
@@ -91,6 +95,8 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
     Object? uom = null,
     Object? packSize = null,
     Object? quantity = null,
+    Object? totalProductImported = null,
+    Object? totalPriceImported = null,
     Object? searchHistory = null,
     Object? searchQuery = null,
     Object? lastSearchQuery = null,
@@ -138,6 +144,14 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalProductImported: null == totalProductImported
+          ? _value.totalProductImported
+          : totalProductImported // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPriceImported: null == totalPriceImported
+          ? _value.totalPriceImported
+          : totalPriceImported // ignore: cast_nullable_to_non_nullable
               as int,
       searchHistory: null == searchHistory
           ? _value.searchHistory
@@ -187,6 +201,8 @@ abstract class _$$ProductStateImplCopyWith<$Res>
       List<String> uom,
       List<String> packSize,
       int quantity,
+      int totalProductImported,
+      int totalPriceImported,
       List<String> searchHistory,
       String searchQuery,
       String lastSearchQuery,
@@ -218,6 +234,8 @@ class __$$ProductStateImplCopyWithImpl<$Res>
     Object? uom = null,
     Object? packSize = null,
     Object? quantity = null,
+    Object? totalProductImported = null,
+    Object? totalPriceImported = null,
     Object? searchHistory = null,
     Object? searchQuery = null,
     Object? lastSearchQuery = null,
@@ -266,6 +284,14 @@ class __$$ProductStateImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      totalProductImported: null == totalProductImported
+          ? _value.totalProductImported
+          : totalProductImported // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPriceImported: null == totalPriceImported
+          ? _value.totalPriceImported
+          : totalPriceImported // ignore: cast_nullable_to_non_nullable
+              as int,
       searchHistory: null == searchHistory
           ? _value._searchHistory
           : searchHistory // ignore: cast_nullable_to_non_nullable
@@ -309,6 +335,8 @@ class _$ProductStateImpl implements _ProductState {
       final List<String> uom = const [],
       final List<String> packSize = const [],
       this.quantity = 0,
+      this.totalProductImported = 0,
+      this.totalPriceImported = 0,
       final List<String> searchHistory = const [],
       this.searchQuery = '',
       this.lastSearchQuery = '',
@@ -381,6 +409,12 @@ class _$ProductStateImpl implements _ProductState {
   @override
   @JsonKey()
   final int quantity;
+  @override
+  @JsonKey()
+  final int totalProductImported;
+  @override
+  @JsonKey()
+  final int totalPriceImported;
   final List<String> _searchHistory;
   @override
   @JsonKey()
@@ -406,7 +440,7 @@ class _$ProductStateImpl implements _ProductState {
 
   @override
   String toString() {
-    return 'ProductState(isLoading: $isLoading, isProductImported: $isProductImported, isPriceImported: $isPriceImported, settings: $settings, products: $products, prices: $prices, price: $price, uom: $uom, packSize: $packSize, quantity: $quantity, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared, errorMsg: $errorMsg)';
+    return 'ProductState(isLoading: $isLoading, isProductImported: $isProductImported, isPriceImported: $isPriceImported, settings: $settings, products: $products, prices: $prices, price: $price, uom: $uom, packSize: $packSize, quantity: $quantity, totalProductImported: $totalProductImported, totalPriceImported: $totalPriceImported, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared, errorMsg: $errorMsg)';
   }
 
   @override
@@ -428,6 +462,10 @@ class _$ProductStateImpl implements _ProductState {
             const DeepCollectionEquality().equals(other._packSize, _packSize) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
+            (identical(other.totalProductImported, totalProductImported) ||
+                other.totalProductImported == totalProductImported) &&
+            (identical(other.totalPriceImported, totalPriceImported) ||
+                other.totalPriceImported == totalPriceImported) &&
             const DeepCollectionEquality()
                 .equals(other._searchHistory, _searchHistory) &&
             (identical(other.searchQuery, searchQuery) ||
@@ -459,6 +497,8 @@ class _$ProductStateImpl implements _ProductState {
       const DeepCollectionEquality().hash(_uom),
       const DeepCollectionEquality().hash(_packSize),
       quantity,
+      totalProductImported,
+      totalPriceImported,
       const DeepCollectionEquality().hash(_searchHistory),
       searchQuery,
       lastSearchQuery,
@@ -487,6 +527,8 @@ abstract class _ProductState implements ProductState {
       final List<String> uom,
       final List<String> packSize,
       final int quantity,
+      final int totalProductImported,
+      final int totalPriceImported,
       final List<String> searchHistory,
       final String searchQuery,
       final String lastSearchQuery,
@@ -514,6 +556,10 @@ abstract class _ProductState implements ProductState {
   List<String> get packSize;
   @override
   int get quantity;
+  @override
+  int get totalProductImported;
+  @override
+  int get totalPriceImported;
   @override
   List<String> get searchHistory;
   @override

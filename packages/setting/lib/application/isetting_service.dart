@@ -6,7 +6,9 @@ abstract interface class ISettingService {
 
   Future<void> setOrderRunningNumber(String value);
 
-  Future<Result<bool, Failure>> getDeviceSetting(String deviceId);
+  Future<Result<Map<String, String>, Failure>> getDeviceSetting(
+    String deviceId,
+  );
 
   Stream<String> watchThemeMode();
 

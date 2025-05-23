@@ -56,6 +56,14 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
     });
   }
 
+  // watch the total count
+  Stream<int> watchTotalCount() {
+    final countExp = countAll();
+    return (selectOnly(productPriceEntity)..addColumns([countExp]))
+        .map((row) => row.read(countExp)!)
+        .watchSingle();
+  }
+
   Future<List<String>> getProductUom(
     String itemId,
     String priceGroup,

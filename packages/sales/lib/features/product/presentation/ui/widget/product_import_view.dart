@@ -17,26 +17,76 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              fixedSize: const Size(200, 50),
-            ),
-            onPressed: () {
-              ref.read(productControllerProvider.notifier).importProduct();
+          Consumer(
+            builder: (context, ref, child) {
+              final totalProductImported = ref.watch(
+                productControllerProvider
+                    .select((value) => value.totalProductImported),
+              );
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(200, 50),
+                    ),
+                    onPressed: () {
+                      ref
+                          .read(productControllerProvider.notifier)
+                          .importProduct();
+                    },
+                    label: Text(context.localizations('product.importProduct')),
+                    icon: const Icon(Icons.import_export),
+                  ),
+                  if (totalProductImported > 0) ...[
+                    const SizedBox(width: kSmall),
+                    Text(
+                      'Imported ($totalProductImported)',
+                      style: context.textTheme.titleSmall?.copyWith(
+                        color: context.themeColor.colorScheme.primary,
+                      ),
+                    ),
+                  ],
+                ],
+              );
             },
-            label: Text(context.localizations('product.importProduct')),
-            icon: const Icon(Icons.import_export),
           ),
           const SizedBox(height: kLarge),
-          ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              fixedSize: const Size(200, 50),
-            ),
-            onPressed: () {
-              ref.read(productControllerProvider.notifier).importProductPrice();
+          Consumer(
+            builder: (context, ref, child) {
+              final totalPriceImported = ref.watch(
+                productControllerProvider
+                    .select((value) => value.totalPriceImported),
+              );
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(200, 50),
+                    ),
+                    onPressed: () {
+                      ref
+                          .read(productControllerProvider.notifier)
+                          .importProductPrice();
+                    },
+                    label: Text(context.localizations('product.importPrice')),
+                    icon: const Icon(Icons.import_export),
+                  ),
+                  if (totalPriceImported > 0) ...[
+                    const SizedBox(width: kSmall),
+                    Text(
+                      'Imported ($totalPriceImported)',
+                      style: context.textTheme.titleSmall?.copyWith(
+                        color: context.themeColor.colorScheme.primary,
+                      ),
+                    ),
+                  ],
+                ],
+              );
             },
-            label: Text(context.localizations('product.importPrice')),
-            icon: const Icon(Icons.import_export),
           ),
         ],
       ),
@@ -72,13 +122,14 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
         if (next) {
           // clear the product import status
           ref.read(productControllerProvider.notifier).clearIsProductImported();
+
           //show success message
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 3),
               backgroundColor: context.themeColor.colorScheme.secondary,
               content: Text(
-                "Cool! Product Imported Successfully",
+                "Cool! Product Imported Successfully.",
                 style: context.textTheme.titleSmall?.copyWith(
                   color: Colors.white,
                 ),
@@ -96,13 +147,14 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
         if (next) {
           // clear the product import status
           ref.read(productControllerProvider.notifier).clearIsPriceImported();
+
           //show success message
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 3),
               backgroundColor: context.themeColor.colorScheme.secondary,
               content: Text(
-                "Cool! Price Imported Successfully".hardcoded,
+                "Cool! Price Imported Successfully",
                 style: context.textTheme.titleSmall?.copyWith(
                   color: Colors.white,
                 ),

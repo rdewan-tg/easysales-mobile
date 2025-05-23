@@ -149,6 +149,11 @@ final class SalesCustomerRepository
   }
 
   @override
+  Stream<int> watchTotalCustomerCount() {
+    return _salesCustomerDao.watchTotalCount();
+  }
+
+  @override
   Future<SalesCustomerEntityData?> getCustomerByCustomerId(
     String customerId,
   ) async {

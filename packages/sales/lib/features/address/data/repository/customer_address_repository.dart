@@ -111,6 +111,11 @@ final class CustomerAddressRepository
   }
 
   @override
+  Stream<int> watchTotalCustomerAddressCount() {
+    return _customerAddressDao.watchTotalCustomerAddressCount();
+  }
+
+  @override
   Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
     String postalAddress,
   ) async {

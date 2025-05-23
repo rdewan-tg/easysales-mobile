@@ -18,4 +18,6 @@ abstract interface class ISettingRepository {
   Future<void> clearToken();
 
   Future<Map<String, String>> getAllSettings();
+
+  Future<void> upsertMultipleSettings(Map<String, String> settings);
 }

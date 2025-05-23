@@ -16,6 +16,8 @@ class ProductState with _$ProductState {
     @Default([]) List<String> uom,
     @Default([]) List<String> packSize,
     @Default(0) int quantity,
+    @Default(0) int totalProductImported,
+    @Default(0) int totalPriceImported,
     @Default([]) List<String> searchHistory,
     @Default('') String searchQuery,
     @Default('') String lastSearchQuery,

@@ -70,6 +70,16 @@ final class ProductService implements IProductService {
   }
 
   @override
+  Stream<int> watchTotalProductImported() {
+    return _productRepository.watchTotalProductImported();
+  }
+
+  @override
+  Stream<int> watchTotalPriceImported() {
+    return _productRepository.watchTotalPriceImported();
+  }
+
+  @override
   Future<Map<String, String>> getAllSettings() async {
     try {
       return await _productRepository.getAllSettings();

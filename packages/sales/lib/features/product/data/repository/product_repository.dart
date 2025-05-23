@@ -163,6 +163,16 @@ final class ProductRepository
   }
 
   @override
+  Stream<int> watchTotalProductImported() {
+    return _productDao.watchTotalCount();
+  }
+
+  @override
+  Stream<int> watchTotalPriceImported() {
+    return _priceDao.watchTotalCount();
+  }
+
+  @override
   Future<List<String>> getProductUom(String itemId, String priceGroup) async {
     try {
       return await _priceDao.getProductUom(itemId, priceGroup);

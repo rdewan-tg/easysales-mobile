@@ -20,6 +20,7 @@ mixin _$SalesCustomerState {
   bool get isCustomerImported => throw _privateConstructorUsedError;
   bool get isSearchHistoryCleared => throw _privateConstructorUsedError;
   int? get totalSearchHistoryCleared => throw _privateConstructorUsedError;
+  int get totalCustomerCount => throw _privateConstructorUsedError;
   List<SalesCustomerEntityData> get customers =>
       throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $SalesCustomerStateCopyWith<$Res> {
       bool isCustomerImported,
       bool isSearchHistoryCleared,
       int? totalSearchHistoryCleared,
+      int totalCustomerCount,
       List<SalesCustomerEntityData> customers,
       String? errorMsg,
       List<String> searchHistory,
@@ -71,6 +73,7 @@ class _$SalesCustomerStateCopyWithImpl<$Res, $Val extends SalesCustomerState>
     Object? isCustomerImported = null,
     Object? isSearchHistoryCleared = null,
     Object? totalSearchHistoryCleared = freezed,
+    Object? totalCustomerCount = null,
     Object? customers = null,
     Object? errorMsg = freezed,
     Object? searchHistory = null,
@@ -94,6 +97,10 @@ class _$SalesCustomerStateCopyWithImpl<$Res, $Val extends SalesCustomerState>
           ? _value.totalSearchHistoryCleared
           : totalSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
               as int?,
+      totalCustomerCount: null == totalCustomerCount
+          ? _value.totalCustomerCount
+          : totalCustomerCount // ignore: cast_nullable_to_non_nullable
+              as int,
       customers: null == customers
           ? _value.customers
           : customers // ignore: cast_nullable_to_non_nullable
@@ -131,6 +138,7 @@ abstract class _$$SalesCustomerStateImplCopyWith<$Res>
       bool isCustomerImported,
       bool isSearchHistoryCleared,
       int? totalSearchHistoryCleared,
+      int totalCustomerCount,
       List<SalesCustomerEntityData> customers,
       String? errorMsg,
       List<String> searchHistory,
@@ -155,6 +163,7 @@ class __$$SalesCustomerStateImplCopyWithImpl<$Res>
     Object? isCustomerImported = null,
     Object? isSearchHistoryCleared = null,
     Object? totalSearchHistoryCleared = freezed,
+    Object? totalCustomerCount = null,
     Object? customers = null,
     Object? errorMsg = freezed,
     Object? searchHistory = null,
@@ -178,6 +187,10 @@ class __$$SalesCustomerStateImplCopyWithImpl<$Res>
           ? _value.totalSearchHistoryCleared
           : totalSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
               as int?,
+      totalCustomerCount: null == totalCustomerCount
+          ? _value.totalCustomerCount
+          : totalCustomerCount // ignore: cast_nullable_to_non_nullable
+              as int,
       customers: null == customers
           ? _value._customers
           : customers // ignore: cast_nullable_to_non_nullable
@@ -210,6 +223,7 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
       this.isCustomerImported = false,
       this.isSearchHistoryCleared = false,
       this.totalSearchHistoryCleared,
+      this.totalCustomerCount = 0,
       final List<SalesCustomerEntityData> customers = const [],
       this.errorMsg,
       final List<String> searchHistory = const [],
@@ -229,6 +243,9 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
   final bool isSearchHistoryCleared;
   @override
   final int? totalSearchHistoryCleared;
+  @override
+  @JsonKey()
+  final int totalCustomerCount;
   final List<SalesCustomerEntityData> _customers;
   @override
   @JsonKey()
@@ -258,7 +275,7 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
 
   @override
   String toString() {
-    return 'SalesCustomerState(isLoading: $isLoading, isCustomerImported: $isCustomerImported, isSearchHistoryCleared: $isSearchHistoryCleared, totalSearchHistoryCleared: $totalSearchHistoryCleared, customers: $customers, errorMsg: $errorMsg, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery)';
+    return 'SalesCustomerState(isLoading: $isLoading, isCustomerImported: $isCustomerImported, isSearchHistoryCleared: $isSearchHistoryCleared, totalSearchHistoryCleared: $totalSearchHistoryCleared, totalCustomerCount: $totalCustomerCount, customers: $customers, errorMsg: $errorMsg, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery)';
   }
 
   @override
@@ -275,6 +292,8 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
             (identical(other.totalSearchHistoryCleared,
                     totalSearchHistoryCleared) ||
                 other.totalSearchHistoryCleared == totalSearchHistoryCleared) &&
+            (identical(other.totalCustomerCount, totalCustomerCount) ||
+                other.totalCustomerCount == totalCustomerCount) &&
             const DeepCollectionEquality()
                 .equals(other._customers, _customers) &&
             (identical(other.errorMsg, errorMsg) ||
@@ -294,6 +313,7 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
       isCustomerImported,
       isSearchHistoryCleared,
       totalSearchHistoryCleared,
+      totalCustomerCount,
       const DeepCollectionEquality().hash(_customers),
       errorMsg,
       const DeepCollectionEquality().hash(_searchHistory),
@@ -316,6 +336,7 @@ abstract class _SalesCustomerState implements SalesCustomerState {
       final bool isCustomerImported,
       final bool isSearchHistoryCleared,
       final int? totalSearchHistoryCleared,
+      final int totalCustomerCount,
       final List<SalesCustomerEntityData> customers,
       final String? errorMsg,
       final List<String> searchHistory,
@@ -330,6 +351,8 @@ abstract class _SalesCustomerState implements SalesCustomerState {
   bool get isSearchHistoryCleared;
   @override
   int? get totalSearchHistoryCleared;
+  @override
+  int get totalCustomerCount;
   @override
   List<SalesCustomerEntityData> get customers;
   @override

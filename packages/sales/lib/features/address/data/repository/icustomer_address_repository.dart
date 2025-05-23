@@ -22,4 +22,6 @@ abstract interface class ICustomerAddressRepository {
   Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
     String postalAddress,
   );
+
+  Stream<int> watchTotalCustomerAddressCount();
 }

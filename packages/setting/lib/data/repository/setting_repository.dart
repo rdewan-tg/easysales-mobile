@@ -109,6 +109,20 @@ final class SettingRepositroy
   }
 
   @override
+  Future<void> upsertMultipleSettings(Map<String, String> settings) async {
+    try {
+      return await _settingStorage.upsertMultipleSettings(settings);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
   Future<Map<String, String>> getAllSettings() {
     try {
       return _settingDao.getAllSettings();

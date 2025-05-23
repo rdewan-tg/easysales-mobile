@@ -29,4 +29,6 @@ abstract interface class ISalesCustomerRepository {
   Future<SalesCustomerEntityData?> getCustomerByCustomerId(
     String customerId,
   );
+
+  Stream<int> watchTotalCustomerCount();
 }

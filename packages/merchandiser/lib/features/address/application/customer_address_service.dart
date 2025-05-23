@@ -88,6 +88,11 @@ final class CustomerAddressService implements ICustomerAddressService {
   Stream<List<CustomerAddressEntityData>> watchAll(String? searchQuery) {
     return _customerAddressRepository.watchAll(searchQuery);
   }
+
+  @override
+  Stream<int> watchTotalCustomerAddressCount() {
+    return _customerAddressRepository.watchTotalCustomerAddressCount();
+  }
 }
 
 // top level function for isolate

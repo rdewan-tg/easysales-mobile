@@ -90,6 +90,11 @@ final class CustomerAddressService implements ICustomerAddressService {
   }
 
   @override
+  Stream<int> watchTotalCustomerAddressCount() {
+    return _customerAddressRepository.watchTotalCustomerAddressCount();
+  }
+
+  @override
   Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
     String postalAddress,
   ) {
