@@ -33,6 +33,14 @@ class SalesCustomerDao extends DatabaseAccessor<AppDatabase>
     }
   }
 
+  // watch the total count
+  Stream<int> watchTotalCount() {
+    final countExp = countAll();
+    return (selectOnly(salesCustomerEntity)..addColumns([countExp]))
+        .map((row) => row.read(countExp)!)
+        .watchSingle();
+  }
+
   Stream<List<SalesCustomerEntityData>> watchAll(String? searchQuery) {
     final query = select(salesCustomerEntity);
 

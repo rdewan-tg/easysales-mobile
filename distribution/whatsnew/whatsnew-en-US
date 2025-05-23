@@ -1,1 +1,6 @@
-User can refresh the device setting
+UI improvements
+- Pull to refresh now available in device settings
+- Product import screen now shows the total number of products imported
+- Price import screen now shows the total number of prices imported
+- Customer import screen now shows the total number of customers imported
+- Address import screen now shows the total number of addresses imported

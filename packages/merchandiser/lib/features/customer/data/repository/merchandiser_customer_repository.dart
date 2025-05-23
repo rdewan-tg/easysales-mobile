@@ -98,6 +98,11 @@ final class MerchandiserCustomerRepository
   }
 
   @override
+  Stream<int> watchTotalCustomerCount() {
+    return _customerDao.watchTotalCount();
+  }
+
+  @override
   Future<void> insertOrUpdate(List<MerchandiserCustomerEntityData> data) async {
     try {
       return await _customerDao.insertOrUpdateList(data);

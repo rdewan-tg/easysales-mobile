@@ -9,6 +9,7 @@ class AddressState with _$AddressState {
     @Default(false) bool isLoading,
     @Default(false) bool isAddressImported,
     @Default([]) List<CustomerAddressEntityData> addresses,
+    @Default(0) int totalAddressCount,
     String? errorMsg,
   }) = _AddressState;
 }

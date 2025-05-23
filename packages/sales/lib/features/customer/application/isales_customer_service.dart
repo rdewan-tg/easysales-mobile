@@ -14,6 +14,8 @@ abstract interface class ISalesCustomerService {
     String? searchQuery,
   );
 
+  Stream<int> watchTotalCustomerCount();
+
   Future<Map<String, String>> getAllSetting();
 
   Future<void> insertOrUpdateSearchSalesCustomerHistory(

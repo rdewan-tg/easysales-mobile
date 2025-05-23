@@ -61,19 +61,40 @@ class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
                   const SizedBox(height: kXSmall),
                   Text(data.customerName),
                   const SizedBox(height: kXSmall),
-                  Chip(
-                    visualDensity: const VisualDensity(
-                      horizontal: -4,
-                      vertical: -4,
-                    ), // Reduce overall padding
-                    label: Text(
-                      data.customreDimension ?? '-',
-                      style: context.textTheme.labelSmall, // Reduce text size
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(kSmall), // Customize shape
-                    ),
+                  Row(
+                    children: [
+                      Chip(
+                        visualDensity: const VisualDensity(
+                          horizontal: -4,
+                          vertical: -4,
+                        ), // Reduce overall padding
+                        label: Text(
+                          data.customreDimension ?? '-',
+                          style:
+                              context.textTheme.labelSmall, // Reduce text size
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(kSmall), // Customize shape
+                        ),
+                      ),
+                      const SizedBox(width: kXSmall),
+                      Chip(
+                        visualDensity: const VisualDensity(
+                          horizontal: -4,
+                          vertical: -4,
+                        ), // Reduce overall padding
+                        label: Text(
+                          data.priceGroup ?? '-',
+                          style:
+                              context.textTheme.labelSmall, // Reduce text size
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(kSmall), // Customize shape
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -129,6 +129,11 @@ final class SalesCustomerService implements ISalesCustomerService {
   }
 
   @override
+  Stream<int> watchTotalCustomerCount() {
+    return _salesCustomerRepository.watchTotalCustomerCount();
+  }
+
+  @override
   Future<SalesCustomerEntityData?> getCustomerByCustomerId(
     String customerId,
   ) async {

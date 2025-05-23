@@ -47,6 +47,9 @@ class ProductController extends Notifier<ProductState> {
     final result =
         await ref.read(productServiceProvider).getProducts(companyCode);
     result.when((data) {
+      // watch the total product imported
+      watchTotalProductImported();
+      // watch the products
       watchProducts();
       state = state.copyWith(isLoading: false, isProductImported: data);
     }, (error) {
@@ -66,6 +69,9 @@ class ProductController extends Notifier<ProductState> {
     final result =
         await ref.read(productServiceProvider).getPrices(companyCode);
     result.when((data) {
+      // watch the total price imported
+      watchTotalPriceImported();
+      // watch the prices
       watchPrices();
       state = state.copyWith(isLoading: false, isPriceImported: data);
     }, (error) {
@@ -121,6 +127,28 @@ class ProductController extends Notifier<ProductState> {
       (data) {
         final history = data.map((e) => e.key).toList();
         state = state.copyWith(searchHistory: history);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> watchTotalProductImported() async {
+    ref.watch(productServiceProvider).watchTotalProductImported().listen(
+      (data) {
+        state = state.copyWith(totalProductImported: data);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> watchTotalPriceImported() async {
+    ref.watch(productServiceProvider).watchTotalPriceImported().listen(
+      (data) {
+        state = state.copyWith(totalPriceImported: data);
       },
       onError: (error) {
         state = state.copyWith(errorMsg: error);
@@ -228,5 +256,13 @@ class ProductController extends Notifier<ProductState> {
   Future<void> clearIsPriceImported() async {
     await Future.delayed(const Duration(seconds: 5));
     state = state.copyWith(isPriceImported: false);
+  }
+
+  void clearTotalProductImported() {
+    state = state.copyWith(totalProductImported: 0);
+  }
+
+  void clearTotalPriceImported() {
+    state = state.copyWith(totalPriceImported: 0);
   }
 }

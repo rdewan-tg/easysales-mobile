@@ -10,6 +10,15 @@ class ProductImportScreen extends ConsumerStatefulWidget {
 
 class _ProductImportScreenState extends ConsumerState<ProductImportScreen> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(productControllerProvider.notifier).clearTotalProductImported();
+      ref.read(productControllerProvider.notifier).clearTotalPriceImported();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

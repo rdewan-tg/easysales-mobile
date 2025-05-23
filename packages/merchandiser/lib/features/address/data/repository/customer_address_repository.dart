@@ -109,4 +109,9 @@ final class CustomerAddressRepository
   Stream<List<CustomerAddressEntityData>> watchAll(String? searchQuery) {
     return _customerAddressDao.watchAll(searchQuery: searchQuery);
   }
+
+  @override
+  Stream<int> watchTotalCustomerAddressCount() {
+    return _customerAddressDao.watchTotalCustomerAddressCount();
+  }
 }
