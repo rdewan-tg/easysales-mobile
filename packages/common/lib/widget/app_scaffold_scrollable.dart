@@ -33,6 +33,8 @@ class AppScaffoldScrollable extends StatelessWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          controller: controller,
           child: widget,
         ),
       ),

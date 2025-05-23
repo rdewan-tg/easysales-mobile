@@ -60,6 +60,14 @@ class CustomerAddressDao extends DatabaseAccessor<AppDatabase>
     });
   }
 
+  Stream<int> watchTotalCustomerAddressCount() {
+    final countExp = countAll();
+
+    return (selectOnly(customerAddressEntity)..addColumns([countExp]))
+        .map((row) => row.read(countExp)!)
+        .watchSingle();
+  }
+
   Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
     String postalAddress,
   ) async {

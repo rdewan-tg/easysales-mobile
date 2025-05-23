@@ -123,6 +123,14 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
     });
   }
 
+  // watch the total count
+  Stream<int> watchTotalCount() {
+    final countExp = countAll();
+    return (selectOnly(productEntity)..addColumns([countExp]))
+        .map((row) => row.read(countExp)!)
+        .watchSingle();
+  }
+
   Future<ProductEntityData?> getProductByItemId(String itemId) async {
     final query = select(productEntity)
       ..where((tbl) => tbl.itemId.equals(itemId));

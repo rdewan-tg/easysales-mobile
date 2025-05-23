@@ -17,11 +17,14 @@ class MerchandiserCustomerController
   StreamSubscription<List<SearchMerchandiserCustomerHistoryEntityData>>?
       _subscriptionSearchHistory;
 
+  StreamSubscription<int>? _subscriptionTotalCustomerCount;
+
   @override
   MerchandiserCustomerState build() {
     ref.onDispose(() {
       _subscriptionMerchandiserCustomer?.cancel();
       _subscriptionSearchHistory?.cancel();
+      _subscriptionTotalCustomerCount?.cancel();
     });
 
     return MerchandiserCustomerState();
@@ -49,6 +52,8 @@ class MerchandiserCustomerController
 
       result.when(
         (customers) {
+          // update the total customer count
+          watchTotalCustomerCount();
           // get the customer from db
           watchMerchandiserCustomers();
           // update the state
@@ -76,6 +81,21 @@ class MerchandiserCustomerController
       (customers) {
         state =
             state.copyWith(customers: customers, lastSearchQuery: searchQuery);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> watchTotalCustomerCount() async {
+    // Start listening stream
+    _subscriptionTotalCustomerCount = ref
+        .watch(merchandiserCustomerServiceProvider)
+        .watchTotalCustomerCount()
+        .listen(
+      (data) {
+        state = state.copyWith(totalCustomerCount: data);
       },
       onError: (error) {
         state = state.copyWith(errorMsg: error);
@@ -145,5 +165,9 @@ class MerchandiserCustomerController
   Future<void> clearIsCustomerImported() async {
     await Future.delayed(const Duration(seconds: 5));
     state = state.copyWith(isCustomerImported: false);
+  }
+
+  void clearTotalCustomerCount() {
+    state = state.copyWith(totalCustomerCount: 0);
   }
 }

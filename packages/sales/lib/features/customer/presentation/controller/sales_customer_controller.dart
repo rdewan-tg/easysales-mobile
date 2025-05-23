@@ -11,6 +11,7 @@ final salesCustomerProvider =
 );
 
 class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
+  StreamSubscription<int>? _subscriptionTotalCustomerCount;
   StreamSubscription<List<SalesCustomerEntityData>>? _subscriptionSalesCustomer;
   StreamSubscription<List<SearchSalesCustomerHistoryEntityData>>?
       _subscriptionSearchHistory;
@@ -20,6 +21,7 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
     ref.onDispose(() {
       _subscriptionSalesCustomer?.cancel();
       _subscriptionSearchHistory?.cancel();
+      _subscriptionTotalCustomerCount?.cancel();
     });
     return SalesCustomerState();
   }
@@ -47,6 +49,7 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
       result.when(
         (customers) {
           watchSalesCustomers();
+          watchTotalCustomerCount();
           state =
               state.copyWith(isLoading: false, isCustomerImported: customers);
         },
@@ -70,6 +73,20 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
       (customers) {
         state =
             state.copyWith(customers: customers, lastSearchQuery: searchQuery);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
+  Future<void> watchTotalCustomerCount() async {
+    _subscriptionTotalCustomerCount = ref
+        .watch(salesCustomerServiceProvider)
+        .watchTotalCustomerCount()
+        .listen(
+      (count) {
+        state = state.copyWith(totalCustomerCount: count);
       },
       onError: (error) {
         state = state.copyWith(errorMsg: error);
@@ -139,5 +156,9 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
   Future<void> clearIsCustomerImported() async {
     await Future.delayed(const Duration(seconds: 5));
     state = state.copyWith(isCustomerImported: false);
+  }
+
+  void clearTotalCustomerImported() {
+    state = state.copyWith(totalCustomerCount: 0);
   }
 }

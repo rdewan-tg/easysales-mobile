@@ -20,6 +20,7 @@ mixin _$AddressState {
   bool get isAddressImported => throw _privateConstructorUsedError;
   List<CustomerAddressEntityData> get addresses =>
       throw _privateConstructorUsedError;
+  int get totalAddressCount => throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
 
   /// Create a copy of AddressState
@@ -39,6 +40,7 @@ abstract class $AddressStateCopyWith<$Res> {
       {bool isLoading,
       bool isAddressImported,
       List<CustomerAddressEntityData> addresses,
+      int totalAddressCount,
       String? errorMsg});
 }
 
@@ -60,6 +62,7 @@ class _$AddressStateCopyWithImpl<$Res, $Val extends AddressState>
     Object? isLoading = null,
     Object? isAddressImported = null,
     Object? addresses = null,
+    Object? totalAddressCount = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
@@ -75,6 +78,10 @@ class _$AddressStateCopyWithImpl<$Res, $Val extends AddressState>
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
               as List<CustomerAddressEntityData>,
+      totalAddressCount: null == totalAddressCount
+          ? _value.totalAddressCount
+          : totalAddressCount // ignore: cast_nullable_to_non_nullable
+              as int,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -95,6 +102,7 @@ abstract class _$$AddressStateImplCopyWith<$Res>
       {bool isLoading,
       bool isAddressImported,
       List<CustomerAddressEntityData> addresses,
+      int totalAddressCount,
       String? errorMsg});
 }
 
@@ -114,6 +122,7 @@ class __$$AddressStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? isAddressImported = null,
     Object? addresses = null,
+    Object? totalAddressCount = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_$AddressStateImpl(
@@ -129,6 +138,10 @@ class __$$AddressStateImplCopyWithImpl<$Res>
           ? _value._addresses
           : addresses // ignore: cast_nullable_to_non_nullable
               as List<CustomerAddressEntityData>,
+      totalAddressCount: null == totalAddressCount
+          ? _value.totalAddressCount
+          : totalAddressCount // ignore: cast_nullable_to_non_nullable
+              as int,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -144,6 +157,7 @@ class _$AddressStateImpl implements _AddressState {
       {this.isLoading = false,
       this.isAddressImported = false,
       final List<CustomerAddressEntityData> addresses = const [],
+      this.totalAddressCount = 0,
       this.errorMsg})
       : _addresses = addresses;
 
@@ -163,11 +177,14 @@ class _$AddressStateImpl implements _AddressState {
   }
 
   @override
+  @JsonKey()
+  final int totalAddressCount;
+  @override
   final String? errorMsg;
 
   @override
   String toString() {
-    return 'AddressState(isLoading: $isLoading, isAddressImported: $isAddressImported, addresses: $addresses, errorMsg: $errorMsg)';
+    return 'AddressState(isLoading: $isLoading, isAddressImported: $isAddressImported, addresses: $addresses, totalAddressCount: $totalAddressCount, errorMsg: $errorMsg)';
   }
 
   @override
@@ -181,13 +198,20 @@ class _$AddressStateImpl implements _AddressState {
                 other.isAddressImported == isAddressImported) &&
             const DeepCollectionEquality()
                 .equals(other._addresses, _addresses) &&
+            (identical(other.totalAddressCount, totalAddressCount) ||
+                other.totalAddressCount == totalAddressCount) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isAddressImported,
-      const DeepCollectionEquality().hash(_addresses), errorMsg);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isAddressImported,
+      const DeepCollectionEquality().hash(_addresses),
+      totalAddressCount,
+      errorMsg);
 
   /// Create a copy of AddressState
   /// with the given fields replaced by the non-null parameter values.
@@ -203,6 +227,7 @@ abstract class _AddressState implements AddressState {
       {final bool isLoading,
       final bool isAddressImported,
       final List<CustomerAddressEntityData> addresses,
+      final int totalAddressCount,
       final String? errorMsg}) = _$AddressStateImpl;
 
   @override
@@ -211,6 +236,8 @@ abstract class _AddressState implements AddressState {
   bool get isAddressImported;
   @override
   List<CustomerAddressEntityData> get addresses;
+  @override
+  int get totalAddressCount;
   @override
   String? get errorMsg;
 

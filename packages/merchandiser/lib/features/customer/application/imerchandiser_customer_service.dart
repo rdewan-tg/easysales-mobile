@@ -24,4 +24,6 @@ abstract interface class IMerchandiserCustomerService {
   Future<void> insertOrUpdateSearchMerchandiserCustomerHistory(
     String key,
   );
+
+  Stream<int> watchTotalCustomerCount();
 }

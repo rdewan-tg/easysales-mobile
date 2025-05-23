@@ -58,6 +58,14 @@ class MerchandiserCustomerDao extends DatabaseAccessor<AppDatabase>
     });
   }
 
+  // watch the total count
+  Stream<int> watchTotalCount() {
+    final countExp = countAll();
+    return (selectOnly(merchandiserCustomerEntity)..addColumns([countExp]))
+        .map((row) => row.read(countExp)!)
+        .watchSingle();
+  }
+
   Future<int> deleteAll() async {
     return await (delete(merchandiserCustomerEntity)).go();
   }

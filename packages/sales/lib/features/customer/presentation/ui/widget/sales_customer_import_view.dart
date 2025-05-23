@@ -17,22 +17,71 @@ class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton.icon(
-            onPressed: () {
-              ref.read(salesCustomerProvider.notifier).importSalesCustomers();
+          Consumer(
+            builder: (context, ref, child) {
+              final totalCustomerCount = ref.watch(
+                salesCustomerProvider
+                    .select((value) => value.totalCustomerCount),
+              );
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      ref
+                          .read(salesCustomerProvider.notifier)
+                          .importSalesCustomers();
+                    },
+                    label: Text(context.localizations('sales.customerImport')),
+                    icon: const Icon(Icons.import_export),
+                  ),
+                  if (totalCustomerCount > 0) ...[
+                    const SizedBox(width: kSmall),
+                    Text(
+                      'Imported ($totalCustomerCount)',
+                      style: context.textTheme.titleSmall?.copyWith(
+                        color: context.themeColor.colorScheme.primary,
+                      ),
+                    ),
+                  ],
+                ],
+              );
             },
-            label: Text(context.localizations('sales.customerImport')),
-            icon: const Icon(Icons.import_export),
           ),
           const SizedBox(height: kSmall),
-          ElevatedButton.icon(
-            onPressed: () {
-              ref
-                  .read(addressControllerProvider.notifier)
-                  .importCustomerAddresses();
+          Consumer(
+            builder: (context, ref, child) {
+              final totalCustomerAddressCount = ref.watch(
+                addressControllerProvider.select(
+                  (value) => value.totalCustomerAddressCount,
+                ),
+              );
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      ref
+                          .read(addressControllerProvider.notifier)
+                          .importCustomerAddresses();
+                    },
+                    label: Text(context.localizations('sales.addressImport')),
+                    icon: const Icon(Icons.import_export),
+                  ),
+                  if (totalCustomerAddressCount > 0) ...[
+                    const SizedBox(width: kSmall),
+                    Text(
+                      'Imported ($totalCustomerAddressCount)',
+                      style: context.textTheme.titleSmall?.copyWith(
+                        color: context.themeColor.colorScheme.primary,
+                      ),
+                    ),
+                  ],
+                ],
+              );
             },
-            label: Text(context.localizations('sales.addressImport')),
-            icon: const Icon(Icons.import_export),
           ),
           const SizedBox(height: kSmall),
         ],
@@ -69,13 +118,14 @@ class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
         if (next) {
           // clear the customer import status
           ref.read(salesCustomerProvider.notifier).clearIsCustomerImported();
+
           //show success message
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 3),
               backgroundColor: context.themeColor.colorScheme.secondary,
               content: Text(
-                "Cool! Customer Imported Successfully".hardcoded,
+                "Cool! Customer Imported Successfully.",
                 style: context.textTheme.titleSmall?.copyWith(
                   color: Colors.white,
                 ),
@@ -93,13 +143,14 @@ class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
         if (next) {
           // clear the address import status
           ref.read(addressControllerProvider.notifier).clearIsAddressImported();
+
           //show success message
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 3),
               backgroundColor: context.themeColor.colorScheme.secondary,
               content: Text(
-                "Cool! Address Imported Successfully".hardcoded,
+                "Cool! Address Imported Successfully.",
                 style: context.textTheme.titleSmall?.copyWith(
                   color: Colors.white,
                 ),

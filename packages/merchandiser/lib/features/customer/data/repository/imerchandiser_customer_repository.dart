@@ -27,4 +27,6 @@ abstract interface class IMerchandiserCustomerRepository {
   Future<int> deleteAllSearchCustomerHistory();
 
   Future<Map<String, String>> getAllSettings();
+
+  Stream<int> watchTotalCustomerCount();
 }

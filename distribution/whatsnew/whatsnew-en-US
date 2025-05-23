@@ -1,3 +1,6 @@
-Force Android not to backup app data
-Swipe to delete order
-Minor UI improvements
+UI improvements
+- Pull to refresh now available in device settings
+- Product import screen now shows the total number of products imported
+- Price import screen now shows the total number of prices imported
+- Customer import screen now shows the total number of customers imported
+- Address import screen now shows the total number of addresses imported

@@ -15,4 +15,6 @@ abstract interface class ICustomerAddressService {
   Stream<List<CustomerAddressEntityData>> watchAll(
     String? searchQuery,
   );
+
+  Stream<int> watchTotalCustomerAddressCount();
 }

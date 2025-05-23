@@ -12,10 +12,14 @@ final addressControllerProvider =
 
 class AddressController extends AutoDisposeNotifier<AddressState> {
   StreamSubscription<List<CustomerAddressEntityData>>? _subscription;
+  StreamSubscription<int>? _totalCustomerAddressCountSubscription;
 
   @override
   AddressState build() {
-    ref.onDispose(() => _subscription?.cancel());
+    ref.onDispose(() {
+      _subscription?.cancel();
+      _totalCustomerAddressCountSubscription?.cancel();
+    });
     return AddressState();
   }
 
@@ -25,6 +29,7 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
       errorMsg: null,
       isAddressImported: false,
     );
+
     // get the setting from the database
     final setting =
         await ref.read(customerAddressServiceProvider).getAllSettings();
@@ -38,6 +43,7 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
     result.when(
       (success) {
         state = state.copyWith(isLoading: false, isAddressImported: success);
+        watchTotalCustomerAddressCount();
       },
       (error) {
         state = state.copyWith(isLoading: false, errorMsg: error.message);
@@ -58,8 +64,26 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
     );
   }
 
+  Future<void> watchTotalCustomerAddressCount() async {
+    _totalCustomerAddressCountSubscription = ref
+        .watch(customerAddressServiceProvider)
+        .watchTotalCustomerAddressCount()
+        .listen(
+      (data) {
+        state = state.copyWith(totalCustomerAddressCount: data);
+      },
+      onError: (error) {
+        state = state.copyWith(errorMsg: error);
+      },
+    );
+  }
+
   Future<void> clearIsAddressImported() async {
     await Future.delayed(const Duration(seconds: 5));
     state = state.copyWith(isAddressImported: false);
+  }
+
+  void clearTotalCustomerAddressCount() {
+    state = state.copyWith(totalCustomerAddressCount: 0);
   }
 }

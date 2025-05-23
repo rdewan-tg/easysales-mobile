@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddressState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isAddressImported => throw _privateConstructorUsedError;
+  int get totalCustomerAddressCount => throw _privateConstructorUsedError;
   List<CustomerAddressEntityData> get addresses =>
       throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $AddressStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isAddressImported,
+      int totalCustomerAddressCount,
       List<CustomerAddressEntityData> addresses,
       String? errorMsg});
 }
@@ -59,6 +61,7 @@ class _$AddressStateCopyWithImpl<$Res, $Val extends AddressState>
   $Res call({
     Object? isLoading = null,
     Object? isAddressImported = null,
+    Object? totalCustomerAddressCount = null,
     Object? addresses = null,
     Object? errorMsg = freezed,
   }) {
@@ -71,6 +74,10 @@ class _$AddressStateCopyWithImpl<$Res, $Val extends AddressState>
           ? _value.isAddressImported
           : isAddressImported // ignore: cast_nullable_to_non_nullable
               as bool,
+      totalCustomerAddressCount: null == totalCustomerAddressCount
+          ? _value.totalCustomerAddressCount
+          : totalCustomerAddressCount // ignore: cast_nullable_to_non_nullable
+              as int,
       addresses: null == addresses
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
@@ -94,6 +101,7 @@ abstract class _$$AddressStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isAddressImported,
+      int totalCustomerAddressCount,
       List<CustomerAddressEntityData> addresses,
       String? errorMsg});
 }
@@ -113,6 +121,7 @@ class __$$AddressStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? isAddressImported = null,
+    Object? totalCustomerAddressCount = null,
     Object? addresses = null,
     Object? errorMsg = freezed,
   }) {
@@ -125,6 +134,10 @@ class __$$AddressStateImplCopyWithImpl<$Res>
           ? _value.isAddressImported
           : isAddressImported // ignore: cast_nullable_to_non_nullable
               as bool,
+      totalCustomerAddressCount: null == totalCustomerAddressCount
+          ? _value.totalCustomerAddressCount
+          : totalCustomerAddressCount // ignore: cast_nullable_to_non_nullable
+              as int,
       addresses: null == addresses
           ? _value._addresses
           : addresses // ignore: cast_nullable_to_non_nullable
@@ -143,6 +156,7 @@ class _$AddressStateImpl implements _AddressState {
   _$AddressStateImpl(
       {this.isLoading = false,
       this.isAddressImported = false,
+      this.totalCustomerAddressCount = 0,
       final List<CustomerAddressEntityData> addresses = const [],
       this.errorMsg})
       : _addresses = addresses;
@@ -153,6 +167,9 @@ class _$AddressStateImpl implements _AddressState {
   @override
   @JsonKey()
   final bool isAddressImported;
+  @override
+  @JsonKey()
+  final int totalCustomerAddressCount;
   final List<CustomerAddressEntityData> _addresses;
   @override
   @JsonKey()
@@ -167,7 +184,7 @@ class _$AddressStateImpl implements _AddressState {
 
   @override
   String toString() {
-    return 'AddressState(isLoading: $isLoading, isAddressImported: $isAddressImported, addresses: $addresses, errorMsg: $errorMsg)';
+    return 'AddressState(isLoading: $isLoading, isAddressImported: $isAddressImported, totalCustomerAddressCount: $totalCustomerAddressCount, addresses: $addresses, errorMsg: $errorMsg)';
   }
 
   @override
@@ -179,6 +196,9 @@ class _$AddressStateImpl implements _AddressState {
                 other.isLoading == isLoading) &&
             (identical(other.isAddressImported, isAddressImported) ||
                 other.isAddressImported == isAddressImported) &&
+            (identical(other.totalCustomerAddressCount,
+                    totalCustomerAddressCount) ||
+                other.totalCustomerAddressCount == totalCustomerAddressCount) &&
             const DeepCollectionEquality()
                 .equals(other._addresses, _addresses) &&
             (identical(other.errorMsg, errorMsg) ||
@@ -186,8 +206,13 @@ class _$AddressStateImpl implements _AddressState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isAddressImported,
-      const DeepCollectionEquality().hash(_addresses), errorMsg);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isAddressImported,
+      totalCustomerAddressCount,
+      const DeepCollectionEquality().hash(_addresses),
+      errorMsg);
 
   /// Create a copy of AddressState
   /// with the given fields replaced by the non-null parameter values.
@@ -202,6 +227,7 @@ abstract class _AddressState implements AddressState {
   factory _AddressState(
       {final bool isLoading,
       final bool isAddressImported,
+      final int totalCustomerAddressCount,
       final List<CustomerAddressEntityData> addresses,
       final String? errorMsg}) = _$AddressStateImpl;
 
@@ -209,6 +235,8 @@ abstract class _AddressState implements AddressState {
   bool get isLoading;
   @override
   bool get isAddressImported;
+  @override
+  int get totalCustomerAddressCount;
   @override
   List<CustomerAddressEntityData> get addresses;
   @override

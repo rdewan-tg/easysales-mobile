@@ -18,4 +18,6 @@ abstract interface class ICustomerAddressRepository {
   Stream<List<CustomerAddressEntityData>> watchAll(
     String? searchQuery,
   );
+
+  Stream<int> watchTotalCustomerAddressCount();
 }

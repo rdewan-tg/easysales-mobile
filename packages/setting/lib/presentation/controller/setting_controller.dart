@@ -80,15 +80,22 @@ final class SettingController extends _$SettingController {
   }
 
   Future<void> getDeviceSetting() async {
-    state = state.copyWith(errorMsg: null);
+    final deviceId = state.settings['deviceId'];
+    if (deviceId == null || deviceId.isEmpty || deviceId == '-') {
+      state = state.copyWith(errorMsg: 'Device ID is null');
+      return;
+    }
+    state = state.copyWith(isLoading: true, errorMsg: null);
 
     final service = ref.read(settingServiceProvider);
 
-    final result = await service.getDeviceSetting('');
+    final result = await service.getDeviceSetting(deviceId);
     result.when(
-      (success) {},
+      (success) {
+        state = state.copyWith(isLoading: false, settings: success);
+      },
       (error) {
-        state = state.copyWith(errorMsg: error.message);
+        state = state.copyWith(isLoading: false, errorMsg: error.message);
       },
     );
   }

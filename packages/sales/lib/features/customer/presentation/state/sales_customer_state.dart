@@ -10,6 +10,7 @@ class SalesCustomerState with _$SalesCustomerState {
     @Default(false) bool isCustomerImported,
     @Default(false) bool isSearchHistoryCleared,
     int? totalSearchHistoryCleared,
+    @Default(0) int totalCustomerCount,
     @Default([]) List<SalesCustomerEntityData> customers,
     String? errorMsg,
     @Default([]) List<String> searchHistory,
