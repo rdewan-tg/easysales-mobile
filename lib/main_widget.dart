@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:common/common.dart';
 import 'package:common/i18n/translations.dart';
-import 'package:easy_sales/core/route/app_router.dart';
+import 'package:core/route/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:setting/presentation/controller/setting_controller.dart';
@@ -24,7 +24,7 @@ class _MainWidgetState extends ConsumerState<MainWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // riverpod watch - gorouter
+    // riverpod watch - goRouter
     final router = ref.watch(goRouterProvider);
 
     final themeMode =

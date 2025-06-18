@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:common/common.dart';
+import 'package:core/core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:merchandiser/features/photo/application/merchandiser_photo_service.dart';
 import 'package:merchandiser/features/photo/presentation/state/capture_image_state.dart';
@@ -91,4 +92,13 @@ class CaptureImageController extends Notifier<CaptureImageState> {
   Future<void> setBottomNavigationState(bool value) async {
     ref.read(bottomNavigationStateProvider.notifier).state = value;
   }
+
+  // get the android sdk int
+  Future<void> setAndroidSdkInt() async {
+    final deviceInfo = ref.read(deviceInfoPluginProvider);
+    final info = await deviceInfo.androidInfo;
+    state = state.copyWith(androidSdkInt: info.version.sdkInt);
+  }
+
+  int getAndroidSdkInt() => state.androidSdkInt;
 }

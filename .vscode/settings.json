@@ -6,5 +6,12 @@
   "files.watcherExclude": {
     "**/.fvm": true
   },
+  "cSpell.words": [
+    "gorouter",
+    "isecure",
+    "com.tonggarden.easysales",
+    "getenv",
+    "riverpod",
+  ],
   "yaml.schemaStore.enable": false,
 }

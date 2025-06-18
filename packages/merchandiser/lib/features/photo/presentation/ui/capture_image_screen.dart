@@ -15,6 +15,7 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       ref.read(captureImageControllerProvider.notifier).getAllSetting();
+      ref.read(captureImageControllerProvider.notifier).setAndroidSdkInt();
       ref
           .read(captureImageControllerProvider.notifier)
           .setBottomNavigationState(false);
@@ -24,7 +25,6 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
   @override
   Widget build(BuildContext context) {
     _listener();
-
     return PopScope(
       canPop: true,
       onPopInvokedWithResult: (didPop, result) async {
@@ -34,69 +34,72 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
         // invalidate the provider
         ref.invalidate(captureImageControllerProvider);
       },
-      child: CameraAwesomeBuilder.awesome(
-        onMediaCaptureEvent: (event) {
-          switch ((event.status, event.isPicture, event.isVideo)) {
-            case (MediaCaptureStatus.capturing, true, false):
-              debugPrint('Capturing picture...');
-            case (MediaCaptureStatus.success, true, false):
-              event.captureRequest.when(
-                single: _saveSingleImage,
-                multiple: _saveMultipleImages,
-              );
-            case (MediaCaptureStatus.failure, true, false):
-              _showSnackBar('Failed to capture picture: ${event.exception}');
-            case (MediaCaptureStatus.capturing, false, true):
-              debugPrint('Capturing video...');
-            case (MediaCaptureStatus.success, false, true):
-              event.captureRequest.when(
-                single: _saveSingleVideo,
-                multiple: _saveMultipleVideo,
-              );
-            case (MediaCaptureStatus.failure, false, true):
-              _showSnackBar('Failed to capture video: ${event.exception}');
-            default:
-              _showSnackBar(event.toString());
-          }
-        },
-        saveConfig: SaveConfig.photoAndVideo(
-          initialCaptureMode: CaptureMode.photo,
-          photoPathBuilder: _photoPathBuilder,
-          videoOptions: VideoOptions(
-            enableAudio: true,
-            ios: CupertinoVideoOptions(
-              fps: 10,
+      child: SafeArea(
+        child: CameraAwesomeBuilder.awesome(
+          onMediaCaptureEvent: (event) {
+            switch ((event.status, event.isPicture, event.isVideo)) {
+              case (MediaCaptureStatus.capturing, true, false):
+                debugPrint('Capturing picture...');
+              case (MediaCaptureStatus.success, true, false):
+                event.captureRequest.when(
+                  single: _saveSingleImage,
+                  multiple: _saveMultipleImages,
+                );
+              case (MediaCaptureStatus.failure, true, false):
+                _showSnackBar('Failed to capture picture: ${event.exception}');
+              case (MediaCaptureStatus.capturing, false, true):
+                debugPrint('Capturing video...');
+              case (MediaCaptureStatus.success, false, true):
+                event.captureRequest.when(
+                  single: _saveSingleVideo,
+                  multiple: _saveMultipleVideo,
+                );
+              case (MediaCaptureStatus.failure, false, true):
+                _showSnackBar('Failed to capture video: ${event.exception}');
+              default:
+                _showSnackBar(event.toString());
+            }
+          },
+          saveConfig: SaveConfig.photoAndVideo(
+            initialCaptureMode: CaptureMode.photo,
+            photoPathBuilder: _photoPathBuilder,
+            videoOptions: VideoOptions(
+              enableAudio: true,
+              ios: CupertinoVideoOptions(
+                fps: 10,
+              ),
+              android: AndroidVideoOptions(
+                bitrate: 6000000,
+                fallbackStrategy: QualityFallbackStrategy.lower,
+              ),
             ),
-            android: AndroidVideoOptions(
-              bitrate: 6000000,
-              fallbackStrategy: QualityFallbackStrategy.lower,
-            ),
+            exifPreferences: ExifPreferences(saveGPSLocation: true),
           ),
-          exifPreferences: ExifPreferences(saveGPSLocation: true),
+          sensorConfig: SensorConfig.single(
+            sensor: Sensor.position(SensorPosition.back),
+            flashMode: FlashMode.auto,
+            aspectRatio: CameraAspectRatios.ratio_16_9,
+            zoom: 0.0,
+          ),
+          enablePhysicalButton: true,
+          // filter: AwesomeFilter.AddictiveRed,
+          previewAlignment: Alignment.center,
+          previewFit: CameraPreviewFit.contain,
+          onMediaTap: (mediaCapture) {
+            mediaCapture.captureRequest.when(
+              single: (single) async {
+                await OpenFile.open(
+                    single.file?.path); // Open the modified image
+              },
+              multiple: (multiple) {
+                multiple.fileBySensor.forEach((key, value) async {
+                  await OpenFile.open(value?.path);
+                });
+              },
+            );
+          },
+          availableFilters: awesomePresetFiltersList,
         ),
-        sensorConfig: SensorConfig.single(
-          sensor: Sensor.position(SensorPosition.back),
-          flashMode: FlashMode.auto,
-          aspectRatio: CameraAspectRatios.ratio_16_9,
-          zoom: 0.0,
-        ),
-        enablePhysicalButton: true,
-        // filter: AwesomeFilter.AddictiveRed,
-        previewAlignment: Alignment.center,
-        previewFit: CameraPreviewFit.contain,
-        onMediaTap: (mediaCapture) {
-          mediaCapture.captureRequest.when(
-            single: (single) async {
-              await OpenFile.open(single.file?.path); // Open the modified image
-            },
-            multiple: (multiple) {
-              multiple.fileBySensor.forEach((key, value) async {
-                await OpenFile.open(value?.path);
-              });
-            },
-          );
-        },
-        availableFilters: awesomePresetFiltersList,
       ),
     );
   }
