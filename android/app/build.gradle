@@ -51,20 +51,21 @@ if (keystorePropertiesFile.exists()) {
 
 
 android {
-    namespace = "com.example.easy_sales"
-    compileSdk = flutter.compileSdkVersion
+    namespace = "com.tonggarden.easysales"
+    compileSdk = flutterCompileSdkVersion.toInteger()
     ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
     }
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17
     }
 
-    // Singning
+    // Signing
     signingConfigs {
         debug {
             if (System.getenv()["CM_BUILD_ID"]) {                
@@ -152,7 +153,10 @@ android {
         debug {           
             signingConfig signingConfigs.debug
         }
-        release {           
+        release {      
+            minifyEnabled true
+            shrinkResources true 
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'      
             signingConfig signingConfigs.release
         }
     }
@@ -160,4 +164,10 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation 'androidx.window:window:1.0.0'
+    implementation 'androidx.window:window-java:1.0.0'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
 }

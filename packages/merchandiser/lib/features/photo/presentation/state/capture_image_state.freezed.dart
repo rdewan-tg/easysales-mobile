@@ -20,6 +20,7 @@ mixin _$CaptureImageState {
   bool get isUploading => throw _privateConstructorUsedError;
   bool get isImageUploaded => throw _privateConstructorUsedError;
   Map<String, String> get settings => throw _privateConstructorUsedError;
+  int get androidSdkInt => throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
 
   /// Create a copy of CaptureImageState
@@ -40,6 +41,7 @@ abstract class $CaptureImageStateCopyWith<$Res> {
       bool isUploading,
       bool isImageUploaded,
       Map<String, String> settings,
+      int androidSdkInt,
       String? errorMsg});
 }
 
@@ -62,6 +64,7 @@ class _$CaptureImageStateCopyWithImpl<$Res, $Val extends CaptureImageState>
     Object? isUploading = null,
     Object? isImageUploaded = null,
     Object? settings = null,
+    Object? androidSdkInt = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +84,10 @@ class _$CaptureImageStateCopyWithImpl<$Res, $Val extends CaptureImageState>
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
+      androidSdkInt: null == androidSdkInt
+          ? _value.androidSdkInt
+          : androidSdkInt // ignore: cast_nullable_to_non_nullable
+              as int,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -102,6 +109,7 @@ abstract class _$$CaptureImageStateImplCopyWith<$Res>
       bool isUploading,
       bool isImageUploaded,
       Map<String, String> settings,
+      int androidSdkInt,
       String? errorMsg});
 }
 
@@ -122,6 +130,7 @@ class __$$CaptureImageStateImplCopyWithImpl<$Res>
     Object? isUploading = null,
     Object? isImageUploaded = null,
     Object? settings = null,
+    Object? androidSdkInt = null,
     Object? errorMsg = freezed,
   }) {
     return _then(_$CaptureImageStateImpl(
@@ -141,6 +150,10 @@ class __$$CaptureImageStateImplCopyWithImpl<$Res>
           ? _value._settings
           : settings // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
+      androidSdkInt: null == androidSdkInt
+          ? _value.androidSdkInt
+          : androidSdkInt // ignore: cast_nullable_to_non_nullable
+              as int,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -157,6 +170,7 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
       this.isUploading = false,
       this.isImageUploaded = false,
       final Map<String, String> settings = const {},
+      this.androidSdkInt = 1,
       this.errorMsg})
       : _settings = settings;
 
@@ -179,11 +193,14 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
   }
 
   @override
+  @JsonKey()
+  final int androidSdkInt;
+  @override
   final String? errorMsg;
 
   @override
   String toString() {
-    return 'CaptureImageState(isLoading: $isLoading, isUploading: $isUploading, isImageUploaded: $isImageUploaded, settings: $settings, errorMsg: $errorMsg)';
+    return 'CaptureImageState(isLoading: $isLoading, isUploading: $isUploading, isImageUploaded: $isImageUploaded, settings: $settings, androidSdkInt: $androidSdkInt, errorMsg: $errorMsg)';
   }
 
   @override
@@ -198,6 +215,8 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
             (identical(other.isImageUploaded, isImageUploaded) ||
                 other.isImageUploaded == isImageUploaded) &&
             const DeepCollectionEquality().equals(other._settings, _settings) &&
+            (identical(other.androidSdkInt, androidSdkInt) ||
+                other.androidSdkInt == androidSdkInt) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg));
   }
@@ -209,6 +228,7 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
       isUploading,
       isImageUploaded,
       const DeepCollectionEquality().hash(_settings),
+      androidSdkInt,
       errorMsg);
 
   /// Create a copy of CaptureImageState
@@ -227,6 +247,7 @@ abstract class _CaptureImageState implements CaptureImageState {
       final bool isUploading,
       final bool isImageUploaded,
       final Map<String, String> settings,
+      final int androidSdkInt,
       final String? errorMsg}) = _$CaptureImageStateImpl;
 
   @override
@@ -237,6 +258,8 @@ abstract class _CaptureImageState implements CaptureImageState {
   bool get isImageUploaded;
   @override
   Map<String, String> get settings;
+  @override
+  int get androidSdkInt;
   @override
   String? get errorMsg;
 
