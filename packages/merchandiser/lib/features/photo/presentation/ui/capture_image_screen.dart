@@ -89,7 +89,8 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
             mediaCapture.captureRequest.when(
               single: (single) async {
                 await OpenFile.open(
-                    single.file?.path); // Open the modified image
+                  single.file?.path,
+                ); // Open the modified image
               },
               multiple: (multiple) {
                 multiple.fileBySensor.forEach((key, value) async {
