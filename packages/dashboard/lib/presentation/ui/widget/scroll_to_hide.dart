@@ -3,77 +3,60 @@ part of '../../../dashboard.dart';
 class ScrollToHide extends ConsumerStatefulWidget {
   final Widget child;
 
-  const ScrollToHide({
-    super.key,
-    required this.child,
-  });
+  const ScrollToHide({super.key, required this.child});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ScrollToHideState();
 }
 
 class _ScrollToHideState extends ConsumerState<ScrollToHide> {
-  bool isVisible = true;
   ScrollController? scrollController;
 
   @override
   void dispose() {
-    scrollController?.removeListener(_listener);
+    scrollController?.removeListener(_scrollControllerListener);
     scrollController = null;
     super.dispose();
   }
 
-  void _listener() {
-    if (!mounted) return;
+  void _scrollControllerListener() {
     if (scrollController?.hasClients == false) return;
 
-    if (scrollController?.position.userScrollDirection ==
-        ScrollDirection.reverse) {
-      _hide();
-    } else if (scrollController?.position.userScrollDirection ==
-        ScrollDirection.forward) {
-      _show();
-    }
-  }
+    final scrollDirection = scrollController?.position.userScrollDirection;
 
-  void _show() {
-    if (!mounted) return;
-
-    if (!isVisible) {
-      setState(() {
-        isVisible = true;
-      });
-    }
-  }
-
-  void _hide() {
-    if (!mounted) return;
-
-    if (isVisible) {
-      setState(() {
-        isVisible = false;
-      });
+    if (scrollDirection == ScrollDirection.reverse) {
+      ref.read(dashboardControllerProvider.notifier).setIsVisible(false);
+    } else if (scrollDirection == ScrollDirection.forward) {
+      ref.read(dashboardControllerProvider.notifier).setIsVisible(true);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final newController = ref.watch(appScrollControllerProvider);
+    _stateListener();
 
-    if (scrollController != newController) {
-      if (scrollController != null) {
-        scrollController?.removeListener(_listener);
-      }
-      scrollController = newController;
-      scrollController?.addListener(_listener);
-    }
+    final isVisible = ref.watch(
+      dashboardControllerProvider.select((value) => value.isVisible),
+    );
 
     return AnimatedContainer(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 600),
       height: isVisible ? 80 + MediaQuery.viewPaddingOf(context).bottom : 0,
-      child: Wrap(
-        children: [widget.child],
-      ),
+      child: Wrap(children: [widget.child]),
     );
+  }
+
+  void _stateListener() {
+    ref.listen(appScrollControllerProvider, (previous, next) {
+      if (next != null) {
+        if (scrollController != next) {
+          if (scrollController != null) {
+            scrollController?.removeListener(_scrollControllerListener);
+          }
+          scrollController = next;
+          scrollController?.addListener(_scrollControllerListener);
+        }
+      }
+    });
   }
 }

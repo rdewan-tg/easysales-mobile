@@ -11,72 +11,103 @@ class ProductGrid extends ConsumerStatefulWidget {
 class _ProductGridState extends ConsumerState<ProductGrid> {
   late PersistentBottomSheetController _bottomSheetController;
   late AnimationStyle _animationStyle;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _animationStyle = AnimationStyle(
-        duration: const Duration(seconds: 1),
-        reverseDuration: const Duration(seconds: 1),
-      );
+    _scrollController = ScrollController();
+    Future.microtask(() {
       ref.read(productControllerProvider.notifier).getSettings();
       ref.read(productControllerProvider.notifier).watchProducts();
       ref.read(productControllerProvider.notifier).watchPrices();
       ref.read(productControllerProvider.notifier).watchSearchProductHistory();
     });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _animationStyle = AnimationStyle(
+        duration: const Duration(seconds: 1),
+        reverseDuration: const Duration(seconds: 1),
+      );
+    });
+  }
+
+  void _setScrollController() {
+    final provider = ref.read(appScrollControllerProvider.notifier);
+    provider.setScrollController(_scrollController);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final products = ref
         .watch(productControllerProvider.select((select) => select.products));
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: AlignedGridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 4,
-        mainAxisSpacing: 4,
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          final data = products[index];
-          return GestureDetector(
-            onTap: () => _openProductDetailBottomSheet(data.itemId),
-            child: Card(
-              elevation: kXSmall,
-              shadowColor: context.themeColor.shadowColor,
-              child: Padding(
-                padding: const EdgeInsets.all(kMedium),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      data.productName,
-                      style: context.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
+    return VisibilityDetector(
+      key: const Key('productGrid'),
+      onVisibilityChanged: (info) {
+        if (info.visibleFraction > 0.5) {
+          _setScrollController();
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(kSmall),
+        child: AlignedGridView.count(
+          controller: _scrollController,
+          crossAxisCount: 2,
+          crossAxisSpacing: 4,
+          mainAxisSpacing: 4,
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            final data = products[index];
+            return GestureDetector(
+              onTap: () => _openProductDetailBottomSheet(data.itemId),
+              child: Card(
+                elevation: kXSmall,
+                shadowColor: context.themeColor.shadowColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(kMedium),
+                  side: BorderSide(
+                    color: Theme.of(context).colorScheme.outlineVariant,
+                    width: 0.5,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(kMedium),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        data.productName,
+                        style: context.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
                       ),
-                    ),
-                    Text(
-                      data.itemId,
-                      style: context.textTheme.titleSmall?.copyWith(
-                        fontSize: 10,
+                      Text(
+                        data.itemId,
+                        style: context.textTheme.titleSmall?.copyWith(
+                          fontSize: 10,
+                        ),
                       ),
-                    ),
-                    Text(
-                      data.itemGroup,
-                      style: context.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
+                      Text(
+                        data.itemGroup,
+                        style: context.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
@@ -98,7 +129,7 @@ class _ProductGridState extends ConsumerState<ProductGrid> {
       sheetAnimationStyle: _animationStyle,
       builder: (context) {
         return SelectProductDetail(
-          onClose: _closeBottonSheet,
+          onClose: _closeBottomSheet,
           itemId: itemId,
           priceGroup: widget.priceGroup,
         );
@@ -106,5 +137,5 @@ class _ProductGridState extends ConsumerState<ProductGrid> {
     );
   }
 
-  void _closeBottonSheet() => _bottomSheetController.close();
+  void _closeBottomSheet() => _bottomSheetController.close();
 }

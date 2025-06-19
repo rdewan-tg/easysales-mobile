@@ -7,7 +7,7 @@ import 'package:sales/features/order/presentation/state/sales_header_state.dart'
 import 'package:common/exception/failure.dart';
 import 'package:drift/drift.dart';
 
-final salesHeaderControlelrProvider =
+final salesHeaderControllerProvider =
     NotifierProvider<SalesHeaderController, SalesHeaderState>(
   SalesHeaderController.new,
 );

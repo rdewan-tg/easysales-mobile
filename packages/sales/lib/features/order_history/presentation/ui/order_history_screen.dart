@@ -49,6 +49,13 @@ class _OrderHistoryScreenState extends ConsumerState<OrderHistoryScreen> {
         ],
       ),
       body: const OrderHistoryView(),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          context.push('/order-history/sales');
+        },
+        label: Text(context.localizations('orderHistory.createOrder')),
+        icon: const Icon(Icons.add),
+      ),
     );
   }
 }

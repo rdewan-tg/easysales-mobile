@@ -14,4 +14,9 @@ final class DashboardController extends AutoDisposeNotifier<DashboardState> {
   void setPageIndex(int value) {
     state = state.copyWith(pageIndex: value);
   }
+
+  void setIsVisible(bool value) {
+    if (state.isVisible == value) return;
+    state = state.copyWith(isVisible: value);
+  }
 }

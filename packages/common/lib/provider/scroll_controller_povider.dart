@@ -10,4 +10,8 @@ class AppScrollController extends AutoDisposeNotifier<ScrollController?> {
   ScrollController? build() {
     return null;
   }
+
+  void setScrollController(ScrollController scrollController) {
+    state = scrollController;
+  }
 }

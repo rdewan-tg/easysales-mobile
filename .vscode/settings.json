@@ -12,6 +12,7 @@
     "com.tonggarden.easysales",
     "getenv",
     "riverpod",
+    "armeabi",
   ],
   "yaml.schemaStore.enable": false,
 }
