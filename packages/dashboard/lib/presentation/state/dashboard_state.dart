@@ -6,5 +6,6 @@ part 'dashboard_state.freezed.dart';
 class DashboardState with _$DashboardState {
   const factory DashboardState({
     @Default(0) int pageIndex,
+    @Default(true) bool isVisible,
   }) = _DashboardState;
 }

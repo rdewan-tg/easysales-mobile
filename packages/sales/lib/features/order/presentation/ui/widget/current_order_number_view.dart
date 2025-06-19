@@ -14,17 +14,17 @@ class _CurrentOrderNumberViewScreenState
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(salesHeaderControlelrProvider.notifier).getLastSalesOrderId();
+      ref.read(salesHeaderControllerProvider.notifier).getLastSalesOrderId();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final currentOrderNumber = ref.watch(
-      salesHeaderControlelrProvider.select((value) => value.currentOrderNumber),
+      salesHeaderControllerProvider.select((value) => value.currentOrderNumber),
     );
     final isLoading = ref.watch(
-      salesHeaderControlelrProvider
+      salesHeaderControllerProvider
           .select((value) => value.isFetchingCurrentOrderNumber),
     );
 
@@ -33,7 +33,7 @@ class _CurrentOrderNumberViewScreenState
       onVisibilityChanged: (info) {
         if (info.visibleFraction == 0) {
           ref
-              .read(salesHeaderControlelrProvider.notifier)
+              .read(salesHeaderControllerProvider.notifier)
               .getLastSalesOrderId();
         }
       },

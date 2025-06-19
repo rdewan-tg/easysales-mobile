@@ -9,6 +9,7 @@ class CaptureImageState with _$CaptureImageState {
     @Default(false) bool isUploading,
     @Default(false) bool isImageUploaded,
     @Default({}) Map<String, String> settings,
+    @Default(1) int androidSdkInt,
     String? errorMsg,
   }) = _CaptureImageState;
 }

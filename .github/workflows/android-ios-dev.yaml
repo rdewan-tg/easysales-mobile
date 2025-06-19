@@ -23,7 +23,7 @@ env:
 
 jobs:
   build:
-    runs-on:  macos-latest
+    runs-on:  macos-15
     environment: DEV
     steps:
       - name: Checkout code

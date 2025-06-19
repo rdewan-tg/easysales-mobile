@@ -18,7 +18,7 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final salesId =
-          ref.read(salesHeaderControlelrProvider.notifier).getSalesId();
+          ref.read(salesHeaderControllerProvider.notifier).getSalesId();
       ref.read(salesLineControllerProvider.notifier).watchSalesLine(salesId);
     });
     _animationStyle = AnimationStyle(
@@ -175,7 +175,7 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
       ),
       onYesTap: () {
         final salesId =
-            ref.read(salesHeaderControlelrProvider.notifier).getSalesId();
+            ref.read(salesHeaderControllerProvider.notifier).getSalesId();
         ref.read(syncOrderControllerProvider.notifier).syncOrder(salesId);
         // close dialog
         context.pop();
@@ -215,7 +215,7 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
 
   void _openEditOrderBottomSheet(String itemId, int lineId) {
     final priceGroup =
-        ref.read(salesHeaderControlelrProvider.notifier).getPriceGroup();
+        ref.read(salesHeaderControllerProvider.notifier).getPriceGroup();
     // get the product uom
     ref.read(productControllerProvider.notifier).getProductUom(
           itemId,

@@ -21,6 +21,7 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:intl/intl.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 part 'features/customer/presentation/ui/merchandiser_customer_screen.dart';
 part 'features/customer/presentation/ui/merchandiser_customer_import_screen.dart';
