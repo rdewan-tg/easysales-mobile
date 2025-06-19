@@ -150,8 +150,9 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                         isDense: true,
                         onFieldSubmitted: (value) {
                           ref
-                              .read(salesHeaderControllerProvider
-                                  .notifier) // update customer requisition
+                              .read(
+                                salesHeaderControllerProvider.notifier,
+                              ) // update customer requisition
                               .updateCustomerRequisition(
                                 value,
                               );
