@@ -204,7 +204,7 @@ class _SelectProductDetailState extends ConsumerState<SelectProductDetail> {
         ref.read(productControllerProvider.notifier).getProduct(widget.itemId);
     final price = ref.read(productControllerProvider.notifier).getPrice();
     final salesId =
-        ref.read(salesHeaderControlelrProvider.notifier).getSalesId();
+        ref.read(salesHeaderControllerProvider.notifier).getSalesId();
     final deviceId = ref.read(productControllerProvider.notifier).getDeviceId();
     if (price == null || product == null) return;
     ref.read(salesLineControllerProvider.notifier).createSalesLine(

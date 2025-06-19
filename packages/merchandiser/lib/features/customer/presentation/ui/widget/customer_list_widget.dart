@@ -11,14 +11,27 @@ class CustomerListWidget extends ConsumerStatefulWidget {
 class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
   late AnimationStyle _animationStyle;
   late PersistentBottomSheetController _bottomSheetController;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
     _animationStyle = AnimationStyle(
       duration: const Duration(seconds: 1),
       reverseDuration: const Duration(seconds: 1),
     );
+  }
+
+  void _setScrollController() {
+    final provider = ref.read(appScrollControllerProvider.notifier);
+    provider.setScrollController(_scrollController);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -32,55 +45,74 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
       return const SliverFillRemaining(child: EmptyDataWidget());
     }
 
-    return SliverList.builder(
-      itemCount: customer.length,
-      itemBuilder: (context, index) {
-        final data = customer[index];
+    return SliverFillRemaining(
+      child: VisibilityDetector(
+        key: const Key('customerListWidget'),
+        onVisibilityChanged: (info) {
+          if (info.visibleFraction > 0.5) {
+            _setScrollController();
+          }
+        },
+        child: ListView.builder(
+          controller: _scrollController,
+          itemCount: customer.length,
+          itemBuilder: (context, index) {
+            final data = customer[index];
 
-        return GestureDetector(
-          onTap: () => _onTap(
-            data.customerName,
-            data.customerId,
-            data.customreDimension ?? '-',
-          ),
-          child: Card(
-            margin: const EdgeInsets.symmetric(
-              horizontal: kMedium,
-              vertical: kSmall,
-            ),
-            elevation: kXSmall,
-            child: Padding(
-              padding: const EdgeInsets.all(kSmall),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    data.customerId,
-                    style: const TextStyle(fontWeight: FontWeight.w700),
-                  ),
-                  const SizedBox(height: kXSmall),
-                  Text(data.customerName),
-                  const SizedBox(height: kXSmall),
-                  Chip(
-                    visualDensity: const VisualDensity(
-                      horizontal: -4,
-                      vertical: -4,
-                    ), // Reduce overall padding
-                    label: Text(
-                      data.customreDimension ?? '-',
-                      style: context.textTheme.labelSmall, // Reduce text size
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(kSmall), // Customize shape
-                    ),
-                  ),
-                ],
+            return GestureDetector(
+              onTap: () => _onTap(
+                data.customerName,
+                data.customerId,
+                data.customreDimension ?? '-',
               ),
-            ),
-          ),
-        );
-      },
+              child: Card(
+                margin: const EdgeInsets.symmetric(
+                  horizontal: kMedium,
+                  vertical: kSmall,
+                ),
+                elevation: kXSmall,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(kMedium),
+                  side: BorderSide(
+                    color: Theme.of(context).colorScheme.outlineVariant,
+                    width: 0.5,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(kSmall),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        data.customerId,
+                        style: const TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(height: kXSmall),
+                      Text(data.customerName),
+                      const SizedBox(height: kXSmall),
+                      Chip(
+                        visualDensity: const VisualDensity(
+                          horizontal: -4,
+                          vertical: -4,
+                        ), // Reduce overall padding
+                        label: Text(
+                          data.customreDimension ?? '-',
+                          style:
+                              context.textTheme.labelSmall, // Reduce text size
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(kSmall), // Customize shape
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 

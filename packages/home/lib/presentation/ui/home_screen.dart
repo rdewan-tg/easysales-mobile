@@ -71,7 +71,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         TextButton(
                           onPressed: () {
                             ref
-                                .read(salesHeaderControlelrProvider.notifier)
+                                .read(salesHeaderControllerProvider.notifier)
                                 .getLastSalesOrderId();
                           },
                           child: Text('Refresh'.hardcoded),

@@ -43,7 +43,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
     _listener();
 
     final salesHeader = ref.watch(
-      salesHeaderControlelrProvider.select((value) => value.salesHeaderData),
+      salesHeaderControllerProvider.select((value) => value.salesHeaderData),
     );
     if (salesHeader != null) {
       _salesIdController.text = salesHeader.salesId;
@@ -93,7 +93,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                   child: Consumer(
                     builder: (context, ref, child) {
                       final deliveryDate = ref.watch(
-                        salesHeaderControlelrProvider.select(
+                        salesHeaderControllerProvider.select(
                           (value) => value.salesHeaderData?.deliveryDate,
                         ),
                       );
@@ -135,7 +135,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                   child: Consumer(
                     builder: (context, ref, child) {
                       final customerRequestion = ref.watch(
-                        salesHeaderControlelrProvider.select(
+                        salesHeaderControllerProvider.select(
                           (value) => value.salesHeaderData?.customerRequisition,
                         ),
                       );
@@ -150,7 +150,8 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                         isDense: true,
                         onFieldSubmitted: (value) {
                           ref
-                              .read(salesHeaderControlelrProvider.notifier)
+                              .read(salesHeaderControllerProvider
+                                  .notifier) // update customer requisition
                               .updateCustomerRequisition(
                                 value,
                               );
@@ -162,7 +163,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                 IconButton(
                   onPressed: () async {
                     ref
-                        .read(salesHeaderControlelrProvider.notifier)
+                        .read(salesHeaderControllerProvider.notifier)
                         .updateCustomerRequisition(
                           _customerRequestionController.text,
                         );
@@ -179,7 +180,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                   child: Consumer(
                     builder: (context, ref, child) {
                       final note = ref.watch(
-                        salesHeaderControlelrProvider
+                        salesHeaderControllerProvider
                             .select((value) => value.salesHeaderData?.note),
                       );
                       if (note != null) {
@@ -195,7 +196,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                         minLines: 2,
                         onFieldSubmitted: (value) {
                           ref
-                              .read(salesHeaderControlelrProvider.notifier)
+                              .read(salesHeaderControllerProvider.notifier)
                               .updateNote(
                                 value,
                               );
@@ -206,7 +207,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                 ),
                 IconButton(
                   onPressed: () async {
-                    ref.read(salesHeaderControlelrProvider.notifier).updateNote(
+                    ref.read(salesHeaderControllerProvider.notifier).updateNote(
                           _noteController.text,
                         );
                   },
@@ -227,14 +228,14 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
     _deliveryDateController.text = deliveryDate;
     // update the delivery date
     ref
-        .read(salesHeaderControlelrProvider.notifier)
+        .read(salesHeaderControllerProvider.notifier)
         .updateDeliveryDate(deliveryDate);
   }
 
   void _listener() {
     // listen for error
     ref.listen(
-      salesHeaderControlelrProvider.select((value) => value.errorMsg),
+      salesHeaderControllerProvider.select((value) => value.errorMsg),
       (_, next) {
         if (next != null) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -255,7 +256,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
     );
 
     // listen for loading
-    ref.listen(salesHeaderControlelrProvider.select((value) => value.isLoading),
+    ref.listen(salesHeaderControllerProvider.select((value) => value.isLoading),
         (_, next) {
       if (next) {
         context.loaderOverlay.show();

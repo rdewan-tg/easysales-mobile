@@ -205,7 +205,7 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
         ref.read(productControllerProvider.notifier).getProduct(widget.itemId);
     final price = ref.read(productControllerProvider.notifier).getPrice();
     final salesId =
-        ref.read(salesHeaderControlelrProvider.notifier).getSalesId();
+        ref.read(salesHeaderControllerProvider.notifier).getSalesId();
 
     if (price == null || product == null) return;
 

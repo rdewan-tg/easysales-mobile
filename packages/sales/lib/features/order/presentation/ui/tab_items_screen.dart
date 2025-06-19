@@ -41,7 +41,7 @@ class _TabItemScreenState extends ConsumerState<TabItemScreen> {
         SliverFillRemaining(
           child: ProductGrid(
             priceGroup: ref
-                .read(salesHeaderControlelrProvider.notifier)
+                .read(salesHeaderControllerProvider.notifier)
                 .getPriceGroup(),
           ),
         ),
