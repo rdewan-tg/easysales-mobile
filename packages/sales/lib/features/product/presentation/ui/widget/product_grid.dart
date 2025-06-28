@@ -3,8 +3,11 @@ part of sales;
 class ProductGrid extends ConsumerStatefulWidget {
   final String priceGroup;
   final String salesId;
-  const ProductGrid(
-      {super.key, required this.priceGroup, required this.salesId});
+  const ProductGrid({
+    super.key,
+    required this.priceGroup,
+    required this.salesId,
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ProductGridState();
