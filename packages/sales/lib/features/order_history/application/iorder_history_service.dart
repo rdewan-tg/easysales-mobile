@@ -12,4 +12,6 @@ abstract interface class IOrderHistoryService {
   Future<Result<bool, Failure>> updateSalesHeader(
     SalesHeaderEntityCompanion data,
   );
+
+  Stream<double> getSumOnLineAmount(String salesId);
 }

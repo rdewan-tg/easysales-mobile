@@ -17,7 +17,7 @@
     "orderHistory.order": "Order",
     "orderHistory.createOrder": "Create Order",
     "orderHistory.cancelOrder": "Cancel Order",
-    "orderHistory.pending": "Pending",
+    "orderHistory.draft": "Draft",
     "orderHistory.synced": "Synced",
     "orderHistory.cancelled": "Cancelled",
     "orderHistory.orderDeleted": "Order Deleted Successfully",

@@ -119,6 +119,19 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
     return maxLineNumber ?? 0;
   }
 
+  // get the sum on line amount
+  Stream<double> getSumOnLineAmount(String salesId) {
+    return (select(salesLineEntity)
+          ..where((tbl) => tbl.salesId.equals(salesId)))
+        .watch()
+        .map(
+          (event) => event.fold(
+            0.0,
+            (previousValue, element) => previousValue + element.lineAmount,
+          ),
+        );
+  }
+
   Future<int> deleteLine(String salesId, int lineId) async {
     // check if the order is already synced
     final isSynced = await (select(salesLineEntity)

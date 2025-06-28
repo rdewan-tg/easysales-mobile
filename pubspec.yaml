@@ -13,12 +13,6 @@ dependencies:
   core:
     path: packages/core
 
-  flutter_riverpod: any
-  go_router: any
-  upgrader: any
-  loader_overlay: any
-  riverpod_annotation: any
-  timezone: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

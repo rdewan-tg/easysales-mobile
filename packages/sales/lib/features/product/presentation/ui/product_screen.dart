@@ -16,7 +16,10 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
       appBar: AppBar(
         title: Text('Product'.hardcoded),
       ),
-      body: ProductGrid(priceGroup: widget.extras['priceGroup']),
+      body: ProductGrid(
+        priceGroup: widget.extras['priceGroup'],
+        salesId: widget.extras['salesId'],
+      ),
     );
   }
 }

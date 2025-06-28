@@ -49,4 +49,9 @@ final class OrderHistoryService implements IOrderHistoryService {
       return Error(e);
     }
   }
+
+  @override
+  Stream<double> getSumOnLineAmount(String salesId) {
+    return _orderHistoryRepository.getSumOnLineAmount(salesId);
+  }
 }
