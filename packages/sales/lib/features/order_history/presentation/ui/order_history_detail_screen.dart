@@ -11,14 +11,32 @@ class OrderHistoryDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _OrderHistoryDetailScreenState
-    extends ConsumerState<OrderHistoryDetailScreen> with ConfirmDialogMixin {
+    extends ConsumerState<OrderHistoryDetailScreen>
+    with ConfirmDialogMixin, SingleTickerProviderStateMixin {
+  TabController? _tabController;
+  static const List<Tab> _tabs = <Tab>[
+    Tab(text: 'Sales Lines'),
+    Tab(text: 'Items'),
+  ];
+
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: _tabs.length, vsync: this);
+
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      ref
-          .read(orderHistoryControllerProvider.notifier)
-          .getOrderLines(widget.salesId);
+      // set selected sales id
+      ref.read(orderHistoryControllerProvider.notifier).setSelectedSalesId(
+            widget.salesId,
+          );
+      // get order lines
+      ref.read(orderHistoryControllerProvider.notifier).getOrderLines(
+            widget.salesId,
+          );
+      // get sum on line amount
+      ref.read(orderHistoryControllerProvider.notifier).getSumOnLineAmount(
+            widget.salesId,
+          );
     });
   }
 
@@ -70,8 +88,18 @@ class _OrderHistoryDetailScreenState
             },
           ),
         ],
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: _tabs,
+        ),
       ),
-      body: const OrderHistoryDetailView(),
+      body: TabBarView(
+        controller: _tabController,
+        children: const [
+          TabOrderHistoryDetail(),
+          TabOrderHistoryItem(),
+        ],
+      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(kMedium),
         child: Column(

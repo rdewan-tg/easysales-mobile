@@ -565,7 +565,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_riverpod:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_riverpod
       sha256: "9532ee6db4a943a1ed8383072a2e3eeda041db5657cdf6d2acecf3c21ecbe7e1"
@@ -695,7 +695,7 @@ packages:
     source: hosted
     version: "2.1.2"
   go_router:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: go_router
       sha256: "8ae664a70174163b9f65ea68dd8673e29db8f9095de7b5cd00e167c621f4fef5"
@@ -862,7 +862,7 @@ packages:
     source: hosted
     version: "4.0.0"
   loader_overlay:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: loader_overlay
       sha256: bde643b0d3b5c9d9ea9010948d11cb3d17cdcb3f29576b9c47e0047a5b52ae75
@@ -1219,7 +1219,7 @@ packages:
     source: hosted
     version: "0.5.8"
   riverpod_annotation:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: riverpod_annotation
       sha256: e14b0bf45b71326654e2705d462f21b958f987087be850afd60578fcd502d1b8
@@ -1454,7 +1454,7 @@ packages:
     source: hosted
     version: "2.1.5"
   timezone:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: timezone
       sha256: ffc9d5f4d1193534ef051f9254063fa53d588609418c84299956c3db9383587d
@@ -1478,7 +1478,7 @@ packages:
     source: hosted
     version: "1.4.0"
   upgrader:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: upgrader
       sha256: "9b907a8c956dbf3f2d0430d16134e27543cba98eab31f19a2240ab1c4d920506"

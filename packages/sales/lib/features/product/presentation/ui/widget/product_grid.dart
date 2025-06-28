@@ -2,7 +2,12 @@ part of sales;
 
 class ProductGrid extends ConsumerStatefulWidget {
   final String priceGroup;
-  const ProductGrid({super.key, required this.priceGroup});
+  final String salesId;
+  const ProductGrid({
+    super.key,
+    required this.priceGroup,
+    required this.salesId,
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ProductGridState();
@@ -130,6 +135,7 @@ class _ProductGridState extends ConsumerState<ProductGrid> {
       builder: (context) {
         return SelectProductDetail(
           onClose: _closeBottomSheet,
+          salesId: widget.salesId,
           itemId: itemId,
           priceGroup: widget.priceGroup,
         );

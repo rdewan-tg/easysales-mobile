@@ -48,8 +48,9 @@ part 'features/order/presentation/ui/search_items_screen.dart';
 
 // order history
 part 'features/order_history/presentation/ui/order_history_screen.dart';
-part 'features/order_history/presentation/ui/widget/order_history_view.dart';
+part 'features/order_history/presentation/ui/widget/order_history_list_view.dart';
 part 'features/order_history/presentation/ui/order_history_detail_screen.dart';
-part 'features/order_history/presentation/ui/widget/order_history_detail_view.dart';
+part 'features/order_history/presentation/ui/widget/tab_order_history_detail.dart';
 part 'features/order_history/presentation/ui/widget/edit_order_history_line_item.dart';
 part 'features/order/presentation/ui/widget/current_order_number_view.dart';
+part 'features/order_history/presentation/ui/widget/tab_order_history_items.dart';

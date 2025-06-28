@@ -64,4 +64,9 @@ final class OrderHistoryRepository implements IOrderHistoryRepository {
       throw Failure(message: e.toString(), stackTrace: stackTrace);
     }
   }
+
+  @override
+  Stream<double> getSumOnLineAmount(String salesId) {
+    return _salesLineDao.getSumOnLineAmount(salesId);
+  }
 }

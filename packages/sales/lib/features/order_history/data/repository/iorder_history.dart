@@ -10,4 +10,6 @@ abstract interface class IOrderHistoryRepository {
   Future<SalesHeaderEntityData> updateSalesHeader(
     SalesHeaderEntityCompanion data,
   );
+
+  Stream<double> getSumOnLineAmount(String salesId);
 }

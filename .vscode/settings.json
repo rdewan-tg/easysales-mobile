@@ -13,6 +13,7 @@
     "getenv",
     "riverpod",
     "armeabi",
+    "Packsize",
   ],
   "yaml.schemaStore.enable": false,
 }

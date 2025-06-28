@@ -231,7 +231,7 @@ class _EditOrderHistoryLineItemState
           salesId: widget.salesId,
           lineId: widget.lineId,
           salesUnit: _uomController.text,
-          packaSize: _packSizeController.text,
+          packSize: _packSizeController.text,
           salesPrice: _priceController.text,
           quantity: _qtyController.text,
           lineAmount: lineAmount,

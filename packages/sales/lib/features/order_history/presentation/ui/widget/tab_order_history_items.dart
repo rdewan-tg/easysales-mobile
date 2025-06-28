@@ -1,13 +1,14 @@
 part of sales;
 
-class TabItemScreen extends ConsumerStatefulWidget {
-  const TabItemScreen({super.key});
+class TabOrderHistoryItem extends ConsumerStatefulWidget {
+  const TabOrderHistoryItem({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _TabItemScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _TabOrderHistoryItemState();
 }
 
-class _TabItemScreenState extends ConsumerState<TabItemScreen> {
+class _TabOrderHistoryItemState extends ConsumerState<TabOrderHistoryItem> {
   @override
   Widget build(BuildContext context) {
     _listener();
@@ -41,10 +42,10 @@ class _TabItemScreenState extends ConsumerState<TabItemScreen> {
         SliverFillRemaining(
           child: ProductGrid(
             priceGroup: ref
-                .read(salesHeaderControllerProvider.notifier)
+                .read(orderHistoryControllerProvider.notifier)
                 .getPriceGroup(),
             salesId:
-                ref.read(salesHeaderControllerProvider.notifier).getSalesId(),
+                ref.read(orderHistoryControllerProvider.notifier).getSalesId(),
           ),
         ),
       ],
