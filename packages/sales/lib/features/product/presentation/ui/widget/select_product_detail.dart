@@ -2,11 +2,13 @@ part of sales;
 
 class SelectProductDetail extends ConsumerStatefulWidget {
   final VoidCallback onClose;
+  final String salesId;
   final String itemId;
   final String priceGroup;
   const SelectProductDetail({
     super.key,
     required this.onClose,
+    required this.salesId,
     required this.itemId,
     required this.priceGroup,
   });
@@ -203,12 +205,10 @@ class _SelectProductDetailState extends ConsumerState<SelectProductDetail> {
     final product =
         ref.read(productControllerProvider.notifier).getProduct(widget.itemId);
     final price = ref.read(productControllerProvider.notifier).getPrice();
-    final salesId =
-        ref.read(salesHeaderControllerProvider.notifier).getSalesId();
     final deviceId = ref.read(productControllerProvider.notifier).getDeviceId();
     if (price == null || product == null) return;
     ref.read(salesLineControllerProvider.notifier).createSalesLine(
-          salesId: salesId,
+          salesId: widget.salesId,
           productDetail: price,
           productData: product,
           quantity: int.tryParse(_qtyController.text) ?? 0,

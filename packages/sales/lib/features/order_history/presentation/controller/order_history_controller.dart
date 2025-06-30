@@ -15,18 +15,20 @@ final orderHistoryControllerProvider =
 class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
   StreamSubscription<List<SalesHeaderEntityData>>? _subscriptionSalesHeaders;
   StreamSubscription<List<SalesLineEntityData>>? _subscriptionLines;
+  StreamSubscription<double>? _subscriptionSumOnLineAmount;
 
   @override
   OrderHistoryState build() {
     ref.onDispose(() {
       _subscriptionSalesHeaders?.cancel();
       _subscriptionLines?.cancel();
+      _subscriptionSumOnLineAmount?.cancel();
     });
 
     return OrderHistoryState();
   }
 
-  Future<void> getOrderHistorys() async {
+  Future<void> getOrderHistory() async {
     _subscriptionSalesHeaders =
         ref.watch(orderHistoryServiceProvider).watchAllSalesHeader().listen(
       (data) {
@@ -39,6 +41,7 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
   }
 
   Future<void> getOrderLines(String salesId) async {
+    _subscriptionLines?.cancel();
     _subscriptionLines = ref
         .watch(orderHistoryServiceProvider)
         .watchAllSalesLineBySalesId(salesId)
@@ -47,15 +50,9 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
         if (data.isEmpty) {
           state = state.copyWith(salesLines: []);
         } else {
-          double totalAmount = 0;
-          for (var element in data) {
-            totalAmount += element.lineAmount;
-          }
-
           final isSynced = data.first.syncStatus == 1;
           state = state.copyWith(
             salesLines: data,
-            totalAmount: totalAmount,
             isOrderSynced: isSynced,
           );
         }
@@ -128,7 +125,7 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
     required String salesId,
     required int lineId,
     required String salesUnit,
-    required String packaSize,
+    required String packSize,
     required String salesPrice,
     required String quantity,
     required String lineAmount,
@@ -138,7 +135,7 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
       if (state.isOrderSynced) return;
       // set salesId
       state = state.copyWith(
-        salesId: salesId,
+        selectedSalesId: salesId,
         isLoading: true,
         isItemEdited: false,
         errorMsg: null,
@@ -148,7 +145,7 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
         salesId: Value(salesId),
         lineId: Value(lineId),
         salesUnit: Value(salesUnit),
-        packSize: Value(packaSize),
+        packSize: Value(packSize),
         salesPrice: Value(double.parse(salesPrice)),
         quantity: Value(double.parse(quantity)),
         taxAmount: const Value(0.0),
@@ -172,9 +169,48 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
     }
   }
 
-  String getPriceGroup(String salesId) {
-    final data =
-        state.salesHeaders.where((e) => e.salesId == salesId).firstOrNull;
+  Future<void> deleteLine(String salesId, int lineId) async {
+    state = state.copyWith(
+      isLoading: true,
+      isItemRemoved: false,
+      errorMsg: null,
+    );
+
+    // delete the line from the database
+    final result =
+        await ref.read(orderServiceProvider).deleteLine(salesId, lineId);
+    result.when((data) {
+      state = state.copyWith(
+        isItemRemoved: true,
+        isLoading: false,
+      );
+    }, (error) {
+      state = state.copyWith(
+        errorMsg: error.message,
+        isLoading: false,
+      );
+    });
+  }
+
+  Future<void> getSumOnLineAmount(String salesId) async {
+    _subscriptionSumOnLineAmount?.cancel();
+    _subscriptionSumOnLineAmount = ref
+        .watch(orderHistoryServiceProvider)
+        .getSumOnLineAmount(salesId)
+        .listen(
+      (data) {
+        state = state.copyWith(totalAmount: data);
+      },
+      onError: (e, s) {
+        state = state.copyWith(errorMsg: e.toString());
+      },
+    );
+  }
+
+  String getPriceGroup() {
+    final data = state.salesHeaders
+        .where((e) => e.salesId == state.selectedSalesId)
+        .firstOrNull;
     return data?.customerPriceGroup ?? '-';
   }
 
@@ -199,5 +235,13 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
         state = state.copyWith(errorMsg: error.message, isLoading: false);
       },
     );
+  }
+
+  String getSalesId() {
+    return state.selectedSalesId ?? 'Not Selected';
+  }
+
+  void setSelectedSalesId(String salesId) {
+    state = state.copyWith(selectedSalesId: salesId);
   }
 }

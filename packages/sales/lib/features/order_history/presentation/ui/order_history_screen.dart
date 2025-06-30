@@ -13,7 +13,7 @@ class _OrderHistoryScreenState extends ConsumerState<OrderHistoryScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(orderHistoryControllerProvider.notifier).getOrderHistorys();
+      ref.read(orderHistoryControllerProvider.notifier).getOrderHistory();
     });
   }
 
@@ -48,7 +48,7 @@ class _OrderHistoryScreenState extends ConsumerState<OrderHistoryScreen> {
           ),
         ],
       ),
-      body: const OrderHistoryView(),
+      body: const OrderHistoryListView(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           context.push('/order-history/sales');

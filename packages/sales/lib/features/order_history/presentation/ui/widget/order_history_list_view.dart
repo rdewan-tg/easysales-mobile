@@ -1,14 +1,14 @@
 part of sales;
 
-class OrderHistoryView extends ConsumerStatefulWidget {
-  const OrderHistoryView({super.key});
+class OrderHistoryListView extends ConsumerStatefulWidget {
+  const OrderHistoryListView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _OrderHistoryViewState();
+      _OrderHistoryListViewState();
 }
 
-class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
+class _OrderHistoryListViewState extends ConsumerState<OrderHistoryListView> {
   late ScrollController _scrollController;
 
   @override
@@ -179,7 +179,7 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
                                   label: data.syncStatus == 0
                                       ? Text(
                                           context.localizations(
-                                            'orderHistory.pending',
+                                            'orderHistory.draft',
                                           ),
                                         )
                                       : data.syncStatus == 1

@@ -24,7 +24,7 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: _tabs.length, vsync: this);
     _tabController.addListener(_handleTabChange); // Detect swipe gestures
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
