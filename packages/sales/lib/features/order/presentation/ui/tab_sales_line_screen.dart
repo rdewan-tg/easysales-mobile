@@ -17,21 +17,23 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final salesId =
-          ref.read(salesHeaderControllerProvider.notifier).getSalesId();
+      final salesId = ref
+          .read(salesHeaderControllerProvider.notifier)
+          .getSalesId();
       ref.read(salesLineControllerProvider.notifier).watchSalesLine(salesId);
     });
-    _animationStyle = AnimationStyle(
-      duration: const Duration(seconds: 1),
-      reverseDuration: const Duration(seconds: 1),
+    _animationStyle = const AnimationStyle(
+      duration: Duration(seconds: 1),
+      reverseDuration: Duration(seconds: 1),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     _listener();
-    final salesLine = ref
-        .watch(salesLineControllerProvider.select((value) => value.salesLines));
+    final salesLine = ref.watch(
+      salesLineControllerProvider.select((value) => value.salesLines),
+    );
 
     if (salesLine.isEmpty) return const EmptyDataWidget();
 
@@ -52,8 +54,9 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
                       Consumer(
                         builder: (context, ref, child) {
                           final isOrderSynced = ref.watch(
-                            salesLineControllerProvider
-                                .select((value) => value.isOrderSynced),
+                            salesLineControllerProvider.select(
+                              (value) => value.isOrderSynced,
+                            ),
                           );
                           return GestureDetector(
                             onTap: isOrderSynced
@@ -77,8 +80,9 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
                       Consumer(
                         builder: (context, ref, child) {
                           final isOrderSynced = ref.watch(
-                            salesLineControllerProvider
-                                .select((value) => value.isOrderSynced),
+                            salesLineControllerProvider.select(
+                              (value) => value.isOrderSynced,
+                            ),
                           );
                           return GestureDetector(
                             onTap: isOrderSynced
@@ -141,16 +145,15 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
                 Consumer(
                   builder: (context, ref, child) {
                     final isOrderSynced = ref.watch(
-                      syncOrderControllerProvider
-                          .select((value) => value.isOrderSynced),
+                      syncOrderControllerProvider.select(
+                        (value) => value.isOrderSynced,
+                      ),
                     );
                     return IconButton.filledTonal(
                       onPressed: salesLine.isEmpty || isOrderSynced
                           ? null
                           : _syncOrder,
-                      icon: const Icon(
-                        Icons.upload_outlined,
-                      ),
+                      icon: const Icon(Icons.upload_outlined),
                     );
                   },
                 ),
@@ -174,8 +177,9 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
         color: context.themeColor.colorScheme.error,
       ),
       onYesTap: () {
-        final salesId =
-            ref.read(salesHeaderControllerProvider.notifier).getSalesId();
+        final salesId = ref
+            .read(salesHeaderControllerProvider.notifier)
+            .getSalesId();
         ref.read(syncOrderControllerProvider.notifier).syncOrder(salesId);
         // close dialog
         context.pop();
@@ -214,18 +218,17 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
   }
 
   void _openEditOrderBottomSheet(String itemId, int lineId) {
-    final priceGroup =
-        ref.read(salesHeaderControllerProvider.notifier).getPriceGroup();
+    final priceGroup = ref
+        .read(salesHeaderControllerProvider.notifier)
+        .getPriceGroup();
     // get the product uom
-    ref.read(productControllerProvider.notifier).getProductUom(
-          itemId,
-          priceGroup,
-        );
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductUom(itemId, priceGroup);
     // get the product pack size
-    ref.read(productControllerProvider.notifier).getProductPackSize(
-          itemId,
-          priceGroup,
-        );
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductPackSize(itemId, priceGroup);
     // show bottom sheet
     _bottomSheetController = showBottomSheet(
       context: context,
@@ -245,26 +248,26 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
 
   void _listener() {
     // listen for error
-    ref.listen(
-      salesLineControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              padding: const EdgeInsets.all(kSMedium),
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(salesLineControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            padding: const EdgeInsets.all(kSMedium),
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
     // listen for item removed
     ref.listen(
       salesLineControllerProvider.select((value) => value.isItemRemoved),
@@ -274,9 +277,7 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
             SnackBar(
               padding: const EdgeInsets.all(kSMedium),
               duration: const Duration(seconds: 5),
-              content: Text(
-                "Item removed successfully".hardcoded,
-              ),
+              content: Text("Item removed successfully".hardcoded),
             ),
           );
         }
@@ -284,8 +285,10 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
     );
 
     // listen for loading
-    ref.listen(salesLineControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(salesLineControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {
@@ -302,9 +305,7 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
             SnackBar(
               padding: const EdgeInsets.all(kSMedium),
               duration: const Duration(seconds: 5),
-              content: Text(
-                "Order synced successfully".hardcoded,
-              ),
+              content: Text("Order synced successfully".hardcoded),
             ),
           );
         }
@@ -312,8 +313,10 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
     );
 
     // listen for loading
-    ref.listen(syncOrderControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(syncOrderControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {
@@ -322,25 +325,25 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
     });
 
     // listen for error
-    ref.listen(
-      syncOrderControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              padding: const EdgeInsets.all(kSMedium),
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(syncOrderControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            padding: const EdgeInsets.all(kSMedium),
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
   }
 }

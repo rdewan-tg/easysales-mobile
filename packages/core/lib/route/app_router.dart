@@ -37,8 +37,9 @@ class AppRouter {
   GoRouterNotifier notifier;
   NavigatorObserver navigatorObserver;
 
-  final GlobalKey<NavigatorState> rootNavigatorKey =
-      GlobalKey(debugLabel: 'root');
+  final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey(
+    debugLabel: 'root',
+  );
   bool isDuplicate = false;
 
   AppRouter({
@@ -107,9 +108,7 @@ class AppRouter {
         name: state.name,
         child: const LoginScreen(),
       ),
-      routes: [
-        _forgotPasswordRoute(),
-      ],
+      routes: [_forgotPasswordRoute()],
     );
   }
 
@@ -179,10 +178,7 @@ class AppRouter {
             name: state.name,
             child: const OrderHistoryScreen(),
           ),
-          routes: [
-            _orderHistoryDetailRoute(),
-            _salesBranch(),
-          ],
+          routes: [_orderHistoryDetailRoute(), _salesBranch()],
         ),
       ],
     );
@@ -428,13 +424,9 @@ class AppRouter {
       name: createOrderRoute,
       builder: (context, state) {
         final extras = state.extra as Map<String, dynamic>;
-        return SalesOrderScreen(
-          extras: extras,
-        );
+        return SalesOrderScreen(extras: extras);
       },
-      routes: [
-        _searchProductRoute(),
-      ],
+      routes: [_searchProductRoute()],
     );
   }
 

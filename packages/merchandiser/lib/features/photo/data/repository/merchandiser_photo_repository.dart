@@ -11,11 +11,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final merchandiserPhotoRepositoryProvider =
     Provider<IMerchandiserPhotoRepository>((ref) {
-  final photoApi = ref.watch(photoApiProvider);
-  final settingDao = ref.watch(settingDaoProvider);
+      final photoApi = ref.watch(photoApiProvider);
+      final settingDao = ref.watch(settingDaoProvider);
 
-  return MerchaniserPhotoRepository(photoApi, settingDao);
-});
+      return MerchaniserPhotoRepository(photoApi, settingDao);
+    });
 
 final class MerchaniserPhotoRepository
     with DioExceptionMapper

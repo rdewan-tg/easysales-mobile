@@ -36,10 +36,7 @@ class _SalesCustomerScreenState extends ConsumerState<SalesCustomerScreen> {
       body: RefreshIndicator(
         onRefresh: _onRefresh,
         child: const CustomScrollView(
-          slivers: [
-            SearchQueryWidget(),
-            SalesCustomerListWidget(),
-          ],
+          slivers: [SearchQueryWidget(), SalesCustomerListWidget()],
         ),
       ),
     );

@@ -11,11 +11,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final merchandiserCustomerServiceProvider =
     Provider.autoDispose<IMerchandiserCustomerService>((ref) {
-  final merchandiserCustomerRepository =
-      ref.watch(merchandiserCustomerRepositoryProvider);
+      final merchandiserCustomerRepository = ref.watch(
+        merchandiserCustomerRepositoryProvider,
+      );
 
-  return MerchandiserCustomerService(merchandiserCustomerRepository);
-});
+      return MerchandiserCustomerService(merchandiserCustomerRepository);
+    });
 
 final class MerchandiserCustomerService
     implements IMerchandiserCustomerService {
@@ -35,19 +36,15 @@ final class MerchandiserCustomerService
         () => _mapToMerchandiserCustomerEntityData(response),
       );
 
-      await _merchandiserCustomerRepository
-          .insertOrUpdate(merchandiserCustomerData);
+      await _merchandiserCustomerRepository.insertOrUpdate(
+        merchandiserCustomerData,
+      );
 
       return const Result.success(true);
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 
@@ -64,26 +61,20 @@ final class MerchandiserCustomerService
         () => _mapToMerchandiserCustomerEntityData(response),
       );
 
-      await _merchandiserCustomerRepository
-          .insertOrUpdate(merchandiserCustomerData);
+      await _merchandiserCustomerRepository.insertOrUpdate(
+        merchandiserCustomerData,
+      );
 
       return const Result.success(true);
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 
   @override
-  Stream<List<MerchandiserCustomerEntityData>> watchAll(
-    String? searchQuery,
-  ) {
+  Stream<List<MerchandiserCustomerEntityData>> watchAll(String? searchQuery) {
     return _merchandiserCustomerRepository.watchAll(searchQuery);
   }
 
@@ -94,7 +85,7 @@ final class MerchandiserCustomerService
 
   @override
   Stream<List<SearchMerchandiserCustomerHistoryEntityData>>
-      watchSearchCustomerHistory() {
+  watchSearchCustomerHistory() {
     return _merchandiserCustomerRepository.watchSearchCustomerHistory();
   }
 
@@ -129,12 +120,7 @@ final class MerchandiserCustomerService
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 }

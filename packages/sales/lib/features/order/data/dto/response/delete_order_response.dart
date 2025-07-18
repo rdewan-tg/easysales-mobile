@@ -5,10 +5,8 @@ part 'delete_order_response.g.dart';
 
 @freezed
 class DeleteOrderResponse with _$DeleteOrderResponse {
-  const factory DeleteOrderResponse({
-    required String status,
-    dynamic data,
-  }) = _DeleteOrderResponse;
+  const factory DeleteOrderResponse({required String status, dynamic data}) =
+      _DeleteOrderResponse;
 
   factory DeleteOrderResponse.fromJson(Map<String, dynamic> json) =>
       _$DeleteOrderResponseFromJson(json);

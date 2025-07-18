@@ -8,9 +8,7 @@ class SearchSuggestion extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final searchHistory = ref.watch(
-      merchandiserCustomerProvider.select(
-        (value) => value.searchHistory,
-      ),
+      merchandiserCustomerProvider.select((value) => value.searchHistory),
     );
 
     if (searchHistory.isEmpty) return const SizedBox.shrink();

@@ -27,10 +27,12 @@ class _MainWidgetState extends ConsumerState<MainWidget> {
     // riverpod watch - goRouter
     final router = ref.watch(goRouterProvider);
 
-    final themeMode =
-        ref.watch(settingControllerProvider.select((value) => value.themeMode));
-    final language =
-        ref.watch(settingControllerProvider.select((value) => value.language));
+    final themeMode = ref.watch(
+      settingControllerProvider.select((value) => value.themeMode),
+    );
+    final language = ref.watch(
+      settingControllerProvider.select((value) => value.language),
+    );
 
     // Theme
     final theme = ref.watch(materialThemeProvider(context));
@@ -62,9 +64,7 @@ class _MainWidgetState extends ConsumerState<MainWidget> {
               ? UpgradeDialogStyle.cupertino
               : UpgradeDialogStyle.material,
           upgrader: Upgrader(
-            messages: UpgraderTranslationMessages(
-              code: language,
-            ),
+            messages: UpgraderTranslationMessages(code: language),
           ),
           child: LoaderOverlay(
             overlayColor: Colors.transparent,

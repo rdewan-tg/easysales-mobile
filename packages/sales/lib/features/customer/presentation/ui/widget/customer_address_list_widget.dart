@@ -25,16 +25,17 @@ class _CustomerAddressListWidgetState
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(addressControllerProvider.notifier).watchCustomerAddress(
-            widget.customerId,
-          );
+      ref
+          .read(addressControllerProvider.notifier)
+          .watchCustomerAddress(widget.customerId);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final addresses =
-        ref.watch(addressControllerProvider.select((value) => value.addresses));
+    final addresses = ref.watch(
+      addressControllerProvider.select((value) => value.addresses),
+    );
 
     return Column(
       mainAxisSize: MainAxisSize.min,

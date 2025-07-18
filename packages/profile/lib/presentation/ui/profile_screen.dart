@@ -55,8 +55,10 @@ class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
   }
 
   void _listener(WidgetRef ref, BuildContext context) {
-    ref.listen(profileControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(profileControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {

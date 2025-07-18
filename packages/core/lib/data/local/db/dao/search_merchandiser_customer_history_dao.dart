@@ -8,8 +8,10 @@ part 'search_merchandiser_customer_history_dao.g.dart';
 
 final searchMerchandiserCustomerHistoryDaoProvider =
     Provider<SearchMerchandiserCustomerHistoryDao>((ref) {
-  return SearchMerchandiserCustomerHistoryDao(ref.watch(appDatabaseProvider));
-});
+      return SearchMerchandiserCustomerHistoryDao(
+        ref.watch(appDatabaseProvider),
+      );
+    });
 
 // the _$SearchHistoryDaoMixin will be created by drift. It contains all the necessary
 // fields for the tables. The <AppDatabase> type annotation is the database class
@@ -35,9 +37,9 @@ class SearchMerchandiserCustomerHistoryDao extends DatabaseAccessor<AppDatabase>
   }
 
   Stream<List<SearchMerchandiserCustomerHistoryEntityData>> watchAll() {
-    return (select(searchMerchandiserCustomerHistoryEntity))
-        .watch()
-        .handleError((e, s) {
+    return (select(
+      searchMerchandiserCustomerHistoryEntity,
+    )).watch().handleError((e, s) {
       throw Failure(message: e.toString(), stackTrace: s);
     });
   }

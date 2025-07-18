@@ -9,7 +9,7 @@ abstract interface class ISiteVisitReportService {
   );
 
   Future<Result<ThisMonthSiteVisitReportData, Failure>>
-      thisMonthSiteVisitReport(String salesPersonCode);
+  thisMonthSiteVisitReport(String salesPersonCode);
 
   Future<Map<String, String>> getAllSettings();
 }

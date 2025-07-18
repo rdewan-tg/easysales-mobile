@@ -6,8 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'merchandiser_customer_dao.g.dart';
 
-final merchandiserCustomerDaoProvider =
-    Provider<MerchandiserCustomerDao>((ref) {
+final merchandiserCustomerDaoProvider = Provider<MerchandiserCustomerDao>((
+  ref,
+) {
   return MerchandiserCustomerDao(ref.watch(appDatabaseProvider));
 });
 
@@ -21,10 +22,7 @@ class MerchandiserCustomerDao extends DatabaseAccessor<AppDatabase>
   ) async {
     try {
       await batch((batch) {
-        batch.insertAllOnConflictUpdate(
-          merchandiserCustomerEntity,
-          dataList,
-        );
+        batch.insertAllOnConflictUpdate(merchandiserCustomerEntity, dataList);
       });
     } catch (e, stackTrace) {
       throw Failure(
@@ -34,9 +32,7 @@ class MerchandiserCustomerDao extends DatabaseAccessor<AppDatabase>
     }
   }
 
-  Stream<List<MerchandiserCustomerEntityData>> watchAll({
-    String? searchQuery,
-  }) {
+  Stream<List<MerchandiserCustomerEntityData>> watchAll({String? searchQuery}) {
     final query = select(merchandiserCustomerEntity);
 
     if (searchQuery != null && searchQuery.isNotEmpty) {
@@ -46,10 +42,12 @@ class MerchandiserCustomerDao extends DatabaseAccessor<AppDatabase>
       query.where(
         (tbl) =>
             tbl.customerId.like(formattedSearchQuery) | // Filter by customerId
-            tbl.customerName
-                .like(formattedSearchQuery) | // Filter by customerName
-            tbl.customreDimension
-                .like(formattedSearchQuery), // Filter by customreDimension
+            tbl.customerName.like(
+              formattedSearchQuery,
+            ) | // Filter by customerName
+            tbl.customreDimension.like(
+              formattedSearchQuery,
+            ), // Filter by customreDimension
       );
     }
 
@@ -61,9 +59,9 @@ class MerchandiserCustomerDao extends DatabaseAccessor<AppDatabase>
   // watch the total count
   Stream<int> watchTotalCount() {
     final countExp = countAll();
-    return (selectOnly(merchandiserCustomerEntity)..addColumns([countExp]))
-        .map((row) => row.read(countExp)!)
-        .watchSingle();
+    return (selectOnly(
+      merchandiserCustomerEntity,
+    )..addColumns([countExp])).map((row) => row.read(countExp)!).watchSingle();
   }
 
   Future<int> deleteAll() async {

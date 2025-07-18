@@ -5,8 +5,7 @@ part 'to_day_site_visit_report_response.g.dart';
 
 ToDaySiteVisitReportResponse deserializeToDaySiteVisitReportResponse(
   Map<String, dynamic> json,
-) =>
-    ToDaySiteVisitReportResponse.fromJson(json);
+) => ToDaySiteVisitReportResponse.fromJson(json);
 
 @freezed
 class ToDaySiteVisitReportResponse with _$ToDaySiteVisitReportResponse {

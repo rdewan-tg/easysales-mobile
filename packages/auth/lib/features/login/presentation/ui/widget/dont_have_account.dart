@@ -10,9 +10,7 @@ class DontHaveAccount extends ConsumerWidget {
       children: [
         Text(
           "Don't have an account?".hardcoded,
-          style: const TextStyle(
-            fontWeight: FontWeight.w500,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         TextButton(
           onPressed: () {

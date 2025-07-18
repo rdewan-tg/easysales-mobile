@@ -12,7 +12,8 @@ part of 'merchandiser_customer_address.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$MerchandiserCustomerAddress {
@@ -33,35 +34,41 @@ mixin _$MerchandiserCustomerAddress {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $MerchandiserCustomerAddressCopyWith<MerchandiserCustomerAddress>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MerchandiserCustomerAddressCopyWith<$Res> {
   factory $MerchandiserCustomerAddressCopyWith(
-          MerchandiserCustomerAddress value,
-          $Res Function(MerchandiserCustomerAddress) then) =
-      _$MerchandiserCustomerAddressCopyWithImpl<$Res,
-          MerchandiserCustomerAddress>;
+    MerchandiserCustomerAddress value,
+    $Res Function(MerchandiserCustomerAddress) then,
+  ) =
+      _$MerchandiserCustomerAddressCopyWithImpl<
+        $Res,
+        MerchandiserCustomerAddress
+      >;
   @useResult
-  $Res call(
-      {int id,
-      String customerId,
-      String? deliveryName,
-      String? address,
-      String? salesPersonId,
-      double latitude,
-      double longitude,
-      BigInt? postalAddress,
-      BigInt? location,
-      bool isPrimary,
-      int companyId,
-      String companyCode});
+  $Res call({
+    int id,
+    String customerId,
+    String? deliveryName,
+    String? address,
+    String? salesPersonId,
+    double latitude,
+    double longitude,
+    BigInt? postalAddress,
+    BigInt? location,
+    bool isPrimary,
+    int companyId,
+    String companyCode,
+  });
 }
 
 /// @nodoc
-class _$MerchandiserCustomerAddressCopyWithImpl<$Res,
-        $Val extends MerchandiserCustomerAddress>
+class _$MerchandiserCustomerAddressCopyWithImpl<
+  $Res,
+  $Val extends MerchandiserCustomerAddress
+>
     implements $MerchandiserCustomerAddressCopyWith<$Res> {
   _$MerchandiserCustomerAddressCopyWithImpl(this._value, this._then);
 
@@ -88,56 +95,59 @@ class _$MerchandiserCustomerAddressCopyWithImpl<$Res,
     Object? companyId = null,
     Object? companyCode = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryName: freezed == deliveryName
-          ? _value.deliveryName
-          : deliveryName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      salesPersonId: freezed == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitude: null == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitude: null == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      postalAddress: freezed == postalAddress
-          ? _value.postalAddress
-          : postalAddress // ignore: cast_nullable_to_non_nullable
-              as BigInt?,
-      location: freezed == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as BigInt?,
-      isPrimary: null == isPrimary
-          ? _value.isPrimary
-          : isPrimary // ignore: cast_nullable_to_non_nullable
-              as bool,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyCode: null == companyCode
-          ? _value.companyCode
-          : companyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            customerId: null == customerId
+                ? _value.customerId
+                : customerId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            deliveryName: freezed == deliveryName
+                ? _value.deliveryName
+                : deliveryName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            address: freezed == address
+                ? _value.address
+                : address // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            salesPersonId: freezed == salesPersonId
+                ? _value.salesPersonId
+                : salesPersonId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            latitude: null == latitude
+                ? _value.latitude
+                : latitude // ignore: cast_nullable_to_non_nullable
+                      as double,
+            longitude: null == longitude
+                ? _value.longitude
+                : longitude // ignore: cast_nullable_to_non_nullable
+                      as double,
+            postalAddress: freezed == postalAddress
+                ? _value.postalAddress
+                : postalAddress // ignore: cast_nullable_to_non_nullable
+                      as BigInt?,
+            location: freezed == location
+                ? _value.location
+                : location // ignore: cast_nullable_to_non_nullable
+                      as BigInt?,
+            isPrimary: null == isPrimary
+                ? _value.isPrimary
+                : isPrimary // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            companyId: null == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            companyCode: null == companyCode
+                ? _value.companyCode
+                : companyCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -145,35 +155,39 @@ class _$MerchandiserCustomerAddressCopyWithImpl<$Res,
 abstract class _$$MerchandiserCustomerAddressImplCopyWith<$Res>
     implements $MerchandiserCustomerAddressCopyWith<$Res> {
   factory _$$MerchandiserCustomerAddressImplCopyWith(
-          _$MerchandiserCustomerAddressImpl value,
-          $Res Function(_$MerchandiserCustomerAddressImpl) then) =
-      __$$MerchandiserCustomerAddressImplCopyWithImpl<$Res>;
+    _$MerchandiserCustomerAddressImpl value,
+    $Res Function(_$MerchandiserCustomerAddressImpl) then,
+  ) = __$$MerchandiserCustomerAddressImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String customerId,
-      String? deliveryName,
-      String? address,
-      String? salesPersonId,
-      double latitude,
-      double longitude,
-      BigInt? postalAddress,
-      BigInt? location,
-      bool isPrimary,
-      int companyId,
-      String companyCode});
+  $Res call({
+    int id,
+    String customerId,
+    String? deliveryName,
+    String? address,
+    String? salesPersonId,
+    double latitude,
+    double longitude,
+    BigInt? postalAddress,
+    BigInt? location,
+    bool isPrimary,
+    int companyId,
+    String companyCode,
+  });
 }
 
 /// @nodoc
 class __$$MerchandiserCustomerAddressImplCopyWithImpl<$Res>
-    extends _$MerchandiserCustomerAddressCopyWithImpl<$Res,
-        _$MerchandiserCustomerAddressImpl>
+    extends
+        _$MerchandiserCustomerAddressCopyWithImpl<
+          $Res,
+          _$MerchandiserCustomerAddressImpl
+        >
     implements _$$MerchandiserCustomerAddressImplCopyWith<$Res> {
   __$$MerchandiserCustomerAddressImplCopyWithImpl(
-      _$MerchandiserCustomerAddressImpl _value,
-      $Res Function(_$MerchandiserCustomerAddressImpl) _then)
-      : super(_value, _then);
+    _$MerchandiserCustomerAddressImpl _value,
+    $Res Function(_$MerchandiserCustomerAddressImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MerchandiserCustomerAddress
   /// with the given fields replaced by the non-null parameter values.
@@ -193,56 +207,58 @@ class __$$MerchandiserCustomerAddressImplCopyWithImpl<$Res>
     Object? companyId = null,
     Object? companyCode = null,
   }) {
-    return _then(_$MerchandiserCustomerAddressImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryName: freezed == deliveryName
-          ? _value.deliveryName
-          : deliveryName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      salesPersonId: freezed == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitude: null == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitude: null == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      postalAddress: freezed == postalAddress
-          ? _value.postalAddress
-          : postalAddress // ignore: cast_nullable_to_non_nullable
-              as BigInt?,
-      location: freezed == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as BigInt?,
-      isPrimary: null == isPrimary
-          ? _value.isPrimary
-          : isPrimary // ignore: cast_nullable_to_non_nullable
-              as bool,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyCode: null == companyCode
-          ? _value.companyCode
-          : companyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$MerchandiserCustomerAddressImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        customerId: null == customerId
+            ? _value.customerId
+            : customerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        deliveryName: freezed == deliveryName
+            ? _value.deliveryName
+            : deliveryName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        address: freezed == address
+            ? _value.address
+            : address // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        salesPersonId: freezed == salesPersonId
+            ? _value.salesPersonId
+            : salesPersonId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        latitude: null == latitude
+            ? _value.latitude
+            : latitude // ignore: cast_nullable_to_non_nullable
+                  as double,
+        longitude: null == longitude
+            ? _value.longitude
+            : longitude // ignore: cast_nullable_to_non_nullable
+                  as double,
+        postalAddress: freezed == postalAddress
+            ? _value.postalAddress
+            : postalAddress // ignore: cast_nullable_to_non_nullable
+                  as BigInt?,
+        location: freezed == location
+            ? _value.location
+            : location // ignore: cast_nullable_to_non_nullable
+                  as BigInt?,
+        isPrimary: null == isPrimary
+            ? _value.isPrimary
+            : isPrimary // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        companyId: null == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        companyCode: null == companyCode
+            ? _value.companyCode
+            : companyCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -250,19 +266,20 @@ class __$$MerchandiserCustomerAddressImplCopyWithImpl<$Res>
 
 class _$MerchandiserCustomerAddressImpl
     implements _MerchandiserCustomerAddress {
-  _$MerchandiserCustomerAddressImpl(
-      {required this.id,
-      required this.customerId,
-      this.deliveryName,
-      this.address,
-      this.salesPersonId,
-      this.latitude = 0.0,
-      this.longitude = 0.0,
-      this.postalAddress,
-      this.location,
-      this.isPrimary = false,
-      required this.companyId,
-      required this.companyCode});
+  _$MerchandiserCustomerAddressImpl({
+    required this.id,
+    required this.customerId,
+    this.deliveryName,
+    this.address,
+    this.salesPersonId,
+    this.latitude = 0.0,
+    this.longitude = 0.0,
+    this.postalAddress,
+    this.location,
+    this.isPrimary = false,
+    required this.companyId,
+    required this.companyCode,
+  });
 
   @override
   final int id;
@@ -328,19 +345,20 @@ class _$MerchandiserCustomerAddressImpl
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      customerId,
-      deliveryName,
-      address,
-      salesPersonId,
-      latitude,
-      longitude,
-      postalAddress,
-      location,
-      isPrimary,
-      companyId,
-      companyCode);
+    runtimeType,
+    id,
+    customerId,
+    deliveryName,
+    address,
+    salesPersonId,
+    latitude,
+    longitude,
+    postalAddress,
+    location,
+    isPrimary,
+    companyId,
+    companyCode,
+  );
 
   /// Create a copy of MerchandiserCustomerAddress
   /// with the given fields replaced by the non-null parameter values.
@@ -348,25 +366,28 @@ class _$MerchandiserCustomerAddressImpl
   @override
   @pragma('vm:prefer-inline')
   _$$MerchandiserCustomerAddressImplCopyWith<_$MerchandiserCustomerAddressImpl>
-      get copyWith => __$$MerchandiserCustomerAddressImplCopyWithImpl<
-          _$MerchandiserCustomerAddressImpl>(this, _$identity);
+  get copyWith =>
+      __$$MerchandiserCustomerAddressImplCopyWithImpl<
+        _$MerchandiserCustomerAddressImpl
+      >(this, _$identity);
 }
 
 abstract class _MerchandiserCustomerAddress
     implements MerchandiserCustomerAddress {
-  factory _MerchandiserCustomerAddress(
-      {required final int id,
-      required final String customerId,
-      final String? deliveryName,
-      final String? address,
-      final String? salesPersonId,
-      final double latitude,
-      final double longitude,
-      final BigInt? postalAddress,
-      final BigInt? location,
-      final bool isPrimary,
-      required final int companyId,
-      required final String companyCode}) = _$MerchandiserCustomerAddressImpl;
+  factory _MerchandiserCustomerAddress({
+    required final int id,
+    required final String customerId,
+    final String? deliveryName,
+    final String? address,
+    final String? salesPersonId,
+    final double latitude,
+    final double longitude,
+    final BigInt? postalAddress,
+    final BigInt? location,
+    final bool isPrimary,
+    required final int companyId,
+    required final String companyCode,
+  }) = _$MerchandiserCustomerAddressImpl;
 
   @override
   int get id;
@@ -398,5 +419,5 @@ abstract class _MerchandiserCustomerAddress
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MerchandiserCustomerAddressImplCopyWith<_$MerchandiserCustomerAddressImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

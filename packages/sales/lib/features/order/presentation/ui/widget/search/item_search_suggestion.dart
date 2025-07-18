@@ -8,9 +8,7 @@ class ItemSearchSuggestion extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final searchHistory = ref.watch(
-      productControllerProvider.select(
-        (value) => value.searchHistory,
-      ),
+      productControllerProvider.select((value) => value.searchHistory),
     );
 
     if (searchHistory.isEmpty) return const SizedBox.shrink();

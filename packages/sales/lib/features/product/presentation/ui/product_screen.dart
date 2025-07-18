@@ -13,9 +13,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Product'.hardcoded),
-      ),
+      appBar: AppBar(title: Text('Product'.hardcoded)),
       body: ProductGrid(
         priceGroup: widget.extras['priceGroup'],
         salesId: widget.extras['salesId'],

@@ -21,19 +21,14 @@ class _TabOrderHistoryItemState extends ConsumerState<TabOrderHistoryItem> {
               const ItemSearchQueryWidget(),
               const Spacer(),
               Padding(
-                padding: const EdgeInsets.only(
-                  top: kSmall,
-                  right: kMedium,
-                ),
+                padding: const EdgeInsets.only(top: kSmall, right: kMedium),
                 child: GestureDetector(
                   onTap: () {
                     context.push(
                       '/order-history/sales/create-order/search-product',
                     );
                   },
-                  child: const Icon(
-                    Icons.search_outlined,
-                  ),
+                  child: const Icon(Icons.search_outlined),
                 ),
               ),
             ],
@@ -44,8 +39,9 @@ class _TabOrderHistoryItemState extends ConsumerState<TabOrderHistoryItem> {
             priceGroup: ref
                 .read(orderHistoryControllerProvider.notifier)
                 .getPriceGroup(),
-            salesId:
-                ref.read(orderHistoryControllerProvider.notifier).getSalesId(),
+            salesId: ref
+                .read(orderHistoryControllerProvider.notifier)
+                .getSalesId(),
           ),
         ),
       ],
@@ -54,26 +50,26 @@ class _TabOrderHistoryItemState extends ConsumerState<TabOrderHistoryItem> {
 
   void _listener() {
     // listen for error
-    ref.listen(
-      salesLineControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              padding: const EdgeInsets.all(kSMedium),
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(salesLineControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            padding: const EdgeInsets.all(kSMedium),
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
 
     ref.listen(
       salesLineControllerProvider.select((value) => value.isItemAdded),
@@ -83,9 +79,7 @@ class _TabOrderHistoryItemState extends ConsumerState<TabOrderHistoryItem> {
             SnackBar(
               padding: const EdgeInsets.all(kSMedium),
               duration: const Duration(seconds: 3),
-              content: Text(
-                "Item added successfully".hardcoded,
-              ),
+              content: Text("Item added successfully".hardcoded),
             ),
           );
         }
@@ -93,8 +87,10 @@ class _TabOrderHistoryItemState extends ConsumerState<TabOrderHistoryItem> {
     );
 
     // listen for loading
-    ref.listen(salesLineControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(salesLineControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {

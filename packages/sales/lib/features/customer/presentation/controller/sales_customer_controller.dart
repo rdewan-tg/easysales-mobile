@@ -7,14 +7,14 @@ import 'package:sales/features/customer/presentation/state/sales_customer_state.
 
 final salesCustomerProvider =
     AutoDisposeNotifierProvider<SalesCustomerController, SalesCustomerState>(
-  SalesCustomerController.new,
-);
+      SalesCustomerController.new,
+    );
 
 class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
   StreamSubscription<int>? _subscriptionTotalCustomerCount;
   StreamSubscription<List<SalesCustomerEntityData>>? _subscriptionSalesCustomer;
   StreamSubscription<List<SearchSalesCustomerHistoryEntityData>>?
-      _subscriptionSearchHistory;
+  _subscriptionSearchHistory;
 
   @override
   SalesCustomerState build() {
@@ -35,8 +35,9 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
         isCustomerImported: false,
       );
       // get the setting from the database
-      final setting =
-          await ref.read(salesCustomerServiceProvider).getAllSetting();
+      final setting = await ref
+          .read(salesCustomerServiceProvider)
+          .getAllSetting();
       // get the companyCode from map
       final String companyCode = setting['companyCode'] ?? 'SGMA';
       final String salesPersonId = setting['salesPersonCode'] ?? '';
@@ -50,8 +51,10 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
         (customers) {
           watchSalesCustomers();
           watchTotalCustomerCount();
-          state =
-              state.copyWith(isLoading: false, isCustomerImported: customers);
+          state = state.copyWith(
+            isLoading: false,
+            isCustomerImported: customers,
+          );
         },
         (failure) {
           watchSalesCustomers();
@@ -68,16 +71,20 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
   Future<void> watchSalesCustomers() async {
     final searchQuery = state.searchQuery;
     // Start listening stream
-    _subscriptionSalesCustomer =
-        ref.watch(salesCustomerServiceProvider).watchAll(searchQuery).listen(
-      (customers) {
-        state =
-            state.copyWith(customers: customers, lastSearchQuery: searchQuery);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+    _subscriptionSalesCustomer = ref
+        .watch(salesCustomerServiceProvider)
+        .watchAll(searchQuery)
+        .listen(
+          (customers) {
+            state = state.copyWith(
+              customers: customers,
+              lastSearchQuery: searchQuery,
+            );
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> watchTotalCustomerCount() async {
@@ -85,20 +92,17 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
         .watch(salesCustomerServiceProvider)
         .watchTotalCustomerCount()
         .listen(
-      (count) {
-        state = state.copyWith(totalCustomerCount: count);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+          (count) {
+            state = state.copyWith(totalCustomerCount: count);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> clearSearch() async {
-    state = state.copyWith(
-      searchQuery: '',
-      lastSearchQuery: '',
-    );
+    state = state.copyWith(searchQuery: '', lastSearchQuery: '');
   }
 
   Future<void> setSearchQuery(String value) async {
@@ -117,14 +121,14 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
         .watch(salesCustomerServiceProvider)
         .watchSearchCustomerHistory()
         .listen(
-      (data) {
-        final history = data.map((e) => e.key).toList();
-        state = state.copyWith(searchHistory: history);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+          (data) {
+            final history = data.map((e) => e.key).toList();
+            state = state.copyWith(searchHistory: history);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> clearSearchHistory() async {
@@ -138,17 +142,20 @@ class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
         .read(salesCustomerServiceProvider)
         .deleteAllSearchCustomerHistory();
 
-    result.when((success) {
-      state = state.copyWith(
-        searchQuery: '',
-        lastSearchQuery: '',
-        searchHistory: [],
-        totalSearchHistoryCleared: success,
-        isSearchHistoryCleared: true,
-      );
-    }, (error) {
-      state = state.copyWith(errorMsg: error.message);
-    });
+    result.when(
+      (success) {
+        state = state.copyWith(
+          searchQuery: '',
+          lastSearchQuery: '',
+          searchHistory: [],
+          totalSearchHistoryCleared: success,
+          isSearchHistoryCleared: true,
+        );
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message);
+      },
+    );
   }
 
   int? getTotalSearchHistoryCleared() => state.totalSearchHistoryCleared;

@@ -69,9 +69,7 @@ mixin ConfirmDialogMixin {
                   icon: const Icon(Icons.close),
                   label: Text(btnNoText),
                 ),
-                const SizedBox(
-                  width: kMedium,
-                ),
+                const SizedBox(width: kMedium),
               ],
               TextButton.icon(
                 onPressed: onYesTap,

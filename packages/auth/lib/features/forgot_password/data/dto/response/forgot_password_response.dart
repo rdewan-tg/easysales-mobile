@@ -16,9 +16,8 @@ class ForgotPasswordResponse with _$ForgotPasswordResponse {
 
 @freezed
 class Data with _$Data {
-  const factory Data({
-    @JsonKey(name: "emailSent") required bool emailSent,
-  }) = _Data;
+  const factory Data({@JsonKey(name: "emailSent") required bool emailSent}) =
+      _Data;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 }

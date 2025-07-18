@@ -8,10 +8,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final forgotPasswordServiceProvider =
     Provider.autoDispose<IForgotPasswordService>((ref) {
-  final forgotPasswordRepository = ref.watch(forgotPasswordRepositoryProvider);
+      final forgotPasswordRepository = ref.watch(
+        forgotPasswordRepositoryProvider,
+      );
 
-  return ForgotPasswordService(forgotPasswordRepository);
-});
+      return ForgotPasswordService(forgotPasswordRepository);
+    });
 
 final class ForgotPasswordService implements IForgotPasswordService {
   final IForgotPasswordRepository _forgotPasswordRepository;

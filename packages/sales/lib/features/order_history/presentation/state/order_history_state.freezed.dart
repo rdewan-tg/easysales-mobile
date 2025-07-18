@@ -12,7 +12,8 @@ part of 'order_history_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$OrderHistoryState {
@@ -40,21 +41,23 @@ mixin _$OrderHistoryState {
 /// @nodoc
 abstract class $OrderHistoryStateCopyWith<$Res> {
   factory $OrderHistoryStateCopyWith(
-          OrderHistoryState value, $Res Function(OrderHistoryState) then) =
-      _$OrderHistoryStateCopyWithImpl<$Res, OrderHistoryState>;
+    OrderHistoryState value,
+    $Res Function(OrderHistoryState) then,
+  ) = _$OrderHistoryStateCopyWithImpl<$Res, OrderHistoryState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isOrderSynced,
-      bool isOrderCancelled,
-      bool isItemEdited,
-      bool isItemRemoved,
-      bool isDeleteOrder,
-      List<SalesHeaderEntityData> salesHeaders,
-      List<SalesLineEntityData> salesLines,
-      double totalAmount,
-      String? selectedSalesId,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isOrderSynced,
+    bool isOrderCancelled,
+    bool isItemEdited,
+    bool isItemRemoved,
+    bool isDeleteOrder,
+    List<SalesHeaderEntityData> salesHeaders,
+    List<SalesLineEntityData> salesLines,
+    double totalAmount,
+    String? selectedSalesId,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -84,84 +87,90 @@ class _$OrderHistoryStateCopyWithImpl<$Res, $Val extends OrderHistoryState>
     Object? selectedSalesId = freezed,
     Object? errorMsg = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderSynced: null == isOrderSynced
-          ? _value.isOrderSynced
-          : isOrderSynced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderCancelled: null == isOrderCancelled
-          ? _value.isOrderCancelled
-          : isOrderCancelled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemEdited: null == isItemEdited
-          ? _value.isItemEdited
-          : isItemEdited // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemRemoved: null == isItemRemoved
-          ? _value.isItemRemoved
-          : isItemRemoved // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDeleteOrder: null == isDeleteOrder
-          ? _value.isDeleteOrder
-          : isDeleteOrder // ignore: cast_nullable_to_non_nullable
-              as bool,
-      salesHeaders: null == salesHeaders
-          ? _value.salesHeaders
-          : salesHeaders // ignore: cast_nullable_to_non_nullable
-              as List<SalesHeaderEntityData>,
-      salesLines: null == salesLines
-          ? _value.salesLines
-          : salesLines // ignore: cast_nullable_to_non_nullable
-              as List<SalesLineEntityData>,
-      totalAmount: null == totalAmount
-          ? _value.totalAmount
-          : totalAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-      selectedSalesId: freezed == selectedSalesId
-          ? _value.selectedSalesId
-          : selectedSalesId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isOrderSynced: null == isOrderSynced
+                ? _value.isOrderSynced
+                : isOrderSynced // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isOrderCancelled: null == isOrderCancelled
+                ? _value.isOrderCancelled
+                : isOrderCancelled // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isItemEdited: null == isItemEdited
+                ? _value.isItemEdited
+                : isItemEdited // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isItemRemoved: null == isItemRemoved
+                ? _value.isItemRemoved
+                : isItemRemoved // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isDeleteOrder: null == isDeleteOrder
+                ? _value.isDeleteOrder
+                : isDeleteOrder // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            salesHeaders: null == salesHeaders
+                ? _value.salesHeaders
+                : salesHeaders // ignore: cast_nullable_to_non_nullable
+                      as List<SalesHeaderEntityData>,
+            salesLines: null == salesLines
+                ? _value.salesLines
+                : salesLines // ignore: cast_nullable_to_non_nullable
+                      as List<SalesLineEntityData>,
+            totalAmount: null == totalAmount
+                ? _value.totalAmount
+                : totalAmount // ignore: cast_nullable_to_non_nullable
+                      as double,
+            selectedSalesId: freezed == selectedSalesId
+                ? _value.selectedSalesId
+                : selectedSalesId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$OrderHistoryStateImplCopyWith<$Res>
     implements $OrderHistoryStateCopyWith<$Res> {
-  factory _$$OrderHistoryStateImplCopyWith(_$OrderHistoryStateImpl value,
-          $Res Function(_$OrderHistoryStateImpl) then) =
-      __$$OrderHistoryStateImplCopyWithImpl<$Res>;
+  factory _$$OrderHistoryStateImplCopyWith(
+    _$OrderHistoryStateImpl value,
+    $Res Function(_$OrderHistoryStateImpl) then,
+  ) = __$$OrderHistoryStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isOrderSynced,
-      bool isOrderCancelled,
-      bool isItemEdited,
-      bool isItemRemoved,
-      bool isDeleteOrder,
-      List<SalesHeaderEntityData> salesHeaders,
-      List<SalesLineEntityData> salesLines,
-      double totalAmount,
-      String? selectedSalesId,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isOrderSynced,
+    bool isOrderCancelled,
+    bool isItemEdited,
+    bool isItemRemoved,
+    bool isDeleteOrder,
+    List<SalesHeaderEntityData> salesHeaders,
+    List<SalesLineEntityData> salesLines,
+    double totalAmount,
+    String? selectedSalesId,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
 class __$$OrderHistoryStateImplCopyWithImpl<$Res>
     extends _$OrderHistoryStateCopyWithImpl<$Res, _$OrderHistoryStateImpl>
     implements _$$OrderHistoryStateImplCopyWith<$Res> {
-  __$$OrderHistoryStateImplCopyWithImpl(_$OrderHistoryStateImpl _value,
-      $Res Function(_$OrderHistoryStateImpl) _then)
-      : super(_value, _then);
+  __$$OrderHistoryStateImplCopyWithImpl(
+    _$OrderHistoryStateImpl _value,
+    $Res Function(_$OrderHistoryStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OrderHistoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -180,72 +189,74 @@ class __$$OrderHistoryStateImplCopyWithImpl<$Res>
     Object? selectedSalesId = freezed,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$OrderHistoryStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderSynced: null == isOrderSynced
-          ? _value.isOrderSynced
-          : isOrderSynced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderCancelled: null == isOrderCancelled
-          ? _value.isOrderCancelled
-          : isOrderCancelled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemEdited: null == isItemEdited
-          ? _value.isItemEdited
-          : isItemEdited // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemRemoved: null == isItemRemoved
-          ? _value.isItemRemoved
-          : isItemRemoved // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDeleteOrder: null == isDeleteOrder
-          ? _value.isDeleteOrder
-          : isDeleteOrder // ignore: cast_nullable_to_non_nullable
-              as bool,
-      salesHeaders: null == salesHeaders
-          ? _value._salesHeaders
-          : salesHeaders // ignore: cast_nullable_to_non_nullable
-              as List<SalesHeaderEntityData>,
-      salesLines: null == salesLines
-          ? _value._salesLines
-          : salesLines // ignore: cast_nullable_to_non_nullable
-              as List<SalesLineEntityData>,
-      totalAmount: null == totalAmount
-          ? _value.totalAmount
-          : totalAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-      selectedSalesId: freezed == selectedSalesId
-          ? _value.selectedSalesId
-          : selectedSalesId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$OrderHistoryStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isOrderSynced: null == isOrderSynced
+            ? _value.isOrderSynced
+            : isOrderSynced // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isOrderCancelled: null == isOrderCancelled
+            ? _value.isOrderCancelled
+            : isOrderCancelled // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isItemEdited: null == isItemEdited
+            ? _value.isItemEdited
+            : isItemEdited // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isItemRemoved: null == isItemRemoved
+            ? _value.isItemRemoved
+            : isItemRemoved // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isDeleteOrder: null == isDeleteOrder
+            ? _value.isDeleteOrder
+            : isDeleteOrder // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        salesHeaders: null == salesHeaders
+            ? _value._salesHeaders
+            : salesHeaders // ignore: cast_nullable_to_non_nullable
+                  as List<SalesHeaderEntityData>,
+        salesLines: null == salesLines
+            ? _value._salesLines
+            : salesLines // ignore: cast_nullable_to_non_nullable
+                  as List<SalesLineEntityData>,
+        totalAmount: null == totalAmount
+            ? _value.totalAmount
+            : totalAmount // ignore: cast_nullable_to_non_nullable
+                  as double,
+        selectedSalesId: freezed == selectedSalesId
+            ? _value.selectedSalesId
+            : selectedSalesId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$OrderHistoryStateImpl implements _OrderHistoryState {
-  _$OrderHistoryStateImpl(
-      {this.isLoading = false,
-      this.isOrderSynced = false,
-      this.isOrderCancelled = false,
-      this.isItemEdited = false,
-      this.isItemRemoved = false,
-      this.isDeleteOrder = false,
-      final List<SalesHeaderEntityData> salesHeaders = const [],
-      final List<SalesLineEntityData> salesLines = const [],
-      this.totalAmount = 0.0,
-      this.selectedSalesId,
-      this.errorMsg})
-      : _salesHeaders = salesHeaders,
-        _salesLines = salesLines;
+  _$OrderHistoryStateImpl({
+    this.isLoading = false,
+    this.isOrderSynced = false,
+    this.isOrderCancelled = false,
+    this.isItemEdited = false,
+    this.isItemRemoved = false,
+    this.isDeleteOrder = false,
+    final List<SalesHeaderEntityData> salesHeaders = const [],
+    final List<SalesLineEntityData> salesLines = const [],
+    this.totalAmount = 0.0,
+    this.selectedSalesId,
+    this.errorMsg,
+  }) : _salesHeaders = salesHeaders,
+       _salesLines = salesLines;
 
   @override
   @JsonKey()
@@ -313,10 +324,14 @@ class _$OrderHistoryStateImpl implements _OrderHistoryState {
                 other.isItemRemoved == isItemRemoved) &&
             (identical(other.isDeleteOrder, isDeleteOrder) ||
                 other.isDeleteOrder == isDeleteOrder) &&
-            const DeepCollectionEquality()
-                .equals(other._salesHeaders, _salesHeaders) &&
-            const DeepCollectionEquality()
-                .equals(other._salesLines, _salesLines) &&
+            const DeepCollectionEquality().equals(
+              other._salesHeaders,
+              _salesHeaders,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._salesLines,
+              _salesLines,
+            ) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
             (identical(other.selectedSalesId, selectedSalesId) ||
@@ -327,18 +342,19 @@ class _$OrderHistoryStateImpl implements _OrderHistoryState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isOrderSynced,
-      isOrderCancelled,
-      isItemEdited,
-      isItemRemoved,
-      isDeleteOrder,
-      const DeepCollectionEquality().hash(_salesHeaders),
-      const DeepCollectionEquality().hash(_salesLines),
-      totalAmount,
-      selectedSalesId,
-      errorMsg);
+    runtimeType,
+    isLoading,
+    isOrderSynced,
+    isOrderCancelled,
+    isItemEdited,
+    isItemRemoved,
+    isDeleteOrder,
+    const DeepCollectionEquality().hash(_salesHeaders),
+    const DeepCollectionEquality().hash(_salesLines),
+    totalAmount,
+    selectedSalesId,
+    errorMsg,
+  );
 
   /// Create a copy of OrderHistoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -347,22 +363,25 @@ class _$OrderHistoryStateImpl implements _OrderHistoryState {
   @pragma('vm:prefer-inline')
   _$$OrderHistoryStateImplCopyWith<_$OrderHistoryStateImpl> get copyWith =>
       __$$OrderHistoryStateImplCopyWithImpl<_$OrderHistoryStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _OrderHistoryState implements OrderHistoryState {
-  factory _OrderHistoryState(
-      {final bool isLoading,
-      final bool isOrderSynced,
-      final bool isOrderCancelled,
-      final bool isItemEdited,
-      final bool isItemRemoved,
-      final bool isDeleteOrder,
-      final List<SalesHeaderEntityData> salesHeaders,
-      final List<SalesLineEntityData> salesLines,
-      final double totalAmount,
-      final String? selectedSalesId,
-      final String? errorMsg}) = _$OrderHistoryStateImpl;
+  factory _OrderHistoryState({
+    final bool isLoading,
+    final bool isOrderSynced,
+    final bool isOrderCancelled,
+    final bool isItemEdited,
+    final bool isItemRemoved,
+    final bool isDeleteOrder,
+    final List<SalesHeaderEntityData> salesHeaders,
+    final List<SalesLineEntityData> salesLines,
+    final double totalAmount,
+    final String? selectedSalesId,
+    final String? errorMsg,
+  }) = _$OrderHistoryStateImpl;
 
   @override
   bool get isLoading;

@@ -18,9 +18,9 @@ class _TabOrderHistoryDetailState extends ConsumerState<TabOrderHistoryDetail>
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-    _animationStyle = AnimationStyle(
-      duration: const Duration(seconds: 1),
-      reverseDuration: const Duration(seconds: 1),
+    _animationStyle = const AnimationStyle(
+      duration: Duration(seconds: 1),
+      reverseDuration: Duration(seconds: 1),
     );
   }
 
@@ -78,8 +78,8 @@ class _TabOrderHistoryDetailState extends ConsumerState<TabOrderHistoryDetail>
                                   },
                             child: Icon(
                               Icons.edit_outlined,
-                              color: data.syncStatus == 1 ||
-                                      data.syncStatus == 2
+                              color:
+                                  data.syncStatus == 1 || data.syncStatus == 2
                                   ? context.themeColor.disabledColor
                                   : context.themeColor.colorScheme.secondary,
                             ),
@@ -99,8 +99,8 @@ class _TabOrderHistoryDetailState extends ConsumerState<TabOrderHistoryDetail>
                               Icons.delete_outline_outlined,
                               color:
                                   data.syncStatus == 1 || data.syncStatus == 2
-                                      ? context.themeColor.disabledColor
-                                      : context.themeColor.colorScheme.error,
+                                  ? context.themeColor.disabledColor
+                                  : context.themeColor.colorScheme.error,
                             ),
                           );
                         },
@@ -132,18 +132,17 @@ class _TabOrderHistoryDetailState extends ConsumerState<TabOrderHistoryDetail>
 
   void _openEditOrderBottomSheet(String salesId, String itemId, int lineId) {
     // get the price group
-    final priceGroup =
-        ref.read(orderHistoryControllerProvider.notifier).getPriceGroup();
+    final priceGroup = ref
+        .read(orderHistoryControllerProvider.notifier)
+        .getPriceGroup();
     // get the product uom
-    ref.read(productControllerProvider.notifier).getProductUom(
-          itemId,
-          priceGroup,
-        );
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductUom(itemId, priceGroup);
     // get the product pack size
-    ref.read(productControllerProvider.notifier).getProductPackSize(
-          itemId,
-          priceGroup,
-        );
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductPackSize(itemId, priceGroup);
     // show bottom sheet
     _bottomSheetController = showBottomSheet(
       context: context,

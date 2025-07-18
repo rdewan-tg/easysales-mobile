@@ -12,9 +12,7 @@ class StartUpLoading extends ConsumerWidget {
         body: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-            ],
+            children: [CircularProgressIndicator()],
           ),
         ),
       ),

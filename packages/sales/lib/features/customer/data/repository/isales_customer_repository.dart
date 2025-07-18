@@ -9,26 +9,20 @@ abstract interface class ISalesCustomerRepository {
     String salesPersonId,
   );
 
-  Stream<List<SalesCustomerEntityData>> watchAll(
-    String? searchQuery,
-  );
+  Stream<List<SalesCustomerEntityData>> watchAll(String? searchQuery);
 
   Future<void> insertOrUpdate(List<SalesCustomerEntityData> data);
 
   Future<Map<String, String>> getAllSettings();
 
-  Future<void> insertOrUpdateSearchSalesCustomerHistory(
-    String key,
-  );
+  Future<void> insertOrUpdateSearchSalesCustomerHistory(String key);
 
   Future<int> deleteAllSearchCustomerHistory();
 
   Stream<List<SearchSalesCustomerHistoryEntityData>>
-      watchSearchCustomerHistory();
+  watchSearchCustomerHistory();
 
-  Future<SalesCustomerEntityData?> getCustomerByCustomerId(
-    String customerId,
-  );
+  Future<SalesCustomerEntityData?> getCustomerByCustomerId(String customerId);
 
   Stream<int> watchTotalCustomerCount();
 }

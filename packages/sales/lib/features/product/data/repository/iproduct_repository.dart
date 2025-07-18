@@ -11,13 +11,9 @@ abstract interface class IProductRepository {
 
   Future<void> insertOrUpdatePrice(List<ProductPriceEntityData> data);
 
-  Stream<List<ProductEntityData>> watchProducts(
-    String? searchQuery,
-  );
+  Stream<List<ProductEntityData>> watchProducts(String? searchQuery);
 
-  Stream<List<ProductPriceEntityData>> watchPrices(
-    String? searchQuery,
-  );
+  Stream<List<ProductPriceEntityData>> watchPrices(String? searchQuery);
 
   Stream<int> watchTotalProductImported();
 
@@ -25,23 +21,15 @@ abstract interface class IProductRepository {
 
   Future<Map<String, String>> getAllSettings();
 
-  Future<void> insertOrUpdateSearchProductHistory(
-    String key,
-  );
+  Future<void> insertOrUpdateSearchProductHistory(String key);
 
   Future<int> deleteAllSearchProductHistory();
 
   Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory();
 
-  Future<List<String>> getProductUom(
-    String itemId,
-    String priceGroup,
-  );
+  Future<List<String>> getProductUom(String itemId, String priceGroup);
 
-  Future<List<String>> getProductPackSize(
-    String itemId,
-    String priceGroup,
-  );
+  Future<List<String>> getProductPackSize(String itemId, String priceGroup);
 
   Future<ProductPriceEntityData> getProductDetail(
     String itemId,

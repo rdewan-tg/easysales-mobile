@@ -11,16 +11,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final customerAddressRepositoryProvider =
     Provider.autoDispose<ICustomerAddressRepository>((ref) {
-  final customerAddressApi = ref.watch(customerAddressApiProvider);
-  final settingDao = ref.watch(settingDaoProvider);
-  final customerAddressDao = ref.watch(customerAddressDaoProvider);
+      final customerAddressApi = ref.watch(customerAddressApiProvider);
+      final settingDao = ref.watch(settingDaoProvider);
+      final customerAddressDao = ref.watch(customerAddressDaoProvider);
 
-  return CustomerAddressRepository(
-    customerAddressApi,
-    settingDao,
-    customerAddressDao,
-  );
-});
+      return CustomerAddressRepository(
+        customerAddressApi,
+        settingDao,
+        customerAddressDao,
+      );
+    });
 
 final class CustomerAddressRepository
     with DioExceptionMapper

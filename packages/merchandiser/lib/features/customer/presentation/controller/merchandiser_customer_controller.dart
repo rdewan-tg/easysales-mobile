@@ -5,17 +5,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:merchandiser/features/customer/application/merchandiser_customer_service.dart';
 import 'package:merchandiser/features/customer/presentation/state/merchandiser_customer_state.dart';
 
-final merchandiserCustomerProvider = AutoDisposeNotifierProvider<
-    MerchandiserCustomerController, MerchandiserCustomerState>(
-  MerchandiserCustomerController.new,
-);
+final merchandiserCustomerProvider =
+    AutoDisposeNotifierProvider<
+      MerchandiserCustomerController,
+      MerchandiserCustomerState
+    >(MerchandiserCustomerController.new);
 
 class MerchandiserCustomerController
     extends AutoDisposeNotifier<MerchandiserCustomerState> {
   StreamSubscription<List<MerchandiserCustomerEntityData>>?
-      _subscriptionMerchandiserCustomer;
+  _subscriptionMerchandiserCustomer;
   StreamSubscription<List<SearchMerchandiserCustomerHistoryEntityData>>?
-      _subscriptionSearchHistory;
+  _subscriptionSearchHistory;
 
   StreamSubscription<int>? _subscriptionTotalCustomerCount;
 
@@ -39,8 +40,9 @@ class MerchandiserCustomerController
         isCustomerImported: false,
       );
       // get the setting from the database
-      final setting =
-          await ref.read(merchandiserCustomerServiceProvider).getAllSetting();
+      final setting = await ref
+          .read(merchandiserCustomerServiceProvider)
+          .getAllSetting();
       // get the companyCode from map
       final String companyCode = setting['companyCode'] ?? 'SGMA';
       final String salesPersonId = setting['salesPersonCode'] ?? '';
@@ -78,14 +80,16 @@ class MerchandiserCustomerController
         .watch(merchandiserCustomerServiceProvider)
         .watchAll(searchQuery)
         .listen(
-      (customers) {
-        state =
-            state.copyWith(customers: customers, lastSearchQuery: searchQuery);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+          (customers) {
+            state = state.copyWith(
+              customers: customers,
+              lastSearchQuery: searchQuery,
+            );
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> watchTotalCustomerCount() async {
@@ -94,20 +98,17 @@ class MerchandiserCustomerController
         .watch(merchandiserCustomerServiceProvider)
         .watchTotalCustomerCount()
         .listen(
-      (data) {
-        state = state.copyWith(totalCustomerCount: data);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+          (data) {
+            state = state.copyWith(totalCustomerCount: data);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> clearSearch() async {
-    state = state.copyWith(
-      searchQuery: '',
-      lastSearchQuery: '',
-    );
+    state = state.copyWith(searchQuery: '', lastSearchQuery: '');
   }
 
   Future<void> setSearchQuery(String value) async {
@@ -126,14 +127,14 @@ class MerchandiserCustomerController
         .watch(merchandiserCustomerServiceProvider)
         .watchSearchCustomerHistory()
         .listen(
-      (data) {
-        final history = data.map((e) => e.key).toList();
-        state = state.copyWith(searchHistory: history);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+          (data) {
+            final history = data.map((e) => e.key).toList();
+            state = state.copyWith(searchHistory: history);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> clearSearchHistory() async {
@@ -147,17 +148,20 @@ class MerchandiserCustomerController
         .read(merchandiserCustomerServiceProvider)
         .deleteAllSearchCustomerHistory();
 
-    result.when((success) {
-      state = state.copyWith(
-        searchQuery: '',
-        lastSearchQuery: '',
-        searchHistory: [],
-        totalSearchHistoryCleared: success,
-        isSearchHistoryCleared: true,
-      );
-    }, (error) {
-      state = state.copyWith(errorMsg: error.message);
-    });
+    result.when(
+      (success) {
+        state = state.copyWith(
+          searchQuery: '',
+          lastSearchQuery: '',
+          searchHistory: [],
+          totalSearchHistoryCleared: success,
+          isSearchHistoryCleared: true,
+        );
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message);
+      },
+    );
   }
 
   int? getTotalSearchHistoryCleared() => state.totalSearchHistoryCleared;

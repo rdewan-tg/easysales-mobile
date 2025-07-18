@@ -12,7 +12,8 @@ part of 'sales_customer_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SalesCustomerState {
@@ -38,20 +39,22 @@ mixin _$SalesCustomerState {
 /// @nodoc
 abstract class $SalesCustomerStateCopyWith<$Res> {
   factory $SalesCustomerStateCopyWith(
-          SalesCustomerState value, $Res Function(SalesCustomerState) then) =
-      _$SalesCustomerStateCopyWithImpl<$Res, SalesCustomerState>;
+    SalesCustomerState value,
+    $Res Function(SalesCustomerState) then,
+  ) = _$SalesCustomerStateCopyWithImpl<$Res, SalesCustomerState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isCustomerImported,
-      bool isSearchHistoryCleared,
-      int? totalSearchHistoryCleared,
-      int totalCustomerCount,
-      List<SalesCustomerEntityData> customers,
-      String? errorMsg,
-      List<String> searchHistory,
-      String searchQuery,
-      String lastSearchQuery});
+  $Res call({
+    bool isLoading,
+    bool isCustomerImported,
+    bool isSearchHistoryCleared,
+    int? totalSearchHistoryCleared,
+    int totalCustomerCount,
+    List<SalesCustomerEntityData> customers,
+    String? errorMsg,
+    List<String> searchHistory,
+    String searchQuery,
+    String lastSearchQuery,
+  });
 }
 
 /// @nodoc
@@ -80,79 +83,85 @@ class _$SalesCustomerStateCopyWithImpl<$Res, $Val extends SalesCustomerState>
     Object? searchQuery = null,
     Object? lastSearchQuery = null,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isCustomerImported: null == isCustomerImported
-          ? _value.isCustomerImported
-          : isCustomerImported // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isSearchHistoryCleared: null == isSearchHistoryCleared
-          ? _value.isSearchHistoryCleared
-          : isSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
-              as bool,
-      totalSearchHistoryCleared: freezed == totalSearchHistoryCleared
-          ? _value.totalSearchHistoryCleared
-          : totalSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalCustomerCount: null == totalCustomerCount
-          ? _value.totalCustomerCount
-          : totalCustomerCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      customers: null == customers
-          ? _value.customers
-          : customers // ignore: cast_nullable_to_non_nullable
-              as List<SalesCustomerEntityData>,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchHistory: null == searchHistory
-          ? _value.searchHistory
-          : searchHistory // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastSearchQuery: null == lastSearchQuery
-          ? _value.lastSearchQuery
-          : lastSearchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isCustomerImported: null == isCustomerImported
+                ? _value.isCustomerImported
+                : isCustomerImported // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isSearchHistoryCleared: null == isSearchHistoryCleared
+                ? _value.isSearchHistoryCleared
+                : isSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            totalSearchHistoryCleared: freezed == totalSearchHistoryCleared
+                ? _value.totalSearchHistoryCleared
+                : totalSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            totalCustomerCount: null == totalCustomerCount
+                ? _value.totalCustomerCount
+                : totalCustomerCount // ignore: cast_nullable_to_non_nullable
+                      as int,
+            customers: null == customers
+                ? _value.customers
+                : customers // ignore: cast_nullable_to_non_nullable
+                      as List<SalesCustomerEntityData>,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            searchHistory: null == searchHistory
+                ? _value.searchHistory
+                : searchHistory // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            searchQuery: null == searchQuery
+                ? _value.searchQuery
+                : searchQuery // ignore: cast_nullable_to_non_nullable
+                      as String,
+            lastSearchQuery: null == lastSearchQuery
+                ? _value.lastSearchQuery
+                : lastSearchQuery // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SalesCustomerStateImplCopyWith<$Res>
     implements $SalesCustomerStateCopyWith<$Res> {
-  factory _$$SalesCustomerStateImplCopyWith(_$SalesCustomerStateImpl value,
-          $Res Function(_$SalesCustomerStateImpl) then) =
-      __$$SalesCustomerStateImplCopyWithImpl<$Res>;
+  factory _$$SalesCustomerStateImplCopyWith(
+    _$SalesCustomerStateImpl value,
+    $Res Function(_$SalesCustomerStateImpl) then,
+  ) = __$$SalesCustomerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isCustomerImported,
-      bool isSearchHistoryCleared,
-      int? totalSearchHistoryCleared,
-      int totalCustomerCount,
-      List<SalesCustomerEntityData> customers,
-      String? errorMsg,
-      List<String> searchHistory,
-      String searchQuery,
-      String lastSearchQuery});
+  $Res call({
+    bool isLoading,
+    bool isCustomerImported,
+    bool isSearchHistoryCleared,
+    int? totalSearchHistoryCleared,
+    int totalCustomerCount,
+    List<SalesCustomerEntityData> customers,
+    String? errorMsg,
+    List<String> searchHistory,
+    String searchQuery,
+    String lastSearchQuery,
+  });
 }
 
 /// @nodoc
 class __$$SalesCustomerStateImplCopyWithImpl<$Res>
     extends _$SalesCustomerStateCopyWithImpl<$Res, _$SalesCustomerStateImpl>
     implements _$$SalesCustomerStateImplCopyWith<$Res> {
-  __$$SalesCustomerStateImplCopyWithImpl(_$SalesCustomerStateImpl _value,
-      $Res Function(_$SalesCustomerStateImpl) _then)
-      : super(_value, _then);
+  __$$SalesCustomerStateImplCopyWithImpl(
+    _$SalesCustomerStateImpl _value,
+    $Res Function(_$SalesCustomerStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SalesCustomerState
   /// with the given fields replaced by the non-null parameter values.
@@ -170,67 +179,69 @@ class __$$SalesCustomerStateImplCopyWithImpl<$Res>
     Object? searchQuery = null,
     Object? lastSearchQuery = null,
   }) {
-    return _then(_$SalesCustomerStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isCustomerImported: null == isCustomerImported
-          ? _value.isCustomerImported
-          : isCustomerImported // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isSearchHistoryCleared: null == isSearchHistoryCleared
-          ? _value.isSearchHistoryCleared
-          : isSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
-              as bool,
-      totalSearchHistoryCleared: freezed == totalSearchHistoryCleared
-          ? _value.totalSearchHistoryCleared
-          : totalSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalCustomerCount: null == totalCustomerCount
-          ? _value.totalCustomerCount
-          : totalCustomerCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      customers: null == customers
-          ? _value._customers
-          : customers // ignore: cast_nullable_to_non_nullable
-              as List<SalesCustomerEntityData>,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-      searchHistory: null == searchHistory
-          ? _value._searchHistory
-          : searchHistory // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastSearchQuery: null == lastSearchQuery
-          ? _value.lastSearchQuery
-          : lastSearchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$SalesCustomerStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isCustomerImported: null == isCustomerImported
+            ? _value.isCustomerImported
+            : isCustomerImported // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isSearchHistoryCleared: null == isSearchHistoryCleared
+            ? _value.isSearchHistoryCleared
+            : isSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        totalSearchHistoryCleared: freezed == totalSearchHistoryCleared
+            ? _value.totalSearchHistoryCleared
+            : totalSearchHistoryCleared // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        totalCustomerCount: null == totalCustomerCount
+            ? _value.totalCustomerCount
+            : totalCustomerCount // ignore: cast_nullable_to_non_nullable
+                  as int,
+        customers: null == customers
+            ? _value._customers
+            : customers // ignore: cast_nullable_to_non_nullable
+                  as List<SalesCustomerEntityData>,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        searchHistory: null == searchHistory
+            ? _value._searchHistory
+            : searchHistory // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        searchQuery: null == searchQuery
+            ? _value.searchQuery
+            : searchQuery // ignore: cast_nullable_to_non_nullable
+                  as String,
+        lastSearchQuery: null == lastSearchQuery
+            ? _value.lastSearchQuery
+            : lastSearchQuery // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SalesCustomerStateImpl implements _SalesCustomerState {
-  _$SalesCustomerStateImpl(
-      {this.isLoading = false,
-      this.isCustomerImported = false,
-      this.isSearchHistoryCleared = false,
-      this.totalSearchHistoryCleared,
-      this.totalCustomerCount = 0,
-      final List<SalesCustomerEntityData> customers = const [],
-      this.errorMsg,
-      final List<String> searchHistory = const [],
-      this.searchQuery = '',
-      this.lastSearchQuery = ''})
-      : _customers = customers,
-        _searchHistory = searchHistory;
+  _$SalesCustomerStateImpl({
+    this.isLoading = false,
+    this.isCustomerImported = false,
+    this.isSearchHistoryCleared = false,
+    this.totalSearchHistoryCleared,
+    this.totalCustomerCount = 0,
+    final List<SalesCustomerEntityData> customers = const [],
+    this.errorMsg,
+    final List<String> searchHistory = const [],
+    this.searchQuery = '',
+    this.lastSearchQuery = '',
+  }) : _customers = customers,
+       _searchHistory = searchHistory;
 
   @override
   @JsonKey()
@@ -289,17 +300,23 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
                 other.isCustomerImported == isCustomerImported) &&
             (identical(other.isSearchHistoryCleared, isSearchHistoryCleared) ||
                 other.isSearchHistoryCleared == isSearchHistoryCleared) &&
-            (identical(other.totalSearchHistoryCleared,
-                    totalSearchHistoryCleared) ||
+            (identical(
+                  other.totalSearchHistoryCleared,
+                  totalSearchHistoryCleared,
+                ) ||
                 other.totalSearchHistoryCleared == totalSearchHistoryCleared) &&
             (identical(other.totalCustomerCount, totalCustomerCount) ||
                 other.totalCustomerCount == totalCustomerCount) &&
-            const DeepCollectionEquality()
-                .equals(other._customers, _customers) &&
+            const DeepCollectionEquality().equals(
+              other._customers,
+              _customers,
+            ) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg) &&
-            const DeepCollectionEquality()
-                .equals(other._searchHistory, _searchHistory) &&
+            const DeepCollectionEquality().equals(
+              other._searchHistory,
+              _searchHistory,
+            ) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
             (identical(other.lastSearchQuery, lastSearchQuery) ||
@@ -308,17 +325,18 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isCustomerImported,
-      isSearchHistoryCleared,
-      totalSearchHistoryCleared,
-      totalCustomerCount,
-      const DeepCollectionEquality().hash(_customers),
-      errorMsg,
-      const DeepCollectionEquality().hash(_searchHistory),
-      searchQuery,
-      lastSearchQuery);
+    runtimeType,
+    isLoading,
+    isCustomerImported,
+    isSearchHistoryCleared,
+    totalSearchHistoryCleared,
+    totalCustomerCount,
+    const DeepCollectionEquality().hash(_customers),
+    errorMsg,
+    const DeepCollectionEquality().hash(_searchHistory),
+    searchQuery,
+    lastSearchQuery,
+  );
 
   /// Create a copy of SalesCustomerState
   /// with the given fields replaced by the non-null parameter values.
@@ -327,21 +345,24 @@ class _$SalesCustomerStateImpl implements _SalesCustomerState {
   @pragma('vm:prefer-inline')
   _$$SalesCustomerStateImplCopyWith<_$SalesCustomerStateImpl> get copyWith =>
       __$$SalesCustomerStateImplCopyWithImpl<_$SalesCustomerStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _SalesCustomerState implements SalesCustomerState {
-  factory _SalesCustomerState(
-      {final bool isLoading,
-      final bool isCustomerImported,
-      final bool isSearchHistoryCleared,
-      final int? totalSearchHistoryCleared,
-      final int totalCustomerCount,
-      final List<SalesCustomerEntityData> customers,
-      final String? errorMsg,
-      final List<String> searchHistory,
-      final String searchQuery,
-      final String lastSearchQuery}) = _$SalesCustomerStateImpl;
+  factory _SalesCustomerState({
+    final bool isLoading,
+    final bool isCustomerImported,
+    final bool isSearchHistoryCleared,
+    final int? totalSearchHistoryCleared,
+    final int totalCustomerCount,
+    final List<SalesCustomerEntityData> customers,
+    final String? errorMsg,
+    final List<String> searchHistory,
+    final String searchQuery,
+    final String lastSearchQuery,
+  }) = _$SalesCustomerStateImpl;
 
   @override
   bool get isLoading;

@@ -5,8 +5,9 @@ class ProfileDataWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings =
-        ref.watch(profileControllerProvider.select((value) => value.settings));
+    final settings = ref.watch(
+      profileControllerProvider.select((value) => value.settings),
+    );
     return Column(
       children: [
         Column(

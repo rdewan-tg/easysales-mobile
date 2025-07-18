@@ -11,8 +11,9 @@ import 'package:go_router/go_router.dart';
 
 import 'package:logging/logging.dart';
 
-final firebasePushNotificationProvider =
-    Provider<FirebasePushNotification>((ref) {
+final firebasePushNotificationProvider = Provider<FirebasePushNotification>((
+  ref,
+) {
   final messaging = ref.watch(firebaseMessagingProvider);
   final localPushNotification = ref.watch(localPushNotificationProvider);
   final logger = ref.watch(loggerProvider('FirebasePushNotification'));
@@ -91,8 +92,9 @@ class FirebasePushNotification {
       _logger.info(
         'RemoteMessage Notification: ${notification?.android?.imageUrl}',
       );
-      _logger
-          .info('RemoteMessage Notification: ${notification?.apple?.imageUrl}');
+      _logger.info(
+        'RemoteMessage Notification: ${notification?.apple?.imageUrl}',
+      );
       _logger.info('RemoteMessage Data: $data');
 
       if (notification != null && android != null) {
@@ -119,8 +121,9 @@ class FirebasePushNotification {
     // Get any messages which caused the application to open from
     // a terminated state.
     RemoteMessage? initialMessage = await _messaging.getInitialMessage();
-    _logger
-        .info('initialMessage Notification: ${initialMessage?.notification}');
+    _logger.info(
+      'initialMessage Notification: ${initialMessage?.notification}',
+    );
     _logger.info('initialMessage Data: ${initialMessage?.data}');
 
     // If the message also contains a data property with a "type" of "chat",

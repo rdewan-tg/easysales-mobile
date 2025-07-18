@@ -21,8 +21,9 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
             // profile
             ListTile(
               title: Text(context.localizations('setting.profile')),
-              subtitle:
-                  Text(context.localizations('setting.manageYourProfile')),
+              subtitle: Text(
+                context.localizations('setting.manageYourProfile'),
+              ),
               trailing: IconButton(
                 onPressed: () {
                   context.go('/setting/profile');
@@ -51,8 +52,9 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
             // language
             ListTile(
               title: Text(context.localizations('setting.language')),
-              subtitle:
-                  Text(context.localizations('setting.selectYourLanguage')),
+              subtitle: Text(
+                context.localizations('setting.selectYourLanguage'),
+              ),
               trailing: IconButton(
                 onPressed: () {
                   context.go('/setting/language');
@@ -133,8 +135,9 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
             ),
             // import product and price
             ListTile(
-              title:
-                  Text(context.localizations('setting.importProductAndPrice')),
+              title: Text(
+                context.localizations('setting.importProductAndPrice'),
+              ),
               subtitle: Text(
                 context.localizations('setting.importProductAndPriceSubTitle'),
               ),

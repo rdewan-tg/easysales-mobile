@@ -67,18 +67,17 @@ class LoggerFamily extends Family<Logger> {
 class LoggerProvider extends AutoDisposeProvider<Logger> {
   /// See also [logger].
   LoggerProvider(String value)
-      : this._internal(
-          (ref) => logger(ref as LoggerRef, value),
-          from: loggerProvider,
-          name: r'loggerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$loggerHash,
-          dependencies: LoggerFamily._dependencies,
-          allTransitiveDependencies: LoggerFamily._allTransitiveDependencies,
-          value: value,
-        );
+    : this._internal(
+        (ref) => logger(ref as LoggerRef, value),
+        from: loggerProvider,
+        name: r'loggerProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$loggerHash,
+        dependencies: LoggerFamily._dependencies,
+        allTransitiveDependencies: LoggerFamily._allTransitiveDependencies,
+        value: value,
+      );
 
   LoggerProvider._internal(
     super._createNotifier, {

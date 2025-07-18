@@ -29,10 +29,9 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await ref.read(salesHeaderControllerProvider.notifier).getSettings();
-      ref.read(salesHeaderControllerProvider.notifier).createSalesHeader(
-            widget.extras,
-            _getFormatedTime('dd/MM/yyyy'),
-          );
+      ref
+          .read(salesHeaderControllerProvider.notifier)
+          .createSalesHeader(widget.extras, _getFormatedTime('dd/MM/yyyy'));
     });
   }
 
@@ -45,8 +44,9 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
 
   String _getFormatedTime(String format) {
     // get the time zone
-    final timeZone =
-        ref.read(salesHeaderControllerProvider.notifier).getTimeZone();
+    final timeZone = ref
+        .read(salesHeaderControllerProvider.notifier)
+        .getTimeZone();
     // get the current formatted date and time
     final now = tz.TZDateTime.now(tz.getLocation(timeZone ?? 'Asia/Singapore'));
     // format the date and time
@@ -113,9 +113,7 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
         backgroundColor: context.themeColor.colorScheme.error,
         content: Text(
           'Delivery date is required before proceeding.'.hardcoded,
-          style: context.textTheme.titleSmall?.copyWith(
-            color: Colors.white,
-          ),
+          style: context.textTheme.titleSmall?.copyWith(color: Colors.white),
         ),
       ),
     );
@@ -144,8 +142,9 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
   }
 
   bool _validateDeliveryDate() {
-    final hasSetDeliveryDate =
-        ref.read(salesHeaderControllerProvider.notifier).isDeliveryDateSet();
+    final hasSetDeliveryDate = ref
+        .read(salesHeaderControllerProvider.notifier)
+        .isDeliveryDateSet();
     return hasSetDeliveryDate;
   }
 

@@ -9,10 +9,10 @@ import 'package:dio/dio.dart';
 
 final forgotPasswordRepositoryProvider =
     Provider.autoDispose<IForgotPasswordRepository>((ref) {
-  final forgotPasswordApi = ref.watch(forgotPasswordApiProvider);
+      final forgotPasswordApi = ref.watch(forgotPasswordApiProvider);
 
-  return ForgotPasswordRepository(forgotPasswordApi);
-});
+      return ForgotPasswordRepository(forgotPasswordApi);
+    });
 
 final class ForgotPasswordRepository
     with DioExceptionMapper

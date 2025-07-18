@@ -12,7 +12,8 @@ part of 'forgot_password_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ForgotPasswordState {
@@ -30,8 +31,9 @@ mixin _$ForgotPasswordState {
 /// @nodoc
 abstract class $ForgotPasswordStateCopyWith<$Res> {
   factory $ForgotPasswordStateCopyWith(
-          ForgotPasswordState value, $Res Function(ForgotPasswordState) then) =
-      _$ForgotPasswordStateCopyWithImpl<$Res, ForgotPasswordState>;
+    ForgotPasswordState value,
+    $Res Function(ForgotPasswordState) then,
+  ) = _$ForgotPasswordStateCopyWithImpl<$Res, ForgotPasswordState>;
   @useResult
   $Res call({bool isLoading, bool? isEmailSent, String? error});
 }
@@ -55,29 +57,33 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
     Object? isEmailSent = freezed,
     Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isEmailSent: freezed == isEmailSent
-          ? _value.isEmailSent
-          : isEmailSent // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isEmailSent: freezed == isEmailSent
+                ? _value.isEmailSent
+                : isEmailSent // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            error: freezed == error
+                ? _value.error
+                : error // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ForgotPasswordStateImplCopyWith<$Res>
     implements $ForgotPasswordStateCopyWith<$Res> {
-  factory _$$ForgotPasswordStateImplCopyWith(_$ForgotPasswordStateImpl value,
-          $Res Function(_$ForgotPasswordStateImpl) then) =
-      __$$ForgotPasswordStateImplCopyWithImpl<$Res>;
+  factory _$$ForgotPasswordStateImplCopyWith(
+    _$ForgotPasswordStateImpl value,
+    $Res Function(_$ForgotPasswordStateImpl) then,
+  ) = __$$ForgotPasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isLoading, bool? isEmailSent, String? error});
@@ -87,9 +93,10 @@ abstract class _$$ForgotPasswordStateImplCopyWith<$Res>
 class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
     extends _$ForgotPasswordStateCopyWithImpl<$Res, _$ForgotPasswordStateImpl>
     implements _$$ForgotPasswordStateImplCopyWith<$Res> {
-  __$$ForgotPasswordStateImplCopyWithImpl(_$ForgotPasswordStateImpl _value,
-      $Res Function(_$ForgotPasswordStateImpl) _then)
-      : super(_value, _then);
+  __$$ForgotPasswordStateImplCopyWithImpl(
+    _$ForgotPasswordStateImpl _value,
+    $Res Function(_$ForgotPasswordStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ForgotPasswordState
   /// with the given fields replaced by the non-null parameter values.
@@ -100,28 +107,33 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
     Object? isEmailSent = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$ForgotPasswordStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isEmailSent: freezed == isEmailSent
-          ? _value.isEmailSent
-          : isEmailSent // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ForgotPasswordStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isEmailSent: freezed == isEmailSent
+            ? _value.isEmailSent
+            : isEmailSent // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
-  _$ForgotPasswordStateImpl(
-      {this.isLoading = false, this.isEmailSent, this.error});
+  _$ForgotPasswordStateImpl({
+    this.isLoading = false,
+    this.isEmailSent,
+    this.error,
+  });
 
   @override
   @JsonKey()
@@ -158,14 +170,17 @@ class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
   @pragma('vm:prefer-inline')
   _$$ForgotPasswordStateImplCopyWith<_$ForgotPasswordStateImpl> get copyWith =>
       __$$ForgotPasswordStateImplCopyWithImpl<_$ForgotPasswordStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ForgotPasswordState implements ForgotPasswordState {
-  factory _ForgotPasswordState(
-      {final bool isLoading,
-      final bool? isEmailSent,
-      final String? error}) = _$ForgotPasswordStateImpl;
+  factory _ForgotPasswordState({
+    final bool isLoading,
+    final bool? isEmailSent,
+    final String? error,
+  }) = _$ForgotPasswordStateImpl;
 
   @override
   bool get isLoading;

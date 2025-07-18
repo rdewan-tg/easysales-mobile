@@ -58,12 +58,7 @@ final class SettingService implements ISettingService {
     } on Failure catch (e) {
       return Error(e);
     } catch (e, s) {
-      return Error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 

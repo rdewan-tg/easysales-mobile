@@ -9,8 +9,8 @@ import 'package:drift/drift.dart';
 
 final salesHeaderControllerProvider =
     NotifierProvider<SalesHeaderController, SalesHeaderState>(
-  SalesHeaderController.new,
-);
+      SalesHeaderController.new,
+    );
 
 class SalesHeaderController extends Notifier<SalesHeaderState> {
   @override
@@ -30,8 +30,10 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
       // prevent multiple calls
       if (state.isFetchingCurrentOrderNumber) return;
       // update state
-      state =
-          state.copyWith(isFetchingCurrentOrderNumber: true, errorMsg: null);
+      state = state.copyWith(
+        isFetchingCurrentOrderNumber: true,
+        errorMsg: null,
+      );
       // get the setting from the database
       final settings = await ref.read(orderServiceProvider).getAllSetting();
       // extract the salesPersonCode from map
@@ -58,8 +60,9 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
   ) async {
     try {
       // get current order number
-      final currentOrderNumber =
-          await ref.read(orderServiceProvider).getOrderRunningNumber();
+      final currentOrderNumber = await ref
+          .read(orderServiceProvider)
+          .getOrderRunningNumber();
       // increment the order number
       final orderRunningNumber = currentOrderNumber + 1;
       // get the setting from the database
@@ -139,11 +142,14 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
           .read(orderServiceProvider)
           .updateSalesHeader(salesHeaderData);
       // update the state
-      result.when((success) {
-        state = state.copyWith(salesHeaderData: success, isLoading: false);
-      }, (error) {
-        state = state.copyWith(errorMsg: error.message, isLoading: false);
-      });
+      result.when(
+        (success) {
+          state = state.copyWith(salesHeaderData: success, isLoading: false);
+        },
+        (error) {
+          state = state.copyWith(errorMsg: error.message, isLoading: false);
+        },
+      );
     } on Failure catch (e) {
       state = state.copyWith(errorMsg: e.message);
     }
@@ -163,11 +169,14 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
           .read(orderServiceProvider)
           .updateSalesHeader(salesHeaderData);
       // update the state
-      result.when((success) {
-        state = state.copyWith(salesHeaderData: success, isLoading: false);
-      }, (error) {
-        state = state.copyWith(errorMsg: error.message, isLoading: false);
-      });
+      result.when(
+        (success) {
+          state = state.copyWith(salesHeaderData: success, isLoading: false);
+        },
+        (error) {
+          state = state.copyWith(errorMsg: error.message, isLoading: false);
+        },
+      );
     } on Failure catch (e) {
       state = state.copyWith(errorMsg: e.message);
     }
@@ -187,11 +196,14 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
           .read(orderServiceProvider)
           .updateSalesHeader(salesHeaderData);
       // update the state
-      result.when((success) {
-        state = state.copyWith(salesHeaderData: success, isLoading: false);
-      }, (error) {
-        state = state.copyWith(errorMsg: error.message, isLoading: false);
-      });
+      result.when(
+        (success) {
+          state = state.copyWith(salesHeaderData: success, isLoading: false);
+        },
+        (error) {
+          state = state.copyWith(errorMsg: error.message, isLoading: false);
+        },
+      );
     } on Failure catch (e) {
       state = state.copyWith(errorMsg: e.message);
     }

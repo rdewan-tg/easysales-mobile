@@ -7,10 +7,12 @@ import 'package:merchandiser/features/photo/data/repository/merchandiser_photo_r
 import 'package:multiple_result/multiple_result.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final merchandiserPhotoServiceProvider =
-    Provider<IMerchandiserPhotoService>((ref) {
-  final merchandiserPhotoRepository =
-      ref.watch(merchandiserPhotoRepositoryProvider);
+final merchandiserPhotoServiceProvider = Provider<IMerchandiserPhotoService>((
+  ref,
+) {
+  final merchandiserPhotoRepository = ref.watch(
+    merchandiserPhotoRepositoryProvider,
+  );
 
   return MerchandiserPhotoService(merchandiserPhotoRepository);
 });

@@ -6,8 +6,8 @@ import 'package:common/common.dart';
 
 final loginControllerProvider =
     AutoDisposeNotifierProvider<LoginController, LoginState>(
-  LoginController.new,
-);
+      LoginController.new,
+    );
 
 class LoginController extends AutoDisposeNotifier<LoginState> {
   @override

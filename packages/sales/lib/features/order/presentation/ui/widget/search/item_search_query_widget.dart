@@ -6,9 +6,7 @@ class ItemSearchQueryWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = ref.watch(
-      productControllerProvider.select(
-        (value) => value.lastSearchQuery,
-      ),
+      productControllerProvider.select((value) => value.lastSearchQuery),
     );
 
     if (query.isEmpty) {
@@ -49,9 +47,7 @@ class ItemSearchQueryWidget extends ConsumerWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const SizedBox(
-                    width: kSmall,
-                  ),
+                  const SizedBox(width: kSmall),
                   GestureDetector(
                     onTap: () async {
                       // clear the search
@@ -63,10 +59,7 @@ class ItemSearchQueryWidget extends ConsumerWidget {
                           .read(productControllerProvider.notifier)
                           .watchProducts();
                     },
-                    child: const Icon(
-                      Icons.clear_outlined,
-                      size: kMedium,
-                    ),
+                    child: const Icon(Icons.clear_outlined, size: kMedium),
                   ),
                 ],
               ),

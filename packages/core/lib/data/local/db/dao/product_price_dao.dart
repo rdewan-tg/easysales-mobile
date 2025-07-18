@@ -15,16 +15,11 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
     with _$ProductPriceDaoMixin {
   ProductPriceDao(super.db);
 
-  Future<void> insertOrUpdateList(
-    List<ProductPriceEntityData> dataList,
-  ) async {
+  Future<void> insertOrUpdateList(List<ProductPriceEntityData> dataList) async {
     try {
       await transaction(() async {
         await batch((batch) {
-          batch.insertAllOnConflictUpdate(
-            productPriceEntity,
-            dataList,
-          );
+          batch.insertAllOnConflictUpdate(productPriceEntity, dataList);
         });
       });
     } catch (e, stackTrace) {
@@ -35,9 +30,7 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
     }
   }
 
-  Stream<List<ProductPriceEntityData>> watchAll({
-    String? searchQuery,
-  }) {
+  Stream<List<ProductPriceEntityData>> watchAll({String? searchQuery}) {
     final query = select(productPriceEntity);
 
     if (searchQuery != null && searchQuery.isNotEmpty) {
@@ -59,21 +52,18 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
   // watch the total count
   Stream<int> watchTotalCount() {
     final countExp = countAll();
-    return (selectOnly(productPriceEntity)..addColumns([countExp]))
-        .map((row) => row.read(countExp)!)
-        .watchSingle();
+    return (selectOnly(
+      productPriceEntity,
+    )..addColumns([countExp])).map((row) => row.read(countExp)!).watchSingle();
   }
 
-  Future<List<String>> getProductUom(
-    String itemId,
-    String priceGroup,
-  ) async {
-    final query = await (select(productPriceEntity)
-          ..where(
-            (tbl) =>
-                tbl.itemId.equals(itemId) & tbl.priceGroup.equals(priceGroup),
-          ))
-        .get();
+  Future<List<String>> getProductUom(String itemId, String priceGroup) async {
+    final query =
+        await (select(productPriceEntity)..where(
+              (tbl) =>
+                  tbl.itemId.equals(itemId) & tbl.priceGroup.equals(priceGroup),
+            ))
+            .get();
 
     final result = query.map((e) => e.salesUnit).toList();
 
@@ -84,13 +74,14 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
     String itemId,
     String priceGroup,
   ) async {
-    final query = await (selectOnly(productPriceEntity, distinct: true)
-          ..addColumns([productPriceEntity.packSize])
-          ..where(
-            (productPriceEntity.itemId.equals(itemId) &
-                productPriceEntity.priceGroup.equals(priceGroup)),
-          ))
-        .get();
+    final query =
+        await (selectOnly(productPriceEntity, distinct: true)
+              ..addColumns([productPriceEntity.packSize])
+              ..where(
+                (productPriceEntity.itemId.equals(itemId) &
+                    productPriceEntity.priceGroup.equals(priceGroup)),
+              ))
+            .get();
 
     final result = query
         .map((row) => row.read<String>(productPriceEntity.packSize) ?? '')
@@ -105,15 +96,15 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
     String packSize,
     String unit,
   ) async {
-    final result = await (select(productPriceEntity)
-          ..where(
-            (tbl) =>
-                tbl.itemId.equals(itemId) &
-                tbl.priceGroup.equals(priceGroup) &
-                tbl.packSize.equals(packSize) &
-                tbl.salesUnit.equals(unit),
-          ))
-        .getSingle();
+    final result =
+        await (select(productPriceEntity)..where(
+              (tbl) =>
+                  tbl.itemId.equals(itemId) &
+                  tbl.priceGroup.equals(priceGroup) &
+                  tbl.packSize.equals(packSize) &
+                  tbl.salesUnit.equals(unit),
+            ))
+            .getSingle();
 
     return result;
   }

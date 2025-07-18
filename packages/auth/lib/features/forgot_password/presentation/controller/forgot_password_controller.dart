@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final forgotPasswordControllerProvider =
     NotifierProvider<ForgotPasswordController, ForgotPasswordState>(
-  ForgotPasswordController.new,
-);
+      ForgotPasswordController.new,
+    );
 
 class ForgotPasswordController extends Notifier<ForgotPasswordState> {
   @override
@@ -35,8 +35,9 @@ class ForgotPasswordController extends Notifier<ForgotPasswordState> {
       // set the request - email from the parameter
       final data = ForgotPasswordRequest(email: email);
       // call the service
-      final result =
-          await ref.read(forgotPasswordServiceProvider).forgotPassword(data);
+      final result = await ref
+          .read(forgotPasswordServiceProvider)
+          .forgotPassword(data);
       result.when(
         (success) {
           // update the state - isLoading = false and isEmailSent = result

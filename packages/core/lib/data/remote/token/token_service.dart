@@ -38,9 +38,7 @@ class TokenService implements ITokenService {
   Future<RefreshTokenResponse> refreshToken(String? refreshToken) async {
     final response = await _dio.post<Map<String, dynamic>>(
       tokenRefreshEndPoint,
-      data: {
-        "refreshToken": refreshToken,
-      },
+      data: {"refreshToken": refreshToken},
     );
 
     if (response.statusCode == success) {

@@ -47,9 +47,7 @@ class _SearchItemsScreenState extends ConsumerState<SearchItemsScreen> {
                   horizontal: kSmall,
                   vertical: kSmall,
                 ),
-                constraints: const BoxConstraints.tightFor(
-                  height: 40,
-                ),
+                constraints: const BoxConstraints.tightFor(height: 40),
                 onChanged: (value) {
                   ref
                       .read(productControllerProvider.notifier)

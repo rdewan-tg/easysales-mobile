@@ -35,34 +35,35 @@ class _TodaySiteVisitReportScreenState
   void _listener() {
     // listen for loading
     ref.listen(
-        siteVisitControllerProvider
-            .select((value) => value.isLoadingTodayVisit), (_, next) {
-      if (next) {
-        context.loaderOverlay.show();
-      } else {
-        context.loaderOverlay.hide();
-      }
-    });
-
-    // listen for error
-    ref.listen(
-      siteVisitControllerProvider.select((value) => value.errorMsg),
+      siteVisitControllerProvider.select((value) => value.isLoadingTodayVisit),
       (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          );
+        if (next) {
+          context.loaderOverlay.show();
+        } else {
+          context.loaderOverlay.hide();
         }
       },
     );
+
+    // listen for error
+    ref.listen(siteVisitControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        );
+      }
+    });
   }
 }

@@ -8,11 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class StartUpScreen extends ConsumerWidget {
   final Flavor flavor;
   final WidgetBuilder builder;
-  const StartUpScreen({
-    super.key,
-    required this.flavor,
-    required this.builder,
-  });
+  const StartUpScreen({super.key, required this.flavor, required this.builder});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

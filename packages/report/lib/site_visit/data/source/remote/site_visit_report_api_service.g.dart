@@ -9,11 +9,7 @@ part of 'site_visit_report_api_service.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _SiteVisitReportApiService implements SiteVisitReportApiService {
-  _SiteVisitReportApiService(
-    this._dio, {
-    this.baseUrl,
-    this.errorLogger,
-  });
+  _SiteVisitReportApiService(this._dio, {this.baseUrl, this.errorLogger});
 
   final Dio _dio;
 
@@ -23,34 +19,31 @@ class _SiteVisitReportApiService implements SiteVisitReportApiService {
 
   @override
   Future<ToDaySiteVisitReportResponse> toDaySiteVisitReport(
-      String salesPersonCode) async {
+    String salesPersonCode,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'salesPersonCode': salesPersonCode
+      r'salesPersonCode': salesPersonCode,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ToDaySiteVisitReportResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1/api/merchandiser/photos/report/today-unique-site-visit-report',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<ToDaySiteVisitReportResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1/api/merchandiser/photos/report/today-unique-site-visit-report',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ToDaySiteVisitReportResponse _value;
     try {
-      _value =
-          await compute(deserializeToDaySiteVisitReportResponse, _result.data!);
+      _value = await compute(
+        deserializeToDaySiteVisitReportResponse,
+        _result.data!,
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -60,34 +53,31 @@ class _SiteVisitReportApiService implements SiteVisitReportApiService {
 
   @override
   Future<ThisMonthSiteVisitReportResponse> getMonthlyUniqueSiteVisitReport(
-      String salesPersonCode) async {
+    String salesPersonCode,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'salesPersonCode': salesPersonCode
+      r'salesPersonCode': salesPersonCode,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ThisMonthSiteVisitReportResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/v1/api/merchandiser/photos/report/this-month-site-visit-report',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<ThisMonthSiteVisitReportResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1/api/merchandiser/photos/report/this-month-site-visit-report',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ThisMonthSiteVisitReportResponse _value;
     try {
       _value = await compute(
-          deserializeThisMonthSiteVisitReportResponse, _result.data!);
+        deserializeThisMonthSiteVisitReportResponse,
+        _result.data!,
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -108,10 +98,7 @@ class _SiteVisitReportApiService implements SiteVisitReportApiService {
     return requestOptions;
   }
 
-  String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

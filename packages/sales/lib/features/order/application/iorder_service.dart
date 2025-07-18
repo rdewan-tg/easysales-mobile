@@ -7,18 +7,13 @@ abstract interface class IOrderService {
     SalesHeaderEntityCompanion data,
   );
 
-  Future<int> getLastSalesOrderId(
-    String id,
-    String prefix,
-  );
+  Future<int> getLastSalesOrderId(String id, String prefix);
 
   Future<Result<SalesHeaderEntityData, Failure>> updateSalesHeader(
     SalesHeaderEntityCompanion data,
   );
 
-  Future<SalesHeaderEntityData> getSalesHeaderBySalesId(
-    String salesId,
-  );
+  Future<SalesHeaderEntityData> getSalesHeaderBySalesId(String salesId);
 
   Stream<List<SalesHeaderEntityData>> watchAllSalesHeader();
 

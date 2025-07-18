@@ -153,9 +153,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                               .read(
                                 salesHeaderControllerProvider.notifier,
                               ) // update customer requisition
-                              .updateCustomerRequisition(
-                                value,
-                              );
+                              .updateCustomerRequisition(value);
                         },
                       );
                     },
@@ -181,8 +179,9 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                   child: Consumer(
                     builder: (context, ref, child) {
                       final note = ref.watch(
-                        salesHeaderControllerProvider
-                            .select((value) => value.salesHeaderData?.note),
+                        salesHeaderControllerProvider.select(
+                          (value) => value.salesHeaderData?.note,
+                        ),
                       );
                       if (note != null) {
                         _noteController.text = note;
@@ -198,9 +197,7 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                         onFieldSubmitted: (value) {
                           ref
                               .read(salesHeaderControllerProvider.notifier)
-                              .updateNote(
-                                value,
-                              );
+                              .updateNote(value);
                         },
                       );
                     },
@@ -208,9 +205,9 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
                 ),
                 IconButton(
                   onPressed: () async {
-                    ref.read(salesHeaderControllerProvider.notifier).updateNote(
-                          _noteController.text,
-                        );
+                    ref
+                        .read(salesHeaderControllerProvider.notifier)
+                        .updateNote(_noteController.text);
                   },
                   icon: const Icon(Icons.save_outlined),
                 ),
@@ -257,13 +254,15 @@ class _TabSalesHeaderScreenState extends ConsumerState<TabSalesHeaderScreen> {
     );
 
     // listen for loading
-    ref.listen(salesHeaderControllerProvider.select((value) => value.isLoading),
-        (_, next) {
-      if (next) {
-        context.loaderOverlay.show();
-      } else {
-        context.loaderOverlay.hide();
-      }
-    });
+    ref.listen(
+      salesHeaderControllerProvider.select((value) => value.isLoading),
+      (_, next) {
+        if (next) {
+          context.loaderOverlay.show();
+        } else {
+          context.loaderOverlay.hide();
+        }
+      },
+    );
   }
 }

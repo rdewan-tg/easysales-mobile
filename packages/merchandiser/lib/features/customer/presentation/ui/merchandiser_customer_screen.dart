@@ -38,10 +38,7 @@ class _MerchandiserCustomerScreenState
       body: RefreshIndicator(
         onRefresh: _onRefresh,
         child: const CustomScrollView(
-          slivers: [
-            SearchQueryWidget(),
-            CustomerListWidget(),
-          ],
+          slivers: [SearchQueryWidget(), CustomerListWidget()],
         ),
       ),
     );

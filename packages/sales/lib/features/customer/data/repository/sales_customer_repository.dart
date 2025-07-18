@@ -12,18 +12,18 @@ import 'package:sales/features/customer/data/source/remote/sales_customer_api.da
 
 final salesCustomerRepositoryProvider =
     Provider.autoDispose<ISalesCustomerRepository>((ref) {
-  final salesCustomerApi = ref.watch(salesCustomerApiProvider);
-  final salesCustomerDao = ref.watch(salesCustomerDaoProvider);
-  final settingDao = ref.watch(settingDaoProvider);
-  final searchHistoryDao = ref.watch(searchSalesCustomerHistoryDaoProvider);
+      final salesCustomerApi = ref.watch(salesCustomerApiProvider);
+      final salesCustomerDao = ref.watch(salesCustomerDaoProvider);
+      final settingDao = ref.watch(settingDaoProvider);
+      final searchHistoryDao = ref.watch(searchSalesCustomerHistoryDaoProvider);
 
-  return SalesCustomerRepository(
-    salesCustomerApi,
-    salesCustomerDao,
-    settingDao,
-    searchHistoryDao,
-  );
-});
+      return SalesCustomerRepository(
+        salesCustomerApi,
+        salesCustomerDao,
+        settingDao,
+        searchHistoryDao,
+      );
+    });
 
 final class SalesCustomerRepository
     with DioExceptionMapper
@@ -41,9 +41,7 @@ final class SalesCustomerRepository
   );
 
   @override
-  Future<CustomerResponse> getSalesCustomers(
-    String dataAreaId,
-  ) async {
+  Future<CustomerResponse> getSalesCustomers(String dataAreaId) async {
     try {
       return await _salesCustomerApi.getSalesCustomers(dataAreaId);
     } on DioException catch (e, stackTrace) {
@@ -80,9 +78,7 @@ final class SalesCustomerRepository
   }
 
   @override
-  Stream<List<SalesCustomerEntityData>> watchAll(
-    String? searchQuery,
-  ) {
+  Stream<List<SalesCustomerEntityData>> watchAll(String? searchQuery) {
     return _salesCustomerDao.watchAll(searchQuery);
   }
 
@@ -144,7 +140,7 @@ final class SalesCustomerRepository
 
   @override
   Stream<List<SearchSalesCustomerHistoryEntityData>>
-      watchSearchCustomerHistory() {
+  watchSearchCustomerHistory() {
     return _searchHistoryDao.watchAll();
   }
 

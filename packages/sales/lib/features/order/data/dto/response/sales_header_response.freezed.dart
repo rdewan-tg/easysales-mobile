@@ -12,7 +12,8 @@ part of 'sales_header_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 SalesHeaderResponse _$SalesHeaderResponseFromJson(Map<String, dynamic> json) {
   return _SalesHeaderResponse.fromJson(json);
@@ -36,8 +37,9 @@ mixin _$SalesHeaderResponse {
 /// @nodoc
 abstract class $SalesHeaderResponseCopyWith<$Res> {
   factory $SalesHeaderResponseCopyWith(
-          SalesHeaderResponse value, $Res Function(SalesHeaderResponse) then) =
-      _$SalesHeaderResponseCopyWithImpl<$Res, SalesHeaderResponse>;
+    SalesHeaderResponse value,
+    $Res Function(SalesHeaderResponse) then,
+  ) = _$SalesHeaderResponseCopyWithImpl<$Res, SalesHeaderResponse>;
   @useResult
   $Res call({String status, SalesHeaderData data});
 
@@ -58,20 +60,20 @@ class _$SalesHeaderResponseCopyWithImpl<$Res, $Val extends SalesHeaderResponse>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as SalesHeaderData,
-    ) as $Val);
+  $Res call({Object? status = null, Object? data = null}) {
+    return _then(
+      _value.copyWith(
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            data: null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as SalesHeaderData,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of SalesHeaderResponse
@@ -88,9 +90,10 @@ class _$SalesHeaderResponseCopyWithImpl<$Res, $Val extends SalesHeaderResponse>
 /// @nodoc
 abstract class _$$SalesHeaderResponseImplCopyWith<$Res>
     implements $SalesHeaderResponseCopyWith<$Res> {
-  factory _$$SalesHeaderResponseImplCopyWith(_$SalesHeaderResponseImpl value,
-          $Res Function(_$SalesHeaderResponseImpl) then) =
-      __$$SalesHeaderResponseImplCopyWithImpl<$Res>;
+  factory _$$SalesHeaderResponseImplCopyWith(
+    _$SalesHeaderResponseImpl value,
+    $Res Function(_$SalesHeaderResponseImpl) then,
+  ) = __$$SalesHeaderResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String status, SalesHeaderData data});
@@ -103,28 +106,28 @@ abstract class _$$SalesHeaderResponseImplCopyWith<$Res>
 class __$$SalesHeaderResponseImplCopyWithImpl<$Res>
     extends _$SalesHeaderResponseCopyWithImpl<$Res, _$SalesHeaderResponseImpl>
     implements _$$SalesHeaderResponseImplCopyWith<$Res> {
-  __$$SalesHeaderResponseImplCopyWithImpl(_$SalesHeaderResponseImpl _value,
-      $Res Function(_$SalesHeaderResponseImpl) _then)
-      : super(_value, _then);
+  __$$SalesHeaderResponseImplCopyWithImpl(
+    _$SalesHeaderResponseImpl _value,
+    $Res Function(_$SalesHeaderResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SalesHeaderResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = null,
-  }) {
-    return _then(_$SalesHeaderResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as SalesHeaderData,
-    ));
+  $Res call({Object? status = null, Object? data = null}) {
+    return _then(
+      _$SalesHeaderResponseImpl(
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        data: null == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as SalesHeaderData,
+      ),
+    );
   }
 }
 
@@ -166,20 +169,21 @@ class _$SalesHeaderResponseImpl implements _SalesHeaderResponse {
   @pragma('vm:prefer-inline')
   _$$SalesHeaderResponseImplCopyWith<_$SalesHeaderResponseImpl> get copyWith =>
       __$$SalesHeaderResponseImplCopyWithImpl<_$SalesHeaderResponseImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SalesHeaderResponseImplToJson(
-      this,
-    );
+    return _$$SalesHeaderResponseImplToJson(this);
   }
 }
 
 abstract class _SalesHeaderResponse implements SalesHeaderResponse {
-  const factory _SalesHeaderResponse(
-      {required final String status,
-      required final SalesHeaderData data}) = _$SalesHeaderResponseImpl;
+  const factory _SalesHeaderResponse({
+    required final String status,
+    required final SalesHeaderData data,
+  }) = _$SalesHeaderResponseImpl;
 
   factory _SalesHeaderResponse.fromJson(Map<String, dynamic> json) =
       _$SalesHeaderResponseImpl.fromJson;
@@ -230,23 +234,25 @@ mixin _$SalesHeaderData {
 /// @nodoc
 abstract class $SalesHeaderDataCopyWith<$Res> {
   factory $SalesHeaderDataCopyWith(
-          SalesHeaderData value, $Res Function(SalesHeaderData) then) =
-      _$SalesHeaderDataCopyWithImpl<$Res, SalesHeaderData>;
+    SalesHeaderData value,
+    $Res Function(SalesHeaderData) then,
+  ) = _$SalesHeaderDataCopyWithImpl<$Res, SalesHeaderData>;
   @useResult
-  $Res call(
-      {int id,
-      String salesId,
-      String customerId,
-      String customerName,
-      String customerAddress,
-      String salesPersonId,
-      String customerPriceGroup,
-      String deliveryAddressLocation,
-      String deliveryDate,
-      String transactionDate,
-      String deviceId,
-      int syncStatus,
-      int companyId});
+  $Res call({
+    int id,
+    String salesId,
+    String customerId,
+    String customerName,
+    String customerAddress,
+    String salesPersonId,
+    String customerPriceGroup,
+    String deliveryAddressLocation,
+    String deliveryDate,
+    String transactionDate,
+    String deviceId,
+    int syncStatus,
+    int companyId,
+  });
 }
 
 /// @nodoc
@@ -278,85 +284,90 @@ class _$SalesHeaderDataCopyWithImpl<$Res, $Val extends SalesHeaderData>
     Object? syncStatus = null,
     Object? companyId = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      salesId: null == salesId
-          ? _value.salesId
-          : salesId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerName: null == customerName
-          ? _value.customerName
-          : customerName // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerAddress: null == customerAddress
-          ? _value.customerAddress
-          : customerAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPersonId: null == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerPriceGroup: null == customerPriceGroup
-          ? _value.customerPriceGroup
-          : customerPriceGroup // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryAddressLocation: null == deliveryAddressLocation
-          ? _value.deliveryAddressLocation
-          : deliveryAddressLocation // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryDate: null == deliveryDate
-          ? _value.deliveryDate
-          : deliveryDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      transactionDate: null == transactionDate
-          ? _value.transactionDate
-          : transactionDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceId: null == deviceId
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      syncStatus: null == syncStatus
-          ? _value.syncStatus
-          : syncStatus // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            salesId: null == salesId
+                ? _value.salesId
+                : salesId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            customerId: null == customerId
+                ? _value.customerId
+                : customerId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            customerName: null == customerName
+                ? _value.customerName
+                : customerName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            customerAddress: null == customerAddress
+                ? _value.customerAddress
+                : customerAddress // ignore: cast_nullable_to_non_nullable
+                      as String,
+            salesPersonId: null == salesPersonId
+                ? _value.salesPersonId
+                : salesPersonId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            customerPriceGroup: null == customerPriceGroup
+                ? _value.customerPriceGroup
+                : customerPriceGroup // ignore: cast_nullable_to_non_nullable
+                      as String,
+            deliveryAddressLocation: null == deliveryAddressLocation
+                ? _value.deliveryAddressLocation
+                : deliveryAddressLocation // ignore: cast_nullable_to_non_nullable
+                      as String,
+            deliveryDate: null == deliveryDate
+                ? _value.deliveryDate
+                : deliveryDate // ignore: cast_nullable_to_non_nullable
+                      as String,
+            transactionDate: null == transactionDate
+                ? _value.transactionDate
+                : transactionDate // ignore: cast_nullable_to_non_nullable
+                      as String,
+            deviceId: null == deviceId
+                ? _value.deviceId
+                : deviceId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            syncStatus: null == syncStatus
+                ? _value.syncStatus
+                : syncStatus // ignore: cast_nullable_to_non_nullable
+                      as int,
+            companyId: null == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SalesHeaderDataImplCopyWith<$Res>
     implements $SalesHeaderDataCopyWith<$Res> {
-  factory _$$SalesHeaderDataImplCopyWith(_$SalesHeaderDataImpl value,
-          $Res Function(_$SalesHeaderDataImpl) then) =
-      __$$SalesHeaderDataImplCopyWithImpl<$Res>;
+  factory _$$SalesHeaderDataImplCopyWith(
+    _$SalesHeaderDataImpl value,
+    $Res Function(_$SalesHeaderDataImpl) then,
+  ) = __$$SalesHeaderDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String salesId,
-      String customerId,
-      String customerName,
-      String customerAddress,
-      String salesPersonId,
-      String customerPriceGroup,
-      String deliveryAddressLocation,
-      String deliveryDate,
-      String transactionDate,
-      String deviceId,
-      int syncStatus,
-      int companyId});
+  $Res call({
+    int id,
+    String salesId,
+    String customerId,
+    String customerName,
+    String customerAddress,
+    String salesPersonId,
+    String customerPriceGroup,
+    String deliveryAddressLocation,
+    String deliveryDate,
+    String transactionDate,
+    String deviceId,
+    int syncStatus,
+    int companyId,
+  });
 }
 
 /// @nodoc
@@ -364,8 +375,9 @@ class __$$SalesHeaderDataImplCopyWithImpl<$Res>
     extends _$SalesHeaderDataCopyWithImpl<$Res, _$SalesHeaderDataImpl>
     implements _$$SalesHeaderDataImplCopyWith<$Res> {
   __$$SalesHeaderDataImplCopyWithImpl(
-      _$SalesHeaderDataImpl _value, $Res Function(_$SalesHeaderDataImpl) _then)
-      : super(_value, _then);
+    _$SalesHeaderDataImpl _value,
+    $Res Function(_$SalesHeaderDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SalesHeaderData
   /// with the given fields replaced by the non-null parameter values.
@@ -386,80 +398,83 @@ class __$$SalesHeaderDataImplCopyWithImpl<$Res>
     Object? syncStatus = null,
     Object? companyId = null,
   }) {
-    return _then(_$SalesHeaderDataImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      salesId: null == salesId
-          ? _value.salesId
-          : salesId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerName: null == customerName
-          ? _value.customerName
-          : customerName // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerAddress: null == customerAddress
-          ? _value.customerAddress
-          : customerAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPersonId: null == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerPriceGroup: null == customerPriceGroup
-          ? _value.customerPriceGroup
-          : customerPriceGroup // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryAddressLocation: null == deliveryAddressLocation
-          ? _value.deliveryAddressLocation
-          : deliveryAddressLocation // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryDate: null == deliveryDate
-          ? _value.deliveryDate
-          : deliveryDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      transactionDate: null == transactionDate
-          ? _value.transactionDate
-          : transactionDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceId: null == deviceId
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      syncStatus: null == syncStatus
-          ? _value.syncStatus
-          : syncStatus // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$SalesHeaderDataImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        salesId: null == salesId
+            ? _value.salesId
+            : salesId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        customerId: null == customerId
+            ? _value.customerId
+            : customerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        customerName: null == customerName
+            ? _value.customerName
+            : customerName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        customerAddress: null == customerAddress
+            ? _value.customerAddress
+            : customerAddress // ignore: cast_nullable_to_non_nullable
+                  as String,
+        salesPersonId: null == salesPersonId
+            ? _value.salesPersonId
+            : salesPersonId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        customerPriceGroup: null == customerPriceGroup
+            ? _value.customerPriceGroup
+            : customerPriceGroup // ignore: cast_nullable_to_non_nullable
+                  as String,
+        deliveryAddressLocation: null == deliveryAddressLocation
+            ? _value.deliveryAddressLocation
+            : deliveryAddressLocation // ignore: cast_nullable_to_non_nullable
+                  as String,
+        deliveryDate: null == deliveryDate
+            ? _value.deliveryDate
+            : deliveryDate // ignore: cast_nullable_to_non_nullable
+                  as String,
+        transactionDate: null == transactionDate
+            ? _value.transactionDate
+            : transactionDate // ignore: cast_nullable_to_non_nullable
+                  as String,
+        deviceId: null == deviceId
+            ? _value.deviceId
+            : deviceId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        syncStatus: null == syncStatus
+            ? _value.syncStatus
+            : syncStatus // ignore: cast_nullable_to_non_nullable
+                  as int,
+        companyId: null == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$SalesHeaderDataImpl implements _SalesHeaderData {
-  const _$SalesHeaderDataImpl(
-      {required this.id,
-      required this.salesId,
-      required this.customerId,
-      required this.customerName,
-      required this.customerAddress,
-      required this.salesPersonId,
-      required this.customerPriceGroup,
-      required this.deliveryAddressLocation,
-      required this.deliveryDate,
-      required this.transactionDate,
-      required this.deviceId,
-      required this.syncStatus,
-      required this.companyId});
+  const _$SalesHeaderDataImpl({
+    required this.id,
+    required this.salesId,
+    required this.customerId,
+    required this.customerName,
+    required this.customerAddress,
+    required this.salesPersonId,
+    required this.customerPriceGroup,
+    required this.deliveryAddressLocation,
+    required this.deliveryDate,
+    required this.transactionDate,
+    required this.deviceId,
+    required this.syncStatus,
+    required this.companyId,
+  });
 
   factory _$SalesHeaderDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$SalesHeaderDataImplFromJson(json);
@@ -514,7 +529,9 @@ class _$SalesHeaderDataImpl implements _SalesHeaderData {
             (identical(other.customerPriceGroup, customerPriceGroup) ||
                 other.customerPriceGroup == customerPriceGroup) &&
             (identical(
-                    other.deliveryAddressLocation, deliveryAddressLocation) ||
+                  other.deliveryAddressLocation,
+                  deliveryAddressLocation,
+                ) ||
                 other.deliveryAddressLocation == deliveryAddressLocation) &&
             (identical(other.deliveryDate, deliveryDate) ||
                 other.deliveryDate == deliveryDate) &&
@@ -531,20 +548,21 @@ class _$SalesHeaderDataImpl implements _SalesHeaderData {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      salesId,
-      customerId,
-      customerName,
-      customerAddress,
-      salesPersonId,
-      customerPriceGroup,
-      deliveryAddressLocation,
-      deliveryDate,
-      transactionDate,
-      deviceId,
-      syncStatus,
-      companyId);
+    runtimeType,
+    id,
+    salesId,
+    customerId,
+    customerName,
+    customerAddress,
+    salesPersonId,
+    customerPriceGroup,
+    deliveryAddressLocation,
+    deliveryDate,
+    transactionDate,
+    deviceId,
+    syncStatus,
+    companyId,
+  );
 
   /// Create a copy of SalesHeaderData
   /// with the given fields replaced by the non-null parameter values.
@@ -553,31 +571,32 @@ class _$SalesHeaderDataImpl implements _SalesHeaderData {
   @pragma('vm:prefer-inline')
   _$$SalesHeaderDataImplCopyWith<_$SalesHeaderDataImpl> get copyWith =>
       __$$SalesHeaderDataImplCopyWithImpl<_$SalesHeaderDataImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SalesHeaderDataImplToJson(
-      this,
-    );
+    return _$$SalesHeaderDataImplToJson(this);
   }
 }
 
 abstract class _SalesHeaderData implements SalesHeaderData {
-  const factory _SalesHeaderData(
-      {required final int id,
-      required final String salesId,
-      required final String customerId,
-      required final String customerName,
-      required final String customerAddress,
-      required final String salesPersonId,
-      required final String customerPriceGroup,
-      required final String deliveryAddressLocation,
-      required final String deliveryDate,
-      required final String transactionDate,
-      required final String deviceId,
-      required final int syncStatus,
-      required final int companyId}) = _$SalesHeaderDataImpl;
+  const factory _SalesHeaderData({
+    required final int id,
+    required final String salesId,
+    required final String customerId,
+    required final String customerName,
+    required final String customerAddress,
+    required final String salesPersonId,
+    required final String customerPriceGroup,
+    required final String deliveryAddressLocation,
+    required final String deliveryDate,
+    required final String transactionDate,
+    required final String deviceId,
+    required final int syncStatus,
+    required final int companyId,
+  }) = _$SalesHeaderDataImpl;
 
   factory _SalesHeaderData.fromJson(Map<String, dynamic> json) =
       _$SalesHeaderDataImpl.fromJson;

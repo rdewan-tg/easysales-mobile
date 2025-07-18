@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:core/data/remote/network_service_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_formatter/dio_http_formatter.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final networkServiceProvider = Provider<Dio>((ref) {
@@ -14,11 +15,12 @@ final networkServiceProvider = Provider<Dio>((ref) {
   );
 
   final dio = Dio(options);
-  final networkServiceInterceptor =
-      ref.watch(networkServiceInterceptorProvider(dio));
+  final networkServiceInterceptor = ref.watch(
+    networkServiceInterceptorProvider(dio),
+  );
 
   dio.interceptors.addAll([
-    HttpFormatter(),
+    HttpFormatter(loggingFilter: (request, response, error) => kDebugMode),
     networkServiceInterceptor,
   ]);
 

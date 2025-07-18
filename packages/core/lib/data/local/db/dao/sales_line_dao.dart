@@ -17,21 +17,21 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
 
   Future<int> addSalesLine(SalesLineEntityCompanion data) async {
     // Check if the item already exists in the sales order
-    final existingLine = await (select(salesLineEntity)
-          ..where(
-            (tbl) =>
-                tbl.salesId.equals(data.salesId.value) &
-                tbl.productId.equals(data.productId.value),
-          ))
-        .getSingleOrNull();
+    final existingLine =
+        await (select(salesLineEntity)..where(
+              (tbl) =>
+                  tbl.salesId.equals(data.salesId.value) &
+                  tbl.productId.equals(data.productId.value),
+            ))
+            .getSingleOrNull();
     // check if the order is already synced
-    final isSynced = await (select(salesLineEntity)
-          ..where(
-            (tbl) =>
-                tbl.salesId.equals(data.salesId.value) &
-                tbl.syncStatus.equals(1),
-          ))
-        .getSingleOrNull();
+    final isSynced =
+        await (select(salesLineEntity)..where(
+              (tbl) =>
+                  tbl.salesId.equals(data.salesId.value) &
+                  tbl.syncStatus.equals(1),
+            ))
+            .getSingleOrNull();
     // throw an error if the item already exists
     if (existingLine != null) {
       throw const Failure(message: 'Item already exists in the sales order.');
@@ -48,12 +48,11 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
 
   Future<int> updateSalesLine(SalesLineEntityCompanion data) {
     try {
-      return (update(salesLineEntity)
-            ..where(
-              (tbl) =>
-                  tbl.salesId.equals(data.salesId.value) &
-                  tbl.lineId.equals(data.lineId.value),
-            ))
+      return (update(salesLineEntity)..where(
+            (tbl) =>
+                tbl.salesId.equals(data.salesId.value) &
+                tbl.lineId.equals(data.lineId.value),
+          ))
           .write(data);
     } catch (e) {
       throw Failure(message: e.toString());
@@ -62,11 +61,9 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
 
   Future<int> updateSyncStatus(SalesLineEntityCompanion data) {
     try {
-      return (update(salesLineEntity)
-            ..where(
-              (tbl) => tbl.salesId.equals(data.salesId.value),
-            ))
-          .write(data);
+      return (update(
+        salesLineEntity,
+      )..where((tbl) => tbl.salesId.equals(data.salesId.value))).write(data);
     } catch (e) {
       throw Failure(message: e.toString());
     }
@@ -75,12 +72,10 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
   Stream<List<SalesLineEntityData>> watchSalesLineBySalesId(String salesId) {
     final query =
         (select(salesLineEntity)..where((tbl) => tbl.salesId.equals(salesId)))
-          ..orderBy(
-            [
-              (tbl) =>
-                  OrderingTerm(expression: tbl.lineId, mode: OrderingMode.asc),
-            ],
-          );
+          ..orderBy([
+            (tbl) =>
+                OrderingTerm(expression: tbl.lineId, mode: OrderingMode.asc),
+          ]);
 
     return query.watch().handleError((e, s) {
       throw Failure(message: e.toString(), stackTrace: s);
@@ -90,15 +85,16 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
   Future<List<SalesLineEntityData>> getSalesLineBySalesId(
     String salesId,
   ) async {
-    final query = await (select(salesLineEntity)
-          ..where((tbl) => tbl.salesId.equals(salesId))
-          ..orderBy(
-            [
-              (tbl) =>
-                  OrderingTerm(expression: tbl.lineId, mode: OrderingMode.asc),
-            ],
-          ))
-        .get();
+    final query =
+        await (select(salesLineEntity)
+              ..where((tbl) => tbl.salesId.equals(salesId))
+              ..orderBy([
+                (tbl) => OrderingTerm(
+                  expression: tbl.lineId,
+                  mode: OrderingMode.asc,
+                ),
+              ]))
+            .get();
 
     return query;
   }
@@ -121,24 +117,23 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
 
   // get the sum on line amount
   Stream<double> getSumOnLineAmount(String salesId) {
-    return (select(salesLineEntity)
-          ..where((tbl) => tbl.salesId.equals(salesId)))
-        .watch()
-        .map(
-          (event) => event.fold(
-            0.0,
-            (previousValue, element) => previousValue + element.lineAmount,
-          ),
-        );
+    return (select(
+      salesLineEntity,
+    )..where((tbl) => tbl.salesId.equals(salesId))).watch().map(
+      (event) => event.fold(
+        0.0,
+        (previousValue, element) => previousValue + element.lineAmount,
+      ),
+    );
   }
 
   Future<int> deleteLine(String salesId, int lineId) async {
     // check if the order is already synced
-    final isSynced = await (select(salesLineEntity)
-          ..where(
-            (tbl) => tbl.salesId.equals(salesId) & tbl.syncStatus.equals(1),
-          ))
-        .getSingleOrNull();
+    final isSynced =
+        await (select(salesLineEntity)..where(
+              (tbl) => tbl.salesId.equals(salesId) & tbl.syncStatus.equals(1),
+            ))
+            .getSingleOrNull();
     // Throw an error if the order is already synced
     if (isSynced != null) {
       throw const Failure(
@@ -146,11 +141,11 @@ class SalesLineDao extends DatabaseAccessor<AppDatabase>
       );
     }
     // Delete the item
-    final query = await (delete(salesLineEntity)
-          ..where(
-            (tbl) => tbl.salesId.equals(salesId) & tbl.lineId.equals(lineId),
-          ))
-        .go();
+    final query =
+        await (delete(salesLineEntity)..where(
+              (tbl) => tbl.salesId.equals(salesId) & tbl.lineId.equals(lineId),
+            ))
+            .go();
 
     return query;
   }

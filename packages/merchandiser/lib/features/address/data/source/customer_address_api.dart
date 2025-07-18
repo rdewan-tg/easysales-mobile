@@ -8,16 +8,15 @@ import 'package:flutter/foundation.dart';
 
 part 'customer_address_api.g.dart';
 
-final customerAddressApiProvider =
-    Provider.autoDispose<CustomerAddressApi>((ref) {
+final customerAddressApiProvider = Provider.autoDispose<CustomerAddressApi>((
+  ref,
+) {
   final dio = ref.watch(networkServiceProvider);
 
   return CustomerAddressApi(dio);
 });
 
-@RestApi(
-  parser: Parser.FlutterCompute,
-)
+@RestApi(parser: Parser.FlutterCompute)
 abstract class CustomerAddressApi {
   factory CustomerAddressApi(Dio dio) => _CustomerAddressApi(dio);
 

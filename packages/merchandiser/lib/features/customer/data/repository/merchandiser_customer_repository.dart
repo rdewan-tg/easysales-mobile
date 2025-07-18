@@ -12,19 +12,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final merchandiserCustomerRepositoryProvider =
     Provider.autoDispose<IMerchandiserCustomerRepository>((ref) {
-  final merchandiserCustomerApi = ref.watch(merchandiserCustomerApiProvider);
-  final customerDaoProvider = ref.watch(merchandiserCustomerDaoProvider);
-  final settingDao = ref.watch(settingDaoProvider);
-  final searchHistoryDao = ref
-      .watch(searchMerchandiserCustomerHistoryDaoProvider); // searchHistoryDao
+      final merchandiserCustomerApi = ref.watch(
+        merchandiserCustomerApiProvider,
+      );
+      final customerDaoProvider = ref.watch(merchandiserCustomerDaoProvider);
+      final settingDao = ref.watch(settingDaoProvider);
+      final searchHistoryDao = ref.watch(
+        searchMerchandiserCustomerHistoryDaoProvider,
+      ); // searchHistoryDao
 
-  return MerchandiserCustomerRepository(
-    merchandiserCustomerApi,
-    customerDaoProvider,
-    settingDao,
-    searchHistoryDao,
-  );
-});
+      return MerchandiserCustomerRepository(
+        merchandiserCustomerApi,
+        customerDaoProvider,
+        settingDao,
+        searchHistoryDao,
+      );
+    });
 
 final class MerchandiserCustomerRepository
     with DioExceptionMapper
@@ -42,12 +45,11 @@ final class MerchandiserCustomerRepository
   );
 
   @override
-  Future<CustomerResponse> getMerchandiserCustomers(
-    String dataAreaId,
-  ) async {
+  Future<CustomerResponse> getMerchandiserCustomers(String dataAreaId) async {
     try {
-      return await _merchandiserCustomerApi
-          .getMerchandiserCustomers(dataAreaId);
+      return await _merchandiserCustomerApi.getMerchandiserCustomers(
+        dataAreaId,
+      );
     } on DioException catch (e, stackTrace) {
       // Use the mixin to map DioException to Failure
       throw mapDioExceptionToFailure(e, stackTrace);
@@ -67,8 +69,10 @@ final class MerchandiserCustomerRepository
     String salesPersonId,
   ) async {
     try {
-      final response =
-          await _merchandiserCustomerApi.filter(companyCode, salesPersonId);
+      final response = await _merchandiserCustomerApi.filter(
+        companyCode,
+        salesPersonId,
+      );
 
       return response;
     } on DioException catch (e, stackTrace) {
@@ -85,15 +89,13 @@ final class MerchandiserCustomerRepository
   }
 
   @override
-  Stream<List<MerchandiserCustomerEntityData>> watchAll(
-    String? searchQuery,
-  ) {
+  Stream<List<MerchandiserCustomerEntityData>> watchAll(String? searchQuery) {
     return _customerDao.watchAll(searchQuery: searchQuery);
   }
 
   @override
   Stream<List<SearchMerchandiserCustomerHistoryEntityData>>
-      watchSearchCustomerHistory() {
+  watchSearchCustomerHistory() {
     return _searchHistoryDao.watchAll();
   }
 

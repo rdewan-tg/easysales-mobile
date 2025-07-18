@@ -1,13 +1,11 @@
 part of '../common.dart';
 
-final materialThemeProvider =
-    Provider.family<MaterialTheme, BuildContext>((ref, context) {
+final materialThemeProvider = Provider.family<MaterialTheme, BuildContext>((
+  ref,
+  context,
+) {
   // Use with Google Fonts package to use downloadable fonts
-  final textTheme = createTextTheme(
-    context,
-    "Noto Sans",
-    "Noto Sans",
-  );
+  final textTheme = createTextTheme(context, "Noto Sans", "Noto Sans");
 
   return MaterialTheme(textTheme);
 });
@@ -348,24 +346,21 @@ class MaterialTheme {
   }
 
   ThemeData theme(ColorScheme colorScheme) => ThemeData(
-        useMaterial3: true,
-        brightness: colorScheme.brightness,
-        colorScheme: colorScheme,
-        textTheme: textTheme.apply(
-          bodyColor: colorScheme.onSurface,
-          displayColor: colorScheme.onSurface,
-        ),
-        filledButtonTheme: FilledButtonThemeData(
-          style: FilledButton.styleFrom(
-            textStyle: TextStyle(
-              inherit: true,
-              color: colorScheme.onSurface,
-            ),
-          ),
-        ),
-        scaffoldBackgroundColor: colorScheme.surface,
-        canvasColor: colorScheme.surface,
-      );
+    useMaterial3: true,
+    brightness: colorScheme.brightness,
+    colorScheme: colorScheme,
+    textTheme: textTheme.apply(
+      bodyColor: colorScheme.onSurface,
+      displayColor: colorScheme.onSurface,
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        textStyle: TextStyle(inherit: true, color: colorScheme.onSurface),
+      ),
+    ),
+    scaffoldBackgroundColor: colorScheme.surface,
+    canvasColor: colorScheme.surface,
+  );
 
   List<ExtendedColor> get extendedColors => [];
 }

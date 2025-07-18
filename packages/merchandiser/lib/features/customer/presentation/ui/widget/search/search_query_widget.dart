@@ -6,9 +6,7 @@ class SearchQueryWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = ref.watch(
-      merchandiserCustomerProvider.select(
-        (value) => value.lastSearchQuery,
-      ),
+      merchandiserCustomerProvider.select((value) => value.lastSearchQuery),
     );
 
     if (query.isEmpty) {
@@ -32,10 +30,7 @@ class SearchQueryWidget extends ConsumerWidget {
               decoration: ShapeDecoration(
                 color: Theme.of(context).canvasColor,
                 shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                    width: 0.5,
-                    color: Colors.black,
-                  ),
+                  side: const BorderSide(width: 0.5, color: Colors.black),
                   borderRadius: BorderRadius.circular(kSmall),
                 ),
               ),
@@ -50,9 +45,7 @@ class SearchQueryWidget extends ConsumerWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    const SizedBox(
-                      width: kSmall,
-                    ),
+                    const SizedBox(width: kSmall),
                     GestureDetector(
                       onTap: () async {
                         // clear the search
@@ -64,10 +57,7 @@ class SearchQueryWidget extends ConsumerWidget {
                             .read(merchandiserCustomerProvider.notifier)
                             .watchMerchandiserCustomers();
                       },
-                      child: const Icon(
-                        Icons.clear_outlined,
-                        size: kMedium,
-                      ),
+                      child: const Icon(Icons.clear_outlined, size: kMedium),
                     ),
                   ],
                 ),

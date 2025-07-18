@@ -73,8 +73,10 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
   void _listener() {
     // listen for error
-    ref.listen(loginControllerProvider.select((value) => value.error),
-        (_, next) {
+    ref.listen(loginControllerProvider.select((value) => value.error), (
+      _,
+      next,
+    ) {
       if (next != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -86,12 +88,14 @@ class _LoginFormState extends ConsumerState<LoginForm> {
       }
     });
     // listen for success
-    ref.listen(loginControllerProvider.select((value) => value.isLoginSuccess),
-        (_, next) {
-      if (next) {
-        context.go('/');
-      }
-    });
+    ref.listen(
+      loginControllerProvider.select((value) => value.isLoginSuccess),
+      (_, next) {
+        if (next) {
+          context.go('/');
+        }
+      },
+    );
   }
 
   void _login() {
