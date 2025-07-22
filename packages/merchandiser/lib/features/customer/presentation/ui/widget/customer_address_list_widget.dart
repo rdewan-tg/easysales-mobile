@@ -62,8 +62,16 @@ class _CustomerAddressListWidgetState
                 title: Text(data.deliveryName),
                 subtitle: Text(data.address),
                 onTap: () {
+                  // check if site visit is enabled
+                  final isSiteVisitEnabled = ref
+                      .read(merchandiserCustomerProvider.notifier)
+                      .isSiteVisitEnabled;
+                  // if site visit is enabled, navigate to site visit screen
+                  // else navigate to capture image screen
                   context.push(
-                    '/merchandiser/capture-image',
+                    isSiteVisitEnabled
+                        ? "/merchandiser/$siteVisitRoute"
+                        : "/merchandiser/$captureImageRoute",
                     extra: {
                       'customerId': data.customerId,
                       'customerName': widget.customerName,

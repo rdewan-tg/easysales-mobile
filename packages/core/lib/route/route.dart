@@ -23,3 +23,5 @@ const String searchProductRoute = 'search-product';
 const String orderHistoryRoute = 'order-history';
 const String orderHistoryDetailRoute = 'order-history-detail';
 const String orderRunningNumberRoute = 'order-running-number';
+const String siteVisitRoute = 'site-visit';
+const String companySettingRoute = 'company-setting';

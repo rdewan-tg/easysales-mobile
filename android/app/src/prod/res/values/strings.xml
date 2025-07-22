@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EasySales</string>
+    <string name="google_maps_key">AIzaSyCBRQWt580f7LtIkHaKvAQVp95K-97uQDc</string>
 </resources>

@@ -31,7 +31,7 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
       await ref.read(salesHeaderControllerProvider.notifier).getSettings();
       ref
           .read(salesHeaderControllerProvider.notifier)
-          .createSalesHeader(widget.extras, _getFormatedTime('dd/MM/yyyy'));
+          .createSalesHeader(widget.extras, _getFormattedTime('dd/MM/yyyy'));
     });
   }
 
@@ -42,7 +42,7 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
     super.dispose();
   }
 
-  String _getFormatedTime(String format) {
+  String _getFormattedTime(String format) {
     // get the time zone
     final timeZone = ref
         .read(salesHeaderControllerProvider.notifier)
@@ -153,7 +153,14 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
     final bool shouldPop = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Are you sure?'.hardcoded),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.warning_amber_rounded, color: Colors.amber),
+            const SizedBox(width: kSmall),
+            Text('Exit'.hardcoded),
+          ],
+        ),
         content: Text('Do you want to leave this page?'.hardcoded),
         actions: [
           TextButton(

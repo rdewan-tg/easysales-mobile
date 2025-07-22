@@ -79,6 +79,22 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 context.go('/setting/device-setting');
               },
             ),
+            // company setting
+            ListTile(
+              title: Text(context.localizations('setting.companySetting')),
+              subtitle: Text(
+                context.localizations('setting.manageYourCompany'),
+              ),
+              trailing: IconButton(
+                onPressed: () {
+                  context.go('/setting/company-setting');
+                },
+                icon: const Icon(Icons.navigate_next),
+              ),
+              onTap: () {
+                context.go('/setting/company-setting');
+              },
+            ),
             // order running number
             ListTile(
               title: Text(

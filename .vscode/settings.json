@@ -16,7 +16,8 @@
     "Packsize",
     "customre",
     "Botton",
-    "Culculate"
+    "Culculate",
+    "dimens"
   ],
   "yaml.schemaStore.enable": false
 }

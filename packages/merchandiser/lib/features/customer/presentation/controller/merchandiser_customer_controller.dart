@@ -174,4 +174,13 @@ class MerchandiserCustomerController
   void clearTotalCustomerCount() {
     state = state.copyWith(totalCustomerCount: 0);
   }
+
+  Future<void> getSetting() async {
+    final setting = await ref
+        .read(merchandiserCustomerServiceProvider)
+        .getAllSetting();
+    state = state.copyWith(settings: setting);
+  }
+
+  bool get isSiteVisitEnabled => state.settings['isSiteVisitEnabled'] == 'true';
 }

@@ -20,7 +20,6 @@ class EnvReader {
       case Flavor.prod:
         return EnvProd.baseUrl;
     }
-
   }
 
   Uint8List getCertificate() {
@@ -32,7 +31,6 @@ class EnvReader {
       case Flavor.prod:
         return base64Decode(EnvProd.certificate);
     }
-
   }
 
   String getAndroidBuildId() {
@@ -44,7 +42,6 @@ class EnvReader {
       case Flavor.prod:
         return EnvProd.androidBuildId;
     }
-
   }
 
   String getIosBuildId() {
@@ -56,7 +53,6 @@ class EnvReader {
       case Flavor.prod:
         return EnvProd.iosBuildId;
     }
-
   }
 
   bool getIsCertificatePinning() {
@@ -68,6 +64,5 @@ class EnvReader {
       case Flavor.prod:
         return EnvProd.isCertificatePinning;
     }
-
   }
 }

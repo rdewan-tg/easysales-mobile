@@ -3,6 +3,7 @@ import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:core/data/local/secure_storage/isecure_storage.dart';
 import 'package:core/data/local/secure_storage/secure_storage.dart';
 import 'package:core/data/local/secure_storage/secure_storage_const.dart';
+import 'package:setting/data/dto/company_setting.dart';
 import 'package:setting/data/dto/device_setting.dart';
 import 'package:setting/data/repository/isetting_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,7 +24,7 @@ ISettingRepository settingRepository(Ref ref) {
   final settingStorage = ref.watch(settingStorageProvider);
   final secureStorage = ref.watch(secureStorageProvider);
 
-  return SettingRepositroy(
+  return SettingRepository(
     settingApi,
     settingDao,
     settingStorage,
@@ -31,7 +32,7 @@ ISettingRepository settingRepository(Ref ref) {
   );
 }
 
-final class SettingRepositroy
+final class SettingRepository
     with DioExceptionMapper
     implements ISettingRepository {
   final SettingApi _settingApi;
@@ -39,7 +40,7 @@ final class SettingRepositroy
   final ISettingStorage _settingStorage;
   final ISecureStorage _secureStorage;
 
-  SettingRepositroy(
+  SettingRepository(
     this._settingApi,
     this._settingDao,
     this._settingStorage,
@@ -69,6 +70,24 @@ final class SettingRepositroy
   Future<DeviceSettingResponse> getDeviceSetting(String deviceId) async {
     try {
       final response = await _settingApi.findByDeviceId(deviceId);
+
+      return response;
+    } on DioException catch (e, s) {
+      throw mapDioExceptionToFailure(e, s);
+    } catch (e, s) {
+      throw Failure(
+        message:
+            "An unexpected error occurred. Please try again later".hardcoded,
+        exception: e as Exception,
+        stackTrace: s,
+      );
+    }
+  }
+
+  @override
+  Future<CompanySettingResponse> getCompanySetting() async {
+    try {
+      final response = await _settingApi.findByCompanyId();
 
       return response;
     } on DioException catch (e, s) {

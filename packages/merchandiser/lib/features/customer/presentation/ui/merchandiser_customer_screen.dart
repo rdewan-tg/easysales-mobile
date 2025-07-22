@@ -18,6 +18,7 @@ class _MerchandiserCustomerScreenState
           .read(merchandiserCustomerProvider.notifier)
           .watchMerchandiserCustomers();
     });
+    ref.read(merchandiserCustomerProvider.notifier).getSetting();
   }
 
   @override

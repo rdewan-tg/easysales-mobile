@@ -12,3 +12,4 @@ part 'presentation/ui/theme_picker_screen.dart';
 part 'presentation/ui/language_picker_screen.dart';
 part 'presentation/ui/device_setting_screen.dart';
 part 'presentation/ui/order_running_number_screen.dart';
+part 'presentation/ui/company_setting_screen.dart';

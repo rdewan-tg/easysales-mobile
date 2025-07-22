@@ -199,6 +199,7 @@ class AppRouter {
             _captureImageRoute(),
             _searchMerchandiserCustomerRoute(),
             _merchandiserCustomerImportRoute(),
+            _siteVisitRoute(),
           ],
         ),
       ],
@@ -222,6 +223,7 @@ class AppRouter {
             _profileRoute(),
             _orderRunningNumberRoute(),
             _deviceSettingRoute(),
+            _companySettingRoute(),
           ],
         ),
       ],
@@ -313,6 +315,18 @@ class AppRouter {
         key: state.pageKey,
         name: state.name,
         child: const DeviceSettingScreen(),
+      ),
+    );
+  }
+
+  RouteBase _companySettingRoute() {
+    return GoRoute(
+      path: '/$companySettingRoute',
+      name: companySettingRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const CompanySettingScreen(),
       ),
     );
   }
@@ -439,6 +453,17 @@ class AppRouter {
         name: state.name,
         child: const SearchItemsScreen(),
       ),
+    );
+  }
+
+  RouteBase _siteVisitRoute() {
+    return GoRoute(
+      path: '/$siteVisitRoute',
+      name: siteVisitRoute,
+      builder: (context, state) {
+        final extras = state.extra as Map<String, dynamic>;
+        return SiteVisitScreen(extras: extras);
+      },
     );
   }
 

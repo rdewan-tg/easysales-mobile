@@ -30,6 +30,7 @@ mixin _$MerchandiserCustomerState {
   List<String> get searchHistory => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
   String get lastSearchQuery => throw _privateConstructorUsedError;
+  Map<String, String> get settings => throw _privateConstructorUsedError;
 
   /// Create a copy of MerchandiserCustomerState
   /// with the given fields replaced by the non-null parameter values.
@@ -57,6 +58,7 @@ abstract class $MerchandiserCustomerStateCopyWith<$Res> {
     List<String> searchHistory,
     String searchQuery,
     String lastSearchQuery,
+    Map<String, String> settings,
   });
 }
 
@@ -89,6 +91,7 @@ class _$MerchandiserCustomerStateCopyWithImpl<
     Object? searchHistory = null,
     Object? searchQuery = null,
     Object? lastSearchQuery = null,
+    Object? settings = null,
   }) {
     return _then(
       _value.copyWith(
@@ -136,6 +139,10 @@ class _$MerchandiserCustomerStateCopyWithImpl<
                 ? _value.lastSearchQuery
                 : lastSearchQuery // ignore: cast_nullable_to_non_nullable
                       as String,
+            settings: null == settings
+                ? _value.settings
+                : settings // ignore: cast_nullable_to_non_nullable
+                      as Map<String, String>,
           )
           as $Val,
     );
@@ -163,6 +170,7 @@ abstract class _$$MerchandiserCustomerStateImplCopyWith<$Res>
     List<String> searchHistory,
     String searchQuery,
     String lastSearchQuery,
+    Map<String, String> settings,
   });
 }
 
@@ -195,6 +203,7 @@ class __$$MerchandiserCustomerStateImplCopyWithImpl<$Res>
     Object? searchHistory = null,
     Object? searchQuery = null,
     Object? lastSearchQuery = null,
+    Object? settings = null,
   }) {
     return _then(
       _$MerchandiserCustomerStateImpl(
@@ -242,6 +251,10 @@ class __$$MerchandiserCustomerStateImplCopyWithImpl<$Res>
             ? _value.lastSearchQuery
             : lastSearchQuery // ignore: cast_nullable_to_non_nullable
                   as String,
+        settings: null == settings
+            ? _value._settings
+            : settings // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>,
       ),
     );
   }
@@ -262,9 +275,11 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
     final List<String> searchHistory = const [],
     this.searchQuery = '',
     this.lastSearchQuery = '',
+    final Map<String, String> settings = const {},
   }) : _customers = customers,
        _addresses = addresses,
-       _searchHistory = searchHistory;
+       _searchHistory = searchHistory,
+       _settings = settings;
 
   @override
   @JsonKey()
@@ -315,10 +330,18 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
   @override
   @JsonKey()
   final String lastSearchQuery;
+  final Map<String, String> _settings;
+  @override
+  @JsonKey()
+  Map<String, String> get settings {
+    if (_settings is EqualUnmodifiableMapView) return _settings;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_settings);
+  }
 
   @override
   String toString() {
-    return 'MerchandiserCustomerState(isLoading: $isLoading, isCustomerImported: $isCustomerImported, isSearchHistoryCleared: $isSearchHistoryCleared, totalSearchHistoryCleared: $totalSearchHistoryCleared, totalCustomerCount: $totalCustomerCount, customers: $customers, addresses: $addresses, errorMsg: $errorMsg, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery)';
+    return 'MerchandiserCustomerState(isLoading: $isLoading, isCustomerImported: $isCustomerImported, isSearchHistoryCleared: $isSearchHistoryCleared, totalSearchHistoryCleared: $totalSearchHistoryCleared, totalCustomerCount: $totalCustomerCount, customers: $customers, addresses: $addresses, errorMsg: $errorMsg, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, settings: $settings)';
   }
 
   @override
@@ -356,7 +379,8 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
             (identical(other.lastSearchQuery, lastSearchQuery) ||
-                other.lastSearchQuery == lastSearchQuery));
+                other.lastSearchQuery == lastSearchQuery) &&
+            const DeepCollectionEquality().equals(other._settings, _settings));
   }
 
   @override
@@ -373,6 +397,7 @@ class _$MerchandiserCustomerStateImpl implements _MerchandiserCustomerState {
     const DeepCollectionEquality().hash(_searchHistory),
     searchQuery,
     lastSearchQuery,
+    const DeepCollectionEquality().hash(_settings),
   );
 
   /// Create a copy of MerchandiserCustomerState
@@ -400,6 +425,7 @@ abstract class _MerchandiserCustomerState implements MerchandiserCustomerState {
     final List<String> searchHistory,
     final String searchQuery,
     final String lastSearchQuery,
+    final Map<String, String> settings,
   }) = _$MerchandiserCustomerStateImpl;
 
   @override
@@ -424,6 +450,8 @@ abstract class _MerchandiserCustomerState implements MerchandiserCustomerState {
   String get searchQuery;
   @override
   String get lastSearchQuery;
+  @override
+  Map<String, String> get settings;
 
   /// Create a copy of MerchandiserCustomerState
   /// with the given fields replaced by the non-null parameter values.

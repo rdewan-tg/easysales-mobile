@@ -15,6 +15,9 @@ dependencies:
   core:
     path: ../core
 
+dependency_overrides:
+  analyzer_plugin: ^0.13.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

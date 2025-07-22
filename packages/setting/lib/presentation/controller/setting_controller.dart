@@ -101,6 +101,22 @@ final class SettingController extends _$SettingController {
     );
   }
 
+  Future<void> getCompanySetting() async {
+    state = state.copyWith(isLoading: true, errorMsg: null);
+
+    final service = ref.read(settingServiceProvider);
+
+    final result = await service.getCompanySetting();
+    result.when(
+      (success) {
+        state = state.copyWith(isLoading: false, settings: success);
+      },
+      (error) {
+        state = state.copyWith(isLoading: false, errorMsg: error.message);
+      },
+    );
+  }
+
   Future<void> watchTheme() async {
     // Start listening to the theme mode stream
     _themeModeSubscription = ref
