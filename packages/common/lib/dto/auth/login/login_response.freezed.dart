@@ -1163,6 +1163,8 @@ mixin _$CompanyDto {
   String? get countryCode => throw _privateConstructorUsedError;
   @JsonKey(name: "timeZone")
   String get timeZone => throw _privateConstructorUsedError;
+  @JsonKey(name: "isSiteVisitEnabled")
+  bool get isSiteVisitEnabled => throw _privateConstructorUsedError;
 
   /// Serializes this CompanyDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1187,6 +1189,7 @@ abstract class $CompanyDtoCopyWith<$Res> {
     @JsonKey(name: "companyCode") String? companyCode,
     @JsonKey(name: "countryCode") String? countryCode,
     @JsonKey(name: "timeZone") String timeZone,
+    @JsonKey(name: "isSiteVisitEnabled") bool isSiteVisitEnabled,
   });
 }
 
@@ -1210,6 +1213,7 @@ class _$CompanyDtoCopyWithImpl<$Res, $Val extends CompanyDto>
     Object? companyCode = freezed,
     Object? countryCode = freezed,
     Object? timeZone = null,
+    Object? isSiteVisitEnabled = null,
   }) {
     return _then(
       _value.copyWith(
@@ -1233,6 +1237,10 @@ class _$CompanyDtoCopyWithImpl<$Res, $Val extends CompanyDto>
                 ? _value.timeZone
                 : timeZone // ignore: cast_nullable_to_non_nullable
                       as String,
+            isSiteVisitEnabled: null == isSiteVisitEnabled
+                ? _value.isSiteVisitEnabled
+                : isSiteVisitEnabled // ignore: cast_nullable_to_non_nullable
+                      as bool,
           )
           as $Val,
     );
@@ -1254,6 +1262,7 @@ abstract class _$$CompanyDtoImplCopyWith<$Res>
     @JsonKey(name: "companyCode") String? companyCode,
     @JsonKey(name: "countryCode") String? countryCode,
     @JsonKey(name: "timeZone") String timeZone,
+    @JsonKey(name: "isSiteVisitEnabled") bool isSiteVisitEnabled,
   });
 }
 
@@ -1276,6 +1285,7 @@ class __$$CompanyDtoImplCopyWithImpl<$Res>
     Object? companyCode = freezed,
     Object? countryCode = freezed,
     Object? timeZone = null,
+    Object? isSiteVisitEnabled = null,
   }) {
     return _then(
       _$CompanyDtoImpl(
@@ -1299,6 +1309,10 @@ class __$$CompanyDtoImplCopyWithImpl<$Res>
             ? _value.timeZone
             : timeZone // ignore: cast_nullable_to_non_nullable
                   as String,
+        isSiteVisitEnabled: null == isSiteVisitEnabled
+            ? _value.isSiteVisitEnabled
+            : isSiteVisitEnabled // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }
@@ -1313,6 +1327,7 @@ class _$CompanyDtoImpl implements _CompanyDto {
     @JsonKey(name: "companyCode") this.companyCode,
     @JsonKey(name: "countryCode") this.countryCode,
     @JsonKey(name: "timeZone") required this.timeZone,
+    @JsonKey(name: "isSiteVisitEnabled") required this.isSiteVisitEnabled,
   });
 
   factory _$CompanyDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -1333,10 +1348,13 @@ class _$CompanyDtoImpl implements _CompanyDto {
   @override
   @JsonKey(name: "timeZone")
   final String timeZone;
+  @override
+  @JsonKey(name: "isSiteVisitEnabled")
+  final bool isSiteVisitEnabled;
 
   @override
   String toString() {
-    return 'CompanyDto(id: $id, name: $name, companyCode: $companyCode, countryCode: $countryCode, timeZone: $timeZone)';
+    return 'CompanyDto(id: $id, name: $name, companyCode: $companyCode, countryCode: $countryCode, timeZone: $timeZone, isSiteVisitEnabled: $isSiteVisitEnabled)';
   }
 
   @override
@@ -1351,13 +1369,22 @@ class _$CompanyDtoImpl implements _CompanyDto {
             (identical(other.countryCode, countryCode) ||
                 other.countryCode == countryCode) &&
             (identical(other.timeZone, timeZone) ||
-                other.timeZone == timeZone));
+                other.timeZone == timeZone) &&
+            (identical(other.isSiteVisitEnabled, isSiteVisitEnabled) ||
+                other.isSiteVisitEnabled == isSiteVisitEnabled));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, companyCode, countryCode, timeZone);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    name,
+    companyCode,
+    countryCode,
+    timeZone,
+    isSiteVisitEnabled,
+  );
 
   /// Create a copy of CompanyDto
   /// with the given fields replaced by the non-null parameter values.
@@ -1380,6 +1407,7 @@ abstract class _CompanyDto implements CompanyDto {
     @JsonKey(name: "companyCode") final String? companyCode,
     @JsonKey(name: "countryCode") final String? countryCode,
     @JsonKey(name: "timeZone") required final String timeZone,
+    @JsonKey(name: "isSiteVisitEnabled") required final bool isSiteVisitEnabled,
   }) = _$CompanyDtoImpl;
 
   factory _CompanyDto.fromJson(Map<String, dynamic> json) =
@@ -1400,6 +1428,9 @@ abstract class _CompanyDto implements CompanyDto {
   @override
   @JsonKey(name: "timeZone")
   String get timeZone;
+  @override
+  @JsonKey(name: "isSiteVisitEnabled")
+  bool get isSiteVisitEnabled;
 
   /// Create a copy of CompanyDto
   /// with the given fields replaced by the non-null parameter values.

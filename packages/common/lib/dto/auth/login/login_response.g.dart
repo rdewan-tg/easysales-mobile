@@ -91,6 +91,7 @@ _$CompanyDtoImpl _$$CompanyDtoImplFromJson(Map<String, dynamic> json) =>
       companyCode: json['companyCode'] as String?,
       countryCode: json['countryCode'] as String?,
       timeZone: json['timeZone'] as String,
+      isSiteVisitEnabled: json['isSiteVisitEnabled'] as bool,
     );
 
 Map<String, dynamic> _$$CompanyDtoImplToJson(_$CompanyDtoImpl instance) =>
@@ -100,6 +101,7 @@ Map<String, dynamic> _$$CompanyDtoImplToJson(_$CompanyDtoImpl instance) =>
       'companyCode': instance.companyCode,
       'countryCode': instance.countryCode,
       'timeZone': instance.timeZone,
+      'isSiteVisitEnabled': instance.isSiteVisitEnabled,
     };
 
 _$DeviceSettingDtoImpl _$$DeviceSettingDtoImplFromJson(
