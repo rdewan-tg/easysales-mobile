@@ -28,6 +28,8 @@ class _CustomerAddressListWidgetState
       ref
           .read(addressControllerProvider.notifier)
           .watchCustomerAddress(widget.customerId);
+
+      ref.read(merchandiserCustomerProvider.notifier).getSetting();
     });
   }
 

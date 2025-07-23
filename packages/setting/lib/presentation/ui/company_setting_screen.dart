@@ -57,7 +57,7 @@ class _CompanySettingScreenState extends ConsumerState<CompanySettingScreen> {
                   context.localizations('setting.isSiteVisitEnabled'),
                 ),
                 value: settings['isSiteVisitEnabled'] == 'true',
-                onChanged: null,
+                onChanged: (bool value) {},
               ),
             ],
           ),

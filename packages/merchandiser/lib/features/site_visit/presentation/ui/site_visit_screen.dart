@@ -110,6 +110,23 @@ class _SiteVisitScreenState extends ConsumerState<SiteVisitScreen> {
         appBar: AppBar(
           title: Text(context.localizations('siteVisit.title')),
           centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                context.push(
+                  "/merchandiser/$captureImageRoute",
+                  extra: {
+                    'customerId': widget.extras['customerId'],
+                    'customerName': widget.extras['customerName'],
+                    'address': widget.extras['address'],
+                    'customerDimension': widget.extras['customerDimension'],
+                    'location': widget.extras['location'],
+                  },
+                );
+              },
+              icon: const Icon(Icons.camera_alt_outlined),
+            ),
+          ],
         ),
         body: Consumer(
           builder: (context, ref, child) {
