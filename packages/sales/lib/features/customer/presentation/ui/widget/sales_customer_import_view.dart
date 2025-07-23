@@ -20,8 +20,9 @@ class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
           Consumer(
             builder: (context, ref, child) {
               final totalCustomerCount = ref.watch(
-                salesCustomerProvider
-                    .select((value) => value.totalCustomerCount),
+                salesCustomerProvider.select(
+                  (value) => value.totalCustomerCount,
+                ),
               );
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,25 +92,25 @@ class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
 
   void _listener() {
     // listen for error
-    ref.listen(
-      addressControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(addressControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
 
     // listen for status
     ref.listen(
@@ -162,29 +163,31 @@ class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
     );
 
     // listen for error
-    ref.listen(
-      salesCustomerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(salesCustomerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
 
     // listen for loading
-    ref.listen(salesCustomerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(salesCustomerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {
@@ -193,29 +196,31 @@ class _CustomerImportViewState extends ConsumerState<SalesCustomerImportView> {
     });
 
     // listen for error in address controller
-    ref.listen(
-      addressControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(addressControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
 
     // listen for loading in address controller
-    ref.listen(addressControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(addressControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {

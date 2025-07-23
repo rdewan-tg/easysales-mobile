@@ -5,8 +5,7 @@ part 'this_month_site_visit_report_response.g.dart';
 
 ThisMonthSiteVisitReportResponse deserializeThisMonthSiteVisitReportResponse(
   Map<String, dynamic> json,
-) =>
-    ThisMonthSiteVisitReportResponse.fromJson(json);
+) => ThisMonthSiteVisitReportResponse.fromJson(json);
 
 @freezed
 class ThisMonthSiteVisitReportResponse with _$ThisMonthSiteVisitReportResponse {
@@ -17,8 +16,7 @@ class ThisMonthSiteVisitReportResponse with _$ThisMonthSiteVisitReportResponse {
 
   factory ThisMonthSiteVisitReportResponse.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ThisMonthSiteVisitReportResponseFromJson(json);
+  ) => _$ThisMonthSiteVisitReportResponseFromJson(json);
 }
 
 @freezed

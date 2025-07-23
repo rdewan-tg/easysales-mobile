@@ -20,10 +20,7 @@ class SalesCustomerDao extends DatabaseAccessor<AppDatabase>
   ) async {
     try {
       await batch((batch) {
-        batch.insertAllOnConflictUpdate(
-          salesCustomerEntity,
-          dataList,
-        );
+        batch.insertAllOnConflictUpdate(salesCustomerEntity, dataList);
       });
     } catch (e, stackTrace) {
       throw Failure(
@@ -36,9 +33,9 @@ class SalesCustomerDao extends DatabaseAccessor<AppDatabase>
   // watch the total count
   Stream<int> watchTotalCount() {
     final countExp = countAll();
-    return (selectOnly(salesCustomerEntity)..addColumns([countExp]))
-        .map((row) => row.read(countExp)!)
-        .watchSingle();
+    return (selectOnly(
+      salesCustomerEntity,
+    )..addColumns([countExp])).map((row) => row.read(countExp)!).watchSingle();
   }
 
   Stream<List<SalesCustomerEntityData>> watchAll(String? searchQuery) {
@@ -51,10 +48,12 @@ class SalesCustomerDao extends DatabaseAccessor<AppDatabase>
       query.where(
         (tbl) =>
             tbl.customerId.like(formattedSearchQuery) | // Filter by customerId
-            tbl.customerName
-                .like(formattedSearchQuery) | // Filter by customerName
-            tbl.customreDimension
-                .like(formattedSearchQuery), // Filter by customreDimension
+            tbl.customerName.like(
+              formattedSearchQuery,
+            ) | // Filter by customerName
+            tbl.customreDimension.like(
+              formattedSearchQuery,
+            ), // Filter by customreDimension
       );
     }
 
@@ -67,9 +66,9 @@ class SalesCustomerDao extends DatabaseAccessor<AppDatabase>
     String customerId,
   ) async {
     try {
-      return await (select(salesCustomerEntity)
-            ..where((tbl) => tbl.customerId.equals(customerId)))
-          .getSingle();
+      return await (select(
+        salesCustomerEntity,
+      )..where((tbl) => tbl.customerId.equals(customerId))).getSingle();
     } catch (e, stackTrace) {
       throw Failure(message: e.toString(), stackTrace: stackTrace);
     }

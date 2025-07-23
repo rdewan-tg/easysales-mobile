@@ -2,8 +2,8 @@ part of '../../../dashboard.dart';
 
 final dashboardControllerProvider =
     AutoDisposeNotifierProvider<DashboardController, DashboardState>(
-  DashboardController.new,
-);
+      DashboardController.new,
+    );
 
 final class DashboardController extends AutoDisposeNotifier<DashboardState> {
   @override

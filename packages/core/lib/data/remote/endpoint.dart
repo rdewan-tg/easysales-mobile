@@ -33,3 +33,10 @@ const String createSalesLineEndPoint = '/v1/api/sales-line';
 const String createManySalesLineEndPoint = '/v1/api/sales-line/create-many';
 const String lastSalesOrderIdEndPoint =
     '/v1/api/sales-header/find/max-order-id/{id}/{prefix}';
+
+// site visit
+const String createSiteVisitEndPoint = '/v1/api/site-visit';
+const String updateSiteVisitEndPoint = '/v1/api/site-visit';
+
+// company setting
+const String findCompanySettingEndPoint = '/v1/api/company-setting';

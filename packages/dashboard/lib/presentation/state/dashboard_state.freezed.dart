@@ -12,7 +12,8 @@ part of 'dashboard_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$DashboardState {
@@ -29,8 +30,9 @@ mixin _$DashboardState {
 /// @nodoc
 abstract class $DashboardStateCopyWith<$Res> {
   factory $DashboardStateCopyWith(
-          DashboardState value, $Res Function(DashboardState) then) =
-      _$DashboardStateCopyWithImpl<$Res, DashboardState>;
+    DashboardState value,
+    $Res Function(DashboardState) then,
+  ) = _$DashboardStateCopyWithImpl<$Res, DashboardState>;
   @useResult
   $Res call({int pageIndex, bool isVisible});
 }
@@ -49,29 +51,30 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? pageIndex = null,
-    Object? isVisible = null,
-  }) {
-    return _then(_value.copyWith(
-      pageIndex: null == pageIndex
-          ? _value.pageIndex
-          : pageIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      isVisible: null == isVisible
-          ? _value.isVisible
-          : isVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  $Res call({Object? pageIndex = null, Object? isVisible = null}) {
+    return _then(
+      _value.copyWith(
+            pageIndex: null == pageIndex
+                ? _value.pageIndex
+                : pageIndex // ignore: cast_nullable_to_non_nullable
+                      as int,
+            isVisible: null == isVisible
+                ? _value.isVisible
+                : isVisible // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$DashboardStateImplCopyWith<$Res>
     implements $DashboardStateCopyWith<$Res> {
-  factory _$$DashboardStateImplCopyWith(_$DashboardStateImpl value,
-          $Res Function(_$DashboardStateImpl) then) =
-      __$$DashboardStateImplCopyWithImpl<$Res>;
+  factory _$$DashboardStateImplCopyWith(
+    _$DashboardStateImpl value,
+    $Res Function(_$DashboardStateImpl) then,
+  ) = __$$DashboardStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int pageIndex, bool isVisible});
@@ -82,27 +85,27 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
     extends _$DashboardStateCopyWithImpl<$Res, _$DashboardStateImpl>
     implements _$$DashboardStateImplCopyWith<$Res> {
   __$$DashboardStateImplCopyWithImpl(
-      _$DashboardStateImpl _value, $Res Function(_$DashboardStateImpl) _then)
-      : super(_value, _then);
+    _$DashboardStateImpl _value,
+    $Res Function(_$DashboardStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? pageIndex = null,
-    Object? isVisible = null,
-  }) {
-    return _then(_$DashboardStateImpl(
-      pageIndex: null == pageIndex
-          ? _value.pageIndex
-          : pageIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      isVisible: null == isVisible
-          ? _value.isVisible
-          : isVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? pageIndex = null, Object? isVisible = null}) {
+    return _then(
+      _$DashboardStateImpl(
+        pageIndex: null == pageIndex
+            ? _value.pageIndex
+            : pageIndex // ignore: cast_nullable_to_non_nullable
+                  as int,
+        isVisible: null == isVisible
+            ? _value.isVisible
+            : isVisible // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -144,7 +147,9 @@ class _$DashboardStateImpl implements _DashboardState {
   @pragma('vm:prefer-inline')
   _$$DashboardStateImplCopyWith<_$DashboardStateImpl> get copyWith =>
       __$$DashboardStateImplCopyWithImpl<_$DashboardStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _DashboardState implements DashboardState {

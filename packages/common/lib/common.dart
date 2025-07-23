@@ -38,12 +38,13 @@ part 'extension/text_theme.dart';
 part 'extension/color_theme.dart';
 part 'extension/string_hardcoded.dart';
 part 'extension/translations.dart';
+part 'extension/app_snack_bar.dart';
 
 part 'enum/user_role.dart';
 
-part 'provider/scroll_controller_povider.dart';
+part 'provider/scroll_controller_provider.dart';
 part 'provider/auth_state_provider.dart';
-part 'provider/bottom_navigation_state_povider.dart';
+part 'provider/bottom_navigation_state_provider.dart';
 part 'provider/cache.dart';
 
 part 'mixin/dio_exception_mapper.dart';

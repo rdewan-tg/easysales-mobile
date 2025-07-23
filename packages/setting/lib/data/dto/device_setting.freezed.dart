@@ -12,10 +12,12 @@ part of 'device_setting.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DeviceSettingResponse _$DeviceSettingResponseFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _DeviceSettingResponse.fromJson(json);
 }
 
@@ -36,9 +38,10 @@ mixin _$DeviceSettingResponse {
 
 /// @nodoc
 abstract class $DeviceSettingResponseCopyWith<$Res> {
-  factory $DeviceSettingResponseCopyWith(DeviceSettingResponse value,
-          $Res Function(DeviceSettingResponse) then) =
-      _$DeviceSettingResponseCopyWithImpl<$Res, DeviceSettingResponse>;
+  factory $DeviceSettingResponseCopyWith(
+    DeviceSettingResponse value,
+    $Res Function(DeviceSettingResponse) then,
+  ) = _$DeviceSettingResponseCopyWithImpl<$Res, DeviceSettingResponse>;
   @useResult
   $Res call({String status, DeviceSettingData data});
 
@@ -46,8 +49,10 @@ abstract class $DeviceSettingResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DeviceSettingResponseCopyWithImpl<$Res,
-        $Val extends DeviceSettingResponse>
+class _$DeviceSettingResponseCopyWithImpl<
+  $Res,
+  $Val extends DeviceSettingResponse
+>
     implements $DeviceSettingResponseCopyWith<$Res> {
   _$DeviceSettingResponseCopyWithImpl(this._value, this._then);
 
@@ -60,20 +65,20 @@ class _$DeviceSettingResponseCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as DeviceSettingData,
-    ) as $Val);
+  $Res call({Object? status = null, Object? data = null}) {
+    return _then(
+      _value.copyWith(
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            data: null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as DeviceSettingData,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of DeviceSettingResponse
@@ -91,9 +96,9 @@ class _$DeviceSettingResponseCopyWithImpl<$Res,
 abstract class _$$DeviceSettingResponseImplCopyWith<$Res>
     implements $DeviceSettingResponseCopyWith<$Res> {
   factory _$$DeviceSettingResponseImplCopyWith(
-          _$DeviceSettingResponseImpl value,
-          $Res Function(_$DeviceSettingResponseImpl) then) =
-      __$$DeviceSettingResponseImplCopyWithImpl<$Res>;
+    _$DeviceSettingResponseImpl value,
+    $Res Function(_$DeviceSettingResponseImpl) then,
+  ) = __$$DeviceSettingResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String status, DeviceSettingData data});
@@ -104,31 +109,31 @@ abstract class _$$DeviceSettingResponseImplCopyWith<$Res>
 
 /// @nodoc
 class __$$DeviceSettingResponseImplCopyWithImpl<$Res>
-    extends _$DeviceSettingResponseCopyWithImpl<$Res,
-        _$DeviceSettingResponseImpl>
+    extends
+        _$DeviceSettingResponseCopyWithImpl<$Res, _$DeviceSettingResponseImpl>
     implements _$$DeviceSettingResponseImplCopyWith<$Res> {
-  __$$DeviceSettingResponseImplCopyWithImpl(_$DeviceSettingResponseImpl _value,
-      $Res Function(_$DeviceSettingResponseImpl) _then)
-      : super(_value, _then);
+  __$$DeviceSettingResponseImplCopyWithImpl(
+    _$DeviceSettingResponseImpl _value,
+    $Res Function(_$DeviceSettingResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DeviceSettingResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = null,
-  }) {
-    return _then(_$DeviceSettingResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as DeviceSettingData,
-    ));
+  $Res call({Object? status = null, Object? data = null}) {
+    return _then(
+      _$DeviceSettingResponseImpl(
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        data: null == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as DeviceSettingData,
+      ),
+    );
   }
 }
 
@@ -169,21 +174,23 @@ class _$DeviceSettingResponseImpl implements _DeviceSettingResponse {
   @override
   @pragma('vm:prefer-inline')
   _$$DeviceSettingResponseImplCopyWith<_$DeviceSettingResponseImpl>
-      get copyWith => __$$DeviceSettingResponseImplCopyWithImpl<
-          _$DeviceSettingResponseImpl>(this, _$identity);
+  get copyWith =>
+      __$$DeviceSettingResponseImplCopyWithImpl<_$DeviceSettingResponseImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeviceSettingResponseImplToJson(
-      this,
-    );
+    return _$$DeviceSettingResponseImplToJson(this);
   }
 }
 
 abstract class _DeviceSettingResponse implements DeviceSettingResponse {
-  const factory _DeviceSettingResponse(
-      {required final String status,
-      required final DeviceSettingData data}) = _$DeviceSettingResponseImpl;
+  const factory _DeviceSettingResponse({
+    required final String status,
+    required final DeviceSettingData data,
+  }) = _$DeviceSettingResponseImpl;
 
   factory _DeviceSettingResponse.fromJson(Map<String, dynamic> json) =
       _$DeviceSettingResponseImpl.fromJson;
@@ -198,7 +205,7 @@ abstract class _DeviceSettingResponse implements DeviceSettingResponse {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeviceSettingResponseImplCopyWith<_$DeviceSettingResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 DeviceSettingData _$DeviceSettingDataFromJson(Map<String, dynamic> json) {
@@ -230,19 +237,21 @@ mixin _$DeviceSettingData {
 /// @nodoc
 abstract class $DeviceSettingDataCopyWith<$Res> {
   factory $DeviceSettingDataCopyWith(
-          DeviceSettingData value, $Res Function(DeviceSettingData) then) =
-      _$DeviceSettingDataCopyWithImpl<$Res, DeviceSettingData>;
+    DeviceSettingData value,
+    $Res Function(DeviceSettingData) then,
+  ) = _$DeviceSettingDataCopyWithImpl<$Res, DeviceSettingData>;
   @useResult
-  $Res call(
-      {int id,
-      String deviceId,
-      int userId,
-      String userName,
-      String salesPersonCode,
-      String orderNumberFormat,
-      DateTime createAt,
-      DateTime updatedAt,
-      int companyId});
+  $Res call({
+    int id,
+    String deviceId,
+    int userId,
+    String userName,
+    String salesPersonCode,
+    String orderNumberFormat,
+    DateTime createAt,
+    DateTime updatedAt,
+    int companyId,
+  });
 }
 
 /// @nodoc
@@ -270,74 +279,80 @@ class _$DeviceSettingDataCopyWithImpl<$Res, $Val extends DeviceSettingData>
     Object? updatedAt = null,
     Object? companyId = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      deviceId: null == deviceId
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPersonCode: null == salesPersonCode
-          ? _value.salesPersonCode
-          : salesPersonCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderNumberFormat: null == orderNumberFormat
-          ? _value.orderNumberFormat
-          : orderNumberFormat // ignore: cast_nullable_to_non_nullable
-              as String,
-      createAt: null == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            deviceId: null == deviceId
+                ? _value.deviceId
+                : deviceId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            userId: null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            userName: null == userName
+                ? _value.userName
+                : userName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            salesPersonCode: null == salesPersonCode
+                ? _value.salesPersonCode
+                : salesPersonCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            orderNumberFormat: null == orderNumberFormat
+                ? _value.orderNumberFormat
+                : orderNumberFormat // ignore: cast_nullable_to_non_nullable
+                      as String,
+            createAt: null == createAt
+                ? _value.createAt
+                : createAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            updatedAt: null == updatedAt
+                ? _value.updatedAt
+                : updatedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            companyId: null == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$DeviceSettingDataImplCopyWith<$Res>
     implements $DeviceSettingDataCopyWith<$Res> {
-  factory _$$DeviceSettingDataImplCopyWith(_$DeviceSettingDataImpl value,
-          $Res Function(_$DeviceSettingDataImpl) then) =
-      __$$DeviceSettingDataImplCopyWithImpl<$Res>;
+  factory _$$DeviceSettingDataImplCopyWith(
+    _$DeviceSettingDataImpl value,
+    $Res Function(_$DeviceSettingDataImpl) then,
+  ) = __$$DeviceSettingDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String deviceId,
-      int userId,
-      String userName,
-      String salesPersonCode,
-      String orderNumberFormat,
-      DateTime createAt,
-      DateTime updatedAt,
-      int companyId});
+  $Res call({
+    int id,
+    String deviceId,
+    int userId,
+    String userName,
+    String salesPersonCode,
+    String orderNumberFormat,
+    DateTime createAt,
+    DateTime updatedAt,
+    int companyId,
+  });
 }
 
 /// @nodoc
 class __$$DeviceSettingDataImplCopyWithImpl<$Res>
     extends _$DeviceSettingDataCopyWithImpl<$Res, _$DeviceSettingDataImpl>
     implements _$$DeviceSettingDataImplCopyWith<$Res> {
-  __$$DeviceSettingDataImplCopyWithImpl(_$DeviceSettingDataImpl _value,
-      $Res Function(_$DeviceSettingDataImpl) _then)
-      : super(_value, _then);
+  __$$DeviceSettingDataImplCopyWithImpl(
+    _$DeviceSettingDataImpl _value,
+    $Res Function(_$DeviceSettingDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DeviceSettingData
   /// with the given fields replaced by the non-null parameter values.
@@ -354,60 +369,63 @@ class __$$DeviceSettingDataImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? companyId = null,
   }) {
-    return _then(_$DeviceSettingDataImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      deviceId: null == deviceId
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPersonCode: null == salesPersonCode
-          ? _value.salesPersonCode
-          : salesPersonCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderNumberFormat: null == orderNumberFormat
-          ? _value.orderNumberFormat
-          : orderNumberFormat // ignore: cast_nullable_to_non_nullable
-              as String,
-      createAt: null == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$DeviceSettingDataImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        deviceId: null == deviceId
+            ? _value.deviceId
+            : deviceId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        userName: null == userName
+            ? _value.userName
+            : userName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        salesPersonCode: null == salesPersonCode
+            ? _value.salesPersonCode
+            : salesPersonCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        orderNumberFormat: null == orderNumberFormat
+            ? _value.orderNumberFormat
+            : orderNumberFormat // ignore: cast_nullable_to_non_nullable
+                  as String,
+        createAt: null == createAt
+            ? _value.createAt
+            : createAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        updatedAt: null == updatedAt
+            ? _value.updatedAt
+            : updatedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        companyId: null == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DeviceSettingDataImpl implements _DeviceSettingData {
-  const _$DeviceSettingDataImpl(
-      {required this.id,
-      required this.deviceId,
-      required this.userId,
-      required this.userName,
-      required this.salesPersonCode,
-      required this.orderNumberFormat,
-      required this.createAt,
-      required this.updatedAt,
-      required this.companyId});
+  const _$DeviceSettingDataImpl({
+    required this.id,
+    required this.deviceId,
+    required this.userId,
+    required this.userName,
+    required this.salesPersonCode,
+    required this.orderNumberFormat,
+    required this.createAt,
+    required this.updatedAt,
+    required this.companyId,
+  });
 
   factory _$DeviceSettingDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DeviceSettingDataImplFromJson(json);
@@ -461,8 +479,18 @@ class _$DeviceSettingDataImpl implements _DeviceSettingData {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, deviceId, userId, userName,
-      salesPersonCode, orderNumberFormat, createAt, updatedAt, companyId);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    deviceId,
+    userId,
+    userName,
+    salesPersonCode,
+    orderNumberFormat,
+    createAt,
+    updatedAt,
+    companyId,
+  );
 
   /// Create a copy of DeviceSettingData
   /// with the given fields replaced by the non-null parameter values.
@@ -471,27 +499,28 @@ class _$DeviceSettingDataImpl implements _DeviceSettingData {
   @pragma('vm:prefer-inline')
   _$$DeviceSettingDataImplCopyWith<_$DeviceSettingDataImpl> get copyWith =>
       __$$DeviceSettingDataImplCopyWithImpl<_$DeviceSettingDataImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeviceSettingDataImplToJson(
-      this,
-    );
+    return _$$DeviceSettingDataImplToJson(this);
   }
 }
 
 abstract class _DeviceSettingData implements DeviceSettingData {
-  const factory _DeviceSettingData(
-      {required final int id,
-      required final String deviceId,
-      required final int userId,
-      required final String userName,
-      required final String salesPersonCode,
-      required final String orderNumberFormat,
-      required final DateTime createAt,
-      required final DateTime updatedAt,
-      required final int companyId}) = _$DeviceSettingDataImpl;
+  const factory _DeviceSettingData({
+    required final int id,
+    required final String deviceId,
+    required final int userId,
+    required final String userName,
+    required final String salesPersonCode,
+    required final String orderNumberFormat,
+    required final DateTime createAt,
+    required final DateTime updatedAt,
+    required final int companyId,
+  }) = _$DeviceSettingDataImpl;
 
   factory _DeviceSettingData.fromJson(Map<String, dynamic> json) =
       _$DeviceSettingDataImpl.fromJson;

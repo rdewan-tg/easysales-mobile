@@ -12,7 +12,8 @@ part of 'sales_line_request.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 SalesLineRequest _$SalesLineRequestFromJson(Map<String, dynamic> json) {
   return _SalesLineRequest.fromJson(json);
@@ -52,28 +53,30 @@ mixin _$SalesLineRequest {
 /// @nodoc
 abstract class $SalesLineRequestCopyWith<$Res> {
   factory $SalesLineRequestCopyWith(
-          SalesLineRequest value, $Res Function(SalesLineRequest) then) =
-      _$SalesLineRequestCopyWithImpl<$Res, SalesLineRequest>;
+    SalesLineRequest value,
+    $Res Function(SalesLineRequest) then,
+  ) = _$SalesLineRequestCopyWithImpl<$Res, SalesLineRequest>;
   @useResult
-  $Res call(
-      {int? id,
-      String salesId,
-      int lineId,
-      String itemId,
-      String productId,
-      String productName,
-      String productDescription,
-      String packSize,
-      double quantity,
-      String salesUnit,
-      double salesPrice,
-      double taxAmount,
-      double lineAmount,
-      String inventDimId,
-      String transactionDate,
-      String deviceId,
-      int syncStatus,
-      int companyId});
+  $Res call({
+    int? id,
+    String salesId,
+    int lineId,
+    String itemId,
+    String productId,
+    String productName,
+    String productDescription,
+    String packSize,
+    double quantity,
+    String salesUnit,
+    double salesPrice,
+    double taxAmount,
+    double lineAmount,
+    String inventDimId,
+    String transactionDate,
+    String deviceId,
+    int syncStatus,
+    int companyId,
+  });
 }
 
 /// @nodoc
@@ -110,119 +113,125 @@ class _$SalesLineRequestCopyWithImpl<$Res, $Val extends SalesLineRequest>
     Object? syncStatus = null,
     Object? companyId = null,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      salesId: null == salesId
-          ? _value.salesId
-          : salesId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lineId: null == lineId
-          ? _value.lineId
-          : lineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      itemId: null == itemId
-          ? _value.itemId
-          : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
-      productDescription: null == productDescription
-          ? _value.productDescription
-          : productDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      packSize: null == packSize
-          ? _value.packSize
-          : packSize // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as double,
-      salesUnit: null == salesUnit
-          ? _value.salesUnit
-          : salesUnit // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPrice: null == salesPrice
-          ? _value.salesPrice
-          : salesPrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      taxAmount: null == taxAmount
-          ? _value.taxAmount
-          : taxAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-      lineAmount: null == lineAmount
-          ? _value.lineAmount
-          : lineAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-      inventDimId: null == inventDimId
-          ? _value.inventDimId
-          : inventDimId // ignore: cast_nullable_to_non_nullable
-              as String,
-      transactionDate: null == transactionDate
-          ? _value.transactionDate
-          : transactionDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceId: null == deviceId
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      syncStatus: null == syncStatus
-          ? _value.syncStatus
-          : syncStatus // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            salesId: null == salesId
+                ? _value.salesId
+                : salesId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            lineId: null == lineId
+                ? _value.lineId
+                : lineId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            itemId: null == itemId
+                ? _value.itemId
+                : itemId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            productId: null == productId
+                ? _value.productId
+                : productId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            productName: null == productName
+                ? _value.productName
+                : productName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            productDescription: null == productDescription
+                ? _value.productDescription
+                : productDescription // ignore: cast_nullable_to_non_nullable
+                      as String,
+            packSize: null == packSize
+                ? _value.packSize
+                : packSize // ignore: cast_nullable_to_non_nullable
+                      as String,
+            quantity: null == quantity
+                ? _value.quantity
+                : quantity // ignore: cast_nullable_to_non_nullable
+                      as double,
+            salesUnit: null == salesUnit
+                ? _value.salesUnit
+                : salesUnit // ignore: cast_nullable_to_non_nullable
+                      as String,
+            salesPrice: null == salesPrice
+                ? _value.salesPrice
+                : salesPrice // ignore: cast_nullable_to_non_nullable
+                      as double,
+            taxAmount: null == taxAmount
+                ? _value.taxAmount
+                : taxAmount // ignore: cast_nullable_to_non_nullable
+                      as double,
+            lineAmount: null == lineAmount
+                ? _value.lineAmount
+                : lineAmount // ignore: cast_nullable_to_non_nullable
+                      as double,
+            inventDimId: null == inventDimId
+                ? _value.inventDimId
+                : inventDimId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            transactionDate: null == transactionDate
+                ? _value.transactionDate
+                : transactionDate // ignore: cast_nullable_to_non_nullable
+                      as String,
+            deviceId: null == deviceId
+                ? _value.deviceId
+                : deviceId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            syncStatus: null == syncStatus
+                ? _value.syncStatus
+                : syncStatus // ignore: cast_nullable_to_non_nullable
+                      as int,
+            companyId: null == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SalesLineRequestImplCopyWith<$Res>
     implements $SalesLineRequestCopyWith<$Res> {
-  factory _$$SalesLineRequestImplCopyWith(_$SalesLineRequestImpl value,
-          $Res Function(_$SalesLineRequestImpl) then) =
-      __$$SalesLineRequestImplCopyWithImpl<$Res>;
+  factory _$$SalesLineRequestImplCopyWith(
+    _$SalesLineRequestImpl value,
+    $Res Function(_$SalesLineRequestImpl) then,
+  ) = __$$SalesLineRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      String salesId,
-      int lineId,
-      String itemId,
-      String productId,
-      String productName,
-      String productDescription,
-      String packSize,
-      double quantity,
-      String salesUnit,
-      double salesPrice,
-      double taxAmount,
-      double lineAmount,
-      String inventDimId,
-      String transactionDate,
-      String deviceId,
-      int syncStatus,
-      int companyId});
+  $Res call({
+    int? id,
+    String salesId,
+    int lineId,
+    String itemId,
+    String productId,
+    String productName,
+    String productDescription,
+    String packSize,
+    double quantity,
+    String salesUnit,
+    double salesPrice,
+    double taxAmount,
+    double lineAmount,
+    String inventDimId,
+    String transactionDate,
+    String deviceId,
+    int syncStatus,
+    int companyId,
+  });
 }
 
 /// @nodoc
 class __$$SalesLineRequestImplCopyWithImpl<$Res>
     extends _$SalesLineRequestCopyWithImpl<$Res, _$SalesLineRequestImpl>
     implements _$$SalesLineRequestImplCopyWith<$Res> {
-  __$$SalesLineRequestImplCopyWithImpl(_$SalesLineRequestImpl _value,
-      $Res Function(_$SalesLineRequestImpl) _then)
-      : super(_value, _then);
+  __$$SalesLineRequestImplCopyWithImpl(
+    _$SalesLineRequestImpl _value,
+    $Res Function(_$SalesLineRequestImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SalesLineRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -248,105 +257,108 @@ class __$$SalesLineRequestImplCopyWithImpl<$Res>
     Object? syncStatus = null,
     Object? companyId = null,
   }) {
-    return _then(_$SalesLineRequestImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      salesId: null == salesId
-          ? _value.salesId
-          : salesId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lineId: null == lineId
-          ? _value.lineId
-          : lineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      itemId: null == itemId
-          ? _value.itemId
-          : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
-      productDescription: null == productDescription
-          ? _value.productDescription
-          : productDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      packSize: null == packSize
-          ? _value.packSize
-          : packSize // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as double,
-      salesUnit: null == salesUnit
-          ? _value.salesUnit
-          : salesUnit // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPrice: null == salesPrice
-          ? _value.salesPrice
-          : salesPrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      taxAmount: null == taxAmount
-          ? _value.taxAmount
-          : taxAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-      lineAmount: null == lineAmount
-          ? _value.lineAmount
-          : lineAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-      inventDimId: null == inventDimId
-          ? _value.inventDimId
-          : inventDimId // ignore: cast_nullable_to_non_nullable
-              as String,
-      transactionDate: null == transactionDate
-          ? _value.transactionDate
-          : transactionDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceId: null == deviceId
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      syncStatus: null == syncStatus
-          ? _value.syncStatus
-          : syncStatus // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$SalesLineRequestImpl(
+        id: freezed == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        salesId: null == salesId
+            ? _value.salesId
+            : salesId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        lineId: null == lineId
+            ? _value.lineId
+            : lineId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        itemId: null == itemId
+            ? _value.itemId
+            : itemId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        productId: null == productId
+            ? _value.productId
+            : productId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        productName: null == productName
+            ? _value.productName
+            : productName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        productDescription: null == productDescription
+            ? _value.productDescription
+            : productDescription // ignore: cast_nullable_to_non_nullable
+                  as String,
+        packSize: null == packSize
+            ? _value.packSize
+            : packSize // ignore: cast_nullable_to_non_nullable
+                  as String,
+        quantity: null == quantity
+            ? _value.quantity
+            : quantity // ignore: cast_nullable_to_non_nullable
+                  as double,
+        salesUnit: null == salesUnit
+            ? _value.salesUnit
+            : salesUnit // ignore: cast_nullable_to_non_nullable
+                  as String,
+        salesPrice: null == salesPrice
+            ? _value.salesPrice
+            : salesPrice // ignore: cast_nullable_to_non_nullable
+                  as double,
+        taxAmount: null == taxAmount
+            ? _value.taxAmount
+            : taxAmount // ignore: cast_nullable_to_non_nullable
+                  as double,
+        lineAmount: null == lineAmount
+            ? _value.lineAmount
+            : lineAmount // ignore: cast_nullable_to_non_nullable
+                  as double,
+        inventDimId: null == inventDimId
+            ? _value.inventDimId
+            : inventDimId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        transactionDate: null == transactionDate
+            ? _value.transactionDate
+            : transactionDate // ignore: cast_nullable_to_non_nullable
+                  as String,
+        deviceId: null == deviceId
+            ? _value.deviceId
+            : deviceId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        syncStatus: null == syncStatus
+            ? _value.syncStatus
+            : syncStatus // ignore: cast_nullable_to_non_nullable
+                  as int,
+        companyId: null == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$SalesLineRequestImpl implements _SalesLineRequest {
-  _$SalesLineRequestImpl(
-      {this.id,
-      required this.salesId,
-      required this.lineId,
-      required this.itemId,
-      required this.productId,
-      required this.productName,
-      required this.productDescription,
-      required this.packSize,
-      required this.quantity,
-      required this.salesUnit,
-      required this.salesPrice,
-      required this.taxAmount,
-      required this.lineAmount,
-      required this.inventDimId,
-      required this.transactionDate,
-      required this.deviceId,
-      required this.syncStatus,
-      required this.companyId});
+  _$SalesLineRequestImpl({
+    this.id,
+    required this.salesId,
+    required this.lineId,
+    required this.itemId,
+    required this.productId,
+    required this.productName,
+    required this.productDescription,
+    required this.packSize,
+    required this.quantity,
+    required this.salesUnit,
+    required this.salesPrice,
+    required this.taxAmount,
+    required this.lineAmount,
+    required this.inventDimId,
+    required this.transactionDate,
+    required this.deviceId,
+    required this.syncStatus,
+    required this.companyId,
+  });
 
   factory _$SalesLineRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$SalesLineRequestImplFromJson(json);
@@ -435,25 +447,26 @@ class _$SalesLineRequestImpl implements _SalesLineRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      salesId,
-      lineId,
-      itemId,
-      productId,
-      productName,
-      productDescription,
-      packSize,
-      quantity,
-      salesUnit,
-      salesPrice,
-      taxAmount,
-      lineAmount,
-      inventDimId,
-      transactionDate,
-      deviceId,
-      syncStatus,
-      companyId);
+    runtimeType,
+    id,
+    salesId,
+    lineId,
+    itemId,
+    productId,
+    productName,
+    productDescription,
+    packSize,
+    quantity,
+    salesUnit,
+    salesPrice,
+    taxAmount,
+    lineAmount,
+    inventDimId,
+    transactionDate,
+    deviceId,
+    syncStatus,
+    companyId,
+  );
 
   /// Create a copy of SalesLineRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -462,36 +475,37 @@ class _$SalesLineRequestImpl implements _SalesLineRequest {
   @pragma('vm:prefer-inline')
   _$$SalesLineRequestImplCopyWith<_$SalesLineRequestImpl> get copyWith =>
       __$$SalesLineRequestImplCopyWithImpl<_$SalesLineRequestImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SalesLineRequestImplToJson(
-      this,
-    );
+    return _$$SalesLineRequestImplToJson(this);
   }
 }
 
 abstract class _SalesLineRequest implements SalesLineRequest {
-  factory _SalesLineRequest(
-      {final int? id,
-      required final String salesId,
-      required final int lineId,
-      required final String itemId,
-      required final String productId,
-      required final String productName,
-      required final String productDescription,
-      required final String packSize,
-      required final double quantity,
-      required final String salesUnit,
-      required final double salesPrice,
-      required final double taxAmount,
-      required final double lineAmount,
-      required final String inventDimId,
-      required final String transactionDate,
-      required final String deviceId,
-      required final int syncStatus,
-      required final int companyId}) = _$SalesLineRequestImpl;
+  factory _SalesLineRequest({
+    final int? id,
+    required final String salesId,
+    required final int lineId,
+    required final String itemId,
+    required final String productId,
+    required final String productName,
+    required final String productDescription,
+    required final String packSize,
+    required final double quantity,
+    required final String salesUnit,
+    required final double salesPrice,
+    required final double taxAmount,
+    required final double lineAmount,
+    required final String inventDimId,
+    required final String transactionDate,
+    required final String deviceId,
+    required final int syncStatus,
+    required final int companyId,
+  }) = _$SalesLineRequestImpl;
 
   factory _SalesLineRequest.fromJson(Map<String, dynamic> json) =
       _$SalesLineRequestImpl.fromJson;

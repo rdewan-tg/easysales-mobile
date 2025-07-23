@@ -46,9 +46,7 @@ final class OrderService implements IOrderService {
   }
 
   @override
-  Future<SalesHeaderEntityData> getSalesHeaderBySalesId(
-    String salesId,
-  ) async {
+  Future<SalesHeaderEntityData> getSalesHeaderBySalesId(String salesId) async {
     try {
       final result = await _orderRepository.getSalesHeaderBySalesId(salesId);
 

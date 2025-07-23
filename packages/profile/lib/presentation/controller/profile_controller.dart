@@ -7,8 +7,8 @@ import 'package:profile/presentation/state/profile_state.dart';
 
 final profileControllerProvider =
     AutoDisposeNotifierProvider<ProfileController, ProfileState>(
-  ProfileController.new,
-);
+      ProfileController.new,
+    );
 
 final class ProfileController extends AutoDisposeNotifier<ProfileState> {
   StreamSubscription<String>? _themeModeSubscription;
@@ -41,14 +41,17 @@ final class ProfileController extends AutoDisposeNotifier<ProfileState> {
     // call api - delete account
     final result = await ref.read(profileServiceProvider).deleteMe();
 
-    result.when((success) {
-      // clear token - access token and refresh token
-      ref.read(profileServiceProvider).clearToken();
-      // set auth state - false
-      ref.read(goRouterNotifierProvider).isLoggedIn = false;
-    }, (error) {
-      state = state.copyWith(errorMsg: error.message);
-    });
+    result.when(
+      (success) {
+        // clear token - access token and refresh token
+        ref.read(profileServiceProvider).clearToken();
+        // set auth state - false
+        ref.read(goRouterNotifierProvider).isLoggedIn = false;
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message);
+      },
+    );
   }
 
   Future<void> getAllSettings() async {

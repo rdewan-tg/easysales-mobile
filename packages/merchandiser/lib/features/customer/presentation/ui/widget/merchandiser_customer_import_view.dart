@@ -21,8 +21,9 @@ class _CustomerImportViewState
           Consumer(
             builder: (context, ref, child) {
               final totalCustomerCount = ref.watch(
-                merchandiserCustomerProvider
-                    .select((value) => value.totalCustomerCount),
+                merchandiserCustomerProvider.select(
+                  (value) => value.totalCustomerCount,
+                ),
               );
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -56,8 +57,9 @@ class _CustomerImportViewState
           Consumer(
             builder: (context, ref, child) {
               final totalAddressCount = ref.watch(
-                addressControllerProvider
-                    .select((value) => value.totalAddressCount),
+                addressControllerProvider.select(
+                  (value) => value.totalAddressCount,
+                ),
               );
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -94,25 +96,25 @@ class _CustomerImportViewState
 
   void _listener() {
     // listen for error
-    ref.listen(
-      addressControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(addressControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
 
     // listen for status
     ref.listen(
@@ -166,60 +168,64 @@ class _CustomerImportViewState
     );
 
     // listen for error
-    ref.listen(
-      merchandiserCustomerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(merchandiserCustomerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
-
-    // listen for error in address controller
-    ref.listen(
-      addressControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          );
-        }
-      },
-    );
-
-    // listen for loading
-    ref.listen(merchandiserCustomerProvider.select((value) => value.isLoading),
-        (_, next) {
-      if (next) {
-        context.loaderOverlay.show();
-      } else {
-        context.loaderOverlay.hide();
+          ),
+        );
       }
     });
 
+    // listen for error in address controller
+    ref.listen(addressControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        );
+      }
+    });
+
+    // listen for loading
+    ref.listen(
+      merchandiserCustomerProvider.select((value) => value.isLoading),
+      (_, next) {
+        if (next) {
+          context.loaderOverlay.show();
+        } else {
+          context.loaderOverlay.hide();
+        }
+      },
+    );
+
     // listen for loading in address controller
-    ref.listen(addressControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(addressControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {

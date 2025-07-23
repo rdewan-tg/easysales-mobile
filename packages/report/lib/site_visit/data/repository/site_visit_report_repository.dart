@@ -9,8 +9,9 @@ import 'package:report/site_visit/data/repository/isite_visit_report_repository.
 import 'package:report/site_visit/data/source/remote/site_visit_report_api_service.dart';
 import 'package:core/data/local/db/dao/setting_dao.dart';
 
-final siteVisitReportRepositoryProvider =
-    Provider<ISiteVisitReportRepository>((ref) {
+final siteVisitReportRepositoryProvider = Provider<ISiteVisitReportRepository>((
+  ref,
+) {
   final settingDao = ref.watch(settingDaoProvider);
   final siteVisitReportApiService = ref.watch(siteVisitReportApiProvider);
 
@@ -30,8 +31,9 @@ final class SiteVisitReportRepository
     String salesPersonCode,
   ) async {
     try {
-      return await _siteVisitReportApiService
-          .toDaySiteVisitReport(salesPersonCode);
+      return await _siteVisitReportApiService.toDaySiteVisitReport(
+        salesPersonCode,
+      );
     } on DioException catch (e, stackTrace) {
       // Use the mixin to map DioException to Failure
       throw mapDioExceptionToFailure(e, stackTrace);
@@ -50,8 +52,9 @@ final class SiteVisitReportRepository
     String salesPersonCode,
   ) async {
     try {
-      return await _siteVisitReportApiService
-          .getMonthlyUniqueSiteVisitReport(salesPersonCode);
+      return await _siteVisitReportApiService.getMonthlyUniqueSiteVisitReport(
+        salesPersonCode,
+      );
     } on DioException catch (e, stackTrace) {
       // Use the mixin to map DioException to Failure
       throw mapDioExceptionToFailure(e, stackTrace);

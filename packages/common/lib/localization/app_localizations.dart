@@ -29,10 +29,7 @@ class AppLocalizations {
     return Map<String, String>.from(jsonDecode(data) as Map);
   }
 
-  String translate(
-    String key, {
-    Map<String, Object>? namedArgs,
-  }) {
+  String translate(String key, {Map<String, Object>? namedArgs}) {
     var text = _localizedString[key] ?? 'No translation is found';
 
     // text placeholder value
@@ -56,11 +53,11 @@ class AppLocalizations {
 
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   static AppLocalizations get instance => _AppLocalizationsDelegate.instance;
 }

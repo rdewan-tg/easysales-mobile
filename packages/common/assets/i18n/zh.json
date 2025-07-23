@@ -74,5 +74,20 @@
     "orderHistory.orderDeleted": "订单删除成功",
     "setting.orderRunningNumberUpdatedSuccessfully": "订单流水号更新成功",
     "common.confirmDeleteTitle": "删除订单",
-    "common.confirmDeleteMessage": "您确定要删除此订单吗？"
+    "common.confirmDeleteMessage": "您确定要删除此订单吗？",
+    "setting.companySetting": "公司设置",
+    "setting.companyId": "公司 ID",
+    "setting.companyName": "公司名称",
+    "setting.companyCode": "公司代码",
+    "setting.isSiteVisitEnabled": "是否启用网站访问",
+    "setting.manageYourCompany": "管理您的公司设置",
+    "siteVisit.title": "现场考察",
+    "siteVisit.youAreHere": "您在这里",
+    "siteVisit.checkInMessage": "您已成功办理登机手续",
+    "siteVisit.checkOutMessage": "您已成功退房",
+    "siteVisit.currentLocation": "当前位置",
+    "siteVisit.noLocation": "没有位置",
+    "siteVisit.currentTime": "当前时间",
+    "siteVisit.checkIn": "报到",
+    "siteVisit.checkOut": "查看"
 }

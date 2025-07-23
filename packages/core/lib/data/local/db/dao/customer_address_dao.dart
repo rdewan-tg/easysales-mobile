@@ -31,10 +31,7 @@ class CustomerAddressDao extends DatabaseAccessor<AppDatabase>
   ) async {
     try {
       await batch((batch) {
-        batch.insertAllOnConflictUpdate(
-          customerAddressEntity,
-          dataList,
-        );
+        batch.insertAllOnConflictUpdate(customerAddressEntity, dataList);
       });
     } catch (e, stackTrace) {
       throw Failure(
@@ -44,9 +41,7 @@ class CustomerAddressDao extends DatabaseAccessor<AppDatabase>
     }
   }
 
-  Stream<List<CustomerAddressEntityData>> watchAll({
-    String? searchQuery,
-  }) {
+  Stream<List<CustomerAddressEntityData>> watchAll({String? searchQuery}) {
     final query = select(customerAddressEntity);
 
     if (searchQuery != null && searchQuery.isNotEmpty) {
@@ -63,17 +58,17 @@ class CustomerAddressDao extends DatabaseAccessor<AppDatabase>
   Stream<int> watchTotalCustomerAddressCount() {
     final countExp = countAll();
 
-    return (selectOnly(customerAddressEntity)..addColumns([countExp]))
-        .map((row) => row.read(countExp)!)
-        .watchSingle();
+    return (selectOnly(
+      customerAddressEntity,
+    )..addColumns([countExp])).map((row) => row.read(countExp)!).watchSingle();
   }
 
   Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
     String postalAddress,
   ) async {
-    final result = await (select(customerAddressEntity)
-          ..where((tbl) => tbl.postalAddress.equals(postalAddress)))
-        .getSingle();
+    final result = await (select(
+      customerAddressEntity,
+    )..where((tbl) => tbl.postalAddress.equals(postalAddress))).getSingle();
     return result;
   }
 }

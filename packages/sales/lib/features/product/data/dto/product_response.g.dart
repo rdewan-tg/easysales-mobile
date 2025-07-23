@@ -7,22 +7,22 @@ part of 'product_response.dart';
 // **************************************************************************
 
 _$ProductResponseImpl _$$ProductResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ProductResponseImpl(
-      status: json['status'] as String,
-      total: (json['total'] as num).toInt(),
-      data: (json['data'] as List<dynamic>)
-          .map((e) => ProductData.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => _$ProductResponseImpl(
+  status: json['status'] as String,
+  total: (json['total'] as num).toInt(),
+  data: (json['data'] as List<dynamic>)
+      .map((e) => ProductData.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$$ProductResponseImplToJson(
-        _$ProductResponseImpl instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'total': instance.total,
-      'data': instance.data,
-    };
+  _$ProductResponseImpl instance,
+) => <String, dynamic>{
+  'status': instance.status,
+  'total': instance.total,
+  'data': instance.data,
+};
 
 _$ProductDataImpl _$$ProductDataImplFromJson(Map<String, dynamic> json) =>
     _$ProductDataImpl(

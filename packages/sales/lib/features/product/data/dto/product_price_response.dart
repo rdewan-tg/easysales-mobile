@@ -5,8 +5,7 @@ part 'product_price_response.g.dart';
 
 ProductPriceResponse deserializeProductPriceResponse(
   Map<String, dynamic> json,
-) =>
-    ProductPriceResponse.fromJson(json);
+) => ProductPriceResponse.fromJson(json);
 
 @freezed
 class ProductPriceResponse with _$ProductPriceResponse {

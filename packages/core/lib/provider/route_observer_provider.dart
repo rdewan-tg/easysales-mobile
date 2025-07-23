@@ -25,29 +25,34 @@ class AppNavigatorObserver extends NavigatorObserver {
   AppNavigatorObserver();
 
   @override
-  void didPush(
-    Route<dynamic> route,
-    Route<dynamic>? previousRoute,
-  ) {
-    log('didPush: current: ${route.settings.name} : previous: ${previousRoute?.settings.name}');
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    log(
+      'didPush: current: ${route.settings.name} : previous: ${previousRoute?.settings.name}',
+    );
     super.didPush(route, previousRoute);
   }
 
   @override
   void didPop(Route route, Route? previousRoute) {
-    log('didPop: current: ${route.settings.name} : previous: ${previousRoute?.settings.name}');
+    log(
+      'didPop: current: ${route.settings.name} : previous: ${previousRoute?.settings.name}',
+    );
     super.didPop(route, previousRoute);
   }
 
   @override
   void didRemove(Route route, Route? previousRoute) {
-    log('didRemove: current: ${route.settings.name} : previous: ${previousRoute?.settings.name}');
+    log(
+      'didRemove: current: ${route.settings.name} : previous: ${previousRoute?.settings.name}',
+    );
     super.didRemove(route, previousRoute);
   }
 
   @override
   void didReplace({Route? newRoute, Route? oldRoute}) {
-    log('didReplace: current: ${newRoute?.settings.name} : previous: ${oldRoute?.settings.name}');
+    log(
+      'didReplace: current: ${newRoute?.settings.name} : previous: ${oldRoute?.settings.name}',
+    );
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
   }
 
@@ -55,9 +60,10 @@ class AppNavigatorObserver extends NavigatorObserver {
   void didStartUserGesture(
     Route<dynamic> route,
     Route<dynamic>? previousRoute,
-  ) =>
-      log('didStartUserGesture: ${route.settings.name}, '
-          'previousRoute= ${previousRoute?.settings.name}');
+  ) => log(
+    'didStartUserGesture: ${route.settings.name}, '
+    'previousRoute= ${previousRoute?.settings.name}',
+  );
 
   @override
   void didStopUserGesture() => log('didStopUserGesture');

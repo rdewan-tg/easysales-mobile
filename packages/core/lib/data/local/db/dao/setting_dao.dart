@@ -49,9 +49,7 @@ class SettingDao extends DatabaseAccessor<AppDatabase> with _$SettingDaoMixin {
           ..where((tbl) => tbl.key.equals(languageKey))
           ..limit(1))
         .watchSingleOrNull()
-        .map(
-          (row) => row?.value ?? 'en',
-        ); // Default to 'en' if no row exists
+        .map((row) => row?.value ?? 'en'); // Default to 'en' if no row exists
   }
 
   Future<void> upsertMultipleSettings(Map<String, String> settings) async {

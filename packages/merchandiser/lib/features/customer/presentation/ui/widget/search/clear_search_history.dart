@@ -6,9 +6,7 @@ class ClearSearchHistory extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final searchHistory = ref.watch(
-      merchandiserCustomerProvider.select(
-        (value) => value.searchHistory,
-      ),
+      merchandiserCustomerProvider.select((value) => value.searchHistory),
     );
 
     if (searchHistory.isEmpty) return const SizedBox.shrink();
@@ -31,10 +29,7 @@ class ClearSearchHistory extends ConsumerWidget {
               decoration: ShapeDecoration(
                 color: Theme.of(context).canvasColor,
                 shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                    width: 0.5,
-                    color: Colors.black,
-                  ),
+                  side: const BorderSide(width: 0.5, color: Colors.black),
                   borderRadius: BorderRadius.circular(kSmall),
                 ),
               ),
@@ -49,13 +44,8 @@ class ClearSearchHistory extends ConsumerWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    const SizedBox(
-                      width: kSmall,
-                    ),
-                    const Icon(
-                      Icons.clear_outlined,
-                      size: kMedium,
-                    ),
+                    const SizedBox(width: kSmall),
+                    const Icon(Icons.clear_outlined, size: kMedium),
                   ],
                 ),
               ),

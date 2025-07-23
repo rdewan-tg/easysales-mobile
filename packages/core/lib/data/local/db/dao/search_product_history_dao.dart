@@ -6,8 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'search_product_history_dao.g.dart';
 
-final searchProductHistoryDaoProvider =
-    Provider<SearchProductHistoryDao>((ref) {
+final searchProductHistoryDaoProvider = Provider<SearchProductHistoryDao>((
+  ref,
+) {
   return SearchProductHistoryDao(ref.watch(appDatabaseProvider));
 });
 

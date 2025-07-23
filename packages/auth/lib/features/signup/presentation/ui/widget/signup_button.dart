@@ -6,8 +6,9 @@ class SignUpButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLoading =
-        ref.watch(signUpControllerProvider.select((value) => value.isLoading));
+    final isLoading = ref.watch(
+      signUpControllerProvider.select((value) => value.isLoading),
+    );
     return SizedBox(
       width: double.infinity,
       child: FilledButton.icon(

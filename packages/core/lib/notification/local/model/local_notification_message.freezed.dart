@@ -12,7 +12,8 @@ part of 'local_notification_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$LocalNotificationMessage {
@@ -31,17 +32,25 @@ mixin _$LocalNotificationMessage {
 
 /// @nodoc
 abstract class $LocalNotificationMessageCopyWith<$Res> {
-  factory $LocalNotificationMessageCopyWith(LocalNotificationMessage value,
-          $Res Function(LocalNotificationMessage) then) =
-      _$LocalNotificationMessageCopyWithImpl<$Res, LocalNotificationMessage>;
+  factory $LocalNotificationMessageCopyWith(
+    LocalNotificationMessage value,
+    $Res Function(LocalNotificationMessage) then,
+  ) = _$LocalNotificationMessageCopyWithImpl<$Res, LocalNotificationMessage>;
   @useResult
-  $Res call(
-      {int id, String? title, String? body, String? imageUrl, String? payload});
+  $Res call({
+    int id,
+    String? title,
+    String? body,
+    String? imageUrl,
+    String? payload,
+  });
 }
 
 /// @nodoc
-class _$LocalNotificationMessageCopyWithImpl<$Res,
-        $Val extends LocalNotificationMessage>
+class _$LocalNotificationMessageCopyWithImpl<
+  $Res,
+  $Val extends LocalNotificationMessage
+>
     implements $LocalNotificationMessageCopyWith<$Res> {
   _$LocalNotificationMessageCopyWithImpl(this._value, this._then);
 
@@ -61,28 +70,31 @@ class _$LocalNotificationMessageCopyWithImpl<$Res,
     Object? imageUrl = freezed,
     Object? payload = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: freezed == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      body: freezed == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      payload: freezed == payload
-          ? _value.payload
-          : payload // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            title: freezed == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            body: freezed == body
+                ? _value.body
+                : body // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            imageUrl: freezed == imageUrl
+                ? _value.imageUrl
+                : imageUrl // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            payload: freezed == payload
+                ? _value.payload
+                : payload // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -90,24 +102,32 @@ class _$LocalNotificationMessageCopyWithImpl<$Res,
 abstract class _$$LocalNotificationMessageImplCopyWith<$Res>
     implements $LocalNotificationMessageCopyWith<$Res> {
   factory _$$LocalNotificationMessageImplCopyWith(
-          _$LocalNotificationMessageImpl value,
-          $Res Function(_$LocalNotificationMessageImpl) then) =
-      __$$LocalNotificationMessageImplCopyWithImpl<$Res>;
+    _$LocalNotificationMessageImpl value,
+    $Res Function(_$LocalNotificationMessageImpl) then,
+  ) = __$$LocalNotificationMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id, String? title, String? body, String? imageUrl, String? payload});
+  $Res call({
+    int id,
+    String? title,
+    String? body,
+    String? imageUrl,
+    String? payload,
+  });
 }
 
 /// @nodoc
 class __$$LocalNotificationMessageImplCopyWithImpl<$Res>
-    extends _$LocalNotificationMessageCopyWithImpl<$Res,
-        _$LocalNotificationMessageImpl>
+    extends
+        _$LocalNotificationMessageCopyWithImpl<
+          $Res,
+          _$LocalNotificationMessageImpl
+        >
     implements _$$LocalNotificationMessageImplCopyWith<$Res> {
   __$$LocalNotificationMessageImplCopyWithImpl(
-      _$LocalNotificationMessageImpl _value,
-      $Res Function(_$LocalNotificationMessageImpl) _then)
-      : super(_value, _then);
+    _$LocalNotificationMessageImpl _value,
+    $Res Function(_$LocalNotificationMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LocalNotificationMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -120,36 +140,43 @@ class __$$LocalNotificationMessageImplCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? payload = freezed,
   }) {
-    return _then(_$LocalNotificationMessageImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: freezed == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      body: freezed == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      payload: freezed == payload
-          ? _value.payload
-          : payload // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$LocalNotificationMessageImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        title: freezed == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        body: freezed == body
+            ? _value.body
+            : body // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        imageUrl: freezed == imageUrl
+            ? _value.imageUrl
+            : imageUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        payload: freezed == payload
+            ? _value.payload
+            : payload // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$LocalNotificationMessageImpl implements _LocalNotificationMessage {
-  _$LocalNotificationMessageImpl(
-      {required this.id, this.title, this.body, this.imageUrl, this.payload});
+  _$LocalNotificationMessageImpl({
+    required this.id,
+    this.title,
+    this.body,
+    this.imageUrl,
+    this.payload,
+  });
 
   @override
   final int id;
@@ -190,17 +217,20 @@ class _$LocalNotificationMessageImpl implements _LocalNotificationMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$LocalNotificationMessageImplCopyWith<_$LocalNotificationMessageImpl>
-      get copyWith => __$$LocalNotificationMessageImplCopyWithImpl<
-          _$LocalNotificationMessageImpl>(this, _$identity);
+  get copyWith =>
+      __$$LocalNotificationMessageImplCopyWithImpl<
+        _$LocalNotificationMessageImpl
+      >(this, _$identity);
 }
 
 abstract class _LocalNotificationMessage implements LocalNotificationMessage {
-  factory _LocalNotificationMessage(
-      {required final int id,
-      final String? title,
-      final String? body,
-      final String? imageUrl,
-      final String? payload}) = _$LocalNotificationMessageImpl;
+  factory _LocalNotificationMessage({
+    required final int id,
+    final String? title,
+    final String? body,
+    final String? imageUrl,
+    final String? payload,
+  }) = _$LocalNotificationMessageImpl;
 
   @override
   int get id;
@@ -218,5 +248,5 @@ abstract class _LocalNotificationMessage implements LocalNotificationMessage {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LocalNotificationMessageImplCopyWith<_$LocalNotificationMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,7 +12,8 @@ part of 'profile_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ProfileState {
@@ -31,14 +32,16 @@ mixin _$ProfileState {
 /// @nodoc
 abstract class $ProfileStateCopyWith<$Res> {
   factory $ProfileStateCopyWith(
-          ProfileState value, $Res Function(ProfileState) then) =
-      _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+    ProfileState value,
+    $Res Function(ProfileState) then,
+  ) = _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call(
-      {dynamic isLoading,
-      dynamic isAccountDeleted,
-      Map<String, String> settings,
-      String? errorMsg});
+  $Res call({
+    dynamic isLoading,
+    dynamic isAccountDeleted,
+    Map<String, String> settings,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -61,24 +64,27 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
     Object? settings = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: freezed == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      isAccountDeleted: freezed == isAccountDeleted
-          ? _value.isAccountDeleted
-          : isAccountDeleted // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      settings: null == settings
-          ? _value.settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: freezed == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            isAccountDeleted: freezed == isAccountDeleted
+                ? _value.isAccountDeleted
+                : isAccountDeleted // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            settings: null == settings
+                ? _value.settings
+                : settings // ignore: cast_nullable_to_non_nullable
+                      as Map<String, String>,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -86,15 +92,17 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 abstract class _$$ProfileStateImplCopyWith<$Res>
     implements $ProfileStateCopyWith<$Res> {
   factory _$$ProfileStateImplCopyWith(
-          _$ProfileStateImpl value, $Res Function(_$ProfileStateImpl) then) =
-      __$$ProfileStateImplCopyWithImpl<$Res>;
+    _$ProfileStateImpl value,
+    $Res Function(_$ProfileStateImpl) then,
+  ) = __$$ProfileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {dynamic isLoading,
-      dynamic isAccountDeleted,
-      Map<String, String> settings,
-      String? errorMsg});
+  $Res call({
+    dynamic isLoading,
+    dynamic isAccountDeleted,
+    Map<String, String> settings,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -102,8 +110,9 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
     extends _$ProfileStateCopyWithImpl<$Res, _$ProfileStateImpl>
     implements _$$ProfileStateImplCopyWith<$Res> {
   __$$ProfileStateImplCopyWithImpl(
-      _$ProfileStateImpl _value, $Res Function(_$ProfileStateImpl) _then)
-      : super(_value, _then);
+    _$ProfileStateImpl _value,
+    $Res Function(_$ProfileStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProfileState
   /// with the given fields replaced by the non-null parameter values.
@@ -115,32 +124,34 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
     Object? settings = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$ProfileStateImpl(
-      isLoading: freezed == isLoading ? _value.isLoading! : isLoading,
-      isAccountDeleted: freezed == isAccountDeleted
-          ? _value.isAccountDeleted!
-          : isAccountDeleted,
-      settings: null == settings
-          ? _value._settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ProfileStateImpl(
+        isLoading: freezed == isLoading ? _value.isLoading! : isLoading,
+        isAccountDeleted: freezed == isAccountDeleted
+            ? _value.isAccountDeleted!
+            : isAccountDeleted,
+        settings: null == settings
+            ? _value._settings
+            : settings // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ProfileStateImpl implements _ProfileState {
-  const _$ProfileStateImpl(
-      {this.isLoading = false,
-      this.isAccountDeleted = false,
-      final Map<String, String> settings = const {},
-      this.errorMsg})
-      : _settings = settings;
+  const _$ProfileStateImpl({
+    this.isLoading = false,
+    this.isAccountDeleted = false,
+    final Map<String, String> settings = const {},
+    this.errorMsg,
+  }) : _settings = settings;
 
   @override
   @JsonKey()
@@ -171,8 +182,10 @@ class _$ProfileStateImpl implements _ProfileState {
         (other.runtimeType == runtimeType &&
             other is _$ProfileStateImpl &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality()
-                .equals(other.isAccountDeleted, isAccountDeleted) &&
+            const DeepCollectionEquality().equals(
+              other.isAccountDeleted,
+              isAccountDeleted,
+            ) &&
             const DeepCollectionEquality().equals(other._settings, _settings) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg));
@@ -180,11 +193,12 @@ class _$ProfileStateImpl implements _ProfileState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isAccountDeleted),
-      const DeepCollectionEquality().hash(_settings),
-      errorMsg);
+    runtimeType,
+    const DeepCollectionEquality().hash(isLoading),
+    const DeepCollectionEquality().hash(isAccountDeleted),
+    const DeepCollectionEquality().hash(_settings),
+    errorMsg,
+  );
 
   /// Create a copy of ProfileState
   /// with the given fields replaced by the non-null parameter values.
@@ -196,11 +210,12 @@ class _$ProfileStateImpl implements _ProfileState {
 }
 
 abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState(
-      {final dynamic isLoading,
-      final dynamic isAccountDeleted,
-      final Map<String, String> settings,
-      final String? errorMsg}) = _$ProfileStateImpl;
+  const factory _ProfileState({
+    final dynamic isLoading,
+    final dynamic isAccountDeleted,
+    final Map<String, String> settings,
+    final String? errorMsg,
+  }) = _$ProfileStateImpl;
 
   @override
   dynamic get isLoading;

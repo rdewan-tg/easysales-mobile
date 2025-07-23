@@ -12,7 +12,8 @@ part of 'product_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ProductState {
@@ -46,28 +47,30 @@ mixin _$ProductState {
 /// @nodoc
 abstract class $ProductStateCopyWith<$Res> {
   factory $ProductStateCopyWith(
-          ProductState value, $Res Function(ProductState) then) =
-      _$ProductStateCopyWithImpl<$Res, ProductState>;
+    ProductState value,
+    $Res Function(ProductState) then,
+  ) = _$ProductStateCopyWithImpl<$Res, ProductState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isProductImported,
-      bool isPriceImported,
-      Map<String, String> settings,
-      List<ProductEntityData> products,
-      List<ProductPriceEntityData> prices,
-      ProductPriceEntityData? price,
-      List<String> uom,
-      List<String> packSize,
-      int quantity,
-      int totalProductImported,
-      int totalPriceImported,
-      List<String> searchHistory,
-      String searchQuery,
-      String lastSearchQuery,
-      bool isSearchProductHistoryCleared,
-      int? totalSearchProductHistoryCleared,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isProductImported,
+    bool isPriceImported,
+    Map<String, String> settings,
+    List<ProductEntityData> products,
+    List<ProductPriceEntityData> prices,
+    ProductPriceEntityData? price,
+    List<String> uom,
+    List<String> packSize,
+    int quantity,
+    int totalProductImported,
+    int totalPriceImported,
+    List<String> searchHistory,
+    String searchQuery,
+    String lastSearchQuery,
+    bool isSearchProductHistoryCleared,
+    int? totalSearchProductHistoryCleared,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -104,81 +107,84 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
     Object? totalSearchProductHistoryCleared = freezed,
     Object? errorMsg = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isProductImported: null == isProductImported
-          ? _value.isProductImported
-          : isProductImported // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isPriceImported: null == isPriceImported
-          ? _value.isPriceImported
-          : isPriceImported // ignore: cast_nullable_to_non_nullable
-              as bool,
-      settings: null == settings
-          ? _value.settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductEntityData>,
-      prices: null == prices
-          ? _value.prices
-          : prices // ignore: cast_nullable_to_non_nullable
-              as List<ProductPriceEntityData>,
-      price: freezed == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as ProductPriceEntityData?,
-      uom: null == uom
-          ? _value.uom
-          : uom // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      packSize: null == packSize
-          ? _value.packSize
-          : packSize // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalProductImported: null == totalProductImported
-          ? _value.totalProductImported
-          : totalProductImported // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPriceImported: null == totalPriceImported
-          ? _value.totalPriceImported
-          : totalPriceImported // ignore: cast_nullable_to_non_nullable
-              as int,
-      searchHistory: null == searchHistory
-          ? _value.searchHistory
-          : searchHistory // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastSearchQuery: null == lastSearchQuery
-          ? _value.lastSearchQuery
-          : lastSearchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      isSearchProductHistoryCleared: null == isSearchProductHistoryCleared
-          ? _value.isSearchProductHistoryCleared
-          : isSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
-              as bool,
-      totalSearchProductHistoryCleared: freezed ==
-              totalSearchProductHistoryCleared
-          ? _value.totalSearchProductHistoryCleared
-          : totalSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
-              as int?,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isProductImported: null == isProductImported
+                ? _value.isProductImported
+                : isProductImported // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isPriceImported: null == isPriceImported
+                ? _value.isPriceImported
+                : isPriceImported // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            settings: null == settings
+                ? _value.settings
+                : settings // ignore: cast_nullable_to_non_nullable
+                      as Map<String, String>,
+            products: null == products
+                ? _value.products
+                : products // ignore: cast_nullable_to_non_nullable
+                      as List<ProductEntityData>,
+            prices: null == prices
+                ? _value.prices
+                : prices // ignore: cast_nullable_to_non_nullable
+                      as List<ProductPriceEntityData>,
+            price: freezed == price
+                ? _value.price
+                : price // ignore: cast_nullable_to_non_nullable
+                      as ProductPriceEntityData?,
+            uom: null == uom
+                ? _value.uom
+                : uom // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            packSize: null == packSize
+                ? _value.packSize
+                : packSize // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            quantity: null == quantity
+                ? _value.quantity
+                : quantity // ignore: cast_nullable_to_non_nullable
+                      as int,
+            totalProductImported: null == totalProductImported
+                ? _value.totalProductImported
+                : totalProductImported // ignore: cast_nullable_to_non_nullable
+                      as int,
+            totalPriceImported: null == totalPriceImported
+                ? _value.totalPriceImported
+                : totalPriceImported // ignore: cast_nullable_to_non_nullable
+                      as int,
+            searchHistory: null == searchHistory
+                ? _value.searchHistory
+                : searchHistory // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            searchQuery: null == searchQuery
+                ? _value.searchQuery
+                : searchQuery // ignore: cast_nullable_to_non_nullable
+                      as String,
+            lastSearchQuery: null == lastSearchQuery
+                ? _value.lastSearchQuery
+                : lastSearchQuery // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isSearchProductHistoryCleared: null == isSearchProductHistoryCleared
+                ? _value.isSearchProductHistoryCleared
+                : isSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            totalSearchProductHistoryCleared:
+                freezed == totalSearchProductHistoryCleared
+                ? _value.totalSearchProductHistoryCleared
+                : totalSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -186,29 +192,31 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
 abstract class _$$ProductStateImplCopyWith<$Res>
     implements $ProductStateCopyWith<$Res> {
   factory _$$ProductStateImplCopyWith(
-          _$ProductStateImpl value, $Res Function(_$ProductStateImpl) then) =
-      __$$ProductStateImplCopyWithImpl<$Res>;
+    _$ProductStateImpl value,
+    $Res Function(_$ProductStateImpl) then,
+  ) = __$$ProductStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isProductImported,
-      bool isPriceImported,
-      Map<String, String> settings,
-      List<ProductEntityData> products,
-      List<ProductPriceEntityData> prices,
-      ProductPriceEntityData? price,
-      List<String> uom,
-      List<String> packSize,
-      int quantity,
-      int totalProductImported,
-      int totalPriceImported,
-      List<String> searchHistory,
-      String searchQuery,
-      String lastSearchQuery,
-      bool isSearchProductHistoryCleared,
-      int? totalSearchProductHistoryCleared,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isProductImported,
+    bool isPriceImported,
+    Map<String, String> settings,
+    List<ProductEntityData> products,
+    List<ProductPriceEntityData> prices,
+    ProductPriceEntityData? price,
+    List<String> uom,
+    List<String> packSize,
+    int quantity,
+    int totalProductImported,
+    int totalPriceImported,
+    List<String> searchHistory,
+    String searchQuery,
+    String lastSearchQuery,
+    bool isSearchProductHistoryCleared,
+    int? totalSearchProductHistoryCleared,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -216,8 +224,9 @@ class __$$ProductStateImplCopyWithImpl<$Res>
     extends _$ProductStateCopyWithImpl<$Res, _$ProductStateImpl>
     implements _$$ProductStateImplCopyWith<$Res> {
   __$$ProductStateImplCopyWithImpl(
-      _$ProductStateImpl _value, $Res Function(_$ProductStateImpl) _then)
-      : super(_value, _then);
+    _$ProductStateImpl _value,
+    $Res Function(_$ProductStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductState
   /// with the given fields replaced by the non-null parameter values.
@@ -243,112 +252,114 @@ class __$$ProductStateImplCopyWithImpl<$Res>
     Object? totalSearchProductHistoryCleared = freezed,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$ProductStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isProductImported: null == isProductImported
-          ? _value.isProductImported
-          : isProductImported // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isPriceImported: null == isPriceImported
-          ? _value.isPriceImported
-          : isPriceImported // ignore: cast_nullable_to_non_nullable
-              as bool,
-      settings: null == settings
-          ? _value._settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductEntityData>,
-      prices: null == prices
-          ? _value._prices
-          : prices // ignore: cast_nullable_to_non_nullable
-              as List<ProductPriceEntityData>,
-      price: freezed == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as ProductPriceEntityData?,
-      uom: null == uom
-          ? _value._uom
-          : uom // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      packSize: null == packSize
-          ? _value._packSize
-          : packSize // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalProductImported: null == totalProductImported
-          ? _value.totalProductImported
-          : totalProductImported // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPriceImported: null == totalPriceImported
-          ? _value.totalPriceImported
-          : totalPriceImported // ignore: cast_nullable_to_non_nullable
-              as int,
-      searchHistory: null == searchHistory
-          ? _value._searchHistory
-          : searchHistory // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastSearchQuery: null == lastSearchQuery
-          ? _value.lastSearchQuery
-          : lastSearchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      isSearchProductHistoryCleared: null == isSearchProductHistoryCleared
-          ? _value.isSearchProductHistoryCleared
-          : isSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
-              as bool,
-      totalSearchProductHistoryCleared: freezed ==
-              totalSearchProductHistoryCleared
-          ? _value.totalSearchProductHistoryCleared
-          : totalSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
-              as int?,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ProductStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isProductImported: null == isProductImported
+            ? _value.isProductImported
+            : isProductImported // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isPriceImported: null == isPriceImported
+            ? _value.isPriceImported
+            : isPriceImported // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        settings: null == settings
+            ? _value._settings
+            : settings // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>,
+        products: null == products
+            ? _value._products
+            : products // ignore: cast_nullable_to_non_nullable
+                  as List<ProductEntityData>,
+        prices: null == prices
+            ? _value._prices
+            : prices // ignore: cast_nullable_to_non_nullable
+                  as List<ProductPriceEntityData>,
+        price: freezed == price
+            ? _value.price
+            : price // ignore: cast_nullable_to_non_nullable
+                  as ProductPriceEntityData?,
+        uom: null == uom
+            ? _value._uom
+            : uom // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        packSize: null == packSize
+            ? _value._packSize
+            : packSize // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        quantity: null == quantity
+            ? _value.quantity
+            : quantity // ignore: cast_nullable_to_non_nullable
+                  as int,
+        totalProductImported: null == totalProductImported
+            ? _value.totalProductImported
+            : totalProductImported // ignore: cast_nullable_to_non_nullable
+                  as int,
+        totalPriceImported: null == totalPriceImported
+            ? _value.totalPriceImported
+            : totalPriceImported // ignore: cast_nullable_to_non_nullable
+                  as int,
+        searchHistory: null == searchHistory
+            ? _value._searchHistory
+            : searchHistory // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        searchQuery: null == searchQuery
+            ? _value.searchQuery
+            : searchQuery // ignore: cast_nullable_to_non_nullable
+                  as String,
+        lastSearchQuery: null == lastSearchQuery
+            ? _value.lastSearchQuery
+            : lastSearchQuery // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isSearchProductHistoryCleared: null == isSearchProductHistoryCleared
+            ? _value.isSearchProductHistoryCleared
+            : isSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        totalSearchProductHistoryCleared:
+            freezed == totalSearchProductHistoryCleared
+            ? _value.totalSearchProductHistoryCleared
+            : totalSearchProductHistoryCleared // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ProductStateImpl implements _ProductState {
-  _$ProductStateImpl(
-      {this.isLoading = false,
-      this.isProductImported = false,
-      this.isPriceImported = false,
-      final Map<String, String> settings = const {},
-      final List<ProductEntityData> products = const [],
-      final List<ProductPriceEntityData> prices = const [],
-      this.price,
-      final List<String> uom = const [],
-      final List<String> packSize = const [],
-      this.quantity = 0,
-      this.totalProductImported = 0,
-      this.totalPriceImported = 0,
-      final List<String> searchHistory = const [],
-      this.searchQuery = '',
-      this.lastSearchQuery = '',
-      this.isSearchProductHistoryCleared = false,
-      this.totalSearchProductHistoryCleared,
-      this.errorMsg})
-      : _settings = settings,
-        _products = products,
-        _prices = prices,
-        _uom = uom,
-        _packSize = packSize,
-        _searchHistory = searchHistory;
+  _$ProductStateImpl({
+    this.isLoading = false,
+    this.isProductImported = false,
+    this.isPriceImported = false,
+    final Map<String, String> settings = const {},
+    final List<ProductEntityData> products = const [],
+    final List<ProductPriceEntityData> prices = const [],
+    this.price,
+    final List<String> uom = const [],
+    final List<String> packSize = const [],
+    this.quantity = 0,
+    this.totalProductImported = 0,
+    this.totalPriceImported = 0,
+    final List<String> searchHistory = const [],
+    this.searchQuery = '',
+    this.lastSearchQuery = '',
+    this.isSearchProductHistoryCleared = false,
+    this.totalSearchProductHistoryCleared,
+    this.errorMsg,
+  }) : _settings = settings,
+       _products = products,
+       _prices = prices,
+       _uom = uom,
+       _packSize = packSize,
+       _searchHistory = searchHistory;
 
   @override
   @JsonKey()
@@ -466,18 +477,24 @@ class _$ProductStateImpl implements _ProductState {
                 other.totalProductImported == totalProductImported) &&
             (identical(other.totalPriceImported, totalPriceImported) ||
                 other.totalPriceImported == totalPriceImported) &&
-            const DeepCollectionEquality()
-                .equals(other._searchHistory, _searchHistory) &&
+            const DeepCollectionEquality().equals(
+              other._searchHistory,
+              _searchHistory,
+            ) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
             (identical(other.lastSearchQuery, lastSearchQuery) ||
                 other.lastSearchQuery == lastSearchQuery) &&
-            (identical(other.isSearchProductHistoryCleared,
-                    isSearchProductHistoryCleared) ||
+            (identical(
+                  other.isSearchProductHistoryCleared,
+                  isSearchProductHistoryCleared,
+                ) ||
                 other.isSearchProductHistoryCleared ==
                     isSearchProductHistoryCleared) &&
-            (identical(other.totalSearchProductHistoryCleared,
-                    totalSearchProductHistoryCleared) ||
+            (identical(
+                  other.totalSearchProductHistoryCleared,
+                  totalSearchProductHistoryCleared,
+                ) ||
                 other.totalSearchProductHistoryCleared ==
                     totalSearchProductHistoryCleared) &&
             (identical(other.errorMsg, errorMsg) ||
@@ -486,25 +503,26 @@ class _$ProductStateImpl implements _ProductState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isProductImported,
-      isPriceImported,
-      const DeepCollectionEquality().hash(_settings),
-      const DeepCollectionEquality().hash(_products),
-      const DeepCollectionEquality().hash(_prices),
-      price,
-      const DeepCollectionEquality().hash(_uom),
-      const DeepCollectionEquality().hash(_packSize),
-      quantity,
-      totalProductImported,
-      totalPriceImported,
-      const DeepCollectionEquality().hash(_searchHistory),
-      searchQuery,
-      lastSearchQuery,
-      isSearchProductHistoryCleared,
-      totalSearchProductHistoryCleared,
-      errorMsg);
+    runtimeType,
+    isLoading,
+    isProductImported,
+    isPriceImported,
+    const DeepCollectionEquality().hash(_settings),
+    const DeepCollectionEquality().hash(_products),
+    const DeepCollectionEquality().hash(_prices),
+    price,
+    const DeepCollectionEquality().hash(_uom),
+    const DeepCollectionEquality().hash(_packSize),
+    quantity,
+    totalProductImported,
+    totalPriceImported,
+    const DeepCollectionEquality().hash(_searchHistory),
+    searchQuery,
+    lastSearchQuery,
+    isSearchProductHistoryCleared,
+    totalSearchProductHistoryCleared,
+    errorMsg,
+  );
 
   /// Create a copy of ProductState
   /// with the given fields replaced by the non-null parameter values.
@@ -516,25 +534,26 @@ class _$ProductStateImpl implements _ProductState {
 }
 
 abstract class _ProductState implements ProductState {
-  factory _ProductState(
-      {final bool isLoading,
-      final bool isProductImported,
-      final bool isPriceImported,
-      final Map<String, String> settings,
-      final List<ProductEntityData> products,
-      final List<ProductPriceEntityData> prices,
-      final ProductPriceEntityData? price,
-      final List<String> uom,
-      final List<String> packSize,
-      final int quantity,
-      final int totalProductImported,
-      final int totalPriceImported,
-      final List<String> searchHistory,
-      final String searchQuery,
-      final String lastSearchQuery,
-      final bool isSearchProductHistoryCleared,
-      final int? totalSearchProductHistoryCleared,
-      final String? errorMsg}) = _$ProductStateImpl;
+  factory _ProductState({
+    final bool isLoading,
+    final bool isProductImported,
+    final bool isPriceImported,
+    final Map<String, String> settings,
+    final List<ProductEntityData> products,
+    final List<ProductPriceEntityData> prices,
+    final ProductPriceEntityData? price,
+    final List<String> uom,
+    final List<String> packSize,
+    final int quantity,
+    final int totalProductImported,
+    final int totalPriceImported,
+    final List<String> searchHistory,
+    final String searchQuery,
+    final String lastSearchQuery,
+    final bool isSearchProductHistoryCleared,
+    final int? totalSearchProductHistoryCleared,
+    final String? errorMsg,
+  }) = _$ProductStateImpl;
 
   @override
   bool get isLoading;

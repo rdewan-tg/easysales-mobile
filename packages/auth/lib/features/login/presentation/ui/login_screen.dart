@@ -11,10 +11,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'.hardcoded),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text('Login'.hardcoded), centerTitle: true),
       body: const LoginForm(),
     );
   }

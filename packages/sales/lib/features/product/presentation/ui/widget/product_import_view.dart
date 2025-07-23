@@ -20,8 +20,9 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
           Consumer(
             builder: (context, ref, child) {
               final totalProductImported = ref.watch(
-                productControllerProvider
-                    .select((value) => value.totalProductImported),
+                productControllerProvider.select(
+                  (value) => value.totalProductImported,
+                ),
               );
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -56,8 +57,9 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
           Consumer(
             builder: (context, ref, child) {
               final totalPriceImported = ref.watch(
-                productControllerProvider
-                    .select((value) => value.totalPriceImported),
+                productControllerProvider.select(
+                  (value) => value.totalPriceImported,
+                ),
               );
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -95,25 +97,25 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
 
   void _listener() {
     // listen for error
-    ref.listen(
-      productControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(productControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
 
     // listen for error
     ref.listen(
@@ -166,8 +168,10 @@ class _ProductImportViewState extends ConsumerState<ProductImportView> {
     );
 
     // listen for loading
-    ref.listen(productControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(productControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {

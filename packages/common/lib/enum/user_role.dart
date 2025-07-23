@@ -12,5 +12,5 @@ enum UserRole {
   @JsonValue('operator')
   operator,
   @JsonValue('user')
-  user
+  user,
 }

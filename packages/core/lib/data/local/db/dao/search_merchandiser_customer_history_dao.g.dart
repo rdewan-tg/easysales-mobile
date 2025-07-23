@@ -6,6 +6,6 @@ part of 'search_merchandiser_customer_history_dao.dart';
 mixin _$SearchMerchandiserCustomerHistoryDaoMixin
     on DatabaseAccessor<AppDatabase> {
   $SearchMerchandiserCustomerHistoryEntityTable
-      get searchMerchandiserCustomerHistoryEntity =>
-          attachedDatabase.searchMerchandiserCustomerHistoryEntity;
+  get searchMerchandiserCustomerHistoryEntity =>
+      attachedDatabase.searchMerchandiserCustomerHistoryEntity;
 }

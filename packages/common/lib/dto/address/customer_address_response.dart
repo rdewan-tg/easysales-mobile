@@ -5,8 +5,7 @@ part 'customer_address_response.g.dart';
 
 CustomerAddressResponse deserializeCustomerAddressResponse(
   Map<String, dynamic> json,
-) =>
-    CustomerAddressResponse.fromJson(json);
+) => CustomerAddressResponse.fromJson(json);
 
 @freezed
 class CustomerAddressResponse with _$CustomerAddressResponse {

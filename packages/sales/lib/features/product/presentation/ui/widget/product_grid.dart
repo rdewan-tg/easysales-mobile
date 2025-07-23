@@ -29,9 +29,9 @@ class _ProductGridState extends ConsumerState<ProductGrid> {
       ref.read(productControllerProvider.notifier).watchSearchProductHistory();
     });
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _animationStyle = AnimationStyle(
-        duration: const Duration(seconds: 1),
-        reverseDuration: const Duration(seconds: 1),
+      _animationStyle = const AnimationStyle(
+        duration: Duration(seconds: 1),
+        reverseDuration: Duration(seconds: 1),
       );
     });
   }
@@ -49,8 +49,9 @@ class _ProductGridState extends ConsumerState<ProductGrid> {
 
   @override
   Widget build(BuildContext context) {
-    final products = ref
-        .watch(productControllerProvider.select((select) => select.products));
+    final products = ref.watch(
+      productControllerProvider.select((select) => select.products),
+    );
     return VisibilityDetector(
       key: const Key('productGrid'),
       onVisibilityChanged: (info) {
@@ -119,15 +120,13 @@ class _ProductGridState extends ConsumerState<ProductGrid> {
 
   void _openProductDetailBottomSheet(String itemId) {
     // get the product uom
-    ref.read(productControllerProvider.notifier).getProductUom(
-          itemId,
-          widget.priceGroup,
-        );
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductUom(itemId, widget.priceGroup);
     // get the product pack size
-    ref.read(productControllerProvider.notifier).getProductPackSize(
-          itemId,
-          widget.priceGroup,
-        );
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductPackSize(itemId, widget.priceGroup);
     // show bottom sheet
     _bottomSheetController = showBottomSheet(
       context: context,

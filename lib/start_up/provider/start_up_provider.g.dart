@@ -39,21 +39,13 @@ class StartUpFamily extends Family<AsyncValue<void>> {
   const StartUpFamily();
 
   /// See also [startUp].
-  StartUpProvider call({
-    required Flavor flavor,
-  }) {
-    return StartUpProvider(
-      flavor: flavor,
-    );
+  StartUpProvider call({required Flavor flavor}) {
+    return StartUpProvider(flavor: flavor);
   }
 
   @override
-  StartUpProvider getProviderOverride(
-    covariant StartUpProvider provider,
-  ) {
-    return call(
-      flavor: provider.flavor,
-    );
+  StartUpProvider getProviderOverride(covariant StartUpProvider provider) {
+    return call(flavor: provider.flavor);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,18 @@ class StartUpFamily extends Family<AsyncValue<void>> {
 /// See also [startUp].
 class StartUpProvider extends FutureProvider<void> {
   /// See also [startUp].
-  StartUpProvider({
-    required Flavor flavor,
-  }) : this._internal(
-          (ref) => startUp(
-            ref as StartUpRef,
-            flavor: flavor,
-          ),
-          from: startUpProvider,
-          name: r'startUpProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$startUpHash,
-          dependencies: StartUpFamily._dependencies,
-          allTransitiveDependencies: StartUpFamily._allTransitiveDependencies,
-          flavor: flavor,
-        );
+  StartUpProvider({required Flavor flavor})
+    : this._internal(
+        (ref) => startUp(ref as StartUpRef, flavor: flavor),
+        from: startUpProvider,
+        name: r'startUpProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$startUpHash,
+        dependencies: StartUpFamily._dependencies,
+        allTransitiveDependencies: StartUpFamily._allTransitiveDependencies,
+        flavor: flavor,
+      );
 
   StartUpProvider._internal(
     super._createNotifier, {
@@ -105,9 +92,7 @@ class StartUpProvider extends FutureProvider<void> {
   final Flavor flavor;
 
   @override
-  Override overrideWith(
-    FutureOr<void> Function(StartUpRef provider) create,
-  ) {
+  Override overrideWith(FutureOr<void> Function(StartUpRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: StartUpProvider._internal(
@@ -155,5 +140,6 @@ class _StartUpProviderElement extends FutureProviderElement<void>
   @override
   Flavor get flavor => (origin as StartUpProvider).flavor;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

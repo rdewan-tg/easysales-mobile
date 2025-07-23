@@ -17,9 +17,9 @@ class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-    _animationStyle = AnimationStyle(
-      duration: const Duration(seconds: 1),
-      reverseDuration: const Duration(seconds: 1),
+    _animationStyle = const AnimationStyle(
+      duration: Duration(seconds: 1),
+      reverseDuration: Duration(seconds: 1),
     );
   }
 
@@ -38,8 +38,9 @@ class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
   Widget build(BuildContext context) {
     _listener();
 
-    final customer =
-        ref.watch(salesCustomerProvider.select((value) => value.customers));
+    final customer = ref.watch(
+      salesCustomerProvider.select((value) => value.customers),
+    );
 
     if (customer.isEmpty) {
       return const SliverFillRemaining(child: EmptyDataWidget());
@@ -100,7 +101,8 @@ class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
                             label: Text(
                               data.customreDimension ?? '-',
                               style: context
-                                  .textTheme.labelSmall, // Reduce text size
+                                  .textTheme
+                                  .labelSmall, // Reduce text size
                             ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
@@ -117,7 +119,8 @@ class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
                             label: Text(
                               data.priceGroup ?? '-',
                               style: context
-                                  .textTheme.labelSmall, // Reduce text size
+                                  .textTheme
+                                  .labelSmall, // Reduce text size
                             ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
@@ -140,25 +143,25 @@ class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
 
   void _listener() {
     // listen for error
-    ref.listen(
-      salesCustomerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(salesCustomerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
 
     // listen for error
     ref.listen(
@@ -173,9 +176,7 @@ class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 3),
-              content: Text(
-                '$count searched history cleared'.hardcoded,
-              ),
+              content: Text('$count searched history cleared'.hardcoded),
             ),
           );
         }
@@ -183,8 +184,10 @@ class _CustomerListWidgetState extends ConsumerState<SalesCustomerListWidget> {
     );
 
     // listen for loading
-    ref.listen(salesCustomerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(salesCustomerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {

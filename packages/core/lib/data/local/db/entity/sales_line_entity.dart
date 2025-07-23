@@ -3,8 +3,11 @@ import 'package:drift/drift.dart';
 
 class SalesLineEntity extends Table {
   IntColumn get id => integer().autoIncrement()();
-  TextColumn get salesId => text()
-      .references(SalesHeaderEntity, #salesId, onDelete: KeyAction.cascade)();
+  TextColumn get salesId => text().references(
+    SalesHeaderEntity,
+    #salesId,
+    onDelete: KeyAction.cascade,
+  )();
   IntColumn get lineId => integer()();
   TextColumn get itemId => text()();
   TextColumn get productId => text()();

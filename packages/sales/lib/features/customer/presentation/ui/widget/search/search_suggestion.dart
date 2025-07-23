@@ -8,9 +8,7 @@ class SearchSuggestion extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final searchHistory = ref.watch(
-      salesCustomerProvider.select(
-        (value) => value.searchHistory,
-      ),
+      salesCustomerProvider.select((value) => value.searchHistory),
     );
 
     if (searchHistory.isEmpty) return const SizedBox.shrink();
@@ -28,9 +26,7 @@ class SearchSuggestion extends ConsumerWidget {
               (e) => Consumer(
                 builder: (context, ref, child) {
                   final query = ref.watch(
-                    salesCustomerProvider.select(
-                      (value) => value.searchQuery,
-                    ),
+                    salesCustomerProvider.select((value) => value.searchQuery),
                   );
 
                   return ChoiceChip(

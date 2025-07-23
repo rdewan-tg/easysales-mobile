@@ -16,9 +16,7 @@ class SalesLineResponse with _$SalesLineResponse {
 
 @freezed
 class SalesLineData with _$SalesLineData {
-  factory SalesLineData({
-    required int count,
-  }) = _SalesLineData;
+  factory SalesLineData({required int count}) = _SalesLineData;
 
   factory SalesLineData.fromJson(Map<String, dynamic> json) =>
       _$SalesLineDataFromJson(json);

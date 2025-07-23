@@ -55,10 +55,7 @@ class _SelectProductDetailState extends ConsumerState<SelectProductDetail> {
               children: [
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: kMedium,
-                    top: kSmall,
-                  ),
+                  padding: const EdgeInsets.only(left: kMedium, top: kSmall),
                   child: IconButton(
                     onPressed: widget.onClose,
                     icon: const Icon(Icons.close),
@@ -162,13 +159,15 @@ class _SelectProductDetailState extends ConsumerState<SelectProductDetail> {
                 Consumer(
                   builder: (context, ref, child) {
                     final qty = ref.watch(
-                      productControllerProvider
-                          .select((value) => value.quantity),
+                      productControllerProvider.select(
+                        (value) => value.quantity,
+                      ),
                     );
 
                     final isOrderSynced = ref.watch(
-                      salesLineControllerProvider
-                          .select((value) => value.isOrderSynced),
+                      salesLineControllerProvider.select(
+                        (value) => value.isOrderSynced,
+                      ),
                     );
 
                     final price = _priceController.text;
@@ -193,7 +192,9 @@ class _SelectProductDetailState extends ConsumerState<SelectProductDetail> {
 
   void _getProductDetail() {
     if (_uomController.text.isEmpty || _packSizeController.text.isEmpty) return;
-    ref.read(productControllerProvider.notifier).getProductDetail(
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductDetail(
           widget.itemId,
           widget.priceGroup,
           _packSizeController.text,
@@ -202,12 +203,15 @@ class _SelectProductDetailState extends ConsumerState<SelectProductDetail> {
   }
 
   void _addSaleLine() {
-    final product =
-        ref.read(productControllerProvider.notifier).getProduct(widget.itemId);
+    final product = ref
+        .read(productControllerProvider.notifier)
+        .getProduct(widget.itemId);
     final price = ref.read(productControllerProvider.notifier).getPrice();
     final deviceId = ref.read(productControllerProvider.notifier).getDeviceId();
     if (price == null || product == null) return;
-    ref.read(salesLineControllerProvider.notifier).createSalesLine(
+    ref
+        .read(salesLineControllerProvider.notifier)
+        .createSalesLine(
           salesId: widget.salesId,
           productDetail: price,
           productData: product,

@@ -44,14 +44,16 @@ class _OrderRunningNumberScreenState
                   child: Consumer(
                     builder: (context, ref, child) {
                       final value = ref.watch(
-                        settingControllerProvider
-                            .select((value) => value.orderRunningNumber),
+                        settingControllerProvider.select(
+                          (value) => value.orderRunningNumber,
+                        ),
                       );
                       _control.text = value.toString();
 
                       return CustomTextFormField(
-                        labelText: context
-                            .localizations('setting.orderRunningNumberTitle'),
+                        labelText: context.localizations(
+                          'setting.orderRunningNumberTitle',
+                        ),
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done,
                         controller: _control,
@@ -64,9 +66,7 @@ class _OrderRunningNumberScreenState
                   onPressed: () {
                     ref
                         .read(settingControllerProvider.notifier)
-                        .setOrderRunningNumber(
-                          _control.text,
-                        );
+                        .setOrderRunningNumber(_control.text);
                   },
                   child: Text(context.localizations('setting.save')),
                 ),
@@ -80,8 +80,9 @@ class _OrderRunningNumberScreenState
 
   void _listener() {
     ref.listen(
-      settingControllerProvider
-          .select((value) => value.isOrderRunningNumberSaved),
+      settingControllerProvider.select(
+        (value) => value.isOrderRunningNumberSaved,
+      ),
       (previous, next) {
         if (next) {
           ScaffoldMessenger.of(context).showSnackBar(

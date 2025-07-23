@@ -9,9 +9,7 @@ class PasswordVisibility extends ConsumerWidget {
       loginControllerProvider.select((value) => value.isPasswordVisible),
     );
     return IconButton(
-      icon: Icon(
-        isVisiable ? Icons.visibility_off : Icons.visibility,
-      ),
+      icon: Icon(isVisiable ? Icons.visibility_off : Icons.visibility),
       onPressed: () {
         ref.read(loginControllerProvider.notifier).togglePasswordVisibility();
       },

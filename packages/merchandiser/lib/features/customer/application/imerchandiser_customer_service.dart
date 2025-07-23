@@ -12,18 +12,14 @@ abstract interface class IMerchandiserCustomerService {
 
   Future<Result<int, Failure>> deleteAllSearchCustomerHistory();
 
-  Stream<List<MerchandiserCustomerEntityData>> watchAll(
-    String? searchQuery,
-  );
+  Stream<List<MerchandiserCustomerEntityData>> watchAll(String? searchQuery);
 
   Stream<List<SearchMerchandiserCustomerHistoryEntityData>>
-      watchSearchCustomerHistory();
+  watchSearchCustomerHistory();
 
   Future<Map<String, String>> getAllSetting();
 
-  Future<void> insertOrUpdateSearchMerchandiserCustomerHistory(
-    String key,
-  );
+  Future<void> insertOrUpdateSearchMerchandiserCustomerHistory(String key);
 
   Stream<int> watchTotalCustomerCount();
 }

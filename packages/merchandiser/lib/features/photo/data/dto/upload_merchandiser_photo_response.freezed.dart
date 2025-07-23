@@ -12,10 +12,12 @@ part of 'upload_merchandiser_photo_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 UploadMerchandiserPhotoResponse _$UploadMerchandiserPhotoResponseFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _UploadMerchandiserPhotoResponse.fromJson(json);
 }
 
@@ -33,25 +35,31 @@ mixin _$UploadMerchandiserPhotoResponse {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $UploadMerchandiserPhotoResponseCopyWith<UploadMerchandiserPhotoResponse>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UploadMerchandiserPhotoResponseCopyWith<$Res> {
   factory $UploadMerchandiserPhotoResponseCopyWith(
-          UploadMerchandiserPhotoResponse value,
-          $Res Function(UploadMerchandiserPhotoResponse) then) =
-      _$UploadMerchandiserPhotoResponseCopyWithImpl<$Res,
-          UploadMerchandiserPhotoResponse>;
+    UploadMerchandiserPhotoResponse value,
+    $Res Function(UploadMerchandiserPhotoResponse) then,
+  ) =
+      _$UploadMerchandiserPhotoResponseCopyWithImpl<
+        $Res,
+        UploadMerchandiserPhotoResponse
+      >;
   @useResult
-  $Res call(
-      {@JsonKey(name: "status") String status,
-      @JsonKey(name: "data") String data});
+  $Res call({
+    @JsonKey(name: "status") String status,
+    @JsonKey(name: "data") String data,
+  });
 }
 
 /// @nodoc
-class _$UploadMerchandiserPhotoResponseCopyWithImpl<$Res,
-        $Val extends UploadMerchandiserPhotoResponse>
+class _$UploadMerchandiserPhotoResponseCopyWithImpl<
+  $Res,
+  $Val extends UploadMerchandiserPhotoResponse
+>
     implements $UploadMerchandiserPhotoResponseCopyWith<$Res> {
   _$UploadMerchandiserPhotoResponseCopyWithImpl(this._value, this._then);
 
@@ -64,20 +72,20 @@ class _$UploadMerchandiserPhotoResponseCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? status = null, Object? data = null}) {
+    return _then(
+      _value.copyWith(
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            data: null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -85,44 +93,47 @@ class _$UploadMerchandiserPhotoResponseCopyWithImpl<$Res,
 abstract class _$$UploadMerchandiserPhotoResponseImplCopyWith<$Res>
     implements $UploadMerchandiserPhotoResponseCopyWith<$Res> {
   factory _$$UploadMerchandiserPhotoResponseImplCopyWith(
-          _$UploadMerchandiserPhotoResponseImpl value,
-          $Res Function(_$UploadMerchandiserPhotoResponseImpl) then) =
-      __$$UploadMerchandiserPhotoResponseImplCopyWithImpl<$Res>;
+    _$UploadMerchandiserPhotoResponseImpl value,
+    $Res Function(_$UploadMerchandiserPhotoResponseImpl) then,
+  ) = __$$UploadMerchandiserPhotoResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "status") String status,
-      @JsonKey(name: "data") String data});
+  $Res call({
+    @JsonKey(name: "status") String status,
+    @JsonKey(name: "data") String data,
+  });
 }
 
 /// @nodoc
 class __$$UploadMerchandiserPhotoResponseImplCopyWithImpl<$Res>
-    extends _$UploadMerchandiserPhotoResponseCopyWithImpl<$Res,
-        _$UploadMerchandiserPhotoResponseImpl>
+    extends
+        _$UploadMerchandiserPhotoResponseCopyWithImpl<
+          $Res,
+          _$UploadMerchandiserPhotoResponseImpl
+        >
     implements _$$UploadMerchandiserPhotoResponseImplCopyWith<$Res> {
   __$$UploadMerchandiserPhotoResponseImplCopyWithImpl(
-      _$UploadMerchandiserPhotoResponseImpl _value,
-      $Res Function(_$UploadMerchandiserPhotoResponseImpl) _then)
-      : super(_value, _then);
+    _$UploadMerchandiserPhotoResponseImpl _value,
+    $Res Function(_$UploadMerchandiserPhotoResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UploadMerchandiserPhotoResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = null,
-  }) {
-    return _then(_$UploadMerchandiserPhotoResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? status = null, Object? data = null}) {
+    return _then(
+      _$UploadMerchandiserPhotoResponseImpl(
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        data: null == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -130,13 +141,14 @@ class __$$UploadMerchandiserPhotoResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UploadMerchandiserPhotoResponseImpl
     implements _UploadMerchandiserPhotoResponse {
-  const _$UploadMerchandiserPhotoResponseImpl(
-      {@JsonKey(name: "status") required this.status,
-      @JsonKey(name: "data") required this.data});
+  const _$UploadMerchandiserPhotoResponseImpl({
+    @JsonKey(name: "status") required this.status,
+    @JsonKey(name: "data") required this.data,
+  });
 
   factory _$UploadMerchandiserPhotoResponseImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$UploadMerchandiserPhotoResponseImplFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$$UploadMerchandiserPhotoResponseImplFromJson(json);
 
   @override
   @JsonKey(name: "status")
@@ -169,24 +181,25 @@ class _$UploadMerchandiserPhotoResponseImpl
   @override
   @pragma('vm:prefer-inline')
   _$$UploadMerchandiserPhotoResponseImplCopyWith<
-          _$UploadMerchandiserPhotoResponseImpl>
-      get copyWith => __$$UploadMerchandiserPhotoResponseImplCopyWithImpl<
-          _$UploadMerchandiserPhotoResponseImpl>(this, _$identity);
+    _$UploadMerchandiserPhotoResponseImpl
+  >
+  get copyWith =>
+      __$$UploadMerchandiserPhotoResponseImplCopyWithImpl<
+        _$UploadMerchandiserPhotoResponseImpl
+      >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UploadMerchandiserPhotoResponseImplToJson(
-      this,
-    );
+    return _$$UploadMerchandiserPhotoResponseImplToJson(this);
   }
 }
 
 abstract class _UploadMerchandiserPhotoResponse
     implements UploadMerchandiserPhotoResponse {
-  const factory _UploadMerchandiserPhotoResponse(
-          {@JsonKey(name: "status") required final String status,
-          @JsonKey(name: "data") required final String data}) =
-      _$UploadMerchandiserPhotoResponseImpl;
+  const factory _UploadMerchandiserPhotoResponse({
+    @JsonKey(name: "status") required final String status,
+    @JsonKey(name: "data") required final String data,
+  }) = _$UploadMerchandiserPhotoResponseImpl;
 
   factory _UploadMerchandiserPhotoResponse.fromJson(Map<String, dynamic> json) =
       _$UploadMerchandiserPhotoResponseImpl.fromJson;
@@ -203,6 +216,7 @@ abstract class _UploadMerchandiserPhotoResponse
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UploadMerchandiserPhotoResponseImplCopyWith<
-          _$UploadMerchandiserPhotoResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$UploadMerchandiserPhotoResponseImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }

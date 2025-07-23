@@ -37,8 +37,9 @@ class AppRouter {
   GoRouterNotifier notifier;
   NavigatorObserver navigatorObserver;
 
-  final GlobalKey<NavigatorState> rootNavigatorKey =
-      GlobalKey(debugLabel: 'root');
+  final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey(
+    debugLabel: 'root',
+  );
   bool isDuplicate = false;
 
   AppRouter({
@@ -107,9 +108,7 @@ class AppRouter {
         name: state.name,
         child: const LoginScreen(),
       ),
-      routes: [
-        _forgotPasswordRoute(),
-      ],
+      routes: [_forgotPasswordRoute()],
     );
   }
 
@@ -179,10 +178,7 @@ class AppRouter {
             name: state.name,
             child: const OrderHistoryScreen(),
           ),
-          routes: [
-            _orderHistoryDetailRoute(),
-            _salesBranch(),
-          ],
+          routes: [_orderHistoryDetailRoute(), _salesBranch()],
         ),
       ],
     );
@@ -203,6 +199,7 @@ class AppRouter {
             _captureImageRoute(),
             _searchMerchandiserCustomerRoute(),
             _merchandiserCustomerImportRoute(),
+            _siteVisitRoute(),
           ],
         ),
       ],
@@ -226,6 +223,7 @@ class AppRouter {
             _profileRoute(),
             _orderRunningNumberRoute(),
             _deviceSettingRoute(),
+            _companySettingRoute(),
           ],
         ),
       ],
@@ -317,6 +315,18 @@ class AppRouter {
         key: state.pageKey,
         name: state.name,
         child: const DeviceSettingScreen(),
+      ),
+    );
+  }
+
+  RouteBase _companySettingRoute() {
+    return GoRoute(
+      path: '/$companySettingRoute',
+      name: companySettingRoute,
+      pageBuilder: (context, state) => NoTransitionPage(
+        key: state.pageKey,
+        name: state.name,
+        child: const CompanySettingScreen(),
       ),
     );
   }
@@ -428,13 +438,9 @@ class AppRouter {
       name: createOrderRoute,
       builder: (context, state) {
         final extras = state.extra as Map<String, dynamic>;
-        return SalesOrderScreen(
-          extras: extras,
-        );
+        return SalesOrderScreen(extras: extras);
       },
-      routes: [
-        _searchProductRoute(),
-      ],
+      routes: [_searchProductRoute()],
     );
   }
 
@@ -447,6 +453,17 @@ class AppRouter {
         name: state.name,
         child: const SearchItemsScreen(),
       ),
+    );
+  }
+
+  RouteBase _siteVisitRoute() {
+    return GoRoute(
+      path: '/$siteVisitRoute',
+      name: siteVisitRoute,
+      builder: (context, state) {
+        final extras = state.extra as Map<String, dynamic>;
+        return SiteVisitScreen(extras: extras);
+      },
     );
   }
 

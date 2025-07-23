@@ -26,4 +26,6 @@ product:
   $ref: product.yaml
 common:
   $ref: common.yaml
+siteVisit:
+  $ref: siteVisit.yaml
 

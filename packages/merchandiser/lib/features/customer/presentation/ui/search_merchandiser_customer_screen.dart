@@ -48,9 +48,7 @@ class _SearchMerchandiserCustomerScreenState
                   horizontal: kSmall,
                   vertical: kSmall,
                 ),
-                constraints: const BoxConstraints.tightFor(
-                  height: 40,
-                ),
+                constraints: const BoxConstraints.tightFor(height: 40),
                 onChanged: (value) {
                   ref
                       .read(merchandiserCustomerProvider.notifier)

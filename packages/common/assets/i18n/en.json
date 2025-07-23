@@ -46,6 +46,12 @@
     "setting.importProductAndPriceSubTitle": "Import Product and Price from API",
     "setting.save": "Save",
     "setting.orderRunningNumberUpdatedSuccessfully": "Order Running Number Updated Successfully",
+    "setting.companySetting": "Company Setting",
+    "setting.manageYourCompany": "Manage your company setting",
+    "setting.companyId": "Company ID",
+    "setting.companyName": "Company Name",
+    "setting.companyCode": "Company Code",
+    "setting.isSiteVisitEnabled": "Is Site Visit Enabled",
     "profile.title": "Profile",
     "profile.deleteMyAccount": "Delete Account",
     "profile.signout": "Sign out",
@@ -74,5 +80,14 @@
     "common.undo": "Undo",
     "common.orderDeleted": "Order Deleted",
     "common.confirmDeleteTitle": "Delete Order",
-    "common.confirmDeleteMessage": "Are you sure you want to delete this order?"
+    "common.confirmDeleteMessage": "Are you sure you want to delete this order?",
+    "siteVisit.title": "Site Visit",
+    "siteVisit.youAreHere": "You are here",
+    "siteVisit.checkIn": "Check In",
+    "siteVisit.checkOut": "Check Out",
+    "siteVisit.checkInMessage": "You have successfully checked in",
+    "siteVisit.checkOutMessage": "You have successfully checked out",
+    "siteVisit.currentLocation": "Current Location",
+    "siteVisit.noLocation": "No Location",
+    "siteVisit.currentTime": "Current Time"
 }

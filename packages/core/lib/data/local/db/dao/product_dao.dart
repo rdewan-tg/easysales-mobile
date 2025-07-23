@@ -19,10 +19,7 @@ Future<void> insertOrUpdateProductList(List<ProductEntityData> dataList) async {
 
     await database.transaction(() async {
       await database.batch((batch) {
-        batch.insertAllOnConflictUpdate(
-          database.productEntity,
-          dataList,
-        );
+        batch.insertAllOnConflictUpdate(database.productEntity, dataList);
       });
     });
   } catch (e, stackTrace) {
@@ -41,10 +38,7 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
     try {
       await transaction(() async {
         await batch((batch) {
-          batch.insertAllOnConflictUpdate(
-            productEntity,
-            dataList,
-          );
+          batch.insertAllOnConflictUpdate(productEntity, dataList);
         });
       });
     } catch (e, stackTrace) {
@@ -55,9 +49,7 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
     }
   }
 
-  Stream<List<ProductEntityData>> watchAllProducts({
-    String? searchQuery,
-  }) {
+  Stream<List<ProductEntityData>> watchAllProducts({String? searchQuery}) {
     final query = select(productEntity);
 
     if (searchQuery != null && searchQuery.isNotEmpty) {
@@ -86,15 +78,13 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
     String? searchQuery,
     required String priceGroup,
   }) {
-    final query = select(productEntity).join(
-      [
-        innerJoin(
-          productPriceEntity,
-          productPriceEntity.itemId.equalsExp(productEntity.itemId) &
-              productPriceEntity.priceGroup.equals(priceGroup),
-        ),
-      ],
-    );
+    final query = select(productEntity).join([
+      innerJoin(
+        productPriceEntity,
+        productPriceEntity.itemId.equalsExp(productEntity.itemId) &
+            productPriceEntity.priceGroup.equals(priceGroup),
+      ),
+    ]);
 
     if (searchQuery != null && searchQuery.isNotEmpty) {
       final formattedSearchQuery =
@@ -114,21 +104,24 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
       ),
     ]);
 
-    return query.watch().map((rows) {
-      return rows.map((row) {
-        return row.readTable(productEntity);
-      }).toList();
-    }).handleError((e, s) {
-      throw Failure(message: e.toString(), stackTrace: s);
-    });
+    return query
+        .watch()
+        .map((rows) {
+          return rows.map((row) {
+            return row.readTable(productEntity);
+          }).toList();
+        })
+        .handleError((e, s) {
+          throw Failure(message: e.toString(), stackTrace: s);
+        });
   }
 
   // watch the total count
   Stream<int> watchTotalCount() {
     final countExp = countAll();
-    return (selectOnly(productEntity)..addColumns([countExp]))
-        .map((row) => row.read(countExp)!)
-        .watchSingle();
+    return (selectOnly(
+      productEntity,
+    )..addColumns([countExp])).map((row) => row.read(countExp)!).watchSingle();
   }
 
   Future<ProductEntityData?> getProductByItemId(String itemId) async {

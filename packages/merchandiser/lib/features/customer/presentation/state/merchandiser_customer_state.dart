@@ -18,5 +18,6 @@ class MerchandiserCustomerState with _$MerchandiserCustomerState {
     @Default([]) List<String> searchHistory,
     @Default('') String searchQuery,
     @Default('') String lastSearchQuery,
+    @Default({}) Map<String, String> settings,
   }) = _MerchandiserCustomerState;
 }

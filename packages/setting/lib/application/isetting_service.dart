@@ -10,6 +10,8 @@ abstract interface class ISettingService {
     String deviceId,
   );
 
+  Future<Result<Map<String, String>, Failure>> getCompanySetting();
+
   Stream<String> watchThemeMode();
 
   Stream<String> watchLanguage();

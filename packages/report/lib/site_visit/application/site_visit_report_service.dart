@@ -21,24 +21,20 @@ final class SiteVisitReportService implements ISiteVisitReportService {
     String salesPersonCode,
   ) async {
     try {
-      final response = await _siteVisitReportRepository
-          .toDaySiteVisitReport(salesPersonCode);
+      final response = await _siteVisitReportRepository.toDaySiteVisitReport(
+        salesPersonCode,
+      );
       return Success(response.data);
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 
   @override
   Future<Result<ThisMonthSiteVisitReportData, Failure>>
-      thisMonthSiteVisitReport(String salesPersonCode) async {
+  thisMonthSiteVisitReport(String salesPersonCode) async {
     try {
       final response = await _siteVisitReportRepository
           .thisMonthSiteVisitReport(salesPersonCode);
@@ -46,12 +42,7 @@ final class SiteVisitReportService implements ISiteVisitReportService {
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 

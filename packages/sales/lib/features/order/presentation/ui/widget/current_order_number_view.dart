@@ -24,8 +24,9 @@ class _CurrentOrderNumberViewScreenState
       salesHeaderControllerProvider.select((value) => value.currentOrderNumber),
     );
     final isLoading = ref.watch(
-      salesHeaderControllerProvider
-          .select((value) => value.isFetchingCurrentOrderNumber),
+      salesHeaderControllerProvider.select(
+        (value) => value.isFetchingCurrentOrderNumber,
+      ),
     );
 
     return VisibilityDetector(
@@ -41,10 +42,7 @@ class _CurrentOrderNumberViewScreenState
         padding: const EdgeInsets.all(kMedium),
         child: Row(
           children: [
-            Text(
-              'Current Order Number:',
-              style: context.textTheme.labelLarge,
-            ),
+            Text('Current Order Number:', style: context.textTheme.labelLarge),
             Padding(
               padding: const EdgeInsets.only(left: kXSmall),
               child: isLoading

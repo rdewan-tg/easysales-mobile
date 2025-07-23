@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final siteVisitControllerProvider =
     AutoDisposeNotifierProvider<SiteVisitController, TodaySiteVisitState>(
-  SiteVisitController.new,
-);
+      SiteVisitController.new,
+    );
 
 class SiteVisitController extends AutoDisposeNotifier<TodaySiteVisitState> {
   @override
@@ -17,8 +17,9 @@ class SiteVisitController extends AutoDisposeNotifier<TodaySiteVisitState> {
     state = state.copyWith(isLoadingTodayVisit: true, errorMsg: null);
 
     // get the setting from the database
-    final setting =
-        await ref.read(siteVisitReportServiceProvider).getAllSettings();
+    final setting = await ref
+        .read(siteVisitReportServiceProvider)
+        .getAllSettings();
     // get the data from map
     final String salesPersonId = setting['salesPersonCode'] ?? '';
 
@@ -26,24 +27,30 @@ class SiteVisitController extends AutoDisposeNotifier<TodaySiteVisitState> {
         .read(siteVisitReportServiceProvider)
         .toDaySiteVisitReport(salesPersonId);
 
-    result.when((success) {
-      state = state.copyWith(
-        todayTotalVisits: success.totalUniqueVisits,
-        todayVisitDetails: success.visitDetails,
-        isLoadingTodayVisit: false,
-      );
-    }, (error) {
-      state =
-          state.copyWith(errorMsg: error.message, isLoadingTodayVisit: false);
-    });
+    result.when(
+      (success) {
+        state = state.copyWith(
+          todayTotalVisits: success.totalUniqueVisits,
+          todayVisitDetails: success.visitDetails,
+          isLoadingTodayVisit: false,
+        );
+      },
+      (error) {
+        state = state.copyWith(
+          errorMsg: error.message,
+          isLoadingTodayVisit: false,
+        );
+      },
+    );
   }
 
   Future<void> thisMonthSiteVisitReport() async {
     state = state.copyWith(isLoadingThisMonthVisit: true, errorMsg: null);
 
     // get the setting from the database
-    final setting =
-        await ref.read(siteVisitReportServiceProvider).getAllSettings();
+    final setting = await ref
+        .read(siteVisitReportServiceProvider)
+        .getAllSettings();
     // get the data from map
     final String salesPersonId = setting['salesPersonCode'] ?? '';
 
@@ -51,17 +58,20 @@ class SiteVisitController extends AutoDisposeNotifier<TodaySiteVisitState> {
         .read(siteVisitReportServiceProvider)
         .thisMonthSiteVisitReport(salesPersonId);
 
-    result.when((success) {
-      state = state.copyWith(
-        thisMonthTotalVisits: success.totalUniqueVisits,
-        thisMonthVisitDetails: success.visitDetails,
-        isLoadingThisMonthVisit: false,
-      );
-    }, (error) {
-      state = state.copyWith(
-        errorMsg: error.message,
-        isLoadingThisMonthVisit: false,
-      );
-    });
+    result.when(
+      (success) {
+        state = state.copyWith(
+          thisMonthTotalVisits: success.totalUniqueVisits,
+          thisMonthVisitDetails: success.visitDetails,
+          isLoadingThisMonthVisit: false,
+        );
+      },
+      (error) {
+        state = state.copyWith(
+          errorMsg: error.message,
+          isLoadingThisMonthVisit: false,
+        );
+      },
+    );
   }
 }

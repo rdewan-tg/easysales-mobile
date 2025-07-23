@@ -11,11 +11,12 @@ import 'package:common/dto/customer/customer_response.dart';
 
 final salesCustomerServiceProvider =
     Provider.autoDispose<ISalesCustomerService>((ref) {
-  final merchandiserCustomerRepository =
-      ref.watch(salesCustomerRepositoryProvider);
+      final merchandiserCustomerRepository = ref.watch(
+        salesCustomerRepositoryProvider,
+      );
 
-  return SalesCustomerService(merchandiserCustomerRepository);
-});
+      return SalesCustomerService(merchandiserCustomerRepository);
+    });
 
 final class SalesCustomerService implements ISalesCustomerService {
   final ISalesCustomerRepository _salesCustomerRepository;
@@ -23,12 +24,11 @@ final class SalesCustomerService implements ISalesCustomerService {
   SalesCustomerService(this._salesCustomerRepository);
 
   @override
-  Future<Result<bool, Failure>> getSalesCustomers(
-    String dataAreaId,
-  ) async {
+  Future<Result<bool, Failure>> getSalesCustomers(String dataAreaId) async {
     try {
-      final response =
-          await _salesCustomerRepository.getSalesCustomers(dataAreaId);
+      final response = await _salesCustomerRepository.getSalesCustomers(
+        dataAreaId,
+      );
 
       final salesCustomerData = await Isolate.run(
         () => _mapToSalesCustomerEntityData(response),
@@ -40,12 +40,7 @@ final class SalesCustomerService implements ISalesCustomerService {
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 
@@ -70,12 +65,7 @@ final class SalesCustomerService implements ISalesCustomerService {
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 
@@ -96,27 +86,23 @@ final class SalesCustomerService implements ISalesCustomerService {
   @override
   Future<Result<int, Failure>> deleteAllSearchCustomerHistory() async {
     try {
-      final result =
-          await _salesCustomerRepository.deleteAllSearchCustomerHistory();
+      final result = await _salesCustomerRepository
+          .deleteAllSearchCustomerHistory();
 
       return Result.success(result);
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 
   @override
   Future<void> insertOrUpdateSearchSalesCustomerHistory(String key) async {
     try {
-      await _salesCustomerRepository
-          .insertOrUpdateSearchSalesCustomerHistory(key);
+      await _salesCustomerRepository.insertOrUpdateSearchSalesCustomerHistory(
+        key,
+      );
     } catch (e, _) {
       rethrow;
     }
@@ -124,7 +110,7 @@ final class SalesCustomerService implements ISalesCustomerService {
 
   @override
   Stream<List<SearchSalesCustomerHistoryEntityData>>
-      watchSearchCustomerHistory() {
+  watchSearchCustomerHistory() {
     return _salesCustomerRepository.watchSearchCustomerHistory();
   }
 

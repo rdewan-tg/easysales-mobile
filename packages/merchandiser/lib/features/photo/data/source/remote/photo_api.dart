@@ -6,7 +6,6 @@ import 'package:dio/dio.dart';
 import 'package:merchandiser/features/photo/data/dto/upload_merchandiser_photo_response.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:http_parser/http_parser.dart';
 
 part 'photo_api.g.dart';
 

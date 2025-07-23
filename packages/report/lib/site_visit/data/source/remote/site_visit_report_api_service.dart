@@ -13,9 +13,7 @@ final siteVisitReportApiProvider = Provider<SiteVisitReportApiService>((ref) {
   return SiteVisitReportApiService(ref.watch(networkServiceProvider));
 });
 
-@RestApi(
-  parser: Parser.FlutterCompute,
-)
+@RestApi(parser: Parser.FlutterCompute)
 abstract class SiteVisitReportApiService {
   factory SiteVisitReportApiService(Dio dio) => _SiteVisitReportApiService(dio);
 

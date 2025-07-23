@@ -12,7 +12,8 @@ part of 'merchandiser_customer.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$MerchandiserCustomer {
@@ -45,35 +46,39 @@ mixin _$MerchandiserCustomer {
 
 /// @nodoc
 abstract class $MerchandiserCustomerCopyWith<$Res> {
-  factory $MerchandiserCustomerCopyWith(MerchandiserCustomer value,
-          $Res Function(MerchandiserCustomer) then) =
-      _$MerchandiserCustomerCopyWithImpl<$Res, MerchandiserCustomer>;
+  factory $MerchandiserCustomerCopyWith(
+    MerchandiserCustomer value,
+    $Res Function(MerchandiserCustomer) then,
+  ) = _$MerchandiserCustomerCopyWithImpl<$Res, MerchandiserCustomer>;
   @useResult
-  $Res call(
-      {int id,
-      String customerId,
-      String customerName,
-      String address,
-      String salesPersonId,
-      String? salesPerson,
-      String? merchandiser,
-      String countryId,
-      String? phoneNumber,
-      double latitude,
-      double longitude,
-      double? creditLimit,
-      String? currencyCode,
-      String? paymentTerm,
-      String? priceGroup,
-      String customreDimension,
-      int status,
-      int companyId,
-      String companyCode});
+  $Res call({
+    int id,
+    String customerId,
+    String customerName,
+    String address,
+    String salesPersonId,
+    String? salesPerson,
+    String? merchandiser,
+    String countryId,
+    String? phoneNumber,
+    double latitude,
+    double longitude,
+    double? creditLimit,
+    String? currencyCode,
+    String? paymentTerm,
+    String? priceGroup,
+    String customreDimension,
+    int status,
+    int companyId,
+    String companyCode,
+  });
 }
 
 /// @nodoc
-class _$MerchandiserCustomerCopyWithImpl<$Res,
-        $Val extends MerchandiserCustomer>
+class _$MerchandiserCustomerCopyWithImpl<
+  $Res,
+  $Val extends MerchandiserCustomer
+>
     implements $MerchandiserCustomerCopyWith<$Res> {
   _$MerchandiserCustomerCopyWithImpl(this._value, this._then);
 
@@ -107,124 +112,130 @@ class _$MerchandiserCustomerCopyWithImpl<$Res,
     Object? companyId = null,
     Object? companyCode = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerName: null == customerName
-          ? _value.customerName
-          : customerName // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPersonId: null == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPerson: freezed == salesPerson
-          ? _value.salesPerson
-          : salesPerson // ignore: cast_nullable_to_non_nullable
-              as String?,
-      merchandiser: freezed == merchandiser
-          ? _value.merchandiser
-          : merchandiser // ignore: cast_nullable_to_non_nullable
-              as String?,
-      countryId: null == countryId
-          ? _value.countryId
-          : countryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitude: null == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitude: null == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      creditLimit: freezed == creditLimit
-          ? _value.creditLimit
-          : creditLimit // ignore: cast_nullable_to_non_nullable
-              as double?,
-      currencyCode: freezed == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentTerm: freezed == paymentTerm
-          ? _value.paymentTerm
-          : paymentTerm // ignore: cast_nullable_to_non_nullable
-              as String?,
-      priceGroup: freezed == priceGroup
-          ? _value.priceGroup
-          : priceGroup // ignore: cast_nullable_to_non_nullable
-              as String?,
-      customreDimension: null == customreDimension
-          ? _value.customreDimension
-          : customreDimension // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyCode: null == companyCode
-          ? _value.companyCode
-          : companyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            customerId: null == customerId
+                ? _value.customerId
+                : customerId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            customerName: null == customerName
+                ? _value.customerName
+                : customerName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            address: null == address
+                ? _value.address
+                : address // ignore: cast_nullable_to_non_nullable
+                      as String,
+            salesPersonId: null == salesPersonId
+                ? _value.salesPersonId
+                : salesPersonId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            salesPerson: freezed == salesPerson
+                ? _value.salesPerson
+                : salesPerson // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            merchandiser: freezed == merchandiser
+                ? _value.merchandiser
+                : merchandiser // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            countryId: null == countryId
+                ? _value.countryId
+                : countryId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            phoneNumber: freezed == phoneNumber
+                ? _value.phoneNumber
+                : phoneNumber // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            latitude: null == latitude
+                ? _value.latitude
+                : latitude // ignore: cast_nullable_to_non_nullable
+                      as double,
+            longitude: null == longitude
+                ? _value.longitude
+                : longitude // ignore: cast_nullable_to_non_nullable
+                      as double,
+            creditLimit: freezed == creditLimit
+                ? _value.creditLimit
+                : creditLimit // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            currencyCode: freezed == currencyCode
+                ? _value.currencyCode
+                : currencyCode // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            paymentTerm: freezed == paymentTerm
+                ? _value.paymentTerm
+                : paymentTerm // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            priceGroup: freezed == priceGroup
+                ? _value.priceGroup
+                : priceGroup // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            customreDimension: null == customreDimension
+                ? _value.customreDimension
+                : customreDimension // ignore: cast_nullable_to_non_nullable
+                      as String,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as int,
+            companyId: null == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            companyCode: null == companyCode
+                ? _value.companyCode
+                : companyCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$MerchandiserCustomerImplCopyWith<$Res>
     implements $MerchandiserCustomerCopyWith<$Res> {
-  factory _$$MerchandiserCustomerImplCopyWith(_$MerchandiserCustomerImpl value,
-          $Res Function(_$MerchandiserCustomerImpl) then) =
-      __$$MerchandiserCustomerImplCopyWithImpl<$Res>;
+  factory _$$MerchandiserCustomerImplCopyWith(
+    _$MerchandiserCustomerImpl value,
+    $Res Function(_$MerchandiserCustomerImpl) then,
+  ) = __$$MerchandiserCustomerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String customerId,
-      String customerName,
-      String address,
-      String salesPersonId,
-      String? salesPerson,
-      String? merchandiser,
-      String countryId,
-      String? phoneNumber,
-      double latitude,
-      double longitude,
-      double? creditLimit,
-      String? currencyCode,
-      String? paymentTerm,
-      String? priceGroup,
-      String customreDimension,
-      int status,
-      int companyId,
-      String companyCode});
+  $Res call({
+    int id,
+    String customerId,
+    String customerName,
+    String address,
+    String salesPersonId,
+    String? salesPerson,
+    String? merchandiser,
+    String countryId,
+    String? phoneNumber,
+    double latitude,
+    double longitude,
+    double? creditLimit,
+    String? currencyCode,
+    String? paymentTerm,
+    String? priceGroup,
+    String customreDimension,
+    int status,
+    int companyId,
+    String companyCode,
+  });
 }
 
 /// @nodoc
 class __$$MerchandiserCustomerImplCopyWithImpl<$Res>
     extends _$MerchandiserCustomerCopyWithImpl<$Res, _$MerchandiserCustomerImpl>
     implements _$$MerchandiserCustomerImplCopyWith<$Res> {
-  __$$MerchandiserCustomerImplCopyWithImpl(_$MerchandiserCustomerImpl _value,
-      $Res Function(_$MerchandiserCustomerImpl) _then)
-      : super(_value, _then);
+  __$$MerchandiserCustomerImplCopyWithImpl(
+    _$MerchandiserCustomerImpl _value,
+    $Res Function(_$MerchandiserCustomerImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MerchandiserCustomer
   /// with the given fields replaced by the non-null parameter values.
@@ -251,110 +262,113 @@ class __$$MerchandiserCustomerImplCopyWithImpl<$Res>
     Object? companyId = null,
     Object? companyCode = null,
   }) {
-    return _then(_$MerchandiserCustomerImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerName: null == customerName
-          ? _value.customerName
-          : customerName // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPersonId: null == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesPerson: freezed == salesPerson
-          ? _value.salesPerson
-          : salesPerson // ignore: cast_nullable_to_non_nullable
-              as String?,
-      merchandiser: freezed == merchandiser
-          ? _value.merchandiser
-          : merchandiser // ignore: cast_nullable_to_non_nullable
-              as String?,
-      countryId: null == countryId
-          ? _value.countryId
-          : countryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitude: null == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitude: null == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double,
-      creditLimit: freezed == creditLimit
-          ? _value.creditLimit
-          : creditLimit // ignore: cast_nullable_to_non_nullable
-              as double?,
-      currencyCode: freezed == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentTerm: freezed == paymentTerm
-          ? _value.paymentTerm
-          : paymentTerm // ignore: cast_nullable_to_non_nullable
-              as String?,
-      priceGroup: freezed == priceGroup
-          ? _value.priceGroup
-          : priceGroup // ignore: cast_nullable_to_non_nullable
-              as String?,
-      customreDimension: null == customreDimension
-          ? _value.customreDimension
-          : customreDimension // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyCode: null == companyCode
-          ? _value.companyCode
-          : companyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$MerchandiserCustomerImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        customerId: null == customerId
+            ? _value.customerId
+            : customerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        customerName: null == customerName
+            ? _value.customerName
+            : customerName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        address: null == address
+            ? _value.address
+            : address // ignore: cast_nullable_to_non_nullable
+                  as String,
+        salesPersonId: null == salesPersonId
+            ? _value.salesPersonId
+            : salesPersonId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        salesPerson: freezed == salesPerson
+            ? _value.salesPerson
+            : salesPerson // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        merchandiser: freezed == merchandiser
+            ? _value.merchandiser
+            : merchandiser // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        countryId: null == countryId
+            ? _value.countryId
+            : countryId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        phoneNumber: freezed == phoneNumber
+            ? _value.phoneNumber
+            : phoneNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        latitude: null == latitude
+            ? _value.latitude
+            : latitude // ignore: cast_nullable_to_non_nullable
+                  as double,
+        longitude: null == longitude
+            ? _value.longitude
+            : longitude // ignore: cast_nullable_to_non_nullable
+                  as double,
+        creditLimit: freezed == creditLimit
+            ? _value.creditLimit
+            : creditLimit // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        currencyCode: freezed == currencyCode
+            ? _value.currencyCode
+            : currencyCode // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        paymentTerm: freezed == paymentTerm
+            ? _value.paymentTerm
+            : paymentTerm // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        priceGroup: freezed == priceGroup
+            ? _value.priceGroup
+            : priceGroup // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        customreDimension: null == customreDimension
+            ? _value.customreDimension
+            : customreDimension // ignore: cast_nullable_to_non_nullable
+                  as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as int,
+        companyId: null == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        companyCode: null == companyCode
+            ? _value.companyCode
+            : companyCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$MerchandiserCustomerImpl implements _MerchandiserCustomer {
-  const _$MerchandiserCustomerImpl(
-      {required this.id,
-      required this.customerId,
-      required this.customerName,
-      required this.address,
-      required this.salesPersonId,
-      this.salesPerson,
-      this.merchandiser,
-      required this.countryId,
-      this.phoneNumber,
-      required this.latitude,
-      required this.longitude,
-      this.creditLimit,
-      this.currencyCode,
-      this.paymentTerm,
-      this.priceGroup,
-      required this.customreDimension,
-      required this.status,
-      required this.companyId,
-      required this.companyCode});
+  const _$MerchandiserCustomerImpl({
+    required this.id,
+    required this.customerId,
+    required this.customerName,
+    required this.address,
+    required this.salesPersonId,
+    this.salesPerson,
+    this.merchandiser,
+    required this.countryId,
+    this.phoneNumber,
+    required this.latitude,
+    required this.longitude,
+    this.creditLimit,
+    this.currencyCode,
+    this.paymentTerm,
+    this.priceGroup,
+    required this.customreDimension,
+    required this.status,
+    required this.companyId,
+    required this.companyCode,
+  });
 
   @override
   final int id;
@@ -444,27 +458,27 @@ class _$MerchandiserCustomerImpl implements _MerchandiserCustomer {
 
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        customerId,
-        customerName,
-        address,
-        salesPersonId,
-        salesPerson,
-        merchandiser,
-        countryId,
-        phoneNumber,
-        latitude,
-        longitude,
-        creditLimit,
-        currencyCode,
-        paymentTerm,
-        priceGroup,
-        customreDimension,
-        status,
-        companyId,
-        companyCode
-      ]);
+    runtimeType,
+    id,
+    customerId,
+    customerName,
+    address,
+    salesPersonId,
+    salesPerson,
+    merchandiser,
+    countryId,
+    phoneNumber,
+    latitude,
+    longitude,
+    creditLimit,
+    currencyCode,
+    paymentTerm,
+    priceGroup,
+    customreDimension,
+    status,
+    companyId,
+    companyCode,
+  ]);
 
   /// Create a copy of MerchandiserCustomer
   /// with the given fields replaced by the non-null parameter values.
@@ -472,32 +486,35 @@ class _$MerchandiserCustomerImpl implements _MerchandiserCustomer {
   @override
   @pragma('vm:prefer-inline')
   _$$MerchandiserCustomerImplCopyWith<_$MerchandiserCustomerImpl>
-      get copyWith =>
-          __$$MerchandiserCustomerImplCopyWithImpl<_$MerchandiserCustomerImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$MerchandiserCustomerImplCopyWithImpl<_$MerchandiserCustomerImpl>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _MerchandiserCustomer implements MerchandiserCustomer {
-  const factory _MerchandiserCustomer(
-      {required final int id,
-      required final String customerId,
-      required final String customerName,
-      required final String address,
-      required final String salesPersonId,
-      final String? salesPerson,
-      final String? merchandiser,
-      required final String countryId,
-      final String? phoneNumber,
-      required final double latitude,
-      required final double longitude,
-      final double? creditLimit,
-      final String? currencyCode,
-      final String? paymentTerm,
-      final String? priceGroup,
-      required final String customreDimension,
-      required final int status,
-      required final int companyId,
-      required final String companyCode}) = _$MerchandiserCustomerImpl;
+  const factory _MerchandiserCustomer({
+    required final int id,
+    required final String customerId,
+    required final String customerName,
+    required final String address,
+    required final String salesPersonId,
+    final String? salesPerson,
+    final String? merchandiser,
+    required final String countryId,
+    final String? phoneNumber,
+    required final double latitude,
+    required final double longitude,
+    final double? creditLimit,
+    final String? currencyCode,
+    final String? paymentTerm,
+    final String? priceGroup,
+    required final String customreDimension,
+    required final int status,
+    required final int companyId,
+    required final String companyCode,
+  }) = _$MerchandiserCustomerImpl;
 
   @override
   int get id;
@@ -543,5 +560,5 @@ abstract class _MerchandiserCustomer implements MerchandiserCustomer {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MerchandiserCustomerImplCopyWith<_$MerchandiserCustomerImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

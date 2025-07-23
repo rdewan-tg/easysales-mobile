@@ -34,10 +34,7 @@ mixin ErrorDialogMixin {
                     color: context.themeColor.colorScheme.error,
                   ),
                   const SizedBox(width: kSmall),
-                  Text(
-                    title,
-                    style: context.textTheme.headlineMedium,
-                  ),
+                  Text(title, style: context.textTheme.headlineMedium),
                 ],
               ),
               const SizedBox(height: kMedium),

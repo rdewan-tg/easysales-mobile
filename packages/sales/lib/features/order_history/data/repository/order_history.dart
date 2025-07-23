@@ -5,8 +5,9 @@ import 'package:sales/features/order_history/data/repository/iorder_history.dart
 import 'package:common/exception/failure.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final orderHistoryProvider =
-    Provider.autoDispose<IOrderHistoryRepository>((ref) {
+final orderHistoryProvider = Provider.autoDispose<IOrderHistoryRepository>((
+  ref,
+) {
   return OrderHistoryRepository(
     ref.watch(salesHeaderDaoProvider),
     ref.watch(salesLineDaoProvider),

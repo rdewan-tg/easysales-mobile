@@ -35,6 +35,8 @@ final class LoginService implements ILoginService {
             result.data.user.deviceSetting.salesPersonCode ?? '-',
         'orderNumberFormat':
             result.data.user.deviceSetting.orderNumberFormat ?? '-',
+        'isSiteVisitEnabled': result.data.user.company.isSiteVisitEnabled
+            .toString(),
       });
 
       return const Success(true);
