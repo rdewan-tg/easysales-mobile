@@ -1,3 +1,6 @@
-UI improvements
-- When scrolling the list, hide the bottom navigation bar
-- Card border is now consistent
+New Feature 
+- Added a site visit feature
+
+UI Improvements
+- Separated UI for Device Setting and Company Setting
+
