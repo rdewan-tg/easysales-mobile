@@ -12,7 +12,8 @@ part of 'delete_order_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DeleteOrderResponse _$DeleteOrderResponseFromJson(Map<String, dynamic> json) {
   return _DeleteOrderResponse.fromJson(json);
@@ -36,8 +37,9 @@ mixin _$DeleteOrderResponse {
 /// @nodoc
 abstract class $DeleteOrderResponseCopyWith<$Res> {
   factory $DeleteOrderResponseCopyWith(
-          DeleteOrderResponse value, $Res Function(DeleteOrderResponse) then) =
-      _$DeleteOrderResponseCopyWithImpl<$Res, DeleteOrderResponse>;
+    DeleteOrderResponse value,
+    $Res Function(DeleteOrderResponse) then,
+  ) = _$DeleteOrderResponseCopyWithImpl<$Res, DeleteOrderResponse>;
   @useResult
   $Res call({String status, dynamic data});
 }
@@ -56,29 +58,30 @@ class _$DeleteOrderResponseCopyWithImpl<$Res, $Val extends DeleteOrderResponse>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = freezed,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
+  $Res call({Object? status = null, Object? data = freezed}) {
+    return _then(
+      _value.copyWith(
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            data: freezed == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$DeleteOrderResponseImplCopyWith<$Res>
     implements $DeleteOrderResponseCopyWith<$Res> {
-  factory _$$DeleteOrderResponseImplCopyWith(_$DeleteOrderResponseImpl value,
-          $Res Function(_$DeleteOrderResponseImpl) then) =
-      __$$DeleteOrderResponseImplCopyWithImpl<$Res>;
+  factory _$$DeleteOrderResponseImplCopyWith(
+    _$DeleteOrderResponseImpl value,
+    $Res Function(_$DeleteOrderResponseImpl) then,
+  ) = __$$DeleteOrderResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String status, dynamic data});
@@ -88,28 +91,28 @@ abstract class _$$DeleteOrderResponseImplCopyWith<$Res>
 class __$$DeleteOrderResponseImplCopyWithImpl<$Res>
     extends _$DeleteOrderResponseCopyWithImpl<$Res, _$DeleteOrderResponseImpl>
     implements _$$DeleteOrderResponseImplCopyWith<$Res> {
-  __$$DeleteOrderResponseImplCopyWithImpl(_$DeleteOrderResponseImpl _value,
-      $Res Function(_$DeleteOrderResponseImpl) _then)
-      : super(_value, _then);
+  __$$DeleteOrderResponseImplCopyWithImpl(
+    _$DeleteOrderResponseImpl _value,
+    $Res Function(_$DeleteOrderResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DeleteOrderResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = freezed,
-  }) {
-    return _then(_$DeleteOrderResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
+  $Res call({Object? status = null, Object? data = freezed}) {
+    return _then(
+      _$DeleteOrderResponseImpl(
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        data: freezed == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+      ),
+    );
   }
 }
 
@@ -143,7 +146,10 @@ class _$DeleteOrderResponseImpl implements _DeleteOrderResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, status, const DeepCollectionEquality().hash(data));
+    runtimeType,
+    status,
+    const DeepCollectionEquality().hash(data),
+  );
 
   /// Create a copy of DeleteOrderResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -152,20 +158,21 @@ class _$DeleteOrderResponseImpl implements _DeleteOrderResponse {
   @pragma('vm:prefer-inline')
   _$$DeleteOrderResponseImplCopyWith<_$DeleteOrderResponseImpl> get copyWith =>
       __$$DeleteOrderResponseImplCopyWithImpl<_$DeleteOrderResponseImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeleteOrderResponseImplToJson(
-      this,
-    );
+    return _$$DeleteOrderResponseImplToJson(this);
   }
 }
 
 abstract class _DeleteOrderResponse implements DeleteOrderResponse {
-  const factory _DeleteOrderResponse(
-      {required final String status,
-      final dynamic data}) = _$DeleteOrderResponseImpl;
+  const factory _DeleteOrderResponse({
+    required final String status,
+    final dynamic data,
+  }) = _$DeleteOrderResponseImpl;
 
   factory _DeleteOrderResponse.fromJson(Map<String, dynamic> json) =
       _$DeleteOrderResponseImpl.fromJson;

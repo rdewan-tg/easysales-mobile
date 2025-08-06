@@ -9,8 +9,8 @@ import 'package:drift/drift.dart';
 
 final orderHistoryControllerProvider =
     AutoDisposeNotifierProvider<OrderHistoryController, OrderHistoryState>(
-  OrderHistoryController.new,
-);
+      OrderHistoryController.new,
+    );
 
 class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
   StreamSubscription<List<SalesHeaderEntityData>>? _subscriptionSalesHeaders;
@@ -29,15 +29,17 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
   }
 
   Future<void> getOrderHistory() async {
-    _subscriptionSalesHeaders =
-        ref.watch(orderHistoryServiceProvider).watchAllSalesHeader().listen(
-      (data) {
-        state = state.copyWith(salesHeaders: data);
-      },
-      onError: (e, s) {
-        state = state.copyWith(errorMsg: e.toString());
-      },
-    );
+    _subscriptionSalesHeaders = ref
+        .watch(orderHistoryServiceProvider)
+        .watchAllSalesHeader()
+        .listen(
+          (data) {
+            state = state.copyWith(salesHeaders: data);
+          },
+          onError: (e, s) {
+            state = state.copyWith(errorMsg: e.toString());
+          },
+        );
   }
 
   Future<void> getOrderLines(String salesId) async {
@@ -46,21 +48,18 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
         .watch(orderHistoryServiceProvider)
         .watchAllSalesLineBySalesId(salesId)
         .listen(
-      (data) {
-        if (data.isEmpty) {
-          state = state.copyWith(salesLines: []);
-        } else {
-          final isSynced = data.first.syncStatus == 1;
-          state = state.copyWith(
-            salesLines: data,
-            isOrderSynced: isSynced,
-          );
-        }
-      },
-      onError: (e, s) {
-        state = state.copyWith(errorMsg: e.toString());
-      },
-    );
+          (data) {
+            if (data.isEmpty) {
+              state = state.copyWith(salesLines: []);
+            } else {
+              final isSynced = data.first.syncStatus == 1;
+              state = state.copyWith(salesLines: data, isOrderSynced: isSynced);
+            }
+          },
+          onError: (e, s) {
+            state = state.copyWith(errorMsg: e.toString());
+          },
+        );
   }
 
   Future<void> cancelOrderHeader(String salesId) async {
@@ -102,8 +101,9 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
       syncStatus: const Value(2),
     );
 
-    final result =
-        await ref.read(orderHistoryServiceProvider).updateSalesLine(salesLine);
+    final result = await ref
+        .read(orderHistoryServiceProvider)
+        .updateSalesLine(salesLine);
 
     result.when(
       (success) {
@@ -116,8 +116,9 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
   }
 
   int getSyncStatus(String salesId) {
-    final data =
-        state.salesHeaders.where((e) => e.salesId == salesId).firstOrNull;
+    final data = state.salesHeaders
+        .where((e) => e.salesId == salesId)
+        .firstOrNull;
     return data?.syncStatus ?? 0;
   }
 
@@ -177,19 +178,17 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
     );
 
     // delete the line from the database
-    final result =
-        await ref.read(orderServiceProvider).deleteLine(salesId, lineId);
-    result.when((data) {
-      state = state.copyWith(
-        isItemRemoved: true,
-        isLoading: false,
-      );
-    }, (error) {
-      state = state.copyWith(
-        errorMsg: error.message,
-        isLoading: false,
-      );
-    });
+    final result = await ref
+        .read(orderServiceProvider)
+        .deleteLine(salesId, lineId);
+    result.when(
+      (data) {
+        state = state.copyWith(isItemRemoved: true, isLoading: false);
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message, isLoading: false);
+      },
+    );
   }
 
   Future<void> getSumOnLineAmount(String salesId) async {
@@ -198,13 +197,13 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
         .watch(orderHistoryServiceProvider)
         .getSumOnLineAmount(salesId)
         .listen(
-      (data) {
-        state = state.copyWith(totalAmount: data);
-      },
-      onError: (e, s) {
-        state = state.copyWith(errorMsg: e.toString());
-      },
-    );
+          (data) {
+            state = state.copyWith(totalAmount: data);
+          },
+          onError: (e, s) {
+            state = state.copyWith(errorMsg: e.toString());
+          },
+        );
   }
 
   String getPriceGroup() {
@@ -224,8 +223,9 @@ class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
       isDeleteOrder: false,
     );
 
-    final result =
-        await ref.read(orderServiceProvider).deleteSalesOrder(salesId);
+    final result = await ref
+        .read(orderServiceProvider)
+        .deleteSalesOrder(salesId);
 
     result.when(
       (data) {

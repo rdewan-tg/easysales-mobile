@@ -48,9 +48,7 @@ class _SearchSalesCustomerScreenState
                   horizontal: kSmall,
                   vertical: kSmall,
                 ),
-                constraints: const BoxConstraints.tightFor(
-                  height: 40,
-                ),
+                constraints: const BoxConstraints.tightFor(height: 40),
                 onChanged: (value) {
                   ref
                       .read(salesCustomerProvider.notifier)
@@ -70,9 +68,7 @@ class _SearchSalesCustomerScreenState
             Consumer(
               builder: (context, ref, child) {
                 final query = ref.watch(
-                  salesCustomerProvider.select(
-                    (value) => value.searchQuery,
-                  ),
+                  salesCustomerProvider.select((value) => value.searchQuery),
                 );
 
                 return IconButton(

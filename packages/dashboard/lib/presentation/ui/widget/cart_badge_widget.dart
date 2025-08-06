@@ -11,8 +11,9 @@ class CartBadgeWidget extends ConsumerWidget {
     return Badge(
       largeSize: Platform.isIOS ? 20 : null,
       isLabelVisible: badgeCount > 0 ? true : false,
-      label:
-          badgeCount < 1 ? const SizedBox.shrink() : const Text('$badgeCount'),
+      label: badgeCount < 1
+          ? const SizedBox.shrink()
+          : const Text('$badgeCount'),
       child: child,
     );
   }

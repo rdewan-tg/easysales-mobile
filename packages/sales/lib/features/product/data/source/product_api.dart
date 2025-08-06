@@ -13,19 +13,13 @@ final productApiProvider = Provider<ProductApi>((ref) {
   return ProductApi(ref.watch(networkServiceProvider));
 });
 
-@RestApi(
-  parser: Parser.FlutterCompute,
-)
+@RestApi(parser: Parser.FlutterCompute)
 abstract class ProductApi {
   factory ProductApi(Dio dio) => _ProductApi(dio);
 
   @GET(productsEndPoint)
-  Future<ProductResponse> getProducts(
-    @Path('DataAreaId') String dataAreaId,
-  );
+  Future<ProductResponse> getProducts(@Path('DataAreaId') String dataAreaId);
 
   @GET(pricesEndPoint)
-  Future<ProductPriceResponse> getPrices(
-    @Path('DataAreaId') String dataAreaId,
-  );
+  Future<ProductPriceResponse> getPrices(@Path('DataAreaId') String dataAreaId);
 }

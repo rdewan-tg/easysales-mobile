@@ -46,10 +46,7 @@ mixin SuccessDialogMixin {
                 children: [
                   TextButton.icon(
                     onPressed: onOkTap,
-                    icon: const Icon(
-                      Icons.check_outlined,
-                      color: Colors.green,
-                    ),
+                    icon: const Icon(Icons.check_outlined, color: Colors.green),
                     label: Text(btnOkText),
                   ),
                 ],

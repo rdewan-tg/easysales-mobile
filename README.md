@@ -37,10 +37,10 @@ Sales and Merchandiser App
 
 ```
 # install the flutter version using fvm
-fvm install 3.24.5
+fvm install 3.32.7
 
 # select the flutter version for current project
-fvm use 3.24.5
+fvm use 3.32.7
 
 # use fvm command to proxy your flutter command
 fvm flutter pub get
@@ -53,7 +53,7 @@ fvm flutter pub run build_runner build -d
 *   Package: https://pub.dev/packages/flutter_translation_sheet
 *   Wiki: https://github.com/roipeker/flutter_translation_sheet/wiki
 *   Once you create the Google credentials `https://github.com/roipeker/flutter_translation_sheet/wiki/Google-credentials` 
-*   Downalod the file and rename it to `credentials.json` 
+*   Download the file and rename it to `credentials.json` 
 *   Add the `credentials.json` to the project root `packages/common`
 *   Run `fvm dart pub global activate flutter_translation_sheet`
 *   Run: `fvm dart run flutter_translation_sheet:main run` to generate the translation file
@@ -83,7 +83,7 @@ fvm flutter pub run build_runner build -d
 ### Setup Android
 
 *   Android google-services.json
-    1. Downlaod the google-services.json
+    1. Download the google-services.json
     2. Add the download file to 
     ``` 
     android/app/src/dev
@@ -125,7 +125,7 @@ fvm flutter pub run build_runner build -d
 ### Setup iOS
 
 *   iOS GoogleService-Info.plist
-    1. Downlaod the GoogleService-Info.plist
+    1. Download the GoogleService-Info.plist
     2. Add the download file to 
     ``` 
     ios/Runner/Dev

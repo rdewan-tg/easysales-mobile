@@ -12,7 +12,8 @@ part of 'sign_up_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SignUpModel {
@@ -30,8 +31,9 @@ mixin _$SignUpModel {
 /// @nodoc
 abstract class $SignUpModelCopyWith<$Res> {
   factory $SignUpModelCopyWith(
-          SignUpModel value, $Res Function(SignUpModel) then) =
-      _$SignUpModelCopyWithImpl<$Res, SignUpModel>;
+    SignUpModel value,
+    $Res Function(SignUpModel) then,
+  ) = _$SignUpModelCopyWithImpl<$Res, SignUpModel>;
   @useResult
   $Res call({String email, String name, bool isSugnUpSuccess});
 }
@@ -55,20 +57,23 @@ class _$SignUpModelCopyWithImpl<$Res, $Val extends SignUpModel>
     Object? name = null,
     Object? isSugnUpSuccess = null,
   }) {
-    return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      isSugnUpSuccess: null == isSugnUpSuccess
-          ? _value.isSugnUpSuccess
-          : isSugnUpSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            email: null == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isSugnUpSuccess: null == isSugnUpSuccess
+                ? _value.isSugnUpSuccess
+                : isSugnUpSuccess // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -76,8 +81,9 @@ class _$SignUpModelCopyWithImpl<$Res, $Val extends SignUpModel>
 abstract class _$$SignUpModelImplCopyWith<$Res>
     implements $SignUpModelCopyWith<$Res> {
   factory _$$SignUpModelImplCopyWith(
-          _$SignUpModelImpl value, $Res Function(_$SignUpModelImpl) then) =
-      __$$SignUpModelImplCopyWithImpl<$Res>;
+    _$SignUpModelImpl value,
+    $Res Function(_$SignUpModelImpl) then,
+  ) = __$$SignUpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String name, bool isSugnUpSuccess});
@@ -88,8 +94,9 @@ class __$$SignUpModelImplCopyWithImpl<$Res>
     extends _$SignUpModelCopyWithImpl<$Res, _$SignUpModelImpl>
     implements _$$SignUpModelImplCopyWith<$Res> {
   __$$SignUpModelImplCopyWithImpl(
-      _$SignUpModelImpl _value, $Res Function(_$SignUpModelImpl) _then)
-      : super(_value, _then);
+    _$SignUpModelImpl _value,
+    $Res Function(_$SignUpModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SignUpModel
   /// with the given fields replaced by the non-null parameter values.
@@ -100,28 +107,33 @@ class __$$SignUpModelImplCopyWithImpl<$Res>
     Object? name = null,
     Object? isSugnUpSuccess = null,
   }) {
-    return _then(_$SignUpModelImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      isSugnUpSuccess: null == isSugnUpSuccess
-          ? _value.isSugnUpSuccess
-          : isSugnUpSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$SignUpModelImpl(
+        email: null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isSugnUpSuccess: null == isSugnUpSuccess
+            ? _value.isSugnUpSuccess
+            : isSugnUpSuccess // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SignUpModelImpl implements _SignUpModel {
-  _$SignUpModelImpl(
-      {required this.email, required this.name, required this.isSugnUpSuccess});
+  _$SignUpModelImpl({
+    required this.email,
+    required this.name,
+    required this.isSugnUpSuccess,
+  });
 
   @override
   final String email;
@@ -159,10 +171,11 @@ class _$SignUpModelImpl implements _SignUpModel {
 }
 
 abstract class _SignUpModel implements SignUpModel {
-  factory _SignUpModel(
-      {required final String email,
-      required final String name,
-      required final bool isSugnUpSuccess}) = _$SignUpModelImpl;
+  factory _SignUpModel({
+    required final String email,
+    required final String name,
+    required final bool isSugnUpSuccess,
+  }) = _$SignUpModelImpl;
 
   @override
   String get email;

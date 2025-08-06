@@ -29,10 +29,9 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await ref.read(salesHeaderControllerProvider.notifier).getSettings();
-      ref.read(salesHeaderControllerProvider.notifier).createSalesHeader(
-            widget.extras,
-            _getFormatedTime('dd/MM/yyyy'),
-          );
+      ref
+          .read(salesHeaderControllerProvider.notifier)
+          .createSalesHeader(widget.extras, _getFormattedTime('dd/MM/yyyy'));
     });
   }
 
@@ -43,10 +42,11 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
     super.dispose();
   }
 
-  String _getFormatedTime(String format) {
+  String _getFormattedTime(String format) {
     // get the time zone
-    final timeZone =
-        ref.read(salesHeaderControllerProvider.notifier).getTimeZone();
+    final timeZone = ref
+        .read(salesHeaderControllerProvider.notifier)
+        .getTimeZone();
     // get the current formatted date and time
     final now = tz.TZDateTime.now(tz.getLocation(timeZone ?? 'Asia/Singapore'));
     // format the date and time
@@ -113,9 +113,7 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
         backgroundColor: context.themeColor.colorScheme.error,
         content: Text(
           'Delivery date is required before proceeding.'.hardcoded,
-          style: context.textTheme.titleSmall?.copyWith(
-            color: Colors.white,
-          ),
+          style: context.textTheme.titleSmall?.copyWith(color: Colors.white),
         ),
       ),
     );
@@ -144,8 +142,9 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
   }
 
   bool _validateDeliveryDate() {
-    final hasSetDeliveryDate =
-        ref.read(salesHeaderControllerProvider.notifier).isDeliveryDateSet();
+    final hasSetDeliveryDate = ref
+        .read(salesHeaderControllerProvider.notifier)
+        .isDeliveryDateSet();
     return hasSetDeliveryDate;
   }
 
@@ -154,7 +153,14 @@ class _SalesOrderScreenState extends ConsumerState<SalesOrderScreen>
     final bool shouldPop = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Are you sure?'.hardcoded),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.warning_amber_rounded, color: Colors.amber),
+            const SizedBox(width: kSmall),
+            Text('Exit'.hardcoded),
+          ],
+        ),
         content: Text('Do you want to leave this page?'.hardcoded),
         actions: [
           TextButton(

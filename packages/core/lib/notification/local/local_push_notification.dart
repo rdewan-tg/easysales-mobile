@@ -43,9 +43,10 @@ class LocalPushNotification {
   }
 
   void _init() async {
-    final androidPlugin =
-        _localNotificationsPlugin.resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
+    final androidPlugin = _localNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
 
     const initializationSettings = InitializationSettings(
       android: AndroidInitializationSettings('ic_notification'),
@@ -69,7 +70,8 @@ class LocalPushNotification {
     // This method is only applicable to Android versions 8.0 or newer.
     await _localNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
+          AndroidFlutterLocalNotificationsPlugin
+        >()
         ?.createNotificationChannel(_notificationChannelMax());
 
     // Initializes the plugin.
@@ -87,9 +89,10 @@ class LocalPushNotification {
   Future<bool> requestAlarmPermission() async {
     // For Android: Request exact alarm permission
     if (Platform.isAndroid) {
-      final androidPlugin =
-          _localNotificationsPlugin.resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>();
+      final androidPlugin = _localNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
       // Check if you still have permission from last time you asked (or false if you never asked)
       var hasPermission =
           await androidPlugin?.canScheduleExactNotifications() ?? false;
@@ -175,9 +178,10 @@ class LocalPushNotification {
     String body,
   ) async {
     // Returns the Android version of the plugin on Android devices, null everywhere else
-    final androidPlugin =
-        _localNotificationsPlugin.resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
+    final androidPlugin = _localNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
 
     // Check if you still have permission from last time you asked (or false if you never asked)
     // Null means you're not on Android

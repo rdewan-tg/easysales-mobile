@@ -10,20 +10,16 @@ abstract interface class ISalesCustomerService {
     String salesPersonId,
   );
 
-  Stream<List<SalesCustomerEntityData>> watchAll(
-    String? searchQuery,
-  );
+  Stream<List<SalesCustomerEntityData>> watchAll(String? searchQuery);
 
   Stream<int> watchTotalCustomerCount();
 
   Future<Map<String, String>> getAllSetting();
 
-  Future<void> insertOrUpdateSearchSalesCustomerHistory(
-    String key,
-  );
+  Future<void> insertOrUpdateSearchSalesCustomerHistory(String key);
 
   Stream<List<SearchSalesCustomerHistoryEntityData>>
-      watchSearchCustomerHistory();
+  watchSearchCustomerHistory();
 
   Future<Result<int, Failure>> deleteAllSearchCustomerHistory();
 

@@ -6,8 +6,9 @@ class ThisMonthSiteVisitReportView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final visitDetails = ref.watch(
-      siteVisitControllerProvider
-          .select((value) => value.thisMonthVisitDetails),
+      siteVisitControllerProvider.select(
+        (value) => value.thisMonthVisitDetails,
+      ),
     );
     if (visitDetails.isEmpty) {
       return const EmptyDataWidget();
@@ -17,8 +18,10 @@ class ThisMonthSiteVisitReportView extends ConsumerWidget {
       itemBuilder: (context, index) {
         final data = visitDetails[index];
         return Card(
-          margin:
-              const EdgeInsets.symmetric(horizontal: kMedium, vertical: kSmall),
+          margin: const EdgeInsets.symmetric(
+            horizontal: kMedium,
+            vertical: kSmall,
+          ),
           elevation: kXSmall,
           child: Padding(
             padding: const EdgeInsets.all(kSmall),

@@ -12,10 +12,7 @@ class EmptyDataWidget extends ConsumerWidget {
           Assets.images.emptyBox.svg(
             width: 200,
             height: 200,
-            colorFilter: const ColorFilter.mode(
-              Colors.grey,
-              BlendMode.srcIn,
-            ),
+            colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
           ),
           Text(context.localizations('common.noData')),
         ],

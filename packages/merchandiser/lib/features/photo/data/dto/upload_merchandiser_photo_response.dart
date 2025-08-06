@@ -6,13 +6,11 @@ part 'upload_merchandiser_photo_response.g.dart';
 
 UploadMerchandiserPhotoResponse uploadMerchandiserPhotoResponseFromJson(
   String str,
-) =>
-    UploadMerchandiserPhotoResponse.fromJson(json.decode(str));
+) => UploadMerchandiserPhotoResponse.fromJson(json.decode(str));
 
 String uploadMerchandiserPhotoResponseToJson(
   UploadMerchandiserPhotoResponse data,
-) =>
-    json.encode(data);
+) => json.encode(data);
 
 @freezed
 class UploadMerchandiserPhotoResponse with _$UploadMerchandiserPhotoResponse {

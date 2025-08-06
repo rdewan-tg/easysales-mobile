@@ -30,9 +30,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
     _listener();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Forgot Password'.hardcoded),
-      ),
+      appBar: AppBar(title: Text('Forgot Password'.hardcoded)),
       body: Padding(
         padding: const EdgeInsets.all(kMedium),
         child: Form(
@@ -46,9 +44,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                 decoration: InputDecoration(
                   labelText: 'Email'.hardcoded,
                   border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(kSmall),
-                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(kSmall)),
                   ),
                   prefix: const Icon(Icons.email),
                 ),
@@ -140,5 +136,6 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
       },
     );
   }
+
   // listen for success
 }

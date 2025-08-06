@@ -12,7 +12,8 @@ part of 'sales_line_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 SalesLineResponse _$SalesLineResponseFromJson(Map<String, dynamic> json) {
   return _SalesLineResponse.fromJson(json);
@@ -36,8 +37,9 @@ mixin _$SalesLineResponse {
 /// @nodoc
 abstract class $SalesLineResponseCopyWith<$Res> {
   factory $SalesLineResponseCopyWith(
-          SalesLineResponse value, $Res Function(SalesLineResponse) then) =
-      _$SalesLineResponseCopyWithImpl<$Res, SalesLineResponse>;
+    SalesLineResponse value,
+    $Res Function(SalesLineResponse) then,
+  ) = _$SalesLineResponseCopyWithImpl<$Res, SalesLineResponse>;
   @useResult
   $Res call({String status, SalesLineData data});
 
@@ -58,20 +60,20 @@ class _$SalesLineResponseCopyWithImpl<$Res, $Val extends SalesLineResponse>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as SalesLineData,
-    ) as $Val);
+  $Res call({Object? status = null, Object? data = null}) {
+    return _then(
+      _value.copyWith(
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            data: null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as SalesLineData,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of SalesLineResponse
@@ -88,9 +90,10 @@ class _$SalesLineResponseCopyWithImpl<$Res, $Val extends SalesLineResponse>
 /// @nodoc
 abstract class _$$SalesLineResponseImplCopyWith<$Res>
     implements $SalesLineResponseCopyWith<$Res> {
-  factory _$$SalesLineResponseImplCopyWith(_$SalesLineResponseImpl value,
-          $Res Function(_$SalesLineResponseImpl) then) =
-      __$$SalesLineResponseImplCopyWithImpl<$Res>;
+  factory _$$SalesLineResponseImplCopyWith(
+    _$SalesLineResponseImpl value,
+    $Res Function(_$SalesLineResponseImpl) then,
+  ) = __$$SalesLineResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String status, SalesLineData data});
@@ -103,28 +106,28 @@ abstract class _$$SalesLineResponseImplCopyWith<$Res>
 class __$$SalesLineResponseImplCopyWithImpl<$Res>
     extends _$SalesLineResponseCopyWithImpl<$Res, _$SalesLineResponseImpl>
     implements _$$SalesLineResponseImplCopyWith<$Res> {
-  __$$SalesLineResponseImplCopyWithImpl(_$SalesLineResponseImpl _value,
-      $Res Function(_$SalesLineResponseImpl) _then)
-      : super(_value, _then);
+  __$$SalesLineResponseImplCopyWithImpl(
+    _$SalesLineResponseImpl _value,
+    $Res Function(_$SalesLineResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SalesLineResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? data = null,
-  }) {
-    return _then(_$SalesLineResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as SalesLineData,
-    ));
+  $Res call({Object? status = null, Object? data = null}) {
+    return _then(
+      _$SalesLineResponseImpl(
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        data: null == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as SalesLineData,
+      ),
+    );
   }
 }
 
@@ -166,20 +169,21 @@ class _$SalesLineResponseImpl implements _SalesLineResponse {
   @pragma('vm:prefer-inline')
   _$$SalesLineResponseImplCopyWith<_$SalesLineResponseImpl> get copyWith =>
       __$$SalesLineResponseImplCopyWithImpl<_$SalesLineResponseImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SalesLineResponseImplToJson(
-      this,
-    );
+    return _$$SalesLineResponseImplToJson(this);
   }
 }
 
 abstract class _SalesLineResponse implements SalesLineResponse {
-  const factory _SalesLineResponse(
-      {required final String status,
-      required final SalesLineData data}) = _$SalesLineResponseImpl;
+  const factory _SalesLineResponse({
+    required final String status,
+    required final SalesLineData data,
+  }) = _$SalesLineResponseImpl;
 
   factory _SalesLineResponse.fromJson(Map<String, dynamic> json) =
       _$SalesLineResponseImpl.fromJson;
@@ -218,8 +222,9 @@ mixin _$SalesLineData {
 /// @nodoc
 abstract class $SalesLineDataCopyWith<$Res> {
   factory $SalesLineDataCopyWith(
-          SalesLineData value, $Res Function(SalesLineData) then) =
-      _$SalesLineDataCopyWithImpl<$Res, SalesLineData>;
+    SalesLineData value,
+    $Res Function(SalesLineData) then,
+  ) = _$SalesLineDataCopyWithImpl<$Res, SalesLineData>;
   @useResult
   $Res call({int count});
 }
@@ -238,15 +243,16 @@ class _$SalesLineDataCopyWithImpl<$Res, $Val extends SalesLineData>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? count = null,
-  }) {
-    return _then(_value.copyWith(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  $Res call({Object? count = null}) {
+    return _then(
+      _value.copyWith(
+            count: null == count
+                ? _value.count
+                : count // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -254,8 +260,9 @@ class _$SalesLineDataCopyWithImpl<$Res, $Val extends SalesLineData>
 abstract class _$$SalesLineDataImplCopyWith<$Res>
     implements $SalesLineDataCopyWith<$Res> {
   factory _$$SalesLineDataImplCopyWith(
-          _$SalesLineDataImpl value, $Res Function(_$SalesLineDataImpl) then) =
-      __$$SalesLineDataImplCopyWithImpl<$Res>;
+    _$SalesLineDataImpl value,
+    $Res Function(_$SalesLineDataImpl) then,
+  ) = __$$SalesLineDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int count});
@@ -266,22 +273,23 @@ class __$$SalesLineDataImplCopyWithImpl<$Res>
     extends _$SalesLineDataCopyWithImpl<$Res, _$SalesLineDataImpl>
     implements _$$SalesLineDataImplCopyWith<$Res> {
   __$$SalesLineDataImplCopyWithImpl(
-      _$SalesLineDataImpl _value, $Res Function(_$SalesLineDataImpl) _then)
-      : super(_value, _then);
+    _$SalesLineDataImpl _value,
+    $Res Function(_$SalesLineDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SalesLineData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? count = null,
-  }) {
-    return _then(_$SalesLineDataImpl(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? count = null}) {
+    return _then(
+      _$SalesLineDataImpl(
+        count: null == count
+            ? _value.count
+            : count // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -323,9 +331,7 @@ class _$SalesLineDataImpl implements _SalesLineData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SalesLineDataImplToJson(
-      this,
-    );
+    return _$$SalesLineDataImplToJson(this);
   }
 }
 

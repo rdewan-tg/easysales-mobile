@@ -7,10 +7,7 @@ TextTheme createTextTheme(
 ) {
   final baseTextTheme = Theme.of(context).textTheme;
 
-  final bodyTextTheme = GoogleFonts.getTextTheme(
-    bodyFontString,
-    baseTextTheme,
-  );
+  final bodyTextTheme = GoogleFonts.getTextTheme(bodyFontString, baseTextTheme);
 
   final displayTextTheme = GoogleFonts.getTextTheme(
     displayFontString,

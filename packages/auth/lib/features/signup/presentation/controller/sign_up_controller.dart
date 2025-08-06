@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final signUpControllerProvider =
     AutoDisposeNotifierProvider<SignUpController, SignUpState>(
-  SignUpController.new,
-);
+      SignUpController.new,
+    );
 
 class SignUpController extends AutoDisposeNotifier<SignUpState> {
   @override
@@ -56,8 +56,6 @@ class SignUpController extends AutoDisposeNotifier<SignUpState> {
   }
 
   void setFormData(Map<String, dynamic> formData) {
-    state = state.copyWith(
-      signUpform: formData,
-    );
+    state = state.copyWith(signUpform: formData);
   }
 }

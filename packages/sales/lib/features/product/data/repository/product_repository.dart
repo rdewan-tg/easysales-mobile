@@ -228,13 +228,9 @@ final class ProductRepository
   }
 
   @override
-  Future<ProductEntityData?> getProductByItemId(
-    String itemId,
-  ) async {
+  Future<ProductEntityData?> getProductByItemId(String itemId) async {
     try {
-      return await _productDao.getProductByItemId(
-        itemId,
-      );
+      return await _productDao.getProductByItemId(itemId);
     } catch (e, stackTrace) {
       // Map unexpected exceptions to Failure
       throw Failure(

@@ -7,13 +7,9 @@ abstract interface class IProductService {
 
   Future<Result<bool, Failure>> getPrices(String companyCode);
 
-  Stream<List<ProductEntityData>> watchProducts(
-    String? searchQuery,
-  );
+  Stream<List<ProductEntityData>> watchProducts(String? searchQuery);
 
-  Stream<List<ProductPriceEntityData>> watchPrices(
-    String? searchQuery,
-  );
+  Stream<List<ProductPriceEntityData>> watchPrices(String? searchQuery);
 
   Stream<int> watchTotalProductImported();
 
@@ -21,9 +17,7 @@ abstract interface class IProductService {
 
   Future<Map<String, String>> getAllSettings();
 
-  Future<void> insertOrUpdateSearchProductHistory(
-    String key,
-  );
+  Future<void> insertOrUpdateSearchProductHistory(String key);
 
   Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory();
 

@@ -12,7 +12,8 @@ part of 'sync_order_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SyncOrderState {
@@ -30,8 +31,9 @@ mixin _$SyncOrderState {
 /// @nodoc
 abstract class $SyncOrderStateCopyWith<$Res> {
   factory $SyncOrderStateCopyWith(
-          SyncOrderState value, $Res Function(SyncOrderState) then) =
-      _$SyncOrderStateCopyWithImpl<$Res, SyncOrderState>;
+    SyncOrderState value,
+    $Res Function(SyncOrderState) then,
+  ) = _$SyncOrderStateCopyWithImpl<$Res, SyncOrderState>;
   @useResult
   $Res call({bool isLoading, bool isOrderSynced, String? errorMsg});
 }
@@ -55,29 +57,33 @@ class _$SyncOrderStateCopyWithImpl<$Res, $Val extends SyncOrderState>
     Object? isOrderSynced = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderSynced: null == isOrderSynced
-          ? _value.isOrderSynced
-          : isOrderSynced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isOrderSynced: null == isOrderSynced
+                ? _value.isOrderSynced
+                : isOrderSynced // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SyncOrderStateImplCopyWith<$Res>
     implements $SyncOrderStateCopyWith<$Res> {
-  factory _$$SyncOrderStateImplCopyWith(_$SyncOrderStateImpl value,
-          $Res Function(_$SyncOrderStateImpl) then) =
-      __$$SyncOrderStateImplCopyWithImpl<$Res>;
+  factory _$$SyncOrderStateImplCopyWith(
+    _$SyncOrderStateImpl value,
+    $Res Function(_$SyncOrderStateImpl) then,
+  ) = __$$SyncOrderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isLoading, bool isOrderSynced, String? errorMsg});
@@ -88,8 +94,9 @@ class __$$SyncOrderStateImplCopyWithImpl<$Res>
     extends _$SyncOrderStateCopyWithImpl<$Res, _$SyncOrderStateImpl>
     implements _$$SyncOrderStateImplCopyWith<$Res> {
   __$$SyncOrderStateImplCopyWithImpl(
-      _$SyncOrderStateImpl _value, $Res Function(_$SyncOrderStateImpl) _then)
-      : super(_value, _then);
+    _$SyncOrderStateImpl _value,
+    $Res Function(_$SyncOrderStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SyncOrderState
   /// with the given fields replaced by the non-null parameter values.
@@ -100,28 +107,33 @@ class __$$SyncOrderStateImplCopyWithImpl<$Res>
     Object? isOrderSynced = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$SyncOrderStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderSynced: null == isOrderSynced
-          ? _value.isOrderSynced
-          : isOrderSynced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$SyncOrderStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isOrderSynced: null == isOrderSynced
+            ? _value.isOrderSynced
+            : isOrderSynced // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SyncOrderStateImpl implements _SyncOrderState {
-  _$SyncOrderStateImpl(
-      {this.isLoading = false, this.isOrderSynced = false, this.errorMsg});
+  _$SyncOrderStateImpl({
+    this.isLoading = false,
+    this.isOrderSynced = false,
+    this.errorMsg,
+  });
 
   @override
   @JsonKey()
@@ -161,14 +173,17 @@ class _$SyncOrderStateImpl implements _SyncOrderState {
   @pragma('vm:prefer-inline')
   _$$SyncOrderStateImplCopyWith<_$SyncOrderStateImpl> get copyWith =>
       __$$SyncOrderStateImplCopyWithImpl<_$SyncOrderStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _SyncOrderState implements SyncOrderState {
-  factory _SyncOrderState(
-      {final bool isLoading,
-      final bool isOrderSynced,
-      final String? errorMsg}) = _$SyncOrderStateImpl;
+  factory _SyncOrderState({
+    final bool isLoading,
+    final bool isOrderSynced,
+    final String? errorMsg,
+  }) = _$SyncOrderStateImpl;
 
   @override
   bool get isLoading;

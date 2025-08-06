@@ -13,21 +13,15 @@ _$LoginResponseImpl _$$LoginResponseImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$LoginResponseImplToJson(_$LoginResponseImpl instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'data': instance.data,
-    };
+    <String, dynamic>{'status': instance.status, 'data': instance.data};
 
 _$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
-      token: TokenDto.fromJson(json['token'] as Map<String, dynamic>),
-      user: UserDto.fromJson(json['user'] as Map<String, dynamic>),
-    );
+  token: TokenDto.fromJson(json['token'] as Map<String, dynamic>),
+  user: UserDto.fromJson(json['user'] as Map<String, dynamic>),
+);
 
 Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
-    <String, dynamic>{
-      'token': instance.token,
-      'user': instance.user,
-    };
+    <String, dynamic>{'token': instance.token, 'user': instance.user};
 
 _$TokenDtoImpl _$$TokenDtoImplFromJson(Map<String, dynamic> json) =>
     _$TokenDtoImpl(
@@ -53,7 +47,8 @@ _$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       company: CompanyDto.fromJson(json['company'] as Map<String, dynamic>),
       deviceSetting: DeviceSettingDto.fromJson(
-          json['deviceSetting'] as Map<String, dynamic>),
+        json['deviceSetting'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
@@ -84,6 +79,8 @@ const _$UserRoleEnumMap = {
   UserRole.superAdmin: 'superAdmin',
   UserRole.admin: 'admin',
   UserRole.manager: 'manager',
+  UserRole.sales: 'sales',
+  UserRole.merchandiser: 'merchandiser',
   UserRole.supervisor: 'supervisor',
   UserRole.operator: 'operator',
   UserRole.user: 'user',
@@ -96,6 +93,7 @@ _$CompanyDtoImpl _$$CompanyDtoImplFromJson(Map<String, dynamic> json) =>
       companyCode: json['companyCode'] as String?,
       countryCode: json['countryCode'] as String?,
       timeZone: json['timeZone'] as String,
+      isSiteVisitEnabled: json['isSiteVisitEnabled'] as bool,
     );
 
 Map<String, dynamic> _$$CompanyDtoImplToJson(_$CompanyDtoImpl instance) =>
@@ -105,20 +103,21 @@ Map<String, dynamic> _$$CompanyDtoImplToJson(_$CompanyDtoImpl instance) =>
       'companyCode': instance.companyCode,
       'countryCode': instance.countryCode,
       'timeZone': instance.timeZone,
+      'isSiteVisitEnabled': instance.isSiteVisitEnabled,
     };
 
 _$DeviceSettingDtoImpl _$$DeviceSettingDtoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DeviceSettingDtoImpl(
-      deviceId: json['deviceId'] as String?,
-      salesPersonCode: json['salesPersonCode'] as String?,
-      orderNumberFormat: json['orderNumberFormat'] as String?,
-    );
+  Map<String, dynamic> json,
+) => _$DeviceSettingDtoImpl(
+  deviceId: json['deviceId'] as String?,
+  salesPersonCode: json['salesPersonCode'] as String?,
+  orderNumberFormat: json['orderNumberFormat'] as String?,
+);
 
 Map<String, dynamic> _$$DeviceSettingDtoImplToJson(
-        _$DeviceSettingDtoImpl instance) =>
-    <String, dynamic>{
-      'deviceId': instance.deviceId,
-      'salesPersonCode': instance.salesPersonCode,
-      'orderNumberFormat': instance.orderNumberFormat,
-    };
+  _$DeviceSettingDtoImpl instance,
+) => <String, dynamic>{
+  'deviceId': instance.deviceId,
+  'salesPersonCode': instance.salesPersonCode,
+  'orderNumberFormat': instance.orderNumberFormat,
+};

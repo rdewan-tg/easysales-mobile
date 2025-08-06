@@ -37,7 +37,5 @@ abstract class OrderApi {
   );
 
   @DELETE(deleteBySalesIdEndPoint)
-  Future<DeleteOrderResponse> deleteBySalesId(
-    @Path('salesId') String salesId,
-  );
+  Future<DeleteOrderResponse> deleteBySalesId(@Path('salesId') String salesId);
 }

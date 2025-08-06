@@ -10,11 +10,19 @@ class SettingEntity extends Table
   final String? _alias;
   SettingEntity(this.attachedDatabase, [this._alias]);
   late final GeneratedColumn<String> key = GeneratedColumn<String>(
-      'key', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> value = GeneratedColumn<String>(
-      'value', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'value',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [key, value];
   @override
@@ -28,10 +36,14 @@ class SettingEntity extends Table
   SettingEntityData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SettingEntityData(
-      key: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}key'])!,
-      value: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}value']),
+      key: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key'],
+      )!,
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value'],
+      ),
     );
   }
 
@@ -59,13 +71,16 @@ class SettingEntityData extends DataClass
   SettingEntityCompanion toCompanion(bool nullToAbsent) {
     return SettingEntityCompanion(
       key: Value(key),
-      value:
-          value == null && nullToAbsent ? const Value.absent() : Value(value),
+      value: value == null && nullToAbsent
+          ? const Value.absent()
+          : Value(value),
     );
   }
 
-  factory SettingEntityData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory SettingEntityData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return SettingEntityData(
       key: serializer.fromJson<String>(json['key']),
@@ -81,12 +96,13 @@ class SettingEntityData extends DataClass
     };
   }
 
-  SettingEntityData copyWith(
-          {String? key, Value<String?> value = const Value.absent()}) =>
-      SettingEntityData(
-        key: key ?? this.key,
-        value: value.present ? value.value : this.value,
-      );
+  SettingEntityData copyWith({
+    String? key,
+    Value<String?> value = const Value.absent(),
+  }) => SettingEntityData(
+    key: key ?? this.key,
+    value: value.present ? value.value : this.value,
+  );
   SettingEntityData copyWithCompanion(SettingEntityCompanion data) {
     return SettingEntityData(
       key: data.key.present ? data.key.value : this.key,
@@ -139,8 +155,11 @@ class SettingEntityCompanion extends UpdateCompanion<SettingEntityData> {
     });
   }
 
-  SettingEntityCompanion copyWith(
-      {Value<String>? key, Value<String?>? value, Value<int>? rowid}) {
+  SettingEntityCompanion copyWith({
+    Value<String>? key,
+    Value<String?>? value,
+    Value<int>? rowid,
+  }) {
     return SettingEntityCompanion(
       key: key ?? this.key,
       value: value ?? this.value,
@@ -181,84 +200,155 @@ class MerchandiserCustomerEntity extends Table
   final String? _alias;
   MerchandiserCustomerEntity(this.attachedDatabase, [this._alias]);
   late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
-      'customer_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'customer_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> customerName = GeneratedColumn<String>(
-      'customer_name', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'customer_name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> address = GeneratedColumn<String>(
-      'address', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'address',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> salesPersonId = GeneratedColumn<String>(
-      'sales_person_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'sales_person_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> salesPerson = GeneratedColumn<String>(
-      'sales_person', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'sales_person',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> merchandiser = GeneratedColumn<String>(
-      'merchandiser', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'merchandiser',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> countryId = GeneratedColumn<String>(
-      'country_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'country_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> phoneNumber = GeneratedColumn<String>(
-      'phone_number', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'phone_number',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
-      'latitude', aliasedName, false,
-      type: DriftSqlType.double,
-      requiredDuringInsert: false,
-      defaultValue: const CustomExpression('0.0'));
+    'latitude',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const CustomExpression('0.0'),
+  );
   late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
-      'longitude', aliasedName, false,
-      type: DriftSqlType.double,
-      requiredDuringInsert: false,
-      defaultValue: const CustomExpression('0.0'));
+    'longitude',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const CustomExpression('0.0'),
+  );
   late final GeneratedColumn<double> creditLimit = GeneratedColumn<double>(
-      'credit_limit', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+    'credit_limit',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> currencyCode = GeneratedColumn<String>(
-      'currency_code', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'currency_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> paymentTerm = GeneratedColumn<String>(
-      'payment_term', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'payment_term',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> priceGroup = GeneratedColumn<String>(
-      'price_group', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'price_group',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> customreDimension =
-      GeneratedColumn<String>('customre_dimension', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'customre_dimension',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   late final GeneratedColumn<int> status = GeneratedColumn<int>(
-      'status', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<int> companyId = GeneratedColumn<int>(
-      'company_id', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'company_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> companyCode = GeneratedColumn<String>(
-      'company_code', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'company_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
-        customerName,
-        address,
-        salesPersonId,
-        salesPerson,
-        merchandiser,
-        countryId,
-        phoneNumber,
-        latitude,
-        longitude,
-        creditLimit,
-        currencyCode,
-        paymentTerm,
-        priceGroup,
-        customreDimension,
-        status,
-        companyId,
-        companyCode
-      ];
+    customerId,
+    customerName,
+    address,
+    salesPersonId,
+    salesPerson,
+    merchandiser,
+    countryId,
+    phoneNumber,
+    latitude,
+    longitude,
+    creditLimit,
+    currencyCode,
+    paymentTerm,
+    priceGroup,
+    customreDimension,
+    status,
+    companyId,
+    companyCode,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -267,46 +357,84 @@ class MerchandiserCustomerEntity extends Table
   @override
   Set<GeneratedColumn> get $primaryKey => {customerId};
   @override
-  MerchandiserCustomerEntityData map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  MerchandiserCustomerEntityData map(
+    Map<String, dynamic> data, {
+    String? tablePrefix,
+  }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return MerchandiserCustomerEntityData(
-      customerId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}customer_id'])!,
-      customerName: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}customer_name'])!,
-      address: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}address']),
+      customerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}customer_id'],
+      )!,
+      customerName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}customer_name'],
+      )!,
+      address: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}address'],
+      ),
       salesPersonId: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}sales_person_id'])!,
-      salesPerson: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}sales_person']),
-      merchandiser: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}merchandiser']),
-      countryId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}country_id'])!,
-      phoneNumber: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}phone_number']),
-      latitude: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}latitude'])!,
-      longitude: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}longitude'])!,
-      creditLimit: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}credit_limit']),
-      currencyCode: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}currency_code']),
-      paymentTerm: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}payment_term']),
-      priceGroup: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}price_group']),
+        DriftSqlType.string,
+        data['${effectivePrefix}sales_person_id'],
+      )!,
+      salesPerson: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sales_person'],
+      ),
+      merchandiser: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}merchandiser'],
+      ),
+      countryId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}country_id'],
+      )!,
+      phoneNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone_number'],
+      ),
+      latitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}latitude'],
+      )!,
+      longitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}longitude'],
+      )!,
+      creditLimit: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}credit_limit'],
+      ),
+      currencyCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}currency_code'],
+      ),
+      paymentTerm: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_term'],
+      ),
+      priceGroup: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}price_group'],
+      ),
       customreDimension: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}customre_dimension']),
-      status: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}status'])!,
-      companyId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}company_id'])!,
-      companyCode: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}company_code']),
+        DriftSqlType.string,
+        data['${effectivePrefix}customre_dimension'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}status'],
+      )!,
+      companyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}company_id'],
+      )!,
+      companyCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}company_code'],
+      ),
     );
   }
 
@@ -336,25 +464,26 @@ class MerchandiserCustomerEntityData extends DataClass
   final int status;
   final int companyId;
   final String? companyCode;
-  const MerchandiserCustomerEntityData(
-      {required this.customerId,
-      required this.customerName,
-      this.address,
-      required this.salesPersonId,
-      this.salesPerson,
-      this.merchandiser,
-      required this.countryId,
-      this.phoneNumber,
-      required this.latitude,
-      required this.longitude,
-      this.creditLimit,
-      this.currencyCode,
-      this.paymentTerm,
-      this.priceGroup,
-      this.customreDimension,
-      required this.status,
-      required this.companyId,
-      this.companyCode});
+  const MerchandiserCustomerEntityData({
+    required this.customerId,
+    required this.customerName,
+    this.address,
+    required this.salesPersonId,
+    this.salesPerson,
+    this.merchandiser,
+    required this.countryId,
+    this.phoneNumber,
+    required this.latitude,
+    required this.longitude,
+    this.creditLimit,
+    this.currencyCode,
+    this.paymentTerm,
+    this.priceGroup,
+    this.customreDimension,
+    required this.status,
+    required this.companyId,
+    this.companyCode,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -442,8 +571,10 @@ class MerchandiserCustomerEntityData extends DataClass
     );
   }
 
-  factory MerchandiserCustomerEntityData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory MerchandiserCustomerEntityData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return MerchandiserCustomerEntityData(
       customerId: serializer.fromJson<String>(json['customerId']),
@@ -460,8 +591,9 @@ class MerchandiserCustomerEntityData extends DataClass
       currencyCode: serializer.fromJson<String?>(json['currencyCode']),
       paymentTerm: serializer.fromJson<String?>(json['paymentTerm']),
       priceGroup: serializer.fromJson<String?>(json['priceGroup']),
-      customreDimension:
-          serializer.fromJson<String?>(json['customreDimension']),
+      customreDimension: serializer.fromJson<String?>(
+        json['customreDimension'],
+      ),
       status: serializer.fromJson<int>(json['status']),
       companyId: serializer.fromJson<int>(json['companyId']),
       companyCode: serializer.fromJson<String?>(json['companyCode']),
@@ -492,54 +624,54 @@ class MerchandiserCustomerEntityData extends DataClass
     };
   }
 
-  MerchandiserCustomerEntityData copyWith(
-          {String? customerId,
-          String? customerName,
-          Value<String?> address = const Value.absent(),
-          String? salesPersonId,
-          Value<String?> salesPerson = const Value.absent(),
-          Value<String?> merchandiser = const Value.absent(),
-          String? countryId,
-          Value<String?> phoneNumber = const Value.absent(),
-          double? latitude,
-          double? longitude,
-          Value<double?> creditLimit = const Value.absent(),
-          Value<String?> currencyCode = const Value.absent(),
-          Value<String?> paymentTerm = const Value.absent(),
-          Value<String?> priceGroup = const Value.absent(),
-          Value<String?> customreDimension = const Value.absent(),
-          int? status,
-          int? companyId,
-          Value<String?> companyCode = const Value.absent()}) =>
-      MerchandiserCustomerEntityData(
-        customerId: customerId ?? this.customerId,
-        customerName: customerName ?? this.customerName,
-        address: address.present ? address.value : this.address,
-        salesPersonId: salesPersonId ?? this.salesPersonId,
-        salesPerson: salesPerson.present ? salesPerson.value : this.salesPerson,
-        merchandiser:
-            merchandiser.present ? merchandiser.value : this.merchandiser,
-        countryId: countryId ?? this.countryId,
-        phoneNumber: phoneNumber.present ? phoneNumber.value : this.phoneNumber,
-        latitude: latitude ?? this.latitude,
-        longitude: longitude ?? this.longitude,
-        creditLimit: creditLimit.present ? creditLimit.value : this.creditLimit,
-        currencyCode:
-            currencyCode.present ? currencyCode.value : this.currencyCode,
-        paymentTerm: paymentTerm.present ? paymentTerm.value : this.paymentTerm,
-        priceGroup: priceGroup.present ? priceGroup.value : this.priceGroup,
-        customreDimension: customreDimension.present
-            ? customreDimension.value
-            : this.customreDimension,
-        status: status ?? this.status,
-        companyId: companyId ?? this.companyId,
-        companyCode: companyCode.present ? companyCode.value : this.companyCode,
-      );
+  MerchandiserCustomerEntityData copyWith({
+    String? customerId,
+    String? customerName,
+    Value<String?> address = const Value.absent(),
+    String? salesPersonId,
+    Value<String?> salesPerson = const Value.absent(),
+    Value<String?> merchandiser = const Value.absent(),
+    String? countryId,
+    Value<String?> phoneNumber = const Value.absent(),
+    double? latitude,
+    double? longitude,
+    Value<double?> creditLimit = const Value.absent(),
+    Value<String?> currencyCode = const Value.absent(),
+    Value<String?> paymentTerm = const Value.absent(),
+    Value<String?> priceGroup = const Value.absent(),
+    Value<String?> customreDimension = const Value.absent(),
+    int? status,
+    int? companyId,
+    Value<String?> companyCode = const Value.absent(),
+  }) => MerchandiserCustomerEntityData(
+    customerId: customerId ?? this.customerId,
+    customerName: customerName ?? this.customerName,
+    address: address.present ? address.value : this.address,
+    salesPersonId: salesPersonId ?? this.salesPersonId,
+    salesPerson: salesPerson.present ? salesPerson.value : this.salesPerson,
+    merchandiser: merchandiser.present ? merchandiser.value : this.merchandiser,
+    countryId: countryId ?? this.countryId,
+    phoneNumber: phoneNumber.present ? phoneNumber.value : this.phoneNumber,
+    latitude: latitude ?? this.latitude,
+    longitude: longitude ?? this.longitude,
+    creditLimit: creditLimit.present ? creditLimit.value : this.creditLimit,
+    currencyCode: currencyCode.present ? currencyCode.value : this.currencyCode,
+    paymentTerm: paymentTerm.present ? paymentTerm.value : this.paymentTerm,
+    priceGroup: priceGroup.present ? priceGroup.value : this.priceGroup,
+    customreDimension: customreDimension.present
+        ? customreDimension.value
+        : this.customreDimension,
+    status: status ?? this.status,
+    companyId: companyId ?? this.companyId,
+    companyCode: companyCode.present ? companyCode.value : this.companyCode,
+  );
   MerchandiserCustomerEntityData copyWithCompanion(
-      MerchandiserCustomerEntityCompanion data) {
+    MerchandiserCustomerEntityCompanion data,
+  ) {
     return MerchandiserCustomerEntityData(
-      customerId:
-          data.customerId.present ? data.customerId.value : this.customerId,
+      customerId: data.customerId.present
+          ? data.customerId.value
+          : this.customerId,
       customerName: data.customerName.present
           ? data.customerName.value
           : this.customerName,
@@ -547,32 +679,38 @@ class MerchandiserCustomerEntityData extends DataClass
       salesPersonId: data.salesPersonId.present
           ? data.salesPersonId.value
           : this.salesPersonId,
-      salesPerson:
-          data.salesPerson.present ? data.salesPerson.value : this.salesPerson,
+      salesPerson: data.salesPerson.present
+          ? data.salesPerson.value
+          : this.salesPerson,
       merchandiser: data.merchandiser.present
           ? data.merchandiser.value
           : this.merchandiser,
       countryId: data.countryId.present ? data.countryId.value : this.countryId,
-      phoneNumber:
-          data.phoneNumber.present ? data.phoneNumber.value : this.phoneNumber,
+      phoneNumber: data.phoneNumber.present
+          ? data.phoneNumber.value
+          : this.phoneNumber,
       latitude: data.latitude.present ? data.latitude.value : this.latitude,
       longitude: data.longitude.present ? data.longitude.value : this.longitude,
-      creditLimit:
-          data.creditLimit.present ? data.creditLimit.value : this.creditLimit,
+      creditLimit: data.creditLimit.present
+          ? data.creditLimit.value
+          : this.creditLimit,
       currencyCode: data.currencyCode.present
           ? data.currencyCode.value
           : this.currencyCode,
-      paymentTerm:
-          data.paymentTerm.present ? data.paymentTerm.value : this.paymentTerm,
-      priceGroup:
-          data.priceGroup.present ? data.priceGroup.value : this.priceGroup,
+      paymentTerm: data.paymentTerm.present
+          ? data.paymentTerm.value
+          : this.paymentTerm,
+      priceGroup: data.priceGroup.present
+          ? data.priceGroup.value
+          : this.priceGroup,
       customreDimension: data.customreDimension.present
           ? data.customreDimension.value
           : this.customreDimension,
       status: data.status.present ? data.status.value : this.status,
       companyId: data.companyId.present ? data.companyId.value : this.companyId,
-      companyCode:
-          data.companyCode.present ? data.companyCode.value : this.companyCode,
+      companyCode: data.companyCode.present
+          ? data.companyCode.value
+          : this.companyCode,
     );
   }
 
@@ -603,24 +741,25 @@ class MerchandiserCustomerEntityData extends DataClass
 
   @override
   int get hashCode => Object.hash(
-      customerId,
-      customerName,
-      address,
-      salesPersonId,
-      salesPerson,
-      merchandiser,
-      countryId,
-      phoneNumber,
-      latitude,
-      longitude,
-      creditLimit,
-      currencyCode,
-      paymentTerm,
-      priceGroup,
-      customreDimension,
-      status,
-      companyId,
-      companyCode);
+    customerId,
+    customerName,
+    address,
+    salesPersonId,
+    salesPerson,
+    merchandiser,
+    countryId,
+    phoneNumber,
+    latitude,
+    longitude,
+    creditLimit,
+    currencyCode,
+    paymentTerm,
+    priceGroup,
+    customreDimension,
+    status,
+    companyId,
+    companyCode,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -707,12 +846,12 @@ class MerchandiserCustomerEntityCompanion
     required int companyId,
     this.companyCode = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : customerId = Value(customerId),
-        customerName = Value(customerName),
-        salesPersonId = Value(salesPersonId),
-        countryId = Value(countryId),
-        status = Value(status),
-        companyId = Value(companyId);
+  }) : customerId = Value(customerId),
+       customerName = Value(customerName),
+       salesPersonId = Value(salesPersonId),
+       countryId = Value(countryId),
+       status = Value(status),
+       companyId = Value(companyId);
   static Insertable<MerchandiserCustomerEntityData> custom({
     Expression<String>? customerId,
     Expression<String>? customerName,
@@ -757,26 +896,27 @@ class MerchandiserCustomerEntityCompanion
     });
   }
 
-  MerchandiserCustomerEntityCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? customerName,
-      Value<String?>? address,
-      Value<String>? salesPersonId,
-      Value<String?>? salesPerson,
-      Value<String?>? merchandiser,
-      Value<String>? countryId,
-      Value<String?>? phoneNumber,
-      Value<double>? latitude,
-      Value<double>? longitude,
-      Value<double?>? creditLimit,
-      Value<String?>? currencyCode,
-      Value<String?>? paymentTerm,
-      Value<String?>? priceGroup,
-      Value<String?>? customreDimension,
-      Value<int>? status,
-      Value<int>? companyId,
-      Value<String?>? companyCode,
-      Value<int>? rowid}) {
+  MerchandiserCustomerEntityCompanion copyWith({
+    Value<String>? customerId,
+    Value<String>? customerName,
+    Value<String?>? address,
+    Value<String>? salesPersonId,
+    Value<String?>? salesPerson,
+    Value<String?>? merchandiser,
+    Value<String>? countryId,
+    Value<String?>? phoneNumber,
+    Value<double>? latitude,
+    Value<double>? longitude,
+    Value<double?>? creditLimit,
+    Value<String?>? currencyCode,
+    Value<String?>? paymentTerm,
+    Value<String?>? priceGroup,
+    Value<String?>? customreDimension,
+    Value<int>? status,
+    Value<int>? companyId,
+    Value<String?>? companyCode,
+    Value<int>? rowid,
+  }) {
     return MerchandiserCustomerEntityCompanion(
       customerId: customerId ?? this.customerId,
       customerName: customerName ?? this.customerName,
@@ -897,84 +1037,155 @@ class SalesCustomerEntity extends Table
   final String? _alias;
   SalesCustomerEntity(this.attachedDatabase, [this._alias]);
   late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
-      'customer_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'customer_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> customerName = GeneratedColumn<String>(
-      'customer_name', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'customer_name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> address = GeneratedColumn<String>(
-      'address', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'address',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> salesPersonId = GeneratedColumn<String>(
-      'sales_person_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'sales_person_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> salesPerson = GeneratedColumn<String>(
-      'sales_person', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'sales_person',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> merchandiser = GeneratedColumn<String>(
-      'merchandiser', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'merchandiser',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> countryId = GeneratedColumn<String>(
-      'country_id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'country_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> phoneNumber = GeneratedColumn<String>(
-      'phone_number', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'phone_number',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
-      'latitude', aliasedName, false,
-      type: DriftSqlType.double,
-      requiredDuringInsert: false,
-      defaultValue: const CustomExpression('0.0'));
+    'latitude',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const CustomExpression('0.0'),
+  );
   late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
-      'longitude', aliasedName, false,
-      type: DriftSqlType.double,
-      requiredDuringInsert: false,
-      defaultValue: const CustomExpression('0.0'));
+    'longitude',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const CustomExpression('0.0'),
+  );
   late final GeneratedColumn<double> creditLimit = GeneratedColumn<double>(
-      'credit_limit', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+    'credit_limit',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> currencyCode = GeneratedColumn<String>(
-      'currency_code', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'currency_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> paymentTerm = GeneratedColumn<String>(
-      'payment_term', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'payment_term',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> priceGroup = GeneratedColumn<String>(
-      'price_group', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'price_group',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   late final GeneratedColumn<String> customreDimension =
-      GeneratedColumn<String>('customre_dimension', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
+      GeneratedColumn<String>(
+        'customre_dimension',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
   late final GeneratedColumn<int> status = GeneratedColumn<int>(
-      'status', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<int> companyId = GeneratedColumn<int>(
-      'company_id', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+    'company_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
   late final GeneratedColumn<String> companyCode = GeneratedColumn<String>(
-      'company_code', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+    'company_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
-        customerName,
-        address,
-        salesPersonId,
-        salesPerson,
-        merchandiser,
-        countryId,
-        phoneNumber,
-        latitude,
-        longitude,
-        creditLimit,
-        currencyCode,
-        paymentTerm,
-        priceGroup,
-        customreDimension,
-        status,
-        companyId,
-        companyCode
-      ];
+    customerId,
+    customerName,
+    address,
+    salesPersonId,
+    salesPerson,
+    merchandiser,
+    countryId,
+    phoneNumber,
+    latitude,
+    longitude,
+    creditLimit,
+    currencyCode,
+    paymentTerm,
+    priceGroup,
+    customreDimension,
+    status,
+    companyId,
+    companyCode,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -983,46 +1194,84 @@ class SalesCustomerEntity extends Table
   @override
   Set<GeneratedColumn> get $primaryKey => {customerId};
   @override
-  SalesCustomerEntityData map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  SalesCustomerEntityData map(
+    Map<String, dynamic> data, {
+    String? tablePrefix,
+  }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SalesCustomerEntityData(
-      customerId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}customer_id'])!,
-      customerName: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}customer_name'])!,
-      address: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}address']),
+      customerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}customer_id'],
+      )!,
+      customerName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}customer_name'],
+      )!,
+      address: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}address'],
+      ),
       salesPersonId: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}sales_person_id'])!,
-      salesPerson: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}sales_person']),
-      merchandiser: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}merchandiser']),
-      countryId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}country_id'])!,
-      phoneNumber: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}phone_number']),
-      latitude: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}latitude'])!,
-      longitude: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}longitude'])!,
-      creditLimit: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}credit_limit']),
-      currencyCode: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}currency_code']),
-      paymentTerm: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}payment_term']),
-      priceGroup: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}price_group']),
+        DriftSqlType.string,
+        data['${effectivePrefix}sales_person_id'],
+      )!,
+      salesPerson: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sales_person'],
+      ),
+      merchandiser: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}merchandiser'],
+      ),
+      countryId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}country_id'],
+      )!,
+      phoneNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone_number'],
+      ),
+      latitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}latitude'],
+      )!,
+      longitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}longitude'],
+      )!,
+      creditLimit: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}credit_limit'],
+      ),
+      currencyCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}currency_code'],
+      ),
+      paymentTerm: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_term'],
+      ),
+      priceGroup: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}price_group'],
+      ),
       customreDimension: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}customre_dimension']),
-      status: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}status'])!,
-      companyId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}company_id'])!,
-      companyCode: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}company_code']),
+        DriftSqlType.string,
+        data['${effectivePrefix}customre_dimension'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}status'],
+      )!,
+      companyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}company_id'],
+      )!,
+      companyCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}company_code'],
+      ),
     );
   }
 
@@ -1052,25 +1301,26 @@ class SalesCustomerEntityData extends DataClass
   final int status;
   final int companyId;
   final String? companyCode;
-  const SalesCustomerEntityData(
-      {required this.customerId,
-      required this.customerName,
-      this.address,
-      required this.salesPersonId,
-      this.salesPerson,
-      this.merchandiser,
-      required this.countryId,
-      this.phoneNumber,
-      required this.latitude,
-      required this.longitude,
-      this.creditLimit,
-      this.currencyCode,
-      this.paymentTerm,
-      this.priceGroup,
-      this.customreDimension,
-      required this.status,
-      required this.companyId,
-      this.companyCode});
+  const SalesCustomerEntityData({
+    required this.customerId,
+    required this.customerName,
+    this.address,
+    required this.salesPersonId,
+    this.salesPerson,
+    this.merchandiser,
+    required this.countryId,
+    this.phoneNumber,
+    required this.latitude,
+    required this.longitude,
+    this.creditLimit,
+    this.currencyCode,
+    this.paymentTerm,
+    this.priceGroup,
+    this.customreDimension,
+    required this.status,
+    required this.companyId,
+    this.companyCode,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -1158,8 +1408,10 @@ class SalesCustomerEntityData extends DataClass
     );
   }
 
-  factory SalesCustomerEntityData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory SalesCustomerEntityData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return SalesCustomerEntityData(
       customerId: serializer.fromJson<String>(json['customerId']),
@@ -1176,8 +1428,9 @@ class SalesCustomerEntityData extends DataClass
       currencyCode: serializer.fromJson<String?>(json['currencyCode']),
       paymentTerm: serializer.fromJson<String?>(json['paymentTerm']),
       priceGroup: serializer.fromJson<String?>(json['priceGroup']),
-      customreDimension:
-          serializer.fromJson<String?>(json['customreDimension']),
+      customreDimension: serializer.fromJson<String?>(
+        json['customreDimension'],
+      ),
       status: serializer.fromJson<int>(json['status']),
       companyId: serializer.fromJson<int>(json['companyId']),
       companyCode: serializer.fromJson<String?>(json['companyCode']),
@@ -1208,53 +1461,52 @@ class SalesCustomerEntityData extends DataClass
     };
   }
 
-  SalesCustomerEntityData copyWith(
-          {String? customerId,
-          String? customerName,
-          Value<String?> address = const Value.absent(),
-          String? salesPersonId,
-          Value<String?> salesPerson = const Value.absent(),
-          Value<String?> merchandiser = const Value.absent(),
-          String? countryId,
-          Value<String?> phoneNumber = const Value.absent(),
-          double? latitude,
-          double? longitude,
-          Value<double?> creditLimit = const Value.absent(),
-          Value<String?> currencyCode = const Value.absent(),
-          Value<String?> paymentTerm = const Value.absent(),
-          Value<String?> priceGroup = const Value.absent(),
-          Value<String?> customreDimension = const Value.absent(),
-          int? status,
-          int? companyId,
-          Value<String?> companyCode = const Value.absent()}) =>
-      SalesCustomerEntityData(
-        customerId: customerId ?? this.customerId,
-        customerName: customerName ?? this.customerName,
-        address: address.present ? address.value : this.address,
-        salesPersonId: salesPersonId ?? this.salesPersonId,
-        salesPerson: salesPerson.present ? salesPerson.value : this.salesPerson,
-        merchandiser:
-            merchandiser.present ? merchandiser.value : this.merchandiser,
-        countryId: countryId ?? this.countryId,
-        phoneNumber: phoneNumber.present ? phoneNumber.value : this.phoneNumber,
-        latitude: latitude ?? this.latitude,
-        longitude: longitude ?? this.longitude,
-        creditLimit: creditLimit.present ? creditLimit.value : this.creditLimit,
-        currencyCode:
-            currencyCode.present ? currencyCode.value : this.currencyCode,
-        paymentTerm: paymentTerm.present ? paymentTerm.value : this.paymentTerm,
-        priceGroup: priceGroup.present ? priceGroup.value : this.priceGroup,
-        customreDimension: customreDimension.present
-            ? customreDimension.value
-            : this.customreDimension,
-        status: status ?? this.status,
-        companyId: companyId ?? this.companyId,
-        companyCode: companyCode.present ? companyCode.value : this.companyCode,
-      );
+  SalesCustomerEntityData copyWith({
+    String? customerId,
+    String? customerName,
+    Value<String?> address = const Value.absent(),
+    String? salesPersonId,
+    Value<String?> salesPerson = const Value.absent(),
+    Value<String?> merchandiser = const Value.absent(),
+    String? countryId,
+    Value<String?> phoneNumber = const Value.absent(),
+    double? latitude,
+    double? longitude,
+    Value<double?> creditLimit = const Value.absent(),
+    Value<String?> currencyCode = const Value.absent(),
+    Value<String?> paymentTerm = const Value.absent(),
+    Value<String?> priceGroup = const Value.absent(),
+    Value<String?> customreDimension = const Value.absent(),
+    int? status,
+    int? companyId,
+    Value<String?> companyCode = const Value.absent(),
+  }) => SalesCustomerEntityData(
+    customerId: customerId ?? this.customerId,
+    customerName: customerName ?? this.customerName,
+    address: address.present ? address.value : this.address,
+    salesPersonId: salesPersonId ?? this.salesPersonId,
+    salesPerson: salesPerson.present ? salesPerson.value : this.salesPerson,
+    merchandiser: merchandiser.present ? merchandiser.value : this.merchandiser,
+    countryId: countryId ?? this.countryId,
+    phoneNumber: phoneNumber.present ? phoneNumber.value : this.phoneNumber,
+    latitude: latitude ?? this.latitude,
+    longitude: longitude ?? this.longitude,
+    creditLimit: creditLimit.present ? creditLimit.value : this.creditLimit,
+    currencyCode: currencyCode.present ? currencyCode.value : this.currencyCode,
+    paymentTerm: paymentTerm.present ? paymentTerm.value : this.paymentTerm,
+    priceGroup: priceGroup.present ? priceGroup.value : this.priceGroup,
+    customreDimension: customreDimension.present
+        ? customreDimension.value
+        : this.customreDimension,
+    status: status ?? this.status,
+    companyId: companyId ?? this.companyId,
+    companyCode: companyCode.present ? companyCode.value : this.companyCode,
+  );
   SalesCustomerEntityData copyWithCompanion(SalesCustomerEntityCompanion data) {
     return SalesCustomerEntityData(
-      customerId:
-          data.customerId.present ? data.customerId.value : this.customerId,
+      customerId: data.customerId.present
+          ? data.customerId.value
+          : this.customerId,
       customerName: data.customerName.present
           ? data.customerName.value
           : this.customerName,
@@ -1262,32 +1514,38 @@ class SalesCustomerEntityData extends DataClass
       salesPersonId: data.salesPersonId.present
           ? data.salesPersonId.value
           : this.salesPersonId,
-      salesPerson:
-          data.salesPerson.present ? data.salesPerson.value : this.salesPerson,
+      salesPerson: data.salesPerson.present
+          ? data.salesPerson.value
+          : this.salesPerson,
       merchandiser: data.merchandiser.present
           ? data.merchandiser.value
           : this.merchandiser,
       countryId: data.countryId.present ? data.countryId.value : this.countryId,
-      phoneNumber:
-          data.phoneNumber.present ? data.phoneNumber.value : this.phoneNumber,
+      phoneNumber: data.phoneNumber.present
+          ? data.phoneNumber.value
+          : this.phoneNumber,
       latitude: data.latitude.present ? data.latitude.value : this.latitude,
       longitude: data.longitude.present ? data.longitude.value : this.longitude,
-      creditLimit:
-          data.creditLimit.present ? data.creditLimit.value : this.creditLimit,
+      creditLimit: data.creditLimit.present
+          ? data.creditLimit.value
+          : this.creditLimit,
       currencyCode: data.currencyCode.present
           ? data.currencyCode.value
           : this.currencyCode,
-      paymentTerm:
-          data.paymentTerm.present ? data.paymentTerm.value : this.paymentTerm,
-      priceGroup:
-          data.priceGroup.present ? data.priceGroup.value : this.priceGroup,
+      paymentTerm: data.paymentTerm.present
+          ? data.paymentTerm.value
+          : this.paymentTerm,
+      priceGroup: data.priceGroup.present
+          ? data.priceGroup.value
+          : this.priceGroup,
       customreDimension: data.customreDimension.present
           ? data.customreDimension.value
           : this.customreDimension,
       status: data.status.present ? data.status.value : this.status,
       companyId: data.companyId.present ? data.companyId.value : this.companyId,
-      companyCode:
-          data.companyCode.present ? data.companyCode.value : this.companyCode,
+      companyCode: data.companyCode.present
+          ? data.companyCode.value
+          : this.companyCode,
     );
   }
 
@@ -1318,24 +1576,25 @@ class SalesCustomerEntityData extends DataClass
 
   @override
   int get hashCode => Object.hash(
-      customerId,
-      customerName,
-      address,
-      salesPersonId,
-      salesPerson,
-      merchandiser,
-      countryId,
-      phoneNumber,
-      latitude,
-      longitude,
-      creditLimit,
-      currencyCode,
-      paymentTerm,
-      priceGroup,
-      customreDimension,
-      status,
-      companyId,
-      companyCode);
+    customerId,
+    customerName,
+    address,
+    salesPersonId,
+    salesPerson,
+    merchandiser,
+    countryId,
+    phoneNumber,
+    latitude,
+    longitude,
+    creditLimit,
+    currencyCode,
+    paymentTerm,
+    priceGroup,
+    customreDimension,
+    status,
+    companyId,
+    companyCode,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -1422,12 +1681,12 @@ class SalesCustomerEntityCompanion
     required int companyId,
     this.companyCode = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : customerId = Value(customerId),
-        customerName = Value(customerName),
-        salesPersonId = Value(salesPersonId),
-        countryId = Value(countryId),
-        status = Value(status),
-        companyId = Value(companyId);
+  }) : customerId = Value(customerId),
+       customerName = Value(customerName),
+       salesPersonId = Value(salesPersonId),
+       countryId = Value(countryId),
+       status = Value(status),
+       companyId = Value(companyId);
   static Insertable<SalesCustomerEntityData> custom({
     Expression<String>? customerId,
     Expression<String>? customerName,
@@ -1472,26 +1731,27 @@ class SalesCustomerEntityCompanion
     });
   }
 
-  SalesCustomerEntityCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? customerName,
-      Value<String?>? address,
-      Value<String>? salesPersonId,
-      Value<String?>? salesPerson,
-      Value<String?>? merchandiser,
-      Value<String>? countryId,
-      Value<String?>? phoneNumber,
-      Value<double>? latitude,
-      Value<double>? longitude,
-      Value<double?>? creditLimit,
-      Value<String?>? currencyCode,
-      Value<String?>? paymentTerm,
-      Value<String?>? priceGroup,
-      Value<String?>? customreDimension,
-      Value<int>? status,
-      Value<int>? companyId,
-      Value<String?>? companyCode,
-      Value<int>? rowid}) {
+  SalesCustomerEntityCompanion copyWith({
+    Value<String>? customerId,
+    Value<String>? customerName,
+    Value<String?>? address,
+    Value<String>? salesPersonId,
+    Value<String?>? salesPerson,
+    Value<String?>? merchandiser,
+    Value<String>? countryId,
+    Value<String?>? phoneNumber,
+    Value<double>? latitude,
+    Value<double>? longitude,
+    Value<double?>? creditLimit,
+    Value<String?>? currencyCode,
+    Value<String?>? paymentTerm,
+    Value<String?>? priceGroup,
+    Value<String?>? customreDimension,
+    Value<int>? status,
+    Value<int>? companyId,
+    Value<String?>? companyCode,
+    Value<int>? rowid,
+  }) {
     return SalesCustomerEntityCompanion(
       customerId: customerId ?? this.customerId,
       customerName: customerName ?? this.customerName,
@@ -1607,15 +1867,21 @@ class SalesCustomerEntityCompanion
 
 class SearchMerchandiserCustomerHistoryEntity extends Table
     with
-        TableInfo<SearchMerchandiserCustomerHistoryEntity,
-            SearchMerchandiserCustomerHistoryEntityData> {
+        TableInfo<
+          SearchMerchandiserCustomerHistoryEntity,
+          SearchMerchandiserCustomerHistoryEntityData
+        > {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   SearchMerchandiserCustomerHistoryEntity(this.attachedDatabase, [this._alias]);
   late final GeneratedColumn<String> key = GeneratedColumn<String>(
-      'key', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+    'key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [key];
   @override
@@ -1626,12 +1892,16 @@ class SearchMerchandiserCustomerHistoryEntity extends Table
   @override
   Set<GeneratedColumn> get $primaryKey => {key};
   @override
-  SearchMerchandiserCustomerHistoryEntityData map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  SearchMerchandiserCustomerHistoryEntityData map(
+    Map<String, dynamic> data, {
+    String? tablePrefix,
+  }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SearchMerchandiserCustomerHistoryEntityData(
-      key: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}key'])!,
+      key: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key'],
+      )!,
     );
   }
 
@@ -1653,15 +1923,15 @@ class SearchMerchandiserCustomerHistoryEntityData extends DataClass
   }
 
   SearchMerchandiserCustomerHistoryEntityCompanion toCompanion(
-      bool nullToAbsent) {
-    return SearchMerchandiserCustomerHistoryEntityCompanion(
-      key: Value(key),
-    );
+    bool nullToAbsent,
+  ) {
+    return SearchMerchandiserCustomerHistoryEntityCompanion(key: Value(key));
   }
 
   factory SearchMerchandiserCustomerHistoryEntityData.fromJson(
-      Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return SearchMerchandiserCustomerHistoryEntityData(
       key: serializer.fromJson<String>(json['key']),
@@ -1670,17 +1940,14 @@ class SearchMerchandiserCustomerHistoryEntityData extends DataClass
   @override
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'key': serializer.toJson<String>(key),
-    };
+    return <String, dynamic>{'key': serializer.toJson<String>(key)};
   }
 
   SearchMerchandiserCustomerHistoryEntityData copyWith({String? key}) =>
-      SearchMerchandiserCustomerHistoryEntityData(
-        key: key ?? this.key,
-      );
+      SearchMerchandiserCustomerHistoryEntityData(key: key ?? this.key);
   SearchMerchandiserCustomerHistoryEntityData copyWithCompanion(
-      SearchMerchandiserCustomerHistoryEntityCompanion data) {
+    SearchMerchandiserCustomerHistoryEntityCompanion data,
+  ) {
     return SearchMerchandiserCustomerHistoryEntityData(
       key: data.key.present ? data.key.value : this.key,
     );
@@ -1725,8 +1992,10 @@ class SearchMerchandiserCustomerHistoryEntityCompanion
     });
   }
 
-  SearchMerchandiserCustomerHistoryEntityCompanion copyWith(
-      {Value<String>? key, Value<int>? rowid}) {
+  SearchMerchandiserCustomerHistoryEntityCompanion copyWith({
+    Value<String>? key,
+    Value<int>? rowid,
+  }) {
     return SearchMerchandiserCustomerHistoryEntityCompanion(
       key: key ?? this.key,
       rowid: rowid ?? this.rowid,
@@ -1760,21 +2029,22 @@ class DatabaseAtV2 extends GeneratedDatabase {
   late final SettingEntity settingEntity = SettingEntity(this);
   late final MerchandiserCustomerEntity merchandiserCustomerEntity =
       MerchandiserCustomerEntity(this);
-  late final SalesCustomerEntity salesCustomerEntity =
-      SalesCustomerEntity(this);
+  late final SalesCustomerEntity salesCustomerEntity = SalesCustomerEntity(
+    this,
+  );
   late final SearchMerchandiserCustomerHistoryEntity
-      searchMerchandiserCustomerHistoryEntity =
+  searchMerchandiserCustomerHistoryEntity =
       SearchMerchandiserCustomerHistoryEntity(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
-        settingEntity,
-        merchandiserCustomerEntity,
-        salesCustomerEntity,
-        searchMerchandiserCustomerHistoryEntity
-      ];
+    settingEntity,
+    merchandiserCustomerEntity,
+    salesCustomerEntity,
+    searchMerchandiserCustomerHistoryEntity,
+  ];
   @override
   int get schemaVersion => 2;
   @override

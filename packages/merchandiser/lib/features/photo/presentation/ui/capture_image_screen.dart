@@ -65,9 +65,7 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
             photoPathBuilder: _photoPathBuilder,
             videoOptions: VideoOptions(
               enableAudio: true,
-              ios: CupertinoVideoOptions(
-                fps: 10,
-              ),
+              ios: CupertinoVideoOptions(fps: 10),
               android: AndroidVideoOptions(
                 bitrate: 6000000,
                 fallbackStrategy: QualityFallbackStrategy.lower,
@@ -107,15 +105,13 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
 
   void _showSnackBar(String message) =>
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(message),
-          duration: const Duration(seconds: 5),
-        ),
+        SnackBar(content: Text(message), duration: const Duration(seconds: 5)),
       );
 
   String _currentDateTime(String format) {
-    final timeZone =
-        ref.read(captureImageControllerProvider.notifier).getTimeZone();
+    final timeZone = ref
+        .read(captureImageControllerProvider.notifier)
+        .getTimeZone();
     // initialize Time Zone database from latest
     tz_latest.initializeTimeZones();
     final location = tz.getLocation(timeZone);
@@ -158,7 +154,9 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
     await Gal.putImageBytes(modifiedImageBytes, album: 'easysales');
 
     // upload the image to the server
-    ref.read(captureImageControllerProvider.notifier).uploadImage(
+    ref
+        .read(captureImageControllerProvider.notifier)
+        .uploadImage(
           photo: File(file.path),
           customerId: widget.extras['customerId'],
           customerName: widget.extras['customerName'],
@@ -236,29 +234,29 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
     // If there are several sensors, we need to build a MultipleCaptureRequest with a map of file paths and sensors
     // Separate pictures taken with front and back camera
     // We create a different path based on wether it's the front or back sensor that takes the picture.
-    return MultipleCaptureRequest(
-      {
-        for (final sensor in sensors)
-          sensor:
-              '${dir.path}/${sensor.position == SensorPosition.front ? 'front_' : "back_"}${DateTime.now().millisecondsSinceEpoch}.jpg',
-      },
-    );
+    return MultipleCaptureRequest({
+      for (final sensor in sensors)
+        sensor:
+            '${dir.path}/${sensor.position == SensorPosition.front ? 'front_' : "back_"}${DateTime.now().millisecondsSinceEpoch}.jpg',
+    });
   }
 
   void _listener() {
     // listen for error
-    ref.listen(captureImageControllerProvider.select((value) => value.errorMsg),
-        (_, next) {
-      if (next != null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 5),
-            backgroundColor: context.themeColor.colorScheme.error,
-            content: Text(next),
-          ),
-        );
-      }
-    });
+    ref.listen(
+      captureImageControllerProvider.select((value) => value.errorMsg),
+      (_, next) {
+        if (next != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 5),
+              backgroundColor: context.themeColor.colorScheme.error,
+              content: Text(next),
+            ),
+          );
+        }
+      },
+    );
 
     // listen for photo uploaded
     ref.listen(
@@ -281,23 +279,24 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
 
     // listen for loading
     ref.listen(
-        captureImageControllerProvider.select((value) => value.isUploading),
-        (_, next) {
-      if (next) {
-        context.loaderOverlay.show(
-          widgetBuilder: (progress) {
-            return Center(
-              child: LoadingAnimationWidget.progressiveDots(
-                color: Colors.white,
-                size: 60,
-              ),
-            );
-          },
-        );
-      } else {
-        context.loaderOverlay.hide();
-      }
-    });
+      captureImageControllerProvider.select((value) => value.isUploading),
+      (_, next) {
+        if (next) {
+          context.loaderOverlay.show(
+            widgetBuilder: (progress) {
+              return Center(
+                child: LoadingAnimationWidget.progressiveDots(
+                  color: Colors.white,
+                  size: 60,
+                ),
+              );
+            },
+          );
+        } else {
+          context.loaderOverlay.hide();
+        }
+      },
+    );
   }
 }
 
@@ -311,7 +310,8 @@ Uint8List processImage(Map<String, dynamic> args) {
     throw StateError('Invalid image data');
   }
 
-  final data = '''
+  final data =
+      '''
     $dateTime \n
     ${args['customerId']} \n
     ${args['address']}

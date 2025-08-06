@@ -29,9 +29,9 @@ class SalesHeaderDao extends DatabaseAccessor<AppDatabase>
   ) {
     try {
       // update into database
-      (update(salesHeaderEntity)
-            ..where((tbl) => tbl.salesId.equals(data.salesId.value)))
-          .write(data);
+      (update(
+        salesHeaderEntity,
+      )..where((tbl) => tbl.salesId.equals(data.salesId.value))).write(data);
       // return the updated data
       return getSalesHeaderBySalesId(data.salesId.value);
     } catch (e) {
@@ -40,30 +40,26 @@ class SalesHeaderDao extends DatabaseAccessor<AppDatabase>
   }
 
   Future<SalesHeaderEntityData> getSalesHeaderBySalesId(String salesId) =>
-      (select(salesHeaderEntity)..where((tbl) => tbl.salesId.equals(salesId)))
-          .getSingle();
+      (select(
+        salesHeaderEntity,
+      )..where((tbl) => tbl.salesId.equals(salesId))).getSingle();
 
   Stream<List<SalesHeaderEntityData>> watchAllSalesHeader() {
     final query = select(salesHeaderEntity)
-      ..orderBy(
-        [
-          (tbl) => OrderingTerm(
-                expression: tbl.transactionDate,
-                mode: OrderingMode.desc,
-              ),
-          (tbl) => OrderingTerm(
-                expression: tbl.salesId,
-                mode: OrderingMode.desc,
-              ),
-        ],
-      );
+      ..orderBy([
+        (tbl) => OrderingTerm(
+          expression: tbl.transactionDate,
+          mode: OrderingMode.desc,
+        ),
+        (tbl) => OrderingTerm(expression: tbl.salesId, mode: OrderingMode.desc),
+      ]);
 
     return query.watch().handleError((e, s) {
       throw Failure(message: e.toString(), stackTrace: s);
     });
   }
 
-  Future<int> deleteBySalesId(String salesId) =>
-      (delete(salesHeaderEntity)..where((tbl) => tbl.salesId.equals(salesId)))
-          .go();
+  Future<int> deleteBySalesId(String salesId) => (delete(
+    salesHeaderEntity,
+  )..where((tbl) => tbl.salesId.equals(salesId))).go();
 }

@@ -12,10 +12,12 @@ part of 'customer_address_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 CustomerAddressResponse _$CustomerAddressResponseFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _CustomerAddressResponse.fromJson(json);
 }
 
@@ -40,19 +42,23 @@ mixin _$CustomerAddressResponse {
 
 /// @nodoc
 abstract class $CustomerAddressResponseCopyWith<$Res> {
-  factory $CustomerAddressResponseCopyWith(CustomerAddressResponse value,
-          $Res Function(CustomerAddressResponse) then) =
-      _$CustomerAddressResponseCopyWithImpl<$Res, CustomerAddressResponse>;
+  factory $CustomerAddressResponseCopyWith(
+    CustomerAddressResponse value,
+    $Res Function(CustomerAddressResponse) then,
+  ) = _$CustomerAddressResponseCopyWithImpl<$Res, CustomerAddressResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "status") String status,
-      @JsonKey(name: "total") int total,
-      @JsonKey(name: "data") List<CustomerAddressData> data});
+  $Res call({
+    @JsonKey(name: "status") String status,
+    @JsonKey(name: "total") int total,
+    @JsonKey(name: "data") List<CustomerAddressData> data,
+  });
 }
 
 /// @nodoc
-class _$CustomerAddressResponseCopyWithImpl<$Res,
-        $Val extends CustomerAddressResponse>
+class _$CustomerAddressResponseCopyWithImpl<
+  $Res,
+  $Val extends CustomerAddressResponse
+>
     implements $CustomerAddressResponseCopyWith<$Res> {
   _$CustomerAddressResponseCopyWithImpl(this._value, this._then);
 
@@ -70,20 +76,23 @@ class _$CustomerAddressResponseCopyWithImpl<$Res,
     Object? total = null,
     Object? data = null,
   }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<CustomerAddressData>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            total: null == total
+                ? _value.total
+                : total // ignore: cast_nullable_to_non_nullable
+                      as int,
+            data: null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as List<CustomerAddressData>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -91,26 +100,30 @@ class _$CustomerAddressResponseCopyWithImpl<$Res,
 abstract class _$$CustomerAddressResponseImplCopyWith<$Res>
     implements $CustomerAddressResponseCopyWith<$Res> {
   factory _$$CustomerAddressResponseImplCopyWith(
-          _$CustomerAddressResponseImpl value,
-          $Res Function(_$CustomerAddressResponseImpl) then) =
-      __$$CustomerAddressResponseImplCopyWithImpl<$Res>;
+    _$CustomerAddressResponseImpl value,
+    $Res Function(_$CustomerAddressResponseImpl) then,
+  ) = __$$CustomerAddressResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "status") String status,
-      @JsonKey(name: "total") int total,
-      @JsonKey(name: "data") List<CustomerAddressData> data});
+  $Res call({
+    @JsonKey(name: "status") String status,
+    @JsonKey(name: "total") int total,
+    @JsonKey(name: "data") List<CustomerAddressData> data,
+  });
 }
 
 /// @nodoc
 class __$$CustomerAddressResponseImplCopyWithImpl<$Res>
-    extends _$CustomerAddressResponseCopyWithImpl<$Res,
-        _$CustomerAddressResponseImpl>
+    extends
+        _$CustomerAddressResponseCopyWithImpl<
+          $Res,
+          _$CustomerAddressResponseImpl
+        >
     implements _$$CustomerAddressResponseImplCopyWith<$Res> {
   __$$CustomerAddressResponseImplCopyWithImpl(
-      _$CustomerAddressResponseImpl _value,
-      $Res Function(_$CustomerAddressResponseImpl) _then)
-      : super(_value, _then);
+    _$CustomerAddressResponseImpl _value,
+    $Res Function(_$CustomerAddressResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CustomerAddressResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -121,32 +134,34 @@ class __$$CustomerAddressResponseImplCopyWithImpl<$Res>
     Object? total = null,
     Object? data = null,
   }) {
-    return _then(_$CustomerAddressResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<CustomerAddressData>,
-    ));
+    return _then(
+      _$CustomerAddressResponseImpl(
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        total: null == total
+            ? _value.total
+            : total // ignore: cast_nullable_to_non_nullable
+                  as int,
+        data: null == data
+            ? _value._data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as List<CustomerAddressData>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CustomerAddressResponseImpl implements _CustomerAddressResponse {
-  const _$CustomerAddressResponseImpl(
-      {@JsonKey(name: "status") required this.status,
-      @JsonKey(name: "total") required this.total,
-      @JsonKey(name: "data")
-      final List<CustomerAddressData> data = const <CustomerAddressData>[]})
-      : _data = data;
+  const _$CustomerAddressResponseImpl({
+    @JsonKey(name: "status") required this.status,
+    @JsonKey(name: "total") required this.total,
+    @JsonKey(name: "data")
+    final List<CustomerAddressData> data = const <CustomerAddressData>[],
+  }) : _data = data;
 
   factory _$CustomerAddressResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CustomerAddressResponseImplFromJson(json);
@@ -184,7 +199,11 @@ class _$CustomerAddressResponseImpl implements _CustomerAddressResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, status, total, const DeepCollectionEquality().hash(_data));
+    runtimeType,
+    status,
+    total,
+    const DeepCollectionEquality().hash(_data),
+  );
 
   /// Create a copy of CustomerAddressResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -192,23 +211,23 @@ class _$CustomerAddressResponseImpl implements _CustomerAddressResponse {
   @override
   @pragma('vm:prefer-inline')
   _$$CustomerAddressResponseImplCopyWith<_$CustomerAddressResponseImpl>
-      get copyWith => __$$CustomerAddressResponseImplCopyWithImpl<
-          _$CustomerAddressResponseImpl>(this, _$identity);
+  get copyWith =>
+      __$$CustomerAddressResponseImplCopyWithImpl<
+        _$CustomerAddressResponseImpl
+      >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CustomerAddressResponseImplToJson(
-      this,
-    );
+    return _$$CustomerAddressResponseImplToJson(this);
   }
 }
 
 abstract class _CustomerAddressResponse implements CustomerAddressResponse {
-  const factory _CustomerAddressResponse(
-          {@JsonKey(name: "status") required final String status,
-          @JsonKey(name: "total") required final int total,
-          @JsonKey(name: "data") final List<CustomerAddressData> data}) =
-      _$CustomerAddressResponseImpl;
+  const factory _CustomerAddressResponse({
+    @JsonKey(name: "status") required final String status,
+    @JsonKey(name: "total") required final int total,
+    @JsonKey(name: "data") final List<CustomerAddressData> data,
+  }) = _$CustomerAddressResponseImpl;
 
   factory _CustomerAddressResponse.fromJson(Map<String, dynamic> json) =
       _$CustomerAddressResponseImpl.fromJson;
@@ -228,7 +247,7 @@ abstract class _CustomerAddressResponse implements CustomerAddressResponse {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomerAddressResponseImplCopyWith<_$CustomerAddressResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 CustomerAddressData _$CustomerAddressDataFromJson(Map<String, dynamic> json) {
@@ -279,24 +298,26 @@ mixin _$CustomerAddressData {
 /// @nodoc
 abstract class $CustomerAddressDataCopyWith<$Res> {
   factory $CustomerAddressDataCopyWith(
-          CustomerAddressData value, $Res Function(CustomerAddressData) then) =
-      _$CustomerAddressDataCopyWithImpl<$Res, CustomerAddressData>;
+    CustomerAddressData value,
+    $Res Function(CustomerAddressData) then,
+  ) = _$CustomerAddressDataCopyWithImpl<$Res, CustomerAddressData>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "id") int id,
-      @JsonKey(name: "customerId") String customerId,
-      @JsonKey(name: "address") String? address,
-      @JsonKey(name: "salesPersonId") String? salesPersonId,
-      @JsonKey(name: "latitude") String latitude,
-      @JsonKey(name: "longitude") String longitude,
-      @JsonKey(name: "deliveryName") String? deliveryName,
-      @JsonKey(name: "postalAddress") String postalAddress,
-      @JsonKey(name: "location") String location,
-      @JsonKey(name: "isPrimary") bool isPrimary,
-      @JsonKey(name: "companyId") int companyId,
-      @JsonKey(name: "companyCode") String companyCode,
-      @JsonKey(name: "createAt") DateTime createAt,
-      @JsonKey(name: "updatedAt") DateTime updatedAt});
+  $Res call({
+    @JsonKey(name: "id") int id,
+    @JsonKey(name: "customerId") String customerId,
+    @JsonKey(name: "address") String? address,
+    @JsonKey(name: "salesPersonId") String? salesPersonId,
+    @JsonKey(name: "latitude") String latitude,
+    @JsonKey(name: "longitude") String longitude,
+    @JsonKey(name: "deliveryName") String? deliveryName,
+    @JsonKey(name: "postalAddress") String postalAddress,
+    @JsonKey(name: "location") String location,
+    @JsonKey(name: "isPrimary") bool isPrimary,
+    @JsonKey(name: "companyId") int companyId,
+    @JsonKey(name: "companyCode") String companyCode,
+    @JsonKey(name: "createAt") DateTime createAt,
+    @JsonKey(name: "updatedAt") DateTime updatedAt,
+  });
 }
 
 /// @nodoc
@@ -329,99 +350,105 @@ class _$CustomerAddressDataCopyWithImpl<$Res, $Val extends CustomerAddressData>
     Object? createAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      salesPersonId: freezed == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitude: null == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as String,
-      longitude: null == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryName: freezed == deliveryName
-          ? _value.deliveryName
-          : deliveryName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      postalAddress: null == postalAddress
-          ? _value.postalAddress
-          : postalAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPrimary: null == isPrimary
-          ? _value.isPrimary
-          : isPrimary // ignore: cast_nullable_to_non_nullable
-              as bool,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyCode: null == companyCode
-          ? _value.companyCode
-          : companyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      createAt: null == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            customerId: null == customerId
+                ? _value.customerId
+                : customerId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            address: freezed == address
+                ? _value.address
+                : address // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            salesPersonId: freezed == salesPersonId
+                ? _value.salesPersonId
+                : salesPersonId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            latitude: null == latitude
+                ? _value.latitude
+                : latitude // ignore: cast_nullable_to_non_nullable
+                      as String,
+            longitude: null == longitude
+                ? _value.longitude
+                : longitude // ignore: cast_nullable_to_non_nullable
+                      as String,
+            deliveryName: freezed == deliveryName
+                ? _value.deliveryName
+                : deliveryName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            postalAddress: null == postalAddress
+                ? _value.postalAddress
+                : postalAddress // ignore: cast_nullable_to_non_nullable
+                      as String,
+            location: null == location
+                ? _value.location
+                : location // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isPrimary: null == isPrimary
+                ? _value.isPrimary
+                : isPrimary // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            companyId: null == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            companyCode: null == companyCode
+                ? _value.companyCode
+                : companyCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            createAt: null == createAt
+                ? _value.createAt
+                : createAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            updatedAt: null == updatedAt
+                ? _value.updatedAt
+                : updatedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$CustomerAddressDataImplCopyWith<$Res>
     implements $CustomerAddressDataCopyWith<$Res> {
-  factory _$$CustomerAddressDataImplCopyWith(_$CustomerAddressDataImpl value,
-          $Res Function(_$CustomerAddressDataImpl) then) =
-      __$$CustomerAddressDataImplCopyWithImpl<$Res>;
+  factory _$$CustomerAddressDataImplCopyWith(
+    _$CustomerAddressDataImpl value,
+    $Res Function(_$CustomerAddressDataImpl) then,
+  ) = __$$CustomerAddressDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "id") int id,
-      @JsonKey(name: "customerId") String customerId,
-      @JsonKey(name: "address") String? address,
-      @JsonKey(name: "salesPersonId") String? salesPersonId,
-      @JsonKey(name: "latitude") String latitude,
-      @JsonKey(name: "longitude") String longitude,
-      @JsonKey(name: "deliveryName") String? deliveryName,
-      @JsonKey(name: "postalAddress") String postalAddress,
-      @JsonKey(name: "location") String location,
-      @JsonKey(name: "isPrimary") bool isPrimary,
-      @JsonKey(name: "companyId") int companyId,
-      @JsonKey(name: "companyCode") String companyCode,
-      @JsonKey(name: "createAt") DateTime createAt,
-      @JsonKey(name: "updatedAt") DateTime updatedAt});
+  $Res call({
+    @JsonKey(name: "id") int id,
+    @JsonKey(name: "customerId") String customerId,
+    @JsonKey(name: "address") String? address,
+    @JsonKey(name: "salesPersonId") String? salesPersonId,
+    @JsonKey(name: "latitude") String latitude,
+    @JsonKey(name: "longitude") String longitude,
+    @JsonKey(name: "deliveryName") String? deliveryName,
+    @JsonKey(name: "postalAddress") String postalAddress,
+    @JsonKey(name: "location") String location,
+    @JsonKey(name: "isPrimary") bool isPrimary,
+    @JsonKey(name: "companyId") int companyId,
+    @JsonKey(name: "companyCode") String companyCode,
+    @JsonKey(name: "createAt") DateTime createAt,
+    @JsonKey(name: "updatedAt") DateTime updatedAt,
+  });
 }
 
 /// @nodoc
 class __$$CustomerAddressDataImplCopyWithImpl<$Res>
     extends _$CustomerAddressDataCopyWithImpl<$Res, _$CustomerAddressDataImpl>
     implements _$$CustomerAddressDataImplCopyWith<$Res> {
-  __$$CustomerAddressDataImplCopyWithImpl(_$CustomerAddressDataImpl _value,
-      $Res Function(_$CustomerAddressDataImpl) _then)
-      : super(_value, _then);
+  __$$CustomerAddressDataImplCopyWithImpl(
+    _$CustomerAddressDataImpl _value,
+    $Res Function(_$CustomerAddressDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CustomerAddressData
   /// with the given fields replaced by the non-null parameter values.
@@ -443,85 +470,88 @@ class __$$CustomerAddressDataImplCopyWithImpl<$Res>
     Object? createAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$CustomerAddressDataImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      salesPersonId: freezed == salesPersonId
-          ? _value.salesPersonId
-          : salesPersonId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      latitude: null == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as String,
-      longitude: null == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryName: freezed == deliveryName
-          ? _value.deliveryName
-          : deliveryName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      postalAddress: null == postalAddress
-          ? _value.postalAddress
-          : postalAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPrimary: null == isPrimary
-          ? _value.isPrimary
-          : isPrimary // ignore: cast_nullable_to_non_nullable
-              as bool,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyCode: null == companyCode
-          ? _value.companyCode
-          : companyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      createAt: null == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+    return _then(
+      _$CustomerAddressDataImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        customerId: null == customerId
+            ? _value.customerId
+            : customerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        address: freezed == address
+            ? _value.address
+            : address // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        salesPersonId: freezed == salesPersonId
+            ? _value.salesPersonId
+            : salesPersonId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        latitude: null == latitude
+            ? _value.latitude
+            : latitude // ignore: cast_nullable_to_non_nullable
+                  as String,
+        longitude: null == longitude
+            ? _value.longitude
+            : longitude // ignore: cast_nullable_to_non_nullable
+                  as String,
+        deliveryName: freezed == deliveryName
+            ? _value.deliveryName
+            : deliveryName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        postalAddress: null == postalAddress
+            ? _value.postalAddress
+            : postalAddress // ignore: cast_nullable_to_non_nullable
+                  as String,
+        location: null == location
+            ? _value.location
+            : location // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isPrimary: null == isPrimary
+            ? _value.isPrimary
+            : isPrimary // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        companyId: null == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        companyCode: null == companyCode
+            ? _value.companyCode
+            : companyCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        createAt: null == createAt
+            ? _value.createAt
+            : createAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        updatedAt: null == updatedAt
+            ? _value.updatedAt
+            : updatedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CustomerAddressDataImpl implements _CustomerAddressData {
-  const _$CustomerAddressDataImpl(
-      {@JsonKey(name: "id") required this.id,
-      @JsonKey(name: "customerId") required this.customerId,
-      @JsonKey(name: "address") this.address,
-      @JsonKey(name: "salesPersonId") this.salesPersonId,
-      @JsonKey(name: "latitude") required this.latitude,
-      @JsonKey(name: "longitude") required this.longitude,
-      @JsonKey(name: "deliveryName") this.deliveryName,
-      @JsonKey(name: "postalAddress") required this.postalAddress,
-      @JsonKey(name: "location") required this.location,
-      @JsonKey(name: "isPrimary") required this.isPrimary,
-      @JsonKey(name: "companyId") required this.companyId,
-      @JsonKey(name: "companyCode") required this.companyCode,
-      @JsonKey(name: "createAt") required this.createAt,
-      @JsonKey(name: "updatedAt") required this.updatedAt});
+  const _$CustomerAddressDataImpl({
+    @JsonKey(name: "id") required this.id,
+    @JsonKey(name: "customerId") required this.customerId,
+    @JsonKey(name: "address") this.address,
+    @JsonKey(name: "salesPersonId") this.salesPersonId,
+    @JsonKey(name: "latitude") required this.latitude,
+    @JsonKey(name: "longitude") required this.longitude,
+    @JsonKey(name: "deliveryName") this.deliveryName,
+    @JsonKey(name: "postalAddress") required this.postalAddress,
+    @JsonKey(name: "location") required this.location,
+    @JsonKey(name: "isPrimary") required this.isPrimary,
+    @JsonKey(name: "companyId") required this.companyId,
+    @JsonKey(name: "companyCode") required this.companyCode,
+    @JsonKey(name: "createAt") required this.createAt,
+    @JsonKey(name: "updatedAt") required this.updatedAt,
+  });
 
   factory _$CustomerAddressDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$CustomerAddressDataImplFromJson(json);
@@ -610,21 +640,22 @@ class _$CustomerAddressDataImpl implements _CustomerAddressData {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      customerId,
-      address,
-      salesPersonId,
-      latitude,
-      longitude,
-      deliveryName,
-      postalAddress,
-      location,
-      isPrimary,
-      companyId,
-      companyCode,
-      createAt,
-      updatedAt);
+    runtimeType,
+    id,
+    customerId,
+    address,
+    salesPersonId,
+    latitude,
+    longitude,
+    deliveryName,
+    postalAddress,
+    location,
+    isPrimary,
+    companyId,
+    companyCode,
+    createAt,
+    updatedAt,
+  );
 
   /// Create a copy of CustomerAddressData
   /// with the given fields replaced by the non-null parameter values.
@@ -633,33 +664,33 @@ class _$CustomerAddressDataImpl implements _CustomerAddressData {
   @pragma('vm:prefer-inline')
   _$$CustomerAddressDataImplCopyWith<_$CustomerAddressDataImpl> get copyWith =>
       __$$CustomerAddressDataImplCopyWithImpl<_$CustomerAddressDataImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CustomerAddressDataImplToJson(
-      this,
-    );
+    return _$$CustomerAddressDataImplToJson(this);
   }
 }
 
 abstract class _CustomerAddressData implements CustomerAddressData {
-  const factory _CustomerAddressData(
-          {@JsonKey(name: "id") required final int id,
-          @JsonKey(name: "customerId") required final String customerId,
-          @JsonKey(name: "address") final String? address,
-          @JsonKey(name: "salesPersonId") final String? salesPersonId,
-          @JsonKey(name: "latitude") required final String latitude,
-          @JsonKey(name: "longitude") required final String longitude,
-          @JsonKey(name: "deliveryName") final String? deliveryName,
-          @JsonKey(name: "postalAddress") required final String postalAddress,
-          @JsonKey(name: "location") required final String location,
-          @JsonKey(name: "isPrimary") required final bool isPrimary,
-          @JsonKey(name: "companyId") required final int companyId,
-          @JsonKey(name: "companyCode") required final String companyCode,
-          @JsonKey(name: "createAt") required final DateTime createAt,
-          @JsonKey(name: "updatedAt") required final DateTime updatedAt}) =
-      _$CustomerAddressDataImpl;
+  const factory _CustomerAddressData({
+    @JsonKey(name: "id") required final int id,
+    @JsonKey(name: "customerId") required final String customerId,
+    @JsonKey(name: "address") final String? address,
+    @JsonKey(name: "salesPersonId") final String? salesPersonId,
+    @JsonKey(name: "latitude") required final String latitude,
+    @JsonKey(name: "longitude") required final String longitude,
+    @JsonKey(name: "deliveryName") final String? deliveryName,
+    @JsonKey(name: "postalAddress") required final String postalAddress,
+    @JsonKey(name: "location") required final String location,
+    @JsonKey(name: "isPrimary") required final bool isPrimary,
+    @JsonKey(name: "companyId") required final int companyId,
+    @JsonKey(name: "companyCode") required final String companyCode,
+    @JsonKey(name: "createAt") required final DateTime createAt,
+    @JsonKey(name: "updatedAt") required final DateTime updatedAt,
+  }) = _$CustomerAddressDataImpl;
 
   factory _CustomerAddressData.fromJson(Map<String, dynamic> json) =
       _$CustomerAddressDataImpl.fromJson;

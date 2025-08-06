@@ -23,3 +23,9 @@ importProductAndPrice: Import Product and Price
 importProductAndPriceSubTitle: Import Product and Price from API
 save: Save
 orderRunningNumberUpdatedSuccessfully: Order Running Number Updated Successfully
+companySetting: Company Setting
+manageYourCompany: Manage your company setting
+companyId: Company ID
+companyName: Company Name
+companyCode: Company Code
+isSiteVisitEnabled: Is Site Visit Enabled

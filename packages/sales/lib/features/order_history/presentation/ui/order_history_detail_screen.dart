@@ -26,17 +26,17 @@ class _OrderHistoryDetailScreenState
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       // set selected sales id
-      ref.read(orderHistoryControllerProvider.notifier).setSelectedSalesId(
-            widget.salesId,
-          );
+      ref
+          .read(orderHistoryControllerProvider.notifier)
+          .setSelectedSalesId(widget.salesId);
       // get order lines
-      ref.read(orderHistoryControllerProvider.notifier).getOrderLines(
-            widget.salesId,
-          );
+      ref
+          .read(orderHistoryControllerProvider.notifier)
+          .getOrderLines(widget.salesId);
       // get sum on line amount
-      ref.read(orderHistoryControllerProvider.notifier).getSumOnLineAmount(
-            widget.salesId,
-          );
+      ref
+          .read(orderHistoryControllerProvider.notifier)
+          .getSumOnLineAmount(widget.salesId);
     });
   }
 
@@ -88,17 +88,11 @@ class _OrderHistoryDetailScreenState
             },
           ),
         ],
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: _tabs,
-        ),
+        bottom: TabBar(controller: _tabController, tabs: _tabs),
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [
-          TabOrderHistoryDetail(),
-          TabOrderHistoryItem(),
-        ],
+        children: const [TabOrderHistoryDetail(), TabOrderHistoryItem()],
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(kMedium),
@@ -116,8 +110,9 @@ class _OrderHistoryDetailScreenState
                 Consumer(
                   builder: (context, ref, child) {
                     final totalAmount = ref.watch(
-                      orderHistoryControllerProvider
-                          .select((value) => value.totalAmount),
+                      orderHistoryControllerProvider.select(
+                        (value) => value.totalAmount,
+                      ),
                     );
                     return Text(
                       totalAmount.toStringAsFixed(2),
@@ -129,22 +124,22 @@ class _OrderHistoryDetailScreenState
                 Consumer(
                   builder: (context, ref, child) {
                     final salesLineCount = ref.watch(
-                      orderHistoryControllerProvider
-                          .select((value) => value.salesLines.length),
+                      orderHistoryControllerProvider.select(
+                        (value) => value.salesLines.length,
+                      ),
                     );
                     final syncStatus = ref
                         .read(orderHistoryControllerProvider.notifier)
                         .getSyncStatus(widget.salesId);
 
                     return IconButton.filledTonal(
-                      onPressed: salesLineCount == 0 ||
+                      onPressed:
+                          salesLineCount == 0 ||
                               syncStatus == 1 ||
                               syncStatus == 2
                           ? null
                           : _syncOrder,
-                      icon: const Icon(
-                        Icons.upload_outlined,
-                      ),
+                      icon: const Icon(Icons.upload_outlined),
                     );
                   },
                 ),
@@ -216,9 +211,7 @@ class _OrderHistoryDetailScreenState
             SnackBar(
               padding: const EdgeInsets.all(kSMedium),
               duration: const Duration(seconds: 5),
-              content: Text(
-                "Item removed successfully".hardcoded,
-              ),
+              content: Text("Item removed successfully".hardcoded),
             ),
           );
         }
@@ -234,9 +227,7 @@ class _OrderHistoryDetailScreenState
             SnackBar(
               padding: const EdgeInsets.all(kSMedium),
               duration: const Duration(seconds: 5),
-              content: Text(
-                "Order cancelled successfully".hardcoded,
-              ),
+              content: Text("Order cancelled successfully".hardcoded),
             ),
           );
         }
@@ -244,8 +235,10 @@ class _OrderHistoryDetailScreenState
     );
 
     // listen for loading
-    ref.listen(salesLineControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(salesLineControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {
@@ -262,9 +255,7 @@ class _OrderHistoryDetailScreenState
             SnackBar(
               padding: const EdgeInsets.all(kSMedium),
               duration: const Duration(seconds: 5),
-              content: Text(
-                "Order synced successfully".hardcoded,
-              ),
+              content: Text("Order synced successfully".hardcoded),
             ),
           );
         }
@@ -280,9 +271,7 @@ class _OrderHistoryDetailScreenState
             SnackBar(
               padding: const EdgeInsets.all(kSMedium),
               duration: const Duration(seconds: 5),
-              content: Text(
-                "Order line updated successfully".hardcoded,
-              ),
+              content: Text("Order line updated successfully".hardcoded),
             ),
           );
         }
@@ -290,8 +279,10 @@ class _OrderHistoryDetailScreenState
     );
 
     // listen for loading
-    ref.listen(syncOrderControllerProvider.select((value) => value.isLoading),
-        (_, next) {
+    ref.listen(syncOrderControllerProvider.select((value) => value.isLoading), (
+      _,
+      next,
+    ) {
       if (next) {
         context.loaderOverlay.show();
       } else {
@@ -300,25 +291,25 @@ class _OrderHistoryDetailScreenState
     });
 
     // listen for error
-    ref.listen(
-      syncOrderControllerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              padding: const EdgeInsets.all(kSMedium),
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(syncOrderControllerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            padding: const EdgeInsets.all(kSMedium),
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
   }
 }

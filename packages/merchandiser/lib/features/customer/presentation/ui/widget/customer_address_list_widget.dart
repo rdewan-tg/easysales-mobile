@@ -25,16 +25,19 @@ class _CustomerAddressListWidgetState
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(addressControllerProvider.notifier).watchCustomerAddress(
-            widget.customerId,
-          );
+      ref
+          .read(addressControllerProvider.notifier)
+          .watchCustomerAddress(widget.customerId);
+
+      ref.read(merchandiserCustomerProvider.notifier).getSetting();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final addresses =
-        ref.watch(addressControllerProvider.select((value) => value.addresses));
+    final addresses = ref.watch(
+      addressControllerProvider.select((value) => value.addresses),
+    );
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -61,8 +64,16 @@ class _CustomerAddressListWidgetState
                 title: Text(data.deliveryName),
                 subtitle: Text(data.address),
                 onTap: () {
+                  // check if site visit is enabled
+                  final isSiteVisitEnabled = ref
+                      .read(merchandiserCustomerProvider.notifier)
+                      .isSiteVisitEnabled;
+                  // if site visit is enabled, navigate to site visit screen
+                  // else navigate to capture image screen
                   context.push(
-                    '/merchandiser/capture-image',
+                    isSiteVisitEnabled
+                        ? "/merchandiser/$siteVisitRoute"
+                        : "/merchandiser/$captureImageRoute",
                     extra: {
                       'customerId': data.customerId,
                       'customerName': widget.customerName,

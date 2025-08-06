@@ -3,9 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'customer_response.freezed.dart';
 part 'customer_response.g.dart';
 
-CustomerResponse deserializeCustomerResponse(
-  Map<String, dynamic> json,
-) =>
+CustomerResponse deserializeCustomerResponse(Map<String, dynamic> json) =>
     CustomerResponse.fromJson(json);
 
 @freezed

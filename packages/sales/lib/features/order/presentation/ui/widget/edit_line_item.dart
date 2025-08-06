@@ -54,10 +54,7 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
               children: [
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: kMedium,
-                    top: kSmall,
-                  ),
+                  padding: const EdgeInsets.only(left: kMedium, top: kSmall),
                   child: IconButton(
                     onPressed: widget.onClose,
                     icon: const Icon(Icons.close),
@@ -161,13 +158,15 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
                 Consumer(
                   builder: (context, ref, child) {
                     final qty = ref.watch(
-                      productControllerProvider
-                          .select((value) => value.quantity),
+                      productControllerProvider.select(
+                        (value) => value.quantity,
+                      ),
                     );
 
                     final isOrderSynced = ref.watch(
-                      salesLineControllerProvider
-                          .select((value) => value.isOrderSynced),
+                      salesLineControllerProvider.select(
+                        (value) => value.isOrderSynced,
+                      ),
                     );
 
                     final price = _priceController.text;
@@ -192,7 +191,9 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
 
   void _getProductDetail() {
     if (_uomController.text.isEmpty || _packSizeController.text.isEmpty) return;
-    ref.read(productControllerProvider.notifier).getProductDetail(
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductDetail(
           widget.itemId,
           widget.priceGroup,
           _packSizeController.text,
@@ -201,21 +202,25 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
   }
 
   void _editSaleLine() {
-    final product =
-        ref.read(productControllerProvider.notifier).getProduct(widget.itemId);
+    final product = ref
+        .read(productControllerProvider.notifier)
+        .getProduct(widget.itemId);
     final price = ref.read(productControllerProvider.notifier).getPrice();
-    final salesId =
-        ref.read(salesHeaderControllerProvider.notifier).getSalesId();
+    final salesId = ref
+        .read(salesHeaderControllerProvider.notifier)
+        .getSalesId();
 
     if (price == null || product == null) return;
 
     final lineAmount =
         (_priceController.text.isEmpty || _qtyController.text.isEmpty)
-            ? '0.00'
-            : (double.parse(_priceController.text) *
-                    double.parse(_qtyController.text))
-                .toStringAsFixed(2);
-    ref.read(salesLineControllerProvider.notifier).updateSalesLine(
+        ? '0.00'
+        : (double.parse(_priceController.text) *
+                  double.parse(_qtyController.text))
+              .toStringAsFixed(2);
+    ref
+        .read(salesLineControllerProvider.notifier)
+        .updateSalesLine(
           salesId: salesId,
           lineId: widget.lineId,
           salesUnit: _uomController.text,

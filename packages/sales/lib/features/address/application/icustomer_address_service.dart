@@ -12,9 +12,7 @@ abstract interface class ICustomerAddressService {
 
   Future<Map<String, String>> getAllSettings();
 
-  Stream<List<CustomerAddressEntityData>> watchAll(
-    String? searchQuery,
-  );
+  Stream<List<CustomerAddressEntityData>> watchAll(String? searchQuery);
 
   Future<CustomerAddressEntityData> getCustomerAddressByPostalAddress(
     String postalAddress,

@@ -12,7 +12,8 @@ part of 'product_price_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProductPriceResponse _$ProductPriceResponseFromJson(Map<String, dynamic> json) {
   return _ProductPriceResponse.fromJson(json);
@@ -39,19 +40,23 @@ mixin _$ProductPriceResponse {
 
 /// @nodoc
 abstract class $ProductPriceResponseCopyWith<$Res> {
-  factory $ProductPriceResponseCopyWith(ProductPriceResponse value,
-          $Res Function(ProductPriceResponse) then) =
-      _$ProductPriceResponseCopyWithImpl<$Res, ProductPriceResponse>;
+  factory $ProductPriceResponseCopyWith(
+    ProductPriceResponse value,
+    $Res Function(ProductPriceResponse) then,
+  ) = _$ProductPriceResponseCopyWithImpl<$Res, ProductPriceResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "status") String status,
-      @JsonKey(name: "total") int total,
-      @JsonKey(name: "data") List<ProductPriceData> data});
+  $Res call({
+    @JsonKey(name: "status") String status,
+    @JsonKey(name: "total") int total,
+    @JsonKey(name: "data") List<ProductPriceData> data,
+  });
 }
 
 /// @nodoc
-class _$ProductPriceResponseCopyWithImpl<$Res,
-        $Val extends ProductPriceResponse>
+class _$ProductPriceResponseCopyWithImpl<
+  $Res,
+  $Val extends ProductPriceResponse
+>
     implements $ProductPriceResponseCopyWith<$Res> {
   _$ProductPriceResponseCopyWithImpl(this._value, this._then);
 
@@ -69,44 +74,50 @@ class _$ProductPriceResponseCopyWithImpl<$Res,
     Object? total = null,
     Object? data = null,
   }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<ProductPriceData>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            total: null == total
+                ? _value.total
+                : total // ignore: cast_nullable_to_non_nullable
+                      as int,
+            data: null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as List<ProductPriceData>,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ProductPriceResponseImplCopyWith<$Res>
     implements $ProductPriceResponseCopyWith<$Res> {
-  factory _$$ProductPriceResponseImplCopyWith(_$ProductPriceResponseImpl value,
-          $Res Function(_$ProductPriceResponseImpl) then) =
-      __$$ProductPriceResponseImplCopyWithImpl<$Res>;
+  factory _$$ProductPriceResponseImplCopyWith(
+    _$ProductPriceResponseImpl value,
+    $Res Function(_$ProductPriceResponseImpl) then,
+  ) = __$$ProductPriceResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "status") String status,
-      @JsonKey(name: "total") int total,
-      @JsonKey(name: "data") List<ProductPriceData> data});
+  $Res call({
+    @JsonKey(name: "status") String status,
+    @JsonKey(name: "total") int total,
+    @JsonKey(name: "data") List<ProductPriceData> data,
+  });
 }
 
 /// @nodoc
 class __$$ProductPriceResponseImplCopyWithImpl<$Res>
     extends _$ProductPriceResponseCopyWithImpl<$Res, _$ProductPriceResponseImpl>
     implements _$$ProductPriceResponseImplCopyWith<$Res> {
-  __$$ProductPriceResponseImplCopyWithImpl(_$ProductPriceResponseImpl _value,
-      $Res Function(_$ProductPriceResponseImpl) _then)
-      : super(_value, _then);
+  __$$ProductPriceResponseImplCopyWithImpl(
+    _$ProductPriceResponseImpl _value,
+    $Res Function(_$ProductPriceResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductPriceResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -117,31 +128,33 @@ class __$$ProductPriceResponseImplCopyWithImpl<$Res>
     Object? total = null,
     Object? data = null,
   }) {
-    return _then(_$ProductPriceResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<ProductPriceData>,
-    ));
+    return _then(
+      _$ProductPriceResponseImpl(
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        total: null == total
+            ? _value.total
+            : total // ignore: cast_nullable_to_non_nullable
+                  as int,
+        data: null == data
+            ? _value._data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as List<ProductPriceData>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ProductPriceResponseImpl implements _ProductPriceResponse {
-  const _$ProductPriceResponseImpl(
-      {@JsonKey(name: "status") required this.status,
-      @JsonKey(name: "total") required this.total,
-      @JsonKey(name: "data") required final List<ProductPriceData> data})
-      : _data = data;
+  const _$ProductPriceResponseImpl({
+    @JsonKey(name: "status") required this.status,
+    @JsonKey(name: "total") required this.total,
+    @JsonKey(name: "data") required final List<ProductPriceData> data,
+  }) : _data = data;
 
   factory _$ProductPriceResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductPriceResponseImplFromJson(json);
@@ -179,7 +192,11 @@ class _$ProductPriceResponseImpl implements _ProductPriceResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, status, total, const DeepCollectionEquality().hash(_data));
+    runtimeType,
+    status,
+    total,
+    const DeepCollectionEquality().hash(_data),
+  );
 
   /// Create a copy of ProductPriceResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -187,24 +204,24 @@ class _$ProductPriceResponseImpl implements _ProductPriceResponse {
   @override
   @pragma('vm:prefer-inline')
   _$$ProductPriceResponseImplCopyWith<_$ProductPriceResponseImpl>
-      get copyWith =>
-          __$$ProductPriceResponseImplCopyWithImpl<_$ProductPriceResponseImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$ProductPriceResponseImplCopyWithImpl<_$ProductPriceResponseImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductPriceResponseImplToJson(
-      this,
-    );
+    return _$$ProductPriceResponseImplToJson(this);
   }
 }
 
 abstract class _ProductPriceResponse implements ProductPriceResponse {
-  const factory _ProductPriceResponse(
-          {@JsonKey(name: "status") required final String status,
-          @JsonKey(name: "total") required final int total,
-          @JsonKey(name: "data") required final List<ProductPriceData> data}) =
-      _$ProductPriceResponseImpl;
+  const factory _ProductPriceResponse({
+    @JsonKey(name: "status") required final String status,
+    @JsonKey(name: "total") required final int total,
+    @JsonKey(name: "data") required final List<ProductPriceData> data,
+  }) = _$ProductPriceResponseImpl;
 
   factory _ProductPriceResponse.fromJson(Map<String, dynamic> json) =
       _$ProductPriceResponseImpl.fromJson;
@@ -224,7 +241,7 @@ abstract class _ProductPriceResponse implements ProductPriceResponse {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductPriceResponseImplCopyWith<_$ProductPriceResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 ProductPriceData _$ProductPriceDataFromJson(Map<String, dynamic> json) {
@@ -277,25 +294,27 @@ mixin _$ProductPriceData {
 /// @nodoc
 abstract class $ProductPriceDataCopyWith<$Res> {
   factory $ProductPriceDataCopyWith(
-          ProductPriceData value, $Res Function(ProductPriceData) then) =
-      _$ProductPriceDataCopyWithImpl<$Res, ProductPriceData>;
+    ProductPriceData value,
+    $Res Function(ProductPriceData) then,
+  ) = _$ProductPriceDataCopyWithImpl<$Res, ProductPriceData>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "id") int id,
-      @JsonKey(name: "productId") String productId,
-      @JsonKey(name: "itemId") String itemId,
-      @JsonKey(name: "packSize") String? packSize,
-      @JsonKey(name: "fromDate") DateTime fromDate,
-      @JsonKey(name: "toDate") DateTime toDate,
-      @JsonKey(name: "unitPrice") String unitPrice,
-      @JsonKey(name: "currencyCode") String currencyCode,
-      @JsonKey(name: "salesUnit") String salesUnit,
-      @JsonKey(name: "priceGroup") String priceGroup,
-      @JsonKey(name: "recId") String recId,
-      @JsonKey(name: "companyId") int companyId,
-      @JsonKey(name: "companyCode") String companyCode,
-      @JsonKey(name: "createAt") DateTime createAt,
-      @JsonKey(name: "updatedAt") DateTime updatedAt});
+  $Res call({
+    @JsonKey(name: "id") int id,
+    @JsonKey(name: "productId") String productId,
+    @JsonKey(name: "itemId") String itemId,
+    @JsonKey(name: "packSize") String? packSize,
+    @JsonKey(name: "fromDate") DateTime fromDate,
+    @JsonKey(name: "toDate") DateTime toDate,
+    @JsonKey(name: "unitPrice") String unitPrice,
+    @JsonKey(name: "currencyCode") String currencyCode,
+    @JsonKey(name: "salesUnit") String salesUnit,
+    @JsonKey(name: "priceGroup") String priceGroup,
+    @JsonKey(name: "recId") String recId,
+    @JsonKey(name: "companyId") int companyId,
+    @JsonKey(name: "companyCode") String companyCode,
+    @JsonKey(name: "createAt") DateTime createAt,
+    @JsonKey(name: "updatedAt") DateTime updatedAt,
+  });
 }
 
 /// @nodoc
@@ -329,104 +348,110 @@ class _$ProductPriceDataCopyWithImpl<$Res, $Val extends ProductPriceData>
     Object? createAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      itemId: null == itemId
-          ? _value.itemId
-          : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      packSize: freezed == packSize
-          ? _value.packSize
-          : packSize // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fromDate: null == fromDate
-          ? _value.fromDate
-          : fromDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      toDate: null == toDate
-          ? _value.toDate
-          : toDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      unitPrice: null == unitPrice
-          ? _value.unitPrice
-          : unitPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesUnit: null == salesUnit
-          ? _value.salesUnit
-          : salesUnit // ignore: cast_nullable_to_non_nullable
-              as String,
-      priceGroup: null == priceGroup
-          ? _value.priceGroup
-          : priceGroup // ignore: cast_nullable_to_non_nullable
-              as String,
-      recId: null == recId
-          ? _value.recId
-          : recId // ignore: cast_nullable_to_non_nullable
-              as String,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyCode: null == companyCode
-          ? _value.companyCode
-          : companyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      createAt: null == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            productId: null == productId
+                ? _value.productId
+                : productId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            itemId: null == itemId
+                ? _value.itemId
+                : itemId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            packSize: freezed == packSize
+                ? _value.packSize
+                : packSize // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            fromDate: null == fromDate
+                ? _value.fromDate
+                : fromDate // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            toDate: null == toDate
+                ? _value.toDate
+                : toDate // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            unitPrice: null == unitPrice
+                ? _value.unitPrice
+                : unitPrice // ignore: cast_nullable_to_non_nullable
+                      as String,
+            currencyCode: null == currencyCode
+                ? _value.currencyCode
+                : currencyCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            salesUnit: null == salesUnit
+                ? _value.salesUnit
+                : salesUnit // ignore: cast_nullable_to_non_nullable
+                      as String,
+            priceGroup: null == priceGroup
+                ? _value.priceGroup
+                : priceGroup // ignore: cast_nullable_to_non_nullable
+                      as String,
+            recId: null == recId
+                ? _value.recId
+                : recId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            companyId: null == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            companyCode: null == companyCode
+                ? _value.companyCode
+                : companyCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            createAt: null == createAt
+                ? _value.createAt
+                : createAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            updatedAt: null == updatedAt
+                ? _value.updatedAt
+                : updatedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ProductPriceDataImplCopyWith<$Res>
     implements $ProductPriceDataCopyWith<$Res> {
-  factory _$$ProductPriceDataImplCopyWith(_$ProductPriceDataImpl value,
-          $Res Function(_$ProductPriceDataImpl) then) =
-      __$$ProductPriceDataImplCopyWithImpl<$Res>;
+  factory _$$ProductPriceDataImplCopyWith(
+    _$ProductPriceDataImpl value,
+    $Res Function(_$ProductPriceDataImpl) then,
+  ) = __$$ProductPriceDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "id") int id,
-      @JsonKey(name: "productId") String productId,
-      @JsonKey(name: "itemId") String itemId,
-      @JsonKey(name: "packSize") String? packSize,
-      @JsonKey(name: "fromDate") DateTime fromDate,
-      @JsonKey(name: "toDate") DateTime toDate,
-      @JsonKey(name: "unitPrice") String unitPrice,
-      @JsonKey(name: "currencyCode") String currencyCode,
-      @JsonKey(name: "salesUnit") String salesUnit,
-      @JsonKey(name: "priceGroup") String priceGroup,
-      @JsonKey(name: "recId") String recId,
-      @JsonKey(name: "companyId") int companyId,
-      @JsonKey(name: "companyCode") String companyCode,
-      @JsonKey(name: "createAt") DateTime createAt,
-      @JsonKey(name: "updatedAt") DateTime updatedAt});
+  $Res call({
+    @JsonKey(name: "id") int id,
+    @JsonKey(name: "productId") String productId,
+    @JsonKey(name: "itemId") String itemId,
+    @JsonKey(name: "packSize") String? packSize,
+    @JsonKey(name: "fromDate") DateTime fromDate,
+    @JsonKey(name: "toDate") DateTime toDate,
+    @JsonKey(name: "unitPrice") String unitPrice,
+    @JsonKey(name: "currencyCode") String currencyCode,
+    @JsonKey(name: "salesUnit") String salesUnit,
+    @JsonKey(name: "priceGroup") String priceGroup,
+    @JsonKey(name: "recId") String recId,
+    @JsonKey(name: "companyId") int companyId,
+    @JsonKey(name: "companyCode") String companyCode,
+    @JsonKey(name: "createAt") DateTime createAt,
+    @JsonKey(name: "updatedAt") DateTime updatedAt,
+  });
 }
 
 /// @nodoc
 class __$$ProductPriceDataImplCopyWithImpl<$Res>
     extends _$ProductPriceDataCopyWithImpl<$Res, _$ProductPriceDataImpl>
     implements _$$ProductPriceDataImplCopyWith<$Res> {
-  __$$ProductPriceDataImplCopyWithImpl(_$ProductPriceDataImpl _value,
-      $Res Function(_$ProductPriceDataImpl) _then)
-      : super(_value, _then);
+  __$$ProductPriceDataImplCopyWithImpl(
+    _$ProductPriceDataImpl _value,
+    $Res Function(_$ProductPriceDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductPriceData
   /// with the given fields replaced by the non-null parameter values.
@@ -449,90 +474,93 @@ class __$$ProductPriceDataImplCopyWithImpl<$Res>
     Object? createAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$ProductPriceDataImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      itemId: null == itemId
-          ? _value.itemId
-          : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      packSize: freezed == packSize
-          ? _value.packSize
-          : packSize // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fromDate: null == fromDate
-          ? _value.fromDate
-          : fromDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      toDate: null == toDate
-          ? _value.toDate
-          : toDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      unitPrice: null == unitPrice
-          ? _value.unitPrice
-          : unitPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      salesUnit: null == salesUnit
-          ? _value.salesUnit
-          : salesUnit // ignore: cast_nullable_to_non_nullable
-              as String,
-      priceGroup: null == priceGroup
-          ? _value.priceGroup
-          : priceGroup // ignore: cast_nullable_to_non_nullable
-              as String,
-      recId: null == recId
-          ? _value.recId
-          : recId // ignore: cast_nullable_to_non_nullable
-              as String,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int,
-      companyCode: null == companyCode
-          ? _value.companyCode
-          : companyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      createAt: null == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+    return _then(
+      _$ProductPriceDataImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        productId: null == productId
+            ? _value.productId
+            : productId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        itemId: null == itemId
+            ? _value.itemId
+            : itemId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        packSize: freezed == packSize
+            ? _value.packSize
+            : packSize // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        fromDate: null == fromDate
+            ? _value.fromDate
+            : fromDate // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        toDate: null == toDate
+            ? _value.toDate
+            : toDate // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        unitPrice: null == unitPrice
+            ? _value.unitPrice
+            : unitPrice // ignore: cast_nullable_to_non_nullable
+                  as String,
+        currencyCode: null == currencyCode
+            ? _value.currencyCode
+            : currencyCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        salesUnit: null == salesUnit
+            ? _value.salesUnit
+            : salesUnit // ignore: cast_nullable_to_non_nullable
+                  as String,
+        priceGroup: null == priceGroup
+            ? _value.priceGroup
+            : priceGroup // ignore: cast_nullable_to_non_nullable
+                  as String,
+        recId: null == recId
+            ? _value.recId
+            : recId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        companyId: null == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        companyCode: null == companyCode
+            ? _value.companyCode
+            : companyCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        createAt: null == createAt
+            ? _value.createAt
+            : createAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        updatedAt: null == updatedAt
+            ? _value.updatedAt
+            : updatedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ProductPriceDataImpl implements _ProductPriceData {
-  const _$ProductPriceDataImpl(
-      {@JsonKey(name: "id") required this.id,
-      @JsonKey(name: "productId") required this.productId,
-      @JsonKey(name: "itemId") required this.itemId,
-      @JsonKey(name: "packSize") this.packSize,
-      @JsonKey(name: "fromDate") required this.fromDate,
-      @JsonKey(name: "toDate") required this.toDate,
-      @JsonKey(name: "unitPrice") required this.unitPrice,
-      @JsonKey(name: "currencyCode") required this.currencyCode,
-      @JsonKey(name: "salesUnit") required this.salesUnit,
-      @JsonKey(name: "priceGroup") required this.priceGroup,
-      @JsonKey(name: "recId") required this.recId,
-      @JsonKey(name: "companyId") required this.companyId,
-      @JsonKey(name: "companyCode") required this.companyCode,
-      @JsonKey(name: "createAt") required this.createAt,
-      @JsonKey(name: "updatedAt") required this.updatedAt});
+  const _$ProductPriceDataImpl({
+    @JsonKey(name: "id") required this.id,
+    @JsonKey(name: "productId") required this.productId,
+    @JsonKey(name: "itemId") required this.itemId,
+    @JsonKey(name: "packSize") this.packSize,
+    @JsonKey(name: "fromDate") required this.fromDate,
+    @JsonKey(name: "toDate") required this.toDate,
+    @JsonKey(name: "unitPrice") required this.unitPrice,
+    @JsonKey(name: "currencyCode") required this.currencyCode,
+    @JsonKey(name: "salesUnit") required this.salesUnit,
+    @JsonKey(name: "priceGroup") required this.priceGroup,
+    @JsonKey(name: "recId") required this.recId,
+    @JsonKey(name: "companyId") required this.companyId,
+    @JsonKey(name: "companyCode") required this.companyCode,
+    @JsonKey(name: "createAt") required this.createAt,
+    @JsonKey(name: "updatedAt") required this.updatedAt,
+  });
 
   factory _$ProductPriceDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductPriceDataImplFromJson(json);
@@ -624,22 +652,23 @@ class _$ProductPriceDataImpl implements _ProductPriceData {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      productId,
-      itemId,
-      packSize,
-      fromDate,
-      toDate,
-      unitPrice,
-      currencyCode,
-      salesUnit,
-      priceGroup,
-      recId,
-      companyId,
-      companyCode,
-      createAt,
-      updatedAt);
+    runtimeType,
+    id,
+    productId,
+    itemId,
+    packSize,
+    fromDate,
+    toDate,
+    unitPrice,
+    currencyCode,
+    salesUnit,
+    priceGroup,
+    recId,
+    companyId,
+    companyCode,
+    createAt,
+    updatedAt,
+  );
 
   /// Create a copy of ProductPriceData
   /// with the given fields replaced by the non-null parameter values.
@@ -648,34 +677,34 @@ class _$ProductPriceDataImpl implements _ProductPriceData {
   @pragma('vm:prefer-inline')
   _$$ProductPriceDataImplCopyWith<_$ProductPriceDataImpl> get copyWith =>
       __$$ProductPriceDataImplCopyWithImpl<_$ProductPriceDataImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductPriceDataImplToJson(
-      this,
-    );
+    return _$$ProductPriceDataImplToJson(this);
   }
 }
 
 abstract class _ProductPriceData implements ProductPriceData {
-  const factory _ProductPriceData(
-          {@JsonKey(name: "id") required final int id,
-          @JsonKey(name: "productId") required final String productId,
-          @JsonKey(name: "itemId") required final String itemId,
-          @JsonKey(name: "packSize") final String? packSize,
-          @JsonKey(name: "fromDate") required final DateTime fromDate,
-          @JsonKey(name: "toDate") required final DateTime toDate,
-          @JsonKey(name: "unitPrice") required final String unitPrice,
-          @JsonKey(name: "currencyCode") required final String currencyCode,
-          @JsonKey(name: "salesUnit") required final String salesUnit,
-          @JsonKey(name: "priceGroup") required final String priceGroup,
-          @JsonKey(name: "recId") required final String recId,
-          @JsonKey(name: "companyId") required final int companyId,
-          @JsonKey(name: "companyCode") required final String companyCode,
-          @JsonKey(name: "createAt") required final DateTime createAt,
-          @JsonKey(name: "updatedAt") required final DateTime updatedAt}) =
-      _$ProductPriceDataImpl;
+  const factory _ProductPriceData({
+    @JsonKey(name: "id") required final int id,
+    @JsonKey(name: "productId") required final String productId,
+    @JsonKey(name: "itemId") required final String itemId,
+    @JsonKey(name: "packSize") final String? packSize,
+    @JsonKey(name: "fromDate") required final DateTime fromDate,
+    @JsonKey(name: "toDate") required final DateTime toDate,
+    @JsonKey(name: "unitPrice") required final String unitPrice,
+    @JsonKey(name: "currencyCode") required final String currencyCode,
+    @JsonKey(name: "salesUnit") required final String salesUnit,
+    @JsonKey(name: "priceGroup") required final String priceGroup,
+    @JsonKey(name: "recId") required final String recId,
+    @JsonKey(name: "companyId") required final int companyId,
+    @JsonKey(name: "companyCode") required final String companyCode,
+    @JsonKey(name: "createAt") required final DateTime createAt,
+    @JsonKey(name: "updatedAt") required final DateTime updatedAt,
+  }) = _$ProductPriceDataImpl;
 
   factory _ProductPriceData.fromJson(Map<String, dynamic> json) =
       _$ProductPriceDataImpl.fromJson;

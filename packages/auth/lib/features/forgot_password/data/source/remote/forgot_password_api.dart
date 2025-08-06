@@ -8,8 +8,9 @@ import 'package:retrofit/retrofit.dart';
 
 part 'forgot_password_api.g.dart';
 
-final forgotPasswordApiProvider =
-    Provider.autoDispose<ForgotPasswordApi>((ref) {
+final forgotPasswordApiProvider = Provider.autoDispose<ForgotPasswordApi>((
+  ref,
+) {
   final dio = ref.watch(networkServiceProvider);
 
   return ForgotPasswordApi(dio);

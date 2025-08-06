@@ -6,8 +6,8 @@ import 'package:drift/drift.dart';
 
 final syncOrderControllerProvider =
     NotifierProvider.autoDispose<SyncOrderController, SyncOrderState>(
-  SyncOrderController.new,
-);
+      SyncOrderController.new,
+    );
 
 class SyncOrderController extends AutoDisposeNotifier<SyncOrderState> {
   @override
@@ -19,26 +19,33 @@ class SyncOrderController extends AutoDisposeNotifier<SyncOrderState> {
     // sync the order
     state = state.copyWith(isLoading: true, errorMsg: null);
     // get the sales header from the database
-    final salesHeader =
-        await ref.read(orderServiceProvider).getSalesHeaderBySalesId(salesId);
+    final salesHeader = await ref
+        .read(orderServiceProvider)
+        .getSalesHeaderBySalesId(salesId);
     // get the sales line from the database
-    final salesLine =
-        await ref.read(orderServiceProvider).getSalesLineBySalesId(salesId);
+    final salesLine = await ref
+        .read(orderServiceProvider)
+        .getSalesLineBySalesId(salesId);
     // sync the sales header to the api
-    final syncSalesHeader =
-        await ref.read(orderServiceProvider).syncSalesHeaderToApi(salesHeader);
+    final syncSalesHeader = await ref
+        .read(orderServiceProvider)
+        .syncSalesHeaderToApi(salesHeader);
     // check if the sync is successful
     if (syncSalesHeader.isSuccess()) {
       // sync the sales line to the api
-      final syncSalesLine =
-          await ref.read(orderServiceProvider).syncSalesLineApi(salesLine);
-      syncSalesLine.when((data) {
-        // update the sync status of the sales header and sales line
-        _updateOrderStates(salesId);
-        state = state.copyWith(isLoading: false, isOrderSynced: true);
-      }, (error) {
-        state = state.copyWith(isLoading: false, errorMsg: error.message);
-      });
+      final syncSalesLine = await ref
+          .read(orderServiceProvider)
+          .syncSalesLineApi(salesLine);
+      syncSalesLine.when(
+        (data) {
+          // update the sync status of the sales header and sales line
+          _updateOrderStates(salesId);
+          state = state.copyWith(isLoading: false, isOrderSynced: true);
+        },
+        (error) {
+          state = state.copyWith(isLoading: false, errorMsg: error.message);
+        },
+      );
     } else {
       // update the state
       state = state.copyWith(
@@ -50,14 +57,18 @@ class SyncOrderController extends AutoDisposeNotifier<SyncOrderState> {
 
   void _updateOrderStates(String salesId) async {
     // update the sync status of the sales header and sales line
-    await ref.read(orderServiceProvider).updateSalesHeader(
+    await ref
+        .read(orderServiceProvider)
+        .updateSalesHeader(
           SalesHeaderEntityCompanion(
             salesId: Value(salesId),
             syncStatus: const Value(1),
           ),
         );
 
-    await ref.read(orderServiceProvider).updateSalesLineSyncStatus(
+    await ref
+        .read(orderServiceProvider)
+        .updateSalesLineSyncStatus(
           SalesLineEntityCompanion(
             salesId: Value(salesId),
             syncStatus: const Value(1),

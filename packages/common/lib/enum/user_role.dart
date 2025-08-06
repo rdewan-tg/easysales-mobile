@@ -7,10 +7,14 @@ enum UserRole {
   admin,
   @JsonValue('manager')
   manager,
+  @JsonValue('sales')
+  sales,
+  @JsonValue('merchandiser')
+  merchandiser,
   @JsonValue('supervisor')
   supervisor,
   @JsonValue('operator')
   operator,
   @JsonValue('user')
-  user
+  user,
 }

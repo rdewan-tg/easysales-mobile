@@ -31,8 +31,9 @@ final class SettingController extends _$SettingController {
   }
 
   Future<void> getOrderRunningNumber() async {
-    final result =
-        await ref.read(settingServiceProvider).getOrderRunningNumber();
+    final result = await ref
+        .read(settingServiceProvider)
+        .getOrderRunningNumber();
     state = state.copyWith(orderRunningNumber: result);
   }
 
@@ -100,30 +101,50 @@ final class SettingController extends _$SettingController {
     );
   }
 
-  Future<void> watchTheme() async {
-    // Start listening to the theme mode stream
-    _themeModeSubscription =
-        ref.watch(settingServiceProvider).watchThemeMode().listen(
-      (themeMode) {
-        state = state.copyWith(themeMode: themeMode);
+  Future<void> getCompanySetting() async {
+    state = state.copyWith(isLoading: true, errorMsg: null);
+
+    final service = ref.read(settingServiceProvider);
+
+    final result = await service.getCompanySetting();
+    result.when(
+      (success) {
+        state = state.copyWith(isLoading: false, settings: success);
       },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
+      (error) {
+        state = state.copyWith(isLoading: false, errorMsg: error.message);
       },
     );
   }
 
+  Future<void> watchTheme() async {
+    // Start listening to the theme mode stream
+    _themeModeSubscription = ref
+        .watch(settingServiceProvider)
+        .watchThemeMode()
+        .listen(
+          (themeMode) {
+            state = state.copyWith(themeMode: themeMode);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
+  }
+
   Future<void> watchLanguage() async {
     // Start listening to the language mode stream
-    _themeModeSubscription =
-        ref.watch(settingServiceProvider).watchLanguage().listen(
-      (language) {
-        state = state.copyWith(language: language);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+    _themeModeSubscription = ref
+        .watch(settingServiceProvider)
+        .watchLanguage()
+        .listen(
+          (language) {
+            state = state.copyWith(language: language);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> logout() async {

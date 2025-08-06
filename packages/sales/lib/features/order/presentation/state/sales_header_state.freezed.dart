@@ -12,7 +12,8 @@ part of 'sales_header_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SalesHeaderState {
@@ -41,20 +42,22 @@ mixin _$SalesHeaderState {
 /// @nodoc
 abstract class $SalesHeaderStateCopyWith<$Res> {
   factory $SalesHeaderStateCopyWith(
-          SalesHeaderState value, $Res Function(SalesHeaderState) then) =
-      _$SalesHeaderStateCopyWithImpl<$Res, SalesHeaderState>;
+    SalesHeaderState value,
+    $Res Function(SalesHeaderState) then,
+  ) = _$SalesHeaderStateCopyWithImpl<$Res, SalesHeaderState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isFetchingCurrentOrderNumber,
-      bool isOrderSynced,
-      int currentOrderNumber,
-      List<SalesHeaderEntityData> salesHeaders,
-      CustomerAddressEntityData? customerAddressData,
-      SalesCustomerEntityData? customerData,
-      SalesHeaderEntityData? salesHeaderData,
-      Map<String, String>? settings,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isFetchingCurrentOrderNumber,
+    bool isOrderSynced,
+    int currentOrderNumber,
+    List<SalesHeaderEntityData> salesHeaders,
+    CustomerAddressEntityData? customerAddressData,
+    SalesCustomerEntityData? customerData,
+    SalesHeaderEntityData? salesHeaderData,
+    Map<String, String>? settings,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -83,79 +86,85 @@ class _$SalesHeaderStateCopyWithImpl<$Res, $Val extends SalesHeaderState>
     Object? settings = freezed,
     Object? errorMsg = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isFetchingCurrentOrderNumber: null == isFetchingCurrentOrderNumber
-          ? _value.isFetchingCurrentOrderNumber
-          : isFetchingCurrentOrderNumber // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderSynced: null == isOrderSynced
-          ? _value.isOrderSynced
-          : isOrderSynced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      currentOrderNumber: null == currentOrderNumber
-          ? _value.currentOrderNumber
-          : currentOrderNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      salesHeaders: null == salesHeaders
-          ? _value.salesHeaders
-          : salesHeaders // ignore: cast_nullable_to_non_nullable
-              as List<SalesHeaderEntityData>,
-      customerAddressData: freezed == customerAddressData
-          ? _value.customerAddressData
-          : customerAddressData // ignore: cast_nullable_to_non_nullable
-              as CustomerAddressEntityData?,
-      customerData: freezed == customerData
-          ? _value.customerData
-          : customerData // ignore: cast_nullable_to_non_nullable
-              as SalesCustomerEntityData?,
-      salesHeaderData: freezed == salesHeaderData
-          ? _value.salesHeaderData
-          : salesHeaderData // ignore: cast_nullable_to_non_nullable
-              as SalesHeaderEntityData?,
-      settings: freezed == settings
-          ? _value.settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>?,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isFetchingCurrentOrderNumber: null == isFetchingCurrentOrderNumber
+                ? _value.isFetchingCurrentOrderNumber
+                : isFetchingCurrentOrderNumber // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isOrderSynced: null == isOrderSynced
+                ? _value.isOrderSynced
+                : isOrderSynced // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            currentOrderNumber: null == currentOrderNumber
+                ? _value.currentOrderNumber
+                : currentOrderNumber // ignore: cast_nullable_to_non_nullable
+                      as int,
+            salesHeaders: null == salesHeaders
+                ? _value.salesHeaders
+                : salesHeaders // ignore: cast_nullable_to_non_nullable
+                      as List<SalesHeaderEntityData>,
+            customerAddressData: freezed == customerAddressData
+                ? _value.customerAddressData
+                : customerAddressData // ignore: cast_nullable_to_non_nullable
+                      as CustomerAddressEntityData?,
+            customerData: freezed == customerData
+                ? _value.customerData
+                : customerData // ignore: cast_nullable_to_non_nullable
+                      as SalesCustomerEntityData?,
+            salesHeaderData: freezed == salesHeaderData
+                ? _value.salesHeaderData
+                : salesHeaderData // ignore: cast_nullable_to_non_nullable
+                      as SalesHeaderEntityData?,
+            settings: freezed == settings
+                ? _value.settings
+                : settings // ignore: cast_nullable_to_non_nullable
+                      as Map<String, String>?,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SalesHeaderStateImplCopyWith<$Res>
     implements $SalesHeaderStateCopyWith<$Res> {
-  factory _$$SalesHeaderStateImplCopyWith(_$SalesHeaderStateImpl value,
-          $Res Function(_$SalesHeaderStateImpl) then) =
-      __$$SalesHeaderStateImplCopyWithImpl<$Res>;
+  factory _$$SalesHeaderStateImplCopyWith(
+    _$SalesHeaderStateImpl value,
+    $Res Function(_$SalesHeaderStateImpl) then,
+  ) = __$$SalesHeaderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isFetchingCurrentOrderNumber,
-      bool isOrderSynced,
-      int currentOrderNumber,
-      List<SalesHeaderEntityData> salesHeaders,
-      CustomerAddressEntityData? customerAddressData,
-      SalesCustomerEntityData? customerData,
-      SalesHeaderEntityData? salesHeaderData,
-      Map<String, String>? settings,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isFetchingCurrentOrderNumber,
+    bool isOrderSynced,
+    int currentOrderNumber,
+    List<SalesHeaderEntityData> salesHeaders,
+    CustomerAddressEntityData? customerAddressData,
+    SalesCustomerEntityData? customerData,
+    SalesHeaderEntityData? salesHeaderData,
+    Map<String, String>? settings,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
 class __$$SalesHeaderStateImplCopyWithImpl<$Res>
     extends _$SalesHeaderStateCopyWithImpl<$Res, _$SalesHeaderStateImpl>
     implements _$$SalesHeaderStateImplCopyWith<$Res> {
-  __$$SalesHeaderStateImplCopyWithImpl(_$SalesHeaderStateImpl _value,
-      $Res Function(_$SalesHeaderStateImpl) _then)
-      : super(_value, _then);
+  __$$SalesHeaderStateImplCopyWithImpl(
+    _$SalesHeaderStateImpl _value,
+    $Res Function(_$SalesHeaderStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SalesHeaderState
   /// with the given fields replaced by the non-null parameter values.
@@ -173,67 +182,69 @@ class __$$SalesHeaderStateImplCopyWithImpl<$Res>
     Object? settings = freezed,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$SalesHeaderStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isFetchingCurrentOrderNumber: null == isFetchingCurrentOrderNumber
-          ? _value.isFetchingCurrentOrderNumber
-          : isFetchingCurrentOrderNumber // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderSynced: null == isOrderSynced
-          ? _value.isOrderSynced
-          : isOrderSynced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      currentOrderNumber: null == currentOrderNumber
-          ? _value.currentOrderNumber
-          : currentOrderNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      salesHeaders: null == salesHeaders
-          ? _value._salesHeaders
-          : salesHeaders // ignore: cast_nullable_to_non_nullable
-              as List<SalesHeaderEntityData>,
-      customerAddressData: freezed == customerAddressData
-          ? _value.customerAddressData
-          : customerAddressData // ignore: cast_nullable_to_non_nullable
-              as CustomerAddressEntityData?,
-      customerData: freezed == customerData
-          ? _value.customerData
-          : customerData // ignore: cast_nullable_to_non_nullable
-              as SalesCustomerEntityData?,
-      salesHeaderData: freezed == salesHeaderData
-          ? _value.salesHeaderData
-          : salesHeaderData // ignore: cast_nullable_to_non_nullable
-              as SalesHeaderEntityData?,
-      settings: freezed == settings
-          ? _value._settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>?,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$SalesHeaderStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isFetchingCurrentOrderNumber: null == isFetchingCurrentOrderNumber
+            ? _value.isFetchingCurrentOrderNumber
+            : isFetchingCurrentOrderNumber // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isOrderSynced: null == isOrderSynced
+            ? _value.isOrderSynced
+            : isOrderSynced // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        currentOrderNumber: null == currentOrderNumber
+            ? _value.currentOrderNumber
+            : currentOrderNumber // ignore: cast_nullable_to_non_nullable
+                  as int,
+        salesHeaders: null == salesHeaders
+            ? _value._salesHeaders
+            : salesHeaders // ignore: cast_nullable_to_non_nullable
+                  as List<SalesHeaderEntityData>,
+        customerAddressData: freezed == customerAddressData
+            ? _value.customerAddressData
+            : customerAddressData // ignore: cast_nullable_to_non_nullable
+                  as CustomerAddressEntityData?,
+        customerData: freezed == customerData
+            ? _value.customerData
+            : customerData // ignore: cast_nullable_to_non_nullable
+                  as SalesCustomerEntityData?,
+        salesHeaderData: freezed == salesHeaderData
+            ? _value.salesHeaderData
+            : salesHeaderData // ignore: cast_nullable_to_non_nullable
+                  as SalesHeaderEntityData?,
+        settings: freezed == settings
+            ? _value._settings
+            : settings // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>?,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SalesHeaderStateImpl implements _SalesHeaderState {
-  _$SalesHeaderStateImpl(
-      {this.isLoading = false,
-      this.isFetchingCurrentOrderNumber = false,
-      this.isOrderSynced = false,
-      this.currentOrderNumber = 0,
-      final List<SalesHeaderEntityData> salesHeaders = const [],
-      this.customerAddressData,
-      this.customerData,
-      this.salesHeaderData,
-      final Map<String, String>? settings,
-      this.errorMsg})
-      : _salesHeaders = salesHeaders,
-        _settings = settings;
+  _$SalesHeaderStateImpl({
+    this.isLoading = false,
+    this.isFetchingCurrentOrderNumber = false,
+    this.isOrderSynced = false,
+    this.currentOrderNumber = 0,
+    final List<SalesHeaderEntityData> salesHeaders = const [],
+    this.customerAddressData,
+    this.customerData,
+    this.salesHeaderData,
+    final Map<String, String>? settings,
+    this.errorMsg,
+  }) : _salesHeaders = salesHeaders,
+       _settings = settings;
 
   @override
   @JsonKey()
@@ -287,16 +298,20 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
             other is _$SalesHeaderStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.isFetchingCurrentOrderNumber,
-                    isFetchingCurrentOrderNumber) ||
+            (identical(
+                  other.isFetchingCurrentOrderNumber,
+                  isFetchingCurrentOrderNumber,
+                ) ||
                 other.isFetchingCurrentOrderNumber ==
                     isFetchingCurrentOrderNumber) &&
             (identical(other.isOrderSynced, isOrderSynced) ||
                 other.isOrderSynced == isOrderSynced) &&
             (identical(other.currentOrderNumber, currentOrderNumber) ||
                 other.currentOrderNumber == currentOrderNumber) &&
-            const DeepCollectionEquality()
-                .equals(other._salesHeaders, _salesHeaders) &&
+            const DeepCollectionEquality().equals(
+              other._salesHeaders,
+              _salesHeaders,
+            ) &&
             (identical(other.customerAddressData, customerAddressData) ||
                 other.customerAddressData == customerAddressData) &&
             (identical(other.customerData, customerData) ||
@@ -310,17 +325,18 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isFetchingCurrentOrderNumber,
-      isOrderSynced,
-      currentOrderNumber,
-      const DeepCollectionEquality().hash(_salesHeaders),
-      customerAddressData,
-      customerData,
-      salesHeaderData,
-      const DeepCollectionEquality().hash(_settings),
-      errorMsg);
+    runtimeType,
+    isLoading,
+    isFetchingCurrentOrderNumber,
+    isOrderSynced,
+    currentOrderNumber,
+    const DeepCollectionEquality().hash(_salesHeaders),
+    customerAddressData,
+    customerData,
+    salesHeaderData,
+    const DeepCollectionEquality().hash(_settings),
+    errorMsg,
+  );
 
   /// Create a copy of SalesHeaderState
   /// with the given fields replaced by the non-null parameter values.
@@ -329,21 +345,24 @@ class _$SalesHeaderStateImpl implements _SalesHeaderState {
   @pragma('vm:prefer-inline')
   _$$SalesHeaderStateImplCopyWith<_$SalesHeaderStateImpl> get copyWith =>
       __$$SalesHeaderStateImplCopyWithImpl<_$SalesHeaderStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _SalesHeaderState implements SalesHeaderState {
-  factory _SalesHeaderState(
-      {final bool isLoading,
-      final bool isFetchingCurrentOrderNumber,
-      final bool isOrderSynced,
-      final int currentOrderNumber,
-      final List<SalesHeaderEntityData> salesHeaders,
-      final CustomerAddressEntityData? customerAddressData,
-      final SalesCustomerEntityData? customerData,
-      final SalesHeaderEntityData? salesHeaderData,
-      final Map<String, String>? settings,
-      final String? errorMsg}) = _$SalesHeaderStateImpl;
+  factory _SalesHeaderState({
+    final bool isLoading,
+    final bool isFetchingCurrentOrderNumber,
+    final bool isOrderSynced,
+    final int currentOrderNumber,
+    final List<SalesHeaderEntityData> salesHeaders,
+    final CustomerAddressEntityData? customerAddressData,
+    final SalesCustomerEntityData? customerData,
+    final SalesHeaderEntityData? salesHeaderData,
+    final Map<String, String>? settings,
+    final String? errorMsg,
+  }) = _$SalesHeaderStateImpl;
 
   @override
   bool get isLoading;

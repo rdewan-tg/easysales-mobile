@@ -8,8 +8,8 @@ import 'package:drift/drift.dart';
 
 final salesLineControllerProvider =
     AutoDisposeNotifierProvider<SalesLineController, SalesLineState>(
-  SalesLineController.new,
-);
+      SalesLineController.new,
+    );
 
 class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
   StreamSubscription<List<SalesLineEntityData>>? _subscriptionSalesLine;
@@ -23,8 +23,9 @@ class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
   }
 
   Future<int> getMaxLineNumberBySalesId(String salesId) async {
-    final value =
-        await ref.read(orderServiceProvider).getMaxLineNumberBySalesId(salesId);
+    final value = await ref
+        .read(orderServiceProvider)
+        .getMaxLineNumberBySalesId(salesId);
 
     return value;
   }
@@ -73,8 +74,9 @@ class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
         companyId: Value(productDetail.companyId),
       );
 
-      final result =
-          await ref.read(orderServiceProvider).createSalesLine(salesLine);
+      final result = await ref
+          .read(orderServiceProvider)
+          .createSalesLine(salesLine);
 
       result.when(
         (data) {
@@ -121,8 +123,9 @@ class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
         lineAmount: Value(double.parse(lineAmount)),
       );
 
-      final result =
-          await ref.read(orderServiceProvider).updateSalesLine(salesLine);
+      final result = await ref
+          .read(orderServiceProvider)
+          .updateSalesLine(salesLine);
 
       result.when(
         (data) {
@@ -142,34 +145,39 @@ class SalesLineController extends AutoDisposeNotifier<SalesLineState> {
         .read(orderServiceProvider)
         .watchAllSalesLineBySalesId(salesId)
         .listen(
-      (data) {
-        if (data.isEmpty) {
-          state = state.copyWith(
-            salesLines: [],
-          );
-        } else {
-          state = state.copyWith(
-            salesLines: data,
-            isOrderSynced: data.first.syncStatus == 1,
-          );
-        }
-      },
-      onError: (e, s) {
-        state = state.copyWith(errorMsg: e.toString());
-      },
-    );
+          (data) {
+            if (data.isEmpty) {
+              state = state.copyWith(salesLines: []);
+            } else {
+              state = state.copyWith(
+                salesLines: data,
+                isOrderSynced: data.first.syncStatus == 1,
+              );
+            }
+          },
+          onError: (e, s) {
+            state = state.copyWith(errorMsg: e.toString());
+          },
+        );
   }
 
   Future<void> deleteLine(String salesId, int lineId) async {
-    state =
-        state.copyWith(isLoading: true, isItemRemoved: false, errorMsg: null);
-    final result =
-        await ref.read(orderServiceProvider).deleteLine(salesId, lineId);
-    result.when((data) {
-      state = state.copyWith(isItemRemoved: true, isLoading: false);
-    }, (error) {
-      state = state.copyWith(errorMsg: error.message, isLoading: false);
-    });
+    state = state.copyWith(
+      isLoading: true,
+      isItemRemoved: false,
+      errorMsg: null,
+    );
+    final result = await ref
+        .read(orderServiceProvider)
+        .deleteLine(salesId, lineId);
+    result.when(
+      (data) {
+        state = state.copyWith(isItemRemoved: true, isLoading: false);
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message, isLoading: false);
+      },
+    );
   }
 
   double calCulculateTotalAmount() {

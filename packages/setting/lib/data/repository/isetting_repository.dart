@@ -1,4 +1,5 @@
 import 'package:setting/data/dto/device_setting.dart';
+import 'package:setting/data/dto/company_setting.dart';
 
 abstract interface class ISettingRepository {
   Future<int> getOrderRunningNumber();
@@ -6,6 +7,8 @@ abstract interface class ISettingRepository {
   Future<void> setOrderRunningNumber(String value);
 
   Future<DeviceSettingResponse> getDeviceSetting(String deviceId);
+
+  Future<CompanySettingResponse> getCompanySetting();
 
   Stream<String> watchThemeMode();
 

@@ -17,8 +17,10 @@ class TodaySiteVisitReportView extends ConsumerWidget {
       itemBuilder: (context, index) {
         final data = visitDetails[index];
         return Card(
-          margin:
-              const EdgeInsets.symmetric(horizontal: kMedium, vertical: kSmall),
+          margin: const EdgeInsets.symmetric(
+            horizontal: kMedium,
+            vertical: kSmall,
+          ),
           elevation: kXSmall,
           child: Padding(
             padding: const EdgeInsets.all(kSmall),

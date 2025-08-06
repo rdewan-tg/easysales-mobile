@@ -12,7 +12,8 @@ part of 'failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Failure {
@@ -32,11 +33,12 @@ abstract class $FailureCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
       _$FailureCopyWithImpl<$Res, Failure>;
   @useResult
-  $Res call(
-      {String message,
-      int? statusCode,
-      Exception? exception,
-      StackTrace stackTrace});
+  $Res call({
+    String message,
+    int? statusCode,
+    Exception? exception,
+    StackTrace stackTrace,
+  });
 }
 
 /// @nodoc
@@ -59,39 +61,44 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure>
     Object? exception = freezed,
     Object? stackTrace = null,
   }) {
-    return _then(_value.copyWith(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      statusCode: freezed == statusCode
-          ? _value.statusCode
-          : statusCode // ignore: cast_nullable_to_non_nullable
-              as int?,
-      exception: freezed == exception
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Exception?,
-      stackTrace: null == stackTrace
-          ? _value.stackTrace
-          : stackTrace // ignore: cast_nullable_to_non_nullable
-              as StackTrace,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            message: null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String,
+            statusCode: freezed == statusCode
+                ? _value.statusCode
+                : statusCode // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            exception: freezed == exception
+                ? _value.exception
+                : exception // ignore: cast_nullable_to_non_nullable
+                      as Exception?,
+            stackTrace: null == stackTrace
+                ? _value.stackTrace
+                : stackTrace // ignore: cast_nullable_to_non_nullable
+                      as StackTrace,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$FailureImplCopyWith<$Res> implements $FailureCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
+    _$FailureImpl value,
+    $Res Function(_$FailureImpl) then,
+  ) = __$$FailureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String message,
-      int? statusCode,
-      Exception? exception,
-      StackTrace stackTrace});
+  $Res call({
+    String message,
+    int? statusCode,
+    Exception? exception,
+    StackTrace stackTrace,
+  });
 }
 
 /// @nodoc
@@ -99,8 +106,9 @@ class __$$FailureImplCopyWithImpl<$Res>
     extends _$FailureCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
+    _$FailureImpl _value,
+    $Res Function(_$FailureImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
@@ -112,35 +120,38 @@ class __$$FailureImplCopyWithImpl<$Res>
     Object? exception = freezed,
     Object? stackTrace = null,
   }) {
-    return _then(_$FailureImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      statusCode: freezed == statusCode
-          ? _value.statusCode
-          : statusCode // ignore: cast_nullable_to_non_nullable
-              as int?,
-      exception: freezed == exception
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Exception?,
-      stackTrace: null == stackTrace
-          ? _value.stackTrace
-          : stackTrace // ignore: cast_nullable_to_non_nullable
-              as StackTrace,
-    ));
+    return _then(
+      _$FailureImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        statusCode: freezed == statusCode
+            ? _value.statusCode
+            : statusCode // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        exception: freezed == exception
+            ? _value.exception
+            : exception // ignore: cast_nullable_to_non_nullable
+                  as Exception?,
+        stackTrace: null == stackTrace
+            ? _value.stackTrace
+            : stackTrace // ignore: cast_nullable_to_non_nullable
+                  as StackTrace,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$FailureImpl implements _Failure {
-  const _$FailureImpl(
-      {required this.message,
-      this.statusCode,
-      this.exception,
-      this.stackTrace = StackTrace.empty});
+  const _$FailureImpl({
+    required this.message,
+    this.statusCode,
+    this.exception,
+    this.stackTrace = StackTrace.empty,
+  });
 
   @override
   final String message;
@@ -185,11 +196,12 @@ class _$FailureImpl implements _Failure {
 }
 
 abstract class _Failure implements Failure {
-  const factory _Failure(
-      {required final String message,
-      final int? statusCode,
-      final Exception? exception,
-      final StackTrace stackTrace}) = _$FailureImpl;
+  const factory _Failure({
+    required final String message,
+    final int? statusCode,
+    final Exception? exception,
+    final StackTrace stackTrace,
+  }) = _$FailureImpl;
 
   @override
   String get message;

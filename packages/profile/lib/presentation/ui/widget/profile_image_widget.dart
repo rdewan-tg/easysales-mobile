@@ -13,12 +13,7 @@ class ProfileImageWidget extends ConsumerWidget {
         backgroundColor: context.themeColor.disabledColor,
         radius: 52,
         backgroundImage: url != null ? NetworkImage(url) : null,
-        child: url == null
-            ? const Icon(
-                Icons.person_outline,
-                size: 52,
-              )
-            : null,
+        child: url == null ? const Icon(Icons.person_outline, size: 52) : null,
       ),
     );
   }

@@ -7,8 +7,8 @@ import 'package:merchandiser/features/address/presentation/state/address_state.d
 
 final addressControllerProvider =
     AutoDisposeNotifierProvider<AddressController, AddressState>(
-  AddressController.new,
-);
+      AddressController.new,
+    );
 
 class AddressController extends AutoDisposeNotifier<AddressState> {
   StreamSubscription<List<CustomerAddressEntityData>>? _subscription;
@@ -30,8 +30,9 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
       isAddressImported: false,
     );
     // get the setting from the database
-    final setting =
-        await ref.read(customerAddressServiceProvider).getAllSettings();
+    final setting = await ref
+        .read(customerAddressServiceProvider)
+        .getAllSettings();
     // get the companyCode from map
     final String companyCode = setting['companyCode'] ?? 'SGMA';
     final String salesPersonId = setting['salesPersonCode'] ?? '';
@@ -53,15 +54,17 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
 
   Future<void> watchCustomerAddress(String query) async {
     // Start listening stream
-    _subscription =
-        ref.watch(customerAddressServiceProvider).watchAll(query).listen(
-      (data) {
-        state = state.copyWith(addresses: data);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+    _subscription = ref
+        .watch(customerAddressServiceProvider)
+        .watchAll(query)
+        .listen(
+          (data) {
+            state = state.copyWith(addresses: data);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> watchTotalCustomerAddressCount() async {
@@ -70,13 +73,13 @@ class AddressController extends AutoDisposeNotifier<AddressState> {
         .watch(customerAddressServiceProvider)
         .watchTotalCustomerAddressCount()
         .listen(
-      (data) {
-        state = state.copyWith(totalAddressCount: data);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+          (data) {
+            state = state.copyWith(totalAddressCount: data);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> clearIsAddressImported() async {

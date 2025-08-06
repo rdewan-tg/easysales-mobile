@@ -22,11 +22,7 @@ class FlutterErrorWidget extends StatelessWidget {
                 ListView(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    Text(
-                      error.exception.toString(),
-                    ),
-                  ],
+                  children: [Text(error.exception.toString())],
                 ),
               ],
             ),

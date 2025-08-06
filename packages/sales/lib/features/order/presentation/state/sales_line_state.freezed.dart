@@ -12,7 +12,8 @@ part of 'sales_line_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SalesLineState {
@@ -37,19 +38,21 @@ mixin _$SalesLineState {
 /// @nodoc
 abstract class $SalesLineStateCopyWith<$Res> {
   factory $SalesLineStateCopyWith(
-          SalesLineState value, $Res Function(SalesLineState) then) =
-      _$SalesLineStateCopyWithImpl<$Res, SalesLineState>;
+    SalesLineState value,
+    $Res Function(SalesLineState) then,
+  ) = _$SalesLineStateCopyWithImpl<$Res, SalesLineState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isItemAdded,
-      bool isItemEdited,
-      bool isItemRemoved,
-      bool isOrderSynced,
-      List<SalesLineEntityData> salesLines,
-      Map<String, String>? settings,
-      String? salesId,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isItemAdded,
+    bool isItemEdited,
+    bool isItemRemoved,
+    bool isOrderSynced,
+    List<SalesLineEntityData> salesLines,
+    Map<String, String>? settings,
+    String? salesId,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -77,65 +80,70 @@ class _$SalesLineStateCopyWithImpl<$Res, $Val extends SalesLineState>
     Object? salesId = freezed,
     Object? errorMsg = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemAdded: null == isItemAdded
-          ? _value.isItemAdded
-          : isItemAdded // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemEdited: null == isItemEdited
-          ? _value.isItemEdited
-          : isItemEdited // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemRemoved: null == isItemRemoved
-          ? _value.isItemRemoved
-          : isItemRemoved // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderSynced: null == isOrderSynced
-          ? _value.isOrderSynced
-          : isOrderSynced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      salesLines: null == salesLines
-          ? _value.salesLines
-          : salesLines // ignore: cast_nullable_to_non_nullable
-              as List<SalesLineEntityData>,
-      settings: freezed == settings
-          ? _value.settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>?,
-      salesId: freezed == salesId
-          ? _value.salesId
-          : salesId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isItemAdded: null == isItemAdded
+                ? _value.isItemAdded
+                : isItemAdded // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isItemEdited: null == isItemEdited
+                ? _value.isItemEdited
+                : isItemEdited // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isItemRemoved: null == isItemRemoved
+                ? _value.isItemRemoved
+                : isItemRemoved // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isOrderSynced: null == isOrderSynced
+                ? _value.isOrderSynced
+                : isOrderSynced // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            salesLines: null == salesLines
+                ? _value.salesLines
+                : salesLines // ignore: cast_nullable_to_non_nullable
+                      as List<SalesLineEntityData>,
+            settings: freezed == settings
+                ? _value.settings
+                : settings // ignore: cast_nullable_to_non_nullable
+                      as Map<String, String>?,
+            salesId: freezed == salesId
+                ? _value.salesId
+                : salesId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SalesLineStateImplCopyWith<$Res>
     implements $SalesLineStateCopyWith<$Res> {
-  factory _$$SalesLineStateImplCopyWith(_$SalesLineStateImpl value,
-          $Res Function(_$SalesLineStateImpl) then) =
-      __$$SalesLineStateImplCopyWithImpl<$Res>;
+  factory _$$SalesLineStateImplCopyWith(
+    _$SalesLineStateImpl value,
+    $Res Function(_$SalesLineStateImpl) then,
+  ) = __$$SalesLineStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isItemAdded,
-      bool isItemEdited,
-      bool isItemRemoved,
-      bool isOrderSynced,
-      List<SalesLineEntityData> salesLines,
-      Map<String, String>? settings,
-      String? salesId,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isItemAdded,
+    bool isItemEdited,
+    bool isItemRemoved,
+    bool isOrderSynced,
+    List<SalesLineEntityData> salesLines,
+    Map<String, String>? settings,
+    String? salesId,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -143,8 +151,9 @@ class __$$SalesLineStateImplCopyWithImpl<$Res>
     extends _$SalesLineStateCopyWithImpl<$Res, _$SalesLineStateImpl>
     implements _$$SalesLineStateImplCopyWith<$Res> {
   __$$SalesLineStateImplCopyWithImpl(
-      _$SalesLineStateImpl _value, $Res Function(_$SalesLineStateImpl) _then)
-      : super(_value, _then);
+    _$SalesLineStateImpl _value,
+    $Res Function(_$SalesLineStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SalesLineState
   /// with the given fields replaced by the non-null parameter values.
@@ -161,62 +170,64 @@ class __$$SalesLineStateImplCopyWithImpl<$Res>
     Object? salesId = freezed,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$SalesLineStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemAdded: null == isItemAdded
-          ? _value.isItemAdded
-          : isItemAdded // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemEdited: null == isItemEdited
-          ? _value.isItemEdited
-          : isItemEdited // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isItemRemoved: null == isItemRemoved
-          ? _value.isItemRemoved
-          : isItemRemoved // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderSynced: null == isOrderSynced
-          ? _value.isOrderSynced
-          : isOrderSynced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      salesLines: null == salesLines
-          ? _value._salesLines
-          : salesLines // ignore: cast_nullable_to_non_nullable
-              as List<SalesLineEntityData>,
-      settings: freezed == settings
-          ? _value._settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>?,
-      salesId: freezed == salesId
-          ? _value.salesId
-          : salesId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$SalesLineStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isItemAdded: null == isItemAdded
+            ? _value.isItemAdded
+            : isItemAdded // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isItemEdited: null == isItemEdited
+            ? _value.isItemEdited
+            : isItemEdited // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isItemRemoved: null == isItemRemoved
+            ? _value.isItemRemoved
+            : isItemRemoved // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isOrderSynced: null == isOrderSynced
+            ? _value.isOrderSynced
+            : isOrderSynced // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        salesLines: null == salesLines
+            ? _value._salesLines
+            : salesLines // ignore: cast_nullable_to_non_nullable
+                  as List<SalesLineEntityData>,
+        settings: freezed == settings
+            ? _value._settings
+            : settings // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>?,
+        salesId: freezed == salesId
+            ? _value.salesId
+            : salesId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SalesLineStateImpl implements _SalesLineState {
-  _$SalesLineStateImpl(
-      {this.isLoading = false,
-      this.isItemAdded = false,
-      this.isItemEdited = false,
-      this.isItemRemoved = false,
-      this.isOrderSynced = false,
-      final List<SalesLineEntityData> salesLines = const [],
-      final Map<String, String>? settings,
-      this.salesId,
-      this.errorMsg})
-      : _salesLines = salesLines,
-        _settings = settings;
+  _$SalesLineStateImpl({
+    this.isLoading = false,
+    this.isItemAdded = false,
+    this.isItemEdited = false,
+    this.isItemRemoved = false,
+    this.isOrderSynced = false,
+    final List<SalesLineEntityData> salesLines = const [],
+    final Map<String, String>? settings,
+    this.salesId,
+    this.errorMsg,
+  }) : _salesLines = salesLines,
+       _settings = settings;
 
   @override
   @JsonKey()
@@ -277,8 +288,10 @@ class _$SalesLineStateImpl implements _SalesLineState {
                 other.isItemRemoved == isItemRemoved) &&
             (identical(other.isOrderSynced, isOrderSynced) ||
                 other.isOrderSynced == isOrderSynced) &&
-            const DeepCollectionEquality()
-                .equals(other._salesLines, _salesLines) &&
+            const DeepCollectionEquality().equals(
+              other._salesLines,
+              _salesLines,
+            ) &&
             const DeepCollectionEquality().equals(other._settings, _settings) &&
             (identical(other.salesId, salesId) || other.salesId == salesId) &&
             (identical(other.errorMsg, errorMsg) ||
@@ -287,16 +300,17 @@ class _$SalesLineStateImpl implements _SalesLineState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isItemAdded,
-      isItemEdited,
-      isItemRemoved,
-      isOrderSynced,
-      const DeepCollectionEquality().hash(_salesLines),
-      const DeepCollectionEquality().hash(_settings),
-      salesId,
-      errorMsg);
+    runtimeType,
+    isLoading,
+    isItemAdded,
+    isItemEdited,
+    isItemRemoved,
+    isOrderSynced,
+    const DeepCollectionEquality().hash(_salesLines),
+    const DeepCollectionEquality().hash(_settings),
+    salesId,
+    errorMsg,
+  );
 
   /// Create a copy of SalesLineState
   /// with the given fields replaced by the non-null parameter values.
@@ -305,20 +319,23 @@ class _$SalesLineStateImpl implements _SalesLineState {
   @pragma('vm:prefer-inline')
   _$$SalesLineStateImplCopyWith<_$SalesLineStateImpl> get copyWith =>
       __$$SalesLineStateImplCopyWithImpl<_$SalesLineStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _SalesLineState implements SalesLineState {
-  factory _SalesLineState(
-      {final bool isLoading,
-      final bool isItemAdded,
-      final bool isItemEdited,
-      final bool isItemRemoved,
-      final bool isOrderSynced,
-      final List<SalesLineEntityData> salesLines,
-      final Map<String, String>? settings,
-      final String? salesId,
-      final String? errorMsg}) = _$SalesLineStateImpl;
+  factory _SalesLineState({
+    final bool isLoading,
+    final bool isItemAdded,
+    final bool isItemEdited,
+    final bool isItemRemoved,
+    final bool isOrderSynced,
+    final List<SalesLineEntityData> salesLines,
+    final Map<String, String>? settings,
+    final String? salesId,
+    final String? errorMsg,
+  }) = _$SalesLineStateImpl;
 
   @override
   bool get isLoading;

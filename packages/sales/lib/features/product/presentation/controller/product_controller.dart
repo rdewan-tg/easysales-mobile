@@ -12,17 +12,15 @@ class ProductController extends Notifier<ProductState> {
   StreamSubscription<List<ProductEntityData>>? _streamProductsSubscription;
   StreamSubscription<List<ProductPriceEntityData>>? _streamPricesSubscription;
   StreamSubscription<List<SearchProductHistoryEntityData>>?
-      _subscriptionSearchProductHistory;
+  _subscriptionSearchProductHistory;
 
   @override
   ProductState build() {
-    ref.onDispose(
-      () {
-        _streamProductsSubscription?.cancel();
-        _streamPricesSubscription?.cancel();
-        _subscriptionSearchProductHistory?.cancel();
-      },
-    );
+    ref.onDispose(() {
+      _streamProductsSubscription?.cancel();
+      _streamPricesSubscription?.cancel();
+      _subscriptionSearchProductHistory?.cancel();
+    });
 
     return ProductState();
   }
@@ -44,72 +42,87 @@ class ProductController extends Notifier<ProductState> {
     // get the companyCode from map
     final String companyCode = setting['companyCode'] ?? 'SGMA';
 
-    final result =
-        await ref.read(productServiceProvider).getProducts(companyCode);
-    result.when((data) {
-      // watch the total product imported
-      watchTotalProductImported();
-      // watch the products
-      watchProducts();
-      state = state.copyWith(isLoading: false, isProductImported: data);
-    }, (error) {
-      watchProducts();
-      state = state.copyWith(isLoading: false, errorMsg: error.message);
-    });
+    final result = await ref
+        .read(productServiceProvider)
+        .getProducts(companyCode);
+    result.when(
+      (data) {
+        // watch the total product imported
+        watchTotalProductImported();
+        // watch the products
+        watchProducts();
+        state = state.copyWith(isLoading: false, isProductImported: data);
+      },
+      (error) {
+        watchProducts();
+        state = state.copyWith(isLoading: false, errorMsg: error.message);
+      },
+    );
   }
 
   Future<void> importProductPrice() async {
-    state =
-        state.copyWith(errorMsg: null, isLoading: true, isPriceImported: false);
+    state = state.copyWith(
+      errorMsg: null,
+      isLoading: true,
+      isPriceImported: false,
+    );
     // get the setting from the database
     final setting = await ref.read(productServiceProvider).getAllSettings();
     // get the companyCode from map
     final String companyCode = setting['companyCode'] ?? 'SGMA';
 
-    final result =
-        await ref.read(productServiceProvider).getPrices(companyCode);
-    result.when((data) {
-      // watch the total price imported
-      watchTotalPriceImported();
-      // watch the prices
-      watchPrices();
-      state = state.copyWith(isLoading: false, isPriceImported: data);
-    }, (error) {
-      watchPrices();
-      state = state.copyWith(isLoading: false, errorMsg: error.message);
-    });
+    final result = await ref
+        .read(productServiceProvider)
+        .getPrices(companyCode);
+    result.when(
+      (data) {
+        // watch the total price imported
+        watchTotalPriceImported();
+        // watch the prices
+        watchPrices();
+        state = state.copyWith(isLoading: false, isPriceImported: data);
+      },
+      (error) {
+        watchPrices();
+        state = state.copyWith(isLoading: false, errorMsg: error.message);
+      },
+    );
   }
 
   Future<void> watchProducts() async {
     final searchQuery = state.searchQuery;
-    _streamProductsSubscription =
-        ref.watch(productServiceProvider).watchProducts(searchQuery).listen(
-      (data) {
-        state = state.copyWith(products: data, lastSearchQuery: searchQuery);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error.toString());
-      },
-    );
+    _streamProductsSubscription = ref
+        .watch(productServiceProvider)
+        .watchProducts(searchQuery)
+        .listen(
+          (data) {
+            state = state.copyWith(
+              products: data,
+              lastSearchQuery: searchQuery,
+            );
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error.toString());
+          },
+        );
   }
 
   Future<void> watchPrices() async {
-    _streamPricesSubscription =
-        ref.watch(productServiceProvider).watchPrices(state.searchQuery).listen(
-      (data) {
-        state = state.copyWith(prices: data);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error.toString());
-      },
-    );
+    _streamPricesSubscription = ref
+        .watch(productServiceProvider)
+        .watchPrices(state.searchQuery)
+        .listen(
+          (data) {
+            state = state.copyWith(prices: data);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error.toString());
+          },
+        );
   }
 
   Future<void> clearSearchProduct() async {
-    state = state.copyWith(
-      searchQuery: '',
-      lastSearchQuery: '',
-    );
+    state = state.copyWith(searchQuery: '', lastSearchQuery: '');
   }
 
   Future<void> setSearchProductQuery(String value) async {
@@ -122,38 +135,46 @@ class ProductController extends Notifier<ProductState> {
 
   Future<void> watchSearchProductHistory() async {
     // Start listening stream
-    _subscriptionSearchProductHistory =
-        ref.watch(productServiceProvider).watchSearchProductHistory().listen(
-      (data) {
-        final history = data.map((e) => e.key).toList();
-        state = state.copyWith(searchHistory: history);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+    _subscriptionSearchProductHistory = ref
+        .watch(productServiceProvider)
+        .watchSearchProductHistory()
+        .listen(
+          (data) {
+            final history = data.map((e) => e.key).toList();
+            state = state.copyWith(searchHistory: history);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> watchTotalProductImported() async {
-    ref.watch(productServiceProvider).watchTotalProductImported().listen(
-      (data) {
-        state = state.copyWith(totalProductImported: data);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+    ref
+        .watch(productServiceProvider)
+        .watchTotalProductImported()
+        .listen(
+          (data) {
+            state = state.copyWith(totalProductImported: data);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> watchTotalPriceImported() async {
-    ref.watch(productServiceProvider).watchTotalPriceImported().listen(
-      (data) {
-        state = state.copyWith(totalPriceImported: data);
-      },
-      onError: (error) {
-        state = state.copyWith(errorMsg: error);
-      },
-    );
+    ref
+        .watch(productServiceProvider)
+        .watchTotalPriceImported()
+        .listen(
+          (data) {
+            state = state.copyWith(totalPriceImported: data);
+          },
+          onError: (error) {
+            state = state.copyWith(errorMsg: error);
+          },
+        );
   }
 
   Future<void> clearSearchProductHistory() async {
@@ -163,30 +184,33 @@ class ProductController extends Notifier<ProductState> {
       totalSearchProductHistoryCleared: null,
     );
     // clear search history
-    final result =
-        await ref.read(productServiceProvider).deleteAllSearchProductHistory();
+    final result = await ref
+        .read(productServiceProvider)
+        .deleteAllSearchProductHistory();
 
-    result.when((success) {
-      state = state.copyWith(
-        searchQuery: '',
-        lastSearchQuery: '',
-        searchHistory: [],
-        totalSearchProductHistoryCleared: success,
-        isSearchProductHistoryCleared: true,
-      );
-    }, (error) {
-      state = state.copyWith(errorMsg: error.message);
-    });
+    result.when(
+      (success) {
+        state = state.copyWith(
+          searchQuery: '',
+          lastSearchQuery: '',
+          searchHistory: [],
+          totalSearchProductHistoryCleared: success,
+          isSearchProductHistoryCleared: true,
+        );
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message);
+      },
+    );
   }
 
   int? getTotalSearchHistoryCleared() => state.totalSearchProductHistoryCleared;
 
   Future<void> getProductUom(String itemId, String priceGroup) async {
     try {
-      final result = await ref.read(productServiceProvider).getProductUom(
-            itemId,
-            priceGroup,
-          );
+      final result = await ref
+          .read(productServiceProvider)
+          .getProductUom(itemId, priceGroup);
       state = state.copyWith(uom: result);
     } catch (e) {
       state = state.copyWith(errorMsg: e.toString());
@@ -195,10 +219,9 @@ class ProductController extends Notifier<ProductState> {
 
   Future<void> getProductPackSize(String itemId, String priceGroup) async {
     try {
-      final result = await ref.read(productServiceProvider).getProductPackSize(
-            itemId,
-            priceGroup,
-          );
+      final result = await ref
+          .read(productServiceProvider)
+          .getProductPackSize(itemId, priceGroup);
       state = state.copyWith(packSize: result);
     } catch (e) {
       state = state.copyWith(errorMsg: e.toString());
@@ -212,12 +235,9 @@ class ProductController extends Notifier<ProductState> {
     String uom,
   ) async {
     try {
-      final result = await ref.read(productServiceProvider).getProductDetail(
-            itemId,
-            priceGroup,
-            packSize,
-            uom,
-          );
+      final result = await ref
+          .read(productServiceProvider)
+          .getProductDetail(itemId, priceGroup, packSize, uom);
       state = state.copyWith(price: result);
     } catch (e) {
       state = state.copyWith(errorMsg: e.toString());
@@ -234,8 +254,9 @@ class ProductController extends Notifier<ProductState> {
       state.products.firstWhere((item) => item.itemId == itemId);
 
   Future<ProductEntityData?> getProductByItemId(String itemId) async {
-    final product =
-        await ref.read(productServiceProvider).getProductByItemId(itemId);
+    final product = await ref
+        .read(productServiceProvider)
+        .getProductByItemId(itemId);
     return product;
   }
 

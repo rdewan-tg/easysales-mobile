@@ -12,7 +12,8 @@ part of 'setting_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SettingState {
@@ -35,18 +36,20 @@ mixin _$SettingState {
 /// @nodoc
 abstract class $SettingStateCopyWith<$Res> {
   factory $SettingStateCopyWith(
-          SettingState value, $Res Function(SettingState) then) =
-      _$SettingStateCopyWithImpl<$Res, SettingState>;
+    SettingState value,
+    $Res Function(SettingState) then,
+  ) = _$SettingStateCopyWithImpl<$Res, SettingState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isOrderRunningNumberSaved,
-      String language,
-      String themeMode,
-      String timeZone,
-      Map<String, String> settings,
-      int orderRunningNumber,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isOrderRunningNumberSaved,
+    String language,
+    String themeMode,
+    String timeZone,
+    Map<String, String> settings,
+    int orderRunningNumber,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -73,40 +76,43 @@ class _$SettingStateCopyWithImpl<$Res, $Val extends SettingState>
     Object? orderRunningNumber = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderRunningNumberSaved: null == isOrderRunningNumberSaved
-          ? _value.isOrderRunningNumberSaved
-          : isOrderRunningNumberSaved // ignore: cast_nullable_to_non_nullable
-              as bool,
-      language: null == language
-          ? _value.language
-          : language // ignore: cast_nullable_to_non_nullable
-              as String,
-      themeMode: null == themeMode
-          ? _value.themeMode
-          : themeMode // ignore: cast_nullable_to_non_nullable
-              as String,
-      timeZone: null == timeZone
-          ? _value.timeZone
-          : timeZone // ignore: cast_nullable_to_non_nullable
-              as String,
-      settings: null == settings
-          ? _value.settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      orderRunningNumber: null == orderRunningNumber
-          ? _value.orderRunningNumber
-          : orderRunningNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isOrderRunningNumberSaved: null == isOrderRunningNumberSaved
+                ? _value.isOrderRunningNumberSaved
+                : isOrderRunningNumberSaved // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            language: null == language
+                ? _value.language
+                : language // ignore: cast_nullable_to_non_nullable
+                      as String,
+            themeMode: null == themeMode
+                ? _value.themeMode
+                : themeMode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            timeZone: null == timeZone
+                ? _value.timeZone
+                : timeZone // ignore: cast_nullable_to_non_nullable
+                      as String,
+            settings: null == settings
+                ? _value.settings
+                : settings // ignore: cast_nullable_to_non_nullable
+                      as Map<String, String>,
+            orderRunningNumber: null == orderRunningNumber
+                ? _value.orderRunningNumber
+                : orderRunningNumber // ignore: cast_nullable_to_non_nullable
+                      as int,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -114,19 +120,21 @@ class _$SettingStateCopyWithImpl<$Res, $Val extends SettingState>
 abstract class _$$SettingStateImplCopyWith<$Res>
     implements $SettingStateCopyWith<$Res> {
   factory _$$SettingStateImplCopyWith(
-          _$SettingStateImpl value, $Res Function(_$SettingStateImpl) then) =
-      __$$SettingStateImplCopyWithImpl<$Res>;
+    _$SettingStateImpl value,
+    $Res Function(_$SettingStateImpl) then,
+  ) = __$$SettingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isOrderRunningNumberSaved,
-      String language,
-      String themeMode,
-      String timeZone,
-      Map<String, String> settings,
-      int orderRunningNumber,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isOrderRunningNumberSaved,
+    String language,
+    String themeMode,
+    String timeZone,
+    Map<String, String> settings,
+    int orderRunningNumber,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -134,8 +142,9 @@ class __$$SettingStateImplCopyWithImpl<$Res>
     extends _$SettingStateCopyWithImpl<$Res, _$SettingStateImpl>
     implements _$$SettingStateImplCopyWith<$Res> {
   __$$SettingStateImplCopyWithImpl(
-      _$SettingStateImpl _value, $Res Function(_$SettingStateImpl) _then)
-      : super(_value, _then);
+    _$SettingStateImpl _value,
+    $Res Function(_$SettingStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SettingState
   /// with the given fields replaced by the non-null parameter values.
@@ -151,56 +160,58 @@ class __$$SettingStateImplCopyWithImpl<$Res>
     Object? orderRunningNumber = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$SettingStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOrderRunningNumberSaved: null == isOrderRunningNumberSaved
-          ? _value.isOrderRunningNumberSaved
-          : isOrderRunningNumberSaved // ignore: cast_nullable_to_non_nullable
-              as bool,
-      language: null == language
-          ? _value.language
-          : language // ignore: cast_nullable_to_non_nullable
-              as String,
-      themeMode: null == themeMode
-          ? _value.themeMode
-          : themeMode // ignore: cast_nullable_to_non_nullable
-              as String,
-      timeZone: null == timeZone
-          ? _value.timeZone
-          : timeZone // ignore: cast_nullable_to_non_nullable
-              as String,
-      settings: null == settings
-          ? _value._settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      orderRunningNumber: null == orderRunningNumber
-          ? _value.orderRunningNumber
-          : orderRunningNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$SettingStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isOrderRunningNumberSaved: null == isOrderRunningNumberSaved
+            ? _value.isOrderRunningNumberSaved
+            : isOrderRunningNumberSaved // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        language: null == language
+            ? _value.language
+            : language // ignore: cast_nullable_to_non_nullable
+                  as String,
+        themeMode: null == themeMode
+            ? _value.themeMode
+            : themeMode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        timeZone: null == timeZone
+            ? _value.timeZone
+            : timeZone // ignore: cast_nullable_to_non_nullable
+                  as String,
+        settings: null == settings
+            ? _value._settings
+            : settings // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>,
+        orderRunningNumber: null == orderRunningNumber
+            ? _value.orderRunningNumber
+            : orderRunningNumber // ignore: cast_nullable_to_non_nullable
+                  as int,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SettingStateImpl implements _SettingState {
-  const _$SettingStateImpl(
-      {this.isLoading = false,
-      this.isOrderRunningNumberSaved = false,
-      this.language = 'en',
-      this.themeMode = 'light',
-      this.timeZone = 'Asia/Kolkata',
-      final Map<String, String> settings = const {},
-      this.orderRunningNumber = 0,
-      this.errorMsg})
-      : _settings = settings;
+  const _$SettingStateImpl({
+    this.isLoading = false,
+    this.isOrderRunningNumberSaved = false,
+    this.language = 'en',
+    this.themeMode = 'light',
+    this.timeZone = 'Asia/Kolkata',
+    final Map<String, String> settings = const {},
+    this.orderRunningNumber = 0,
+    this.errorMsg,
+  }) : _settings = settings;
 
   @override
   @JsonKey()
@@ -244,8 +255,10 @@ class _$SettingStateImpl implements _SettingState {
             other is _$SettingStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.isOrderRunningNumberSaved,
-                    isOrderRunningNumberSaved) ||
+            (identical(
+                  other.isOrderRunningNumberSaved,
+                  isOrderRunningNumberSaved,
+                ) ||
                 other.isOrderRunningNumberSaved == isOrderRunningNumberSaved) &&
             (identical(other.language, language) ||
                 other.language == language) &&
@@ -262,15 +275,16 @@ class _$SettingStateImpl implements _SettingState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isOrderRunningNumberSaved,
-      language,
-      themeMode,
-      timeZone,
-      const DeepCollectionEquality().hash(_settings),
-      orderRunningNumber,
-      errorMsg);
+    runtimeType,
+    isLoading,
+    isOrderRunningNumberSaved,
+    language,
+    themeMode,
+    timeZone,
+    const DeepCollectionEquality().hash(_settings),
+    orderRunningNumber,
+    errorMsg,
+  );
 
   /// Create a copy of SettingState
   /// with the given fields replaced by the non-null parameter values.
@@ -282,15 +296,16 @@ class _$SettingStateImpl implements _SettingState {
 }
 
 abstract class _SettingState implements SettingState {
-  const factory _SettingState(
-      {final bool isLoading,
-      final bool isOrderRunningNumberSaved,
-      final String language,
-      final String themeMode,
-      final String timeZone,
-      final Map<String, String> settings,
-      final int orderRunningNumber,
-      final String? errorMsg}) = _$SettingStateImpl;
+  const factory _SettingState({
+    final bool isLoading,
+    final bool isOrderRunningNumberSaved,
+    final String language,
+    final String themeMode,
+    final String timeZone,
+    final Map<String, String> settings,
+    final int orderRunningNumber,
+    final String? errorMsg,
+  }) = _$SettingStateImpl;
 
   @override
   bool get isLoading;

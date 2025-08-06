@@ -10,10 +10,7 @@ abstract interface class IOrderRepository {
     SalesHeaderEntityCompanion data,
   );
 
-  Future<LastSalesIdResponse> getLastSalesOrderId(
-    String id,
-    String prefix,
-  );
+  Future<LastSalesIdResponse> getLastSalesOrderId(String id, String prefix);
 
   Future<SalesHeaderEntityData> updateSalesHeader(
     SalesHeaderEntityCompanion data,

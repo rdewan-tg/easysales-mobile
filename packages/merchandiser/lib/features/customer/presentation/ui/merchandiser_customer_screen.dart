@@ -22,26 +22,20 @@ class _MerchandiserCustomerScreenState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(context.localizations('merchandiser.title')),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.go('/merchandiser/search-merchandiser-customer');
-            },
-            icon: const Icon(Icons.search_outlined),
-          ),
-        ],
-      ),
-      body: RefreshIndicator(
+    return MainAppScaffold(
+      isScrollable: false,
+      actions: [
+        IconButton(
+          onPressed: () {
+            context.go('/merchandiser/search-merchandiser-customer');
+          },
+          icon: const Icon(Icons.search_outlined),
+        ),
+      ],
+      widget: RefreshIndicator(
         onRefresh: _onRefresh,
         child: const CustomScrollView(
-          slivers: [
-            SearchQueryWidget(),
-            CustomerListWidget(),
-          ],
+          slivers: [SearchQueryWidget(), CustomerListWidget()],
         ),
       ),
     );

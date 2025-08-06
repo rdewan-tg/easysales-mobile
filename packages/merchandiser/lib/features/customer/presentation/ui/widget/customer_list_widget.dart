@@ -17,9 +17,9 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-    _animationStyle = AnimationStyle(
-      duration: const Duration(seconds: 1),
-      reverseDuration: const Duration(seconds: 1),
+    _animationStyle = const AnimationStyle(
+      duration: Duration(seconds: 1),
+      reverseDuration: Duration(seconds: 1),
     );
   }
 
@@ -38,8 +38,9 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
   Widget build(BuildContext context) {
     _listener();
 
-    final customer = ref
-        .watch(merchandiserCustomerProvider.select((value) => value.customers));
+    final customer = ref.watch(
+      merchandiserCustomerProvider.select((value) => value.customers),
+    );
 
     if (customer.isEmpty) {
       return const SliverFillRemaining(child: EmptyDataWidget());
@@ -101,8 +102,9 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
                               context.textTheme.labelSmall, // Reduce text size
                         ),
                         shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(kSmall), // Customize shape
+                          borderRadius: BorderRadius.circular(
+                            kSmall,
+                          ), // Customize shape
                         ),
                       ),
                     ],
@@ -118,30 +120,31 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
 
   void _listener() {
     // listen for error
-    ref.listen(
-      merchandiserCustomerProvider.select((value) => value.errorMsg),
-      (_, next) {
-        if (next != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 5),
-              backgroundColor: context.themeColor.colorScheme.error,
-              content: Text(
-                next,
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+    ref.listen(merchandiserCustomerProvider.select((value) => value.errorMsg), (
+      _,
+      next,
+    ) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: context.themeColor.colorScheme.error,
+            content: Text(
+              next,
+              style: context.textTheme.titleSmall?.copyWith(
+                color: Colors.white,
               ),
             ),
-          );
-        }
-      },
-    );
+          ),
+        );
+      }
+    });
 
     // listen for error
     ref.listen(
-      merchandiserCustomerProvider
-          .select((value) => value.isSearchHistoryCleared),
+      merchandiserCustomerProvider.select(
+        (value) => value.isSearchHistoryCleared,
+      ),
       (_, next) {
         if (next) {
           //  get the count
@@ -152,9 +155,7 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               duration: const Duration(seconds: 3),
-              content: Text(
-                '$count searched history cleared'.hardcoded,
-              ),
+              content: Text('$count searched history cleared'.hardcoded),
             ),
           );
         }
@@ -162,14 +163,16 @@ class _CustomerListWidgetState extends ConsumerState<CustomerListWidget> {
     );
 
     // listen for loading
-    ref.listen(merchandiserCustomerProvider.select((value) => value.isLoading),
-        (_, next) {
-      if (next) {
-        context.loaderOverlay.show();
-      } else {
-        context.loaderOverlay.hide();
-      }
-    });
+    ref.listen(
+      merchandiserCustomerProvider.select((value) => value.isLoading),
+      (_, next) {
+        if (next) {
+          context.loaderOverlay.show();
+        } else {
+          context.loaderOverlay.hide();
+        }
+      },
+    );
   }
 
   void _onTap(

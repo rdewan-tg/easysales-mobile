@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.24.5",
+  "dart.flutterSdkPath": ".fvm/versions/3.32.7",
   "search.exclude": {
     "**/.fvm": true
   },
@@ -14,6 +14,12 @@
     "riverpod",
     "armeabi",
     "Packsize",
+    "customre",
+    "Botton",
+    "Culculate",
+    "dimens",
+    "sitevisit",
+    "easysales"
   ],
-  "yaml.schemaStore.enable": false,
+  "yaml.schemaStore.enable": false
 }

@@ -10,14 +10,12 @@ part 'merchandiser_customer_api.g.dart';
 
 final merchandiserCustomerApiProvider =
     Provider.autoDispose<MerchandiserCustomerApi>((ref) {
-  final dio = ref.watch(networkServiceProvider);
+      final dio = ref.watch(networkServiceProvider);
 
-  return MerchandiserCustomerApi(dio);
-});
+      return MerchandiserCustomerApi(dio);
+    });
 
-@RestApi(
-  parser: Parser.FlutterCompute,
-)
+@RestApi(parser: Parser.FlutterCompute)
 abstract class MerchandiserCustomerApi {
   factory MerchandiserCustomerApi(Dio dio) => _MerchandiserCustomerApi(dio);
 

@@ -62,10 +62,7 @@ class _OrderHistoryListViewState extends ConsumerState<OrderHistoryListView> {
               color: context.themeColor.colorScheme.error,
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.only(right: 20.0),
-              child: const Icon(
-                Icons.delete,
-                color: Colors.white,
-              ),
+              child: const Icon(Icons.delete, color: Colors.white),
             ),
             // Confirm before dismissing and perform deletion
             confirmDismiss: (direction) async {
@@ -101,8 +98,9 @@ class _OrderHistoryListViewState extends ConsumerState<OrderHistoryListView> {
 
               // User confirmed, try to delete the order
               // Store current state to monitor for errors
-              final initialErrorMsg =
-                  ref.read(orderHistoryControllerProvider).errorMsg;
+              final initialErrorMsg = ref
+                  .read(orderHistoryControllerProvider)
+                  .errorMsg;
 
               // Perform delete operation
               await ref
@@ -110,8 +108,9 @@ class _OrderHistoryListViewState extends ConsumerState<OrderHistoryListView> {
                   .deleteOrder(data.salesId);
 
               // Check if any error occurred during deletion
-              final currentErrorMsg =
-                  ref.read(orderHistoryControllerProvider).errorMsg;
+              final currentErrorMsg = ref
+                  .read(orderHistoryControllerProvider)
+                  .errorMsg;
 
               // Only dismiss if no new error occurred
               return initialErrorMsg == currentErrorMsg;
@@ -163,12 +162,18 @@ class _OrderHistoryListViewState extends ConsumerState<OrderHistoryListView> {
                                     side: BorderSide(
                                       color: data.syncStatus == 0
                                           ? context
-                                              .themeColor.colorScheme.primary
+                                                .themeColor
+                                                .colorScheme
+                                                .primary
                                           : data.syncStatus == 1
-                                              ? context.themeColor.colorScheme
-                                                  .secondary
-                                              : context
-                                                  .themeColor.colorScheme.error,
+                                          ? context
+                                                .themeColor
+                                                .colorScheme
+                                                .secondary
+                                          : context
+                                                .themeColor
+                                                .colorScheme
+                                                .error,
                                     ),
                                   ),
                                   labelPadding: const EdgeInsets.all(kXXSmall),
@@ -183,16 +188,16 @@ class _OrderHistoryListViewState extends ConsumerState<OrderHistoryListView> {
                                           ),
                                         )
                                       : data.syncStatus == 1
-                                          ? Text(
-                                              context.localizations(
-                                                'orderHistory.synced',
-                                              ),
-                                            )
-                                          : Text(
-                                              context.localizations(
-                                                'orderHistory.cancelled',
-                                              ),
-                                            ),
+                                      ? Text(
+                                          context.localizations(
+                                            'orderHistory.synced',
+                                          ),
+                                        )
+                                      : Text(
+                                          context.localizations(
+                                            'orderHistory.cancelled',
+                                          ),
+                                        ),
                                 );
                               },
                             ),
@@ -213,27 +218,29 @@ class _OrderHistoryListViewState extends ConsumerState<OrderHistoryListView> {
   void _listener() {
     // listen for delete order
     ref.listen(
-        orderHistoryControllerProvider.select((value) => value.isDeleteOrder),
-        (previous, next) {
-      if (next) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(context.localizations('orderHistory.orderDeleted')),
-          ),
-        );
-      }
-    });
+      orderHistoryControllerProvider.select((value) => value.isDeleteOrder),
+      (previous, next) {
+        if (next) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(context.localizations('orderHistory.orderDeleted')),
+            ),
+          );
+        }
+      },
+    );
 
     // listen for loading
     ref.listen(
-        orderHistoryControllerProvider.select((value) => value.isLoading),
-        (_, next) {
-      if (next) {
-        context.loaderOverlay.show();
-      } else {
-        context.loaderOverlay.hide();
-      }
-    });
+      orderHistoryControllerProvider.select((value) => value.isLoading),
+      (_, next) {
+        if (next) {
+          context.loaderOverlay.show();
+        } else {
+          context.loaderOverlay.hide();
+        }
+      },
+    );
 
     // listen for error
     ref.listen(

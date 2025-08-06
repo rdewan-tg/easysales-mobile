@@ -12,7 +12,8 @@ part of 'capture_image_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$CaptureImageState {
@@ -33,16 +34,18 @@ mixin _$CaptureImageState {
 /// @nodoc
 abstract class $CaptureImageStateCopyWith<$Res> {
   factory $CaptureImageStateCopyWith(
-          CaptureImageState value, $Res Function(CaptureImageState) then) =
-      _$CaptureImageStateCopyWithImpl<$Res, CaptureImageState>;
+    CaptureImageState value,
+    $Res Function(CaptureImageState) then,
+  ) = _$CaptureImageStateCopyWithImpl<$Res, CaptureImageState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isUploading,
-      bool isImageUploaded,
-      Map<String, String> settings,
-      int androidSdkInt,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isUploading,
+    bool isImageUploaded,
+    Map<String, String> settings,
+    int androidSdkInt,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
@@ -67,59 +70,65 @@ class _$CaptureImageStateCopyWithImpl<$Res, $Val extends CaptureImageState>
     Object? androidSdkInt = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUploading: null == isUploading
-          ? _value.isUploading
-          : isUploading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isImageUploaded: null == isImageUploaded
-          ? _value.isImageUploaded
-          : isImageUploaded // ignore: cast_nullable_to_non_nullable
-              as bool,
-      settings: null == settings
-          ? _value.settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      androidSdkInt: null == androidSdkInt
-          ? _value.androidSdkInt
-          : androidSdkInt // ignore: cast_nullable_to_non_nullable
-              as int,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isUploading: null == isUploading
+                ? _value.isUploading
+                : isUploading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isImageUploaded: null == isImageUploaded
+                ? _value.isImageUploaded
+                : isImageUploaded // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            settings: null == settings
+                ? _value.settings
+                : settings // ignore: cast_nullable_to_non_nullable
+                      as Map<String, String>,
+            androidSdkInt: null == androidSdkInt
+                ? _value.androidSdkInt
+                : androidSdkInt // ignore: cast_nullable_to_non_nullable
+                      as int,
+            errorMsg: freezed == errorMsg
+                ? _value.errorMsg
+                : errorMsg // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$CaptureImageStateImplCopyWith<$Res>
     implements $CaptureImageStateCopyWith<$Res> {
-  factory _$$CaptureImageStateImplCopyWith(_$CaptureImageStateImpl value,
-          $Res Function(_$CaptureImageStateImpl) then) =
-      __$$CaptureImageStateImplCopyWithImpl<$Res>;
+  factory _$$CaptureImageStateImplCopyWith(
+    _$CaptureImageStateImpl value,
+    $Res Function(_$CaptureImageStateImpl) then,
+  ) = __$$CaptureImageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isUploading,
-      bool isImageUploaded,
-      Map<String, String> settings,
-      int androidSdkInt,
-      String? errorMsg});
+  $Res call({
+    bool isLoading,
+    bool isUploading,
+    bool isImageUploaded,
+    Map<String, String> settings,
+    int androidSdkInt,
+    String? errorMsg,
+  });
 }
 
 /// @nodoc
 class __$$CaptureImageStateImplCopyWithImpl<$Res>
     extends _$CaptureImageStateCopyWithImpl<$Res, _$CaptureImageStateImpl>
     implements _$$CaptureImageStateImplCopyWith<$Res> {
-  __$$CaptureImageStateImplCopyWithImpl(_$CaptureImageStateImpl _value,
-      $Res Function(_$CaptureImageStateImpl) _then)
-      : super(_value, _then);
+  __$$CaptureImageStateImplCopyWithImpl(
+    _$CaptureImageStateImpl _value,
+    $Res Function(_$CaptureImageStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CaptureImageState
   /// with the given fields replaced by the non-null parameter values.
@@ -133,46 +142,48 @@ class __$$CaptureImageStateImplCopyWithImpl<$Res>
     Object? androidSdkInt = null,
     Object? errorMsg = freezed,
   }) {
-    return _then(_$CaptureImageStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUploading: null == isUploading
-          ? _value.isUploading
-          : isUploading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isImageUploaded: null == isImageUploaded
-          ? _value.isImageUploaded
-          : isImageUploaded // ignore: cast_nullable_to_non_nullable
-              as bool,
-      settings: null == settings
-          ? _value._settings
-          : settings // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      androidSdkInt: null == androidSdkInt
-          ? _value.androidSdkInt
-          : androidSdkInt // ignore: cast_nullable_to_non_nullable
-              as int,
-      errorMsg: freezed == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$CaptureImageStateImpl(
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isUploading: null == isUploading
+            ? _value.isUploading
+            : isUploading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isImageUploaded: null == isImageUploaded
+            ? _value.isImageUploaded
+            : isImageUploaded // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        settings: null == settings
+            ? _value._settings
+            : settings // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>,
+        androidSdkInt: null == androidSdkInt
+            ? _value.androidSdkInt
+            : androidSdkInt // ignore: cast_nullable_to_non_nullable
+                  as int,
+        errorMsg: freezed == errorMsg
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$CaptureImageStateImpl implements _CaptureImageState {
-  _$CaptureImageStateImpl(
-      {this.isLoading = false,
-      this.isUploading = false,
-      this.isImageUploaded = false,
-      final Map<String, String> settings = const {},
-      this.androidSdkInt = 1,
-      this.errorMsg})
-      : _settings = settings;
+  _$CaptureImageStateImpl({
+    this.isLoading = false,
+    this.isUploading = false,
+    this.isImageUploaded = false,
+    final Map<String, String> settings = const {},
+    this.androidSdkInt = 1,
+    this.errorMsg,
+  }) : _settings = settings;
 
   @override
   @JsonKey()
@@ -223,13 +234,14 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isUploading,
-      isImageUploaded,
-      const DeepCollectionEquality().hash(_settings),
-      androidSdkInt,
-      errorMsg);
+    runtimeType,
+    isLoading,
+    isUploading,
+    isImageUploaded,
+    const DeepCollectionEquality().hash(_settings),
+    androidSdkInt,
+    errorMsg,
+  );
 
   /// Create a copy of CaptureImageState
   /// with the given fields replaced by the non-null parameter values.
@@ -238,17 +250,20 @@ class _$CaptureImageStateImpl implements _CaptureImageState {
   @pragma('vm:prefer-inline')
   _$$CaptureImageStateImplCopyWith<_$CaptureImageStateImpl> get copyWith =>
       __$$CaptureImageStateImplCopyWithImpl<_$CaptureImageStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _CaptureImageState implements CaptureImageState {
-  factory _CaptureImageState(
-      {final bool isLoading,
-      final bool isUploading,
-      final bool isImageUploaded,
-      final Map<String, String> settings,
-      final int androidSdkInt,
-      final String? errorMsg}) = _$CaptureImageStateImpl;
+  factory _CaptureImageState({
+    final bool isLoading,
+    final bool isUploading,
+    final bool isImageUploaded,
+    final Map<String, String> settings,
+    final int androidSdkInt,
+    final String? errorMsg,
+  }) = _$CaptureImageStateImpl;
 
   @override
   bool get isLoading;

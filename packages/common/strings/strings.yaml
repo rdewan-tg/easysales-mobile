@@ -8,6 +8,8 @@
 
 ## you can reference other files and folders with [$ref: path].
 ## content of the file will be unwrapped into the key.
+appName: EasySales
+
 home:
   $ref: home.yaml
 sales:
@@ -26,4 +28,8 @@ product:
   $ref: product.yaml
 common:
   $ref: common.yaml
+siteVisit:
+  $ref: siteVisit.yaml
+drawer:
+  $ref: drawer.yaml
 

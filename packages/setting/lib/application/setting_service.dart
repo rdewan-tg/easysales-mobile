@@ -58,12 +58,7 @@ final class SettingService implements ISettingService {
     } on Failure catch (e) {
       return Error(e);
     } catch (e, s) {
-      return Error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 
@@ -136,6 +131,29 @@ final class SettingService implements ISettingService {
         exception: e as Exception,
         stackTrace: s,
       );
+    }
+  }
+
+  @override
+  Future<Result<Map<String, String>, Failure>> getCompanySetting() async {
+    try {
+      // Get device setting from remote
+      final response = await _settingRepository.getCompanySetting();
+
+      // Update device setting to local
+      await _settingRepository.upsertMultipleSettings({
+        'companyId': response.data.id.toString(),
+        'timeZone': response.data.timeZone,
+        'isSiteVisitEnabled': response.data.isSiteVisitEnabled.toString(),
+      });
+
+      final result = await _settingRepository.getAllSettings();
+
+      return Success(result);
+    } on Failure catch (e) {
+      return Error(e);
+    } catch (e, s) {
+      return Error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 }

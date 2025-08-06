@@ -58,9 +58,7 @@ final class ProductService implements IProductService {
   }
 
   @override
-  Stream<List<ProductEntityData>> watchProducts(
-    String? searchQuery,
-  ) {
+  Stream<List<ProductEntityData>> watchProducts(String? searchQuery) {
     return _productRepository.watchProducts(searchQuery);
   }
 
@@ -97,12 +95,7 @@ final class ProductService implements IProductService {
     } on Failure catch (e) {
       return Result.error(e);
     } catch (e, s) {
-      return Result.error(
-        Failure(
-          message: e.toString(),
-          stackTrace: s,
-        ),
-      );
+      return Result.error(Failure(message: e.toString(), stackTrace: s));
     }
   }
 
@@ -121,22 +114,13 @@ final class ProductService implements IProductService {
   }
 
   @override
-  Future<List<String>> getProductUom(
-    String itemId,
-    String priceGroup,
-  ) async {
+  Future<List<String>> getProductUom(String itemId, String priceGroup) async {
     try {
-      return await _productRepository.getProductUom(
-        itemId,
-        priceGroup,
-      );
+      return await _productRepository.getProductUom(itemId, priceGroup);
     } on Failure catch (_) {
       rethrow;
     } catch (e, s) {
-      throw Failure(
-        message: e.toString(),
-        stackTrace: s,
-      );
+      throw Failure(message: e.toString(), stackTrace: s);
     }
   }
 
@@ -146,17 +130,11 @@ final class ProductService implements IProductService {
     String priceGroup,
   ) async {
     try {
-      return await _productRepository.getProductPackSize(
-        itemId,
-        priceGroup,
-      );
+      return await _productRepository.getProductPackSize(itemId, priceGroup);
     } on Failure catch (_) {
       rethrow;
     } catch (e, s) {
-      throw Failure(
-        message: e.toString(),
-        stackTrace: s,
-      );
+      throw Failure(message: e.toString(), stackTrace: s);
     }
   }
 
@@ -177,28 +155,18 @@ final class ProductService implements IProductService {
     } on Failure catch (_) {
       rethrow;
     } catch (e, s) {
-      throw Failure(
-        message: e.toString(),
-        stackTrace: s,
-      );
+      throw Failure(message: e.toString(), stackTrace: s);
     }
   }
 
   @override
-  Future<ProductEntityData?> getProductByItemId(
-    String itemId,
-  ) async {
+  Future<ProductEntityData?> getProductByItemId(String itemId) async {
     try {
-      return await _productRepository.getProductByItemId(
-        itemId,
-      );
+      return await _productRepository.getProductByItemId(itemId);
     } on Failure catch (_) {
       rethrow;
     } catch (e, s) {
-      throw Failure(
-        message: e.toString(),
-        stackTrace: s,
-      );
+      throw Failure(message: e.toString(), stackTrace: s);
     }
   }
 }
@@ -206,30 +174,28 @@ final class ProductService implements IProductService {
 // top level function for isolate
 List<ProductEntityData> _mapToProductEntity(ProductResponse response) {
   final data = response.data;
-  return data.map(
-    (e) {
-      return ProductEntityData(
-        id: e.id,
-        productId: e.productId,
-        itemId: e.itemId,
-        productName: e.productName,
-        description: e.description,
-        category: e.category,
-        barcode: e.barcode,
-        itemGroup: e.itemGroup,
-        packSize: e.packSize ?? '-',
-        salesUnit: e.salesUnit,
-        unitPrice: double.parse(e.unitPrice),
-        image: e.image,
-        itemDiscountGroup: e.itemDiscountGroup,
-        itemFOCGroup: e.itemFocGroup,
-        inventDimId: e.inventDimId,
-        status: e.status,
-        companyCode: e.companyCode,
-        companyId: e.companyId,
-      );
-    },
-  ).toList();
+  return data.map((e) {
+    return ProductEntityData(
+      id: e.id,
+      productId: e.productId,
+      itemId: e.itemId,
+      productName: e.productName,
+      description: e.description,
+      category: e.category,
+      barcode: e.barcode,
+      itemGroup: e.itemGroup,
+      packSize: e.packSize ?? '-',
+      salesUnit: e.salesUnit,
+      unitPrice: double.parse(e.unitPrice),
+      image: e.image,
+      itemDiscountGroup: e.itemDiscountGroup,
+      itemFOCGroup: e.itemFocGroup,
+      inventDimId: e.inventDimId,
+      status: e.status,
+      companyCode: e.companyCode,
+      companyId: e.companyId,
+    );
+  }).toList();
 }
 
 // top level function for isolate
@@ -237,22 +203,20 @@ List<ProductPriceEntityData> _mapToProductPriceEntity(
   ProductPriceResponse response,
 ) {
   final data = response.data;
-  return data.map(
-    (e) {
-      return ProductPriceEntityData(
-        id: e.id,
-        productId: e.productId,
-        itemId: e.itemId,
-        packSize: e.packSize ?? '-',
-        fromDate: e.fromDate,
-        toDate: e.toDate,
-        unitPrice: double.parse(e.unitPrice),
-        salesUnit: e.salesUnit,
-        currencyCode: e.currencyCode,
-        priceGroup: e.priceGroup,
-        recId: e.recId,
-        companyId: e.companyId,
-      );
-    },
-  ).toList();
+  return data.map((e) {
+    return ProductPriceEntityData(
+      id: e.id,
+      productId: e.productId,
+      itemId: e.itemId,
+      packSize: e.packSize ?? '-',
+      fromDate: e.fromDate,
+      toDate: e.toDate,
+      unitPrice: double.parse(e.unitPrice),
+      salesUnit: e.salesUnit,
+      currencyCode: e.currencyCode,
+      priceGroup: e.priceGroup,
+      recId: e.recId,
+      companyId: e.companyId,
+    );
+  }).toList();
 }

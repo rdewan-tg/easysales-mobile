@@ -7,10 +7,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final networkServiceInterceptorProvider =
     Provider.family<NetworkServiceInterceptor, Dio>((ref, dio) {
-  final tokenService = ref.watch(tokenServiceProvider(dio));
+      final tokenService = ref.watch(tokenServiceProvider(dio));
 
-  return NetworkServiceInterceptor(tokenService, dio);
-});
+      return NetworkServiceInterceptor(tokenService, dio);
+    });
 
 final class NetworkServiceInterceptor extends Interceptor {
   final ITokenService _tokenService;

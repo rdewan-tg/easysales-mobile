@@ -14,9 +14,7 @@ final salesCustomerApiProvider = Provider.autoDispose<SalesCustomerApi>((ref) {
   return SalesCustomerApi(dio);
 });
 
-@RestApi(
-  parser: Parser.FlutterCompute,
-)
+@RestApi(parser: Parser.FlutterCompute)
 abstract class SalesCustomerApi {
   factory SalesCustomerApi(Dio dio) => _SalesCustomerApi(dio);
 

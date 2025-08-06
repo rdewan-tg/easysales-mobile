@@ -11,16 +11,16 @@ import 'package:sales/features/address/data/source/customer_address_api.dart';
 
 final customerAddressRepositoryProvider =
     Provider.autoDispose<ICustomerAddressRepository>((ref) {
-  final customerAddressApi = ref.watch(customerAddressApiProvider);
-  final settingDao = ref.watch(settingDaoProvider);
-  final customerAddressDao = ref.watch(customerAddressDaoProvider);
+      final customerAddressApi = ref.watch(customerAddressApiProvider);
+      final settingDao = ref.watch(settingDaoProvider);
+      final customerAddressDao = ref.watch(customerAddressDaoProvider);
 
-  return CustomerAddressRepository(
-    customerAddressApi,
-    settingDao,
-    customerAddressDao,
-  );
-});
+      return CustomerAddressRepository(
+        customerAddressApi,
+        settingDao,
+        customerAddressDao,
+      );
+    });
 
 final class CustomerAddressRepository
     with DioExceptionMapper
@@ -120,8 +120,9 @@ final class CustomerAddressRepository
     String postalAddress,
   ) async {
     try {
-      return await _customerAddressDao
-          .getCustomerAddressByPostalAddress(postalAddress);
+      return await _customerAddressDao.getCustomerAddressByPostalAddress(
+        postalAddress,
+      );
     } catch (e, stackTrace) {
       // Map unexpected exceptions to Failure
       throw Failure(

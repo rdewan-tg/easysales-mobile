@@ -46,12 +46,6 @@ class _DeviceSettingScreenState extends ConsumerState<DeviceSettingScreen> {
                 title: Text(context.localizations('setting.orderNumberFormat')),
                 subtitle: Text(settings['orderNumberFormat'] ?? ''),
               ),
-              ListTile(
-                title: Text(context.localizations('setting.timeZone')),
-                subtitle: Text(settings['timeZone'] ?? ''),
-              ),
-              // Add extra space at the bottom to ensure scrollability
-              const SizedBox(height: 100),
             ],
           ),
         ),

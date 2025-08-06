@@ -8,8 +8,8 @@ import 'package:merchandiser/features/photo/presentation/state/capture_image_sta
 
 final captureImageControllerProvider =
     NotifierProvider<CaptureImageController, CaptureImageState>(
-  CaptureImageController.new,
-);
+      CaptureImageController.new,
+    );
 
 class CaptureImageController extends Notifier<CaptureImageState> {
   @override
@@ -18,8 +18,9 @@ class CaptureImageController extends Notifier<CaptureImageState> {
   }
 
   Future<void> getAllSetting() async {
-    final settings =
-        await ref.read(merchandiserPhotoServiceProvider).getAllSetting();
+    final settings = await ref
+        .read(merchandiserPhotoServiceProvider)
+        .getAllSetting();
 
     state = state.copyWith(settings: settings);
   }

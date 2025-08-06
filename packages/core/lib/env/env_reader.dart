@@ -19,8 +19,6 @@ class EnvReader {
         return EnvQA.baseUrl;
       case Flavor.prod:
         return EnvProd.baseUrl;
-      default:
-        throw Exception(".env file not found");
     }
   }
 
@@ -32,8 +30,6 @@ class EnvReader {
         return base64Decode(EnvQA.certificate);
       case Flavor.prod:
         return base64Decode(EnvProd.certificate);
-      default:
-        throw Exception(".env file not found");
     }
   }
 
@@ -45,8 +41,6 @@ class EnvReader {
         return EnvQA.androidBuildId;
       case Flavor.prod:
         return EnvProd.androidBuildId;
-      default:
-        throw Exception(".env file not found");
     }
   }
 
@@ -58,8 +52,6 @@ class EnvReader {
         return EnvQA.iosBuildId;
       case Flavor.prod:
         return EnvProd.iosBuildId;
-      default:
-        throw Exception(".env file not found");
     }
   }
 
@@ -71,8 +63,6 @@ class EnvReader {
         return EnvQA.isCertificatePinning;
       case Flavor.prod:
         return EnvProd.isCertificatePinning;
-      default:
-        throw Exception(".env file not found");
     }
   }
 }
