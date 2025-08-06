@@ -1,4 +1,5 @@
 {
+    "appName": "EasySales",
     "home.title": "家",
     "setting.title": "环境",
     "setting.theme": "主题",
@@ -86,8 +87,19 @@
     "siteVisit.checkInMessage": "您已成功办理登机手续",
     "siteVisit.checkOutMessage": "您已成功退房",
     "siteVisit.currentLocation": "当前位置",
-    "siteVisit.noLocation": "没有位置",
+    "siteVisit.noLocation": "无位置",
     "siteVisit.currentTime": "当前时间",
     "siteVisit.checkIn": "报到",
-    "siteVisit.checkOut": "查看"
+    "siteVisit.checkOut": "查看",
+    "drawer.myProfile": "我的个人资料",
+    "drawer.aboutUs": "关于我们",
+    "drawer.notification": "通知",
+    "drawer.setting": "环境",
+    "drawer.blog": "博客",
+    "drawer.publicHoliday": "公众假期",
+    "drawer.privacyPolicy": "隐私政策",
+    "drawer.contactUs": "联系我们",
+    "drawer.signOut": "登出",
+    "drawer.theme": "主题",
+    "drawer.language": "语言"
 }

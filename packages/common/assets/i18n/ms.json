@@ -1,4 +1,5 @@
 {
+    "appName": "EasySales",
     "home.title": "Rumah",
     "setting.title": "Tetapan",
     "setting.theme": "Tema",
@@ -26,11 +27,11 @@
     "setting.deviceId": "ID peranti",
     "setting.salesPersonCode": "Kod Orang Jualan",
     "setting.orderNumberFormat": "Format Nombor Pesanan",
-    "setting.timeZone": "Zon Waktu",
+    "setting.timeZone": "Zon Masa",
     "home.viewMore": "Lihat Lagi",
     "sales.clearSearchHistory": "Kosongkan Sejarah Carian",
     "merchandiser.clearSearchHistory": "Kosongkan Sejarah Carian",
-    "report.todaysReport": "Laporan Hari Ini",
+    "report.todaysReport": "Laporan Hari ini",
     "report.yesterdaysReport": "Laporan Semalam",
     "report.thisMonthReport": "Laporan Bulan Ini",
     "report.todaysVisit": "Lawatan Hari Ini",
@@ -89,5 +90,16 @@
     "siteVisit.noLocation": "Tiada Lokasi",
     "siteVisit.currentTime": "Masa Semasa",
     "siteVisit.checkIn": "Daftar Masuk",
-    "siteVisit.checkOut": "Daftar Keluar"
+    "siteVisit.checkOut": "Daftar Keluar",
+    "drawer.myProfile": "Profil Saya",
+    "drawer.aboutUs": "Tentang Kami",
+    "drawer.notification": "Pemberitahuan",
+    "drawer.setting": "Tetapan",
+    "drawer.blog": "Blog",
+    "drawer.publicHoliday": "Cuti Umum",
+    "drawer.privacyPolicy": "Dasar Privasi",
+    "drawer.contactUs": "Hubungi Kami",
+    "drawer.signOut": "Log Keluar",
+    "drawer.theme": "Tema",
+    "drawer.language": "Bahasa"
 }

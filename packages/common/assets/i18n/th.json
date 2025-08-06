@@ -1,4 +1,5 @@
 {
+    "appName": "EasySales",
     "home.title": "บ้าน",
     "setting.title": "การตั้งค่า",
     "setting.theme": "ธีม",
@@ -36,7 +37,7 @@
     "report.todaysVisit": "การเยี่ยมชมวันนี้",
     "report.yesterdaysVisit": "การเยี่ยมชมเมื่อวานนี้",
     "report.thisMonthVisit": "การเยี่ยมชมเดือนนี้",
-    "report.totalVisits": "จำนวนการเข้าชมทั้งหมด:",
+    "report.totalVisits": "ยอดเข้าชมทั้งหมด:",
     "report.todaysVisits": "การเยี่ยมชมวันนี้:",
     "report.thisMonthVisits": "การเยี่ยมชมในเดือนนี้:",
     "orderHistory.title": "ใบสั่งขาย",
@@ -89,5 +90,16 @@
     "siteVisit.noLocation": "ไม่มีตำแหน่งที่ตั้ง",
     "siteVisit.currentTime": "เวลาปัจจุบัน",
     "siteVisit.checkIn": "เช็คอิน",
-    "siteVisit.checkOut": "เช็คเอาท์"
+    "siteVisit.checkOut": "เช็คเอาท์",
+    "drawer.myProfile": "โปรไฟล์ของฉัน",
+    "drawer.aboutUs": "เกี่ยวกับเรา",
+    "drawer.notification": "การแจ้งเตือน",
+    "drawer.setting": "การตั้งค่า",
+    "drawer.blog": "บล็อก",
+    "drawer.publicHoliday": "วันหยุดนักขัตฤกษ์",
+    "drawer.privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "drawer.contactUs": "ติดต่อเรา",
+    "drawer.signOut": "ออกจากระบบ",
+    "drawer.theme": "ธีม",
+    "drawer.language": "ภาษา"
 }

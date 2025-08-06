@@ -1,4 +1,5 @@
 {
+    "appName": "EasySales",
     "home.title": "Home",
     "home.viewMore": "View More",
     "sales.title": "Sales",
@@ -89,5 +90,16 @@
     "siteVisit.checkOutMessage": "You have successfully checked out",
     "siteVisit.currentLocation": "Current Location",
     "siteVisit.noLocation": "No Location",
-    "siteVisit.currentTime": "Current Time"
+    "siteVisit.currentTime": "Current Time",
+    "drawer.myProfile": "My Profile",
+    "drawer.aboutUs": "About Us",
+    "drawer.notification": "Notification",
+    "drawer.setting": "Setting",
+    "drawer.blog": "Blog",
+    "drawer.publicHoliday": "Public Holiday",
+    "drawer.privacyPolicy": "Privacy Policy",
+    "drawer.contactUs": "Contact Us",
+    "drawer.signOut": "Sign Out",
+    "drawer.theme": "Theme",
+    "drawer.language": "Language"
 }

@@ -19,36 +19,33 @@ class _OrderHistoryScreenState extends ConsumerState<OrderHistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(context.localizations('orderHistory.title')),
-        centerTitle: true,
-        actions: [
-          MenuAnchor(
-            menuChildren: [
-              MenuItemButton(
-                onPressed: () {
-                  context.push('/order-history/sales');
-                },
-                child: Text(context.localizations('orderHistory.createOrder')),
-              ),
-            ],
-            builder: (context, controller, child) {
-              return IconButton(
-                icon: const Icon(Icons.more_vert),
-                onPressed: () {
-                  if (controller.isOpen) {
-                    controller.close();
-                  } else {
-                    controller.open();
-                  }
-                },
-              );
-            },
-          ),
-        ],
-      ),
-      body: const OrderHistoryListView(),
+    return MainAppScaffold(
+      isScrollable: false,
+      actions: [
+        MenuAnchor(
+          menuChildren: [
+            MenuItemButton(
+              onPressed: () {
+                context.push('/order-history/sales');
+              },
+              child: Text(context.localizations('orderHistory.createOrder')),
+            ),
+          ],
+          builder: (context, controller, child) {
+            return IconButton(
+              icon: const Icon(Icons.more_vert),
+              onPressed: () {
+                if (controller.isOpen) {
+                  controller.close();
+                } else {
+                  controller.open();
+                }
+              },
+            );
+          },
+        ),
+      ],
+      widget: const OrderHistoryListView(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           context.push('/order-history/sales');

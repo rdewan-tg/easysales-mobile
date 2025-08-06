@@ -1,4 +1,5 @@
 {
+    "appName": "EasySales",
     "home.title": "Rumah",
     "setting.title": "Pengaturan",
     "setting.theme": "Tema",
@@ -47,11 +48,11 @@
     "setting.importSalesCustomerSubTitle": "Impor Pelanggan Penjualan dari API",
     "setting.importMerchandiserCustomer": "Pelanggan Pedagang Impor",
     "setting.importMerchandiserCustomerSubTitle": "Impor Pelanggan Merchandiser dari API",
-    "setting.importProductAndPrice": "Impor Produk dan Harga",
+    "setting.importProductAndPrice": "Produk dan Harga Impor",
     "setting.importProductAndPriceSubTitle": "Impor Produk dan Harga dari API",
     "sales.importCustomers": "Pelanggan Impor",
     "merchandiser.importCustomers": "Pelanggan Impor",
-    "product.importProductAndPrice": "Impor Produk dan Harga",
+    "product.importProductAndPrice": "Produk dan Harga Impor",
     "product.importProduct": "Produk Impor",
     "product.importPrice": "Harga Impor",
     "sales.customerImport": "Impor Pelanggan",
@@ -89,5 +90,16 @@
     "siteVisit.noLocation": "Tidak Ada Lokasi",
     "siteVisit.currentTime": "Waktu Saat Ini",
     "siteVisit.checkIn": "Daftar Masuk",
-    "siteVisit.checkOut": "Memeriksa"
+    "siteVisit.checkOut": "Memeriksa",
+    "drawer.myProfile": "Profil Saya",
+    "drawer.aboutUs": "Tentang Kami",
+    "drawer.notification": "Pemberitahuan",
+    "drawer.setting": "Pengaturan",
+    "drawer.blog": "Blog",
+    "drawer.publicHoliday": "Hari Libur Nasional",
+    "drawer.privacyPolicy": "Kebijakan Privasi",
+    "drawer.contactUs": "Hubungi kami",
+    "drawer.signOut": "Keluar",
+    "drawer.theme": "Tema",
+    "drawer.language": "Bahasa"
 }

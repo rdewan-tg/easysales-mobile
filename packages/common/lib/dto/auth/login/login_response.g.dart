@@ -79,6 +79,8 @@ const _$UserRoleEnumMap = {
   UserRole.superAdmin: 'superAdmin',
   UserRole.admin: 'admin',
   UserRole.manager: 'manager',
+  UserRole.sales: 'sales',
+  UserRole.merchandiser: 'merchandiser',
   UserRole.supervisor: 'supervisor',
   UserRole.operator: 'operator',
   UserRole.user: 'user',

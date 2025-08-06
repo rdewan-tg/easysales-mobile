@@ -17,7 +17,9 @@
     "customre",
     "Botton",
     "Culculate",
-    "dimens"
+    "dimens",
+    "sitevisit",
+    "easysales"
   ],
   "yaml.schemaStore.enable": false
 }
