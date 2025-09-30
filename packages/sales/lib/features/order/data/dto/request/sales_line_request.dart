@@ -4,7 +4,7 @@ part 'sales_line_request.freezed.dart';
 part 'sales_line_request.g.dart';
 
 @freezed
-class SalesLineRequest with _$SalesLineRequest {
+abstract class SalesLineRequest with _$SalesLineRequest {
   factory SalesLineRequest({
     int? id,
     required String salesId,

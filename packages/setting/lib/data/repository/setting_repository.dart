@@ -6,7 +6,6 @@ import 'package:core/data/local/secure_storage/secure_storage_const.dart';
 import 'package:setting/data/dto/company_setting.dart';
 import 'package:setting/data/dto/device_setting.dart';
 import 'package:setting/data/repository/isetting_repository.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:common/common.dart';
 import 'package:common/exception/failure.dart';
 import 'package:dio/dio.dart';

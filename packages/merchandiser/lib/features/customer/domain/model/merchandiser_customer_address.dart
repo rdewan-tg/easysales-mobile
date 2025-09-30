@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'merchandiser_customer_address.freezed.dart';
 
 @freezed
-class MerchandiserCustomerAddress with _$MerchandiserCustomerAddress {
+abstract class MerchandiserCustomerAddress with _$MerchandiserCustomerAddress {
   factory MerchandiserCustomerAddress({
     required int id,
     required String customerId,

@@ -4,7 +4,7 @@ part 'last_sales_id_response.freezed.dart';
 part 'last_sales_id_response.g.dart';
 
 @freezed
-class LastSalesIdResponse with _$LastSalesIdResponse {
+abstract class LastSalesIdResponse with _$LastSalesIdResponse {
   const factory LastSalesIdResponse({
     required String status,
     required int data,

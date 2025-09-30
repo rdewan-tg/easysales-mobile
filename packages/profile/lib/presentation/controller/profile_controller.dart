@@ -6,11 +6,9 @@ import 'package:profile/application/profile_service.dart';
 import 'package:profile/presentation/state/profile_state.dart';
 
 final profileControllerProvider =
-    AutoDisposeNotifierProvider<ProfileController, ProfileState>(
-      ProfileController.new,
-    );
+    NotifierProvider<ProfileController, ProfileState>(ProfileController.new);
 
-final class ProfileController extends AutoDisposeNotifier<ProfileState> {
+final class ProfileController extends Notifier<ProfileState> {
   StreamSubscription<String>? _themeModeSubscription;
 
   @override

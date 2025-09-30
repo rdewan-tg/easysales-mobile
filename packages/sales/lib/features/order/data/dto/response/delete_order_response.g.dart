@@ -6,13 +6,9 @@ part of 'delete_order_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DeleteOrderResponseImpl _$$DeleteOrderResponseImplFromJson(
-  Map<String, dynamic> json,
-) => _$DeleteOrderResponseImpl(
-  status: json['status'] as String,
-  data: json['data'],
-);
+_DeleteOrderResponse _$DeleteOrderResponseFromJson(Map<String, dynamic> json) =>
+    _DeleteOrderResponse(status: json['status'] as String, data: json['data']);
 
-Map<String, dynamic> _$$DeleteOrderResponseImplToJson(
-  _$DeleteOrderResponseImpl instance,
+Map<String, dynamic> _$DeleteOrderResponseToJson(
+  _DeleteOrderResponse instance,
 ) => <String, dynamic>{'status': instance.status, 'data': instance.data};

@@ -7,7 +7,7 @@ CustomerResponse deserializeCustomerResponse(Map<String, dynamic> json) =>
     CustomerResponse.fromJson(json);
 
 @freezed
-class CustomerResponse with _$CustomerResponse {
+abstract class CustomerResponse with _$CustomerResponse {
   const factory CustomerResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "total") required int total,
@@ -19,7 +19,7 @@ class CustomerResponse with _$CustomerResponse {
 }
 
 @freezed
-class CustomerData with _$CustomerData {
+abstract class CustomerData with _$CustomerData {
   const factory CustomerData({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "customerId") required String customerId,

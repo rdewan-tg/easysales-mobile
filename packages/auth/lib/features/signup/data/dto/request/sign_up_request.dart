@@ -4,7 +4,7 @@ part 'sign_up_request.freezed.dart';
 part 'sign_up_request.g.dart';
 
 @freezed
-class SignUpRequest with _$SignUpRequest {
+abstract class SignUpRequest with _$SignUpRequest {
   const factory SignUpRequest({
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "email") required String email,

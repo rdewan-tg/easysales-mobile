@@ -5,7 +5,7 @@ import 'package:merchandiser/features/customer/domain/model/merchandiser_custome
 part 'merchandiser_customer_state.freezed.dart';
 
 @freezed
-class MerchandiserCustomerState with _$MerchandiserCustomerState {
+abstract class MerchandiserCustomerState with _$MerchandiserCustomerState {
   factory MerchandiserCustomerState({
     @Default(false) bool isLoading,
     @Default(false) bool isCustomerImported,

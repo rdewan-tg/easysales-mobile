@@ -3,11 +3,11 @@ import 'package:report/site_visit/presentation/state/today_site_visit_state.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final siteVisitControllerProvider =
-    AutoDisposeNotifierProvider<SiteVisitController, TodaySiteVisitState>(
+    NotifierProvider<SiteVisitController, TodaySiteVisitState>(
       SiteVisitController.new,
     );
 
-class SiteVisitController extends AutoDisposeNotifier<TodaySiteVisitState> {
+class SiteVisitController extends Notifier<TodaySiteVisitState> {
   @override
   TodaySiteVisitState build() {
     return TodaySiteVisitState();

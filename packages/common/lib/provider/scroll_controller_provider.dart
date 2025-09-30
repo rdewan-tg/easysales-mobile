@@ -1,11 +1,11 @@
 part of '../common.dart';
 
 final appScrollControllerProvider =
-    AutoDisposeNotifierProvider<AppScrollController, ScrollController?>(
+    NotifierProvider<AppScrollController, ScrollController?>(
       AppScrollController.new,
     );
 
-class AppScrollController extends AutoDisposeNotifier<ScrollController?> {
+class AppScrollController extends Notifier<ScrollController?> {
   @override
   ScrollController? build() {
     return null;

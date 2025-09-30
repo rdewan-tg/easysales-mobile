@@ -8,7 +8,8 @@ ThisMonthSiteVisitReportResponse deserializeThisMonthSiteVisitReportResponse(
 ) => ThisMonthSiteVisitReportResponse.fromJson(json);
 
 @freezed
-class ThisMonthSiteVisitReportResponse with _$ThisMonthSiteVisitReportResponse {
+abstract class ThisMonthSiteVisitReportResponse
+    with _$ThisMonthSiteVisitReportResponse {
   const factory ThisMonthSiteVisitReportResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "data") required ThisMonthSiteVisitReportData data,
@@ -20,7 +21,8 @@ class ThisMonthSiteVisitReportResponse with _$ThisMonthSiteVisitReportResponse {
 }
 
 @freezed
-class ThisMonthSiteVisitReportData with _$ThisMonthSiteVisitReportData {
+abstract class ThisMonthSiteVisitReportData
+    with _$ThisMonthSiteVisitReportData {
   const factory ThisMonthSiteVisitReportData({
     @JsonKey(name: "totalUniqueVisits") required int totalUniqueVisits,
     @JsonKey(name: "visitDetails")
@@ -32,7 +34,7 @@ class ThisMonthSiteVisitReportData with _$ThisMonthSiteVisitReportData {
 }
 
 @freezed
-class ThisMonthSiteVisitDetail with _$ThisMonthSiteVisitDetail {
+abstract class ThisMonthSiteVisitDetail with _$ThisMonthSiteVisitDetail {
   const factory ThisMonthSiteVisitDetail({
     @JsonKey(name: "customerId") required String customerId,
     @JsonKey(name: "customerName") required String customerName,

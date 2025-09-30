@@ -70,7 +70,7 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
       // get the orderNumberFormat from map
       final orderNumberFormat = settings?['orderNumberFormat'] ?? '-';
       // get the company id from map
-      final comapnyId = int.tryParse(settings?['companyId'] ?? '1');
+      final companyId = int.tryParse(settings?['companyId'] ?? '1');
       // get the device id
       final deviceId = settings?['deviceId'] ?? '';
       // generate the sales id
@@ -104,7 +104,7 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
         transactionDate: Value(transactionDate),
         deviceId: Value(deviceId),
         syncStatus: const Value(0),
-        companyId: Value(comapnyId ?? 1),
+        companyId: Value(companyId ?? 1),
       );
       final result = await ref
           .read(orderServiceProvider)
@@ -128,7 +128,7 @@ class SalesHeaderController extends Notifier<SalesHeaderState> {
     }
   }
 
-  Future<void> updateDeliveryDate(deliveryDate) async {
+  Future<void> updateDeliveryDate(String deliveryDate) async {
     try {
       state = state.copyWith(errorMsg: null, isLoading: true);
       final salesId = state.salesHeaderData?.salesId ?? '';

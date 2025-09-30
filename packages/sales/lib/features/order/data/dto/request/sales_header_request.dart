@@ -4,7 +4,7 @@ part 'sales_header_request.freezed.dart';
 part 'sales_header_request.g.dart';
 
 @freezed
-class SalesHeaderRequest with _$SalesHeaderRequest {
+abstract class SalesHeaderRequest with _$SalesHeaderRequest {
   factory SalesHeaderRequest({
     int? id,
     required String salesId,

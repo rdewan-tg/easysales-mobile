@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'order_history_state.freezed.dart';
 
 @freezed
-class OrderHistoryState with _$OrderHistoryState {
+abstract class OrderHistoryState with _$OrderHistoryState {
   factory OrderHistoryState({
     @Default(false) bool isLoading,
     @Default(false) bool isOrderSynced,

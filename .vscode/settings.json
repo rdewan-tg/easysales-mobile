@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.32.7",
+  "dart.flutterSdkPath": ".fvm/versions/3.35.5",
   "search.exclude": {
     "**/.fvm": true
   },
@@ -19,7 +19,9 @@
     "Culculate",
     "dimens",
     "sitevisit",
-    "easysales"
+    "easysales",
+    "SGMA",
+    ""
   ],
   "yaml.schemaStore.enable": false
 }

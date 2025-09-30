@@ -171,7 +171,7 @@ class LocalPushNotification {
     );
   }
 
-  // schedulr notification
+  // schedule notification
   void scheduleLocalNotification(
     tz.TZDateTime scheduledDate,
     String title,
@@ -202,10 +202,10 @@ class LocalPushNotification {
         scheduledDate,
         const NotificationDetails(
           android: AndroidNotificationDetails(
-            'easyhr_scheduled_notification_channel_id',
-            'EasyHR Scheduled Notification',
+            'easy_sales_scheduled_notification_channel_id',
+            'Easy Sales Scheduled Notification',
             channelDescription:
-                'This channel is used by EasyHR for scheduled notifications.',
+                'This channel is used by Easy Sales for scheduled notifications.',
           ),
         ),
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
@@ -223,7 +223,7 @@ class LocalPushNotification {
   /// - [hour]: Hour of the day (0-23)
   /// - [minute]: Minute of the hour (0-59)
   ///
-  /// Returns a Future<bool> indicating whether the notification was scheduled
+  /// Returns a `Future<bool>` indicating whether the notification was scheduled
   Future<bool> scheduleWeeklyNotification({
     required int id,
     required String title,
@@ -297,10 +297,10 @@ class LocalPushNotification {
         scheduledDate,
         const NotificationDetails(
           android: AndroidNotificationDetails(
-            'easyhr_periodic_notification_channel_id',
-            'EasyHR Periodic Notification',
+            'easy_sales_periodic_notification_channel_id',
+            'Easy Sales Periodic Notification',
             channelDescription:
-                'This channel is used by EasyHR for periodic notifications.',
+                'This channel is used by Easy Sales for periodic notifications.',
           ),
           iOS: DarwinNotificationDetails(
             presentBadge: true,
@@ -342,10 +342,10 @@ class LocalPushNotification {
     StyleInformation? styleInformation,
   ) {
     return AndroidNotificationDetails(
-      'easyhr_general_notification_channel_id',
-      'EasyHR General Notification',
+      'easy_sales_general_notification_channel_id',
+      'Easy Sales General Notification',
       channelDescription:
-          'This channel is used by EasyHR for general notifications.',
+          'This channel is used by Easy Sales for general notifications.',
       importance: Importance.max,
       priority: Priority.max,
       channelShowBadge: true,
@@ -356,10 +356,10 @@ class LocalPushNotification {
   // Creates and returns an Android notification channel with maximum importance.
   AndroidNotificationChannel _notificationChannelMax() {
     const AndroidNotificationChannel channel = AndroidNotificationChannel(
-      'easyhr_high_importance_channel_id', // id
-      'EasyHR High Importance Notifications', // title
+      'easy_sales_high_importance_channel_id', // id
+      'Easy Sales High Importance Notifications', // title
       description:
-          'This channel is used by EasyHR for important notifications.', // description
+          'This channel is used by Easy Sales for important notifications.', // description
       importance: Importance.max,
     );
 
