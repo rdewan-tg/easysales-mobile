@@ -5,6 +5,8 @@ import 'dart:convert';
 
 import 'package:common/exception/failure.dart';
 import 'package:common/gen/assets.gen.dart';
+import 'package:common/provider/new_version_provider.dart';
+import 'package:common/provider/new_version_status_provider.dart';
 import 'package:core/route/route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:dio/dio.dart';
+import 'package:new_version_plus/new_version_plus.dart';
 
 part 'style/dimens.dart';
 part 'upgrader/upgrader_translation_messages.dart';
@@ -36,6 +39,7 @@ part 'widget/empty_data_widget.dart';
 part 'widget/main_app_drawer.dart';
 part 'widget/main_app_scaffold.dart';
 part 'widget/main_app_scaffold_sliver.dart';
+part 'widget/version_info.dart';
 
 part 'extension/dark_mode.dart';
 part 'extension/text_theme.dart';
