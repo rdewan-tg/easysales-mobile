@@ -2,6 +2,8 @@
 
 part of 'photo_api.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -106,3 +108,5 @@ class _PhotoApi implements PhotoApi {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on

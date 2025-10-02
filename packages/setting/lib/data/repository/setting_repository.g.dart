@@ -6,22 +6,52 @@ part of 'setting_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$settingRepositoryHash() => r'c9752e7f26327c76a5aaec29ee2eb97da9fbdc82';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [settingRepository].
 @ProviderFor(settingRepository)
-final settingRepositoryProvider = Provider<ISettingRepository>.internal(
-  settingRepository,
-  name: r'settingRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$settingRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const settingRepositoryProvider = SettingRepositoryProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef SettingRepositoryRef = ProviderRef<ISettingRepository>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class SettingRepositoryProvider
+    extends
+        $FunctionalProvider<
+          ISettingRepository,
+          ISettingRepository,
+          ISettingRepository
+        >
+    with $Provider<ISettingRepository> {
+  const SettingRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'settingRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$settingRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<ISettingRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  ISettingRepository create(Ref ref) {
+    return settingRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ISettingRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<ISettingRepository>(value),
+    );
+  }
+}
+
+String _$settingRepositoryHash() => r'c9752e7f26327c76a5aaec29ee2eb97da9fbdc82';

@@ -6,11 +6,11 @@ import 'package:sales/features/customer/application/sales_customer_service.dart'
 import 'package:sales/features/customer/presentation/state/sales_customer_state.dart';
 
 final salesCustomerProvider =
-    AutoDisposeNotifierProvider<SalesCustomerController, SalesCustomerState>(
+    NotifierProvider<SalesCustomerController, SalesCustomerState>(
       SalesCustomerController.new,
     );
 
-class SalesCustomerController extends AutoDisposeNotifier<SalesCustomerState> {
+class SalesCustomerController extends Notifier<SalesCustomerState> {
   StreamSubscription<int>? _subscriptionTotalCustomerCount;
   StreamSubscription<List<SalesCustomerEntityData>>? _subscriptionSalesCustomer;
   StreamSubscription<List<SearchSalesCustomerHistoryEntityData>>?

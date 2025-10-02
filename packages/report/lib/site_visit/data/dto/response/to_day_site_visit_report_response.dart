@@ -8,7 +8,8 @@ ToDaySiteVisitReportResponse deserializeToDaySiteVisitReportResponse(
 ) => ToDaySiteVisitReportResponse.fromJson(json);
 
 @freezed
-class ToDaySiteVisitReportResponse with _$ToDaySiteVisitReportResponse {
+abstract class ToDaySiteVisitReportResponse
+    with _$ToDaySiteVisitReportResponse {
   const factory ToDaySiteVisitReportResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "data") required ToDaySiteVisitReportData data,
@@ -19,7 +20,7 @@ class ToDaySiteVisitReportResponse with _$ToDaySiteVisitReportResponse {
 }
 
 @freezed
-class ToDaySiteVisitReportData with _$ToDaySiteVisitReportData {
+abstract class ToDaySiteVisitReportData with _$ToDaySiteVisitReportData {
   const factory ToDaySiteVisitReportData({
     @JsonKey(name: "totalUniqueVisits") required int totalUniqueVisits,
     @JsonKey(name: "visitDetails")
@@ -31,7 +32,7 @@ class ToDaySiteVisitReportData with _$ToDaySiteVisitReportData {
 }
 
 @freezed
-class ToDaySiteVisitDetail with _$ToDaySiteVisitDetail {
+abstract class ToDaySiteVisitDetail with _$ToDaySiteVisitDetail {
   const factory ToDaySiteVisitDetail({
     @JsonKey(name: "customerId") required String customerId,
     @JsonKey(name: "customerName") required String customerName,

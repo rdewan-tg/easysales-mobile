@@ -2,6 +2,8 @@
 
 part of 'customer_address_api.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -106,3 +108,5 @@ class _CustomerAddressApi implements CustomerAddressApi {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on

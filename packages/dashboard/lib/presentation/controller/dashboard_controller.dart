@@ -1,11 +1,11 @@
 part of '../../../dashboard.dart';
 
 final dashboardControllerProvider =
-    AutoDisposeNotifierProvider<DashboardController, DashboardState>(
+    NotifierProvider<DashboardController, DashboardState>(
       DashboardController.new,
     );
 
-final class DashboardController extends AutoDisposeNotifier<DashboardState> {
+final class DashboardController extends Notifier<DashboardState> {
   @override
   DashboardState build() {
     return const DashboardState();

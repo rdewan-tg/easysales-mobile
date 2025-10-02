@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'sales_header_state.freezed.dart';
 
 @freezed
-class SalesHeaderState with _$SalesHeaderState {
+abstract class SalesHeaderState with _$SalesHeaderState {
   factory SalesHeaderState({
     @Default(false) bool isLoading,
     @Default(false) bool isFetchingCurrentOrderNumber,

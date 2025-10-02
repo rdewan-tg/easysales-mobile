@@ -5,7 +5,7 @@ publish_to: 'none'
 homepage:
 
 environment:
-  sdk: ^3.8.1
+  sdk: ^3.9.2
   flutter: ">=1.17.0"
 
 dependencies:
@@ -31,111 +31,113 @@ dependencies:
   setting:
     path: ../setting
   # https://pub.dev/packages/flutter_riverpod
-  flutter_riverpod: ^2.6.1
+  flutter_riverpod: ^3.0.0
   # https://pub.dev/packages/riverpod_annotation
-  riverpod_annotation: ^2.6.1
+  riverpod_annotation: ^3.0.0  
+  # https://pub.dev/packages/freezed_annotation
+  freezed_annotation: ^3.1.0
   # https://pub.dev/packages/dio
-  dio: ^5.7.0
+  dio: ^5.9.0
   # https://pub.dev/packages/dio_http_formatter
-  dio_http_formatter: ^3.2.1
+  dio_http_formatter: ^3.3.1
   # https://pub.dev/packages/retrofit
-  retrofit: ^4.4.1
+  retrofit: ^4.7.2
   # https://pub.dev/packages/go_router
-  go_router: ^14.6.0
+  go_router: ^16.2.1
   # https://pub.dev/packages/logger
-  logger: ^2.4.0
+  logger: ^2.6.1
   # https://pub.dev/packages/json_annotation
   json_annotation: ^4.9.0
   # https://pub.dev/packages/camerawesome
-  camerawesome: ^2.1.0
-  # https://pub.dev/packages/freezed_annotation
-  freezed_annotation: ^2.4.4
+  camerawesome: ^2.5.0
   # https://pub.dev/packages/multiple_result
-  multiple_result: ^5.1.0
+  multiple_result: ^5.2.0
   # https://pub.dev/packages/upgrader
-  upgrader: ^11.3.0
+  upgrader: ^12.0.0
   # https://pub.dev/packages/loader_overlay
-  loader_overlay: ^4.0.3
+  loader_overlay: ^5.0.0
   # https://pub.dev/packages/loading_animation_widget
   loading_animation_widget: ^1.3.0
   # https://pub.dev/packages/google_fonts
-  google_fonts: ^6.2.1
+  google_fonts: ^6.3.1
   # https://pub.dev/packages/gal
-  gal: ^2.3.0
+  gal: ^2.3.2
   # https://pub.dev/packages/open_file
   open_file: ^3.5.10
   # https://pub.dev/packages/image
-  image: ^4.3.0
+  image: ^4.5.4
   # https://pub.dev/packages/intl
   intl: ^0.20.2
   # https://pub.dev/packages/timezone
-  timezone: ^0.10.0
+  timezone: ^0.10.1
   # https://pub.dev/packages/flutter_secure_storage
-  flutter_secure_storage: ^9.2.2
+  flutter_secure_storage: ^9.2.4
   # https://pub.dev/packages/envied
-  envied: ^1.0.0
+  envied: ^1.2.1
   # https://pub.dev/packages/drift
-  drift: ^2.23.0
+  drift: ^2.28.1
   # https://pub.dev/packages/drift_flutter
-  drift_flutter: ^0.1.0
+  drift_flutter: ^0.2.6
   # https://pub.dev/packages/fullscreen_window
   fullscreen_window: ^1.1.0
   # https://pub.dev/packages/animated_reorderable_list/
-  animated_reorderable_list: ^1.1.5
+  animated_reorderable_list: ^1.3.0
   # https://pub.dev/packages/path_provider
   path_provider: ^2.1.5
   # https://pub.dev/packages/path/
-  path: ^1.9.0
+  path: ^1.9.1
   # https://pub.dev/packages/flutter_staggered_grid_view
   flutter_staggered_grid_view: ^0.7.0
   # https://pub.dev/packages/flutter_gen
-  flutter_gen: ^5.9.0
+  flutter_gen: ^5.11.0
   # https://pub.dev/packages/flutter_svg
-  flutter_svg: ^2.0.17
+  flutter_svg: ^2.2.1
   # https://pub.dev/packages/visibility_detector
   visibility_detector: ^0.4.0+2
     # https://pub.dev/packages/flutter_local_notifications
-  flutter_local_notifications: ^19.2.1
+  flutter_local_notifications: ^19.4.2
   # https://pub.dev/packages/logging
   logging: ^1.3.0
   # https://pub.dev/packages/firebase_core
-  firebase_core: ^3.13.1
+  firebase_core: ^4.1.0
   # https://pub.dev/packages/firebase_messaging
-  firebase_messaging: ^15.2.6  
+  firebase_messaging: ^16.0.1  
   # https://pub.dev/packages/device_info_plus
-  device_info_plus: ^11.1.1
+  device_info_plus: ^12.1.0
   # https://pub.dev/packages/google_maps_flutter
-  google_maps_flutter: ^2.12.3
+  google_maps_flutter: ^2.13.1
   # https://pub.dev/packages/geolocator
-  geolocator: ^14.0.0
+  geolocator: ^14.0.2
   # https://pub.dev/packages/geocoding
-  geocoding: ^3.0.0
+  geocoding: ^4.0.0
   # https://pub.dev/packages/permission_handler
-  permission_handler: ^12.0.0+1
+  permission_handler: ^12.0.1
+  # https://pub.dev/packages/new_version_plus
+  new_version_plus: ^0.1.1
 
 dependency_overrides:
-  analyzer_plugin: ^0.13.1
+  analyzer: 8.1.1
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^6.0.0
   # https://pub.dev/packages/retrofit_generator
-  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
+  retrofit_generator: '10.0.5' # for Dart 3.3 use ^9.0.0
   # https://pub.dev/packages/build_runner
-  build_runner: ^2.4.13
+  build_runner: ^2.7.1
   # https://pub.dev/packages/json_serializable
-  json_serializable: ^6.6.0
+  json_serializable: ^6.11.1
   # https://pub.dev/packages/freezed
-  freezed: ^2.5.7
+  freezed: ^3.2.3
   # https://pub.dev/packages/riverpod_generator
-  riverpod_generator: ^2.6.3
+  riverpod_generator: ^3.0.0
   # https://pub.dev/packages/envied_generator
-  envied_generator: ^1.0.0
+  envied_generator: ^1.2.1
   # https://pub.dev/packages/drift_dev
-  drift_dev: ^2.23.0
+  drift_dev: ^2.28.2
   # https://pub.dev/packages/flutter_gen_runner
-  flutter_gen_runner: ^5.9.0
+  flutter_gen_runner: ^5.11.0
   
 
 flutter:

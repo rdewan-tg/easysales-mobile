@@ -67,7 +67,7 @@ class _CustomerAddressListWidgetState
                   // check if site visit is enabled
                   final isSiteVisitEnabled = ref
                       .read(merchandiserCustomerProvider.notifier)
-                      .isSiteVisitEnabled;
+                      .isSiteVisitEnabled();
                   // if site visit is enabled, navigate to site visit screen
                   // else navigate to capture image screen
                   context.push(

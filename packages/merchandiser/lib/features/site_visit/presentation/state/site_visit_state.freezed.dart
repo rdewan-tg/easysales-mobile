@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,576 +9,628 @@ part of 'site_visit_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$SiteVisitState {
-  bool get isLoading => throw _privateConstructorUsedError;
-  bool get isCreated => throw _privateConstructorUsedError;
-  bool get isUpdated => throw _privateConstructorUsedError;
-  LatLng? get currentPosition => throw _privateConstructorUsedError;
-  SiteVisitData? get createSiteVisitResponse =>
-      throw _privateConstructorUsedError;
-  SiteVisitData? get updateSiteVisitResponse =>
-      throw _privateConstructorUsedError;
-  String? get currentAddress => throw _privateConstructorUsedError;
-  String? get timeNow => throw _privateConstructorUsedError;
-  Map<String, String> get settings => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
 
-  /// Create a copy of SiteVisitState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SiteVisitStateCopyWith<SiteVisitState> get copyWith =>
-      throw _privateConstructorUsedError;
+ bool get isLoading; bool get isCreated; bool get isUpdated; LatLng? get currentPosition; SiteVisitData? get createSiteVisitResponse; SiteVisitData? get updateSiteVisitResponse; String? get currentAddress; String? get timeNow; Map<String, String> get settings; String? get error;
+/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SiteVisitStateCopyWith<SiteVisitState> get copyWith => _$SiteVisitStateCopyWithImpl<SiteVisitState>(this as SiteVisitState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SiteVisitState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isCreated, isCreated) || other.isCreated == isCreated)&&(identical(other.isUpdated, isUpdated) || other.isUpdated == isUpdated)&&(identical(other.currentPosition, currentPosition) || other.currentPosition == currentPosition)&&(identical(other.createSiteVisitResponse, createSiteVisitResponse) || other.createSiteVisitResponse == createSiteVisitResponse)&&(identical(other.updateSiteVisitResponse, updateSiteVisitResponse) || other.updateSiteVisitResponse == updateSiteVisitResponse)&&(identical(other.currentAddress, currentAddress) || other.currentAddress == currentAddress)&&(identical(other.timeNow, timeNow) || other.timeNow == timeNow)&&const DeepCollectionEquality().equals(other.settings, settings)&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isLoading,isCreated,isUpdated,currentPosition,createSiteVisitResponse,updateSiteVisitResponse,currentAddress,timeNow,const DeepCollectionEquality().hash(settings),error);
+
+@override
+String toString() {
+  return 'SiteVisitState(isLoading: $isLoading, isCreated: $isCreated, isUpdated: $isUpdated, currentPosition: $currentPosition, createSiteVisitResponse: $createSiteVisitResponse, updateSiteVisitResponse: $updateSiteVisitResponse, currentAddress: $currentAddress, timeNow: $timeNow, settings: $settings, error: $error)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SiteVisitStateCopyWith<$Res> {
-  factory $SiteVisitStateCopyWith(
-    SiteVisitState value,
-    $Res Function(SiteVisitState) then,
-  ) = _$SiteVisitStateCopyWithImpl<$Res, SiteVisitState>;
-  @useResult
-  $Res call({
-    bool isLoading,
-    bool isCreated,
-    bool isUpdated,
-    LatLng? currentPosition,
-    SiteVisitData? createSiteVisitResponse,
-    SiteVisitData? updateSiteVisitResponse,
-    String? currentAddress,
-    String? timeNow,
-    Map<String, String> settings,
-    String? error,
-  });
+abstract mixin class $SiteVisitStateCopyWith<$Res>  {
+  factory $SiteVisitStateCopyWith(SiteVisitState value, $Res Function(SiteVisitState) _then) = _$SiteVisitStateCopyWithImpl;
+@useResult
+$Res call({
+ bool isLoading, bool isCreated, bool isUpdated, LatLng? currentPosition, SiteVisitData? createSiteVisitResponse, SiteVisitData? updateSiteVisitResponse, String? currentAddress, String? timeNow, Map<String, String> settings, String? error
+});
 
-  $LatLngCopyWith<$Res>? get currentPosition;
-  $SiteVisitDataCopyWith<$Res>? get createSiteVisitResponse;
-  $SiteVisitDataCopyWith<$Res>? get updateSiteVisitResponse;
+
+$LatLngCopyWith<$Res>? get currentPosition;$SiteVisitDataCopyWith<$Res>? get createSiteVisitResponse;$SiteVisitDataCopyWith<$Res>? get updateSiteVisitResponse;
+
 }
-
 /// @nodoc
-class _$SiteVisitStateCopyWithImpl<$Res, $Val extends SiteVisitState>
+class _$SiteVisitStateCopyWithImpl<$Res>
     implements $SiteVisitStateCopyWith<$Res> {
-  _$SiteVisitStateCopyWithImpl(this._value, this._then);
+  _$SiteVisitStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SiteVisitState _self;
+  final $Res Function(SiteVisitState) _then;
 
-  /// Create a copy of SiteVisitState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isLoading = null,
-    Object? isCreated = null,
-    Object? isUpdated = null,
-    Object? currentPosition = freezed,
-    Object? createSiteVisitResponse = freezed,
-    Object? updateSiteVisitResponse = freezed,
-    Object? currentAddress = freezed,
-    Object? timeNow = freezed,
-    Object? settings = null,
-    Object? error = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            isLoading: null == isLoading
-                ? _value.isLoading
-                : isLoading // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            isCreated: null == isCreated
-                ? _value.isCreated
-                : isCreated // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            isUpdated: null == isUpdated
-                ? _value.isUpdated
-                : isUpdated // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            currentPosition: freezed == currentPosition
-                ? _value.currentPosition
-                : currentPosition // ignore: cast_nullable_to_non_nullable
-                      as LatLng?,
-            createSiteVisitResponse: freezed == createSiteVisitResponse
-                ? _value.createSiteVisitResponse
-                : createSiteVisitResponse // ignore: cast_nullable_to_non_nullable
-                      as SiteVisitData?,
-            updateSiteVisitResponse: freezed == updateSiteVisitResponse
-                ? _value.updateSiteVisitResponse
-                : updateSiteVisitResponse // ignore: cast_nullable_to_non_nullable
-                      as SiteVisitData?,
-            currentAddress: freezed == currentAddress
-                ? _value.currentAddress
-                : currentAddress // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            timeNow: freezed == timeNow
-                ? _value.timeNow
-                : timeNow // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            settings: null == settings
-                ? _value.settings
-                : settings // ignore: cast_nullable_to_non_nullable
-                      as Map<String, String>,
-            error: freezed == error
-                ? _value.error
-                : error // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
-
-  /// Create a copy of SiteVisitState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $LatLngCopyWith<$Res>? get currentPosition {
-    if (_value.currentPosition == null) {
-      return null;
-    }
-
-    return $LatLngCopyWith<$Res>(_value.currentPosition!, (value) {
-      return _then(_value.copyWith(currentPosition: value) as $Val);
-    });
-  }
-
-  /// Create a copy of SiteVisitState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SiteVisitDataCopyWith<$Res>? get createSiteVisitResponse {
-    if (_value.createSiteVisitResponse == null) {
-      return null;
-    }
-
-    return $SiteVisitDataCopyWith<$Res>(_value.createSiteVisitResponse!, (
-      value,
-    ) {
-      return _then(_value.copyWith(createSiteVisitResponse: value) as $Val);
-    });
-  }
-
-  /// Create a copy of SiteVisitState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SiteVisitDataCopyWith<$Res>? get updateSiteVisitResponse {
-    if (_value.updateSiteVisitResponse == null) {
-      return null;
-    }
-
-    return $SiteVisitDataCopyWith<$Res>(_value.updateSiteVisitResponse!, (
-      value,
-    ) {
-      return _then(_value.copyWith(updateSiteVisitResponse: value) as $Val);
-    });
-  }
+/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isCreated = null,Object? isUpdated = null,Object? currentPosition = freezed,Object? createSiteVisitResponse = freezed,Object? updateSiteVisitResponse = freezed,Object? currentAddress = freezed,Object? timeNow = freezed,Object? settings = null,Object? error = freezed,}) {
+  return _then(_self.copyWith(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,isCreated: null == isCreated ? _self.isCreated : isCreated // ignore: cast_nullable_to_non_nullable
+as bool,isUpdated: null == isUpdated ? _self.isUpdated : isUpdated // ignore: cast_nullable_to_non_nullable
+as bool,currentPosition: freezed == currentPosition ? _self.currentPosition : currentPosition // ignore: cast_nullable_to_non_nullable
+as LatLng?,createSiteVisitResponse: freezed == createSiteVisitResponse ? _self.createSiteVisitResponse : createSiteVisitResponse // ignore: cast_nullable_to_non_nullable
+as SiteVisitData?,updateSiteVisitResponse: freezed == updateSiteVisitResponse ? _self.updateSiteVisitResponse : updateSiteVisitResponse // ignore: cast_nullable_to_non_nullable
+as SiteVisitData?,currentAddress: freezed == currentAddress ? _self.currentAddress : currentAddress // ignore: cast_nullable_to_non_nullable
+as String?,timeNow: freezed == timeNow ? _self.timeNow : timeNow // ignore: cast_nullable_to_non_nullable
+as String?,settings: null == settings ? _self.settings : settings // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
+/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LatLngCopyWith<$Res>? get currentPosition {
+    if (_self.currentPosition == null) {
+    return null;
+  }
 
-/// @nodoc
-abstract class _$$SiteVisitStateImplCopyWith<$Res>
-    implements $SiteVisitStateCopyWith<$Res> {
-  factory _$$SiteVisitStateImplCopyWith(
-    _$SiteVisitStateImpl value,
-    $Res Function(_$SiteVisitStateImpl) then,
-  ) = __$$SiteVisitStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    bool isLoading,
-    bool isCreated,
-    bool isUpdated,
-    LatLng? currentPosition,
-    SiteVisitData? createSiteVisitResponse,
-    SiteVisitData? updateSiteVisitResponse,
-    String? currentAddress,
-    String? timeNow,
-    Map<String, String> settings,
-    String? error,
+  return $LatLngCopyWith<$Res>(_self.currentPosition!, (value) {
+    return _then(_self.copyWith(currentPosition: value));
   });
+}/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SiteVisitDataCopyWith<$Res>? get createSiteVisitResponse {
+    if (_self.createSiteVisitResponse == null) {
+    return null;
+  }
 
-  @override
-  $LatLngCopyWith<$Res>? get currentPosition;
-  @override
-  $SiteVisitDataCopyWith<$Res>? get createSiteVisitResponse;
-  @override
-  $SiteVisitDataCopyWith<$Res>? get updateSiteVisitResponse;
+  return $SiteVisitDataCopyWith<$Res>(_self.createSiteVisitResponse!, (value) {
+    return _then(_self.copyWith(createSiteVisitResponse: value));
+  });
+}/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SiteVisitDataCopyWith<$Res>? get updateSiteVisitResponse {
+    if (_self.updateSiteVisitResponse == null) {
+    return null;
+  }
+
+  return $SiteVisitDataCopyWith<$Res>(_self.updateSiteVisitResponse!, (value) {
+    return _then(_self.copyWith(updateSiteVisitResponse: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [SiteVisitState].
+extension SiteVisitStatePatterns on SiteVisitState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SiteVisitState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SiteVisitState() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SiteVisitState value)  $default,){
+final _that = this;
+switch (_that) {
+case _SiteVisitState():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SiteVisitState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SiteVisitState() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isCreated,  bool isUpdated,  LatLng? currentPosition,  SiteVisitData? createSiteVisitResponse,  SiteVisitData? updateSiteVisitResponse,  String? currentAddress,  String? timeNow,  Map<String, String> settings,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SiteVisitState() when $default != null:
+return $default(_that.isLoading,_that.isCreated,_that.isUpdated,_that.currentPosition,_that.createSiteVisitResponse,_that.updateSiteVisitResponse,_that.currentAddress,_that.timeNow,_that.settings,_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isCreated,  bool isUpdated,  LatLng? currentPosition,  SiteVisitData? createSiteVisitResponse,  SiteVisitData? updateSiteVisitResponse,  String? currentAddress,  String? timeNow,  Map<String, String> settings,  String? error)  $default,) {final _that = this;
+switch (_that) {
+case _SiteVisitState():
+return $default(_that.isLoading,_that.isCreated,_that.isUpdated,_that.currentPosition,_that.createSiteVisitResponse,_that.updateSiteVisitResponse,_that.currentAddress,_that.timeNow,_that.settings,_that.error);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isCreated,  bool isUpdated,  LatLng? currentPosition,  SiteVisitData? createSiteVisitResponse,  SiteVisitData? updateSiteVisitResponse,  String? currentAddress,  String? timeNow,  Map<String, String> settings,  String? error)?  $default,) {final _that = this;
+switch (_that) {
+case _SiteVisitState() when $default != null:
+return $default(_that.isLoading,_that.isCreated,_that.isUpdated,_that.currentPosition,_that.createSiteVisitResponse,_that.updateSiteVisitResponse,_that.currentAddress,_that.timeNow,_that.settings,_that.error);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-class __$$SiteVisitStateImplCopyWithImpl<$Res>
-    extends _$SiteVisitStateCopyWithImpl<$Res, _$SiteVisitStateImpl>
-    implements _$$SiteVisitStateImplCopyWith<$Res> {
-  __$$SiteVisitStateImplCopyWithImpl(
-    _$SiteVisitStateImpl _value,
-    $Res Function(_$SiteVisitStateImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of SiteVisitState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isLoading = null,
-    Object? isCreated = null,
-    Object? isUpdated = null,
-    Object? currentPosition = freezed,
-    Object? createSiteVisitResponse = freezed,
-    Object? updateSiteVisitResponse = freezed,
-    Object? currentAddress = freezed,
-    Object? timeNow = freezed,
-    Object? settings = null,
-    Object? error = freezed,
-  }) {
-    return _then(
-      _$SiteVisitStateImpl(
-        isLoading: null == isLoading
-            ? _value.isLoading
-            : isLoading // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        isCreated: null == isCreated
-            ? _value.isCreated
-            : isCreated // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        isUpdated: null == isUpdated
-            ? _value.isUpdated
-            : isUpdated // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        currentPosition: freezed == currentPosition
-            ? _value.currentPosition
-            : currentPosition // ignore: cast_nullable_to_non_nullable
-                  as LatLng?,
-        createSiteVisitResponse: freezed == createSiteVisitResponse
-            ? _value.createSiteVisitResponse
-            : createSiteVisitResponse // ignore: cast_nullable_to_non_nullable
-                  as SiteVisitData?,
-        updateSiteVisitResponse: freezed == updateSiteVisitResponse
-            ? _value.updateSiteVisitResponse
-            : updateSiteVisitResponse // ignore: cast_nullable_to_non_nullable
-                  as SiteVisitData?,
-        currentAddress: freezed == currentAddress
-            ? _value.currentAddress
-            : currentAddress // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        timeNow: freezed == timeNow
-            ? _value.timeNow
-            : timeNow // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        settings: null == settings
-            ? _value._settings
-            : settings // ignore: cast_nullable_to_non_nullable
-                  as Map<String, String>,
-        error: freezed == error
-            ? _value.error
-            : error // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
+
+class _SiteVisitState implements SiteVisitState {
+  const _SiteVisitState({this.isLoading = false, this.isCreated = false, this.isUpdated = false, this.currentPosition, this.createSiteVisitResponse, this.updateSiteVisitResponse, this.currentAddress, this.timeNow, final  Map<String, String> settings = const {}, this.error}): _settings = settings;
+  
+
+@override@JsonKey() final  bool isLoading;
+@override@JsonKey() final  bool isCreated;
+@override@JsonKey() final  bool isUpdated;
+@override final  LatLng? currentPosition;
+@override final  SiteVisitData? createSiteVisitResponse;
+@override final  SiteVisitData? updateSiteVisitResponse;
+@override final  String? currentAddress;
+@override final  String? timeNow;
+ final  Map<String, String> _settings;
+@override@JsonKey() Map<String, String> get settings {
+  if (_settings is EqualUnmodifiableMapView) return _settings;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_settings);
+}
+
+@override final  String? error;
+
+/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SiteVisitStateCopyWith<_SiteVisitState> get copyWith => __$SiteVisitStateCopyWithImpl<_SiteVisitState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SiteVisitState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isCreated, isCreated) || other.isCreated == isCreated)&&(identical(other.isUpdated, isUpdated) || other.isUpdated == isUpdated)&&(identical(other.currentPosition, currentPosition) || other.currentPosition == currentPosition)&&(identical(other.createSiteVisitResponse, createSiteVisitResponse) || other.createSiteVisitResponse == createSiteVisitResponse)&&(identical(other.updateSiteVisitResponse, updateSiteVisitResponse) || other.updateSiteVisitResponse == updateSiteVisitResponse)&&(identical(other.currentAddress, currentAddress) || other.currentAddress == currentAddress)&&(identical(other.timeNow, timeNow) || other.timeNow == timeNow)&&const DeepCollectionEquality().equals(other._settings, _settings)&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isLoading,isCreated,isUpdated,currentPosition,createSiteVisitResponse,updateSiteVisitResponse,currentAddress,timeNow,const DeepCollectionEquality().hash(_settings),error);
+
+@override
+String toString() {
+  return 'SiteVisitState(isLoading: $isLoading, isCreated: $isCreated, isUpdated: $isUpdated, currentPosition: $currentPosition, createSiteVisitResponse: $createSiteVisitResponse, updateSiteVisitResponse: $updateSiteVisitResponse, currentAddress: $currentAddress, timeNow: $timeNow, settings: $settings, error: $error)';
+}
+
+
 }
 
 /// @nodoc
+abstract mixin class _$SiteVisitStateCopyWith<$Res> implements $SiteVisitStateCopyWith<$Res> {
+  factory _$SiteVisitStateCopyWith(_SiteVisitState value, $Res Function(_SiteVisitState) _then) = __$SiteVisitStateCopyWithImpl;
+@override @useResult
+$Res call({
+ bool isLoading, bool isCreated, bool isUpdated, LatLng? currentPosition, SiteVisitData? createSiteVisitResponse, SiteVisitData? updateSiteVisitResponse, String? currentAddress, String? timeNow, Map<String, String> settings, String? error
+});
 
-class _$SiteVisitStateImpl implements _SiteVisitState {
-  _$SiteVisitStateImpl({
-    this.isLoading = false,
-    this.isCreated = false,
-    this.isUpdated = false,
-    this.currentPosition,
-    this.createSiteVisitResponse,
-    this.updateSiteVisitResponse,
-    this.currentAddress,
-    this.timeNow,
-    final Map<String, String> settings = const {},
-    this.error,
-  }) : _settings = settings;
 
-  @override
-  @JsonKey()
-  final bool isLoading;
-  @override
-  @JsonKey()
-  final bool isCreated;
-  @override
-  @JsonKey()
-  final bool isUpdated;
-  @override
-  final LatLng? currentPosition;
-  @override
-  final SiteVisitData? createSiteVisitResponse;
-  @override
-  final SiteVisitData? updateSiteVisitResponse;
-  @override
-  final String? currentAddress;
-  @override
-  final String? timeNow;
-  final Map<String, String> _settings;
-  @override
-  @JsonKey()
-  Map<String, String> get settings {
-    if (_settings is EqualUnmodifiableMapView) return _settings;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_settings);
-  }
+@override $LatLngCopyWith<$Res>? get currentPosition;@override $SiteVisitDataCopyWith<$Res>? get createSiteVisitResponse;@override $SiteVisitDataCopyWith<$Res>? get updateSiteVisitResponse;
 
-  @override
-  final String? error;
+}
+/// @nodoc
+class __$SiteVisitStateCopyWithImpl<$Res>
+    implements _$SiteVisitStateCopyWith<$Res> {
+  __$SiteVisitStateCopyWithImpl(this._self, this._then);
 
-  @override
-  String toString() {
-    return 'SiteVisitState(isLoading: $isLoading, isCreated: $isCreated, isUpdated: $isUpdated, currentPosition: $currentPosition, createSiteVisitResponse: $createSiteVisitResponse, updateSiteVisitResponse: $updateSiteVisitResponse, currentAddress: $currentAddress, timeNow: $timeNow, settings: $settings, error: $error)';
-  }
+  final _SiteVisitState _self;
+  final $Res Function(_SiteVisitState) _then;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SiteVisitStateImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.isCreated, isCreated) ||
-                other.isCreated == isCreated) &&
-            (identical(other.isUpdated, isUpdated) ||
-                other.isUpdated == isUpdated) &&
-            (identical(other.currentPosition, currentPosition) ||
-                other.currentPosition == currentPosition) &&
-            (identical(
-                  other.createSiteVisitResponse,
-                  createSiteVisitResponse,
-                ) ||
-                other.createSiteVisitResponse == createSiteVisitResponse) &&
-            (identical(
-                  other.updateSiteVisitResponse,
-                  updateSiteVisitResponse,
-                ) ||
-                other.updateSiteVisitResponse == updateSiteVisitResponse) &&
-            (identical(other.currentAddress, currentAddress) ||
-                other.currentAddress == currentAddress) &&
-            (identical(other.timeNow, timeNow) || other.timeNow == timeNow) &&
-            const DeepCollectionEquality().equals(other._settings, _settings) &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    isLoading,
-    isCreated,
-    isUpdated,
-    currentPosition,
-    createSiteVisitResponse,
-    updateSiteVisitResponse,
-    currentAddress,
-    timeNow,
-    const DeepCollectionEquality().hash(_settings),
-    error,
-  );
-
-  /// Create a copy of SiteVisitState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SiteVisitStateImplCopyWith<_$SiteVisitStateImpl> get copyWith =>
-      __$$SiteVisitStateImplCopyWithImpl<_$SiteVisitStateImpl>(
-        this,
-        _$identity,
-      );
+/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isCreated = null,Object? isUpdated = null,Object? currentPosition = freezed,Object? createSiteVisitResponse = freezed,Object? updateSiteVisitResponse = freezed,Object? currentAddress = freezed,Object? timeNow = freezed,Object? settings = null,Object? error = freezed,}) {
+  return _then(_SiteVisitState(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,isCreated: null == isCreated ? _self.isCreated : isCreated // ignore: cast_nullable_to_non_nullable
+as bool,isUpdated: null == isUpdated ? _self.isUpdated : isUpdated // ignore: cast_nullable_to_non_nullable
+as bool,currentPosition: freezed == currentPosition ? _self.currentPosition : currentPosition // ignore: cast_nullable_to_non_nullable
+as LatLng?,createSiteVisitResponse: freezed == createSiteVisitResponse ? _self.createSiteVisitResponse : createSiteVisitResponse // ignore: cast_nullable_to_non_nullable
+as SiteVisitData?,updateSiteVisitResponse: freezed == updateSiteVisitResponse ? _self.updateSiteVisitResponse : updateSiteVisitResponse // ignore: cast_nullable_to_non_nullable
+as SiteVisitData?,currentAddress: freezed == currentAddress ? _self.currentAddress : currentAddress // ignore: cast_nullable_to_non_nullable
+as String?,timeNow: freezed == timeNow ? _self.timeNow : timeNow // ignore: cast_nullable_to_non_nullable
+as String?,settings: null == settings ? _self._settings : settings // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-abstract class _SiteVisitState implements SiteVisitState {
-  factory _SiteVisitState({
-    final bool isLoading,
-    final bool isCreated,
-    final bool isUpdated,
-    final LatLng? currentPosition,
-    final SiteVisitData? createSiteVisitResponse,
-    final SiteVisitData? updateSiteVisitResponse,
-    final String? currentAddress,
-    final String? timeNow,
-    final Map<String, String> settings,
-    final String? error,
-  }) = _$SiteVisitStateImpl;
+/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LatLngCopyWith<$Res>? get currentPosition {
+    if (_self.currentPosition == null) {
+    return null;
+  }
 
-  @override
-  bool get isLoading;
-  @override
-  bool get isCreated;
-  @override
-  bool get isUpdated;
-  @override
-  LatLng? get currentPosition;
-  @override
-  SiteVisitData? get createSiteVisitResponse;
-  @override
-  SiteVisitData? get updateSiteVisitResponse;
-  @override
-  String? get currentAddress;
-  @override
-  String? get timeNow;
-  @override
-  Map<String, String> get settings;
-  @override
-  String? get error;
+  return $LatLngCopyWith<$Res>(_self.currentPosition!, (value) {
+    return _then(_self.copyWith(currentPosition: value));
+  });
+}/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SiteVisitDataCopyWith<$Res>? get createSiteVisitResponse {
+    if (_self.createSiteVisitResponse == null) {
+    return null;
+  }
 
-  /// Create a copy of SiteVisitState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SiteVisitStateImplCopyWith<_$SiteVisitStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  return $SiteVisitDataCopyWith<$Res>(_self.createSiteVisitResponse!, (value) {
+    return _then(_self.copyWith(createSiteVisitResponse: value));
+  });
+}/// Create a copy of SiteVisitState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SiteVisitDataCopyWith<$Res>? get updateSiteVisitResponse {
+    if (_self.updateSiteVisitResponse == null) {
+    return null;
+  }
+
+  return $SiteVisitDataCopyWith<$Res>(_self.updateSiteVisitResponse!, (value) {
+    return _then(_self.copyWith(updateSiteVisitResponse: value));
+  });
+}
 }
 
 /// @nodoc
 mixin _$LatLng {
-  double get latitude => throw _privateConstructorUsedError;
-  double get longitude => throw _privateConstructorUsedError;
 
-  /// Create a copy of LatLng
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $LatLngCopyWith<LatLng> get copyWith => throw _privateConstructorUsedError;
+ double get latitude; double get longitude;
+/// Create a copy of LatLng
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LatLngCopyWith<LatLng> get copyWith => _$LatLngCopyWithImpl<LatLng>(this as LatLng, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LatLng&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,latitude,longitude);
+
+@override
+String toString() {
+  return 'LatLng(latitude: $latitude, longitude: $longitude)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $LatLngCopyWith<$Res> {
-  factory $LatLngCopyWith(LatLng value, $Res Function(LatLng) then) =
-      _$LatLngCopyWithImpl<$Res, LatLng>;
-  @useResult
-  $Res call({double latitude, double longitude});
-}
+abstract mixin class $LatLngCopyWith<$Res>  {
+  factory $LatLngCopyWith(LatLng value, $Res Function(LatLng) _then) = _$LatLngCopyWithImpl;
+@useResult
+$Res call({
+ double latitude, double longitude
+});
 
+
+
+
+}
 /// @nodoc
-class _$LatLngCopyWithImpl<$Res, $Val extends LatLng>
+class _$LatLngCopyWithImpl<$Res>
     implements $LatLngCopyWith<$Res> {
-  _$LatLngCopyWithImpl(this._value, this._then);
+  _$LatLngCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final LatLng _self;
+  final $Res Function(LatLng) _then;
 
-  /// Create a copy of LatLng
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? latitude = null, Object? longitude = null}) {
-    return _then(
-      _value.copyWith(
-            latitude: null == latitude
-                ? _value.latitude
-                : latitude // ignore: cast_nullable_to_non_nullable
-                      as double,
-            longitude: null == longitude
-                ? _value.longitude
-                : longitude // ignore: cast_nullable_to_non_nullable
-                      as double,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of LatLng
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? latitude = null,Object? longitude = null,}) {
+  return _then(_self.copyWith(
+latitude: null == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
+as double,longitude: null == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [LatLng].
+extension LatLngPatterns on LatLng {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LatLng value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _LatLng() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LatLng value)  $default,){
+final _that = this;
+switch (_that) {
+case _LatLng():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LatLng value)?  $default,){
+final _that = this;
+switch (_that) {
+case _LatLng() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double latitude,  double longitude)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _LatLng() when $default != null:
+return $default(_that.latitude,_that.longitude);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double latitude,  double longitude)  $default,) {final _that = this;
+switch (_that) {
+case _LatLng():
+return $default(_that.latitude,_that.longitude);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double latitude,  double longitude)?  $default,) {final _that = this;
+switch (_that) {
+case _LatLng() when $default != null:
+return $default(_that.latitude,_that.longitude);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$LatLngImplCopyWith<$Res> implements $LatLngCopyWith<$Res> {
-  factory _$$LatLngImplCopyWith(
-    _$LatLngImpl value,
-    $Res Function(_$LatLngImpl) then,
-  ) = __$$LatLngImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({double latitude, double longitude});
+
+
+class _LatLng implements LatLng {
+  const _LatLng({required this.latitude, required this.longitude});
+  
+
+@override final  double latitude;
+@override final  double longitude;
+
+/// Create a copy of LatLng
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LatLngCopyWith<_LatLng> get copyWith => __$LatLngCopyWithImpl<_LatLng>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LatLng&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,latitude,longitude);
+
+@override
+String toString() {
+  return 'LatLng(latitude: $latitude, longitude: $longitude)';
+}
+
+
 }
 
 /// @nodoc
-class __$$LatLngImplCopyWithImpl<$Res>
-    extends _$LatLngCopyWithImpl<$Res, _$LatLngImpl>
-    implements _$$LatLngImplCopyWith<$Res> {
-  __$$LatLngImplCopyWithImpl(
-    _$LatLngImpl _value,
-    $Res Function(_$LatLngImpl) _then,
-  ) : super(_value, _then);
+abstract mixin class _$LatLngCopyWith<$Res> implements $LatLngCopyWith<$Res> {
+  factory _$LatLngCopyWith(_LatLng value, $Res Function(_LatLng) _then) = __$LatLngCopyWithImpl;
+@override @useResult
+$Res call({
+ double latitude, double longitude
+});
 
-  /// Create a copy of LatLng
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? latitude = null, Object? longitude = null}) {
-    return _then(
-      _$LatLngImpl(
-        latitude: null == latitude
-            ? _value.latitude
-            : latitude // ignore: cast_nullable_to_non_nullable
-                  as double,
-        longitude: null == longitude
-            ? _value.longitude
-            : longitude // ignore: cast_nullable_to_non_nullable
-                  as double,
-      ),
-    );
-  }
+
+
+
 }
-
 /// @nodoc
+class __$LatLngCopyWithImpl<$Res>
+    implements _$LatLngCopyWith<$Res> {
+  __$LatLngCopyWithImpl(this._self, this._then);
 
-class _$LatLngImpl implements _LatLng {
-  const _$LatLngImpl({required this.latitude, required this.longitude});
+  final _LatLng _self;
+  final $Res Function(_LatLng) _then;
 
-  @override
-  final double latitude;
-  @override
-  final double longitude;
-
-  @override
-  String toString() {
-    return 'LatLng(latitude: $latitude, longitude: $longitude)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LatLngImpl &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, latitude, longitude);
-
-  /// Create a copy of LatLng
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LatLngImplCopyWith<_$LatLngImpl> get copyWith =>
-      __$$LatLngImplCopyWithImpl<_$LatLngImpl>(this, _$identity);
+/// Create a copy of LatLng
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? latitude = null,Object? longitude = null,}) {
+  return _then(_LatLng(
+latitude: null == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
+as double,longitude: null == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
 }
 
-abstract class _LatLng implements LatLng {
-  const factory _LatLng({
-    required final double latitude,
-    required final double longitude,
-  }) = _$LatLngImpl;
 
-  @override
-  double get latitude;
-  @override
-  double get longitude;
-
-  /// Create a copy of LatLng
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LatLngImplCopyWith<_$LatLngImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

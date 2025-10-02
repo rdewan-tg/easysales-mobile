@@ -8,11 +8,11 @@ import 'package:sales/features/order_history/presentation/state/order_history_st
 import 'package:drift/drift.dart';
 
 final orderHistoryControllerProvider =
-    AutoDisposeNotifierProvider<OrderHistoryController, OrderHistoryState>(
+    NotifierProvider<OrderHistoryController, OrderHistoryState>(
       OrderHistoryController.new,
     );
 
-class OrderHistoryController extends AutoDisposeNotifier<OrderHistoryState> {
+class OrderHistoryController extends Notifier<OrderHistoryState> {
   StreamSubscription<List<SalesHeaderEntityData>>? _subscriptionSalesHeaders;
   StreamSubscription<List<SalesLineEntityData>>? _subscriptionLines;
   StreamSubscription<double>? _subscriptionSumOnLineAmount;

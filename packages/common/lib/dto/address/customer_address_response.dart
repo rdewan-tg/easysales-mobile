@@ -8,7 +8,7 @@ CustomerAddressResponse deserializeCustomerAddressResponse(
 ) => CustomerAddressResponse.fromJson(json);
 
 @freezed
-class CustomerAddressResponse with _$CustomerAddressResponse {
+abstract class CustomerAddressResponse with _$CustomerAddressResponse {
   const factory CustomerAddressResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "total") required int total,
@@ -22,7 +22,7 @@ class CustomerAddressResponse with _$CustomerAddressResponse {
 }
 
 @freezed
-class CustomerAddressData with _$CustomerAddressData {
+abstract class CustomerAddressData with _$CustomerAddressData {
   const factory CustomerAddressData({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "customerId") required String customerId,

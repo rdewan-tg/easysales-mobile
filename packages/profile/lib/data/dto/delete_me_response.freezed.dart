@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,183 +9,272 @@ part of 'delete_me_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-DeleteMeResponse _$DeleteMeResponseFromJson(Map<String, dynamic> json) {
-  return _DeleteMeResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$DeleteMeResponse {
-  String get status => throw _privateConstructorUsedError;
-  dynamic get data => throw _privateConstructorUsedError;
+
+ String get status; dynamic get data;
+/// Create a copy of DeleteMeResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DeleteMeResponseCopyWith<DeleteMeResponse> get copyWith => _$DeleteMeResponseCopyWithImpl<DeleteMeResponse>(this as DeleteMeResponse, _$identity);
 
   /// Serializes this DeleteMeResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of DeleteMeResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DeleteMeResponseCopyWith<DeleteMeResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DeleteMeResponse&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.data, data));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(data));
+
+@override
+String toString() {
+  return 'DeleteMeResponse(status: $status, data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $DeleteMeResponseCopyWith<$Res> {
-  factory $DeleteMeResponseCopyWith(
-    DeleteMeResponse value,
-    $Res Function(DeleteMeResponse) then,
-  ) = _$DeleteMeResponseCopyWithImpl<$Res, DeleteMeResponse>;
-  @useResult
-  $Res call({String status, dynamic data});
-}
+abstract mixin class $DeleteMeResponseCopyWith<$Res>  {
+  factory $DeleteMeResponseCopyWith(DeleteMeResponse value, $Res Function(DeleteMeResponse) _then) = _$DeleteMeResponseCopyWithImpl;
+@useResult
+$Res call({
+ String status, dynamic data
+});
 
+
+
+
+}
 /// @nodoc
-class _$DeleteMeResponseCopyWithImpl<$Res, $Val extends DeleteMeResponse>
+class _$DeleteMeResponseCopyWithImpl<$Res>
     implements $DeleteMeResponseCopyWith<$Res> {
-  _$DeleteMeResponseCopyWithImpl(this._value, this._then);
+  _$DeleteMeResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final DeleteMeResponse _self;
+  final $Res Function(DeleteMeResponse) _then;
 
-  /// Create a copy of DeleteMeResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? status = null, Object? data = freezed}) {
-    return _then(
-      _value.copyWith(
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            data: freezed == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                      as dynamic,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of DeleteMeResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,}) {
+  return _then(_self.copyWith(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as String,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as dynamic,
+  ));
 }
 
-/// @nodoc
-abstract class _$$DeleteMeResponseImplCopyWith<$Res>
-    implements $DeleteMeResponseCopyWith<$Res> {
-  factory _$$DeleteMeResponseImplCopyWith(
-    _$DeleteMeResponseImpl value,
-    $Res Function(_$DeleteMeResponseImpl) then,
-  ) = __$$DeleteMeResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String status, dynamic data});
 }
 
-/// @nodoc
-class __$$DeleteMeResponseImplCopyWithImpl<$Res>
-    extends _$DeleteMeResponseCopyWithImpl<$Res, _$DeleteMeResponseImpl>
-    implements _$$DeleteMeResponseImplCopyWith<$Res> {
-  __$$DeleteMeResponseImplCopyWithImpl(
-    _$DeleteMeResponseImpl _value,
-    $Res Function(_$DeleteMeResponseImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of DeleteMeResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? status = null, Object? data = freezed}) {
-    return _then(
-      _$DeleteMeResponseImpl(
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String,
-        data: freezed == data
-            ? _value.data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as dynamic,
-      ),
-    );
-  }
+/// Adds pattern-matching-related methods to [DeleteMeResponse].
+extension DeleteMeResponsePatterns on DeleteMeResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DeleteMeResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _DeleteMeResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DeleteMeResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _DeleteMeResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DeleteMeResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _DeleteMeResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String status,  dynamic data)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _DeleteMeResponse() when $default != null:
+return $default(_that.status,_that.data);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String status,  dynamic data)  $default,) {final _that = this;
+switch (_that) {
+case _DeleteMeResponse():
+return $default(_that.status,_that.data);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String status,  dynamic data)?  $default,) {final _that = this;
+switch (_that) {
+case _DeleteMeResponse() when $default != null:
+return $default(_that.status,_that.data);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$DeleteMeResponseImpl implements _DeleteMeResponse {
-  const _$DeleteMeResponseImpl({required this.status, required this.data});
 
-  factory _$DeleteMeResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DeleteMeResponseImplFromJson(json);
+class _DeleteMeResponse implements DeleteMeResponse {
+  const _DeleteMeResponse({required this.status, required this.data});
+  factory _DeleteMeResponse.fromJson(Map<String, dynamic> json) => _$DeleteMeResponseFromJson(json);
 
-  @override
-  final String status;
-  @override
-  final dynamic data;
+@override final  String status;
+@override final  dynamic data;
 
-  @override
-  String toString() {
-    return 'DeleteMeResponse(status: $status, data: $data)';
-  }
+/// Create a copy of DeleteMeResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DeleteMeResponseCopyWith<_DeleteMeResponse> get copyWith => __$DeleteMeResponseCopyWithImpl<_DeleteMeResponse>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteMeResponseImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    status,
-    const DeepCollectionEquality().hash(data),
-  );
-
-  /// Create a copy of DeleteMeResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeleteMeResponseImplCopyWith<_$DeleteMeResponseImpl> get copyWith =>
-      __$$DeleteMeResponseImplCopyWithImpl<_$DeleteMeResponseImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeleteMeResponseImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$DeleteMeResponseToJson(this, );
 }
 
-abstract class _DeleteMeResponse implements DeleteMeResponse {
-  const factory _DeleteMeResponse({
-    required final String status,
-    required final dynamic data,
-  }) = _$DeleteMeResponseImpl;
-
-  factory _DeleteMeResponse.fromJson(Map<String, dynamic> json) =
-      _$DeleteMeResponseImpl.fromJson;
-
-  @override
-  String get status;
-  @override
-  dynamic get data;
-
-  /// Create a copy of DeleteMeResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteMeResponseImplCopyWith<_$DeleteMeResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DeleteMeResponse&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.data, data));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(data));
+
+@override
+String toString() {
+  return 'DeleteMeResponse(status: $status, data: $data)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DeleteMeResponseCopyWith<$Res> implements $DeleteMeResponseCopyWith<$Res> {
+  factory _$DeleteMeResponseCopyWith(_DeleteMeResponse value, $Res Function(_DeleteMeResponse) _then) = __$DeleteMeResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String status, dynamic data
+});
+
+
+
+
+}
+/// @nodoc
+class __$DeleteMeResponseCopyWithImpl<$Res>
+    implements _$DeleteMeResponseCopyWith<$Res> {
+  __$DeleteMeResponseCopyWithImpl(this._self, this._then);
+
+  final _DeleteMeResponse _self;
+  final $Res Function(_DeleteMeResponse) _then;
+
+/// Create a copy of DeleteMeResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,}) {
+  return _then(_DeleteMeResponse(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as String,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as dynamic,
+  ));
+}
+
+
+}
+
+// dart format on

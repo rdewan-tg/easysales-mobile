@@ -1,10 +1,35 @@
 part of common;
 
-class MainAppDrawer extends ConsumerWidget with ConfirmDialogMixin {
+class MainAppDrawer extends ConsumerStatefulWidget with ConfirmDialogMixin {
   const MainAppDrawer({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<MainAppDrawer> createState() => _MainAppDrawerState();
+}
+
+class _MainAppDrawerState extends ConsumerState<MainAppDrawer> {
+  late final NewVersionPlus newVersion;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      newVersion = ref.read(newVersionProvider);
+    });
+  }
+
+  Future<String> getLocalAppVersion() async {
+    final version = await newVersion.getVersionStatus();
+    return version?.localVersion ?? '-';
+  }
+
+  Future<String> getRemoteAppVersion() async {
+    final version = await newVersion.getVersionStatus();
+    return version?.storeVersion ?? '-';
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.pop(context),
       child: Drawer(
@@ -66,6 +91,10 @@ class MainAppDrawer extends ConsumerWidget with ConfirmDialogMixin {
                 );
               },
             ),
+            const SizedBox(height: kSmall),
+            Divider(),
+            const SizedBox(height: kSmall),
+            VersionInfo(),
           ],
         ),
       ),

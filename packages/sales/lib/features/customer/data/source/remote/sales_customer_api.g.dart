@@ -2,6 +2,8 @@
 
 part of 'sales_customer_api.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -104,3 +106,5 @@ class _SalesCustomerApi implements SalesCustomerApi {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on

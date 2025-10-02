@@ -6,13 +6,12 @@ import 'package:merchandiser/features/customer/application/merchandiser_customer
 import 'package:merchandiser/features/customer/presentation/state/merchandiser_customer_state.dart';
 
 final merchandiserCustomerProvider =
-    AutoDisposeNotifierProvider<
-      MerchandiserCustomerController,
-      MerchandiserCustomerState
-    >(MerchandiserCustomerController.new);
+    NotifierProvider<MerchandiserCustomerController, MerchandiserCustomerState>(
+      MerchandiserCustomerController.new,
+    );
 
 class MerchandiserCustomerController
-    extends AutoDisposeNotifier<MerchandiserCustomerState> {
+    extends Notifier<MerchandiserCustomerState> {
   StreamSubscription<List<MerchandiserCustomerEntityData>>?
   _subscriptionMerchandiserCustomer;
   StreamSubscription<List<SearchMerchandiserCustomerHistoryEntityData>>?
@@ -182,5 +181,7 @@ class MerchandiserCustomerController
     state = state.copyWith(settings: setting);
   }
 
-  bool get isSiteVisitEnabled => state.settings['isSiteVisitEnabled'] == 'true';
+  bool isSiteVisitEnabled() {
+    return state.settings['isSiteVisitEnabled'] == 'true';
+  }
 }

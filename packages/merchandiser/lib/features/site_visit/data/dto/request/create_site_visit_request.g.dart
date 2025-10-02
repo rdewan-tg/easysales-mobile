@@ -6,9 +6,9 @@ part of 'create_site_visit_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CreateSiteVisitRequestImpl _$$CreateSiteVisitRequestImplFromJson(
+_CreateSiteVisitRequest _$CreateSiteVisitRequestFromJson(
   Map<String, dynamic> json,
-) => _$CreateSiteVisitRequestImpl(
+) => _CreateSiteVisitRequest(
   deviceId: json['deviceId'] as String,
   salesPersonCode: json['salesPersonCode'] as String,
   salesPersonName: json['salesPersonName'] as String,
@@ -22,8 +22,8 @@ _$CreateSiteVisitRequestImpl _$$CreateSiteVisitRequestImplFromJson(
   timeOut: json['timeOut'] as String?,
 );
 
-Map<String, dynamic> _$$CreateSiteVisitRequestImplToJson(
-  _$CreateSiteVisitRequestImpl instance,
+Map<String, dynamic> _$CreateSiteVisitRequestToJson(
+  _CreateSiteVisitRequest instance,
 ) => <String, dynamic>{
   'deviceId': instance.deviceId,
   'salesPersonCode': instance.salesPersonCode,

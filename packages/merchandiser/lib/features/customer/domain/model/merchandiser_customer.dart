@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'merchandiser_customer.freezed.dart';
 
 @freezed
-class MerchandiserCustomer with _$MerchandiserCustomer {
+abstract class MerchandiserCustomer with _$MerchandiserCustomer {
   const factory MerchandiserCustomer({
     required int id,
     required String customerId,

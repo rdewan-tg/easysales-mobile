@@ -6,19 +6,17 @@ part of 'site_visit_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SiteVisitResponseImpl _$$SiteVisitResponseImplFromJson(
-  Map<String, dynamic> json,
-) => _$SiteVisitResponseImpl(
-  status: json['status'] as String,
-  data: SiteVisitData.fromJson(json['data'] as Map<String, dynamic>),
-);
+_SiteVisitResponse _$SiteVisitResponseFromJson(Map<String, dynamic> json) =>
+    _SiteVisitResponse(
+      status: json['status'] as String,
+      data: SiteVisitData.fromJson(json['data'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$$SiteVisitResponseImplToJson(
-  _$SiteVisitResponseImpl instance,
-) => <String, dynamic>{'status': instance.status, 'data': instance.data};
+Map<String, dynamic> _$SiteVisitResponseToJson(_SiteVisitResponse instance) =>
+    <String, dynamic>{'status': instance.status, 'data': instance.data};
 
-_$SiteVisitDataImpl _$$SiteVisitDataImplFromJson(Map<String, dynamic> json) =>
-    _$SiteVisitDataImpl(
+_SiteVisitData _$SiteVisitDataFromJson(Map<String, dynamic> json) =>
+    _SiteVisitData(
       id: (json['id'] as num).toInt(),
       userId: (json['userId'] as num).toInt(),
       deviceId: json['deviceId'] as String,
@@ -43,7 +41,7 @@ _$SiteVisitDataImpl _$$SiteVisitDataImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updatedAt'] as String,
     );
 
-Map<String, dynamic> _$$SiteVisitDataImplToJson(_$SiteVisitDataImpl instance) =>
+Map<String, dynamic> _$SiteVisitDataToJson(_SiteVisitData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,

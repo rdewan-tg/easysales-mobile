@@ -5,11 +5,11 @@ import 'package:sales/features/order/presentation/state/sync_order_state.dart';
 import 'package:drift/drift.dart';
 
 final syncOrderControllerProvider =
-    NotifierProvider.autoDispose<SyncOrderController, SyncOrderState>(
+    NotifierProvider<SyncOrderController, SyncOrderState>(
       SyncOrderController.new,
     );
 
-class SyncOrderController extends AutoDisposeNotifier<SyncOrderState> {
+class SyncOrderController extends Notifier<SyncOrderState> {
   @override
   SyncOrderState build() {
     return SyncOrderState();

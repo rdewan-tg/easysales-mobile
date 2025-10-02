@@ -8,7 +8,7 @@ ProductPriceResponse deserializeProductPriceResponse(
 ) => ProductPriceResponse.fromJson(json);
 
 @freezed
-class ProductPriceResponse with _$ProductPriceResponse {
+abstract class ProductPriceResponse with _$ProductPriceResponse {
   const factory ProductPriceResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "total") required int total,
@@ -20,7 +20,7 @@ class ProductPriceResponse with _$ProductPriceResponse {
 }
 
 @freezed
-class ProductPriceData with _$ProductPriceData {
+abstract class ProductPriceData with _$ProductPriceData {
   const factory ProductPriceData({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "productId") required String productId,

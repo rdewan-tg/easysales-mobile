@@ -6,13 +6,12 @@ part of 'last_sales_id_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LastSalesIdResponseImpl _$$LastSalesIdResponseImplFromJson(
-  Map<String, dynamic> json,
-) => _$LastSalesIdResponseImpl(
-  status: json['status'] as String,
-  data: (json['data'] as num).toInt(),
-);
+_LastSalesIdResponse _$LastSalesIdResponseFromJson(Map<String, dynamic> json) =>
+    _LastSalesIdResponse(
+      status: json['status'] as String,
+      data: (json['data'] as num).toInt(),
+    );
 
-Map<String, dynamic> _$$LastSalesIdResponseImplToJson(
-  _$LastSalesIdResponseImpl instance,
+Map<String, dynamic> _$LastSalesIdResponseToJson(
+  _LastSalesIdResponse instance,
 ) => <String, dynamic>{'status': instance.status, 'data': instance.data};

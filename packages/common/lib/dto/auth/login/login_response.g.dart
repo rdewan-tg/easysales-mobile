@@ -6,74 +6,70 @@ part of 'login_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LoginResponseImpl _$$LoginResponseImplFromJson(Map<String, dynamic> json) =>
-    _$LoginResponseImpl(
+_LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
+    _LoginResponse(
       status: json['status'] as String,
       data: Data.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$LoginResponseImplToJson(_$LoginResponseImpl instance) =>
+Map<String, dynamic> _$LoginResponseToJson(_LoginResponse instance) =>
     <String, dynamic>{'status': instance.status, 'data': instance.data};
 
-_$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
+_Data _$DataFromJson(Map<String, dynamic> json) => _Data(
   token: TokenDto.fromJson(json['token'] as Map<String, dynamic>),
   user: UserDto.fromJson(json['user'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
-    <String, dynamic>{'token': instance.token, 'user': instance.user};
+Map<String, dynamic> _$DataToJson(_Data instance) => <String, dynamic>{
+  'token': instance.token,
+  'user': instance.user,
+};
 
-_$TokenDtoImpl _$$TokenDtoImplFromJson(Map<String, dynamic> json) =>
-    _$TokenDtoImpl(
-      accessToken: json['access_token'] as String,
-      refreshToken: json['refresh_token'] as String,
-    );
+_TokenDto _$TokenDtoFromJson(Map<String, dynamic> json) => _TokenDto(
+  accessToken: json['access_token'] as String,
+  refreshToken: json['refresh_token'] as String,
+);
 
-Map<String, dynamic> _$$TokenDtoImplToJson(_$TokenDtoImpl instance) =>
-    <String, dynamic>{
-      'access_token': instance.accessToken,
-      'refresh_token': instance.refreshToken,
-    };
+Map<String, dynamic> _$TokenDtoToJson(_TokenDto instance) => <String, dynamic>{
+  'access_token': instance.accessToken,
+  'refresh_token': instance.refreshToken,
+};
 
-_$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
-    _$UserDtoImpl(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      email: json['email'] as String,
-      phoneNumber: json['phoneNumber'] as String?,
-      photo: json['photo'] as String?,
-      role: (json['role'] as List<dynamic>)
-          .map((e) => RoleDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      company: CompanyDto.fromJson(json['company'] as Map<String, dynamic>),
-      deviceSetting: DeviceSettingDto.fromJson(
-        json['deviceSetting'] as Map<String, dynamic>,
-      ),
-    );
+_UserDto _$UserDtoFromJson(Map<String, dynamic> json) => _UserDto(
+  id: (json['id'] as num).toInt(),
+  name: json['name'] as String,
+  email: json['email'] as String,
+  phoneNumber: json['phoneNumber'] as String?,
+  photo: json['photo'] as String?,
+  role: (json['role'] as List<dynamic>)
+      .map((e) => RoleDto.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  company: CompanyDto.fromJson(json['company'] as Map<String, dynamic>),
+  deviceSetting: DeviceSettingDto.fromJson(
+    json['deviceSetting'] as Map<String, dynamic>,
+  ),
+);
 
-Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-      'phoneNumber': instance.phoneNumber,
-      'photo': instance.photo,
-      'role': instance.role,
-      'company': instance.company,
-      'deviceSetting': instance.deviceSetting,
-    };
+Map<String, dynamic> _$UserDtoToJson(_UserDto instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'email': instance.email,
+  'phoneNumber': instance.phoneNumber,
+  'photo': instance.photo,
+  'role': instance.role,
+  'company': instance.company,
+  'deviceSetting': instance.deviceSetting,
+};
 
-_$RoleDtoImpl _$$RoleDtoImplFromJson(Map<String, dynamic> json) =>
-    _$RoleDtoImpl(
-      id: (json['id'] as num).toInt(),
-      name: $enumDecode(_$UserRoleEnumMap, json['name']),
-    );
+_RoleDto _$RoleDtoFromJson(Map<String, dynamic> json) => _RoleDto(
+  id: (json['id'] as num).toInt(),
+  name: $enumDecode(_$UserRoleEnumMap, json['name']),
+);
 
-Map<String, dynamic> _$$RoleDtoImplToJson(_$RoleDtoImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': _$UserRoleEnumMap[instance.name]!,
-    };
+Map<String, dynamic> _$RoleDtoToJson(_RoleDto instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': _$UserRoleEnumMap[instance.name]!,
+};
 
 const _$UserRoleEnumMap = {
   UserRole.superAdmin: 'superAdmin',
@@ -86,17 +82,16 @@ const _$UserRoleEnumMap = {
   UserRole.user: 'user',
 };
 
-_$CompanyDtoImpl _$$CompanyDtoImplFromJson(Map<String, dynamic> json) =>
-    _$CompanyDtoImpl(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      companyCode: json['companyCode'] as String?,
-      countryCode: json['countryCode'] as String?,
-      timeZone: json['timeZone'] as String,
-      isSiteVisitEnabled: json['isSiteVisitEnabled'] as bool,
-    );
+_CompanyDto _$CompanyDtoFromJson(Map<String, dynamic> json) => _CompanyDto(
+  id: (json['id'] as num).toInt(),
+  name: json['name'] as String,
+  companyCode: json['companyCode'] as String?,
+  countryCode: json['countryCode'] as String?,
+  timeZone: json['timeZone'] as String,
+  isSiteVisitEnabled: json['isSiteVisitEnabled'] as bool,
+);
 
-Map<String, dynamic> _$$CompanyDtoImplToJson(_$CompanyDtoImpl instance) =>
+Map<String, dynamic> _$CompanyDtoToJson(_CompanyDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -106,18 +101,16 @@ Map<String, dynamic> _$$CompanyDtoImplToJson(_$CompanyDtoImpl instance) =>
       'isSiteVisitEnabled': instance.isSiteVisitEnabled,
     };
 
-_$DeviceSettingDtoImpl _$$DeviceSettingDtoImplFromJson(
-  Map<String, dynamic> json,
-) => _$DeviceSettingDtoImpl(
-  deviceId: json['deviceId'] as String?,
-  salesPersonCode: json['salesPersonCode'] as String?,
-  orderNumberFormat: json['orderNumberFormat'] as String?,
-);
+_DeviceSettingDto _$DeviceSettingDtoFromJson(Map<String, dynamic> json) =>
+    _DeviceSettingDto(
+      deviceId: json['deviceId'] as String?,
+      salesPersonCode: json['salesPersonCode'] as String?,
+      orderNumberFormat: json['orderNumberFormat'] as String?,
+    );
 
-Map<String, dynamic> _$$DeviceSettingDtoImplToJson(
-  _$DeviceSettingDtoImpl instance,
-) => <String, dynamic>{
-  'deviceId': instance.deviceId,
-  'salesPersonCode': instance.salesPersonCode,
-  'orderNumberFormat': instance.orderNumberFormat,
-};
+Map<String, dynamic> _$DeviceSettingDtoToJson(_DeviceSettingDto instance) =>
+    <String, dynamic>{
+      'deviceId': instance.deviceId,
+      'salesPersonCode': instance.salesPersonCode,
+      'orderNumberFormat': instance.orderNumberFormat,
+    };
