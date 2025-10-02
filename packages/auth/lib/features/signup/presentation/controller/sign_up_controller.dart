@@ -4,11 +4,9 @@ import 'package:auth/features/signup/presentation/state/sign_up_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final signUpControllerProvider =
-    AutoDisposeNotifierProvider<SignUpController, SignUpState>(
-      SignUpController.new,
-    );
+    NotifierProvider<SignUpController, SignUpState>(SignUpController.new);
 
-class SignUpController extends AutoDisposeNotifier<SignUpState> {
+class SignUpController extends Notifier<SignUpState> {
   @override
   SignUpState build() {
     return SignUpState();

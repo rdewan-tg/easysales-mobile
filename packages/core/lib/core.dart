@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:core/env/env.dart';
+import 'package:core/flavor/flavor_provider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 part 'flavor/flavor.dart';
-part 'flavor/flavor_provider.dart';
 part 'env/env_reader.dart';
 part 'route/go_router_notifier.dart';
 

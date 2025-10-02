@@ -4,8 +4,8 @@ import 'package:merchandiser/features/site_visit/data/dto/response/site_visit_re
 part 'site_visit_state.freezed.dart';
 
 @freezed
-class SiteVisitState with _$SiteVisitState {
-  factory SiteVisitState({
+abstract class SiteVisitState with _$SiteVisitState {
+  const factory SiteVisitState({
     @Default(false) bool isLoading,
     @Default(false) bool isCreated,
     @Default(false) bool isUpdated,
@@ -20,7 +20,7 @@ class SiteVisitState with _$SiteVisitState {
 }
 
 @freezed
-class LatLng with _$LatLng {
+abstract class LatLng with _$LatLng {
   const factory LatLng({required double latitude, required double longitude}) =
       _LatLng;
 }

@@ -4,7 +4,7 @@ part 'forgot_password_response.freezed.dart';
 part 'forgot_password_response.g.dart';
 
 @freezed
-class ForgotPasswordResponse with _$ForgotPasswordResponse {
+abstract class ForgotPasswordResponse with _$ForgotPasswordResponse {
   const factory ForgotPasswordResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "data") required Data data,
@@ -15,7 +15,7 @@ class ForgotPasswordResponse with _$ForgotPasswordResponse {
 }
 
 @freezed
-class Data with _$Data {
+abstract class Data with _$Data {
   const factory Data({@JsonKey(name: "emailSent") required bool emailSent}) =
       _Data;
 

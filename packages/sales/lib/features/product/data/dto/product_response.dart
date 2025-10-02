@@ -7,7 +7,7 @@ ProductResponse deserializeProductResponse(Map<String, dynamic> json) =>
     ProductResponse.fromJson(json);
 
 @freezed
-class ProductResponse with _$ProductResponse {
+abstract class ProductResponse with _$ProductResponse {
   const factory ProductResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "total") required int total,
@@ -19,7 +19,7 @@ class ProductResponse with _$ProductResponse {
 }
 
 @freezed
-class ProductData with _$ProductData {
+abstract class ProductData with _$ProductData {
   const factory ProductData({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "productId") required String productId,

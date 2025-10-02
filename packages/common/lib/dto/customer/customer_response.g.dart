@@ -6,26 +6,24 @@ part of 'customer_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CustomerResponseImpl _$$CustomerResponseImplFromJson(
-  Map<String, dynamic> json,
-) => _$CustomerResponseImpl(
-  status: json['status'] as String,
-  total: (json['total'] as num).toInt(),
-  data: (json['data'] as List<dynamic>)
-      .map((e) => CustomerData.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+_CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) =>
+    _CustomerResponse(
+      status: json['status'] as String,
+      total: (json['total'] as num).toInt(),
+      data: (json['data'] as List<dynamic>)
+          .map((e) => CustomerData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
-Map<String, dynamic> _$$CustomerResponseImplToJson(
-  _$CustomerResponseImpl instance,
-) => <String, dynamic>{
-  'status': instance.status,
-  'total': instance.total,
-  'data': instance.data,
-};
+Map<String, dynamic> _$CustomerResponseToJson(_CustomerResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'total': instance.total,
+      'data': instance.data,
+    };
 
-_$CustomerDataImpl _$$CustomerDataImplFromJson(Map<String, dynamic> json) =>
-    _$CustomerDataImpl(
+_CustomerData _$CustomerDataFromJson(Map<String, dynamic> json) =>
+    _CustomerData(
       id: (json['id'] as num).toInt(),
       customerId: json['customerId'] as String,
       customerName: json['customerName'] as String,
@@ -51,8 +49,8 @@ _$CustomerDataImpl _$$CustomerDataImplFromJson(Map<String, dynamic> json) =>
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$$CustomerDataImplToJson(
-  _$CustomerDataImpl instance,
+Map<String, dynamic> _$CustomerDataToJson(
+  _CustomerData instance,
 ) => <String, dynamic>{
   'id': instance.id,
   'customerId': instance.customerId,

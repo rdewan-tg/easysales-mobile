@@ -1,6 +1,6 @@
 import 'package:common/exception/failure.dart';
 import 'package:core/data/local/db/app_database.dart';
-import 'package:core/data/local/db/entity/search_merchnadiser_customer_history_entity.dart';
+import 'package:core/data/local/db/entity/search_merchandiser_customer_history_entity.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

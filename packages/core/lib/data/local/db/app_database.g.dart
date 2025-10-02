@@ -10145,10 +10145,10 @@ final class $$SalesHeaderEntityTableReferences
   );
 
   $$SalesLineEntityTableProcessedTableManager get salesLineEntityRefs {
-    final manager = $$SalesLineEntityTableTableManager(
-      $_db,
-      $_db.salesLineEntity,
-    ).filter((f) => f.salesId.salesId($_item.salesId));
+    final manager =
+        $$SalesLineEntityTableTableManager($_db, $_db.salesLineEntity).filter(
+          (f) => f.salesId.salesId.sqlEquals($_itemColumn<String>('sales_id')!),
+        );
 
     final cache = $_typedResult.readTableOrNull(
       _salesLineEntityRefsTable($_db),
@@ -10571,7 +10571,11 @@ class $$SalesHeaderEntityTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (salesLineEntityRefs)
-                    await $_getPrefetchedData(
+                    await $_getPrefetchedData<
+                      SalesHeaderEntityData,
+                      $SalesHeaderEntityTable,
+                      SalesLineEntityData
+                    >(
                       currentTable: table,
                       referencedTable: $$SalesHeaderEntityTableReferences
                           ._salesLineEntityRefsTable(db),
@@ -10674,10 +10678,12 @@ final class $$SalesLineEntityTableReferences
       );
 
   $$SalesHeaderEntityTableProcessedTableManager get salesId {
+    final $_column = $_itemColumn<String>('sales_id')!;
+
     final manager = $$SalesHeaderEntityTableTableManager(
       $_db,
       $_db.salesHeaderEntity,
-    ).filter((f) => f.salesId($_item.salesId!));
+    ).filter((f) => f.salesId.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_salesIdTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
@@ -11246,22 +11252,46 @@ class $AppDatabaseManager {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appDatabaseHash() => r'98a09c6cfd43966155dfbdb0787fa18c85438e13';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [appDatabase].
 @ProviderFor(appDatabase)
-final appDatabaseProvider = Provider<AppDatabase>.internal(
-  appDatabase,
-  name: r'appDatabaseProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$appDatabaseHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const appDatabaseProvider = AppDatabaseProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef AppDatabaseRef = ProviderRef<AppDatabase>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class AppDatabaseProvider
+    extends $FunctionalProvider<AppDatabase, AppDatabase, AppDatabase>
+    with $Provider<AppDatabase> {
+  const AppDatabaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'appDatabaseProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$appDatabaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<AppDatabase> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  AppDatabase create(Ref ref) {
+    return appDatabase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AppDatabase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AppDatabase>(value),
+    );
+  }
+}
+
+String _$appDatabaseHash() => r'98a09c6cfd43966155dfbdb0787fa18c85438e13';

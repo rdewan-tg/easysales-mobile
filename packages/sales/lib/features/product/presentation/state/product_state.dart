@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'product_state.freezed.dart';
 
 @freezed
-class ProductState with _$ProductState {
+abstract class ProductState with _$ProductState {
   factory ProductState({
     @Default(false) bool isLoading,
     @Default(false) bool isProductImported,

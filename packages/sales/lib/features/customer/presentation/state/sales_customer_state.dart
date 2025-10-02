@@ -4,7 +4,7 @@ import 'package:core/data/local/db/app_database.dart';
 part 'sales_customer_state.freezed.dart';
 
 @freezed
-class SalesCustomerState with _$SalesCustomerState {
+abstract class SalesCustomerState with _$SalesCustomerState {
   factory SalesCustomerState({
     @Default(false) bool isLoading,
     @Default(false) bool isCustomerImported,

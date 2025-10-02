@@ -4,7 +4,7 @@ part 'sales_line_response.freezed.dart';
 part 'sales_line_response.g.dart';
 
 @freezed
-class SalesLineResponse with _$SalesLineResponse {
+abstract class SalesLineResponse with _$SalesLineResponse {
   const factory SalesLineResponse({
     required String status,
     required SalesLineData data,
@@ -15,8 +15,8 @@ class SalesLineResponse with _$SalesLineResponse {
 }
 
 @freezed
-class SalesLineData with _$SalesLineData {
-  factory SalesLineData({required int count}) = _SalesLineData;
+abstract class SalesLineData with _$SalesLineData {
+  const factory SalesLineData({required int count}) = _SalesLineData;
 
   factory SalesLineData.fromJson(Map<String, dynamic> json) =>
       _$SalesLineDataFromJson(json);

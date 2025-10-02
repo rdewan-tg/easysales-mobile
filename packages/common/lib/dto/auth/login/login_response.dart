@@ -5,7 +5,7 @@ part 'login_response.freezed.dart';
 part 'login_response.g.dart';
 
 @freezed
-class LoginResponse with _$LoginResponse {
+abstract class LoginResponse with _$LoginResponse {
   const factory LoginResponse({
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "data") required Data data,
@@ -16,7 +16,7 @@ class LoginResponse with _$LoginResponse {
 }
 
 @freezed
-class Data with _$Data {
+abstract class Data with _$Data {
   const factory Data({
     @JsonKey(name: "token") required TokenDto token,
     @JsonKey(name: "user") required UserDto user,
@@ -26,7 +26,7 @@ class Data with _$Data {
 }
 
 @freezed
-class TokenDto with _$TokenDto {
+abstract class TokenDto with _$TokenDto {
   const factory TokenDto({
     @JsonKey(name: "access_token") required String accessToken,
     @JsonKey(name: "refresh_token") required String refreshToken,
@@ -37,7 +37,7 @@ class TokenDto with _$TokenDto {
 }
 
 @freezed
-class UserDto with _$UserDto {
+abstract class UserDto with _$UserDto {
   const factory UserDto({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "name") required String name,
@@ -54,7 +54,7 @@ class UserDto with _$UserDto {
 }
 
 @freezed
-class RoleDto with _$RoleDto {
+abstract class RoleDto with _$RoleDto {
   const factory RoleDto({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "name") required UserRole name,
@@ -65,7 +65,7 @@ class RoleDto with _$RoleDto {
 }
 
 @freezed
-class CompanyDto with _$CompanyDto {
+abstract class CompanyDto with _$CompanyDto {
   const factory CompanyDto({
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "name") required String name,
@@ -80,7 +80,7 @@ class CompanyDto with _$CompanyDto {
 }
 
 @freezed
-class DeviceSettingDto with _$DeviceSettingDto {
+abstract class DeviceSettingDto with _$DeviceSettingDto {
   const factory DeviceSettingDto({
     @JsonKey(name: "deviceId") String? deviceId,
     @JsonKey(name: "salesPersonCode") String? salesPersonCode,

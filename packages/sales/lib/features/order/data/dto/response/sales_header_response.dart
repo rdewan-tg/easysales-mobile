@@ -4,7 +4,7 @@ part 'sales_header_response.freezed.dart';
 part 'sales_header_response.g.dart';
 
 @freezed
-class SalesHeaderResponse with _$SalesHeaderResponse {
+abstract class SalesHeaderResponse with _$SalesHeaderResponse {
   const factory SalesHeaderResponse({
     required String status,
     required SalesHeaderData data,
@@ -15,7 +15,7 @@ class SalesHeaderResponse with _$SalesHeaderResponse {
 }
 
 @freezed
-class SalesHeaderData with _$SalesHeaderData {
+abstract class SalesHeaderData with _$SalesHeaderData {
   const factory SalesHeaderData({
     required int id,
     required String salesId,

@@ -1,11 +1,9 @@
 part of '../common.dart';
 
 final bottomNavigationStateProvider =
-    AutoDisposeNotifierProvider<BottomNavigationState, bool>(
-      BottomNavigationState.new,
-    );
+    NotifierProvider<BottomNavigationState, bool>(BottomNavigationState.new);
 
-class BottomNavigationState extends AutoDisposeNotifier<bool> {
+class BottomNavigationState extends Notifier<bool> {
   @override
   bool build() {
     return true;

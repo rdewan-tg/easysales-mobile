@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,345 +9,553 @@ part of 'sales_line_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-SalesLineResponse _$SalesLineResponseFromJson(Map<String, dynamic> json) {
-  return _SalesLineResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SalesLineResponse {
-  String get status => throw _privateConstructorUsedError;
-  SalesLineData get data => throw _privateConstructorUsedError;
+
+ String get status; SalesLineData get data;
+/// Create a copy of SalesLineResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SalesLineResponseCopyWith<SalesLineResponse> get copyWith => _$SalesLineResponseCopyWithImpl<SalesLineResponse>(this as SalesLineResponse, _$identity);
 
   /// Serializes this SalesLineResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SalesLineResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SalesLineResponseCopyWith<SalesLineResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SalesLineResponse&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,status,data);
+
+@override
+String toString() {
+  return 'SalesLineResponse(status: $status, data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SalesLineResponseCopyWith<$Res> {
-  factory $SalesLineResponseCopyWith(
-    SalesLineResponse value,
-    $Res Function(SalesLineResponse) then,
-  ) = _$SalesLineResponseCopyWithImpl<$Res, SalesLineResponse>;
-  @useResult
-  $Res call({String status, SalesLineData data});
+abstract mixin class $SalesLineResponseCopyWith<$Res>  {
+  factory $SalesLineResponseCopyWith(SalesLineResponse value, $Res Function(SalesLineResponse) _then) = _$SalesLineResponseCopyWithImpl;
+@useResult
+$Res call({
+ String status, SalesLineData data
+});
 
-  $SalesLineDataCopyWith<$Res> get data;
+
+$SalesLineDataCopyWith<$Res> get data;
+
 }
-
 /// @nodoc
-class _$SalesLineResponseCopyWithImpl<$Res, $Val extends SalesLineResponse>
+class _$SalesLineResponseCopyWithImpl<$Res>
     implements $SalesLineResponseCopyWith<$Res> {
-  _$SalesLineResponseCopyWithImpl(this._value, this._then);
+  _$SalesLineResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SalesLineResponse _self;
+  final $Res Function(SalesLineResponse) _then;
 
-  /// Create a copy of SalesLineResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? status = null, Object? data = null}) {
-    return _then(
-      _value.copyWith(
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            data: null == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                      as SalesLineData,
-          )
-          as $Val,
-    );
-  }
-
-  /// Create a copy of SalesLineResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SalesLineDataCopyWith<$Res> get data {
-    return $SalesLineDataCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
-  }
+/// Create a copy of SalesLineResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = null,}) {
+  return _then(_self.copyWith(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as SalesLineData,
+  ));
+}
+/// Create a copy of SalesLineResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SalesLineDataCopyWith<$Res> get data {
+  
+  return $SalesLineDataCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$SalesLineResponseImplCopyWith<$Res>
-    implements $SalesLineResponseCopyWith<$Res> {
-  factory _$$SalesLineResponseImplCopyWith(
-    _$SalesLineResponseImpl value,
-    $Res Function(_$SalesLineResponseImpl) then,
-  ) = __$$SalesLineResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String status, SalesLineData data});
 
-  @override
-  $SalesLineDataCopyWith<$Res> get data;
+/// Adds pattern-matching-related methods to [SalesLineResponse].
+extension SalesLineResponsePatterns on SalesLineResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SalesLineResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SalesLineResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SalesLineResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _SalesLineResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SalesLineResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SalesLineResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String status,  SalesLineData data)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SalesLineResponse() when $default != null:
+return $default(_that.status,_that.data);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String status,  SalesLineData data)  $default,) {final _that = this;
+switch (_that) {
+case _SalesLineResponse():
+return $default(_that.status,_that.data);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String status,  SalesLineData data)?  $default,) {final _that = this;
+switch (_that) {
+case _SalesLineResponse() when $default != null:
+return $default(_that.status,_that.data);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$SalesLineResponseImplCopyWithImpl<$Res>
-    extends _$SalesLineResponseCopyWithImpl<$Res, _$SalesLineResponseImpl>
-    implements _$$SalesLineResponseImplCopyWith<$Res> {
-  __$$SalesLineResponseImplCopyWithImpl(
-    _$SalesLineResponseImpl _value,
-    $Res Function(_$SalesLineResponseImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of SalesLineResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? status = null, Object? data = null}) {
-    return _then(
-      _$SalesLineResponseImpl(
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String,
-        data: null == data
-            ? _value.data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as SalesLineData,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SalesLineResponseImpl implements _SalesLineResponse {
-  const _$SalesLineResponseImpl({required this.status, required this.data});
 
-  factory _$SalesLineResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SalesLineResponseImplFromJson(json);
+class _SalesLineResponse implements SalesLineResponse {
+  const _SalesLineResponse({required this.status, required this.data});
+  factory _SalesLineResponse.fromJson(Map<String, dynamic> json) => _$SalesLineResponseFromJson(json);
 
-  @override
-  final String status;
-  @override
-  final SalesLineData data;
+@override final  String status;
+@override final  SalesLineData data;
 
-  @override
-  String toString() {
-    return 'SalesLineResponse(status: $status, data: $data)';
-  }
+/// Create a copy of SalesLineResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SalesLineResponseCopyWith<_SalesLineResponse> get copyWith => __$SalesLineResponseCopyWithImpl<_SalesLineResponse>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SalesLineResponseImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.data, data) || other.data == data));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, status, data);
-
-  /// Create a copy of SalesLineResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SalesLineResponseImplCopyWith<_$SalesLineResponseImpl> get copyWith =>
-      __$$SalesLineResponseImplCopyWithImpl<_$SalesLineResponseImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SalesLineResponseImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SalesLineResponseToJson(this, );
 }
 
-abstract class _SalesLineResponse implements SalesLineResponse {
-  const factory _SalesLineResponse({
-    required final String status,
-    required final SalesLineData data,
-  }) = _$SalesLineResponseImpl;
-
-  factory _SalesLineResponse.fromJson(Map<String, dynamic> json) =
-      _$SalesLineResponseImpl.fromJson;
-
-  @override
-  String get status;
-  @override
-  SalesLineData get data;
-
-  /// Create a copy of SalesLineResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SalesLineResponseImplCopyWith<_$SalesLineResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SalesLineResponse&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data));
 }
 
-SalesLineData _$SalesLineDataFromJson(Map<String, dynamic> json) {
-  return _SalesLineData.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,status,data);
+
+@override
+String toString() {
+  return 'SalesLineResponse(status: $status, data: $data)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SalesLineResponseCopyWith<$Res> implements $SalesLineResponseCopyWith<$Res> {
+  factory _$SalesLineResponseCopyWith(_SalesLineResponse value, $Res Function(_SalesLineResponse) _then) = __$SalesLineResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String status, SalesLineData data
+});
+
+
+@override $SalesLineDataCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class __$SalesLineResponseCopyWithImpl<$Res>
+    implements _$SalesLineResponseCopyWith<$Res> {
+  __$SalesLineResponseCopyWithImpl(this._self, this._then);
+
+  final _SalesLineResponse _self;
+  final $Res Function(_SalesLineResponse) _then;
+
+/// Create a copy of SalesLineResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = null,}) {
+  return _then(_SalesLineResponse(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as SalesLineData,
+  ));
+}
+
+/// Create a copy of SalesLineResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SalesLineDataCopyWith<$Res> get data {
+  
+  return $SalesLineDataCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$SalesLineData {
-  int get count => throw _privateConstructorUsedError;
+
+ int get count;
+/// Create a copy of SalesLineData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SalesLineDataCopyWith<SalesLineData> get copyWith => _$SalesLineDataCopyWithImpl<SalesLineData>(this as SalesLineData, _$identity);
 
   /// Serializes this SalesLineData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SalesLineData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SalesLineDataCopyWith<SalesLineData> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SalesLineData&&(identical(other.count, count) || other.count == count));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,count);
+
+@override
+String toString() {
+  return 'SalesLineData(count: $count)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SalesLineDataCopyWith<$Res> {
-  factory $SalesLineDataCopyWith(
-    SalesLineData value,
-    $Res Function(SalesLineData) then,
-  ) = _$SalesLineDataCopyWithImpl<$Res, SalesLineData>;
-  @useResult
-  $Res call({int count});
-}
+abstract mixin class $SalesLineDataCopyWith<$Res>  {
+  factory $SalesLineDataCopyWith(SalesLineData value, $Res Function(SalesLineData) _then) = _$SalesLineDataCopyWithImpl;
+@useResult
+$Res call({
+ int count
+});
 
+
+
+
+}
 /// @nodoc
-class _$SalesLineDataCopyWithImpl<$Res, $Val extends SalesLineData>
+class _$SalesLineDataCopyWithImpl<$Res>
     implements $SalesLineDataCopyWith<$Res> {
-  _$SalesLineDataCopyWithImpl(this._value, this._then);
+  _$SalesLineDataCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SalesLineData _self;
+  final $Res Function(SalesLineData) _then;
 
-  /// Create a copy of SalesLineData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? count = null}) {
-    return _then(
-      _value.copyWith(
-            count: null == count
-                ? _value.count
-                : count // ignore: cast_nullable_to_non_nullable
-                      as int,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of SalesLineData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? count = null,}) {
+  return _then(_self.copyWith(
+count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SalesLineDataImplCopyWith<$Res>
-    implements $SalesLineDataCopyWith<$Res> {
-  factory _$$SalesLineDataImplCopyWith(
-    _$SalesLineDataImpl value,
-    $Res Function(_$SalesLineDataImpl) then,
-  ) = __$$SalesLineDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int count});
 }
 
-/// @nodoc
-class __$$SalesLineDataImplCopyWithImpl<$Res>
-    extends _$SalesLineDataCopyWithImpl<$Res, _$SalesLineDataImpl>
-    implements _$$SalesLineDataImplCopyWith<$Res> {
-  __$$SalesLineDataImplCopyWithImpl(
-    _$SalesLineDataImpl _value,
-    $Res Function(_$SalesLineDataImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of SalesLineData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? count = null}) {
-    return _then(
-      _$SalesLineDataImpl(
-        count: null == count
-            ? _value.count
-            : count // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
-  }
+/// Adds pattern-matching-related methods to [SalesLineData].
+extension SalesLineDataPatterns on SalesLineData {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SalesLineData value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SalesLineData() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SalesLineData value)  $default,){
+final _that = this;
+switch (_that) {
+case _SalesLineData():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SalesLineData value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SalesLineData() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int count)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SalesLineData() when $default != null:
+return $default(_that.count);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int count)  $default,) {final _that = this;
+switch (_that) {
+case _SalesLineData():
+return $default(_that.count);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int count)?  $default,) {final _that = this;
+switch (_that) {
+case _SalesLineData() when $default != null:
+return $default(_that.count);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SalesLineDataImpl implements _SalesLineData {
-  _$SalesLineDataImpl({required this.count});
 
-  factory _$SalesLineDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SalesLineDataImplFromJson(json);
+class _SalesLineData implements SalesLineData {
+  const _SalesLineData({required this.count});
+  factory _SalesLineData.fromJson(Map<String, dynamic> json) => _$SalesLineDataFromJson(json);
 
-  @override
-  final int count;
+@override final  int count;
 
-  @override
-  String toString() {
-    return 'SalesLineData(count: $count)';
-  }
+/// Create a copy of SalesLineData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SalesLineDataCopyWith<_SalesLineData> get copyWith => __$SalesLineDataCopyWithImpl<_SalesLineData>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SalesLineDataImpl &&
-            (identical(other.count, count) || other.count == count));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, count);
-
-  /// Create a copy of SalesLineData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SalesLineDataImplCopyWith<_$SalesLineDataImpl> get copyWith =>
-      __$$SalesLineDataImplCopyWithImpl<_$SalesLineDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SalesLineDataImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SalesLineDataToJson(this, );
 }
 
-abstract class _SalesLineData implements SalesLineData {
-  factory _SalesLineData({required final int count}) = _$SalesLineDataImpl;
-
-  factory _SalesLineData.fromJson(Map<String, dynamic> json) =
-      _$SalesLineDataImpl.fromJson;
-
-  @override
-  int get count;
-
-  /// Create a copy of SalesLineData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SalesLineDataImplCopyWith<_$SalesLineDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SalesLineData&&(identical(other.count, count) || other.count == count));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,count);
+
+@override
+String toString() {
+  return 'SalesLineData(count: $count)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SalesLineDataCopyWith<$Res> implements $SalesLineDataCopyWith<$Res> {
+  factory _$SalesLineDataCopyWith(_SalesLineData value, $Res Function(_SalesLineData) _then) = __$SalesLineDataCopyWithImpl;
+@override @useResult
+$Res call({
+ int count
+});
+
+
+
+
+}
+/// @nodoc
+class __$SalesLineDataCopyWithImpl<$Res>
+    implements _$SalesLineDataCopyWith<$Res> {
+  __$SalesLineDataCopyWithImpl(this._self, this._then);
+
+  final _SalesLineData _self;
+  final $Res Function(_SalesLineData) _then;
+
+/// Create a copy of SalesLineData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? count = null,}) {
+  return _then(_SalesLineData(
+count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+// dart format on

@@ -2,6 +2,8 @@
 
 part of 'forgot_password_api.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -74,3 +76,5 @@ class _ForgotPasswordApi implements ForgotPasswordApi {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on

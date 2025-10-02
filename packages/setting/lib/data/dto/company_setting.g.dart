@@ -6,31 +6,29 @@ part of 'company_setting.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CompanySettingResponseImpl _$$CompanySettingResponseImplFromJson(
+_CompanySettingResponse _$CompanySettingResponseFromJson(
   Map<String, dynamic> json,
-) => _$CompanySettingResponseImpl(
+) => _CompanySettingResponse(
   status: json['status'] as String,
   data: CompanySettingDto.fromJson(json['data'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$$CompanySettingResponseImplToJson(
-  _$CompanySettingResponseImpl instance,
+Map<String, dynamic> _$CompanySettingResponseToJson(
+  _CompanySettingResponse instance,
 ) => <String, dynamic>{'status': instance.status, 'data': instance.data};
 
-_$CompanySettingDtoImpl _$$CompanySettingDtoImplFromJson(
-  Map<String, dynamic> json,
-) => _$CompanySettingDtoImpl(
-  id: (json['id'] as num).toInt(),
-  companyId: (json['companyId'] as num).toInt(),
-  timeZone: json['timeZone'] as String,
-  isSiteVisitEnabled: json['isSiteVisitEnabled'] as bool,
-);
+_CompanySettingDto _$CompanySettingDtoFromJson(Map<String, dynamic> json) =>
+    _CompanySettingDto(
+      id: (json['id'] as num).toInt(),
+      companyId: (json['companyId'] as num).toInt(),
+      timeZone: json['timeZone'] as String,
+      isSiteVisitEnabled: json['isSiteVisitEnabled'] as bool,
+    );
 
-Map<String, dynamic> _$$CompanySettingDtoImplToJson(
-  _$CompanySettingDtoImpl instance,
-) => <String, dynamic>{
-  'id': instance.id,
-  'companyId': instance.companyId,
-  'timeZone': instance.timeZone,
-  'isSiteVisitEnabled': instance.isSiteVisitEnabled,
-};
+Map<String, dynamic> _$CompanySettingDtoToJson(_CompanySettingDto instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'companyId': instance.companyId,
+      'timeZone': instance.timeZone,
+      'isSiteVisitEnabled': instance.isSiteVisitEnabled,
+    };

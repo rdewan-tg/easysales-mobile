@@ -4,7 +4,7 @@ part 'delete_me_response.freezed.dart';
 part 'delete_me_response.g.dart';
 
 @freezed
-class DeleteMeResponse with _$DeleteMeResponse {
+abstract class DeleteMeResponse with _$DeleteMeResponse {
   const factory DeleteMeResponse({
     required String status,
     required dynamic data,

@@ -4,12 +4,11 @@ import 'package:auth/features/login/presentation/state/login_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:common/common.dart';
 
-final loginControllerProvider =
-    AutoDisposeNotifierProvider<LoginController, LoginState>(
-      LoginController.new,
-    );
+final loginControllerProvider = NotifierProvider<LoginController, LoginState>(
+  LoginController.new,
+);
 
-class LoginController extends AutoDisposeNotifier<LoginState> {
+class LoginController extends Notifier<LoginState> {
   @override
   LoginState build() {
     return LoginState();

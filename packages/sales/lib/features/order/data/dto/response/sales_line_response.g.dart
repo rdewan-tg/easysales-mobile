@@ -6,19 +6,17 @@ part of 'sales_line_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SalesLineResponseImpl _$$SalesLineResponseImplFromJson(
-  Map<String, dynamic> json,
-) => _$SalesLineResponseImpl(
-  status: json['status'] as String,
-  data: SalesLineData.fromJson(json['data'] as Map<String, dynamic>),
-);
+_SalesLineResponse _$SalesLineResponseFromJson(Map<String, dynamic> json) =>
+    _SalesLineResponse(
+      status: json['status'] as String,
+      data: SalesLineData.fromJson(json['data'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$$SalesLineResponseImplToJson(
-  _$SalesLineResponseImpl instance,
-) => <String, dynamic>{'status': instance.status, 'data': instance.data};
+Map<String, dynamic> _$SalesLineResponseToJson(_SalesLineResponse instance) =>
+    <String, dynamic>{'status': instance.status, 'data': instance.data};
 
-_$SalesLineDataImpl _$$SalesLineDataImplFromJson(Map<String, dynamic> json) =>
-    _$SalesLineDataImpl(count: (json['count'] as num).toInt());
+_SalesLineData _$SalesLineDataFromJson(Map<String, dynamic> json) =>
+    _SalesLineData(count: (json['count'] as num).toInt());
 
-Map<String, dynamic> _$$SalesLineDataImplToJson(_$SalesLineDataImpl instance) =>
+Map<String, dynamic> _$SalesLineDataToJson(_SalesLineData instance) =>
     <String, dynamic>{'count': instance.count};

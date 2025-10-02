@@ -2,6 +2,8 @@
 
 part of 'site_visit_api.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -100,3 +102,5 @@ class _SiteVisitApi implements SiteVisitApi {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on

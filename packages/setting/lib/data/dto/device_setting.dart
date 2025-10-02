@@ -8,7 +8,7 @@ DeviceSettingResponse deserializeDeviceSettingResponse(
 ) => DeviceSettingResponse.fromJson(json);
 
 @freezed
-class DeviceSettingResponse with _$DeviceSettingResponse {
+abstract class DeviceSettingResponse with _$DeviceSettingResponse {
   const factory DeviceSettingResponse({
     required String status,
     required DeviceSettingData data,
@@ -19,7 +19,7 @@ class DeviceSettingResponse with _$DeviceSettingResponse {
 }
 
 @freezed
-class DeviceSettingData with _$DeviceSettingData {
+abstract class DeviceSettingData with _$DeviceSettingData {
   const factory DeviceSettingData({
     required int id,
     required String deviceId,

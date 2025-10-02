@@ -5,7 +5,7 @@ import 'package:report/site_visit/data/dto/response/to_day_site_visit_report_res
 part 'today_site_visit_state.freezed.dart';
 
 @freezed
-class TodaySiteVisitState with _$TodaySiteVisitState {
+abstract class TodaySiteVisitState with _$TodaySiteVisitState {
   factory TodaySiteVisitState({
     @Default(0) int total,
     @Default(false) bool isLoadingTodayVisit,

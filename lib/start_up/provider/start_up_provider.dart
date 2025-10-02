@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:core/core.dart';
 import 'package:core/data/local/db/app_database.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:core/flavor/flavor_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:setting/presentation/controller/setting_controller.dart';
 import 'package:timezone/data/latest.dart' as tz_latest;
@@ -16,7 +16,7 @@ Future<void> startUp(Ref ref, {required Flavor flavor}) async {
 
   // Set the flavor state
   // ignore: avoid_manual_providers_as_generated_provider_dependency
-  ref.read(flavorProvider.notifier).state = flavor;
+  ref.read(flavorProvider.notifier).setFlavor(flavor);
 
   // start trace
   // initialize database

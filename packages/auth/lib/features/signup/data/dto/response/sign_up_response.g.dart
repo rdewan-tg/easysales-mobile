@@ -6,23 +6,23 @@ part of 'sign_up_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SignUpResponseImpl _$$SignUpResponseImplFromJson(Map<String, dynamic> json) =>
-    _$SignUpResponseImpl(
+_SignUpResponse _$SignUpResponseFromJson(Map<String, dynamic> json) =>
+    _SignUpResponse(
       status: json['status'] as String,
       data: Data.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$SignUpResponseImplToJson(
-  _$SignUpResponseImpl instance,
-) => <String, dynamic>{'status': instance.status, 'data': instance.data};
+Map<String, dynamic> _$SignUpResponseToJson(_SignUpResponse instance) =>
+    <String, dynamic>{'status': instance.status, 'data': instance.data};
 
-_$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) =>
-    _$DataImpl(user: User.fromJson(json['user'] as Map<String, dynamic>));
+_Data _$DataFromJson(Map<String, dynamic> json) =>
+    _Data(user: User.fromJson(json['user'] as Map<String, dynamic>));
 
-Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
-    <String, dynamic>{'user': instance.user};
+Map<String, dynamic> _$DataToJson(_Data instance) => <String, dynamic>{
+  'user': instance.user,
+};
 
-_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
+_User _$UserFromJson(Map<String, dynamic> json) => _User(
   id: json['id'] as String,
   name: json['name'] as String,
   email: json['email'] as String,
@@ -30,11 +30,10 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
   authType: json['authType'] as String,
 );
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-      'role': instance.role,
-      'authType': instance.authType,
-    };
+Map<String, dynamic> _$UserToJson(_User instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'email': instance.email,
+  'role': instance.role,
+  'authType': instance.authType,
+};
