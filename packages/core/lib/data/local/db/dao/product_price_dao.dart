@@ -57,11 +57,17 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
     )..addColumns([countExp])).map((row) => row.read(countExp)!).watchSingle();
   }
 
-  Future<List<String>> getProductUom(String itemId, String priceGroup) async {
+  Future<List<String>> getProductUom(
+    String itemId,
+    String priceGroup,
+    String flavor,
+  ) async {
     final query =
         await (select(productPriceEntity)..where(
               (tbl) =>
-                  tbl.itemId.equals(itemId) & tbl.priceGroup.equals(priceGroup),
+                  tbl.itemId.equals(itemId) &
+                  tbl.priceGroup.equals(priceGroup) &
+                  tbl.flavor.equals(flavor),
             ))
             .get();
 
@@ -90,20 +96,47 @@ class ProductPriceDao extends DatabaseAccessor<AppDatabase>
     return result;
   }
 
+  Future<List<String>> getProductFlavor(
+    String itemId,
+    String priceGroup,
+  ) async {
+    final query =
+        await (selectOnly(productPriceEntity, distinct: true)
+              ..addColumns([productPriceEntity.flavor])
+              ..where(
+                (productPriceEntity.itemId.equals(itemId) &
+                    productPriceEntity.priceGroup.equals(priceGroup)),
+              ))
+            .get();
+
+    final result = query
+        .map((row) => row.read<String>(productPriceEntity.flavor) ?? '')
+        .toList();
+
+    return result;
+  }
+
   Future<ProductPriceEntityData> getProductDetail(
     String itemId,
     String priceGroup,
     String packSize,
-    String unit,
-  ) async {
+    String unit, {
+    String? flavor,
+  }) async {
     final result =
-        await (select(productPriceEntity)..where(
-              (tbl) =>
+        await (select(productPriceEntity)..where((tbl) {
+              var expr =
                   tbl.itemId.equals(itemId) &
                   tbl.priceGroup.equals(priceGroup) &
                   tbl.packSize.equals(packSize) &
-                  tbl.salesUnit.equals(unit),
-            ))
+                  tbl.salesUnit.equals(unit);
+
+              if (flavor != null) {
+                expr = expr & tbl.flavor.equals(flavor);
+              }
+
+              return expr;
+            }))
             .getSingle();
 
     return result;

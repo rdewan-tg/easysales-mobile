@@ -11,24 +11,7 @@ final productDaoProvider = Provider<ProductDao>((ref) {
   return ProductDao(ref.watch(appDatabaseProvider));
 });
 
-// top level function for isolate
-Future<void> insertOrUpdateProductList(List<ProductEntityData> dataList) async {
-  try {
-    final isolate = await createIsolateWithSpawn();
-    final database = AppDatabase(await isolate.connect(singleClientMode: true));
 
-    await database.transaction(() async {
-      await database.batch((batch) {
-        batch.insertAllOnConflictUpdate(database.productEntity, dataList);
-      });
-    });
-  } catch (e, stackTrace) {
-    throw Failure(
-      message: 'Failed to insert or update list: $e',
-      stackTrace: stackTrace,
-    );
-  }
-}
 
 @DriftAccessor(tables: [ProductEntity, ProductPriceEntity])
 class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {

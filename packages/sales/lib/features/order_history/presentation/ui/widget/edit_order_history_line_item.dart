@@ -25,6 +25,7 @@ class _EditOrderHistoryLineItemState
   late TextEditingController _uomController;
   late TextEditingController _qtyController;
   late TextEditingController _packSizeController;
+  late TextEditingController _flavorController;
   late TextEditingController _priceController;
 
   @override
@@ -34,6 +35,7 @@ class _EditOrderHistoryLineItemState
     _qtyController = TextEditingController();
     _packSizeController = TextEditingController();
     _priceController = TextEditingController();
+    _flavorController = TextEditingController();
   }
 
   @override
@@ -42,6 +44,7 @@ class _EditOrderHistoryLineItemState
     _qtyController.dispose();
     _packSizeController.dispose();
     _priceController.dispose();
+    _flavorController.dispose();
     super.dispose();
   }
 
@@ -80,28 +83,7 @@ class _EditOrderHistoryLineItemState
                   maxLines: 2,
                 );
               },
-            ),
-            const SizedBox(height: kMedium),
-            Consumer(
-              builder: (context, ref, child) {
-                final uom = ref.watch(
-                  productControllerProvider.select((value) => value.uom),
-                );
-                return DropdownMenu<String>(
-                  controller: _uomController,
-                  width: 200,
-                  requestFocusOnTap: false,
-                  enableSearch: false,
-                  label: Text('Unit'.hardcoded),
-                  onSelected: (String? value) {
-                    _getProductDetail();
-                  },
-                  dropdownMenuEntries: uom
-                      .map((e) => DropdownMenuEntry(label: e, value: e))
-                      .toList(),
-                );
-              },
-            ),
+            ),            
             const SizedBox(height: kMedium),
             Consumer(
               builder: (context, ref, child) {
@@ -121,9 +103,60 @@ class _EditOrderHistoryLineItemState
                     visualDensity: VisualDensity.compact, // Makes it more dense
                   ),
                   onSelected: (String? value) {
-                    _getProductDetail();
+                    //_getProductDetail();
                   },
                   dropdownMenuEntries: packSize
+                      .map((e) => DropdownMenuEntry(label: e, value: e))
+                      .toList(),
+                );
+              },
+            ),
+            const SizedBox(height: kMedium),
+            Consumer(
+              builder: (context, ref, child) {
+                final flavor = ref.watch(
+                  productControllerProvider.select((value) => value.flavor),
+                );
+                return DropdownMenu<String>(
+                  controller: _flavorController,
+                  width: 200,
+                  requestFocusOnTap: false,
+                  enableSearch: false,
+                  label: Text('Flavor'.hardcoded),
+                  menuStyle: const MenuStyle(
+                    padding: WidgetStatePropertyAll(
+                      EdgeInsets.zero,
+                    ), // Removes extra spacing
+                    visualDensity: VisualDensity.compact, // Makes it more dense
+                  ),
+                  onSelected: (String? value) {
+                    if (value == null) return;
+                    ref.read(productControllerProvider.notifier).getProductUom(
+                      widget.itemId, widget.priceGroup, value);
+                    //_getProductDetail();
+                  },
+                  dropdownMenuEntries: flavor
+                      .map((e) => DropdownMenuEntry(label: e, value: e))
+                      .toList(),
+                );
+              },
+            ),
+            const SizedBox(height: kMedium),
+            Consumer(
+              builder: (context, ref, child) {
+                final uom = ref.watch(
+                  productControllerProvider.select((value) => value.uom),
+                );
+                return DropdownMenu<String>(
+                  controller: _uomController,
+                  width: 200,
+                  requestFocusOnTap: false,
+                  enableSearch: false,
+                  label: Text('Unit'.hardcoded),
+                  onSelected: (String? value) {
+                    _getProductDetail();
+                  },
+                  dropdownMenuEntries: uom
                       .map((e) => DropdownMenuEntry(label: e, value: e))
                       .toList(),
                 );
@@ -199,14 +232,19 @@ class _EditOrderHistoryLineItemState
   }
 
   void _getProductDetail() {
-    if (_uomController.text.isEmpty || _packSizeController.text.isEmpty) return;
+    if (_uomController.text.isEmpty ||
+        _packSizeController.text.isEmpty ||
+        _flavorController.text.isEmpty) {
+      return;
+    }
     ref
         .read(productControllerProvider.notifier)
         .getProductDetail(
-          widget.itemId,
-          widget.priceGroup,
-          _packSizeController.text,
-          _uomController.text,
+          itemId: widget.itemId,
+          priceGroup: widget.priceGroup,
+          packSize: _packSizeController.text,
+          uom: _uomController.text,
+          flavor: _flavorController.text,
         );
   }
 

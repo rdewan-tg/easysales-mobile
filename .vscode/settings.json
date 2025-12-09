@@ -21,7 +21,8 @@
     "sitevisit",
     "easysales",
     "SGMA",
-    ""
+    "daos",
+    "iproduct"
   ],
   "yaml.schemaStore.enable": false
 }

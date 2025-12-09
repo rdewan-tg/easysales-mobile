@@ -5,6 +5,7 @@ class ProductPriceEntity extends Table {
   TextColumn get productId => text()();
   TextColumn get itemId => text()();
   TextColumn get packSize => text()();
+  TextColumn get flavor => text().nullable()();
   DateTimeColumn get fromDate => dateTime()();
   DateTimeColumn get toDate => dateTime()();
   RealColumn get unitPrice => real()();

@@ -12,5 +12,6 @@ targets:
         options:
           databases:
             my_database: lib/data/local/db/app_database.dart
+          schema_dir: lib/data/local/db/entity
           store_date_time_values_as_text: true # (default false for Unix timestamps)
          

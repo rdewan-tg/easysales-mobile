@@ -23,15 +23,18 @@ abstract interface class IProductService {
 
   Future<Result<int, Failure>> deleteAllSearchProductHistory();
 
-  Future<List<String>> getProductUom(String itemId, String priceGroup);
+  Future<List<String>> getProductUom(String itemId, String priceGroup, String flavor);
 
   Future<List<String>> getProductPackSize(String itemId, String priceGroup);
+
+  Future<List<String>> getProductFlavor(String itemId, String priceGroup);
 
   Future<ProductPriceEntityData> getProductDetail(
     String itemId,
     String priceGroup,
     String packSize,
     String unit,
+    {String? flavor}
   );
 
   Future<ProductEntityData?> getProductByItemId(String itemId);

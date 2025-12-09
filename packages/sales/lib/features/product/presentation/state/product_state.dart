@@ -15,6 +15,7 @@ abstract class ProductState with _$ProductState {
     ProductPriceEntityData? price,
     @Default([]) List<String> uom,
     @Default([]) List<String> packSize,
+    @Default([]) List<String> flavor,
     @Default(0) int quantity,
     @Default(0) int totalProductImported,
     @Default(0) int totalPriceImported,

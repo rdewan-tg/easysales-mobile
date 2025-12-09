@@ -206,11 +206,15 @@ class ProductController extends Notifier<ProductState> {
 
   int? getTotalSearchHistoryCleared() => state.totalSearchProductHistoryCleared;
 
-  Future<void> getProductUom(String itemId, String priceGroup) async {
+  Future<void> getProductUom(
+    String itemId,
+    String priceGroup,
+    String flavor,
+  ) async {
     try {
       final result = await ref
           .read(productServiceProvider)
-          .getProductUom(itemId, priceGroup);
+          .getProductUom(itemId, priceGroup, flavor);
       state = state.copyWith(uom: result);
     } catch (e) {
       state = state.copyWith(errorMsg: e.toString());
@@ -228,16 +232,28 @@ class ProductController extends Notifier<ProductState> {
     }
   }
 
-  Future<void> getProductDetail(
-    String itemId,
-    String priceGroup,
-    String packSize,
-    String uom,
-  ) async {
+  Future<void> getProductFlavor(String itemId, String priceGroup) async {
     try {
       final result = await ref
           .read(productServiceProvider)
-          .getProductDetail(itemId, priceGroup, packSize, uom);
+          .getProductFlavor(itemId, priceGroup);
+      state = state.copyWith(flavor: result);
+    } catch (e) {
+      state = state.copyWith(errorMsg: e.toString());
+    }
+  }
+
+  Future<void> getProductDetail({
+    required String itemId,
+    required String priceGroup,
+    required String packSize,
+    required String uom,
+    required String flavor,
+  }) async {
+    try {
+      final result = await ref
+          .read(productServiceProvider)
+          .getProductDetail(itemId, priceGroup, packSize, uom, flavor: flavor);
       state = state.copyWith(price: result);
     } catch (e) {
       state = state.copyWith(errorMsg: e.toString());

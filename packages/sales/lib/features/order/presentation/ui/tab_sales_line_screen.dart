@@ -221,14 +221,14 @@ class _TabSalesLineScreenState extends ConsumerState<TabSalesLineScreen>
     final priceGroup = ref
         .read(salesHeaderControllerProvider.notifier)
         .getPriceGroup();
-    // get the product uom
-    ref
-        .read(productControllerProvider.notifier)
-        .getProductUom(itemId, priceGroup);
     // get the product pack size
     ref
         .read(productControllerProvider.notifier)
         .getProductPackSize(itemId, priceGroup);
+    // get the product flavor
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductFlavor(itemId, priceGroup);
     // show bottom sheet
     _bottomSheetController = showBottomSheet(
       context: context,

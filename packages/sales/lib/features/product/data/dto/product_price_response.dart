@@ -26,6 +26,7 @@ abstract class ProductPriceData with _$ProductPriceData {
     @JsonKey(name: "productId") required String productId,
     @JsonKey(name: "itemId") required String itemId,
     @JsonKey(name: "packSize") String? packSize,
+    @JsonKey(name: "flavor") String? flavor,
     @JsonKey(name: "fromDate") required DateTime fromDate,
     @JsonKey(name: "toDate") required DateTime toDate,
     @JsonKey(name: "unitPrice") required String unitPrice,
