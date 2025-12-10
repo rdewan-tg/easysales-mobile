@@ -15,15 +15,16 @@ const startUpProvider = StartUpFamily._();
 final class StartUpProvider
     extends $FunctionalProvider<AsyncValue<void>, void, FutureOr<void>>
     with $FutureModifier<void>, $FutureProvider<void> {
-  const StartUpProvider._(
-      {required StartUpFamily super.from, required Flavor super.argument})
-      : super(
-          retry: null,
-          name: r'startUpProvider',
-          isAutoDispose: false,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+  const StartUpProvider._({
+    required StartUpFamily super.from,
+    required Flavor super.argument,
+  }) : super(
+         retry: null,
+         name: r'startUpProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
   String debugGetCreateSourceHash() => _$startUpHash();
@@ -43,10 +44,7 @@ final class StartUpProvider
   @override
   FutureOr<void> create(Ref ref) {
     final argument = this.argument as Flavor;
-    return startUp(
-      ref,
-      flavor: argument,
-    );
+    return startUp(ref, flavor: argument);
   }
 
   @override
@@ -65,17 +63,15 @@ String _$startUpHash() => r'101a0675cbc24e1aa0c10978804d3f51d8db951d';
 final class StartUpFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<void>, Flavor> {
   const StartUpFamily._()
-      : super(
-          retry: null,
-          name: r'startUpProvider',
-          dependencies: null,
-          $allTransitiveDependencies: null,
-          isAutoDispose: false,
-        );
+    : super(
+        retry: null,
+        name: r'startUpProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
 
-  StartUpProvider call({
-    required Flavor flavor,
-  }) =>
+  StartUpProvider call({required Flavor flavor}) =>
       StartUpProvider._(argument: flavor, from: this);
 
   @override
