@@ -134,7 +134,7 @@ class _TabOrderHistoryDetailState extends ConsumerState<TabOrderHistoryDetail>
     // get the price group
     final priceGroup = ref
         .read(orderHistoryControllerProvider.notifier)
-        .getPriceGroup(); 
+        .getPriceGroup();
     // get the product pack size
     ref
         .read(productControllerProvider.notifier)

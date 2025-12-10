@@ -11,8 +11,6 @@ final productDaoProvider = Provider<ProductDao>((ref) {
   return ProductDao(ref.watch(appDatabaseProvider));
 });
 
-
-
 @DriftAccessor(tables: [ProductEntity, ProductPriceEntity])
 class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
   ProductDao(super.db);

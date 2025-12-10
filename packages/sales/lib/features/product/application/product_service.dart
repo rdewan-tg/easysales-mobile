@@ -114,7 +114,11 @@ final class ProductService implements IProductService {
   }
 
   @override
-  Future<List<String>> getProductUom(String itemId, String priceGroup, String flavor) async {
+  Future<List<String>> getProductUom(
+    String itemId,
+    String priceGroup,
+    String flavor,
+  ) async {
     try {
       return await _productRepository.getProductUom(itemId, priceGroup, flavor);
     } on Failure catch (_) {
@@ -157,9 +161,9 @@ final class ProductService implements IProductService {
     String itemId,
     String priceGroup,
     String packSize,
-    String unit,
-    {String? flavor}
-  ) async {
+    String unit, {
+    String? flavor,
+  }) async {
     try {
       return await _productRepository.getProductDetail(
         itemId,

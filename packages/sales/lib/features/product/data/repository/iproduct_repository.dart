@@ -27,7 +27,11 @@ abstract interface class IProductRepository {
 
   Stream<List<SearchProductHistoryEntityData>> watchSearchProductHistory();
 
-  Future<List<String>> getProductUom(String itemId, String priceGroup, String flavor);
+  Future<List<String>> getProductUom(
+    String itemId,
+    String priceGroup,
+    String flavor,
+  );
 
   Future<List<String>> getProductPackSize(String itemId, String priceGroup);
 
@@ -37,9 +41,9 @@ abstract interface class IProductRepository {
     String itemId,
     String priceGroup,
     String packSize,
-    String unit,
-    {String? flavor}
-  );
+    String unit, {
+    String? flavor,
+  });
 
   Future<ProductEntityData?> getProductByItemId(String itemId);
 }

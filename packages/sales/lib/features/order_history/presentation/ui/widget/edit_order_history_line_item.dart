@@ -83,7 +83,7 @@ class _EditOrderHistoryLineItemState
                   maxLines: 2,
                 );
               },
-            ),            
+            ),
             const SizedBox(height: kMedium),
             Consumer(
               builder: (context, ref, child) {
@@ -131,8 +131,9 @@ class _EditOrderHistoryLineItemState
                   ),
                   onSelected: (String? value) {
                     if (value == null) return;
-                    ref.read(productControllerProvider.notifier).getProductUom(
-                      widget.itemId, widget.priceGroup, value);
+                    ref
+                        .read(productControllerProvider.notifier)
+                        .getProductUom(widget.itemId, widget.priceGroup, value);
                     //_getProductDetail();
                   },
                   dropdownMenuEntries: flavor
