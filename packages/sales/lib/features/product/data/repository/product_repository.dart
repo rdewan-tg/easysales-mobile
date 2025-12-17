@@ -173,9 +173,13 @@ final class ProductRepository
   }
 
   @override
-  Future<List<String>> getProductUom(String itemId, String priceGroup) async {
+  Future<List<String>> getProductUom(
+    String itemId,
+    String priceGroup,
+    String flavor,
+  ) async {
     try {
-      return await _priceDao.getProductUom(itemId, priceGroup);
+      return await _priceDao.getProductUom(itemId, priceGroup, flavor);
     } catch (e, stackTrace) {
       // Map unexpected exceptions to Failure
       throw Failure(
@@ -204,18 +208,37 @@ final class ProductRepository
   }
 
   @override
+  Future<List<String>> getProductFlavor(
+    String itemId,
+    String priceGroup,
+  ) async {
+    try {
+      return await _priceDao.getProductFlavor(itemId, priceGroup);
+    } catch (e, stackTrace) {
+      // Map unexpected exceptions to Failure
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
   Future<ProductPriceEntityData> getProductDetail(
     String itemId,
     String priceGroup,
     String packSize,
-    String unit,
-  ) async {
+    String unit, {
+    String? flavor,
+  }) async {
     try {
       return await _priceDao.getProductDetail(
         itemId,
         priceGroup,
         packSize,
         unit,
+        flavor: flavor,
       );
     } catch (e, stackTrace) {
       // Map unexpected exceptions to Failure

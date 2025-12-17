@@ -208,9 +208,13 @@ class ProductController extends Notifier<ProductState> {
 
   Future<void> getProductUom(String itemId, String priceGroup) async {
     try {
+      final flavor = state.selectedFlavor;
+      if (flavor == null) {
+        return;
+      }
       final result = await ref
           .read(productServiceProvider)
-          .getProductUom(itemId, priceGroup);
+          .getProductUom(itemId, priceGroup, flavor);
       state = state.copyWith(uom: result);
     } catch (e) {
       state = state.copyWith(errorMsg: e.toString());
@@ -228,16 +232,35 @@ class ProductController extends Notifier<ProductState> {
     }
   }
 
-  Future<void> getProductDetail(
-    String itemId,
-    String priceGroup,
-    String packSize,
-    String uom,
-  ) async {
+  Future<void> getProductFlavor(String itemId, String priceGroup) async {
     try {
       final result = await ref
           .read(productServiceProvider)
-          .getProductDetail(itemId, priceGroup, packSize, uom);
+          .getProductFlavor(itemId, priceGroup);
+      if (result.length == 1) {
+        state = state.copyWith(flavors: result, selectedFlavor: result.first);
+      } else {
+        state = state.copyWith(flavors: result);
+      }
+    } catch (e) {
+      state = state.copyWith(errorMsg: e.toString());
+    }
+  }
+
+  Future<void> getProductDetail({
+    required String itemId,
+    required String priceGroup,
+    required String packSize,
+    required String uom,
+  }) async {
+    try {
+      final flavor = state.selectedFlavor;
+      if (flavor == null) {
+        return;
+      }
+      final result = await ref
+          .read(productServiceProvider)
+          .getProductDetail(itemId, priceGroup, packSize, uom, flavor: flavor);
       state = state.copyWith(price: result);
     } catch (e) {
       state = state.copyWith(errorMsg: e.toString());
@@ -258,6 +281,10 @@ class ProductController extends Notifier<ProductState> {
         .read(productServiceProvider)
         .getProductByItemId(itemId);
     return product;
+  }
+
+  void setSelectedFlavor(String value) {
+    state = state.copyWith(selectedFlavor: value);
   }
 
   String getProductName(String itemId) =>

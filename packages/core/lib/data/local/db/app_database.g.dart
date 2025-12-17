@@ -4650,6 +4650,15 @@ class $ProductPriceEntityTable extends ProductPriceEntity
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _flavorMeta = const VerificationMeta('flavor');
+  @override
+  late final GeneratedColumn<String> flavor = GeneratedColumn<String>(
+    'flavor',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _fromDateMeta = const VerificationMeta(
     'fromDate',
   );
@@ -4751,6 +4760,7 @@ class $ProductPriceEntityTable extends ProductPriceEntity
     productId,
     itemId,
     packSize,
+    flavor,
     fromDate,
     toDate,
     unitPrice,
@@ -4801,6 +4811,12 @@ class $ProductPriceEntityTable extends ProductPriceEntity
       );
     } else if (isInserting) {
       context.missing(_packSizeMeta);
+    }
+    if (data.containsKey('flavor')) {
+      context.handle(
+        _flavorMeta,
+        flavor.isAcceptableOrUnknown(data['flavor']!, _flavorMeta),
+      );
     }
     if (data.containsKey('from_date')) {
       context.handle(
@@ -4903,6 +4919,10 @@ class $ProductPriceEntityTable extends ProductPriceEntity
         DriftSqlType.string,
         data['${effectivePrefix}pack_size'],
       )!,
+      flavor: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}flavor'],
+      ),
       fromDate: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}from_date'],
@@ -4954,6 +4974,7 @@ class ProductPriceEntityData extends DataClass
   final String productId;
   final String itemId;
   final String packSize;
+  final String? flavor;
   final DateTime fromDate;
   final DateTime toDate;
   final double unitPrice;
@@ -4968,6 +4989,7 @@ class ProductPriceEntityData extends DataClass
     required this.productId,
     required this.itemId,
     required this.packSize,
+    this.flavor,
     required this.fromDate,
     required this.toDate,
     required this.unitPrice,
@@ -4985,6 +5007,9 @@ class ProductPriceEntityData extends DataClass
     map['product_id'] = Variable<String>(productId);
     map['item_id'] = Variable<String>(itemId);
     map['pack_size'] = Variable<String>(packSize);
+    if (!nullToAbsent || flavor != null) {
+      map['flavor'] = Variable<String>(flavor);
+    }
     map['from_date'] = Variable<DateTime>(fromDate);
     map['to_date'] = Variable<DateTime>(toDate);
     map['unit_price'] = Variable<double>(unitPrice);
@@ -5005,6 +5030,9 @@ class ProductPriceEntityData extends DataClass
       productId: Value(productId),
       itemId: Value(itemId),
       packSize: Value(packSize),
+      flavor: flavor == null && nullToAbsent
+          ? const Value.absent()
+          : Value(flavor),
       fromDate: Value(fromDate),
       toDate: Value(toDate),
       unitPrice: Value(unitPrice),
@@ -5029,6 +5057,7 @@ class ProductPriceEntityData extends DataClass
       productId: serializer.fromJson<String>(json['productId']),
       itemId: serializer.fromJson<String>(json['itemId']),
       packSize: serializer.fromJson<String>(json['packSize']),
+      flavor: serializer.fromJson<String?>(json['flavor']),
       fromDate: serializer.fromJson<DateTime>(json['fromDate']),
       toDate: serializer.fromJson<DateTime>(json['toDate']),
       unitPrice: serializer.fromJson<double>(json['unitPrice']),
@@ -5048,6 +5077,7 @@ class ProductPriceEntityData extends DataClass
       'productId': serializer.toJson<String>(productId),
       'itemId': serializer.toJson<String>(itemId),
       'packSize': serializer.toJson<String>(packSize),
+      'flavor': serializer.toJson<String?>(flavor),
       'fromDate': serializer.toJson<DateTime>(fromDate),
       'toDate': serializer.toJson<DateTime>(toDate),
       'unitPrice': serializer.toJson<double>(unitPrice),
@@ -5065,6 +5095,7 @@ class ProductPriceEntityData extends DataClass
     String? productId,
     String? itemId,
     String? packSize,
+    Value<String?> flavor = const Value.absent(),
     DateTime? fromDate,
     DateTime? toDate,
     double? unitPrice,
@@ -5079,6 +5110,7 @@ class ProductPriceEntityData extends DataClass
     productId: productId ?? this.productId,
     itemId: itemId ?? this.itemId,
     packSize: packSize ?? this.packSize,
+    flavor: flavor.present ? flavor.value : this.flavor,
     fromDate: fromDate ?? this.fromDate,
     toDate: toDate ?? this.toDate,
     unitPrice: unitPrice ?? this.unitPrice,
@@ -5095,6 +5127,7 @@ class ProductPriceEntityData extends DataClass
       productId: data.productId.present ? data.productId.value : this.productId,
       itemId: data.itemId.present ? data.itemId.value : this.itemId,
       packSize: data.packSize.present ? data.packSize.value : this.packSize,
+      flavor: data.flavor.present ? data.flavor.value : this.flavor,
       fromDate: data.fromDate.present ? data.fromDate.value : this.fromDate,
       toDate: data.toDate.present ? data.toDate.value : this.toDate,
       unitPrice: data.unitPrice.present ? data.unitPrice.value : this.unitPrice,
@@ -5120,6 +5153,7 @@ class ProductPriceEntityData extends DataClass
           ..write('productId: $productId, ')
           ..write('itemId: $itemId, ')
           ..write('packSize: $packSize, ')
+          ..write('flavor: $flavor, ')
           ..write('fromDate: $fromDate, ')
           ..write('toDate: $toDate, ')
           ..write('unitPrice: $unitPrice, ')
@@ -5139,6 +5173,7 @@ class ProductPriceEntityData extends DataClass
     productId,
     itemId,
     packSize,
+    flavor,
     fromDate,
     toDate,
     unitPrice,
@@ -5157,6 +5192,7 @@ class ProductPriceEntityData extends DataClass
           other.productId == this.productId &&
           other.itemId == this.itemId &&
           other.packSize == this.packSize &&
+          other.flavor == this.flavor &&
           other.fromDate == this.fromDate &&
           other.toDate == this.toDate &&
           other.unitPrice == this.unitPrice &&
@@ -5174,6 +5210,7 @@ class ProductPriceEntityCompanion
   final Value<String> productId;
   final Value<String> itemId;
   final Value<String> packSize;
+  final Value<String?> flavor;
   final Value<DateTime> fromDate;
   final Value<DateTime> toDate;
   final Value<double> unitPrice;
@@ -5189,6 +5226,7 @@ class ProductPriceEntityCompanion
     this.productId = const Value.absent(),
     this.itemId = const Value.absent(),
     this.packSize = const Value.absent(),
+    this.flavor = const Value.absent(),
     this.fromDate = const Value.absent(),
     this.toDate = const Value.absent(),
     this.unitPrice = const Value.absent(),
@@ -5205,6 +5243,7 @@ class ProductPriceEntityCompanion
     required String productId,
     required String itemId,
     required String packSize,
+    this.flavor = const Value.absent(),
     required DateTime fromDate,
     required DateTime toDate,
     required double unitPrice,
@@ -5232,6 +5271,7 @@ class ProductPriceEntityCompanion
     Expression<String>? productId,
     Expression<String>? itemId,
     Expression<String>? packSize,
+    Expression<String>? flavor,
     Expression<DateTime>? fromDate,
     Expression<DateTime>? toDate,
     Expression<double>? unitPrice,
@@ -5248,6 +5288,7 @@ class ProductPriceEntityCompanion
       if (productId != null) 'product_id': productId,
       if (itemId != null) 'item_id': itemId,
       if (packSize != null) 'pack_size': packSize,
+      if (flavor != null) 'flavor': flavor,
       if (fromDate != null) 'from_date': fromDate,
       if (toDate != null) 'to_date': toDate,
       if (unitPrice != null) 'unit_price': unitPrice,
@@ -5266,6 +5307,7 @@ class ProductPriceEntityCompanion
     Value<String>? productId,
     Value<String>? itemId,
     Value<String>? packSize,
+    Value<String?>? flavor,
     Value<DateTime>? fromDate,
     Value<DateTime>? toDate,
     Value<double>? unitPrice,
@@ -5282,6 +5324,7 @@ class ProductPriceEntityCompanion
       productId: productId ?? this.productId,
       itemId: itemId ?? this.itemId,
       packSize: packSize ?? this.packSize,
+      flavor: flavor ?? this.flavor,
       fromDate: fromDate ?? this.fromDate,
       toDate: toDate ?? this.toDate,
       unitPrice: unitPrice ?? this.unitPrice,
@@ -5309,6 +5352,9 @@ class ProductPriceEntityCompanion
     }
     if (packSize.present) {
       map['pack_size'] = Variable<String>(packSize.value);
+    }
+    if (flavor.present) {
+      map['flavor'] = Variable<String>(flavor.value);
     }
     if (fromDate.present) {
       map['from_date'] = Variable<DateTime>(fromDate.value);
@@ -5350,6 +5396,7 @@ class ProductPriceEntityCompanion
           ..write('productId: $productId, ')
           ..write('itemId: $itemId, ')
           ..write('packSize: $packSize, ')
+          ..write('flavor: $flavor, ')
           ..write('fromDate: $fromDate, ')
           ..write('toDate: $toDate, ')
           ..write('unitPrice: $unitPrice, ')
@@ -9720,6 +9767,7 @@ typedef $$ProductPriceEntityTableCreateCompanionBuilder =
       required String productId,
       required String itemId,
       required String packSize,
+      Value<String?> flavor,
       required DateTime fromDate,
       required DateTime toDate,
       required double unitPrice,
@@ -9737,6 +9785,7 @@ typedef $$ProductPriceEntityTableUpdateCompanionBuilder =
       Value<String> productId,
       Value<String> itemId,
       Value<String> packSize,
+      Value<String?> flavor,
       Value<DateTime> fromDate,
       Value<DateTime> toDate,
       Value<double> unitPrice,
@@ -9775,6 +9824,11 @@ class $$ProductPriceEntityTableFilterComposer
 
   ColumnFilters<String> get packSize => $composableBuilder(
     column: $table.packSize,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get flavor => $composableBuilder(
+    column: $table.flavor,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -9853,6 +9907,11 @@ class $$ProductPriceEntityTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get flavor => $composableBuilder(
+    column: $table.flavor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get fromDate => $composableBuilder(
     column: $table.fromDate,
     builder: (column) => ColumnOrderings(column),
@@ -9919,6 +9978,9 @@ class $$ProductPriceEntityTableAnnotationComposer
 
   GeneratedColumn<String> get packSize =>
       $composableBuilder(column: $table.packSize, builder: (column) => column);
+
+  GeneratedColumn<String> get flavor =>
+      $composableBuilder(column: $table.flavor, builder: (column) => column);
 
   GeneratedColumn<DateTime> get fromDate =>
       $composableBuilder(column: $table.fromDate, builder: (column) => column);
@@ -9998,6 +10060,7 @@ class $$ProductPriceEntityTableTableManager
                 Value<String> productId = const Value.absent(),
                 Value<String> itemId = const Value.absent(),
                 Value<String> packSize = const Value.absent(),
+                Value<String?> flavor = const Value.absent(),
                 Value<DateTime> fromDate = const Value.absent(),
                 Value<DateTime> toDate = const Value.absent(),
                 Value<double> unitPrice = const Value.absent(),
@@ -10013,6 +10076,7 @@ class $$ProductPriceEntityTableTableManager
                 productId: productId,
                 itemId: itemId,
                 packSize: packSize,
+                flavor: flavor,
                 fromDate: fromDate,
                 toDate: toDate,
                 unitPrice: unitPrice,
@@ -10030,6 +10094,7 @@ class $$ProductPriceEntityTableTableManager
                 required String productId,
                 required String itemId,
                 required String packSize,
+                Value<String?> flavor = const Value.absent(),
                 required DateTime fromDate,
                 required DateTime toDate,
                 required double unitPrice,
@@ -10045,6 +10110,7 @@ class $$ProductPriceEntityTableTableManager
                 productId: productId,
                 itemId: itemId,
                 packSize: packSize,
+                flavor: flavor,
                 fromDate: fromDate,
                 toDate: toDate,
                 unitPrice: unitPrice,

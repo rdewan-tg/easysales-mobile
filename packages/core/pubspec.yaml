@@ -5,7 +5,7 @@ publish_to: 'none'
 homepage:
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.10.1
   flutter: ">=1.17.0"
 
 dependencies:
@@ -31,9 +31,9 @@ dependencies:
   setting:
     path: ../setting
   # https://pub.dev/packages/flutter_riverpod
-  flutter_riverpod: ^3.0.0
+  flutter_riverpod: ^3.0.3
   # https://pub.dev/packages/riverpod_annotation
-  riverpod_annotation: ^3.0.0  
+  riverpod_annotation: ^3.0.3  
   # https://pub.dev/packages/freezed_annotation
   freezed_annotation: ^3.1.0
   # https://pub.dev/packages/dio
@@ -43,7 +43,7 @@ dependencies:
   # https://pub.dev/packages/retrofit
   retrofit: ^4.7.2
   # https://pub.dev/packages/go_router
-  go_router: ^16.2.1
+  go_router: ^17.0.0
   # https://pub.dev/packages/logger
   logger: ^2.6.1
   # https://pub.dev/packages/json_annotation
@@ -53,13 +53,13 @@ dependencies:
   # https://pub.dev/packages/multiple_result
   multiple_result: ^5.2.0
   # https://pub.dev/packages/upgrader
-  upgrader: ^12.0.0
+  upgrader: ^12.3.0
   # https://pub.dev/packages/loader_overlay
   loader_overlay: ^5.0.0
   # https://pub.dev/packages/loading_animation_widget
   loading_animation_widget: ^1.3.0
   # https://pub.dev/packages/google_fonts
-  google_fonts: ^6.3.1
+  google_fonts: ^6.3.3
   # https://pub.dev/packages/gal
   gal: ^2.3.2
   # https://pub.dev/packages/open_file
@@ -73,13 +73,13 @@ dependencies:
   # https://pub.dev/packages/flutter_secure_storage
   flutter_secure_storage: ^9.2.4
   # https://pub.dev/packages/envied
-  envied: ^1.2.1
+  envied: ^1.3.2
   # https://pub.dev/packages/drift
-  drift: ^2.28.1
+  drift: ^2.30.0
   # https://pub.dev/packages/drift_flutter
-  drift_flutter: ^0.2.6
+  drift_flutter: ^0.2.8
   # https://pub.dev/packages/fullscreen_window
-  fullscreen_window: ^1.1.0
+  fullscreen_window: ^1.2.1
   # https://pub.dev/packages/animated_reorderable_list/
   animated_reorderable_list: ^1.3.0
   # https://pub.dev/packages/path_provider
@@ -89,23 +89,23 @@ dependencies:
   # https://pub.dev/packages/flutter_staggered_grid_view
   flutter_staggered_grid_view: ^0.7.0
   # https://pub.dev/packages/flutter_gen
-  flutter_gen: ^5.11.0
+  flutter_gen: ^5.12.0
   # https://pub.dev/packages/flutter_svg
-  flutter_svg: ^2.2.1
+  flutter_svg: ^2.2.3
   # https://pub.dev/packages/visibility_detector
   visibility_detector: ^0.4.0+2
     # https://pub.dev/packages/flutter_local_notifications
-  flutter_local_notifications: ^19.4.2
+  flutter_local_notifications: ^19.5.0
   # https://pub.dev/packages/logging
   logging: ^1.3.0
   # https://pub.dev/packages/firebase_core
-  firebase_core: ^4.1.0
+  firebase_core: ^4.2.1
   # https://pub.dev/packages/firebase_messaging
-  firebase_messaging: ^16.0.1  
+  firebase_messaging: ^16.0.4  
   # https://pub.dev/packages/device_info_plus
-  device_info_plus: ^12.1.0
+  device_info_plus: ^12.3.0
   # https://pub.dev/packages/google_maps_flutter
-  google_maps_flutter: ^2.13.1
+  google_maps_flutter: ^2.14.0
   # https://pub.dev/packages/geolocator
   geolocator: ^14.0.2
   # https://pub.dev/packages/geocoding
@@ -116,28 +116,32 @@ dependencies:
   new_version_plus: ^0.1.1
 
 dependency_overrides:
-  analyzer: 8.1.1
+  analyzer: 8.4.1
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  # https://pub.dev/packages/retrofit_generator
-  retrofit_generator: '10.0.5' # for Dart 3.3 use ^9.0.0
+  # https://pub.dev/packages/envied_generator
+  envied_generator: ^1.3.2
+  # https://pub.dev/packages/drift_dev
+  drift_dev: ^2.30.0
   # https://pub.dev/packages/build_runner
-  build_runner: ^2.7.1
+  build_runner: ^2.10.4
+  # https://pub.dev/packages/retrofit_generator
+  retrofit_generator: '10.0.5'   
   # https://pub.dev/packages/json_serializable
-  json_serializable: ^6.11.1
+  json_serializable: ^6.11.3
   # https://pub.dev/packages/freezed
   freezed: ^3.2.3
   # https://pub.dev/packages/riverpod_generator
-  riverpod_generator: ^3.0.0
-  # https://pub.dev/packages/envied_generator
-  envied_generator: ^1.2.1
-  # https://pub.dev/packages/drift_dev
-  drift_dev: ^2.28.2
-  # https://pub.dev/packages/flutter_gen_runner
-  flutter_gen_runner: ^5.11.0
+  riverpod_generator: ^3.0.3
+  # https://pub.dev/packages/riverpod_lint
+  riverpod_lint: ^3.0.3
+  # https://pub.dev/packages/custom_lint
+  custom_lint: ^0.8.1 
+  
+  
   
 
 flutter:
