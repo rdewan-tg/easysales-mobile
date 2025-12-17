@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductState {
 
- bool get isLoading; bool get isProductImported; bool get isPriceImported; Map<String, String> get settings; List<ProductEntityData> get products; List<ProductPriceEntityData> get prices; ProductPriceEntityData? get price; List<String> get uom; List<String> get packSize; List<String> get flavor; int get quantity; int get totalProductImported; int get totalPriceImported; List<String> get searchHistory; String get searchQuery; String get lastSearchQuery; bool get isSearchProductHistoryCleared; int? get totalSearchProductHistoryCleared; String? get errorMsg;
+ bool get isLoading; bool get isProductImported; bool get isPriceImported; Map<String, String> get settings; List<ProductEntityData> get products; List<ProductPriceEntityData> get prices; ProductPriceEntityData? get price; List<String> get uom; List<String> get packSize; List<String> get flavors; String? get selectedFlavor; int get quantity; int get totalProductImported; int get totalPriceImported; List<String> get searchHistory; String get searchQuery; String get lastSearchQuery; bool get isSearchProductHistoryCleared; int? get totalSearchProductHistoryCleared; String? get errorMsg;
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ProductStateCopyWith<ProductState> get copyWith => _$ProductStateCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isProductImported, isProductImported) || other.isProductImported == isProductImported)&&(identical(other.isPriceImported, isPriceImported) || other.isPriceImported == isPriceImported)&&const DeepCollectionEquality().equals(other.settings, settings)&&const DeepCollectionEquality().equals(other.products, products)&&const DeepCollectionEquality().equals(other.prices, prices)&&(identical(other.price, price) || other.price == price)&&const DeepCollectionEquality().equals(other.uom, uom)&&const DeepCollectionEquality().equals(other.packSize, packSize)&&const DeepCollectionEquality().equals(other.flavor, flavor)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.totalProductImported, totalProductImported) || other.totalProductImported == totalProductImported)&&(identical(other.totalPriceImported, totalPriceImported) || other.totalPriceImported == totalPriceImported)&&const DeepCollectionEquality().equals(other.searchHistory, searchHistory)&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.lastSearchQuery, lastSearchQuery) || other.lastSearchQuery == lastSearchQuery)&&(identical(other.isSearchProductHistoryCleared, isSearchProductHistoryCleared) || other.isSearchProductHistoryCleared == isSearchProductHistoryCleared)&&(identical(other.totalSearchProductHistoryCleared, totalSearchProductHistoryCleared) || other.totalSearchProductHistoryCleared == totalSearchProductHistoryCleared)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isProductImported, isProductImported) || other.isProductImported == isProductImported)&&(identical(other.isPriceImported, isPriceImported) || other.isPriceImported == isPriceImported)&&const DeepCollectionEquality().equals(other.settings, settings)&&const DeepCollectionEquality().equals(other.products, products)&&const DeepCollectionEquality().equals(other.prices, prices)&&(identical(other.price, price) || other.price == price)&&const DeepCollectionEquality().equals(other.uom, uom)&&const DeepCollectionEquality().equals(other.packSize, packSize)&&const DeepCollectionEquality().equals(other.flavors, flavors)&&(identical(other.selectedFlavor, selectedFlavor) || other.selectedFlavor == selectedFlavor)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.totalProductImported, totalProductImported) || other.totalProductImported == totalProductImported)&&(identical(other.totalPriceImported, totalPriceImported) || other.totalPriceImported == totalPriceImported)&&const DeepCollectionEquality().equals(other.searchHistory, searchHistory)&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.lastSearchQuery, lastSearchQuery) || other.lastSearchQuery == lastSearchQuery)&&(identical(other.isSearchProductHistoryCleared, isSearchProductHistoryCleared) || other.isSearchProductHistoryCleared == isSearchProductHistoryCleared)&&(identical(other.totalSearchProductHistoryCleared, totalSearchProductHistoryCleared) || other.totalSearchProductHistoryCleared == totalSearchProductHistoryCleared)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,isLoading,isProductImported,isPriceImported,const DeepCollectionEquality().hash(settings),const DeepCollectionEquality().hash(products),const DeepCollectionEquality().hash(prices),price,const DeepCollectionEquality().hash(uom),const DeepCollectionEquality().hash(packSize),const DeepCollectionEquality().hash(flavor),quantity,totalProductImported,totalPriceImported,const DeepCollectionEquality().hash(searchHistory),searchQuery,lastSearchQuery,isSearchProductHistoryCleared,totalSearchProductHistoryCleared,errorMsg]);
+int get hashCode => Object.hashAll([runtimeType,isLoading,isProductImported,isPriceImported,const DeepCollectionEquality().hash(settings),const DeepCollectionEquality().hash(products),const DeepCollectionEquality().hash(prices),price,const DeepCollectionEquality().hash(uom),const DeepCollectionEquality().hash(packSize),const DeepCollectionEquality().hash(flavors),selectedFlavor,quantity,totalProductImported,totalPriceImported,const DeepCollectionEquality().hash(searchHistory),searchQuery,lastSearchQuery,isSearchProductHistoryCleared,totalSearchProductHistoryCleared,errorMsg]);
 
 @override
 String toString() {
-  return 'ProductState(isLoading: $isLoading, isProductImported: $isProductImported, isPriceImported: $isPriceImported, settings: $settings, products: $products, prices: $prices, price: $price, uom: $uom, packSize: $packSize, flavor: $flavor, quantity: $quantity, totalProductImported: $totalProductImported, totalPriceImported: $totalPriceImported, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared, errorMsg: $errorMsg)';
+  return 'ProductState(isLoading: $isLoading, isProductImported: $isProductImported, isPriceImported: $isPriceImported, settings: $settings, products: $products, prices: $prices, price: $price, uom: $uom, packSize: $packSize, flavors: $flavors, selectedFlavor: $selectedFlavor, quantity: $quantity, totalProductImported: $totalProductImported, totalPriceImported: $totalPriceImported, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared, errorMsg: $errorMsg)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ProductStateCopyWith<$Res>  {
   factory $ProductStateCopyWith(ProductState value, $Res Function(ProductState) _then) = _$ProductStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLoading, bool isProductImported, bool isPriceImported, Map<String, String> settings, List<ProductEntityData> products, List<ProductPriceEntityData> prices, ProductPriceEntityData? price, List<String> uom, List<String> packSize, List<String> flavor, int quantity, int totalProductImported, int totalPriceImported, List<String> searchHistory, String searchQuery, String lastSearchQuery, bool isSearchProductHistoryCleared, int? totalSearchProductHistoryCleared, String? errorMsg
+ bool isLoading, bool isProductImported, bool isPriceImported, Map<String, String> settings, List<ProductEntityData> products, List<ProductPriceEntityData> prices, ProductPriceEntityData? price, List<String> uom, List<String> packSize, List<String> flavors, String? selectedFlavor, int quantity, int totalProductImported, int totalPriceImported, List<String> searchHistory, String searchQuery, String lastSearchQuery, bool isSearchProductHistoryCleared, int? totalSearchProductHistoryCleared, String? errorMsg
 });
 
 
@@ -62,7 +62,7 @@ class _$ProductStateCopyWithImpl<$Res>
 
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isProductImported = null,Object? isPriceImported = null,Object? settings = null,Object? products = null,Object? prices = null,Object? price = freezed,Object? uom = null,Object? packSize = null,Object? flavor = null,Object? quantity = null,Object? totalProductImported = null,Object? totalPriceImported = null,Object? searchHistory = null,Object? searchQuery = null,Object? lastSearchQuery = null,Object? isSearchProductHistoryCleared = null,Object? totalSearchProductHistoryCleared = freezed,Object? errorMsg = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isProductImported = null,Object? isPriceImported = null,Object? settings = null,Object? products = null,Object? prices = null,Object? price = freezed,Object? uom = null,Object? packSize = null,Object? flavors = null,Object? selectedFlavor = freezed,Object? quantity = null,Object? totalProductImported = null,Object? totalPriceImported = null,Object? searchHistory = null,Object? searchQuery = null,Object? lastSearchQuery = null,Object? isSearchProductHistoryCleared = null,Object? totalSearchProductHistoryCleared = freezed,Object? errorMsg = freezed,}) {
   return _then(_self.copyWith(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isProductImported: null == isProductImported ? _self.isProductImported : isProductImported // ignore: cast_nullable_to_non_nullable
@@ -73,8 +73,9 @@ as List<ProductEntityData>,prices: null == prices ? _self.prices : prices // ign
 as List<ProductPriceEntityData>,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as ProductPriceEntityData?,uom: null == uom ? _self.uom : uom // ignore: cast_nullable_to_non_nullable
 as List<String>,packSize: null == packSize ? _self.packSize : packSize // ignore: cast_nullable_to_non_nullable
-as List<String>,flavor: null == flavor ? _self.flavor : flavor // ignore: cast_nullable_to_non_nullable
-as List<String>,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as List<String>,flavors: null == flavors ? _self.flavors : flavors // ignore: cast_nullable_to_non_nullable
+as List<String>,selectedFlavor: freezed == selectedFlavor ? _self.selectedFlavor : selectedFlavor // ignore: cast_nullable_to_non_nullable
+as String?,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,totalProductImported: null == totalProductImported ? _self.totalProductImported : totalProductImported // ignore: cast_nullable_to_non_nullable
 as int,totalPriceImported: null == totalPriceImported ? _self.totalPriceImported : totalPriceImported // ignore: cast_nullable_to_non_nullable
 as int,searchHistory: null == searchHistory ? _self.searchHistory : searchHistory // ignore: cast_nullable_to_non_nullable
@@ -168,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isProductImported,  bool isPriceImported,  Map<String, String> settings,  List<ProductEntityData> products,  List<ProductPriceEntityData> prices,  ProductPriceEntityData? price,  List<String> uom,  List<String> packSize,  List<String> flavor,  int quantity,  int totalProductImported,  int totalPriceImported,  List<String> searchHistory,  String searchQuery,  String lastSearchQuery,  bool isSearchProductHistoryCleared,  int? totalSearchProductHistoryCleared,  String? errorMsg)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isProductImported,  bool isPriceImported,  Map<String, String> settings,  List<ProductEntityData> products,  List<ProductPriceEntityData> prices,  ProductPriceEntityData? price,  List<String> uom,  List<String> packSize,  List<String> flavors,  String? selectedFlavor,  int quantity,  int totalProductImported,  int totalPriceImported,  List<String> searchHistory,  String searchQuery,  String lastSearchQuery,  bool isSearchProductHistoryCleared,  int? totalSearchProductHistoryCleared,  String? errorMsg)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductState() when $default != null:
-return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_that.settings,_that.products,_that.prices,_that.price,_that.uom,_that.packSize,_that.flavor,_that.quantity,_that.totalProductImported,_that.totalPriceImported,_that.searchHistory,_that.searchQuery,_that.lastSearchQuery,_that.isSearchProductHistoryCleared,_that.totalSearchProductHistoryCleared,_that.errorMsg);case _:
+return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_that.settings,_that.products,_that.prices,_that.price,_that.uom,_that.packSize,_that.flavors,_that.selectedFlavor,_that.quantity,_that.totalProductImported,_that.totalPriceImported,_that.searchHistory,_that.searchQuery,_that.lastSearchQuery,_that.isSearchProductHistoryCleared,_that.totalSearchProductHistoryCleared,_that.errorMsg);case _:
   return orElse();
 
 }
@@ -189,10 +190,10 @@ return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isProductImported,  bool isPriceImported,  Map<String, String> settings,  List<ProductEntityData> products,  List<ProductPriceEntityData> prices,  ProductPriceEntityData? price,  List<String> uom,  List<String> packSize,  List<String> flavor,  int quantity,  int totalProductImported,  int totalPriceImported,  List<String> searchHistory,  String searchQuery,  String lastSearchQuery,  bool isSearchProductHistoryCleared,  int? totalSearchProductHistoryCleared,  String? errorMsg)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isProductImported,  bool isPriceImported,  Map<String, String> settings,  List<ProductEntityData> products,  List<ProductPriceEntityData> prices,  ProductPriceEntityData? price,  List<String> uom,  List<String> packSize,  List<String> flavors,  String? selectedFlavor,  int quantity,  int totalProductImported,  int totalPriceImported,  List<String> searchHistory,  String searchQuery,  String lastSearchQuery,  bool isSearchProductHistoryCleared,  int? totalSearchProductHistoryCleared,  String? errorMsg)  $default,) {final _that = this;
 switch (_that) {
 case _ProductState():
-return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_that.settings,_that.products,_that.prices,_that.price,_that.uom,_that.packSize,_that.flavor,_that.quantity,_that.totalProductImported,_that.totalPriceImported,_that.searchHistory,_that.searchQuery,_that.lastSearchQuery,_that.isSearchProductHistoryCleared,_that.totalSearchProductHistoryCleared,_that.errorMsg);case _:
+return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_that.settings,_that.products,_that.prices,_that.price,_that.uom,_that.packSize,_that.flavors,_that.selectedFlavor,_that.quantity,_that.totalProductImported,_that.totalPriceImported,_that.searchHistory,_that.searchQuery,_that.lastSearchQuery,_that.isSearchProductHistoryCleared,_that.totalSearchProductHistoryCleared,_that.errorMsg);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -209,10 +210,10 @@ return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isProductImported,  bool isPriceImported,  Map<String, String> settings,  List<ProductEntityData> products,  List<ProductPriceEntityData> prices,  ProductPriceEntityData? price,  List<String> uom,  List<String> packSize,  List<String> flavor,  int quantity,  int totalProductImported,  int totalPriceImported,  List<String> searchHistory,  String searchQuery,  String lastSearchQuery,  bool isSearchProductHistoryCleared,  int? totalSearchProductHistoryCleared,  String? errorMsg)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isProductImported,  bool isPriceImported,  Map<String, String> settings,  List<ProductEntityData> products,  List<ProductPriceEntityData> prices,  ProductPriceEntityData? price,  List<String> uom,  List<String> packSize,  List<String> flavors,  String? selectedFlavor,  int quantity,  int totalProductImported,  int totalPriceImported,  List<String> searchHistory,  String searchQuery,  String lastSearchQuery,  bool isSearchProductHistoryCleared,  int? totalSearchProductHistoryCleared,  String? errorMsg)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductState() when $default != null:
-return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_that.settings,_that.products,_that.prices,_that.price,_that.uom,_that.packSize,_that.flavor,_that.quantity,_that.totalProductImported,_that.totalPriceImported,_that.searchHistory,_that.searchQuery,_that.lastSearchQuery,_that.isSearchProductHistoryCleared,_that.totalSearchProductHistoryCleared,_that.errorMsg);case _:
+return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_that.settings,_that.products,_that.prices,_that.price,_that.uom,_that.packSize,_that.flavors,_that.selectedFlavor,_that.quantity,_that.totalProductImported,_that.totalPriceImported,_that.searchHistory,_that.searchQuery,_that.lastSearchQuery,_that.isSearchProductHistoryCleared,_that.totalSearchProductHistoryCleared,_that.errorMsg);case _:
   return null;
 
 }
@@ -224,7 +225,7 @@ return $default(_that.isLoading,_that.isProductImported,_that.isPriceImported,_t
 
 
 class _ProductState implements ProductState {
-   _ProductState({this.isLoading = false, this.isProductImported = false, this.isPriceImported = false, final  Map<String, String> settings = const {}, final  List<ProductEntityData> products = const [], final  List<ProductPriceEntityData> prices = const [], this.price, final  List<String> uom = const [], final  List<String> packSize = const [], final  List<String> flavor = const [], this.quantity = 0, this.totalProductImported = 0, this.totalPriceImported = 0, final  List<String> searchHistory = const [], this.searchQuery = '', this.lastSearchQuery = '', this.isSearchProductHistoryCleared = false, this.totalSearchProductHistoryCleared, this.errorMsg}): _settings = settings,_products = products,_prices = prices,_uom = uom,_packSize = packSize,_flavor = flavor,_searchHistory = searchHistory;
+   _ProductState({this.isLoading = false, this.isProductImported = false, this.isPriceImported = false, final  Map<String, String> settings = const {}, final  List<ProductEntityData> products = const [], final  List<ProductPriceEntityData> prices = const [], this.price, final  List<String> uom = const [], final  List<String> packSize = const [], final  List<String> flavors = const [], this.selectedFlavor, this.quantity = 0, this.totalProductImported = 0, this.totalPriceImported = 0, final  List<String> searchHistory = const [], this.searchQuery = '', this.lastSearchQuery = '', this.isSearchProductHistoryCleared = false, this.totalSearchProductHistoryCleared, this.errorMsg}): _settings = settings,_products = products,_prices = prices,_uom = uom,_packSize = packSize,_flavors = flavors,_searchHistory = searchHistory;
   
 
 @override@JsonKey() final  bool isLoading;
@@ -266,13 +267,14 @@ class _ProductState implements ProductState {
   return EqualUnmodifiableListView(_packSize);
 }
 
- final  List<String> _flavor;
-@override@JsonKey() List<String> get flavor {
-  if (_flavor is EqualUnmodifiableListView) return _flavor;
+ final  List<String> _flavors;
+@override@JsonKey() List<String> get flavors {
+  if (_flavors is EqualUnmodifiableListView) return _flavors;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_flavor);
+  return EqualUnmodifiableListView(_flavors);
 }
 
+@override final  String? selectedFlavor;
 @override@JsonKey() final  int quantity;
 @override@JsonKey() final  int totalProductImported;
 @override@JsonKey() final  int totalPriceImported;
@@ -299,16 +301,16 @@ _$ProductStateCopyWith<_ProductState> get copyWith => __$ProductStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isProductImported, isProductImported) || other.isProductImported == isProductImported)&&(identical(other.isPriceImported, isPriceImported) || other.isPriceImported == isPriceImported)&&const DeepCollectionEquality().equals(other._settings, _settings)&&const DeepCollectionEquality().equals(other._products, _products)&&const DeepCollectionEquality().equals(other._prices, _prices)&&(identical(other.price, price) || other.price == price)&&const DeepCollectionEquality().equals(other._uom, _uom)&&const DeepCollectionEquality().equals(other._packSize, _packSize)&&const DeepCollectionEquality().equals(other._flavor, _flavor)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.totalProductImported, totalProductImported) || other.totalProductImported == totalProductImported)&&(identical(other.totalPriceImported, totalPriceImported) || other.totalPriceImported == totalPriceImported)&&const DeepCollectionEquality().equals(other._searchHistory, _searchHistory)&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.lastSearchQuery, lastSearchQuery) || other.lastSearchQuery == lastSearchQuery)&&(identical(other.isSearchProductHistoryCleared, isSearchProductHistoryCleared) || other.isSearchProductHistoryCleared == isSearchProductHistoryCleared)&&(identical(other.totalSearchProductHistoryCleared, totalSearchProductHistoryCleared) || other.totalSearchProductHistoryCleared == totalSearchProductHistoryCleared)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isProductImported, isProductImported) || other.isProductImported == isProductImported)&&(identical(other.isPriceImported, isPriceImported) || other.isPriceImported == isPriceImported)&&const DeepCollectionEquality().equals(other._settings, _settings)&&const DeepCollectionEquality().equals(other._products, _products)&&const DeepCollectionEquality().equals(other._prices, _prices)&&(identical(other.price, price) || other.price == price)&&const DeepCollectionEquality().equals(other._uom, _uom)&&const DeepCollectionEquality().equals(other._packSize, _packSize)&&const DeepCollectionEquality().equals(other._flavors, _flavors)&&(identical(other.selectedFlavor, selectedFlavor) || other.selectedFlavor == selectedFlavor)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.totalProductImported, totalProductImported) || other.totalProductImported == totalProductImported)&&(identical(other.totalPriceImported, totalPriceImported) || other.totalPriceImported == totalPriceImported)&&const DeepCollectionEquality().equals(other._searchHistory, _searchHistory)&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.lastSearchQuery, lastSearchQuery) || other.lastSearchQuery == lastSearchQuery)&&(identical(other.isSearchProductHistoryCleared, isSearchProductHistoryCleared) || other.isSearchProductHistoryCleared == isSearchProductHistoryCleared)&&(identical(other.totalSearchProductHistoryCleared, totalSearchProductHistoryCleared) || other.totalSearchProductHistoryCleared == totalSearchProductHistoryCleared)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,isLoading,isProductImported,isPriceImported,const DeepCollectionEquality().hash(_settings),const DeepCollectionEquality().hash(_products),const DeepCollectionEquality().hash(_prices),price,const DeepCollectionEquality().hash(_uom),const DeepCollectionEquality().hash(_packSize),const DeepCollectionEquality().hash(_flavor),quantity,totalProductImported,totalPriceImported,const DeepCollectionEquality().hash(_searchHistory),searchQuery,lastSearchQuery,isSearchProductHistoryCleared,totalSearchProductHistoryCleared,errorMsg]);
+int get hashCode => Object.hashAll([runtimeType,isLoading,isProductImported,isPriceImported,const DeepCollectionEquality().hash(_settings),const DeepCollectionEquality().hash(_products),const DeepCollectionEquality().hash(_prices),price,const DeepCollectionEquality().hash(_uom),const DeepCollectionEquality().hash(_packSize),const DeepCollectionEquality().hash(_flavors),selectedFlavor,quantity,totalProductImported,totalPriceImported,const DeepCollectionEquality().hash(_searchHistory),searchQuery,lastSearchQuery,isSearchProductHistoryCleared,totalSearchProductHistoryCleared,errorMsg]);
 
 @override
 String toString() {
-  return 'ProductState(isLoading: $isLoading, isProductImported: $isProductImported, isPriceImported: $isPriceImported, settings: $settings, products: $products, prices: $prices, price: $price, uom: $uom, packSize: $packSize, flavor: $flavor, quantity: $quantity, totalProductImported: $totalProductImported, totalPriceImported: $totalPriceImported, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared, errorMsg: $errorMsg)';
+  return 'ProductState(isLoading: $isLoading, isProductImported: $isProductImported, isPriceImported: $isPriceImported, settings: $settings, products: $products, prices: $prices, price: $price, uom: $uom, packSize: $packSize, flavors: $flavors, selectedFlavor: $selectedFlavor, quantity: $quantity, totalProductImported: $totalProductImported, totalPriceImported: $totalPriceImported, searchHistory: $searchHistory, searchQuery: $searchQuery, lastSearchQuery: $lastSearchQuery, isSearchProductHistoryCleared: $isSearchProductHistoryCleared, totalSearchProductHistoryCleared: $totalSearchProductHistoryCleared, errorMsg: $errorMsg)';
 }
 
 
@@ -319,7 +321,7 @@ abstract mixin class _$ProductStateCopyWith<$Res> implements $ProductStateCopyWi
   factory _$ProductStateCopyWith(_ProductState value, $Res Function(_ProductState) _then) = __$ProductStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLoading, bool isProductImported, bool isPriceImported, Map<String, String> settings, List<ProductEntityData> products, List<ProductPriceEntityData> prices, ProductPriceEntityData? price, List<String> uom, List<String> packSize, List<String> flavor, int quantity, int totalProductImported, int totalPriceImported, List<String> searchHistory, String searchQuery, String lastSearchQuery, bool isSearchProductHistoryCleared, int? totalSearchProductHistoryCleared, String? errorMsg
+ bool isLoading, bool isProductImported, bool isPriceImported, Map<String, String> settings, List<ProductEntityData> products, List<ProductPriceEntityData> prices, ProductPriceEntityData? price, List<String> uom, List<String> packSize, List<String> flavors, String? selectedFlavor, int quantity, int totalProductImported, int totalPriceImported, List<String> searchHistory, String searchQuery, String lastSearchQuery, bool isSearchProductHistoryCleared, int? totalSearchProductHistoryCleared, String? errorMsg
 });
 
 
@@ -336,7 +338,7 @@ class __$ProductStateCopyWithImpl<$Res>
 
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isProductImported = null,Object? isPriceImported = null,Object? settings = null,Object? products = null,Object? prices = null,Object? price = freezed,Object? uom = null,Object? packSize = null,Object? flavor = null,Object? quantity = null,Object? totalProductImported = null,Object? totalPriceImported = null,Object? searchHistory = null,Object? searchQuery = null,Object? lastSearchQuery = null,Object? isSearchProductHistoryCleared = null,Object? totalSearchProductHistoryCleared = freezed,Object? errorMsg = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isProductImported = null,Object? isPriceImported = null,Object? settings = null,Object? products = null,Object? prices = null,Object? price = freezed,Object? uom = null,Object? packSize = null,Object? flavors = null,Object? selectedFlavor = freezed,Object? quantity = null,Object? totalProductImported = null,Object? totalPriceImported = null,Object? searchHistory = null,Object? searchQuery = null,Object? lastSearchQuery = null,Object? isSearchProductHistoryCleared = null,Object? totalSearchProductHistoryCleared = freezed,Object? errorMsg = freezed,}) {
   return _then(_ProductState(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isProductImported: null == isProductImported ? _self.isProductImported : isProductImported // ignore: cast_nullable_to_non_nullable
@@ -347,8 +349,9 @@ as List<ProductEntityData>,prices: null == prices ? _self._prices : prices // ig
 as List<ProductPriceEntityData>,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as ProductPriceEntityData?,uom: null == uom ? _self._uom : uom // ignore: cast_nullable_to_non_nullable
 as List<String>,packSize: null == packSize ? _self._packSize : packSize // ignore: cast_nullable_to_non_nullable
-as List<String>,flavor: null == flavor ? _self._flavor : flavor // ignore: cast_nullable_to_non_nullable
-as List<String>,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as List<String>,flavors: null == flavors ? _self._flavors : flavors // ignore: cast_nullable_to_non_nullable
+as List<String>,selectedFlavor: freezed == selectedFlavor ? _self.selectedFlavor : selectedFlavor // ignore: cast_nullable_to_non_nullable
+as String?,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,totalProductImported: null == totalProductImported ? _self.totalProductImported : totalProductImported // ignore: cast_nullable_to_non_nullable
 as int,totalPriceImported: null == totalPriceImported ? _self.totalPriceImported : totalPriceImported // ignore: cast_nullable_to_non_nullable
 as int,searchHistory: null == searchHistory ? _self._searchHistory : searchHistory // ignore: cast_nullable_to_non_nullable

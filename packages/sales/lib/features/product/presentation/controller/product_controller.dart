@@ -206,12 +206,12 @@ class ProductController extends Notifier<ProductState> {
 
   int? getTotalSearchHistoryCleared() => state.totalSearchProductHistoryCleared;
 
-  Future<void> getProductUom(
-    String itemId,
-    String priceGroup,
-    String flavor,
-  ) async {
+  Future<void> getProductUom(String itemId, String priceGroup) async {
     try {
+      final flavor = state.selectedFlavor;
+      if (flavor == null) {
+        return;
+      }
       final result = await ref
           .read(productServiceProvider)
           .getProductUom(itemId, priceGroup, flavor);
@@ -237,7 +237,11 @@ class ProductController extends Notifier<ProductState> {
       final result = await ref
           .read(productServiceProvider)
           .getProductFlavor(itemId, priceGroup);
-      state = state.copyWith(flavor: result);
+      if (result.length == 1) {
+        state = state.copyWith(flavors: result, selectedFlavor: result.first);
+      } else {
+        state = state.copyWith(flavors: result);
+      }
     } catch (e) {
       state = state.copyWith(errorMsg: e.toString());
     }
@@ -248,9 +252,12 @@ class ProductController extends Notifier<ProductState> {
     required String priceGroup,
     required String packSize,
     required String uom,
-    required String flavor,
   }) async {
     try {
+      final flavor = state.selectedFlavor;
+      if (flavor == null) {
+        return;
+      }
       final result = await ref
           .read(productServiceProvider)
           .getProductDetail(itemId, priceGroup, packSize, uom, flavor: flavor);
@@ -274,6 +281,10 @@ class ProductController extends Notifier<ProductState> {
         .read(productServiceProvider)
         .getProductByItemId(itemId);
     return product;
+  }
+
+  void setSelectedFlavor(String value) {
+    state = state.copyWith(selectedFlavor: value);
   }
 
   String getProductName(String itemId) =>

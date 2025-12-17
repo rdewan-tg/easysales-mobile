@@ -105,9 +105,14 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
             const SizedBox(height: kMedium),
             Consumer(
               builder: (context, ref, child) {
-                final flavor = ref.watch(
-                  productControllerProvider.select((value) => value.flavor),
+                final flavors = ref.watch(
+                  productControllerProvider.select((value) => value.flavors),
                 );
+                // if there is only one flavor, hide the flavor dropdown
+                if (flavors.length == 1) {
+                  _getProductUom();
+                  return SizedBox.shrink();
+                }
                 return DropdownMenu<String>(
                   controller: _flavorController,
                   width: 200,
@@ -124,10 +129,11 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
                     if (value == null) return;
                     ref
                         .read(productControllerProvider.notifier)
-                        .getProductUom(widget.itemId, widget.priceGroup, value);
+                        .setSelectedFlavor(value);
+                    _getProductUom();
                     //_getProductDetail();
                   },
-                  dropdownMenuEntries: flavor
+                  dropdownMenuEntries: flavors
                       .map((e) => DropdownMenuEntry(label: e, value: e))
                       .toList(),
                 );
@@ -223,10 +229,14 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
     );
   }
 
+  void _getProductUom() {
+    ref
+        .read(productControllerProvider.notifier)
+        .getProductUom(widget.itemId, widget.priceGroup);
+  }
+
   void _getProductDetail() {
-    if (_uomController.text.isEmpty ||
-        _packSizeController.text.isEmpty ||
-        _flavorController.text.isEmpty) {
+    if (_uomController.text.isEmpty || _packSizeController.text.isEmpty) {
       return;
     }
     ref
@@ -236,7 +246,6 @@ class _EditLineItemState extends ConsumerState<EditLineItem> {
           priceGroup: widget.priceGroup,
           packSize: _packSizeController.text,
           uom: _uomController.text,
-          flavor: _flavorController.text,
         );
   }
 
