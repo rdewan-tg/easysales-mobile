@@ -10,7 +10,7 @@ NewVersionPlus newVersion(Ref ref) {
 
   return NewVersionPlus(
     iOSId: env.getIosBuildId(),
-    androidId: "com.tonggarden.easysales",
+    androidId: env.getAndroidBuildId(),
     androidPlayStoreCountry: "en_US",
     androidHtmlReleaseNotes: true, //support country code
   );

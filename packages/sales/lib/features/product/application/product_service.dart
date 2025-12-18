@@ -114,9 +114,13 @@ final class ProductService implements IProductService {
   }
 
   @override
-  Future<List<String>> getProductUom(String itemId, String priceGroup) async {
+  Future<List<String>> getProductUom(
+    String itemId,
+    String priceGroup,
+    String flavor,
+  ) async {
     try {
-      return await _productRepository.getProductUom(itemId, priceGroup);
+      return await _productRepository.getProductUom(itemId, priceGroup, flavor);
     } on Failure catch (_) {
       rethrow;
     } catch (e, s) {
@@ -139,18 +143,34 @@ final class ProductService implements IProductService {
   }
 
   @override
+  Future<List<String>> getProductFlavor(
+    String itemId,
+    String priceGroup,
+  ) async {
+    try {
+      return await _productRepository.getProductFlavor(itemId, priceGroup);
+    } on Failure catch (_) {
+      rethrow;
+    } catch (e, s) {
+      throw Failure(message: e.toString(), stackTrace: s);
+    }
+  }
+
+  @override
   Future<ProductPriceEntityData> getProductDetail(
     String itemId,
     String priceGroup,
     String packSize,
-    String unit,
-  ) async {
+    String unit, {
+    String? flavor,
+  }) async {
     try {
       return await _productRepository.getProductDetail(
         itemId,
         priceGroup,
         packSize,
         unit,
+        flavor: flavor,
       );
     } on Failure catch (_) {
       rethrow;
@@ -209,6 +229,7 @@ List<ProductPriceEntityData> _mapToProductPriceEntity(
       productId: e.productId,
       itemId: e.itemId,
       packSize: e.packSize ?? '-',
+      flavor: e.flavor,
       fromDate: e.fromDate,
       toDate: e.toDate,
       unitPrice: double.parse(e.unitPrice),

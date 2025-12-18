@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:core/data/local/db/app_database.steps.dart';
 import 'package:core/data/local/db/dao/customer_address_dao.dart';
 import 'package:core/data/local/db/dao/merchandiser_customer_dao.dart';
 import 'package:core/data/local/db/dao/product_dao.dart';
@@ -22,38 +21,13 @@ import 'package:core/data/local/db/entity/search_sales_customer_history_entity.d
 import 'package:core/data/local/db/entity/setting_entity.dart';
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:drift/isolate.dart';
-import 'package:drift/native.dart';
-import 'package:path/path.dart' as path;
 
 part 'app_database.g.dart';
 
 @Riverpod(keepAlive: true)
 AppDatabase appDatabase(Ref ref) => AppDatabase();
-
-Future<DriftIsolate> createIsolateWithSpawn() async {
-  final token = RootIsolateToken.instance!;
-  return await DriftIsolate.spawn(() {
-    // This function runs in a new isolate, so we must first initialize the
-    // messenger to use platform channels.
-    BackgroundIsolateBinaryMessenger.ensureInitialized(token);
-
-    // The callback to DriftIsolate.spawn() must return the database connection
-    // to use.
-    return LazyDatabase(() async {
-      // Note that this runs on a background isolate, which only started to
-      // support platform channels in Flutter 3.7. For earlier Flutter versions,
-      // a workaround is described later in this article.
-      final dbFolder = await getApplicationDocumentsDirectory();
-      final dbPath = path.join(dbFolder.path, 'easy_sales');
-
-      return NativeDatabase(File(dbPath));
-    });
-  });
-}
 
 @DriftDatabase(
   tables: [
@@ -88,7 +62,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   static QueryExecutor _openConnection() {
     // `driftDatabase` from `package:drift_flutter` stores the database in
@@ -96,23 +70,33 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  MigrationStrategy get migration => MigrationStrategy(
-    beforeOpen: (details) async {
-      if (details.wasCreated) {
-        // This database is being created for the first time.
-      }
-      if (details.hadUpgrade) {
-        // This database was upgraded from a previous version.
-      }
-      //  sqlite3, foreign key references aren't enabled by default.
-      // To enable them, run:
-      await customStatement('PRAGMA foreign_keys = ON');
-    },
+  MigrationStrategy get migration {
+    return MigrationStrategy(
+      onUpgrade: stepByStep(
+        from1To2: (m, schema) async {
+          debugPrint('Upgrading database from version 1 to 2');
+          // add a flavor column to product_price_entity
+          await m.addColumn(
+            schema.productPriceEntity,
+            schema.productPriceEntity.flavor,
+          );
+        },
+      ),
+      beforeOpen: (details) async {
+        if (details.wasCreated) {
+          // This database is being created for the first time.
+        }
+        if (details.hadUpgrade) {
+          // This database was upgraded from a previous version.
+          debugPrint(
+            'Upgrading database from version ${details.wasCreated ? 1 : details.versionBefore} to ${details.versionNow}',
+          );
+        }
+        //  sqlite3, foreign key references aren't enabled by default.
+        // To enable them, run:
+        await customStatement('PRAGMA foreign_keys = ON');
+      },
+    );
     //onCreate: (migrator) {},
-    // onUpgrade: stepByStep(
-    //   from1To2: (m, schema) async {
-
-    //   },
-    // ),
-  );
+  }
 }
