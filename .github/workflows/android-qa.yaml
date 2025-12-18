@@ -36,7 +36,7 @@ jobs:
       - name: 🐦 Setup Shorebird
         uses: shorebirdtech/setup-shorebird@v1
         with:
-          cache: true # Optionally cache your Shorebird installation
+          cache: false # Optionally cache your Shorebird installation
 
       # Now we're able to use Shorebird CLI in our workflow
       - name: 🚀 Use Shorebird
@@ -112,7 +112,7 @@ jobs:
         # --set-exit-if-changed stops execution if the any code is not well formatted
         # --output=none prints files which needs to be formatted
 
-      # Checks for Symantic errors. Can be configured using analysis_options.yaml
+      # Checks for Semantic errors. Can be configured using analysis_options.yaml
       - name: Analyze project source
         run: flutter analyze --fatal-warnings
         # optionally use --fatal-warnings to stop execution if any warnings are found
