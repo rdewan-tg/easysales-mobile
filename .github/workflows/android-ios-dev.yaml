@@ -3,10 +3,10 @@ name: Flutter - Android-iOS Build Dev
 on:
   push:
     branches:
-      - dev
+      - dev1
   pull_request:
     branches:
-      - dev
+      - dev1
 
 env:
   SHOREBIRD_TOKEN: ${{ secrets.SHOREBIRD_TOKEN }}

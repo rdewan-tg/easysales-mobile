@@ -19,7 +19,7 @@ env:
 
 jobs:
   build:
-    runs-on: macos-15
+    runs-on: ubuntu-latest
     environment: QA
     steps:
       - name: Checkout code
@@ -36,7 +36,7 @@ jobs:
       - name: 🐦 Setup Shorebird
         uses: shorebirdtech/setup-shorebird@v1
         with:
-          cache: true # Optionally cache your Shorebird installation
+          cache: false # Optionally cache your Shorebird installation
 
       # Now we're able to use Shorebird CLI in our workflow
       - name: 🚀 Use Shorebird
