@@ -9,10 +9,10 @@ part of 'new_version_status_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(versionStatus)
-const versionStatusProvider = VersionStatusProvider._();
+@ProviderFor(getVersionStatus)
+final getVersionStatusProvider = GetVersionStatusProvider._();
 
-final class VersionStatusProvider
+final class GetVersionStatusProvider
     extends
         $FunctionalProvider<
           AsyncValue<VersionStatus?>,
@@ -20,19 +20,19 @@ final class VersionStatusProvider
           FutureOr<VersionStatus?>
         >
     with $FutureModifier<VersionStatus?>, $FutureProvider<VersionStatus?> {
-  const VersionStatusProvider._()
+  GetVersionStatusProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'versionStatusProvider',
+        name: r'getVersionStatusProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$versionStatusHash();
+  String debugGetCreateSourceHash() => _$getVersionStatusHash();
 
   @$internal
   @override
@@ -42,8 +42,8 @@ final class VersionStatusProvider
 
   @override
   FutureOr<VersionStatus?> create(Ref ref) {
-    return versionStatus(ref);
+    return getVersionStatus(ref);
   }
 }
 
-String _$versionStatusHash() => r'67076cb84285f94d5fbb0ce881f1e648a64956a0';
+String _$getVersionStatusHash() => r'ed6f8318eec1353e63ab1f42127410f10fe0da74';

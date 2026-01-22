@@ -13,8 +13,8 @@
 
     <key>provisioningProfiles</key>
     <dict>
-        <key>com.tonggarden.easysales.qa</key>
-        <string>EasySales-QA-Provisioning-Profile</string>
+        <key>sg.com.tonggarden.easysales.qa</key>
+        <string>EasySales-QA-ProvisioningProfile</string>
     </dict>
 </dict>
 </plist>

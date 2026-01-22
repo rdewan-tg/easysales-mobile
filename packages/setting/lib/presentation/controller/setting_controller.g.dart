@@ -10,11 +10,11 @@ part of 'setting_controller.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(SettingController)
-const settingControllerProvider = SettingControllerProvider._();
+final settingControllerProvider = SettingControllerProvider._();
 
 final class SettingControllerProvider
     extends $NotifierProvider<SettingController, SettingState> {
-  const SettingControllerProvider._()
+  SettingControllerProvider._()
     : super(
         from: null,
         argument: null,
@@ -48,7 +48,6 @@ abstract class _$SettingController extends $Notifier<SettingState> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<SettingState, SettingState>;
     final element =
         ref.element
@@ -58,6 +57,6 @@ abstract class _$SettingController extends $Notifier<SettingState> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
