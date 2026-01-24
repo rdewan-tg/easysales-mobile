@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ^3.10.1
+  sdk: ^3.10.4
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
     path: packages/core
 
 dependency_overrides:
-  analyzer: 8.4.1
+  # analyzer: 8.4.1
 
 dev_dependencies:
   flutter_test:
@@ -23,17 +23,17 @@ dev_dependencies:
    # https://pub.dev/packages/build_runner
   build_runner: ^2.10.4
   # https://pub.dev/packages/retrofit_generator
-  retrofit_generator: '10.0.5' 
+  retrofit_generator: 10.2.1
   # https://pub.dev/packages/json_serializable
-  json_serializable: ^6.11.3
+  json_serializable: ^6.11.2
   # https://pub.dev/packages/freezed
   freezed: ^3.2.3
   # https://pub.dev/packages/riverpod_generator
-  riverpod_generator: ^3.0.3
+  riverpod_generator: ^4.0.0+1
   # https://pub.dev/packages/riverpod_lint
-  riverpod_lint: ^3.0.3
-  # https://pub.dev/packages/custom_lint
-  custom_lint: ^0.8.1 
+  riverpod_lint: ^3.1.0
+  # # https://pub.dev/packages/custom_lint
+  # custom_lint: ^0.8.1 
 
 flutter:
   uses-material-design: true

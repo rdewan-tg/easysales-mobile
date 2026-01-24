@@ -18,8 +18,8 @@
     <key>provisioningProfiles</key>
     <dict>
         <!-- Bundle ID and corresponding provisioning profile -->
-        <key>com.tonggarden.easysales.dev</key>
-        <string>EasySales-Dev-Provisioning-Profile</string>
+        <key>sg.com.tonggarden.easysales.dev</key>
+        <string>EasySales-Dev-ProvisioningProfile</string>
     </dict>
 </dict>
 </plist>

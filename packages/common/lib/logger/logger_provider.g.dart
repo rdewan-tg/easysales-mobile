@@ -10,11 +10,11 @@ part of 'logger_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(logger)
-const loggerProvider = LoggerFamily._();
+final loggerProvider = LoggerFamily._();
 
 final class LoggerProvider extends $FunctionalProvider<Logger, Logger, Logger>
     with $Provider<Logger> {
-  const LoggerProvider._({
+  LoggerProvider._({
     required LoggerFamily super.from,
     required String super.argument,
   }) : super(
@@ -69,7 +69,7 @@ String _$loggerHash() => r'79af69f1a3aa4e234217afaa104c306556b71321';
 
 final class LoggerFamily extends $Family
     with $FunctionalFamilyOverride<Logger, String> {
-  const LoggerFamily._()
+  LoggerFamily._()
     : super(
         retry: null,
         name: r'loggerProvider',
