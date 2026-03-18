@@ -72,14 +72,15 @@ Map<String, dynamic> _$RoleDtoToJson(_RoleDto instance) => <String, dynamic>{
 };
 
 const _$UserRoleEnumMap = {
-  UserRole.superAdmin: 'superAdmin',
-  UserRole.admin: 'admin',
-  UserRole.manager: 'manager',
-  UserRole.sales: 'sales',
-  UserRole.merchandiser: 'merchandiser',
-  UserRole.supervisor: 'supervisor',
-  UserRole.operator: 'operator',
-  UserRole.user: 'user',
+  UserRole.superAdmin: 'SUPER_ADMIN',
+  UserRole.admin: 'ADMIN',
+  UserRole.manager: 'MANAGER',
+  UserRole.sales: 'SALES',
+  UserRole.merchandiser: 'MERCHANDISER',
+  UserRole.supervisor: 'SUPERVISOR',
+  UserRole.operator: 'OPERATOR',
+  UserRole.user: 'USER',
+  UserRole.guest: 'GUEST',
 };
 
 _CompanyDto _$CompanyDtoFromJson(Map<String, dynamic> json) => _CompanyDto(

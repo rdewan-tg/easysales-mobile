@@ -29,7 +29,7 @@ class _ProductApi implements ProductApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/items/${dataAreaId}',
+            '/v1/items/${dataAreaId}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -56,7 +56,7 @@ class _ProductApi implements ProductApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/prices/${dataAreaId}',
+            '/v1/prices/${dataAreaId}',
             queryParameters: queryParameters,
             data: _data,
           )

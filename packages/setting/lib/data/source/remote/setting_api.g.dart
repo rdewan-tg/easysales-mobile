@@ -29,7 +29,7 @@ class _SettingApi implements SettingApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/device-setting/find/${deviceId}',
+            '/v1/device-setting/find/${deviceId}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -56,7 +56,7 @@ class _SettingApi implements SettingApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/company-setting',
+            '/v1/company-setting',
             queryParameters: queryParameters,
             data: _data,
           )

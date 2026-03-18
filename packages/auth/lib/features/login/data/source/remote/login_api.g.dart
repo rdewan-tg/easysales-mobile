@@ -30,7 +30,7 @@ class _LoginApi implements LoginApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/auth/login',
+            '/v1/auth/login',
             queryParameters: queryParameters,
             data: _data,
           )
