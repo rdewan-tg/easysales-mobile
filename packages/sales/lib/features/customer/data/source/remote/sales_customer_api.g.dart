@@ -29,7 +29,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/customers/${dataAreaId}',
+            '/v1/customers/${dataAreaId}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -62,7 +62,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/customers',
+            '/v1/customers',
             queryParameters: queryParameters,
             data: _data,
           )

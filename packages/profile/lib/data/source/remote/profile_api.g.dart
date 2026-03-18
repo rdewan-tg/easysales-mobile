@@ -29,7 +29,7 @@ class _ProfileApi implements ProfileApi {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/me',
+            '/v1/me',
             queryParameters: queryParameters,
             data: _data,
           )

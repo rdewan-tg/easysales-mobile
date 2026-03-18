@@ -29,7 +29,7 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/merchandiser-customers/${dataAreaId}',
+            '/v1/merchandiser-customers/${dataAreaId}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -62,7 +62,7 @@ class _MerchandiserCustomerApi implements MerchandiserCustomerApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/merchandiser-customers',
+            '/v1/merchandiser-customers',
             queryParameters: queryParameters,
             data: _data,
           )

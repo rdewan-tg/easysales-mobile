@@ -30,7 +30,7 @@ class _SiteVisitApi implements SiteVisitApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/site-visit',
+            '/v1/site-visit',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -58,7 +58,7 @@ class _SiteVisitApi implements SiteVisitApi {
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/site-visit',
+            '/v1/site-visit',
             queryParameters: queryParameters,
             data: _data,
           )

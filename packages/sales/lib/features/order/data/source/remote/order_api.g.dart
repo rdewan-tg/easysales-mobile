@@ -30,7 +30,7 @@ class _OrderApi implements OrderApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/sales-header',
+            '/v1/sales-header',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -59,7 +59,7 @@ class _OrderApi implements OrderApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/sales-line/create-many',
+            '/v1/sales-line/create-many',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -89,7 +89,7 @@ class _OrderApi implements OrderApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/sales-header/find/max-order-id/${id}/${prefix}',
+            '/v1/sales-header/find/max-order-id/${id}/${prefix}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -116,7 +116,7 @@ class _OrderApi implements OrderApi {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/sales-header/order/${salesId}',
+            '/v1/sales-header/order/${salesId}',
             queryParameters: queryParameters,
             data: _data,
           )

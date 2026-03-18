@@ -32,7 +32,7 @@ class _ForgotPasswordApi implements ForgotPasswordApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/auth/forgot-password',
+            '/v1/auth/forgot-password',
             queryParameters: queryParameters,
             data: _data,
           )

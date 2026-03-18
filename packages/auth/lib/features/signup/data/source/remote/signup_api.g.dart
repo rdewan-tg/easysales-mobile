@@ -30,7 +30,7 @@ class _SignUpApi implements SignUpApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/auth/signup',
+            '/v1/auth/signup',
             queryParameters: queryParameters,
             data: _data,
           )

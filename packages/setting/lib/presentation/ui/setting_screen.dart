@@ -118,7 +118,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
               context.go('/order-history/sales/sales-customer-import');
             },
           ),
-          // import merchandiser customer
+          //import merchandiser customer
           ListTile(
             title: Text(
               context.localizations('setting.importMerchandiserCustomer'),
@@ -138,7 +138,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
               context.go('/merchandiser/merchandiser-customer-import');
             },
           ),
-          // import product and price
+          //import product and price
           ListTile(
             title: Text(context.localizations('setting.importProductAndPrice')),
             subtitle: Text(
