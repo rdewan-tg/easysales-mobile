@@ -68,7 +68,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               .read(salesHeaderControllerProvider.notifier)
                               .getLastSalesOrderId();
                         },
-                        child: Text('Refresh'.hardcoded),
+                        child: Text(context.localizations('home.refreshData')),
                       ),
                     ],
                   ),
