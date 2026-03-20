@@ -71,7 +71,7 @@
     "common.cancel": "ยกเลิก",
     "common.delete": "ลบ",
     "common.undo": "เลิกทำ",
-    "common.orderDeleted": "คำสั่งซื้อถูกลบแล้ว",
+    "common.orderDeleted": "คำสั่งซื้อถูกลบ",
     "orderHistory.orderDeleted": "คำสั่งซื้อถูกลบสำเร็จแล้ว",
     "setting.orderRunningNumberUpdatedSuccessfully": "หมายเลขลำดับการสั่งซื้อได้รับการอัปเดตเรียบร้อยแล้ว",
     "common.confirmDeleteTitle": "ลบคำสั่งซื้อ",
@@ -121,9 +121,9 @@
     "auth.verficationMessage": "โปรดตรวจสอบอีเมลของคุณเพื่อยืนยัน และโปรดยืนยันบัญชีของคุณ",
     "auth.confirmText": "ตกลง",
     "auth.emailSentSuccessfully": "ส่งอีเมลสำเร็จแล้ว",
-    "auth.checkEmailForFurtherInstructions": "โปรดตรวจสอบอีเมลของคุณสำหรับคำแนะนำเพิ่มเติม",
+    "auth.checkEmailForFurtherInstructions": "โปรดตรวจสอบอีเมลของคุณเพื่อดูคำแนะนำเพิ่มเติม",
     "home.refreshData": "รีเฟรช",
-    "report.currentOrderNumber": "หมายเลขคำสั่งซื้อปัจจุบัน",
+    "sales.currentOrderNumber": "หมายเลขคำสั่งซื้อปัจจุบัน:",
     "siteVisit.exit": "ทางออก",
     "siteVisit.confirmLeavePage": "คุณต้องการออกจากหน้านี้หรือไม่?",
     "siteVisit.capturePhoto": "ถ่ายภาพ",
@@ -132,5 +132,6 @@
     "siteVisit.enterNote": "ใส่ข้อความของคุณที่นี่...",
     "siteVisit.cancel": "ยกเลิก",
     "siteVisit.emptyNote": "หมายเหตุต้องไม่ว่างเปล่า",
-    "siteVisit.save": "บันทึก"
+    "siteVisit.save": "บันทึก",
+    "merchandiser.photoUploadedMessage": "อัปโหลดรูปภาพสำเร็จแล้ว คุณสามารถปิดหน้าจอนี้หรือถ่ายภาพอื่นได้เลย"
 }

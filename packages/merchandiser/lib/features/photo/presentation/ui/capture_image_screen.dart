@@ -309,8 +309,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async {
             SnackBar(
               duration: const Duration(seconds: 5),
               content: Text(
-                'Photo uploaded successfully. You can now close this screen or capture another photo'
-                    .hardcoded,
+                context.localizations('merchandiser.photoUploadedMessage'),
               ),
             ),
           );

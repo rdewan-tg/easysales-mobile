@@ -36,7 +36,7 @@
     "report.thisMonthReport": "本月报告",
     "report.todaysVisit": "今日访问",
     "report.yesterdaysVisit": "昨日访问记录",
-    "report.thisMonthVisit": "本月访问量",
+    "report.thisMonthVisit": "本月来访",
     "report.totalVisits": "总访问量：",
     "report.todaysVisits": "今日访问量：",
     "report.thisMonthVisits": "本月访问量：",
@@ -121,9 +121,9 @@
     "auth.verficationMessage": "请查收您的电子邮件以获取验证信息，并请验证您的帐户。",
     "auth.confirmText": "好的",
     "auth.emailSentSuccessfully": "邮件已成功发送",
-    "auth.checkEmailForFurtherInstructions": "请查看您的电子邮件以获取更多指示。",
+    "auth.checkEmailForFurtherInstructions": "请查看您的电子邮件以获取更多说明。",
     "home.refreshData": "刷新",
-    "report.currentOrderNumber": "当前订单号",
+    "sales.currentOrderNumber": "当前订单号：",
     "siteVisit.exit": "出口",
     "siteVisit.confirmLeavePage": "您想离开此页面吗？",
     "siteVisit.capturePhoto": "拍摄照片",
@@ -131,6 +131,7 @@
     "siteVisit.addNote": "添加备注",
     "siteVisit.enterNote": "请在此处输入您的备注……",
     "siteVisit.cancel": "取消",
-    "siteVisit.emptyNote": "记账时不能为空",
-    "siteVisit.save": "节省"
+    "siteVisit.emptyNote": "备注不能为空",
+    "siteVisit.save": "节省",
+    "merchandiser.photoUploadedMessage": "照片上传成功。您现在可以关闭此屏幕或拍摄另一张照片。"
 }

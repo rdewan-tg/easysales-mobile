@@ -123,7 +123,7 @@
     "auth.emailSentSuccessfully": "Email berhasil terkirim.",
     "auth.checkEmailForFurtherInstructions": "Silakan periksa email Anda untuk instruksi lebih lanjut.",
     "home.refreshData": "Menyegarkan",
-    "report.currentOrderNumber": "Nomor Pesanan Saat Ini",
+    "sales.currentOrderNumber": "Nomor Pesanan Saat Ini:",
     "siteVisit.exit": "KELUAR",
     "siteVisit.confirmLeavePage": "Apakah Anda ingin meninggalkan halaman ini?",
     "siteVisit.capturePhoto": "Ambil Foto",
@@ -132,5 +132,6 @@
     "siteVisit.enterNote": "Masukkan catatan Anda di sini...",
     "siteVisit.cancel": "Membatalkan",
     "siteVisit.emptyNote": "Catatan tidak boleh kosong",
-    "siteVisit.save": "Menyimpan"
+    "siteVisit.save": "Menyimpan",
+    "merchandiser.photoUploadedMessage": "Foto berhasil diunggah. Anda sekarang dapat menutup layar ini atau mengambil foto lain."
 }
