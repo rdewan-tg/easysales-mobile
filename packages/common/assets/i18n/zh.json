@@ -36,7 +36,7 @@
     "report.thisMonthReport": "本月报告",
     "report.todaysVisit": "今日访问",
     "report.yesterdaysVisit": "昨日访问记录",
-    "report.thisMonthVisit": "本月来访",
+    "report.thisMonthVisit": "本月访问量",
     "report.totalVisits": "总访问量：",
     "report.todaysVisits": "今日访问量：",
     "report.thisMonthVisits": "本月访问量：",
@@ -131,7 +131,11 @@
     "siteVisit.addNote": "添加备注",
     "siteVisit.enterNote": "请在此处输入您的备注……",
     "siteVisit.cancel": "取消",
-    "siteVisit.emptyNote": "备注不能为空",
+    "siteVisit.emptyNote": "记账时不能为空",
     "siteVisit.save": "节省",
-    "merchandiser.photoUploadedMessage": "照片上传成功。您现在可以关闭此屏幕或拍摄另一张照片。"
+    "merchandiser.photoUploadedMessage": "照片上传成功。您现在可以关闭此屏幕或拍摄另一张照片。",
+    "setting.truncateSalesOrder": "清除销售订单",
+    "setting.truncateSalesOrderSubTitle": "清除所有销售订单数据",
+    "setting.truncateSalesOrderConfirm": "您确定要清除所有销售订单数据吗？",
+    "setting.truncateSalesOrderSuccess": "销售订单数据已成功清除"
 }

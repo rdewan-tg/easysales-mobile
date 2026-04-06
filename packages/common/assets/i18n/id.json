@@ -133,5 +133,9 @@
     "siteVisit.cancel": "Membatalkan",
     "siteVisit.emptyNote": "Catatan tidak boleh kosong",
     "siteVisit.save": "Menyimpan",
-    "merchandiser.photoUploadedMessage": "Foto berhasil diunggah. Anda sekarang dapat menutup layar ini atau mengambil foto lain."
+    "merchandiser.photoUploadedMessage": "Foto berhasil diunggah. Anda sekarang dapat menutup layar ini atau mengambil foto lain.",
+    "setting.truncateSalesOrder": "Hapus Pesanan Penjualan",
+    "setting.truncateSalesOrderSubTitle": "Hapus semua data pesanan penjualan",
+    "setting.truncateSalesOrderConfirm": "Apakah Anda yakin ingin menghapus semua data pesanan penjualan?",
+    "setting.truncateSalesOrderSuccess": "Data pesanan penjualan berhasil dihapus."
 }

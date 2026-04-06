@@ -11,7 +11,7 @@
     "setting.manageYourProfile": "จัดการโปรไฟล์ของคุณ",
     "setting.logout": "ออกจากระบบ",
     "sales.title": "ฝ่ายขาย",
-    "merchandiser.title": "ผู้จัดจำหน่ายสินค้า",
+    "merchandiser.title": "ผู้จัดจำหน่าย",
     "merchandiser.takePicture": "ถ่ายรูป",
     "profile.title": "ประวัติโดยย่อ",
     "profile.deleteMyAccount": "ลบบัญชีผู้ใช้",
@@ -71,7 +71,7 @@
     "common.cancel": "ยกเลิก",
     "common.delete": "ลบ",
     "common.undo": "เลิกทำ",
-    "common.orderDeleted": "คำสั่งซื้อถูกลบ",
+    "common.orderDeleted": "คำสั่งซื้อถูกลบแล้ว",
     "orderHistory.orderDeleted": "คำสั่งซื้อถูกลบสำเร็จแล้ว",
     "setting.orderRunningNumberUpdatedSuccessfully": "หมายเลขลำดับการสั่งซื้อได้รับการอัปเดตเรียบร้อยแล้ว",
     "common.confirmDeleteTitle": "ลบคำสั่งซื้อ",
@@ -133,5 +133,9 @@
     "siteVisit.cancel": "ยกเลิก",
     "siteVisit.emptyNote": "หมายเหตุต้องไม่ว่างเปล่า",
     "siteVisit.save": "บันทึก",
-    "merchandiser.photoUploadedMessage": "อัปโหลดรูปภาพสำเร็จแล้ว คุณสามารถปิดหน้าจอนี้หรือถ่ายภาพอื่นได้เลย"
+    "merchandiser.photoUploadedMessage": "อัปโหลดรูปภาพสำเร็จแล้ว คุณสามารถปิดหน้าจอนี้หรือถ่ายภาพอื่นได้เลย",
+    "setting.truncateSalesOrder": "เคลียร์คำสั่งขาย",
+    "setting.truncateSalesOrderSubTitle": "ล้างข้อมูลคำสั่งขายทั้งหมด",
+    "setting.truncateSalesOrderConfirm": "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลคำสั่งขายทั้งหมด?",
+    "setting.truncateSalesOrderSuccess": "ข้อมูลคำสั่งขายได้รับการดำเนินการเรียบร้อยแล้ว"
 }
