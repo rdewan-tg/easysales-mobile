@@ -41,7 +41,7 @@ class _OrderApi implements OrderApi {
     try {
       _value = SalesHeaderResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -70,7 +70,7 @@ class _OrderApi implements OrderApi {
     try {
       _value = SalesLineResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -100,7 +100,7 @@ class _OrderApi implements OrderApi {
     try {
       _value = LastSalesIdResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -127,7 +127,7 @@ class _OrderApi implements OrderApi {
     try {
       _value = DeleteOrderResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;

@@ -40,7 +40,7 @@ class _SettingApi implements SettingApi {
     try {
       _value = await compute(deserializeDeviceSettingResponse, _result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -67,7 +67,7 @@ class _SettingApi implements SettingApi {
     try {
       _value = await compute(deserializeCompanySettingResponse, _result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;

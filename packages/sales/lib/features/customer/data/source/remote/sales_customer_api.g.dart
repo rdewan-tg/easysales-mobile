@@ -40,7 +40,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
     try {
       _value = await compute(deserializeCustomerResponse, _result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -73,7 +73,7 @@ class _SalesCustomerApi implements SalesCustomerApi {
     try {
       _value = await compute(deserializeCustomerResponse, _result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;

@@ -10,12 +10,12 @@ part of 'new_version_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(newVersion)
-final newVersionProvider = NewVersionProvider._();
+const newVersionProvider = NewVersionProvider._();
 
 final class NewVersionProvider
     extends $FunctionalProvider<NewVersionPlus, NewVersionPlus, NewVersionPlus>
     with $Provider<NewVersionPlus> {
-  NewVersionProvider._()
+  const NewVersionProvider._()
     : super(
         from: null,
         argument: null,

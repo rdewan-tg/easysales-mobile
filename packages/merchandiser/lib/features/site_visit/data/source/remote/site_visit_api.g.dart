@@ -41,7 +41,7 @@ class _SiteVisitApi implements SiteVisitApi {
     try {
       _value = SiteVisitResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -69,7 +69,7 @@ class _SiteVisitApi implements SiteVisitApi {
     try {
       _value = SiteVisitResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
