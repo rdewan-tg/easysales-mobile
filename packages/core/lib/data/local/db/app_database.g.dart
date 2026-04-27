@@ -11322,12 +11322,12 @@ class $AppDatabaseManager {
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(appDatabase)
-final appDatabaseProvider = AppDatabaseProvider._();
+const appDatabaseProvider = AppDatabaseProvider._();
 
 final class AppDatabaseProvider
     extends $FunctionalProvider<AppDatabase, AppDatabase, AppDatabase>
     with $Provider<AppDatabase> {
-  AppDatabaseProvider._()
+  const AppDatabaseProvider._()
     : super(
         from: null,
         argument: null,

@@ -5,3 +5,4 @@ clearSearchHistory: Clear Search History
 importCustomers: Import Customers
 customerImport: Customer Import
 addressImport: Address Import
+photoUploadedMessage: Photo uploaded successfully. You can now close this screen or capture another photo

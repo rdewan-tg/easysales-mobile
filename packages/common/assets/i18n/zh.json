@@ -121,9 +121,9 @@
     "auth.verficationMessage": "请查收您的电子邮件以获取验证信息，并请验证您的帐户。",
     "auth.confirmText": "好的",
     "auth.emailSentSuccessfully": "邮件已成功发送",
-    "auth.checkEmailForFurtherInstructions": "请查看您的电子邮件以获取更多指示。",
+    "auth.checkEmailForFurtherInstructions": "请查看您的电子邮件以获取更多说明。",
     "home.refreshData": "刷新",
-    "report.currentOrderNumber": "当前订单号",
+    "sales.currentOrderNumber": "当前订单号：",
     "siteVisit.exit": "出口",
     "siteVisit.confirmLeavePage": "您想离开此页面吗？",
     "siteVisit.capturePhoto": "拍摄照片",
@@ -132,5 +132,10 @@
     "siteVisit.enterNote": "请在此处输入您的备注……",
     "siteVisit.cancel": "取消",
     "siteVisit.emptyNote": "记账时不能为空",
-    "siteVisit.save": "节省"
+    "siteVisit.save": "节省",
+    "merchandiser.photoUploadedMessage": "照片上传成功。您现在可以关闭此屏幕或拍摄另一张照片。",
+    "setting.truncateSalesOrder": "清除销售订单",
+    "setting.truncateSalesOrderSubTitle": "清除所有销售订单数据",
+    "setting.truncateSalesOrderConfirm": "您确定要清除所有销售订单数据吗？",
+    "setting.truncateSalesOrderSuccess": "销售订单数据已成功清除"
 }

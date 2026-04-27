@@ -11,7 +11,7 @@
     "setting.manageYourProfile": "Urus profil anda",
     "setting.logout": "Log keluar",
     "sales.title": "Jualan",
-    "merchandiser.title": "Penjual Barangan",
+    "merchandiser.title": "Penjual Barang Dagang",
     "merchandiser.takePicture": "Ambil Gambar",
     "profile.title": "Profil",
     "profile.deleteMyAccount": "Padam Akaun",
@@ -123,7 +123,7 @@
     "auth.emailSentSuccessfully": "E-mel Berjaya Dihantar",
     "auth.checkEmailForFurtherInstructions": "Sila semak emel anda untuk arahan lanjut",
     "home.refreshData": "Segarkan semula",
-    "report.currentOrderNumber": "Nombor Pesanan Semasa",
+    "sales.currentOrderNumber": "Nombor Pesanan Semasa:",
     "siteVisit.exit": "Keluar",
     "siteVisit.confirmLeavePage": "Adakah anda ingin meninggalkan halaman ini?",
     "siteVisit.capturePhoto": "Tangkap Foto",
@@ -132,5 +132,10 @@
     "siteVisit.enterNote": "Masukkan nota anda di sini...",
     "siteVisit.cancel": "Batal",
     "siteVisit.emptyNote": "Nota tidak boleh kosong",
-    "siteVisit.save": "Simpan"
+    "siteVisit.save": "Simpan",
+    "merchandiser.photoUploadedMessage": "Foto berjaya dimuat naik. Anda kini boleh menutup skrin ini atau merakam foto lain",
+    "setting.truncateSalesOrder": "Kosongkan Pesanan Jualan",
+    "setting.truncateSalesOrderSubTitle": "Kosongkan semua data pesanan jualan",
+    "setting.truncateSalesOrderConfirm": "Adakah anda pasti mahu memadamkan semua data pesanan jualan?",
+    "setting.truncateSalesOrderSuccess": "Data pesanan jualan berjaya dipadamkan"
 }

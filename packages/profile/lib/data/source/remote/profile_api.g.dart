@@ -40,7 +40,7 @@ class _ProfileApi implements ProfileApi {
     try {
       _value = DeleteMeResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
