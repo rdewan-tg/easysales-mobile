@@ -41,6 +41,9 @@ _UserDto _$UserDtoFromJson(Map<String, dynamic> json) => _UserDto(
   email: json['email'] as String,
   phoneNumber: json['phoneNumber'] as String?,
   photo: json['photo'] as String?,
+  areaIds: (json['areaIds'] as List<dynamic>)
+      .map((e) => (e as num).toInt())
+      .toList(),
   role: (json['role'] as List<dynamic>)
       .map((e) => RoleDto.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -56,6 +59,7 @@ Map<String, dynamic> _$UserDtoToJson(_UserDto instance) => <String, dynamic>{
   'email': instance.email,
   'phoneNumber': instance.phoneNumber,
   'photo': instance.photo,
+  'areaIds': instance.areaIds,
   'role': instance.role,
   'company': instance.company,
   'deviceSetting': instance.deviceSetting,
