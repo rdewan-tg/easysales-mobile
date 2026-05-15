@@ -21,4 +21,13 @@ class SettingStorage implements ISettingStorage {
       rethrow;
     }
   }
+
+  @override
+  Future<void> upsertAreaIds(List<int> areaIds) async {
+    try {
+      await _settingDao.upsertAreaIds(areaIds);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
