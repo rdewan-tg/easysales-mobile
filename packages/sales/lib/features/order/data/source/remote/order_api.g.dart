@@ -8,7 +8,7 @@ part of 'order_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
 
 class _OrderApi implements OrderApi {
   _OrderApi(this._dio, {this.baseUrl, this.errorLogger});
@@ -30,7 +30,7 @@ class _OrderApi implements OrderApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/sales-header',
+            '/v1/sales-header',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -41,7 +41,7 @@ class _OrderApi implements OrderApi {
     try {
       _value = SalesHeaderResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -59,7 +59,7 @@ class _OrderApi implements OrderApi {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/sales-line/create-many',
+            '/v1/sales-line/create-many',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -70,7 +70,7 @@ class _OrderApi implements OrderApi {
     try {
       _value = SalesLineResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -89,7 +89,7 @@ class _OrderApi implements OrderApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/sales-header/find/max-order-id/${id}/${prefix}',
+            '/v1/sales-header/find/max-order-id/${id}/${prefix}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -100,7 +100,7 @@ class _OrderApi implements OrderApi {
     try {
       _value = LastSalesIdResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -116,7 +116,7 @@ class _OrderApi implements OrderApi {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/sales-header/order/${salesId}',
+            '/v1/sales-header/order/${salesId}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -127,7 +127,7 @@ class _OrderApi implements OrderApi {
     try {
       _value = DeleteOrderResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;

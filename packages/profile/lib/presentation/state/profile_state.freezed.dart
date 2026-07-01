@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProfileState {
 
- bool get isLoading; bool get isAccountDeleted; Map<String, String> get settings; String? get errorMsg;
+ bool get isLoading; bool get isAccountDeleted; Map<String, String> get settings; GetMeResponse? get profile; String? get errorMsg;
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ProfileStateCopyWith<ProfileState> get copyWith => _$ProfileStateCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAccountDeleted, isAccountDeleted) || other.isAccountDeleted == isAccountDeleted)&&const DeepCollectionEquality().equals(other.settings, settings)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAccountDeleted, isAccountDeleted) || other.isAccountDeleted == isAccountDeleted)&&const DeepCollectionEquality().equals(other.settings, settings)&&(identical(other.profile, profile) || other.profile == profile)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,isAccountDeleted,const DeepCollectionEquality().hash(settings),errorMsg);
+int get hashCode => Object.hash(runtimeType,isLoading,isAccountDeleted,const DeepCollectionEquality().hash(settings),profile,errorMsg);
 
 @override
 String toString() {
-  return 'ProfileState(isLoading: $isLoading, isAccountDeleted: $isAccountDeleted, settings: $settings, errorMsg: $errorMsg)';
+  return 'ProfileState(isLoading: $isLoading, isAccountDeleted: $isAccountDeleted, settings: $settings, profile: $profile, errorMsg: $errorMsg)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $ProfileStateCopyWith<$Res>  {
   factory $ProfileStateCopyWith(ProfileState value, $Res Function(ProfileState) _then) = _$ProfileStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLoading, bool isAccountDeleted, Map<String, String> settings, String? errorMsg
+ bool isLoading, bool isAccountDeleted, Map<String, String> settings, GetMeResponse? profile, String? errorMsg
 });
 
 
-
+$GetMeResponseCopyWith<$Res>? get profile;
 
 }
 /// @nodoc
@@ -62,16 +62,29 @@ class _$ProfileStateCopyWithImpl<$Res>
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isAccountDeleted = null,Object? settings = null,Object? errorMsg = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isAccountDeleted = null,Object? settings = null,Object? profile = freezed,Object? errorMsg = freezed,}) {
   return _then(_self.copyWith(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isAccountDeleted: null == isAccountDeleted ? _self.isAccountDeleted : isAccountDeleted // ignore: cast_nullable_to_non_nullable
 as bool,settings: null == settings ? _self.settings : settings // ignore: cast_nullable_to_non_nullable
-as Map<String, String>,errorMsg: freezed == errorMsg ? _self.errorMsg : errorMsg // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,profile: freezed == profile ? _self.profile : profile // ignore: cast_nullable_to_non_nullable
+as GetMeResponse?,errorMsg: freezed == errorMsg ? _self.errorMsg : errorMsg // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GetMeResponseCopyWith<$Res>? get profile {
+    if (_self.profile == null) {
+    return null;
+  }
 
+  return $GetMeResponseCopyWith<$Res>(_self.profile!, (value) {
+    return _then(_self.copyWith(profile: value));
+  });
+}
 }
 
 
@@ -153,10 +166,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isAccountDeleted,  Map<String, String> settings,  String? errorMsg)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isAccountDeleted,  Map<String, String> settings,  GetMeResponse? profile,  String? errorMsg)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProfileState() when $default != null:
-return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.errorMsg);case _:
+return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.profile,_that.errorMsg);case _:
   return orElse();
 
 }
@@ -174,10 +187,10 @@ return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.erro
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isAccountDeleted,  Map<String, String> settings,  String? errorMsg)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isAccountDeleted,  Map<String, String> settings,  GetMeResponse? profile,  String? errorMsg)  $default,) {final _that = this;
 switch (_that) {
 case _ProfileState():
-return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.errorMsg);case _:
+return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.profile,_that.errorMsg);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +207,10 @@ return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.erro
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isAccountDeleted,  Map<String, String> settings,  String? errorMsg)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isAccountDeleted,  Map<String, String> settings,  GetMeResponse? profile,  String? errorMsg)?  $default,) {final _that = this;
 switch (_that) {
 case _ProfileState() when $default != null:
-return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.errorMsg);case _:
+return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.profile,_that.errorMsg);case _:
   return null;
 
 }
@@ -209,7 +222,7 @@ return $default(_that.isLoading,_that.isAccountDeleted,_that.settings,_that.erro
 
 
 class _ProfileState implements ProfileState {
-  const _ProfileState({this.isLoading = false, this.isAccountDeleted = false, final  Map<String, String> settings = const {}, this.errorMsg}): _settings = settings;
+  const _ProfileState({this.isLoading = false, this.isAccountDeleted = false, final  Map<String, String> settings = const {}, this.profile, this.errorMsg}): _settings = settings;
   
 
 @override@JsonKey() final  bool isLoading;
@@ -221,6 +234,7 @@ class _ProfileState implements ProfileState {
   return EqualUnmodifiableMapView(_settings);
 }
 
+@override final  GetMeResponse? profile;
 @override final  String? errorMsg;
 
 /// Create a copy of ProfileState
@@ -233,16 +247,16 @@ _$ProfileStateCopyWith<_ProfileState> get copyWith => __$ProfileStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAccountDeleted, isAccountDeleted) || other.isAccountDeleted == isAccountDeleted)&&const DeepCollectionEquality().equals(other._settings, _settings)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAccountDeleted, isAccountDeleted) || other.isAccountDeleted == isAccountDeleted)&&const DeepCollectionEquality().equals(other._settings, _settings)&&(identical(other.profile, profile) || other.profile == profile)&&(identical(other.errorMsg, errorMsg) || other.errorMsg == errorMsg));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,isAccountDeleted,const DeepCollectionEquality().hash(_settings),errorMsg);
+int get hashCode => Object.hash(runtimeType,isLoading,isAccountDeleted,const DeepCollectionEquality().hash(_settings),profile,errorMsg);
 
 @override
 String toString() {
-  return 'ProfileState(isLoading: $isLoading, isAccountDeleted: $isAccountDeleted, settings: $settings, errorMsg: $errorMsg)';
+  return 'ProfileState(isLoading: $isLoading, isAccountDeleted: $isAccountDeleted, settings: $settings, profile: $profile, errorMsg: $errorMsg)';
 }
 
 
@@ -253,11 +267,11 @@ abstract mixin class _$ProfileStateCopyWith<$Res> implements $ProfileStateCopyWi
   factory _$ProfileStateCopyWith(_ProfileState value, $Res Function(_ProfileState) _then) = __$ProfileStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLoading, bool isAccountDeleted, Map<String, String> settings, String? errorMsg
+ bool isLoading, bool isAccountDeleted, Map<String, String> settings, GetMeResponse? profile, String? errorMsg
 });
 
 
-
+@override $GetMeResponseCopyWith<$Res>? get profile;
 
 }
 /// @nodoc
@@ -270,17 +284,30 @@ class __$ProfileStateCopyWithImpl<$Res>
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isAccountDeleted = null,Object? settings = null,Object? errorMsg = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isAccountDeleted = null,Object? settings = null,Object? profile = freezed,Object? errorMsg = freezed,}) {
   return _then(_ProfileState(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isAccountDeleted: null == isAccountDeleted ? _self.isAccountDeleted : isAccountDeleted // ignore: cast_nullable_to_non_nullable
 as bool,settings: null == settings ? _self._settings : settings // ignore: cast_nullable_to_non_nullable
-as Map<String, String>,errorMsg: freezed == errorMsg ? _self.errorMsg : errorMsg // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,profile: freezed == profile ? _self.profile : profile // ignore: cast_nullable_to_non_nullable
+as GetMeResponse?,errorMsg: freezed == errorMsg ? _self.errorMsg : errorMsg // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
 
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GetMeResponseCopyWith<$Res>? get profile {
+    if (_self.profile == null) {
+    return null;
+  }
 
+  return $GetMeResponseCopyWith<$Res>(_self.profile!, (value) {
+    return _then(_self.copyWith(profile: value));
+  });
+}
 }
 
 // dart format on
