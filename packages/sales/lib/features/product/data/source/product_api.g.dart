@@ -8,7 +8,7 @@ part of 'product_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
 
 class _ProductApi implements ProductApi {
   _ProductApi(this._dio, {this.baseUrl, this.errorLogger});
@@ -29,7 +29,7 @@ class _ProductApi implements ProductApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/items/${dataAreaId}',
+            '/v1/items/${dataAreaId}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -40,7 +40,7 @@ class _ProductApi implements ProductApi {
     try {
       _value = await compute(deserializeProductResponse, _result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
@@ -56,7 +56,7 @@ class _ProductApi implements ProductApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1/api/prices/${dataAreaId}',
+            '/v1/prices/${dataAreaId}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -67,7 +67,7 @@ class _ProductApi implements ProductApi {
     try {
       _value = await compute(deserializeProductPriceResponse, _result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;

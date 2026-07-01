@@ -2,6 +2,7 @@ import 'package:core/data/remote/endpoint.dart';
 import 'package:core/data/remote/network_service.dart';
 import 'package:dio/dio.dart';
 import 'package:profile/data/dto/delete_me_response.dart';
+import 'package:profile/data/dto/get_me_response.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod/riverpod.dart';
 
@@ -16,6 +17,9 @@ final profileApiProvider = Provider<ProfileApi>((ref) {
 @RestApi()
 abstract class ProfileApi {
   factory ProfileApi(Dio dio) => _ProfileApi(dio);
+
+  @GET(meEndPoint)
+  Future<GetMeResponse> getMe();
 
   @DELETE(meEndPoint)
   Future<DeleteMeResponse> deleteMe();

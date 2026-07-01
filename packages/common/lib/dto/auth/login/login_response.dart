@@ -44,6 +44,7 @@ abstract class UserDto with _$UserDto {
     @JsonKey(name: "email") required String email,
     @JsonKey(name: "phoneNumber") String? phoneNumber,
     @JsonKey(name: "photo") String? photo,
+    @JsonKey(name: "areaIds") required List<int> areaIds,
     @JsonKey(name: "role") required List<RoleDto> role,
     @JsonKey(name: "company") required CompanyDto company,
     @JsonKey(name: "deviceSetting") required DeviceSettingDto deviceSetting,
