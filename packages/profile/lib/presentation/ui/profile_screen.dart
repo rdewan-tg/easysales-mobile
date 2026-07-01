@@ -101,14 +101,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen>
         Icons.warning_outlined,
         color: context.themeColor.colorScheme.error,
       ),
-      onYesTap: () {
+      onYesTap: () async {
         // delete customer account
-        ref.read(profileControllerProvider.notifier).logout();
+        await ref.read(profileControllerProvider.notifier).logout();
         // close dialog
-        context.pop();
+        if (context.mounted) {
+          context.pop();
+        }
       },
       onNoTap: () {
-        // close dialog
+        // close dialog                                 
         context.pop();
       },
     );
