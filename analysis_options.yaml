@@ -1,8 +1,8 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  plugins:
-    - custom_lint
+  plugins: updated
+    # - custom_lint
 
   exclude:
     - "**/**.g.dart"

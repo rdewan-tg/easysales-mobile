@@ -77,7 +77,7 @@ class LocalPushNotification {
     // Initializes the plugin.
     // Call this method on application before using the plugin further.
     await _localNotificationsPlugin.initialize(
-      initializationSettings,
+      settings: initializationSettings,
       onDidReceiveNotificationResponse: (details) {
         _logger.info(details.toString());
         _handleMessage(details.payload);
@@ -110,7 +110,7 @@ class LocalPushNotification {
         // Re-initialize with permission requests enabled
         // This is a safer approach that works across all versions
         final bool? initialized = await _localNotificationsPlugin.initialize(
-          const InitializationSettings(
+          settings:const InitializationSettings(
             iOS: DarwinInitializationSettings(
               requestAlertPermission: true,
               requestBadgePermission: true,
@@ -154,10 +154,10 @@ class LocalPushNotification {
     }
 
     await _localNotificationsPlugin.show(
-      message.id,
-      message.title,
-      message.body,
-      NotificationDetails(
+      id: message.id,
+      title: message.title,
+      body: message.body,
+      notificationDetails: NotificationDetails(
         android: _androidNotificationDetail(
           bigPicture != null
               ? BigPictureStyleInformation(
@@ -196,11 +196,11 @@ class LocalPushNotification {
     // You may have been denied permissions, so check the return value
     if (hasPermission) {
       await _localNotificationsPlugin.zonedSchedule(
-        0,
-        title,
-        body,
-        scheduledDate,
-        const NotificationDetails(
+        id: 0,
+        title: title,
+        body: body,
+        scheduledDate: scheduledDate,
+        notificationDetails: const NotificationDetails(
           android: AndroidNotificationDetails(
             'easy_sales_scheduled_notification_channel_id',
             'Easy Sales Scheduled Notification',
@@ -258,7 +258,7 @@ class LocalPushNotification {
 
     try {
       // Cancel any existing notification with this ID
-      await _localNotificationsPlugin.cancel(id);
+      await _localNotificationsPlugin.cancel(id: id);
 
       // Calculate the next occurrence of the specified day at the specified time using timezone-aware dates
       final now = tz.TZDateTime.now(tz.local);
@@ -291,11 +291,11 @@ class LocalPushNotification {
 
       // Schedule the notification
       await _localNotificationsPlugin.zonedSchedule(
-        id,
-        title,
-        body,
-        scheduledDate,
-        const NotificationDetails(
+        id: 0,
+        title: title,
+        body: body,
+        scheduledDate: scheduledDate,
+        notificationDetails: const NotificationDetails(
           android: AndroidNotificationDetails(
             'easy_sales_periodic_notification_channel_id',
             'Easy Sales Periodic Notification',
@@ -324,7 +324,7 @@ class LocalPushNotification {
   }
 
   void cancelLocalNotification({int id = 0}) async {
-    await _localNotificationsPlugin.cancel(id);
+    await _localNotificationsPlugin.cancel(id: id);
   }
 
   // Asynchronous function that takes a URL as input and returns a base64 encoded image string.

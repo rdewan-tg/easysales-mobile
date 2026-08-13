@@ -3,73 +3,52 @@ part of common;
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
-    ValueKey? textFieldKey,
-    required String labelText,
-    String? hintText,
-    Widget? prefixIcon,
-    Widget? suffixIcon,
-    bool isObscureText = false,
-    bool isDense = false,
-    bool autofocus = false,
-    bool readOnly = false,
-    bool autocorrect = false,
-    int minLines = 1,
-    int maxLines = 5,
-    required TextInputType keyboardType,
-    required TextInputAction textInputAction,
-    List<TextInputFormatter>? inputFormatters,
-    String? Function(String?)? validator,
-    Function(String)? onChanged,
-    Function(String)? onFieldSubmitted,
-    required TextEditingController controller,
-    BoxConstraints? constraints,
-    EdgeInsetsGeometry? contentPadding,
-    FloatingLabelBehavior? floatingLabelBehavior = FloatingLabelBehavior.always,
-  }) : _textFieldKey = textFieldKey,
-       _labelText = labelText,
-       _hintText = hintText,
-       _prefixIcon = prefixIcon,
-       _suffixIcon = suffixIcon,
-       _validator = validator,
-       _isObscureText = isObscureText,
-       _isDense = isDense,
-       _autofocus = autofocus,
-       _readOnly = readOnly,
-       _autocorrect = autocorrect,
-       _minLines = minLines,
-       _maxLines = maxLines,
-       _controller = controller,
-       _onChanged = onChanged,
-       _onFieldSubmitted = onFieldSubmitted,
-       _keyboardType = keyboardType,
-       _textInputAction = textInputAction,
-       _inputFormatters = inputFormatters,
-       _constraints = constraints,
-       _contentPadding = contentPadding,
-       _floatingLabelBehavior = floatingLabelBehavior;
+    this.textFieldKey,
+    required this.labelText,
+    this.hintText,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.isObscureText = false,
+    this.isDense = false,
+    this.autofocus = false,
+    this.readOnly = false,
+    this.autocorrect = false,
+    this.minLines = 1,
+    this.maxLines = 5,
+    required this.keyboardType,
+    required this.textInputAction,
+    this.inputFormatters,
+    this.validator,
+    this.onChanged,
+    this.onFieldSubmitted,
+    required this.controller,
+    this.constraints,
+    this.contentPadding,
+    this.floatingLabelBehavior = FloatingLabelBehavior.always,
+  });
 
-  final ValueKey? _textFieldKey;
-  final TextEditingController _controller;
-  final String _labelText;
-  final String? _hintText;
-  final Widget? _prefixIcon;
-  final Widget? _suffixIcon;
-  final bool _isObscureText;
-  final bool _isDense;
-  final bool _autofocus;
-  final bool _readOnly;
-  final bool _autocorrect;
-  final int _minLines;
-  final int _maxLines;
-  final TextInputType _keyboardType;
-  final TextInputAction _textInputAction;
-  final List<TextInputFormatter>? _inputFormatters;
-  final String? Function(String?)? _validator;
-  final Function(String)? _onChanged;
-  final Function(String)? _onFieldSubmitted;
-  final BoxConstraints? _constraints;
-  final EdgeInsetsGeometry? _contentPadding;
-  final FloatingLabelBehavior? _floatingLabelBehavior;
+  final ValueKey? textFieldKey;
+  final TextEditingController controller;
+  final String labelText;
+  final String? hintText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final bool isObscureText;
+  final bool isDense;
+  final bool autofocus;
+  final bool readOnly;
+  final bool autocorrect;
+  final int minLines;
+  final int maxLines;
+  final TextInputType keyboardType;
+  final TextInputAction textInputAction;
+  final List<TextInputFormatter>? inputFormatters;
+  final String? Function(String?)? validator;
+  final Function(String)? onChanged;
+  final Function(String)? onFieldSubmitted;
+  final BoxConstraints? constraints;
+  final EdgeInsetsGeometry? contentPadding;
+  final FloatingLabelBehavior? floatingLabelBehavior;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -81,49 +60,49 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   void initState() {
     super.initState();
-    widget._controller.addListener(() => setTextValue());
+    widget.controller.addListener(() => setTextValue());
   }
 
   @override
   void dispose() {
-    widget._controller.removeListener(() => setTextValue());
+    widget.controller.removeListener(() => setTextValue());
     super.dispose();
   }
 
   void setTextValue() {
     setState(() {
-      _value = widget._controller.text;
+      _value = widget.controller.text;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      key: widget._textFieldKey,
-      controller: widget._controller,
-      obscureText: widget._isObscureText,
-      keyboardType: widget._keyboardType,
-      textInputAction: widget._textInputAction,
-      autofocus: widget._autofocus,
-      readOnly: widget._readOnly,
-      autocorrect: widget._autocorrect,
-      minLines: widget._minLines,
-      maxLines: widget._maxLines,
+      key: widget.textFieldKey,
+      controller: widget.controller,
+      obscureText: widget.isObscureText,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      autofocus: widget.autofocus,
+      readOnly: widget.readOnly,
+      autocorrect: widget.autocorrect,
+      minLines: widget.minLines,
+      maxLines: widget.maxLines,
       decoration: InputDecoration(
-        isDense: widget._isDense,
-        labelText: widget._labelText,
-        hintText: widget._hintText,
-        floatingLabelBehavior: widget._floatingLabelBehavior,
+        isDense: widget.isDense,
+        labelText: widget.labelText,
+        hintText: widget.hintText,
+        floatingLabelBehavior: widget.floatingLabelBehavior,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        prefixIcon: widget._prefixIcon,
-        suffixIcon: _value.isNotEmpty ? widget._suffixIcon : null,
-        constraints: widget._constraints,
-        contentPadding: widget._contentPadding,
+        prefixIcon: widget.prefixIcon,
+        suffixIcon: _value.isNotEmpty ? widget.suffixIcon : null,
+        constraints: widget.constraints,
+        contentPadding: widget.contentPadding,
       ),
-      inputFormatters: widget._inputFormatters,
-      validator: widget._validator,
-      onChanged: widget._onChanged,
-      onFieldSubmitted: widget._onFieldSubmitted,
+      inputFormatters: widget.inputFormatters,
+      validator: widget.validator,
+      onChanged: widget.onChanged,
+      onFieldSubmitted: widget.onFieldSubmitted,
     );
   }
 }

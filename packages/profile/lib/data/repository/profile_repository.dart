@@ -1,5 +1,6 @@
 import 'package:core/data/local/db/dao/setting_dao.dart';
 import 'package:profile/data/dto/delete_me_response.dart';
+import 'package:profile/data/dto/get_me_response.dart';
 import 'package:profile/data/repository/iprofile_repository.dart';
 import 'package:profile/data/source/local/iprofile_storage.dart';
 import 'package:profile/data/source/local/profile_storage.dart';
@@ -45,6 +46,25 @@ final class ProfileRepository
         message: 'An unexpected error occurred'.hardcoded,
         exception: e as Exception,
         stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<GetMeResponse> getMe() async {
+    try {
+      final response = await _profileApi.getMe();
+
+      await _settingDao.upsertAreaIds(response.data.areaIds);
+      return response;
+    } on DioException catch (e, s) {
+      throw mapDioExceptionToFailure(e, s);
+    } catch (e, s) {
+      throw Failure(
+        message:
+            'An unexpected error occurred. Please try again later'.hardcoded,
+        exception: e as Exception,
+        stackTrace: s,
       );
     }
   }

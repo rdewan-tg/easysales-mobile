@@ -52,6 +52,19 @@ final class ProfileController extends Notifier<ProfileState> {
     );
   }
 
+  Future<void> getMyProfile() async {
+    final result = await ref.read(profileServiceProvider).getMe();
+
+    result.when(
+      (success) {
+        state = state.copyWith(profile: success);
+      },
+      (error) {
+        state = state.copyWith(errorMsg: error.message);
+      },
+    );
+  }
+
   Future<void> getAllSettings() async {
     final result = await ref.read(profileServiceProvider).getAllSetting();
 

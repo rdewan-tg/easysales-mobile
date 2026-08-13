@@ -37,6 +37,7 @@ final class LoginService implements ILoginService {
             result.data.user.deviceSetting.orderNumberFormat ?? '-',
         'isSiteVisitEnabled': result.data.user.company.isSiteVisitEnabled
             .toString(),
+        'areaIds': result.data.user.areaIds.join(','),
       });
 
       return const Success(true);

@@ -66,4 +66,17 @@ final class LoginRepository
       );
     }
   }
+
+  @override
+  Future<void> upsertAreaIds(List<int> areaIds) async {
+    try {
+      await _settingStorage.upsertAreaIds(areaIds);
+    } catch (e, stackTrace) {
+      throw Failure(
+        message: 'An unexpected error occurred'.hardcoded,
+        exception: e as Exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
 }

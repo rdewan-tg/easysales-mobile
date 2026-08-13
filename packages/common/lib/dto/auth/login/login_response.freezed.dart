@@ -867,7 +867,7 @@ as String,
 /// @nodoc
 mixin _$UserDto {
 
-@JsonKey(name: "id") int get id;@JsonKey(name: "name") String get name;@JsonKey(name: "email") String get email;@JsonKey(name: "phoneNumber") String? get phoneNumber;@JsonKey(name: "photo") String? get photo;@JsonKey(name: "role") List<RoleDto> get role;@JsonKey(name: "company") CompanyDto get company;@JsonKey(name: "deviceSetting") DeviceSettingDto get deviceSetting;
+@JsonKey(name: "id") int get id;@JsonKey(name: "name") String get name;@JsonKey(name: "email") String get email;@JsonKey(name: "phoneNumber") String? get phoneNumber;@JsonKey(name: "photo") String? get photo;@JsonKey(name: "areaIds") List<int> get areaIds;@JsonKey(name: "role") List<RoleDto> get role;@JsonKey(name: "company") CompanyDto get company;@JsonKey(name: "deviceSetting") DeviceSettingDto get deviceSetting;
 /// Create a copy of UserDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -880,16 +880,16 @@ $UserDtoCopyWith<UserDto> get copyWith => _$UserDtoCopyWithImpl<UserDto>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserDto&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.photo, photo) || other.photo == photo)&&const DeepCollectionEquality().equals(other.role, role)&&(identical(other.company, company) || other.company == company)&&(identical(other.deviceSetting, deviceSetting) || other.deviceSetting == deviceSetting));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserDto&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.photo, photo) || other.photo == photo)&&const DeepCollectionEquality().equals(other.areaIds, areaIds)&&const DeepCollectionEquality().equals(other.role, role)&&(identical(other.company, company) || other.company == company)&&(identical(other.deviceSetting, deviceSetting) || other.deviceSetting == deviceSetting));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,email,phoneNumber,photo,const DeepCollectionEquality().hash(role),company,deviceSetting);
+int get hashCode => Object.hash(runtimeType,id,name,email,phoneNumber,photo,const DeepCollectionEquality().hash(areaIds),const DeepCollectionEquality().hash(role),company,deviceSetting);
 
 @override
 String toString() {
-  return 'UserDto(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, photo: $photo, role: $role, company: $company, deviceSetting: $deviceSetting)';
+  return 'UserDto(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, photo: $photo, areaIds: $areaIds, role: $role, company: $company, deviceSetting: $deviceSetting)';
 }
 
 
@@ -900,7 +900,7 @@ abstract mixin class $UserDtoCopyWith<$Res>  {
   factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) _then) = _$UserDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: "id") int id,@JsonKey(name: "name") String name,@JsonKey(name: "email") String email,@JsonKey(name: "phoneNumber") String? phoneNumber,@JsonKey(name: "photo") String? photo,@JsonKey(name: "role") List<RoleDto> role,@JsonKey(name: "company") CompanyDto company,@JsonKey(name: "deviceSetting") DeviceSettingDto deviceSetting
+@JsonKey(name: "id") int id,@JsonKey(name: "name") String name,@JsonKey(name: "email") String email,@JsonKey(name: "phoneNumber") String? phoneNumber,@JsonKey(name: "photo") String? photo,@JsonKey(name: "areaIds") List<int> areaIds,@JsonKey(name: "role") List<RoleDto> role,@JsonKey(name: "company") CompanyDto company,@JsonKey(name: "deviceSetting") DeviceSettingDto deviceSetting
 });
 
 
@@ -917,14 +917,15 @@ class _$UserDtoCopyWithImpl<$Res>
 
 /// Create a copy of UserDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? email = null,Object? phoneNumber = freezed,Object? photo = freezed,Object? role = null,Object? company = null,Object? deviceSetting = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? email = null,Object? phoneNumber = freezed,Object? photo = freezed,Object? areaIds = null,Object? role = null,Object? company = null,Object? deviceSetting = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,phoneNumber: freezed == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
 as String?,photo: freezed == photo ? _self.photo : photo // ignore: cast_nullable_to_non_nullable
-as String?,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
+as String?,areaIds: null == areaIds ? _self.areaIds : areaIds // ignore: cast_nullable_to_non_nullable
+as List<int>,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as List<RoleDto>,company: null == company ? _self.company : company // ignore: cast_nullable_to_non_nullable
 as CompanyDto,deviceSetting: null == deviceSetting ? _self.deviceSetting : deviceSetting // ignore: cast_nullable_to_non_nullable
 as DeviceSettingDto,
@@ -1030,10 +1031,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: "id")  int id, @JsonKey(name: "name")  String name, @JsonKey(name: "email")  String email, @JsonKey(name: "phoneNumber")  String? phoneNumber, @JsonKey(name: "photo")  String? photo, @JsonKey(name: "role")  List<RoleDto> role, @JsonKey(name: "company")  CompanyDto company, @JsonKey(name: "deviceSetting")  DeviceSettingDto deviceSetting)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: "id")  int id, @JsonKey(name: "name")  String name, @JsonKey(name: "email")  String email, @JsonKey(name: "phoneNumber")  String? phoneNumber, @JsonKey(name: "photo")  String? photo, @JsonKey(name: "areaIds")  List<int> areaIds, @JsonKey(name: "role")  List<RoleDto> role, @JsonKey(name: "company")  CompanyDto company, @JsonKey(name: "deviceSetting")  DeviceSettingDto deviceSetting)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UserDto() when $default != null:
-return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_that.role,_that.company,_that.deviceSetting);case _:
+return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_that.areaIds,_that.role,_that.company,_that.deviceSetting);case _:
   return orElse();
 
 }
@@ -1051,10 +1052,10 @@ return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: "id")  int id, @JsonKey(name: "name")  String name, @JsonKey(name: "email")  String email, @JsonKey(name: "phoneNumber")  String? phoneNumber, @JsonKey(name: "photo")  String? photo, @JsonKey(name: "role")  List<RoleDto> role, @JsonKey(name: "company")  CompanyDto company, @JsonKey(name: "deviceSetting")  DeviceSettingDto deviceSetting)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: "id")  int id, @JsonKey(name: "name")  String name, @JsonKey(name: "email")  String email, @JsonKey(name: "phoneNumber")  String? phoneNumber, @JsonKey(name: "photo")  String? photo, @JsonKey(name: "areaIds")  List<int> areaIds, @JsonKey(name: "role")  List<RoleDto> role, @JsonKey(name: "company")  CompanyDto company, @JsonKey(name: "deviceSetting")  DeviceSettingDto deviceSetting)  $default,) {final _that = this;
 switch (_that) {
 case _UserDto():
-return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_that.role,_that.company,_that.deviceSetting);case _:
+return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_that.areaIds,_that.role,_that.company,_that.deviceSetting);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1071,10 +1072,10 @@ return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: "id")  int id, @JsonKey(name: "name")  String name, @JsonKey(name: "email")  String email, @JsonKey(name: "phoneNumber")  String? phoneNumber, @JsonKey(name: "photo")  String? photo, @JsonKey(name: "role")  List<RoleDto> role, @JsonKey(name: "company")  CompanyDto company, @JsonKey(name: "deviceSetting")  DeviceSettingDto deviceSetting)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: "id")  int id, @JsonKey(name: "name")  String name, @JsonKey(name: "email")  String email, @JsonKey(name: "phoneNumber")  String? phoneNumber, @JsonKey(name: "photo")  String? photo, @JsonKey(name: "areaIds")  List<int> areaIds, @JsonKey(name: "role")  List<RoleDto> role, @JsonKey(name: "company")  CompanyDto company, @JsonKey(name: "deviceSetting")  DeviceSettingDto deviceSetting)?  $default,) {final _that = this;
 switch (_that) {
 case _UserDto() when $default != null:
-return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_that.role,_that.company,_that.deviceSetting);case _:
+return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_that.areaIds,_that.role,_that.company,_that.deviceSetting);case _:
   return null;
 
 }
@@ -1086,7 +1087,7 @@ return $default(_that.id,_that.name,_that.email,_that.phoneNumber,_that.photo,_t
 @JsonSerializable()
 
 class _UserDto implements UserDto {
-  const _UserDto({@JsonKey(name: "id") required this.id, @JsonKey(name: "name") required this.name, @JsonKey(name: "email") required this.email, @JsonKey(name: "phoneNumber") this.phoneNumber, @JsonKey(name: "photo") this.photo, @JsonKey(name: "role") required final  List<RoleDto> role, @JsonKey(name: "company") required this.company, @JsonKey(name: "deviceSetting") required this.deviceSetting}): _role = role;
+  const _UserDto({@JsonKey(name: "id") required this.id, @JsonKey(name: "name") required this.name, @JsonKey(name: "email") required this.email, @JsonKey(name: "phoneNumber") this.phoneNumber, @JsonKey(name: "photo") this.photo, @JsonKey(name: "areaIds") required final  List<int> areaIds, @JsonKey(name: "role") required final  List<RoleDto> role, @JsonKey(name: "company") required this.company, @JsonKey(name: "deviceSetting") required this.deviceSetting}): _areaIds = areaIds,_role = role;
   factory _UserDto.fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
 
 @override@JsonKey(name: "id") final  int id;
@@ -1094,6 +1095,13 @@ class _UserDto implements UserDto {
 @override@JsonKey(name: "email") final  String email;
 @override@JsonKey(name: "phoneNumber") final  String? phoneNumber;
 @override@JsonKey(name: "photo") final  String? photo;
+ final  List<int> _areaIds;
+@override@JsonKey(name: "areaIds") List<int> get areaIds {
+  if (_areaIds is EqualUnmodifiableListView) return _areaIds;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_areaIds);
+}
+
  final  List<RoleDto> _role;
 @override@JsonKey(name: "role") List<RoleDto> get role {
   if (_role is EqualUnmodifiableListView) return _role;
@@ -1117,16 +1125,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserDto&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.photo, photo) || other.photo == photo)&&const DeepCollectionEquality().equals(other._role, _role)&&(identical(other.company, company) || other.company == company)&&(identical(other.deviceSetting, deviceSetting) || other.deviceSetting == deviceSetting));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserDto&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber)&&(identical(other.photo, photo) || other.photo == photo)&&const DeepCollectionEquality().equals(other._areaIds, _areaIds)&&const DeepCollectionEquality().equals(other._role, _role)&&(identical(other.company, company) || other.company == company)&&(identical(other.deviceSetting, deviceSetting) || other.deviceSetting == deviceSetting));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,email,phoneNumber,photo,const DeepCollectionEquality().hash(_role),company,deviceSetting);
+int get hashCode => Object.hash(runtimeType,id,name,email,phoneNumber,photo,const DeepCollectionEquality().hash(_areaIds),const DeepCollectionEquality().hash(_role),company,deviceSetting);
 
 @override
 String toString() {
-  return 'UserDto(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, photo: $photo, role: $role, company: $company, deviceSetting: $deviceSetting)';
+  return 'UserDto(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, photo: $photo, areaIds: $areaIds, role: $role, company: $company, deviceSetting: $deviceSetting)';
 }
 
 
@@ -1137,7 +1145,7 @@ abstract mixin class _$UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
   factory _$UserDtoCopyWith(_UserDto value, $Res Function(_UserDto) _then) = __$UserDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: "id") int id,@JsonKey(name: "name") String name,@JsonKey(name: "email") String email,@JsonKey(name: "phoneNumber") String? phoneNumber,@JsonKey(name: "photo") String? photo,@JsonKey(name: "role") List<RoleDto> role,@JsonKey(name: "company") CompanyDto company,@JsonKey(name: "deviceSetting") DeviceSettingDto deviceSetting
+@JsonKey(name: "id") int id,@JsonKey(name: "name") String name,@JsonKey(name: "email") String email,@JsonKey(name: "phoneNumber") String? phoneNumber,@JsonKey(name: "photo") String? photo,@JsonKey(name: "areaIds") List<int> areaIds,@JsonKey(name: "role") List<RoleDto> role,@JsonKey(name: "company") CompanyDto company,@JsonKey(name: "deviceSetting") DeviceSettingDto deviceSetting
 });
 
 
@@ -1154,14 +1162,15 @@ class __$UserDtoCopyWithImpl<$Res>
 
 /// Create a copy of UserDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? email = null,Object? phoneNumber = freezed,Object? photo = freezed,Object? role = null,Object? company = null,Object? deviceSetting = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? email = null,Object? phoneNumber = freezed,Object? photo = freezed,Object? areaIds = null,Object? role = null,Object? company = null,Object? deviceSetting = null,}) {
   return _then(_UserDto(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,phoneNumber: freezed == phoneNumber ? _self.phoneNumber : phoneNumber // ignore: cast_nullable_to_non_nullable
 as String?,photo: freezed == photo ? _self.photo : photo // ignore: cast_nullable_to_non_nullable
-as String?,role: null == role ? _self._role : role // ignore: cast_nullable_to_non_nullable
+as String?,areaIds: null == areaIds ? _self._areaIds : areaIds // ignore: cast_nullable_to_non_nullable
+as List<int>,role: null == role ? _self._role : role // ignore: cast_nullable_to_non_nullable
 as List<RoleDto>,company: null == company ? _self.company : company // ignore: cast_nullable_to_non_nullable
 as CompanyDto,deviceSetting: null == deviceSetting ? _self.deviceSetting : deviceSetting // ignore: cast_nullable_to_non_nullable
 as DeviceSettingDto,

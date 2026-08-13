@@ -31,7 +31,11 @@ class LoginController extends Notifier<LoginState> {
   Future<void> login() async {
     try {
       // update the state - isLoading = true and error = null
-      state = state.copyWith(isLoading: true, error: null);
+      state = state.copyWith(
+        isLoading: true,
+        isLoginSuccess: false,
+        error: null,
+      );
 
       // setup the login request - email and password from the form
       final loginRequest = LoginRequest(

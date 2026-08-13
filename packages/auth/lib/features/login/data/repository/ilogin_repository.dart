@@ -5,4 +5,6 @@ abstract interface class ILoginRepository {
   Future<LoginResponse> login(LoginRequest loginRequest);
 
   Future<void> upsertMultipleSettings(Map<String, String> settings);
+
+  Future<void> upsertAreaIds(List<int> areaIds);
 }

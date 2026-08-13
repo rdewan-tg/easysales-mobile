@@ -2,6 +2,7 @@ import 'package:common/exception/failure.dart';
 import 'package:profile/application/iprofile_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:multiple_result/multiple_result.dart';
+import 'package:profile/data/dto/get_me_response.dart';
 import 'package:profile/data/repository/iprofile_repository.dart';
 import 'package:profile/data/repository/profile_repository.dart';
 
@@ -29,6 +30,25 @@ final class ProfileService implements IProfileService {
   Future<Result<Map<String, String>, Failure>> getAllSetting() async {
     try {
       final result = await _profileRepository.getAllSettings();
+
+      return Success(result);
+    } on Failure catch (e) {
+      return Error(e);
+    } catch (e, s) {
+      return Error(
+        Failure(
+          message: e.toString(),
+          exception: e as Exception,
+          stackTrace: s,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Result<GetMeResponse, Failure>> getMe() async {
+    try {
+      final result = await _profileRepository.getMe();
 
       return Success(result);
     } on Failure catch (e) {

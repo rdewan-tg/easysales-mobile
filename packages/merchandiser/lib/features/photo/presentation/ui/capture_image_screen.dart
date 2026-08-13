@@ -1,5 +1,7 @@
 part of merchandiser;
 
+
+
 class CaptureImageScreen extends ConsumerStatefulWidget {
   final Map<String, dynamic> extras;
   const CaptureImageScreen({super.key, required this.extras});
@@ -10,21 +12,60 @@ class CaptureImageScreen extends ConsumerStatefulWidget {
 }
 
 class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      ref.read(captureImageControllerProvider.notifier).getAllSetting();
-      ref.read(captureImageControllerProvider.notifier).setAndroidSdkInt();
-      ref
-          .read(captureImageControllerProvider.notifier)
-          .setBottomNavigationState(false);
-    });
-  }
+
+  bool get _isMobile => Platform.isAndroid || Platform.isIOS;
+
+
+  
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) async {
+  //     ref.read(captureImageControllerProvider.notifier).getAllSetting();
+  //     ref.read(captureImageControllerProvider.notifier).setAndroidSdkInt();
+  //     ref
+  //         .read(captureImageControllerProvider.notifier)
+  //         .setBottomNavigationState(false);
+  //   });
+  // }
+
+  
 
   @override
-  Widget build(BuildContext context) {
-    _listener();
+void initState() {
+  super.initState();
+
+WidgetsBinding.instance.addPostFrameCallback((_) async {
+    ref.read(captureImageControllerProvider.notifier).getAllSetting();
+
+    if (Platform.isAndroid) {
+      ref.read(captureImageControllerProvider.notifier).setAndroidSdkInt();
+    }
+
+    ref
+        .read(captureImageControllerProvider.notifier)
+        .setBottomNavigationState(false);
+  });
+}
+
+
+  @override
+ Widget build(BuildContext context) {
+  // 🚫 BLOCK CAMERA ON macOS / Windows / Web FIRST
+  if (!_isMobile) {
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Camera is not supported on this platform',
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
+    );
+  }
+
+  // ✅ ONLY Android & iOS reach here
+  _listener();
+
     return PopScope(
       canPop: true,
       onPopInvokedWithResult: (didPop, result) async {
@@ -268,8 +309,7 @@ class _CaptureImageScreenState extends ConsumerState<CaptureImageScreen> {
             SnackBar(
               duration: const Duration(seconds: 5),
               content: Text(
-                'Photo uploaded successfully. You can now close this screen or capture another photo'
-                    .hardcoded,
+                context.localizations('merchandiser.photoUploadedMessage'),
               ),
             ),
           );

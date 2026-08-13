@@ -6,4 +6,17 @@ part of 'search_product_history_dao.dart';
 mixin _$SearchProductHistoryDaoMixin on DatabaseAccessor<AppDatabase> {
   $SearchProductHistoryEntityTable get searchProductHistoryEntity =>
       attachedDatabase.searchProductHistoryEntity;
+  SearchProductHistoryDaoManager get managers =>
+      SearchProductHistoryDaoManager(this);
+}
+
+class SearchProductHistoryDaoManager {
+  final _$SearchProductHistoryDaoMixin _db;
+  SearchProductHistoryDaoManager(this._db);
+  $$SearchProductHistoryEntityTableTableManager
+  get searchProductHistoryEntity =>
+      $$SearchProductHistoryEntityTableTableManager(
+        _db.attachedDatabase,
+        _db.searchProductHistoryEntity,
+      );
 }

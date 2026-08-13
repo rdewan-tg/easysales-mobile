@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:common/common.dart';
 import 'package:core/data/local/db/app_database.dart';
 import 'package:core/data/local/db/entity/setting_entity.dart';
@@ -61,5 +63,42 @@ class SettingDao extends DatabaseAccessor<AppDatabase> with _$SettingDaoMixin {
   Future<Map<String, String>> getAllSettings() async {
     final rows = await select(settingEntity).get();
     return {for (var row in rows) row.key: row.value ?? ''};
+  }
+
+  Future<void> upsertAreaIds(List<int> areaIds) async {
+    final jsonValue = jsonEncode(areaIds);
+    await upsertSetting('areaIds', jsonValue);
+  }
+
+  Future<List<int>?> getAreaIds() async {
+    final result = await (select(settingEntity)
+          ..where((tbl) => tbl.key.equals('areaIds'))
+          ..limit(1))
+        .getSingleOrNull();
+    
+    if (result?.value == null) return null;
+    
+    try {
+      final List<dynamic> decoded = jsonDecode(result!.value!);
+      return decoded.cast<int>();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Stream<List<int>?> watchAreaIds({List<int>? defaultValue}) {
+    return (select(settingEntity)
+          ..where((tbl) => tbl.key.equals('areaIds'))
+          ..limit(1))
+        .watchSingleOrNull()
+        .map((row) {
+          if (row?.value == null) return defaultValue;
+          try {
+            final List<dynamic> decoded = jsonDecode(row!.value!);
+            return decoded.cast<int>();
+          } catch (e) {
+            return defaultValue;
+          }
+        });
   }
 }

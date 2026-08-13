@@ -5,7 +5,7 @@ class VersionInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final versionStatus = ref.watch(versionStatusProvider);
+    final versionStatus = ref.watch(getVersionStatusProvider);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kMedium),
       child: versionStatus.when(

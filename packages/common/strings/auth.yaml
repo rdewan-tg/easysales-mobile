@@ -1,0 +1,20 @@
+login: Login
+email: Email
+name: Name
+emailEmptyMessage: Please enter your email
+invalidEmailMessage: Please enter a valid email
+password: Password
+passwordEmptyMessage: Please enter your password
+passwordMinLengthMessage: Password must be at least 8 characters long
+forgotPassword: Forgot Password
+signUp: Sign up
+dontHaveAccountMessage: Don't have an account?
+alreadyHaveAccountMessage: Already have an account?
+entryNameMessage: Please enter your name
+confirmPassword: Confirm Password
+passwordMissMatchMessage: Password do not match
+signUpSuccessMessage: Sign Up Successful
+verificationMessage: Please check your email for verification and please verify your account
+confirmText: Ok
+emailSentSuccessfully: Email Sent Successfully 
+checkEmailForFurtherInstructions: Please check your email for further instructions

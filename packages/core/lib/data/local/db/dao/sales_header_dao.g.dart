@@ -6,4 +6,15 @@ part of 'sales_header_dao.dart';
 mixin _$SalesHeaderDaoMixin on DatabaseAccessor<AppDatabase> {
   $SalesHeaderEntityTable get salesHeaderEntity =>
       attachedDatabase.salesHeaderEntity;
+  SalesHeaderDaoManager get managers => SalesHeaderDaoManager(this);
+}
+
+class SalesHeaderDaoManager {
+  final _$SalesHeaderDaoMixin _db;
+  SalesHeaderDaoManager(this._db);
+  $$SalesHeaderEntityTableTableManager get salesHeaderEntity =>
+      $$SalesHeaderEntityTableTableManager(
+        _db.attachedDatabase,
+        _db.salesHeaderEntity,
+      );
 }

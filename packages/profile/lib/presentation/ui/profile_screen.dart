@@ -1,10 +1,25 @@
 part of profile;
 
-class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
+class ProfileScreen extends ConsumerStatefulWidget with ConfirmDialogMixin {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends ConsumerState<ProfileScreen>
+    with ConfirmDialogMixin {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref.read(profileControllerProvider.notifier).getMyProfile();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     _listener(ref, context);
 
     return AppScaffoldScrollable(
@@ -36,18 +51,26 @@ class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
           },
         ),
       ],
-      widget: Padding(
-        padding: const EdgeInsets.all(kMedium),
-        child: Card(
-          elevation: 4,
-          clipBehavior: Clip.antiAlias,
-          shadowColor: context.themeColor.primaryColorLight,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(kMedium),
-          ),
-          child: const Padding(
-            padding: EdgeInsets.all(kSmall),
-            child: ProfileDataWidget(),
+      widget: RefreshIndicator.adaptive(
+        onRefresh: () async {
+          await ref.read(profileControllerProvider.notifier).getMyProfile();
+        },
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.all(kMedium),
+            child: Card(
+              elevation: 4,
+              clipBehavior: Clip.antiAlias,
+              shadowColor: context.themeColor.primaryColorLight,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(kMedium),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(kSmall),
+                child: ProfileDataWidget(),
+              ),
+            ),
           ),
         ),
       ),
@@ -78,14 +101,16 @@ class ProfileScreen extends ConsumerWidget with ConfirmDialogMixin {
         Icons.warning_outlined,
         color: context.themeColor.colorScheme.error,
       ),
-      onYesTap: () {
+      onYesTap: () async {
         // delete customer account
-        ref.read(profileControllerProvider.notifier).logout();
+        await ref.read(profileControllerProvider.notifier).logout();
         // close dialog
-        context.pop();
+        if (context.mounted) {
+          context.pop();
+        }
       },
       onNoTap: () {
-        // close dialog
+        // close dialog                                 
         context.pop();
       },
     );

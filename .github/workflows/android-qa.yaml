@@ -96,7 +96,7 @@ jobs:
           flutter pub get >> /dev/null
 
           echo Running build_runner in packages/core
-          flutter pub run build_runner build -d 
+          flutter pub run build_runner build -d --force-jit 
           
           echo Done running build_runner. Navigating up to root directory
           cd ../../    
@@ -160,7 +160,7 @@ jobs:
         with:
           appId: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_APP_DISTRIBUTION_CREDENTIAL }}
-          groups: "android-internal"
+          # groups: "android-internal" # Commented out - group doesn't exist
           file: build/app/outputs/flutter-apk/app-qa-release.apk
           releaseNotesFile: distribution/whatsnew/whatsnew-en-US
 

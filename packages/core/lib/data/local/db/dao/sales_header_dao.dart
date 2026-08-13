@@ -47,11 +47,7 @@ class SalesHeaderDao extends DatabaseAccessor<AppDatabase>
   Stream<List<SalesHeaderEntityData>> watchAllSalesHeader() {
     final query = select(salesHeaderEntity)
       ..orderBy([
-        (tbl) => OrderingTerm(
-          expression: tbl.transactionDate,
-          mode: OrderingMode.desc,
-        ),
-        (tbl) => OrderingTerm(expression: tbl.salesId, mode: OrderingMode.desc),
+        (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc),
       ]);
 
     return query.watch().handleError((e, s) {
