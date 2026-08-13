@@ -137,5 +137,8 @@
     "setting.truncateSalesOrder": "Kosongkan Pesanan Jualan",
     "setting.truncateSalesOrderSubTitle": "Kosongkan semua data pesanan jualan",
     "setting.truncateSalesOrderConfirm": "Adakah anda pasti mahu memadamkan semua data pesanan jualan?",
-    "setting.truncateSalesOrderSuccess": "Data pesanan jualan berjaya dipadamkan"
+    "setting.truncateSalesOrderSuccess": "Data pesanan jualan berjaya dipadamkan",
+    "home.topSellingProducts": "Produk Terlaris",
+    "home.topCustomers": "Pelanggan Teratas",
+    "home.last3MonthsSalesTotals": "Jumlah Jualan 3 Bulan Terakhir"
 }

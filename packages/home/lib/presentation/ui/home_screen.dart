@@ -11,70 +11,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return MainAppScaffold(
+      isScrollable: true,
       widget: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(kSmall),
-            child: Card.outlined(
-              child: Column(
-                children: [
-                  const TodaySiteVisitTotalView(),
-                  Row(
-                    children: [
-                      const Spacer(),
-                      TextButton(
-                        onPressed: () =>
-                            context.push('/today-site-visit-report'),
-                        child: Text(context.localizations('home.viewMore')),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: kSmall,
+              vertical: kXSmall,
             ),
+            child: TopSellingProductsChartView(),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kSmall),
-            child: Card.outlined(
-              child: Column(
-                children: [
-                  const ThisMonthSiteVisitTotalView(),
-                  Row(
-                    children: [
-                      const Spacer(),
-                      TextButton(
-                        onPressed: () =>
-                            context.push('/this-month-site-visit-report'),
-                        child: Text(context.localizations('home.viewMore')),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: kSmall,
+              vertical: kXSmall,
             ),
+            child: TopCustomersChartView(),
           ),
-          Padding(
-            padding: const EdgeInsets.all(kSmall),
-            child: Card.outlined(
-              child: Column(
-                children: [
-                  const CurrentOrderNumberView(),
-                  Row(
-                    children: [
-                      const Spacer(),
-                      TextButton(
-                        onPressed: () {
-                          ref
-                              .read(salesHeaderControllerProvider.notifier)
-                              .getLastSalesOrderId();
-                        },
-                        child: Text(context.localizations('home.refreshData')),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: kSmall,
+              vertical: kXSmall,
             ),
+            child: Last3MonthsSalesTotalsChartView(),
           ),
         ],
       ),
