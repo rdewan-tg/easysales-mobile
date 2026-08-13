@@ -19,6 +19,14 @@ const String toDaySiteVisitReportEndPoint =
 const String thisMonthSiteVisitReportEndPoint =
     '/v1/merchandiser/photos/report/this-month-site-visit-report';
 
+//report
+const String topSellingProductsEndPoint =
+    '/v1/report/top-selling-products';
+const String topCustomersEndPoint =
+    '/v1/report/top-customers';
+const String last3MonthsSalesTotalsEndPoint =
+    '/v1/report/last-3-months-sales-totals';
+
 // product
 const String productsEndPoint = '/v1/items/{DataAreaId}';
 // price

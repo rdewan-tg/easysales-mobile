@@ -11,7 +11,7 @@
     "setting.manageYourProfile": "จัดการโปรไฟล์ของคุณ",
     "setting.logout": "ออกจากระบบ",
     "sales.title": "ฝ่ายขาย",
-    "merchandiser.title": "ผู้จัดจำหน่าย",
+    "merchandiser.title": "ผู้จัดจำหน่ายสินค้า",
     "merchandiser.takePicture": "ถ่ายรูป",
     "profile.title": "ประวัติโดยย่อ",
     "profile.deleteMyAccount": "ลบบัญชีผู้ใช้",
@@ -137,5 +137,8 @@
     "setting.truncateSalesOrder": "เคลียร์คำสั่งขาย",
     "setting.truncateSalesOrderSubTitle": "ล้างข้อมูลคำสั่งขายทั้งหมด",
     "setting.truncateSalesOrderConfirm": "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลคำสั่งขายทั้งหมด?",
-    "setting.truncateSalesOrderSuccess": "ข้อมูลคำสั่งขายได้รับการดำเนินการเรียบร้อยแล้ว"
+    "setting.truncateSalesOrderSuccess": "ข้อมูลคำสั่งขายได้รับการดำเนินการเรียบร้อยแล้ว",
+    "home.topSellingProducts": "สินค้าขายดี",
+    "home.topCustomers": "ลูกค้าชั้นนำ",
+    "home.last3MonthsSalesTotals": "ยอดขายรวม 3 เดือนที่ผ่านมา"
 }
